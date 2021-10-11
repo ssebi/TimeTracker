@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C64C42552714633200CFBDEF /* TimeTrackerManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C42542714633200CFBDEF /* TimeTrackerManagerApp.swift */; };
+		C64C42572714633200CFBDEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C42562714633200CFBDEF /* ContentView.swift */; };
+		C64C42592714633400CFBDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C42582714633400CFBDEF /* Assets.xcassets */; };
+		C64C425C2714633400CFBDEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C425B2714633400CFBDEF /* Preview Assets.xcassets */; };
+		C64C42662714633400CFBDEF /* TimeTrackerManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C42652714633400CFBDEF /* TimeTrackerManagerTests.swift */; };
+		C64C42702714633500CFBDEF /* TimeTrackerManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C426F2714633500CFBDEF /* TimeTrackerManagerUITests.swift */; };
+		C64C42722714633500CFBDEF /* TimeTrackerManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C42712714633500CFBDEF /* TimeTrackerManagerUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C64C42622714633400CFBDEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C64C42492714633200CFBDEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C64C42502714633200CFBDEF;
+			remoteInfo = TimeTrackerManager;
+		};
+		C64C426C2714633400CFBDEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C64C42492714633200CFBDEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C64C42502714633200CFBDEF;
+			remoteInfo = TimeTrackerManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C64C42512714633200CFBDEF /* TimeTrackerManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64C42542714633200CFBDEF /* TimeTrackerManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerManagerApp.swift; sourceTree = "<group>"; };
+		C64C42562714633200CFBDEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C64C42582714633400CFBDEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C64C425B2714633400CFBDEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C64C42612714633400CFBDEF /* TimeTrackerManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64C42652714633400CFBDEF /* TimeTrackerManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerManagerTests.swift; sourceTree = "<group>"; };
+		C64C426B2714633400CFBDEF /* TimeTrackerManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64C426F2714633500CFBDEF /* TimeTrackerManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerManagerUITests.swift; sourceTree = "<group>"; };
+		C64C42712714633500CFBDEF /* TimeTrackerManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerManagerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C64C424E2714633200CFBDEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C64C425E2714633400CFBDEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C64C42682714633400CFBDEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C64C42482714633200CFBDEF = {
+			isa = PBXGroup;
+			children = (
+				C64C42532714633200CFBDEF /* TimeTrackerManager */,
+				C64C42642714633400CFBDEF /* TimeTrackerManagerTests */,
+				C64C426E2714633400CFBDEF /* TimeTrackerManagerUITests */,
+				C64C42522714633200CFBDEF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C64C42522714633200CFBDEF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C64C42512714633200CFBDEF /* TimeTrackerManager.app */,
+				C64C42612714633400CFBDEF /* TimeTrackerManagerTests.xctest */,
+				C64C426B2714633400CFBDEF /* TimeTrackerManagerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C64C42532714633200CFBDEF /* TimeTrackerManager */ = {
+			isa = PBXGroup;
+			children = (
+				C64C42542714633200CFBDEF /* TimeTrackerManagerApp.swift */,
+				C64C42562714633200CFBDEF /* ContentView.swift */,
+				C64C42582714633400CFBDEF /* Assets.xcassets */,
+				C64C425A2714633400CFBDEF /* Preview Content */,
+			);
+			path = TimeTrackerManager;
+			sourceTree = "<group>";
+		};
+		C64C425A2714633400CFBDEF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C64C425B2714633400CFBDEF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C64C42642714633400CFBDEF /* TimeTrackerManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				C64C42652714633400CFBDEF /* TimeTrackerManagerTests.swift */,
+			);
+			path = TimeTrackerManagerTests;
+			sourceTree = "<group>";
+		};
+		C64C426E2714633400CFBDEF /* TimeTrackerManagerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C64C426F2714633500CFBDEF /* TimeTrackerManagerUITests.swift */,
+				C64C42712714633500CFBDEF /* TimeTrackerManagerUITestsLaunchTests.swift */,
+			);
+			path = TimeTrackerManagerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C64C42502714633200CFBDEF /* TimeTrackerManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C64C42752714633500CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerManager" */;
+			buildPhases = (
+				C64C424D2714633200CFBDEF /* Sources */,
+				C64C424E2714633200CFBDEF /* Frameworks */,
+				C64C424F2714633200CFBDEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimeTrackerManager;
+			productName = TimeTrackerManager;
+			productReference = C64C42512714633200CFBDEF /* TimeTrackerManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C64C42602714633400CFBDEF /* TimeTrackerManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C64C42782714633500CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerManagerTests" */;
+			buildPhases = (
+				C64C425D2714633400CFBDEF /* Sources */,
+				C64C425E2714633400CFBDEF /* Frameworks */,
+				C64C425F2714633400CFBDEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C64C42632714633400CFBDEF /* PBXTargetDependency */,
+			);
+			name = TimeTrackerManagerTests;
+			productName = TimeTrackerManagerTests;
+			productReference = C64C42612714633400CFBDEF /* TimeTrackerManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C64C426A2714633400CFBDEF /* TimeTrackerManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C64C427B2714633500CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerManagerUITests" */;
+			buildPhases = (
+				C64C42672714633400CFBDEF /* Sources */,
+				C64C42682714633400CFBDEF /* Frameworks */,
+				C64C42692714633400CFBDEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C64C426D2714633400CFBDEF /* PBXTargetDependency */,
+			);
+			name = TimeTrackerManagerUITests;
+			productName = TimeTrackerManagerUITests;
+			productReference = C64C426B2714633400CFBDEF /* TimeTrackerManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C64C42492714633200CFBDEF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					C64C42502714633200CFBDEF = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					C64C42602714633400CFBDEF = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = C64C42502714633200CFBDEF;
+					};
+					C64C426A2714633400CFBDEF = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = C64C42502714633200CFBDEF;
+					};
+				};
+			};
+			buildConfigurationList = C64C424C2714633200CFBDEF /* Build configuration list for PBXProject "TimeTrackerManager" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C64C42482714633200CFBDEF;
+			productRefGroup = C64C42522714633200CFBDEF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C64C42502714633200CFBDEF /* TimeTrackerManager */,
+				C64C42602714633400CFBDEF /* TimeTrackerManagerTests */,
+				C64C426A2714633400CFBDEF /* TimeTrackerManagerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C64C424F2714633200CFBDEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C64C425C2714633400CFBDEF /* Preview Assets.xcassets in Resources */,
+				C64C42592714633400CFBDEF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C64C425F2714633400CFBDEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C64C42692714633400CFBDEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C64C424D2714633200CFBDEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C64C42572714633200CFBDEF /* ContentView.swift in Sources */,
+				C64C42552714633200CFBDEF /* TimeTrackerManagerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C64C425D2714633400CFBDEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C64C42662714633400CFBDEF /* TimeTrackerManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C64C42672714633400CFBDEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C64C42722714633500CFBDEF /* TimeTrackerManagerUITestsLaunchTests.swift in Sources */,
+				C64C42702714633500CFBDEF /* TimeTrackerManagerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C64C42632714633400CFBDEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C64C42502714633200CFBDEF /* TimeTrackerManager */;
+			targetProxy = C64C42622714633400CFBDEF /* PBXContainerItemProxy */;
+		};
+		C64C426D2714633400CFBDEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C64C42502714633200CFBDEF /* TimeTrackerManager */;
+			targetProxy = C64C426C2714633400CFBDEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C64C42732714633500CFBDEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C64C42742714633500CFBDEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C64C42762714633500CFBDEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TimeTrackerManager/Preview Content\"";
+				DEVELOPMENT_TEAM = 63DF6735WS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerManager.TimeTrackerManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C64C42772714633500CFBDEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TimeTrackerManager/Preview Content\"";
+				DEVELOPMENT_TEAM = 63DF6735WS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerManager.TimeTrackerManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		C64C42792714633500CFBDEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63DF6735WS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerManager.TimeTrackerManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeTrackerManager.app/TimeTrackerManager";
+			};
+			name = Debug;
+		};
+		C64C427A2714633500CFBDEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63DF6735WS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerManager.TimeTrackerManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeTrackerManager.app/TimeTrackerManager";
+			};
+			name = Release;
+		};
+		C64C427C2714633500CFBDEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63DF6735WS;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerManager.TimeTrackerManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				TEST_TARGET_NAME = TimeTrackerManager;
+			};
+			name = Debug;
+		};
+		C64C427D2714633500CFBDEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63DF6735WS;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerManager.TimeTrackerManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				TEST_TARGET_NAME = TimeTrackerManager;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C64C424C2714633200CFBDEF /* Build configuration list for PBXProject "TimeTrackerManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C64C42732714633500CFBDEF /* Debug */,
+				C64C42742714633500CFBDEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C64C42752714633500CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C64C42762714633500CFBDEF /* Debug */,
+				C64C42772714633500CFBDEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C64C42782714633500CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C64C42792714633500CFBDEF /* Debug */,
+				C64C427A2714633500CFBDEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C64C427B2714633500CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C64C427C2714633500CFBDEF /* Debug */,
+				C64C427D2714633500CFBDEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C64C42492714633200CFBDEF /* Project object */;
+}
