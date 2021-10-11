@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  TimeTracker
+//  TimeTrackerClient
 //
 //  Created by Sebastian Vidrea on 11.10.2021.
 //

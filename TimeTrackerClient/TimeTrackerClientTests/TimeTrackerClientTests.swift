@@ -1,14 +1,14 @@
 //
-//  TimeTrackerTests.swift
-//  TimeTrackerTests
+//  TimeTrackerClientTests.swift
+//  TimeTrackerClientTests
 //
 //  Created by Sebastian Vidrea on 11.10.2021.
 //
 
 import XCTest
-@testable import TimeTracker
+@testable import TimeTrackerClient
 
-class TimeTrackerTests: XCTestCase {
+class TimeTrackerClientTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

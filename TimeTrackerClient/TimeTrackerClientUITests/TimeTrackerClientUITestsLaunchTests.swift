@@ -1,13 +1,13 @@
 //
-//  TimeTrackerUITestsLaunchTests.swift
-//  TimeTrackerUITests
+//  TimeTrackerClientUITestsLaunchTests.swift
+//  TimeTrackerClientUITests
 //
 //  Created by Sebastian Vidrea on 11.10.2021.
 //
 
 import XCTest
 
-class TimeTrackerUITestsLaunchTests: XCTestCase {
+class TimeTrackerClientUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -7,61 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C64C41DD27145EB400CFBDEF /* TimeTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C41DC27145EB400CFBDEF /* TimeTrackerApp.swift */; };
-		C64C41DF27145EB400CFBDEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C41DE27145EB400CFBDEF /* ContentView.swift */; };
-		C64C41E127145EB700CFBDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C41E027145EB700CFBDEF /* Assets.xcassets */; };
-		C64C41E427145EB700CFBDEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C41E327145EB700CFBDEF /* Preview Assets.xcassets */; };
-		C64C41EE27145EB700CFBDEF /* TimeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C41ED27145EB700CFBDEF /* TimeTrackerTests.swift */; };
-		C64C41F827145EB700CFBDEF /* TimeTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C41F727145EB700CFBDEF /* TimeTrackerUITests.swift */; };
-		C64C41FA27145EB700CFBDEF /* TimeTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C41F927145EB700CFBDEF /* TimeTrackerUITestsLaunchTests.swift */; };
+		C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */; };
+		C64C428D271464B300CFBDEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428C271464B300CFBDEF /* ContentView.swift */; };
+		C64C428F271464B600CFBDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C428E271464B600CFBDEF /* Assets.xcassets */; };
+		C64C4292271464B600CFBDEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C4291271464B600CFBDEF /* Preview Assets.xcassets */; };
+		C64C429C271464B600CFBDEF /* TimeTrackerClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C429B271464B600CFBDEF /* TimeTrackerClientTests.swift */; };
+		C64C42A6271464B700CFBDEF /* TimeTrackerClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C42A5271464B700CFBDEF /* TimeTrackerClientUITests.swift */; };
+		C64C42A8271464B700CFBDEF /* TimeTrackerClientUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C42A7271464B700CFBDEF /* TimeTrackerClientUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C64C41EA27145EB700CFBDEF /* PBXContainerItemProxy */ = {
+		C64C4298271464B600CFBDEF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C64C41D127145EB400CFBDEF /* Project object */;
+			containerPortal = C64C427F271464B300CFBDEF /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C64C41D827145EB400CFBDEF;
-			remoteInfo = TimeTracker;
+			remoteGlobalIDString = C64C4286271464B300CFBDEF;
+			remoteInfo = TimeTrackerClient;
 		};
-		C64C41F427145EB700CFBDEF /* PBXContainerItemProxy */ = {
+		C64C42A2271464B700CFBDEF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C64C41D127145EB400CFBDEF /* Project object */;
+			containerPortal = C64C427F271464B300CFBDEF /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C64C41D827145EB400CFBDEF;
-			remoteInfo = TimeTracker;
+			remoteGlobalIDString = C64C4286271464B300CFBDEF;
+			remoteInfo = TimeTrackerClient;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C64C41D927145EB400CFBDEF /* TimeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C64C41DC27145EB400CFBDEF /* TimeTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerApp.swift; sourceTree = "<group>"; };
-		C64C41DE27145EB400CFBDEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		C64C41E027145EB700CFBDEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C64C41E327145EB700CFBDEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C64C41E927145EB700CFBDEF /* TimeTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C64C41ED27145EB700CFBDEF /* TimeTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerTests.swift; sourceTree = "<group>"; };
-		C64C41F327145EB700CFBDEF /* TimeTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C64C41F727145EB700CFBDEF /* TimeTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerUITests.swift; sourceTree = "<group>"; };
-		C64C41F927145EB700CFBDEF /* TimeTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C64C4287271464B300CFBDEF /* TimeTrackerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientApp.swift; sourceTree = "<group>"; };
+		C64C428C271464B300CFBDEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C64C428E271464B600CFBDEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C64C4291271464B600CFBDEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C64C4297271464B600CFBDEF /* TimeTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64C429B271464B600CFBDEF /* TimeTrackerClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientTests.swift; sourceTree = "<group>"; };
+		C64C42A1271464B700CFBDEF /* TimeTrackerClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64C42A5271464B700CFBDEF /* TimeTrackerClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientUITests.swift; sourceTree = "<group>"; };
+		C64C42A7271464B700CFBDEF /* TimeTrackerClientUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C64C41D627145EB400CFBDEF /* Frameworks */ = {
+		C64C4284271464B300CFBDEF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C64C41E627145EB700CFBDEF /* Frameworks */ = {
+		C64C4294271464B600CFBDEF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C64C41F027145EB700CFBDEF /* Frameworks */ = {
+		C64C429E271464B700CFBDEF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -71,142 +71,142 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C64C41D027145EB400CFBDEF = {
+		C64C427E271464B300CFBDEF = {
 			isa = PBXGroup;
 			children = (
-				C64C41DB27145EB400CFBDEF /* TimeTracker */,
-				C64C41EC27145EB700CFBDEF /* TimeTrackerTests */,
-				C64C41F627145EB700CFBDEF /* TimeTrackerUITests */,
-				C64C41DA27145EB400CFBDEF /* Products */,
+				C64C4289271464B300CFBDEF /* TimeTrackerClient */,
+				C64C429A271464B600CFBDEF /* TimeTrackerClientTests */,
+				C64C42A4271464B700CFBDEF /* TimeTrackerClientUITests */,
+				C64C4288271464B300CFBDEF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C64C41DA27145EB400CFBDEF /* Products */ = {
+		C64C4288271464B300CFBDEF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C64C41D927145EB400CFBDEF /* TimeTracker.app */,
-				C64C41E927145EB700CFBDEF /* TimeTrackerTests.xctest */,
-				C64C41F327145EB700CFBDEF /* TimeTrackerUITests.xctest */,
+				C64C4287271464B300CFBDEF /* TimeTrackerClient.app */,
+				C64C4297271464B600CFBDEF /* TimeTrackerClientTests.xctest */,
+				C64C42A1271464B700CFBDEF /* TimeTrackerClientUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C64C41DB27145EB400CFBDEF /* TimeTracker */ = {
+		C64C4289271464B300CFBDEF /* TimeTrackerClient */ = {
 			isa = PBXGroup;
 			children = (
-				C64C41DC27145EB400CFBDEF /* TimeTrackerApp.swift */,
-				C64C41DE27145EB400CFBDEF /* ContentView.swift */,
-				C64C41E027145EB700CFBDEF /* Assets.xcassets */,
-				C64C41E227145EB700CFBDEF /* Preview Content */,
+				C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */,
+				C64C428C271464B300CFBDEF /* ContentView.swift */,
+				C64C428E271464B600CFBDEF /* Assets.xcassets */,
+				C64C4290271464B600CFBDEF /* Preview Content */,
 			);
-			path = TimeTracker;
+			path = TimeTrackerClient;
 			sourceTree = "<group>";
 		};
-		C64C41E227145EB700CFBDEF /* Preview Content */ = {
+		C64C4290271464B600CFBDEF /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				C64C41E327145EB700CFBDEF /* Preview Assets.xcassets */,
+				C64C4291271464B600CFBDEF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C64C41EC27145EB700CFBDEF /* TimeTrackerTests */ = {
+		C64C429A271464B600CFBDEF /* TimeTrackerClientTests */ = {
 			isa = PBXGroup;
 			children = (
-				C64C41ED27145EB700CFBDEF /* TimeTrackerTests.swift */,
+				C64C429B271464B600CFBDEF /* TimeTrackerClientTests.swift */,
 			);
-			path = TimeTrackerTests;
+			path = TimeTrackerClientTests;
 			sourceTree = "<group>";
 		};
-		C64C41F627145EB700CFBDEF /* TimeTrackerUITests */ = {
+		C64C42A4271464B700CFBDEF /* TimeTrackerClientUITests */ = {
 			isa = PBXGroup;
 			children = (
-				C64C41F727145EB700CFBDEF /* TimeTrackerUITests.swift */,
-				C64C41F927145EB700CFBDEF /* TimeTrackerUITestsLaunchTests.swift */,
+				C64C42A5271464B700CFBDEF /* TimeTrackerClientUITests.swift */,
+				C64C42A7271464B700CFBDEF /* TimeTrackerClientUITestsLaunchTests.swift */,
 			);
-			path = TimeTrackerUITests;
+			path = TimeTrackerClientUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C64C41D827145EB400CFBDEF /* TimeTracker */ = {
+		C64C4286271464B300CFBDEF /* TimeTrackerClient */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C64C41FD27145EB700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTracker" */;
+			buildConfigurationList = C64C42AB271464B700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerClient" */;
 			buildPhases = (
-				C64C41D527145EB400CFBDEF /* Sources */,
-				C64C41D627145EB400CFBDEF /* Frameworks */,
-				C64C41D727145EB400CFBDEF /* Resources */,
+				C64C4283271464B300CFBDEF /* Sources */,
+				C64C4284271464B300CFBDEF /* Frameworks */,
+				C64C4285271464B300CFBDEF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TimeTracker;
-			productName = TimeTracker;
-			productReference = C64C41D927145EB400CFBDEF /* TimeTracker.app */;
+			name = TimeTrackerClient;
+			productName = TimeTrackerClient;
+			productReference = C64C4287271464B300CFBDEF /* TimeTrackerClient.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C64C41E827145EB700CFBDEF /* TimeTrackerTests */ = {
+		C64C4296271464B600CFBDEF /* TimeTrackerClientTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C64C420027145EB700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerTests" */;
+			buildConfigurationList = C64C42AE271464B700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerClientTests" */;
 			buildPhases = (
-				C64C41E527145EB700CFBDEF /* Sources */,
-				C64C41E627145EB700CFBDEF /* Frameworks */,
-				C64C41E727145EB700CFBDEF /* Resources */,
+				C64C4293271464B600CFBDEF /* Sources */,
+				C64C4294271464B600CFBDEF /* Frameworks */,
+				C64C4295271464B600CFBDEF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C64C41EB27145EB700CFBDEF /* PBXTargetDependency */,
+				C64C4299271464B600CFBDEF /* PBXTargetDependency */,
 			);
-			name = TimeTrackerTests;
-			productName = TimeTrackerTests;
-			productReference = C64C41E927145EB700CFBDEF /* TimeTrackerTests.xctest */;
+			name = TimeTrackerClientTests;
+			productName = TimeTrackerClientTests;
+			productReference = C64C4297271464B600CFBDEF /* TimeTrackerClientTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C64C41F227145EB700CFBDEF /* TimeTrackerUITests */ = {
+		C64C42A0271464B700CFBDEF /* TimeTrackerClientUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C64C420327145EB700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerUITests" */;
+			buildConfigurationList = C64C42B1271464B700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerClientUITests" */;
 			buildPhases = (
-				C64C41EF27145EB700CFBDEF /* Sources */,
-				C64C41F027145EB700CFBDEF /* Frameworks */,
-				C64C41F127145EB700CFBDEF /* Resources */,
+				C64C429D271464B700CFBDEF /* Sources */,
+				C64C429E271464B700CFBDEF /* Frameworks */,
+				C64C429F271464B700CFBDEF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C64C41F527145EB700CFBDEF /* PBXTargetDependency */,
+				C64C42A3271464B700CFBDEF /* PBXTargetDependency */,
 			);
-			name = TimeTrackerUITests;
-			productName = TimeTrackerUITests;
-			productReference = C64C41F327145EB700CFBDEF /* TimeTrackerUITests.xctest */;
+			name = TimeTrackerClientUITests;
+			productName = TimeTrackerClientUITests;
+			productReference = C64C42A1271464B700CFBDEF /* TimeTrackerClientUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C64C41D127145EB400CFBDEF /* Project object */ = {
+		C64C427F271464B300CFBDEF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
-					C64C41D827145EB400CFBDEF = {
+					C64C4286271464B300CFBDEF = {
 						CreatedOnToolsVersion = 13.0;
 					};
-					C64C41E827145EB700CFBDEF = {
+					C64C4296271464B600CFBDEF = {
 						CreatedOnToolsVersion = 13.0;
-						TestTargetID = C64C41D827145EB400CFBDEF;
+						TestTargetID = C64C4286271464B300CFBDEF;
 					};
-					C64C41F227145EB700CFBDEF = {
+					C64C42A0271464B700CFBDEF = {
 						CreatedOnToolsVersion = 13.0;
-						TestTargetID = C64C41D827145EB400CFBDEF;
+						TestTargetID = C64C4286271464B300CFBDEF;
 					};
 				};
 			};
-			buildConfigurationList = C64C41D427145EB400CFBDEF /* Build configuration list for PBXProject "TimeTracker" */;
+			buildConfigurationList = C64C4282271464B300CFBDEF /* Build configuration list for PBXProject "TimeTrackerClient" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -214,36 +214,36 @@
 				en,
 				Base,
 			);
-			mainGroup = C64C41D027145EB400CFBDEF;
-			productRefGroup = C64C41DA27145EB400CFBDEF /* Products */;
+			mainGroup = C64C427E271464B300CFBDEF;
+			productRefGroup = C64C4288271464B300CFBDEF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C64C41D827145EB400CFBDEF /* TimeTracker */,
-				C64C41E827145EB700CFBDEF /* TimeTrackerTests */,
-				C64C41F227145EB700CFBDEF /* TimeTrackerUITests */,
+				C64C4286271464B300CFBDEF /* TimeTrackerClient */,
+				C64C4296271464B600CFBDEF /* TimeTrackerClientTests */,
+				C64C42A0271464B700CFBDEF /* TimeTrackerClientUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C64C41D727145EB400CFBDEF /* Resources */ = {
+		C64C4285271464B300CFBDEF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C64C41E427145EB700CFBDEF /* Preview Assets.xcassets in Resources */,
-				C64C41E127145EB700CFBDEF /* Assets.xcassets in Resources */,
+				C64C4292271464B600CFBDEF /* Preview Assets.xcassets in Resources */,
+				C64C428F271464B600CFBDEF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C64C41E727145EB700CFBDEF /* Resources */ = {
+		C64C4295271464B600CFBDEF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C64C41F127145EB700CFBDEF /* Resources */ = {
+		C64C429F271464B700CFBDEF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,49 +253,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C64C41D527145EB400CFBDEF /* Sources */ = {
+		C64C4283271464B300CFBDEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C64C41DF27145EB400CFBDEF /* ContentView.swift in Sources */,
-				C64C41DD27145EB400CFBDEF /* TimeTrackerApp.swift in Sources */,
+				C64C428D271464B300CFBDEF /* ContentView.swift in Sources */,
+				C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C64C41E527145EB700CFBDEF /* Sources */ = {
+		C64C4293271464B600CFBDEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C64C41EE27145EB700CFBDEF /* TimeTrackerTests.swift in Sources */,
+				C64C429C271464B600CFBDEF /* TimeTrackerClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C64C41EF27145EB700CFBDEF /* Sources */ = {
+		C64C429D271464B700CFBDEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C64C41FA27145EB700CFBDEF /* TimeTrackerUITestsLaunchTests.swift in Sources */,
-				C64C41F827145EB700CFBDEF /* TimeTrackerUITests.swift in Sources */,
+				C64C42A6271464B700CFBDEF /* TimeTrackerClientUITests.swift in Sources */,
+				C64C42A8271464B700CFBDEF /* TimeTrackerClientUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C64C41EB27145EB700CFBDEF /* PBXTargetDependency */ = {
+		C64C4299271464B600CFBDEF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C64C41D827145EB400CFBDEF /* TimeTracker */;
-			targetProxy = C64C41EA27145EB700CFBDEF /* PBXContainerItemProxy */;
+			target = C64C4286271464B300CFBDEF /* TimeTrackerClient */;
+			targetProxy = C64C4298271464B600CFBDEF /* PBXContainerItemProxy */;
 		};
-		C64C41F527145EB700CFBDEF /* PBXTargetDependency */ = {
+		C64C42A3271464B700CFBDEF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C64C41D827145EB400CFBDEF /* TimeTracker */;
-			targetProxy = C64C41F427145EB700CFBDEF /* PBXContainerItemProxy */;
+			target = C64C4286271464B300CFBDEF /* TimeTrackerClient */;
+			targetProxy = C64C42A2271464B700CFBDEF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		C64C41FB27145EB700CFBDEF /* Debug */ = {
+		C64C42A9271464B700CFBDEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -356,7 +356,7 @@
 			};
 			name = Debug;
 		};
-		C64C41FC27145EB700CFBDEF /* Release */ = {
+		C64C42AA271464B700CFBDEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -411,14 +411,14 @@
 			};
 			name = Release;
 		};
-		C64C41FE27145EB700CFBDEF /* Debug */ = {
+		C64C42AC271464B700CFBDEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TimeTracker/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TimeTrackerClient/Preview Content\"";
 				DEVELOPMENT_TEAM = 63DF6735WS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -434,7 +434,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTracker.TimeTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -442,14 +442,14 @@
 			};
 			name = Debug;
 		};
-		C64C41FF27145EB700CFBDEF /* Release */ = {
+		C64C42AD271464B700CFBDEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TimeTracker/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TimeTrackerClient/Preview Content\"";
 				DEVELOPMENT_TEAM = 63DF6735WS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -465,7 +465,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTracker.TimeTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -473,7 +473,7 @@
 			};
 			name = Release;
 		};
-		C64C420127145EB700CFBDEF /* Debug */ = {
+		C64C42AF271464B700CFBDEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -489,16 +489,16 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTracker.TimeTrackerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeTracker.app/TimeTracker";
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeTrackerClient.app/TimeTrackerClient";
 			};
 			name = Debug;
 		};
-		C64C420227145EB700CFBDEF /* Release */ = {
+		C64C42B0271464B700CFBDEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -514,16 +514,16 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTracker.TimeTrackerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeTracker.app/TimeTracker";
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeTrackerClient.app/TimeTrackerClient";
 			};
 			name = Release;
 		};
-		C64C420427145EB700CFBDEF /* Debug */ = {
+		C64C42B2271464B700CFBDEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -537,16 +537,16 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTracker.TimeTrackerUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClientUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TimeTracker;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = TimeTrackerClient;
 			};
 			name = Debug;
 		};
-		C64C420527145EB700CFBDEF /* Release */ = {
+		C64C42B3271464B700CFBDEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -560,55 +560,55 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTracker.TimeTrackerUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClientUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TimeTracker;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = TimeTrackerClient;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C64C41D427145EB400CFBDEF /* Build configuration list for PBXProject "TimeTracker" */ = {
+		C64C4282271464B300CFBDEF /* Build configuration list for PBXProject "TimeTrackerClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C64C41FB27145EB700CFBDEF /* Debug */,
-				C64C41FC27145EB700CFBDEF /* Release */,
+				C64C42A9271464B700CFBDEF /* Debug */,
+				C64C42AA271464B700CFBDEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C64C41FD27145EB700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTracker" */ = {
+		C64C42AB271464B700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C64C41FE27145EB700CFBDEF /* Debug */,
-				C64C41FF27145EB700CFBDEF /* Release */,
+				C64C42AC271464B700CFBDEF /* Debug */,
+				C64C42AD271464B700CFBDEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C64C420027145EB700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerTests" */ = {
+		C64C42AE271464B700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerClientTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C64C420127145EB700CFBDEF /* Debug */,
-				C64C420227145EB700CFBDEF /* Release */,
+				C64C42AF271464B700CFBDEF /* Debug */,
+				C64C42B0271464B700CFBDEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C64C420327145EB700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerUITests" */ = {
+		C64C42B1271464B700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerClientUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C64C420427145EB700CFBDEF /* Debug */,
-				C64C420527145EB700CFBDEF /* Release */,
+				C64C42B2271464B700CFBDEF /* Debug */,
+				C64C42B3271464B700CFBDEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C64C41D127145EB400CFBDEF /* Project object */;
+	rootObject = C64C427F271464B300CFBDEF /* Project object */;
 }
