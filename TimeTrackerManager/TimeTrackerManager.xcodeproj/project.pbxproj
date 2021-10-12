@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54DB508B27155F9300A9700A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54DB508A27155F9200A9700A /* GoogleService-Info.plist */; };
+		54DB50972715650D00A9700A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB50962715650D00A9700A /* FirebaseAuth */; };
+		54DB50992715650D00A9700A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB50982715650D00A9700A /* FirebaseFirestore */; };
+		54DB509B2715650D00A9700A /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB509A2715650D00A9700A /* FirebaseFunctions */; };
 		C64C42552714633200CFBDEF /* TimeTrackerManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C42542714633200CFBDEF /* TimeTrackerManagerApp.swift */; };
 		C64C42572714633200CFBDEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C42562714633200CFBDEF /* ContentView.swift */; };
 		C64C42592714633400CFBDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C42582714633400CFBDEF /* Assets.xcassets */; };
@@ -34,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		54DB508A27155F9200A9700A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C64C42512714633200CFBDEF /* TimeTrackerManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64C42542714633200CFBDEF /* TimeTrackerManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerManagerApp.swift; sourceTree = "<group>"; };
 		C64C42562714633200CFBDEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +56,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54DB509B2715650D00A9700A /* FirebaseFunctions in Frameworks */,
+				54DB50972715650D00A9700A /* FirebaseAuth in Frameworks */,
+				54DB50992715650D00A9700A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +102,7 @@
 		C64C42532714633200CFBDEF /* TimeTrackerManager */ = {
 			isa = PBXGroup;
 			children = (
+				54DB508A27155F9200A9700A /* GoogleService-Info.plist */,
 				C64C42542714633200CFBDEF /* TimeTrackerManagerApp.swift */,
 				C64C42562714633200CFBDEF /* ContentView.swift */,
 				C64C42582714633400CFBDEF /* Assets.xcassets */,
@@ -143,6 +152,11 @@
 			dependencies = (
 			);
 			name = TimeTrackerManager;
+			packageProductDependencies = (
+				54DB50962715650D00A9700A /* FirebaseAuth */,
+				54DB50982715650D00A9700A /* FirebaseFirestore */,
+				54DB509A2715650D00A9700A /* FirebaseFunctions */,
+			);
 			productName = TimeTrackerManager;
 			productReference = C64C42512714633200CFBDEF /* TimeTrackerManager.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +229,9 @@
 				Base,
 			);
 			mainGroup = C64C42482714633200CFBDEF;
+			packageReferences = (
+				54DB50952715650D00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = C64C42522714633200CFBDEF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +250,7 @@
 			files = (
 				C64C425C2714633400CFBDEF /* Preview Assets.xcassets in Resources */,
 				C64C42592714633400CFBDEF /* Assets.xcassets in Resources */,
+				54DB508B27155F9300A9700A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +625,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		54DB50952715650D00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		54DB50962715650D00A9700A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54DB50952715650D00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		54DB50982715650D00A9700A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54DB50952715650D00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		54DB509A2715650D00A9700A /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54DB50952715650D00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C64C42492714633200CFBDEF /* Project object */;
 }
