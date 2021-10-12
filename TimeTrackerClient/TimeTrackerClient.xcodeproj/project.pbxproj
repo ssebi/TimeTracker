@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54CBB34E2715D08700CDA401 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CBB34D2715D08700CDA401 /* Extensions.swift */; };
 		54DB508D27155F9C00A9700A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54DB508C27155F9C00A9700A /* GoogleService-Info.plist */; };
 		54DB5090271563FA00A9700A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB508F271563FA00A9700A /* FirebaseAuth */; };
 		54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5091271563FA00A9700A /* FirebaseFirestore */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		54CBB34D2715D08700CDA401 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		54DB508C27155F9C00A9700A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54DB509C2715A2F900A9700A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C64C4287271464B300CFBDEF /* TimeTrackerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,7 @@
 				C64C428E271464B600CFBDEF /* Assets.xcassets */,
 				C64C4290271464B600CFBDEF /* Preview Content */,
 				54DB509C2715A2F900A9700A /* LoginView.swift */,
+				54CBB34D2715D08700CDA401 /* Extensions.swift */,
 			);
 			path = TimeTrackerClient;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54CBB34E2715D08700CDA401 /* Extensions.swift in Sources */,
 				54DB509D2715A2FA00A9700A /* LoginView.swift in Sources */,
 				C64C428D271464B300CFBDEF /* ContentView.swift in Sources */,
 				C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */,

@@ -11,30 +11,38 @@ struct LoginView: View {
     @State var username: String = ""
     @State var password: String = ""
     var body: some View {
-        VStack{
-            Text("Time Tracker")
-
-            TextField("E-mail", text: $username)
-                .padding()
-                .background(.gray)
-                .cornerRadius(5.0)
-                .padding(10)
-            SecureField("Password", text: $password)
-                .padding()
-                .background(.gray)
-                .cornerRadius(5.0)
-                .padding(10)
-            Button("Login"){
+        ZStack {
+                 RoundedRectangle(cornerRadius: 25, style: .continuous)
+                     .fill(Color.white)
+                VStack {
+                    Text("Time Tracker")
+                        .padding()
+                        .font(.title)
+                        .padding(.bottom, 30)
+                        .foregroundColor(Color.cBlack)
+                    
+                    Group {
+                        TextField("E-mail", text: $username)
+                            .padding()
+                            .background(Color.cGray)
+                            .cornerRadius(5.0)
+                        SecureField("Password", text: $password)
+                            .padding()
+                            .background(Color.cGray)
+                            .cornerRadius(5.0)
+                    }
+                    .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
+                    Spacer()
+                    Button("Login") { print("Loggin tapped") }
+                          .foregroundColor(.white)
+                          .frame(maxWidth: .infinity)
+                          .background(Color.cGreen)
+                          .cornerRadius(8)
                 
-               print("Loggin tapped")
-            }
-            .foregroundColor(.white)
-            .buttonStyle(.bordered)
-            .background(.blue)
-            .frame(width: 300, height: 30, alignment: .center)
-            .cornerRadius(5.0)
-            
-        }
+                }
+        
+             }
+             .frame(width: 450, height: 250)
     }
 }
 
