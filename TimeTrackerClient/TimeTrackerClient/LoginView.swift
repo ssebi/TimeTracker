@@ -11,38 +11,41 @@ struct LoginView: View {
     @State var username: String = ""
     @State var password: String = ""
     var body: some View {
-        ZStack {
-                 RoundedRectangle(cornerRadius: 25, style: .continuous)
-                     .fill(Color.white)
-                VStack {
-                    Text("Time Tracker")
-                        .padding()
-                        .font(.title)
-                        .padding(.bottom, 30)
-                        .foregroundColor(Color.cBlack)
-                    
-                    Group {
-                        TextField("E-mail", text: $username)
-                            .padding()
-                            .background(Color.cGray)
-                            .cornerRadius(5.0)
-                        SecureField("Password", text: $password)
-                            .padding()
-                            .background(Color.cGray)
-                            .cornerRadius(5.0)
-                    }
-                    .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
-                    Spacer()
-                    Button("Login") { print("Loggin tapped") }
-                          .foregroundColor(.white)
-                          .frame(maxWidth: .infinity)
-                          .background(Color.cGreen)
-                          .cornerRadius(8)
-                
-                }
+        Image("timeTrackerIcon")
+            .resizable()
+            .frame(width: 200, height: 230, alignment: .center)
         
-             }
-             .frame(width: 450, height: 250)
+        Text("Time Tracker")
+            .padding()
+            .font(.title)
+            .padding(.bottom, 40)
+            .foregroundColor(Color.cBlack)
+
+        Spacer()
+            
+            VStack {
+        
+                Group {
+                    TextField("E-mail", text: $username)
+                        .padding()
+                        .background(Color.cGray)
+                        .cornerRadius(5.0)
+                    SecureField("Password", text: $password)
+                        .padding()
+                        .background(Color.cGray)
+                        .cornerRadius(5.0)
+                }
+                .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
+                Spacer()
+                Button("Login") { print("Loggin tapped") }
+                      .foregroundColor(.white)
+                      .frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
+                      .background(Color.cGreen)
+                      .cornerRadius(5)
+                      .padding(.bottom, 50)
+            }
+         
+  
     }
 }
 
