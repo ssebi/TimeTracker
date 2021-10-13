@@ -28,5 +28,16 @@ class SessionStore {
         }
     }
     
+    func singOut() -> Bool {
+        do{
+            try Auth.auth().signOut()
+            return true
+            
+        } catch {
+            return false
+        }
+        
+    }
+    
 
 }
