@@ -16,29 +16,20 @@ class TimeTrackerClientTests: XCTestCase {
         /// Given
         let email: String = "mihai24vic@gmail.com"
         let password: String = "123Password123"
-        var receivedError: Error? = nil
-        var receivedResult: AuthDataResult? = nil
         let exp = expectation(description: "Witing to complete")
         
         /// When
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            receivedError = error
-            receivedResult = result
+        let session = SessionStore()
+        session.singIn(email: email, password: password)
             exp.fulfill()
-            
-            if error != nil {
-                print(error?.localizedDescription ?? "")
-            } else {
-                print("success")
-            }
-            
-        }
+    
+        
         
         wait(for: [exp], timeout: 5)
         
         /// Then
-        XCTAssertNil(receivedResult)
-        XCTAssertNotNil(receivedError)
+        XCTAssertNil(session.authResult)
+        XCTAssertNotNil(session.authError)
     }
     
 }
