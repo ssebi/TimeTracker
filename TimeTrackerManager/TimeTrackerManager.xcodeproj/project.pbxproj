@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		54DB508B27155F9300A9700A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54DB508A27155F9200A9700A /* GoogleService-Info.plist */; };
+		54D2FDB92717237500C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB82717237500C66998 /* GoogleService-Info.plist */; };
 		54DB50972715650D00A9700A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB50962715650D00A9700A /* FirebaseAuth */; };
 		54DB50992715650D00A9700A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB50982715650D00A9700A /* FirebaseFirestore */; };
 		54DB509B2715650D00A9700A /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB509A2715650D00A9700A /* FirebaseFunctions */; };
@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		54DB508A27155F9200A9700A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		54D2FDB82717237500C66998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C64C42512714633200CFBDEF /* TimeTrackerManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64C42542714633200CFBDEF /* TimeTrackerManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerManagerApp.swift; sourceTree = "<group>"; };
 		C64C42562714633200CFBDEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +43,7 @@
 		C64C42482714633200CFBDEF = {
 			isa = PBXGroup;
 			children = (
+				54D2FDB82717237500C66998 /* GoogleService-Info.plist */,
 				C64C42532714633200CFBDEF /* TimeTrackerManager */,
 				C64C42522714633200CFBDEF /* Products */,
 			);
@@ -59,7 +60,6 @@
 		C64C42532714633200CFBDEF /* TimeTrackerManager */ = {
 			isa = PBXGroup;
 			children = (
-				54DB508A27155F9200A9700A /* GoogleService-Info.plist */,
 				C64C42542714633200CFBDEF /* TimeTrackerManagerApp.swift */,
 				C64C42562714633200CFBDEF /* ContentView.swift */,
 				C64C42582714633400CFBDEF /* Assets.xcassets */,
@@ -144,7 +144,7 @@
 			files = (
 				C64C425C2714633400CFBDEF /* Preview Assets.xcassets in Resources */,
 				C64C42592714633400CFBDEF /* Assets.xcassets in Resources */,
-				54DB508B27155F9300A9700A /* GoogleService-Info.plist in Resources */,
+				54D2FDB92717237500C66998 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
