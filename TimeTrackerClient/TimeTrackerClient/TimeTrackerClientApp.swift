@@ -16,6 +16,7 @@ struct TimeTrackerClientApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                    .environmentObject(SessionStore())
         }
     }
     
