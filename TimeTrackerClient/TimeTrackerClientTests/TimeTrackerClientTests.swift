@@ -89,4 +89,13 @@ class TimeTrackerClientTests: XCTestCase {
         }
     }
 
+    func test_signOut_setsSessionAsNil() {
+        let sut = SessionStore()
+        sut.session = User(uid: nil, email: nil, username: nil)
+
+        XCTAssertNoThrow(sut.singOut())
+
+        XCTAssertNil(sut.session)
+    }
+
 }

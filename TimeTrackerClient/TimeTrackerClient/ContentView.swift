@@ -17,11 +17,7 @@ struct ContentView: View {
             } else {
                 LoginView()
             }
-        }.onAppear(perform: getUser)
-    }
-    
-    func getUser(){
-        self.session.listen()
+        }
     }
 }
 

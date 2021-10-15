@@ -20,8 +20,8 @@ class SessionStore: ObservableObject {
     
     struct NoUser: Error {}
 
-    // MARK: - Functions
-    func listen() {
+    // MARK: - Init
+    init() {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
                 self.session = User(
@@ -34,7 +34,8 @@ class SessionStore: ObservableObject {
             }
         }
     }
-    
+
+    // MARK: - Functions
     func singIn(email: String, password: String, completion: @escaping SesionStoreResult) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
