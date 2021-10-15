@@ -7,6 +7,7 @@
 
 import XCTest
 import Firebase
+import Combine
 @testable import TimeTrackerClient
 
 class TimeTrackerClientTests: XCTestCase {
@@ -91,10 +92,26 @@ class TimeTrackerClientTests: XCTestCase {
 
     func test_signOut_setsSessionAsNil() {
         let sut = SessionStore()
-        sut.session = User(uid: nil, email: nil, username: nil)
+        var subscriptions: Set<AnyCancellable> = []
+        let email: String = "mihai24vic@gmail.com"
+        let password: String = "Patratel1"
 
-        XCTAssertNoThrow(sut.singOut())
+        let exp = expectation(description: "Waiting for session to have suer")
+        sut.singIn(email: email, password: password, completion: { _ in
+            exp.fulfill()
+        })
+        wait(for: [exp], timeout: 5)
 
+        XCTAssertNotNil(sut.session)
+
+        XCTAssertTrue(sut.singOut())
+
+        let exp2 = expectation(description: "Wait for session to be nil")
+        sut.didChange.sink(receiveValue: { store in
+            exp2.fulfill()
+        }).store(in: &subscriptions)
+
+        wait(for: [exp2], timeout: 5)
         XCTAssertNil(sut.session)
     }
 

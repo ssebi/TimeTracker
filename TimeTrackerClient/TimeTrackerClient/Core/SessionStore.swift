@@ -9,15 +9,15 @@ import Combine
 
 class SessionStore: ObservableObject {
     // MARK: - Properties
-    var didChange = PassthroughSubject<SessionStore, Never>()
-    var session: User? {
+    private(set) var didChange = PassthroughSubject<SessionStore, Never>()
+    private(set) var session: User? {
         didSet {
             didChange.send(self)
         }
     }
-    var handle: AuthStateDidChangeListenerHandle?
+    private var handle: AuthStateDidChangeListenerHandle?
+
     typealias SesionStoreResult = (Result<User, Error>) -> Void
-    
     struct NoUser: Error {}
 
     // MARK: - Init
@@ -58,7 +58,6 @@ class SessionStore: ObservableObject {
     func singOut() -> Bool {
         do {
             try Auth.auth().signOut()
-            self.session = nil
             return true
         } catch {
             return false
