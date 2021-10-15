@@ -16,7 +16,7 @@ class TimeTrackerClientTests: XCTestCase {
 
     func test_signIn_failsWithInvalidCredentials() throws {
         /// Given
-        let sut = SessionStore()
+        let sut = makeSUT()
         let email: String = "mihai24vic"
         let password: String = "123Password"
         var sesionStoreResult: Result<User, Error>? = nil
@@ -38,9 +38,9 @@ class TimeTrackerClientTests: XCTestCase {
         }
     }
     
-    func test_signIn_isSuccessfulOnSingleFunctionCall() throws {
+    func test_signIn_isSuccessfulOnSingleFunctionCall() {
         /// Given
-        let sut = SessionStore()
+        let sut = makeSUT()
         let email: String = "mihai24vic@gmail.com"
         let password: String = "Patratel1"
         var sesionStoreResult: Result<User, Error>? = nil
@@ -64,7 +64,7 @@ class TimeTrackerClientTests: XCTestCase {
 
     func test_signIn_isSuccessfulOnMultipleFunctionCalls() throws {
         /// Given
-        let sut = SessionStore()
+        let sut = makeSUT()
         let email: String = "mihai24vic@gmail.com"
         let password: String = "Patratel1"
         var sesionStoreResult: Result<User, Error>? = nil
@@ -91,7 +91,7 @@ class TimeTrackerClientTests: XCTestCase {
     }
 
     func test_signOut_setsSessionAsNil() {
-        let sut = SessionStore()
+        let sut = makeSUT()
         var subscriptions: Set<AnyCancellable> = []
         let email: String = "mihai24vic@gmail.com"
         let password: String = "Patratel1"
@@ -115,12 +115,15 @@ class TimeTrackerClientTests: XCTestCase {
         XCTAssertNil(sut.session)
     }
 
-    func test_SessionStore_doesNotCreateRetainCycle() {
+    // MARK: - Helper
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> SessionStore {
         let sut = SessionStore()
 
         addTeardownBlock { [weak sut] in
-            XCTAssertNil(sut)
+            XCTAssertNil(sut, file: file, line: line)
         }
+
+        return sut
     }
 
 }

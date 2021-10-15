@@ -27,5 +27,3 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(SessionStore())
     }
 }
-
-
