@@ -115,4 +115,12 @@ class TimeTrackerClientTests: XCTestCase {
         XCTAssertNil(sut.session)
     }
 
+    func test_SessionStore_doesNotCreateRetainCycle() {
+        let sut = SessionStore()
+
+        addTeardownBlock { [weak sut] in
+            XCTAssertNil(sut)
+        }
+    }
+
 }

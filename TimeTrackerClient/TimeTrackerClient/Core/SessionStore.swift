@@ -22,15 +22,15 @@ class SessionStore: ObservableObject {
 
     // MARK: - Init
     init() {
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+        handle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
             if let user = user {
-                self.session = User(
+                self?.session = User(
                     uid: user.uid,
                     email: user.email,
                     username: user.displayName
                 )
             } else {
-                self.session = nil
+                self?.session = nil
             }
         }
     }
@@ -64,7 +64,7 @@ class SessionStore: ObservableObject {
         }
     }
     
-    func unbind() {
+    private func unbind() {
         if let handle = handle {
             Auth.auth().removeStateDidChangeListener(handle)
         }
