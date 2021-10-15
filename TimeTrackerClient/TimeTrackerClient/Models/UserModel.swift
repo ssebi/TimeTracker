@@ -6,7 +6,7 @@
 //
 
 struct User {
-    var uid: String
+    var uid: String?
     var email: String?
     var username: String?
 }

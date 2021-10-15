@@ -7,7 +7,7 @@
 import Firebase
 import Combine
 
-public class SessionStore: ObservableObject {
+class SessionStore: ObservableObject {
     // MARK: - Properties
     var didChange = PassthroughSubject<SessionStore, Never>()
     var session: User? {
@@ -16,9 +16,9 @@ public class SessionStore: ObservableObject {
         }
     }
     var handle: AuthStateDidChangeListenerHandle?
-    public typealias SesionStoreResult = (Result<Bool, Error>) -> Void
+    typealias SesionStoreResult = (Result<User, Error>) -> Void
     
-    public struct NoUser: Error {}
+    struct NoUser: Error {}
 
     // MARK: - Functions
     func listen() {
@@ -35,7 +35,7 @@ public class SessionStore: ObservableObject {
         }
     }
     
-    public func singIn(email: String, password: String, completion: @escaping SesionStoreResult) {
+    func singIn(email: String, password: String, completion: @escaping SesionStoreResult) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 completion(.failure(error))
@@ -46,8 +46,11 @@ public class SessionStore: ObservableObject {
                 completion(.failure(NoUser()))
                 return
             }
-            
-            completion(.success(true))
+
+            completion(.success(User(
+                uid: result?.user.uid,
+                email: result?.user.email,
+                username: result?.user.displayName)))
         }
     }
     

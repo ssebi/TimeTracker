@@ -7,17 +7,16 @@
 
 import XCTest
 import Firebase
-import TimeTrackerClient
+@testable import TimeTrackerClient
 
 class TimeTrackerClientTests: XCTestCase {
     
     func testFirebaseFailsWithWrongCredentials() throws {
-        
         /// Given
         let email: String = "mihai24vic"
         let password: String = "123Password"
         let exp = expectation(description: "Waiting to complete")
-        var sesionStoreResult: Result<Bool, Error>? = nil
+        var sesionStoreResult: Result<User, Error>? = nil
         
         /// When
         let session = SessionStore()
@@ -37,12 +36,11 @@ class TimeTrackerClientTests: XCTestCase {
     }
     
     func testFirebaseAuthSuscces() throws {
-        
         /// Given
         let email: String = "mihai24vic@gmail.com"
         let password: String = "Patratel1"
         let exp = expectation(description: "Waiting to complete")
-        var sesionStoreResult: Result<Bool, Error>? = nil
+        var sesionStoreResult: Result<User, Error>? = nil
         
         /// When
         let session = SessionStore()
@@ -54,10 +52,11 @@ class TimeTrackerClientTests: XCTestCase {
         
         /// Then
         XCTAssertNotNil(sesionStoreResult)
-        if case let .success(success) = sesionStoreResult {
-            XCTAssertTrue(success)
+        if case let .success(user) = sesionStoreResult {
+            XCTAssertEqual(user.email, email)
         } else {
             XCTFail()
         }
     }
+
 }
