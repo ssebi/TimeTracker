@@ -64,16 +64,17 @@ class SessionStore: ObservableObject {
         }
     }
     
-   func unbind() -> Bool {
-        if let handle = handle {
-            Auth.auth().removeStateDidChangeListener(handle)
-            return true
+    private func unbind() {
+        guard let handle = handle else {
+            return
         }
-       return false
+        Auth.auth().removeStateDidChangeListener(handle)
+        self.handle = nil
     }
     
     deinit {
         unbind()
     }
+
 }
 
