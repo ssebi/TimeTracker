@@ -114,10 +114,28 @@ class TimeTrackerClientTests: XCTestCase {
         wait(for: [exp2], timeout: 5)
         XCTAssertNil(sut.session)
     }
+    
+    func test_unbind_handleListener() {
+        let sut = makeSUT()
+        
+        let email: String = "mihai24vic@gmail.com"
+        let password: String = "Patratel1"
+
+        /// When
+        let exp = expectation(description: "Waiting to complete")
+        sut.singIn(email: email, password: password) { result in
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 5)
+        
+        let unbind = sut.unbind()
+        
+        XCTAssertTrue(unbind)
+    }
 
     // MARK: - Helper
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> SessionStore {
-        let sut = SessionStore()
+    let sut = SessionStore()
 
         addTeardownBlock { [weak sut] in
             XCTAssertNil(sut, file: file, line: line)

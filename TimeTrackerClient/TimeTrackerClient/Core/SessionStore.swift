@@ -15,11 +15,11 @@ class SessionStore: ObservableObject {
             didChange.send(self)
         }
     }
-    private var handle: AuthStateDidChangeListenerHandle?
-
+    private(set) var handle: AuthStateDidChangeListenerHandle?
+    
     typealias SesionStoreResult = (Result<User, Error>) -> Void
     struct NoUser: Error {}
-
+    
     // MARK: - Init
     init() {
         handle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
@@ -34,7 +34,7 @@ class SessionStore: ObservableObject {
             }
         }
     }
-
+    
     // MARK: - Functions
     func singIn(email: String, password: String, completion: @escaping SesionStoreResult) {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
@@ -47,7 +47,7 @@ class SessionStore: ObservableObject {
                 completion(.failure(NoUser()))
                 return
             }
-
+            
             completion(.success(User(
                 uid: result?.user.uid,
                 email: result?.user.email,
@@ -64,9 +64,16 @@ class SessionStore: ObservableObject {
         }
     }
     
-    private func unbind() {
+   func unbind() -> Bool {
         if let handle = handle {
             Auth.auth().removeStateDidChangeListener(handle)
+            return true
         }
+       return false
+    }
+    
+    deinit {
+        unbind()
     }
 }
+
