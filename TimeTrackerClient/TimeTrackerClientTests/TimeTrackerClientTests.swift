@@ -90,6 +90,24 @@ class TimeTrackerClientTests: XCTestCase {
         }
     }
 
+    func test_signIn_setsTheSession() throws {
+        /// Given
+        let sut = makeSUT()
+        let email: String = "mihai24vic@gmail.com"
+        let password: String = "Patratel1"
+
+        /// When
+        let exp = expectation(description: "Waiting to complete")
+        sut.singIn(email: email, password: password) { result in
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 5)
+
+        /// Then
+        let session = try XCTUnwrap(sut.session)
+        XCTAssertEqual(session.email, email)
+    }
+
     func test_signOut_setsSessionAsNil() {
         let sut = makeSUT()
         var subscriptions: Set<AnyCancellable> = []
@@ -102,7 +120,6 @@ class TimeTrackerClientTests: XCTestCase {
         })
         wait(for: [exp], timeout: 5)
 
-        XCTAssertNotNil(sut.session)
 
         XCTAssertTrue(sut.singOut())
 
