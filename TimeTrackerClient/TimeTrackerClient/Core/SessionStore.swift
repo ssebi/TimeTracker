@@ -10,7 +10,7 @@ import Combine
 class SessionStore: ObservableObject {
     // MARK: - Properties
     private(set) var didChange = PassthroughSubject<SessionStore, Never>()
-    private(set) var session: User? {
+    @Published private(set) var session: User? {
         didSet {
             didChange.send(self)
         }
