@@ -8,9 +8,9 @@
 import Combine
 
 class User: ObservableObject {
-    var uid: String?
-    var email: String?
-    var username: String?
+    @Published var uid: String?
+    @Published var email: String?
+    @Published var username: String?
     
     init(uid: String?, email: String?, username: String?) {
         self.uid = uid
