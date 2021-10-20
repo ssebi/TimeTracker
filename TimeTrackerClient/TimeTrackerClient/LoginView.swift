@@ -11,6 +11,7 @@ struct LoginView: View {
 
     @State var username: String = ""
     @State var password: String = ""
+    let session: SessionStore
 
     var body: some View {
         VStack {
@@ -32,6 +33,8 @@ struct LoginView: View {
                         .padding()
                         .background(Color.cGray)
                         .cornerRadius(5.0)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
 
                     SecureField("Password", text: $password)
                         .padding()
@@ -42,7 +45,9 @@ struct LoginView: View {
 
                 Spacer()
 
-                Button("Login", action: { })
+                Button("Login", action: {
+                    signIn()
+                })
                     .foregroundColor(.white)
                     .frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
                     .background(Color.cGreen)
@@ -51,13 +56,17 @@ struct LoginView: View {
             }
         }
     }
+    
+    func signIn() {
+        session.singIn(email: username, password: password){ _ in }
+     }
 
 }
 
 struct LoginView_Previews: PreviewProvider {
 
     static var previews: some View {
-        LoginView()
+        LoginView(session: SessionStore())
     }
 
 }

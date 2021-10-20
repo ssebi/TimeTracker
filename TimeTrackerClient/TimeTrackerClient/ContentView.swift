@@ -13,9 +13,9 @@ struct ContentView: View {
     var body: some View {
         Group{
             if(session.session != nil ) {
-                Text("Hello!")
+                HomeView()
             } else {
-                LoginView()
+                LoginView(session: session)
             }
         }
     }
