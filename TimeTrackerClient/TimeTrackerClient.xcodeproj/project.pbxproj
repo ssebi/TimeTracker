@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		545CCEAB27200FE500811CE3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEAA27200FE500811CE3 /* Utils.swift */; };
+		545CCEAC27200FE500811CE3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEAA27200FE500811CE3 /* Utils.swift */; };
 		54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB62717234F00C66998 /* GoogleService-Info.plist */; };
 		54D2FDBC2717354800C66998 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBA2717354800C66998 /* Extensions.swift */; };
 		54D2FDBD2717354800C66998 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBB2717354800C66998 /* LoginView.swift */; };
@@ -38,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		545CCEAA27200FE500811CE3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		54D2FDB62717234F00C66998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54D2FDBA2717354800C66998 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = TimeTrackerClient/Core/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		54D2FDBB2717354800C66998 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = TimeTrackerClient/LoginView.swift; sourceTree = SOURCE_ROOT; };
@@ -87,6 +90,7 @@
 			children = (
 				54D8EEA92717502900D867F3 /* SessionStore.swift */,
 				54D2FDBA2717354800C66998 /* Extensions.swift */,
+				545CCEAA27200FE500811CE3 /* Utils.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -127,6 +131,8 @@
 				C64C428C271464B300CFBDEF /* ContentView.swift */,
 				C64C428E271464B600CFBDEF /* Assets.xcassets */,
 				C64C4290271464B600CFBDEF /* Preview Content */,
+				54D8EEB0271D78A900D867F3 /* HomeView.swift */,
+				54D2FDBB2717354800C66998 /* LoginView.swift */,
 			);
 			path = TimeTrackerClient;
 			sourceTree = "<group>";
@@ -134,8 +140,6 @@
 		C64C4290271464B600CFBDEF /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				54D8EEB0271D78A900D867F3 /* HomeView.swift */,
-				54D2FDBB2717354800C66998 /* LoginView.swift */,
 				C64C4291271464B600CFBDEF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -250,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				545CCEAC27200FE500811CE3 /* Utils.swift in Sources */,
 				54D8EEAB2717502900D867F3 /* SessionStore.swift in Sources */,
 				54D8EEAE271887EF00D867F3 /* UserModel.swift in Sources */,
 				54D2FDD9271747F100C66998 /* TimeTrackerClientTests.swift in Sources */,
@@ -263,6 +268,7 @@
 			files = (
 				54DB509D2715A2FA00A9700A /* (null) in Sources */,
 				54D8EEAD271887EF00D867F3 /* UserModel.swift in Sources */,
+				545CCEAB27200FE500811CE3 /* Utils.swift in Sources */,
 				C64C428D271464B300CFBDEF /* ContentView.swift in Sources */,
 				54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */,
 				C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */,
