@@ -9,22 +9,32 @@ import SwiftUI
 
 struct ProjectView: View {
     var body: some View {
-        VStack{
-            HStack{
-                Text("Timetracker Project")
-                    .font(.title2)
-                Spacer()
-            }
-            .padding()
+        Section{
             VStack{
-                List{
+                HStack{
+                    Text("Timetracker Project")
+                        .font(.title2)
+                    Spacer()
+                }
+                .padding()
+                VStack{
                     HStack{
                         Text("13:00 - 14:00")
                         Spacer()
-                        Text("Worked on this project")
+                        Text("Worked on UI elemnets")
+                    }
+                    HStack{
+                        Text("13:00 - 14:00")
+                        Spacer()
+                        Text("Worked on xxx and yyy")
+                    }
+                    HStack{
+                        Text("13:00 - 14:00")
+                        Spacer()
+                        Text("Bug fixing")
                     }
                 }
-                .listStyle(.grouped)
+                .padding(.bottom)
             }
         }
     }
