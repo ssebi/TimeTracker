@@ -88,8 +88,8 @@
 			children = (
 				54D8EEB0271D78A900D867F3 /* HomeView.swift */,
 				545CCEAD2720195E00811CE3 /* EmptyHomeView.swift */,
-				545CCEB327201A5900811CE3 /* ProjectView.swift */,
 				545CCEB02720196A00811CE3 /* FilledHomeView.swift */,
+				545CCEB327201A5900811CE3 /* ProjectView.swift */,
 			);
 			path = TimeView;
 			sourceTree = "<group>";

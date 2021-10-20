@@ -11,19 +11,22 @@ struct ProjectView: View {
     var body: some View {
         VStack{
             HStack{
-                Text("Project title")
+                Text("Timetracker Project")
                     .font(.title2)
                 Spacer()
             }
             .padding()
-            HStack{
-                Text("13:00 - 14:00")
-                Spacer()
-                Text("Worked on this project")
+            VStack{
+                List{
+                    HStack{
+                        Text("13:00 - 14:00")
+                        Spacer()
+                        Text("Worked on this project")
+                    }
+                }
+                .listStyle(.grouped)
             }
-            .padding()
         }
-        .padding()
     }
 }
 

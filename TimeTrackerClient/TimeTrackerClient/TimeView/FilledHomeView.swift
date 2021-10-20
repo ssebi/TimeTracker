@@ -10,14 +10,13 @@ import SwiftUI
 struct FilledHomeView: View {
     var body: some View {
         VStack{
-            Spacer()
-            Text("Project title")
             List{
-                VStack{
-                    ProgressView()
-                }
+                ProjectView()
+                ProjectView()
+                ProjectView()
+                ProjectView()
             }
-            Spacer()
+            .listStyle(.grouped)
         }
     }
 }
