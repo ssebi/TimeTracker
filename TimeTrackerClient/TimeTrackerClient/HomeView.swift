@@ -17,15 +17,15 @@ struct HomeView: View {
                     .font(.largeTitle)
                     .multilineTextAlignment(.leading)
                 Spacer()
+                Text(Date(), style:  .date)
+                    .padding()
+                    .font(.subheadline)
             }
-            
             Spacer()
-            
             HStack{
                 Button("+"){}
                 .buttonStyle(AddButton())
             }
-            
             Spacer()
         }
     }
