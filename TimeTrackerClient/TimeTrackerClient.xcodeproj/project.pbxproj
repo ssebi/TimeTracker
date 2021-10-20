@@ -10,11 +10,8 @@
 		545CCEAB27200FE500811CE3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEAA27200FE500811CE3 /* Utils.swift */; };
 		545CCEAC27200FE500811CE3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEAA27200FE500811CE3 /* Utils.swift */; };
 		545CCEAE2720195E00811CE3 /* EmptyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEAD2720195E00811CE3 /* EmptyHomeView.swift */; };
-		545CCEAF2720195E00811CE3 /* EmptyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEAD2720195E00811CE3 /* EmptyHomeView.swift */; };
 		545CCEB12720196A00811CE3 /* FilledHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEB02720196A00811CE3 /* FilledHomeView.swift */; };
-		545CCEB22720196A00811CE3 /* FilledHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEB02720196A00811CE3 /* FilledHomeView.swift */; };
 		545CCEB427201A5900811CE3 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEB327201A5900811CE3 /* ProjectView.swift */; };
-		545CCEB527201A5900811CE3 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEB327201A5900811CE3 /* ProjectView.swift */; };
 		54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB62717234F00C66998 /* GoogleService-Info.plist */; };
 		54D2FDBC2717354800C66998 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBA2717354800C66998 /* Extensions.swift */; };
 		54D2FDBD2717354800C66998 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBB2717354800C66998 /* LoginView.swift */; };
@@ -86,6 +83,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		545CCEB627201D3E00811CE3 /* TimeView */ = {
+			isa = PBXGroup;
+			children = (
+				54D8EEB0271D78A900D867F3 /* HomeView.swift */,
+				545CCEAD2720195E00811CE3 /* EmptyHomeView.swift */,
+				545CCEB327201A5900811CE3 /* ProjectView.swift */,
+				545CCEB02720196A00811CE3 /* FilledHomeView.swift */,
+			);
+			path = TimeView;
+			sourceTree = "<group>";
+		};
 		54D2FDD7271747F100C66998 /* TimeTrackerClientTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,17 +142,14 @@
 		C64C4289271464B300CFBDEF /* TimeTrackerClient */ = {
 			isa = PBXGroup;
 			children = (
+				545CCEB627201D3E00811CE3 /* TimeView */,
 				54D8EEAF271887FA00D867F3 /* Models */,
 				54D8EEA527174EC900D867F3 /* Core */,
 				C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */,
 				C64C428C271464B300CFBDEF /* ContentView.swift */,
 				C64C428E271464B600CFBDEF /* Assets.xcassets */,
 				C64C4290271464B600CFBDEF /* Preview Content */,
-				54D8EEB0271D78A900D867F3 /* HomeView.swift */,
 				54D2FDBB2717354800C66998 /* LoginView.swift */,
-				545CCEAD2720195E00811CE3 /* EmptyHomeView.swift */,
-				545CCEB02720196A00811CE3 /* FilledHomeView.swift */,
-				545CCEB327201A5900811CE3 /* ProjectView.swift */,
 			);
 			path = TimeTrackerClient;
 			sourceTree = "<group>";
@@ -271,9 +276,6 @@
 				54D8EEAE271887EF00D867F3 /* UserModel.swift in Sources */,
 				54D2FDD9271747F100C66998 /* TimeTrackerClientTests.swift in Sources */,
 				54D8EEB3271D78F300D867F3 /* Extensions.swift in Sources */,
-				545CCEB22720196A00811CE3 /* FilledHomeView.swift in Sources */,
-				545CCEAF2720195E00811CE3 /* EmptyHomeView.swift in Sources */,
-				545CCEB527201A5900811CE3 /* ProjectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

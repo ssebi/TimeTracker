@@ -10,13 +10,20 @@ import SwiftUI
 struct ProjectView: View {
     var body: some View {
         VStack{
-            Text("Project title")
+            HStack{
+                Text("Project title")
+                    .font(.title2)
+                Spacer()
+            }
+            .padding()
             HStack{
                 Text("13:00 - 14:00")
                 Spacer()
                 Text("Worked on this project")
             }
+            .padding()
         }
+        .padding()
     }
 }
 

@@ -22,7 +22,8 @@ struct HomeView: View {
                     .font(.subheadline)
             }
             Spacer()
-            EmptyHomeView()
+            //EmptyHomeView()
+            FilledHomeView()
             Spacer()
         }
     }
