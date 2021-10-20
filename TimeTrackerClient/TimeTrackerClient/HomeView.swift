@@ -22,10 +22,7 @@ struct HomeView: View {
                     .font(.subheadline)
             }
             Spacer()
-            HStack{
-                Button("+"){}
-                .buttonStyle(AddButton())
-            }
+            EmptyHomeView()
             Spacer()
         }
     }
