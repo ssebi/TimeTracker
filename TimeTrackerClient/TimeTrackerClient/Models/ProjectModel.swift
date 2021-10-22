@@ -13,7 +13,7 @@ struct Project {
     var workLog: WorkLog
     var totalWork: Int
     
-    init(id: UUID, name: String, workLog: WorkLog, totlaWork: Int) {
+    init(id: UUID, name: String, workLog: WorkLog, totalWork: Int) {
         self.id = id
         self.name = name
         self.workLog = workLog
