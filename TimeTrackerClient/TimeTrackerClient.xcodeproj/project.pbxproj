@@ -16,6 +16,8 @@
 		545CCEC227229B1C00811CE3 /* TimeSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC027229B1C00811CE3 /* TimeSlot.swift */; };
 		545CCEC427229C5A00811CE3 /* WorkLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC327229C5A00811CE3 /* WorkLog.swift */; };
 		545CCEC527229C5A00811CE3 /* WorkLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC327229C5A00811CE3 /* WorkLog.swift */; };
+		545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC627229D1E00811CE3 /* ProjectModel.swift */; };
+		545CCEC827229D1E00811CE3 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC627229D1E00811CE3 /* ProjectModel.swift */; };
 		54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB62717234F00C66998 /* GoogleService-Info.plist */; };
 		54D2FDBC2717354800C66998 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBA2717354800C66998 /* Extensions.swift */; };
 		54D2FDBD2717354800C66998 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBB2717354800C66998 /* LoginView.swift */; };
@@ -53,6 +55,7 @@
 		545CCEB327201A5900811CE3 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		545CCEC027229B1C00811CE3 /* TimeSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlot.swift; sourceTree = "<group>"; };
 		545CCEC327229C5A00811CE3 /* WorkLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkLog.swift; sourceTree = "<group>"; };
+		545CCEC627229D1E00811CE3 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		54D2FDB62717234F00C66998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54D2FDBA2717354800C66998 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = TimeTrackerClient/Core/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		54D2FDBB2717354800C66998 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = TimeTrackerClient/LoginView.swift; sourceTree = SOURCE_ROOT; };
@@ -124,6 +127,7 @@
 				54D8EEAC271887EF00D867F3 /* UserModel.swift */,
 				545CCEC027229B1C00811CE3 /* TimeSlot.swift */,
 				545CCEC327229C5A00811CE3 /* WorkLog.swift */,
+				545CCEC627229D1E00811CE3 /* ProjectModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,6 +288,7 @@
 				54D8EEAE271887EF00D867F3 /* UserModel.swift in Sources */,
 				54D2FDD9271747F100C66998 /* TimeTrackerClientTests.swift in Sources */,
 				545CCEC527229C5A00811CE3 /* WorkLog.swift in Sources */,
+				545CCEC827229D1E00811CE3 /* ProjectModel.swift in Sources */,
 				545CCEC227229B1C00811CE3 /* TimeSlot.swift in Sources */,
 				54D8EEB3271D78F300D867F3 /* Extensions.swift in Sources */,
 			);
@@ -298,6 +303,7 @@
 				545CCEB12720196A00811CE3 /* FilledHomeView.swift in Sources */,
 				545CCEAB27200FE500811CE3 /* Utils.swift in Sources */,
 				545CCEAE2720195E00811CE3 /* EmptyHomeView.swift in Sources */,
+				545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */,
 				C64C428D271464B300CFBDEF /* ContentView.swift in Sources */,
 				54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */,
 				545CCEC127229B1C00811CE3 /* TimeSlot.swift in Sources */,
