@@ -1,6 +1,6 @@
 //
-//  TimeTrackerClientTests.swift
-//  TimeTrackerClientTests
+//  SessionStoreClientTests.swift
+//  SessionStoreClientTests
 //
 //  Created by Bocanu Mihai on 13.10.2021.
 //
@@ -10,7 +10,7 @@ import Firebase
 import Combine
 @testable import TimeTrackerClient
 
-class TimeTrackerClientTests: XCTestCase {
+class SessionStoreClientTests: XCTestCase {
     
     /// sut = system under test
     

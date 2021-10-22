@@ -20,10 +20,11 @@
 		545CCEC827229D1E00811CE3 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC627229D1E00811CE3 /* ProjectModel.swift */; };
 		545CCECA27229DF800811CE3 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC927229DF800811CE3 /* ClientModel.swift */; };
 		545CCECB27229DF800811CE3 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC927229DF800811CE3 /* ClientModel.swift */; };
+		545CCED82723053E00811CE3 /* DataStoreClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED72723053E00811CE3 /* DataStoreClientTests.swift */; };
 		54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB62717234F00C66998 /* GoogleService-Info.plist */; };
 		54D2FDBC2717354800C66998 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBA2717354800C66998 /* Extensions.swift */; };
 		54D2FDBD2717354800C66998 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBB2717354800C66998 /* LoginView.swift */; };
-		54D2FDD9271747F100C66998 /* TimeTrackerClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDD8271747F100C66998 /* TimeTrackerClientTests.swift */; };
+		54D2FDD9271747F100C66998 /* SessionStoreClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDD8271747F100C66998 /* SessionStoreClientTests.swift */; };
 		54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8EEA92717502900D867F3 /* SessionStore.swift */; };
 		54D8EEAB2717502900D867F3 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8EEA92717502900D867F3 /* SessionStore.swift */; };
 		54D8EEAD271887EF00D867F3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8EEAC271887EF00D867F3 /* UserModel.swift */; };
@@ -59,11 +60,12 @@
 		545CCEC327229C5A00811CE3 /* WorkLogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkLogModel.swift; sourceTree = "<group>"; };
 		545CCEC627229D1E00811CE3 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		545CCEC927229DF800811CE3 /* ClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModel.swift; sourceTree = "<group>"; };
+		545CCED72723053E00811CE3 /* DataStoreClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreClientTests.swift; sourceTree = "<group>"; };
 		54D2FDB62717234F00C66998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54D2FDBA2717354800C66998 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = TimeTrackerClient/Core/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		54D2FDBB2717354800C66998 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = TimeTrackerClient/LoginView.swift; sourceTree = SOURCE_ROOT; };
 		54D2FDD6271747F100C66998 /* TimeTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		54D2FDD8271747F100C66998 /* TimeTrackerClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientTests.swift; sourceTree = "<group>"; };
+		54D2FDD8271747F100C66998 /* SessionStoreClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStoreClientTests.swift; sourceTree = "<group>"; };
 		54D8EEA92717502900D867F3 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		54D8EEAC271887EF00D867F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		54D8EEB0271D78A900D867F3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -109,7 +111,8 @@
 		54D2FDD7271747F100C66998 /* TimeTrackerClientTests */ = {
 			isa = PBXGroup;
 			children = (
-				54D2FDD8271747F100C66998 /* TimeTrackerClientTests.swift */,
+				54D2FDD8271747F100C66998 /* SessionStoreClientTests.swift */,
+				545CCED72723053E00811CE3 /* DataStoreClientTests.swift */,
 			);
 			path = TimeTrackerClientTests;
 			sourceTree = "<group>";
@@ -290,7 +293,8 @@
 				545CCEAC27200FE500811CE3 /* Utils.swift in Sources */,
 				54D8EEAB2717502900D867F3 /* SessionStore.swift in Sources */,
 				54D8EEAE271887EF00D867F3 /* UserModel.swift in Sources */,
-				54D2FDD9271747F100C66998 /* TimeTrackerClientTests.swift in Sources */,
+				54D2FDD9271747F100C66998 /* SessionStoreClientTests.swift in Sources */,
+				545CCED82723053E00811CE3 /* DataStoreClientTests.swift in Sources */,
 				545CCEC527229C5A00811CE3 /* WorkLogModel.swift in Sources */,
 				545CCEC827229D1E00811CE3 /* ProjectModel.swift in Sources */,
 				545CCEC227229B1C00811CE3 /* TimeSlotModel.swift in Sources */,
@@ -336,6 +340,7 @@
 		54D2FDDD271747F100C66998 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -360,6 +365,7 @@
 		54D2FDDE271747F100C66998 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
