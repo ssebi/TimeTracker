@@ -23,7 +23,7 @@ class DataStoreClientTests: XCTestCase {
             "end": slot.end,
             "description": slot.description,
         ]
-
+        
         singIn(sut: sut)
         dataStore.addTimeSlot(with: data, from: path) { error in
             receivedError = error
@@ -47,7 +47,7 @@ class DataStoreClientTests: XCTestCase {
         var receivedError: Error?
         
         signOut(sut: sut)
-
+        
         dataStore.addTimeSlot(with: data, from: path) { error in
             receivedError = error
             exp.fulfill()
@@ -63,35 +63,41 @@ class DataStoreClientTests: XCTestCase {
         let exp = expectation(description: "Wait for fir")
         singIn(sut: sut)
         let dataStore = DataStore()
-        var receivedError: Error?
+        var receivedResult: Result<QuerySnapshot, Error>?
         
-        dataStore.getTimeSlot(from: path) { error in
-            receivedError = error
+        dataStore.getTimeSlot(from: path) { result in
+            receivedResult = result
             exp.fulfill()
         }
         wait(for: [exp], timeout: 5)
         
-        XCTAssertNil(receivedError)
-        
-        //add assert fo  valid timeslot
+        if case let .success(qerySnapshot) = receivedResult {
+            XCTAssertNotNil(qerySnapshot)
+        } else {
+            XCTFail()
+        }
     }
     
     func test_getTimeSlot_isNotSusccesfullWithNoSession() {
         let sut = makeSUT()
         let dataStore = DataStore()
         let exp = expectation(description: "Wait for firebase")
-        var receivedError: Error?
+        var receivedResult: Result<QuerySnapshot, Error>?
         
         signOut(sut: sut)
         XCTAssertNil(sut.session)
         
-        dataStore.getTimeSlot(from: path) { error in
-            receivedError = error
+        dataStore.getTimeSlot(from: path) { result in
+            receivedResult = result
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1)
         
-        XCTAssertNotNil(receivedError)
+        if case let .failure(error) = receivedResult {
+            XCTAssertNotNil(error)
+        } else {
+            XCTFail()
+        }
     }
     
     

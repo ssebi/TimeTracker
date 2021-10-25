@@ -21,16 +21,16 @@ class DataStore {
         }
     }
     
-    func getTimeSlot(from path: String, completion: @escaping (Error?) -> Void) {
+    func getTimeSlot(from path: String, completion: @escaping (Result<QuerySnapshot, Error> ) -> Void) {
         Firestore.firestore().collection(path).getDocuments() { (qerySnapshot, error) in
             guard error != nil else {
                 for _ in qerySnapshot!.documents {
                     // show document in interface
                 }
-                completion(error)
+                completion(.success(qerySnapshot!))
                 return
             }
-            completion(error)
+            completion(.failure(error!))
         }
     }
 }
