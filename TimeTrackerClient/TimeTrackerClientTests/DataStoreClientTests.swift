@@ -9,13 +9,15 @@ import XCTest
 import Firebase
 import Combine
 @testable import TimeTrackerClient
+import SwiftUI
 
 class DataStoreClientTests: XCTestCase {
 
     func test_addTimeSlot_isSusccesfullOnAdd() {
         let sut = makeSUT()
         let slot: TimeSlot = TimeSlot(id: UUID(), start: Date.now, end: Date.now + 1, description: "First dscription for log time")
-        var err: Error?
+        var err: Bool = false
+        let dataStore = DataStore()
         
         singIn(sut: sut)
         
@@ -26,57 +28,38 @@ class DataStoreClientTests: XCTestCase {
         ]
         
         let path: String = "timeSlots"
-        var ref: DocumentReference? = nil
         let exp = expectation(description: "Wait for firebase")
         
-        func addTimeSlot(data: [String: Any]){
-            ref = Firestore.firestore().collection(path).addDocument(data: data) { error in
-                err = error
-                if err == nil {
-                    print("Document added with ID: \(ref!.documentID)")
-                } else {
-                    print("There was an error addidng the document")
-                }
-                exp.fulfill()
-            }
+        dataStore.addTimeSlot(with: data, from: path) { error in
+            err = error
+            exp.fulfill()
         }
         
-        addTimeSlot(data: data)
         wait(for: [exp], timeout: 1)
-        XCTAssertNil(err)
+        XCTAssertFalse(err)
     }
     
     func test_addTimeSlot_isNotSusccesfullWithoutUser() {
         let sut = makeSUT()
-    
-        signOut(sut: sut)
-        XCTAssertNil(sut.session)
-        
+        var err: Bool = false
+        let dataStore = DataStore()
         let slot: TimeSlot = TimeSlot(id: UUID(), start: Date.now, end: Date.now + 1, description: "First dscription for log time")
-        var err: Error?
         let data: [String: Any] = [
             "start": slot.start,
             "end": slot.end,
             "description": slot.description,
         ]
+        signOut(sut: sut)
+        XCTAssertNil(sut.session)
         
         let path: String = "timeSlots"
-        var ref: DocumentReference? = nil
         let exp = expectation(description: "Wait for firebase")
         
-        func addTimeSlot(data: [String: Any]){
-            ref = Firestore.firestore().collection(path).addDocument(data: data) { error in
-                err = error
-                if err == nil {
-                    print("Document added with ID: \(ref!.documentID)")
-                } else {
-                    print("There was an error addidng the document")
-                }
-                exp.fulfill()
-            }
+        dataStore.addTimeSlot(with: data, from: path) { error in
+            err = error
+            exp.fulfill()
         }
         
-        addTimeSlot(data: data)
         wait(for: [exp], timeout: 1)
         
         XCTAssertNotNil(err)
@@ -84,60 +67,40 @@ class DataStoreClientTests: XCTestCase {
     
     func test_getTimeSlot_isSusccesfullOnRead() {
         let sut = makeSUT()
-        var err: Error?
+        let exp = expectation(description: "Wait for fir")
         singIn(sut: sut)
 
         let path: String = "timeSlots"
-        let exp = expectation(description: "Wait for firebase")
         
-        func getTimeSlot(from path: String){
-            Firestore.firestore().collection(path).getDocuments() { (qerySnapshot, error) in
-                err = error
-                if err != nil {
-                    print("Error getting documents:\(err!)")
-                } else {
-                    for document in qerySnapshot!.documents {
-                        print("***********************\(document.documentID) => \(document.data())")
-                    }
-                }
-                exp.fulfill()
-            }
+        var err: Bool = false
+        let dataStore = DataStore()
+        
+        dataStore.getTimeSlot(from: path) { error in
+            err = error
+            exp.fulfill()
         }
-        
-        getTimeSlot(from: path)
-        
-        wait(for: [exp], timeout: 1)
-        XCTAssertNil(err)
+        wait(for: [exp], timeout: 5)
+        XCTAssertFalse(err)
     }
     
     func test_getTimeSlot_isNotSusccesfullWithNoSession() {
         let sut = makeSUT()
-        var err: Error?
+        var err: Bool = false
+        let dataStore = DataStore()
         let path: String = "timeSlots"
         let exp = expectation(description: "Wait for firebase")
         
         signOut(sut: sut)
         XCTAssertNil(sut.session)
         
-        func getTimeSlot(from path: String){
-            Firestore.firestore().collection(path).getDocuments() { (qerySnapshot, error) in
-                err = error
-                if err != nil {
-                    print("Error getting documents:\(err!)")
-                } else {
-                    for document in qerySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
-                    }
-                }
-                exp.fulfill()
-            }
+        dataStore.getTimeSlot(from: path) { error in
+            err = error
+            exp.fulfill()
         }
-        
-        getTimeSlot(from: path)
         
         wait(for: [exp], timeout: 1)
         
-        XCTAssertNotNil(err)
+        XCTAssertTrue(err)
     }
     
     
@@ -157,7 +120,7 @@ class DataStoreClientTests: XCTestCase {
     
     private func signOut(sut: SessionStore) {
         var subscriptions: Set<AnyCancellable> = []
-        sut.singOut()
+        XCTAssertTrue(sut.singOut())
         
         let exp2 = expectation(description: "Wait for session to be nil")
         sut.didChange.sink(receiveValue: { store in
