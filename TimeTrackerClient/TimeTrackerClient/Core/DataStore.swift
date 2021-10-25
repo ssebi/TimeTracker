@@ -10,37 +10,27 @@ import Firebase
 
 
 class DataStore {
- 
-    var err: Error?
-    var ref: DocumentReference? = nil
-    
-    func addTimeSlot(with data: [String: Any], from path: String, completion: @escaping (Bool) -> Void) {
-        
-        ref = Firestore.firestore().collection(path).addDocument(data: data) { error in
-            self.err = error
-            
-            if self.err == nil {
-                print("Document added with ID: \(self.ref!.documentID)")
-                completion(false)
-            } else {
-                print("There was an error addidng the document")
-                completion(true)
+    func addTimeSlot(with data: [String: Any], from path: String, completion: @escaping (Error?) -> Void) {
+        Firestore.firestore().collection(path).addDocument(data: data) { error in
+            guard error != nil else {
+                //do something on success
+                completion(error)
+                return
             }
+            completion(error)
         }
     }
     
-    func getTimeSlot(from path: String, completion: @escaping (Bool) -> Void) {
+    func getTimeSlot(from path: String, completion: @escaping (Error?) -> Void) {
         Firestore.firestore().collection(path).getDocuments() { (qerySnapshot, error) in
-            self.err = error
-            if self.err != nil {
-                print("Error getting documents:\(self.err!)")
-                completion(true)
-            } else {
-                for document in qerySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+            guard error != nil else {
+                for _ in qerySnapshot!.documents {
+                    // show document in interface
                 }
-                completion(false)
+                completion(error)
+                return
             }
+            completion(error)
         }
     }
 }

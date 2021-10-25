@@ -12,11 +12,4 @@ struct WorkLog {
     var timeSlots: TimeSlot
     var date: Date
     var total: Int
-    
-    init(id:UUID, timeSlots: TimeSlot, date: Date, total: Int) {
-        self.id = id
-        self.timeSlots = timeSlots
-        self.date = date
-        self.total = total
-    }
 }

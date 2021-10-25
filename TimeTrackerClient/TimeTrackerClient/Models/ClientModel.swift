@@ -12,11 +12,4 @@ struct Client {
     var name: String
     var projects: Project
     var totalWork: Int
-    
-    init(id:UUID, name: String, projects: Project, totalWork: Int) {
-        self.id = id
-        self.name = name
-        self.projects = projects
-        self.totalWork = totalWork
-    }
 }
