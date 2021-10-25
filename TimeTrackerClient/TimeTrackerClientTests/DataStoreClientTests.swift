@@ -46,7 +46,7 @@ class DataStoreClientTests: XCTestCase {
         ]
         var receivedError: Error?
         
-        signOut(sut: sut)
+        XCTAssertTrue(sut.singOut())
         
         dataStore.addTimeSlot(with: data, from: path) { error in
             receivedError = error
@@ -84,7 +84,7 @@ class DataStoreClientTests: XCTestCase {
         let exp = expectation(description: "Wait for firebase")
         var receivedResult: Result<QuerySnapshot, Error>?
         
-        signOut(sut: sut)
+        XCTAssertTrue(sut.singOut())
         dataStore.getTimeSlot(from: path) { result in
             receivedResult = result
             exp.fulfill()
@@ -111,19 +111,6 @@ class DataStoreClientTests: XCTestCase {
         sut.singIn(email: email, password: password) { result in
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 5)
-    }
-    
-    private func signOut(sut: SessionStore) {
-        var subscriptions: Set<AnyCancellable> = []
-        let exp = expectation(description: "Wait for session to be nil")
-        
-        XCTAssertTrue(sut.singOut())
-        
-        sut.didChange.sink(receiveValue: { store in
-            exp.fulfill()
-        }).store(in: &subscriptions)
-        
         wait(for: [exp], timeout: 5)
     }
     
