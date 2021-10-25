@@ -27,7 +27,8 @@ class SessionStore: ObservableObject {
                 self?.session = User(
                     uid: user.uid,
                     email: user.email,
-                    username: user.displayName
+                    username: user.displayName,
+                    client: ""
                 )
             } else {
                 self?.session = nil
@@ -51,10 +52,12 @@ class SessionStore: ObservableObject {
             completion(.success(User(
                 uid: result?.user.uid,
                 email: result?.user.email,
-                username: result?.user.displayName)))
+                username: result?.user.displayName,
+                client: "")))
         }
     }
-    
+
+    @discardableResult
     func singOut() -> Bool {
         do {
             try Auth.auth().signOut()

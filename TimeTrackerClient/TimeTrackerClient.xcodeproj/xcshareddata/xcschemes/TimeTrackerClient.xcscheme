@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "54D2FDC3271743E000C66998"
+               BlueprintIdentifier = "54D2FDD5271747F100C66998"
                BuildableName = "TimeTrackerClientTests.xctest"
                BlueprintName = "TimeTrackerClientTests"
                ReferencedContainer = "container:TimeTrackerClient.xcodeproj">
