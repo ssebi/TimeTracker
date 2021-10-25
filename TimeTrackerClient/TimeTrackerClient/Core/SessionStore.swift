@@ -56,7 +56,8 @@ class SessionStore: ObservableObject {
                 client: "")))
         }
     }
-    
+
+    @discardableResult
     func singOut() -> Bool {
         do {
             try Auth.auth().signOut()
