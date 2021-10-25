@@ -13,9 +13,8 @@ import Combine
 class DataStoreClientTests: XCTestCase {
     
     func test_addTimeSlot_isSusccesfullOnAdd() {
-        _ = makeSUT(withUserSignedIn: true)
+        let sut = makeSUT(withUserSignedIn: true)
         let slot = TimeSlot(id: UUID(), start: Date.now, end: Date.now + 1, description: "First dscription for log time")
-        let dataStore = DataStore()
         let exp = expectation(description: "Wait for firebase")
         var receivedError: Error?
         let data: [String: Any] = [
@@ -24,7 +23,7 @@ class DataStoreClientTests: XCTestCase {
             "description": slot.description,
         ]
 
-        dataStore.addTimeSlot(with: data, from: path) { error in
+        sut.addTimeSlot(with: data, from: path) { error in
             receivedError = error
             exp.fulfill()
         }
@@ -34,8 +33,7 @@ class DataStoreClientTests: XCTestCase {
     }
     
     func test_addTimeSlot_isNotSusccesfullWithoutUser() {
-        let _ = makeSUT(withUserSignedIn: false)
-        let dataStore = DataStore()
+        let sut = makeSUT(withUserSignedIn: false)
         let slot = TimeSlot(id: UUID(), start: Date.now, end: Date.now + 1, description: "First dscription for log time")
         let exp = expectation(description: "Wait for firebase")
         let data: [String: Any] = [
@@ -45,7 +43,7 @@ class DataStoreClientTests: XCTestCase {
         ]
 
         var receivedError: Error?
-        dataStore.addTimeSlot(with: data, from: path) { error in
+        sut.addTimeSlot(with: data, from: path) { error in
             receivedError = error
             exp.fulfill()
         }
@@ -56,12 +54,11 @@ class DataStoreClientTests: XCTestCase {
     }
     
     func test_getTimeSlot_isSusccesfullOnRead() {
-        let _ = makeSUT(withUserSignedIn: true)
+        let sut = makeSUT(withUserSignedIn: true)
         let exp = expectation(description: "Wait for fir")
-        let dataStore = DataStore()
         var receivedResult: Result<QuerySnapshot, Error>?
         
-        dataStore.getTimeSlot(from: path) { result in
+        sut.getTimeSlot(from: path) { result in
             receivedResult = result
             exp.fulfill()
         }
@@ -75,12 +72,11 @@ class DataStoreClientTests: XCTestCase {
     }
     
     func test_getTimeSlot_isNotSusccesfullWithNoSession() {
-        let _ = makeSUT(withUserSignedIn: false)
-        let dataStore = DataStore()
+        let sut = makeSUT(withUserSignedIn: false)
         let exp = expectation(description: "Wait for firebase")
         var receivedResult: Result<QuerySnapshot, Error>?
 
-        dataStore.getTimeSlot(from: path) { result in
+        sut.getTimeSlot(from: path) { result in
             receivedResult = result
             exp.fulfill()
         }
@@ -99,30 +95,33 @@ class DataStoreClientTests: XCTestCase {
     let password: String = "Patratel1"
     let path: String = "timeSlots"
 
-    private func makeSUT(withUserSignedIn signedIn: Bool, file: StaticString = #filePath, line: UInt = #line) -> SessionStore {
-        let sut = SessionStore()
+    private func makeSUT(withUserSignedIn signedIn: Bool, file: StaticString = #filePath, line: UInt = #line) -> DataStore {
+        let session = SessionStore()
 
         if signedIn {
-            signIn(sut: sut)
+            signIn(session)
         } else {
-            signOut(sut: sut)
+            signOut(session)
         }
+
+        let sut = DataStore()
         
-        addTeardownBlock { [weak sut] in
+        addTeardownBlock { [weak session, weak sut] in
+            XCTAssertNil(session, file: file, line: line)
             XCTAssertNil(sut, file: file, line: line)
         }
         return sut
     }
 
-    private func signIn(sut: SessionStore) {
+    private func signIn(_ session: SessionStore) {
         let exp = expectation(description: "Waiting to complete")
-        sut.singIn(email: email, password: password) { result in
+        session.singIn(email: email, password: password) { result in
             exp.fulfill()
         }
         wait(for: [exp], timeout: 5)
     }
 
-    private func signOut(sut: SessionStore) {
+    private func signOut(_ sut: SessionStore) {
         sut.singOut()
     }
     
