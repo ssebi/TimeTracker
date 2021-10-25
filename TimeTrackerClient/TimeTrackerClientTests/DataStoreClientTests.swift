@@ -23,8 +23,8 @@ class DataStoreClientTests: XCTestCase {
             "end": slot.end,
             "description": slot.description,
         ]
-        
-        singIn(sut: sut)
+        signIn(sut: sut)
+
         dataStore.addTimeSlot(with: data, from: path) { error in
             receivedError = error
             exp.fulfill()
@@ -44,10 +44,9 @@ class DataStoreClientTests: XCTestCase {
             "end": slot.end,
             "description": slot.description,
         ]
+        signOut(sut: sut)
+
         var receivedError: Error?
-        
-        XCTAssertTrue(sut.singOut())
-        
         dataStore.addTimeSlot(with: data, from: path) { error in
             receivedError = error
             exp.fulfill()
@@ -61,9 +60,9 @@ class DataStoreClientTests: XCTestCase {
     func test_getTimeSlot_isSusccesfullOnRead() {
         let sut = makeSUT()
         let exp = expectation(description: "Wait for fir")
-        singIn(sut: sut)
         let dataStore = DataStore()
         var receivedResult: Result<QuerySnapshot, Error>?
+        signIn(sut: sut)
         
         dataStore.getTimeSlot(from: path) { result in
             receivedResult = result
@@ -83,8 +82,8 @@ class DataStoreClientTests: XCTestCase {
         let dataStore = DataStore()
         let exp = expectation(description: "Wait for firebase")
         var receivedResult: Result<QuerySnapshot, Error>?
-        
-        XCTAssertTrue(sut.singOut())
+        signOut(sut: sut)
+
         dataStore.getTimeSlot(from: path) { result in
             receivedResult = result
             exp.fulfill()
@@ -98,20 +97,22 @@ class DataStoreClientTests: XCTestCase {
         }
     }
     
-    
-    
     // MARK: - Helper
     let email: String = "mihai24vic@gmail.com"
     let wrongPassword: String = "123452435324"
     let password: String = "Patratel1"
     let path: String = "timeSlots"
     
-    private func singIn(sut: SessionStore) {
+    private func signIn(sut: SessionStore) {
         let exp = expectation(description: "Waiting to complete")
         sut.singIn(email: email, password: password) { result in
             exp.fulfill()
         }
         wait(for: [exp], timeout: 5)
+    }
+
+    private func signOut(sut: SessionStore) {
+        sut.singOut()
     }
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> SessionStore {
