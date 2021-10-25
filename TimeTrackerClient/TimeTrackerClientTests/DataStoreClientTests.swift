@@ -85,8 +85,6 @@ class DataStoreClientTests: XCTestCase {
         var receivedResult: Result<QuerySnapshot, Error>?
         
         signOut(sut: sut)
-        XCTAssertNil(sut.session)
-        
         dataStore.getTimeSlot(from: path) { result in
             receivedResult = result
             exp.fulfill()
