@@ -19,3 +19,15 @@ struct AddButton: ButtonStyle {
             .font(.largeTitle .bold())
     }
 }
+
+struct SubmitButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .frame(width: 100, height: 30, alignment: .center)
+            .background(Color.cGreen)
+            .foregroundColor(.white)
+            .cornerRadius(5)
+            .font(.largeTitle .bold())
+    }
+}
