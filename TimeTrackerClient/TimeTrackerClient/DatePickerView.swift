@@ -20,21 +20,23 @@ struct DatePickerView: View {
     }()
     
     var body: some View {
-        DatePicker(
-            "Start",
-            selection: $startDate,
-            in: dateRange,
-            displayedComponents: [.date, .hourAndMinute]
-        )
-        DatePicker(
-            "End",
-            selection: $endDate,
-            in: dateRange,
-            displayedComponents: [.date, .hourAndMinute]
-        )
-        
-        let timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startDate, to: endDate)
-        Text("Total h:\(timeInterval.hour!)  - m:\(timeInterval.minute!)")
+        VStack {
+            DatePicker(
+                "Start",
+                selection: $startDate,
+                in: dateRange,
+                displayedComponents: [.date, .hourAndMinute]
+            )
+            DatePicker(
+                "End",
+                selection: $endDate,
+                in: dateRange,
+                displayedComponents: [.date, .hourAndMinute]
+            )
+            
+            let timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startDate, to: endDate)
+            Text("Total h:\(timeInterval.hour!)  - m:\(timeInterval.minute!)")
+        }
     }
 }
 
