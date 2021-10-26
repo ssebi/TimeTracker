@@ -23,7 +23,8 @@ struct HomeView: View {
             }
             Spacer()
             //EmptyHomeView()
-            FilledHomeView()
+            //FilledHomeView()
+            AddView()
             Spacer()
         }
     }
