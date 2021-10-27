@@ -11,7 +11,7 @@ import Firebase
 
 class DataStore {
     func addTimeSlot(with data: [String: Any], to path: String, completion: @escaping (Error?) -> Void) {
-        Firestore.firestore().collection(path).addDocument(data: data) { error in
+        Firestore.firestore().collection(path).document().setData(data) { error in
             guard error != nil else {
                 //do something on success
                 completion(error)
