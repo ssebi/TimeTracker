@@ -23,7 +23,7 @@ class DataStoreClientTests: XCTestCase {
             "description": slot.description,
         ]
 
-        sut.addTimeSlot(with: data, from: path) { error in
+        sut.addTimeSlot(with: data, to: path) { error in
             receivedError = error
             exp.fulfill()
         }
@@ -43,7 +43,7 @@ class DataStoreClientTests: XCTestCase {
         ]
 
         var receivedError: Error?
-        sut.addTimeSlot(with: data, from: path) { error in
+        sut.addTimeSlot(with: data, to: path) { error in
             receivedError = error
             exp.fulfill()
         }
