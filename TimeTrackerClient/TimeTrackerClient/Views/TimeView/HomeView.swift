@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct HomeView: View {
+    @EnvironmentObject var session: SessionStore
+    var dataStore = DataStore()
+    @State var hasData: Bool = false
+    
     var body: some View {
         VStack{
             HStack(){
@@ -22,10 +27,23 @@ struct HomeView: View {
                     .font(.subheadline)
             }
             Spacer()
-            //EmptyHomeView()
-            //FilledHomeView()
-            AddView()
+            if hasData {
+                FilledHomeView()
+            } else {
+                EmptyHomeView()
+            }
+            //AddView()
             Spacer()
+        }.onAppear(perform: getUserTimeLogs)
+    }
+    
+    func getUserTimeLogs() {
+        let userId = session.session?.uid
+        let path = "userId"
+        if session.session != nil {
+            dataStore.getTimeSlot(from: path) { result in
+                hasData = true
+            }
         }
     }
 }
