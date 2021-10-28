@@ -21,7 +21,8 @@ class DataStore {
         }
     }
     
-    func getTimeSlot(from path: String, completion: @escaping (Result<QuerySnapshot, Error> ) -> Void) {
+    //listen for live changes
+    func listenForTimeSlot(from path: String, completion: @escaping (Result<QuerySnapshot, Error> ) -> Void) {
         Firestore.firestore().collection(path).getDocuments() { (querySnapshot, error) in
             guard error != nil else {
                 for _ in querySnapshot!.documents {

@@ -58,7 +58,7 @@ class DataStoreClientTests: XCTestCase {
         let exp = expectation(description: "Wait for fir")
         var receivedResult: Result<QuerySnapshot, Error>?
         
-        sut.getTimeSlot(from: path) { result in
+        sut.listenForTimeSlot(from: path) { result in
             receivedResult = result
             exp.fulfill()
         }
@@ -76,7 +76,7 @@ class DataStoreClientTests: XCTestCase {
         let exp = expectation(description: "Wait for firebase")
         var receivedResult: Result<QuerySnapshot, Error>?
 
-        sut.getTimeSlot(from: path) { result in
+        sut.listenForTimeSlot(from: path) { result in
             receivedResult = result
             exp.fulfill()
         }
