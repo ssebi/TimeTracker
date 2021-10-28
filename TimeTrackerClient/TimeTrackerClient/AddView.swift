@@ -15,7 +15,8 @@ struct AddView: View {
     let projects = ["Project 1","Project 2","Project 3","Project 4"]
     @State private var projectSelection = "Project x"
     @State private var clientSelection = "Client x"
-    @State private var description: String = ""
+    @State private var description = ""
+    @State private var showMessage = ""
     var dataStore = DataStore()
     
     var body: some View {
@@ -45,6 +46,9 @@ struct AddView: View {
                             .border(Color.cBlack)
                     }.navigationTitle("Mihai B")
                         .padding()
+                    VStack{
+                        Text("\(showMessage)")
+                    }
                     HStack{
                         Spacer()
                         Button("submit") {
@@ -79,7 +83,13 @@ struct AddView: View {
             "total": 5
         ]
         
-        dataStore.addTimeSlot(with: timeslot, to: path){ error in }
+        dataStore.addTimeSlot(with: timeslot, to: path){ error in
+            if error != nil {
+                showMessage = "Failed to save"
+            } else {
+                showMessage = "Time logged saved"
+            }
+        }
     }
 }
 
