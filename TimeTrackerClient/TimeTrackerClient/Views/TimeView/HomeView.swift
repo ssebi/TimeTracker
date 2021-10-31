@@ -30,7 +30,7 @@ struct HomeView: View {
                     .font(.subheadline)
             }
             Spacer()
-            if hasData {
+            if userData.timeslot != "" {
                 FilledHomeView()
             } else {
                 EmptyHomeView()
