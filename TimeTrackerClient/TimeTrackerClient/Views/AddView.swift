@@ -23,47 +23,47 @@ struct AddView: View {
         VStack {
             NavigationView {
                 VStack{
-                    Section {
-                        Picker(selection: $projectSelection, label: Text("Project")) {
-                            ForEach(clients, id: \.self) { client in
-                                Text(client)
-                            }
-                        }
-                        .frame(width: 30, height: 50, alignment: .center)
-                        .background(Color.red)
-                        Picker(selection: $clientSelection, label: Text("Client")) {
-                            ForEach(projects, id: \.self) { client in
-                                Text(client)
-                            }
+                    Picker(selection: $projectSelection, label: Text("Project")) {
+                        ForEach(clients, id: \.self) { client in
+                            Text(client)
                         }
                     }
-                    Section {
-                        DatePickerView()
+                    .frame(width: UIScreen.main.bounds.width-50 , height: 60, alignment: .center)
+                    .background(Color.cGray)
+                    .foregroundColor(.white)
+                    
+                    Picker(selection: $clientSelection, label: Text("Client")) {
+                        ForEach(projects, id: \.self) { client in
+                            Text(client)
+                        }
                     }
-                    .padding()
-                    Section("Description") {
-                        TextField("Coments", text: $description)
-                            .multilineTextAlignment(.center)
-                            .frame(height: 80, alignment: .center)
-                            .border(Color.cBlack)
-                    }.navigationTitle("Mihai B")
+                    .frame(width: UIScreen.main.bounds.width-50 , height: 60, alignment: .center)
+                    .background(Color.cGray)
+                    .foregroundColor(.white)
+                    
+                    Spacer()
+                    
+                    DatePickerView()
                         .padding()
-                    VStack{
-                        Text("\(showMessage)")
+                    
+                    Text("Task description")
+                    TextEditor(text: $description)
+                        .border(.gray)
+
+                    Spacer()
+                    
+                    Text("\(showMessage)")
+                    
+                    Button("submit") {
+                        addTime()
                     }
-                    HStack{
-                        Spacer()
-                        Button("submit") {
-                            addTime()
-                        }
-                        .buttonStyle(AddButton())
-                        Spacer()
-                    }
-                    .background(Color.cGreen)
-                    .padding()
+                    .buttonStyle(AddButton())
+                    .frame(width: UIScreen.main.bounds.width-50, height: 100, alignment: .center)
+  
                 }
                 .padding()
             }
+            .navigationTitle("Mihai B")
         }
     }
     
