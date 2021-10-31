@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FilledHomeView: View {
+    @State var showView = false
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -19,12 +21,13 @@ struct FilledHomeView: View {
                 }
                 .listStyle(.grouped)
             }
-            .toolbar {
-                Button("+"){ }
-                .buttonStyle(AddBarButton())
-            }
+            .navigationBarItems(
+                  trailing: Button(action: {}, label: {
+                     NavigationLink(destination: AddView()) {
+                          Text("")
+                     }
+                  }))
         }
-        .navigationBarItems(trailing: AddView())
     }
 }
 
