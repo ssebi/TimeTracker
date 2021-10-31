@@ -65,7 +65,7 @@ struct AddView: View {
         }
     }
     
-    func addTime(){
+    func addTime() {
         let user = session.session
         let userId = user?.uid ?? ""
         var path = ""
@@ -86,8 +86,14 @@ struct AddView: View {
         dataStore.addTimeSlot(with: timeslot, to: path){ error in
             if error != nil {
                 showMessage = "Failed to save"
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    showMessage = ""
+                }
             } else {
                 showMessage = "Time logged saved"
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    showMessage = ""
+                }
             }
         }
     }
