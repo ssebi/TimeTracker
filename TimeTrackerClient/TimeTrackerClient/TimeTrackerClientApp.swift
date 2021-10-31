@@ -17,6 +17,7 @@ struct TimeTrackerClientApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(SessionStore())
+                .environmentObject(DataStore())
         }
     }
     
