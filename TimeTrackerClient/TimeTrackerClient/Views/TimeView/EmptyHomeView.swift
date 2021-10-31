@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct EmptyHomeView: View {
+    @EnvironmentObject var userData: DataStore
     var body: some View {
-        HStack{
-            Button("+"){}
-            .buttonStyle(AddButton())
+        NavigationView{
+            HStack{
+                NavigationLink(destination: AddView()){
+                    Text("+")
+                        .padding()
+                        .frame(width: 200, height: 100, alignment: .center)
+                        .background(Color.cGreen)
+                        .foregroundColor(.white)
+                        .cornerRadius(5)
+                        .font(.largeTitle .bold())
+                }
+            }
         }
     }
 }
