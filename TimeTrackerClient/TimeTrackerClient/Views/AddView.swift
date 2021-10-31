@@ -29,6 +29,8 @@ struct AddView: View {
                                 Text(client)
                             }
                         }
+                        .frame(width: 30, height: 50, alignment: .center)
+                        .background(Color.red)
                         Picker(selection: $clientSelection, label: Text("Client")) {
                             ForEach(projects, id: \.self) { client in
                                 Text(client)

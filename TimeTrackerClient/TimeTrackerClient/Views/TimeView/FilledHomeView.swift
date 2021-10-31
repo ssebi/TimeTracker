@@ -9,15 +9,22 @@ import SwiftUI
 
 struct FilledHomeView: View {
     var body: some View {
-        VStack{
-            List{
-                ProjectView()
-                ProjectView()
-                ProjectView()
-                ProjectView()
+        NavigationView{
+            VStack{
+                List{
+                    ProjectView()
+                    ProjectView()
+                    ProjectView()
+                    ProjectView()
+                }
+                .listStyle(.grouped)
             }
-            .listStyle(.grouped)
+            .toolbar {
+                Button("+"){ }
+                .buttonStyle(AddBarButton())
+            }
         }
+        .navigationBarItems(trailing: AddView())
     }
 }
 
