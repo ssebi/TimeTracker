@@ -10,9 +10,12 @@ import FirebaseFirestore
 
 struct HomeView: View {
     @EnvironmentObject var session: SessionStore
-    var dataStore = DataStore()
+    @EnvironmentObject var userData: DataStore
+    
     @State var hasData: Bool = false
     
+    //loading
+    typealias document = (Result<QuerySnapshot, Error>) -> Void
     var body: some View {
         VStack{
             HStack(){
@@ -32,19 +35,12 @@ struct HomeView: View {
             } else {
                 EmptyHomeView()
             }
-            //AddView()
             Spacer()
         }.onAppear(perform: getUserTimeLogs)
     }
     
     func getUserTimeLogs() {
-        let userId = session.session?.uid
-        let path = "userId"
-        if session.session != nil {
-            dataStore.getTimeSlot(from: path) { result in
-                hasData = true
-            }
-        }
+        //
     }
 }
 
