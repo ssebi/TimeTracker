@@ -34,8 +34,12 @@ struct DatePickerView: View {
                 displayedComponents: [.date, .hourAndMinute]
             )
             
+            
             let timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startDate, to: endDate)
-            Text("Total h:\(timeInterval.hour!)  - m:\(timeInterval.minute!)")
+            HStack{
+                Text("Total h:\(timeInterval.hour!)  - m:\(timeInterval.minute!)")
+                Spacer()
+            }
         }
     }
 }
