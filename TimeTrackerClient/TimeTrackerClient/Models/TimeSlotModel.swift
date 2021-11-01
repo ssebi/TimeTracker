@@ -7,9 +7,19 @@
 
 import Foundation
 
-struct TimeSlot {
-    var id: UUID
-    var start: Date
-    var end: Date
+struct TimeSlot: Identifiable, Codable {
+    var id: String?
+    var timesSlots: TimeSlotDetail?
+    var total: String
+    
+    init(id: String, timeSlots: TimeSlotDetail, total: String) {
+        self.timesSlots = timeSlots
+        self.total = total
+    }
+}
+
+struct TimeSlotDetail: Codable {
+    var end: String
+    var start: String
     var description: String
 }

@@ -19,11 +19,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             NavigationView{
-                if userData.timeslot != "" {
-                    FilledHomeView()
-                } else {
-                    Text("There is no time logged for this user")
-                }
+                FilledHomeView()
                 Spacer()
             }
             .navigationBarItems(trailing: HStack{

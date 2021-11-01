@@ -8,35 +8,15 @@
 import SwiftUI
 
 struct ProjectView: View {
+    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var userData: DataStore
+    
     var body: some View {
-        Section{
-            VStack{
-                HStack{
-                    Text("Timetracker Project")
-                        .font(.title2)
-                    Spacer()
-                }
-                .padding()
-                VStack{
-                    HStack{
-                        Text("13:00 - 14:00")
-                        Spacer()
-                        Text("Worked on UI elemnets")
-                    }
-                    HStack{
-                        Text("13:00 - 14:00")
-                        Spacer()
-                        Text("Worked on xxx and yyy")
-                    }
-                    HStack{
-                        Text("13:00 - 14:00")
-                        Spacer()
-                        Text("Bug fixing")
-                    }
-                }
-                .padding(.bottom)
+        VStack {
+            List(userData.allTimeSlots){ timeSlot in
+                Text(timeSlot.timesSlots?.description as? String ?? "")
             }
-        }
+        }.onAppear(perform: userData.get)
     }
 }
 
