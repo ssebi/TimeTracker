@@ -48,11 +48,12 @@ struct AddView: View {
                     
                     HStack{
                         Text("Task description")
+                            .padding()
                         Spacer()
                     }
                     TextEditor(text: $description)
                         .border(.gray)
-                        .frame(width: UIScreen.width-50, height: 130, alignment: .center)
+                        .frame(width: UIScreen.width-55, height: 130, alignment: .center)
                     
                     Spacer()
                     HStack{
@@ -67,7 +68,7 @@ struct AddView: View {
                     .frame(width: UIScreen.main.bounds.width-50, height: 100, alignment: .center)
                     
                 }
-                .navigationTitle("Mihai B")
+                .navigationTitle(session.session?.email ?? "")
                 .padding()
             }
             
