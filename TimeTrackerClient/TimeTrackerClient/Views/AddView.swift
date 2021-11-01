@@ -46,24 +46,31 @@ struct AddView: View {
                     DatePickerView()
                         .padding()
                     
-                    Text("Task description")
+                    HStack{
+                        Text("Task description")
+                        Spacer()
+                    }
                     TextEditor(text: $description)
                         .border(.gray)
-
-                    Spacer()
+                        .frame(width: UIScreen.width-50, height: 130, alignment: .center)
                     
-                    Text("\(showMessage)")
+                    Spacer()
+                    HStack{
+                        Text("\(showMessage)")
+                        Spacer()
+                    }
                     
                     Button("submit") {
                         addTime()
                     }
                     .buttonStyle(AddButton())
                     .frame(width: UIScreen.main.bounds.width-50, height: 100, alignment: .center)
-  
+                    
                 }
+                .navigationTitle("Mihai B")
                 .padding()
             }
-            .navigationTitle("Mihai B")
+            
         }
     }
     
@@ -93,9 +100,11 @@ struct AddView: View {
                 }
             } else {
                 showMessage = "Time logged saved"
+                description = ""
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     showMessage = ""
                 }
+                
             }
         }
     }
