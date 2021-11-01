@@ -22,7 +22,11 @@ struct AddView: View {
     var body: some View {
         VStack {
             NavigationView {
+                
                 VStack{
+                    Text(Date(), style:  .date)
+                        .padding()
+                        .font(.subheadline)
                     Picker(selection: $projectSelection, label: Text("Project")) {
                         ForEach(clients, id: \.self) { client in
                             Text(client)
@@ -61,7 +65,7 @@ struct AddView: View {
                         Spacer()
                     }
                     
-                    Button("submit") {
+                    Button("SUBMIT") {
                         addTime()
                     }
                     .buttonStyle(AddButton())

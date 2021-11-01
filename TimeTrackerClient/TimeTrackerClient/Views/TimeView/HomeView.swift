@@ -17,25 +17,22 @@ struct HomeView: View {
     //loading
     typealias document = (Result<QuerySnapshot, Error>) -> Void
     var body: some View {
-        VStack{
-            HStack(){
-                Text("Today")
-                    .padding()
-                    .frame(alignment: .leading)
-                    .font(.largeTitle)
-                    .multilineTextAlignment(.leading)
+        VStack {
+            NavigationView{
+                if userData.timeslot != "" {
+                    FilledHomeView()
+                } else {
+                    Text("There is no time logged for this user")
+                }
                 Spacer()
-                Text(Date(), style:  .date)
-                    .padding()
-                    .font(.subheadline)
             }
-            Spacer()
-            if userData.timeslot != "" {
-                FilledHomeView()
-            } else {
-                EmptyHomeView()
-            }
-            Spacer()
+            .navigationBarItems(trailing: HStack{
+                Button("+"){}
+                .buttonStyle(AddBarButton())
+            })
+            .navigationTitle(
+                Text("Today")
+            )
         }.onAppear(perform: getUserTimeLogs)
     }
     

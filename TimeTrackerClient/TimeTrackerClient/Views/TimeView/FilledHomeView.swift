@@ -11,23 +11,19 @@ struct FilledHomeView: View {
     @State var showView = false
     
     var body: some View {
-        NavigationView{
             VStack{
-                List{
-                    ProjectView()
-                    ProjectView()
-                    ProjectView()
-                    ProjectView()
-                }
-                .listStyle(.grouped)
+                ProjectView()
+                    .padding()
             }
             .navigationBarItems(
                   trailing: Button(action: {}, label: {
-                     NavigationLink(destination: AddView()) {
-                          Text("")
+                      NavigationLink(destination: AddView()) {
+                          Label("+", systemImage: "plus.rectangle.fill")
+                              .foregroundColor(.cGreen)
+                              .font(.system(size: 30))
                      }
                   }))
-        }
+            .navigationTitle("Time Logged")
     }
 }
 
