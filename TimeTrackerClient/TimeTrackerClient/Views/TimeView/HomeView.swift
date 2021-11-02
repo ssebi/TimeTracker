@@ -9,31 +9,22 @@ import SwiftUI
 import FirebaseFirestore
 
 struct HomeView: View {
-    @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var userData: DataStore
-    
-    @State var hasData: Bool = false
-    
-    //loading
-    typealias document = (Result<QuerySnapshot, Error>) -> Void
+    @EnvironmentObject var dataStore: DataStore
     var body: some View {
         VStack {
-            NavigationView{
+            NavigationView {
                 FilledHomeView()
+                    .environmentObject(dataStore)
                 Spacer()
             }
             .navigationBarItems(trailing: HStack{
-                Button("+"){}
+                Button("+") {}
                 .buttonStyle(AddBarButton())
             })
             .navigationTitle(
                 Text("Today")
             )
-        }.onAppear(perform: getUserTimeLogs)
-    }
-    
-    func getUserTimeLogs() {
-        //
+        }
     }
 }
 
