@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct DatePickerView: View {
-    @State private var startDate = Date()
-    @State private var endDate = Date()
+    @EnvironmentObject var startEndDate: StartEndDate
+    
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
         let startComponents = DateComponents(year: 2021, month: 1, day: 1)
@@ -23,19 +23,24 @@ struct DatePickerView: View {
         VStack {
             DatePicker(
                 "Start",
-                selection: $startDate,
+                selection: $startEndDate.start,
                 in: dateRange,
                 displayedComponents: [.date, .hourAndMinute]
             )
             DatePicker(
                 "End",
-                selection: $endDate,
+                selection: $startEndDate.end,
                 in: dateRange,
                 displayedComponents: [.date, .hourAndMinute]
             )
             
-            let timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startDate, to: endDate)
-            Text("Total h:\(timeInterval.hour!)  - m:\(timeInterval.minute!)")
+            
+            let timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startEndDate.start, to: startEndDate.end
+            )
+            HStack{
+                Text("Total h:\(timeInterval.hour!)  - m:\(timeInterval.minute!)")
+                Spacer()
+            }
         }
     }
 }

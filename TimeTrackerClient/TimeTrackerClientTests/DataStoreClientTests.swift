@@ -14,7 +14,7 @@ class DataStoreClientTests: XCTestCase {
     
     func test_addTimeSlot_isSusccesfullOnAdd() {
         let sut = makeSUT(withUserSignedIn: true)
-        let slot = TimeSlot(id: UUID(), start: Date.now, end: Date.now + 1, description: "First dscription for log time")
+        let slot = TimeSlotDetail(start: Date.now + 1, end: Date.now + 1, description: "First dscription for log time")
         let exp = expectation(description: "Wait for firebase")
         var receivedError: Error?
         let data: [String: Any] = [
@@ -23,7 +23,7 @@ class DataStoreClientTests: XCTestCase {
             "description": slot.description,
         ]
 
-        sut.addTimeSlot(with: data, from: path) { error in
+        sut.addTimeSlot(with: data, to: path) { error in
             receivedError = error
             exp.fulfill()
         }
@@ -34,7 +34,7 @@ class DataStoreClientTests: XCTestCase {
     
     func test_addTimeSlot_isNotSusccesfullWithoutUser() {
         let sut = makeSUT(withUserSignedIn: false)
-        let slot = TimeSlot(id: UUID(), start: Date.now, end: Date.now + 1, description: "First dscription for log time")
+        let slot = TimeSlotDetail(start: Date.now, end: Date.now + 1, description: "First dscription for log time")
         let exp = expectation(description: "Wait for firebase")
         let data: [String: Any] = [
             "start": slot.start,
@@ -43,7 +43,7 @@ class DataStoreClientTests: XCTestCase {
         ]
 
         var receivedError: Error?
-        sut.addTimeSlot(with: data, from: path) { error in
+        sut.addTimeSlot(with: data, to: path) { error in
             receivedError = error
             exp.fulfill()
         }
@@ -52,43 +52,7 @@ class DataStoreClientTests: XCTestCase {
         
         XCTAssertNotNil(receivedError)
     }
-    
-    func test_getTimeSlot_isSusccesfullOnRead() {
-        let sut = makeSUT(withUserSignedIn: true)
-        let exp = expectation(description: "Wait for fir")
-        var receivedResult: Result<QuerySnapshot, Error>?
-        
-        sut.getTimeSlot(from: path) { result in
-            receivedResult = result
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 5)
-        
-        if case let .success(qerySnapshot) = receivedResult {
-            XCTAssertNotNil(qerySnapshot)
-        } else {
-            XCTFail()
-        }
-    }
-    
-    func test_getTimeSlot_isNotSusccesfullWithNoSession() {
-        let sut = makeSUT(withUserSignedIn: false)
-        let exp = expectation(description: "Wait for firebase")
-        var receivedResult: Result<QuerySnapshot, Error>?
 
-        sut.getTimeSlot(from: path) { result in
-            receivedResult = result
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1)
-        
-        if case let .failure(error) = receivedResult {
-            XCTAssertNotNil(error)
-        } else {
-            XCTFail()
-        }
-    }
-    
     // MARK: - Helper
     let email: String = "mihai24vic@gmail.com"
     let wrongPassword: String = "123452435324"

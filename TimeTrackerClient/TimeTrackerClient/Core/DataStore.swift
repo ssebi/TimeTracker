@@ -9,28 +9,25 @@ import Foundation
 import Firebase
 
 
-class DataStore {
-    func addTimeSlot(with data: [String: Any], from path: String, completion: @escaping (Error?) -> Void) {
-        Firestore.firestore().collection(path).addDocument(data: data) { error in
-            guard error != nil else {
-                //do something on success
-                completion(error)
-                return
-            }
+class DataStore: ObservableObject {
+    @Published var timeslot: String = ""
+    @Published var userTimeslots = [TimeSlot]()
+    
+    func addTimeSlot(with data: [String: Any], to path: String, completion: @escaping (Error?) -> Void) {
+        Firestore.firestore().collection(path).document().setData(data) { error in
             completion(error)
         }
     }
     
-    func getTimeSlot(from path: String, completion: @escaping (Result<QuerySnapshot, Error> ) -> Void) {
-        Firestore.firestore().collection(path).getDocuments() { (qerySnapshot, error) in
-            guard error != nil else {
-                for _ in qerySnapshot!.documents {
-                    // show document in interface
+    func fetchUsersTimeslots() {
+        let path = "userId/YErySzP9KBgMsFw64rHrimFAUBZ2/Client x/Project x/timelLoged/02-11-2021/timeslots"
+        Firestore.firestore().collection(path).addSnapshotListener { [weak self]  (querySnapshot, error) in
+            if let querySnapshot = querySnapshot{
+                self?.userTimeslots = querySnapshot.documents.compactMap { document in
+                        return try? document.data(as: TimeSlot.self)
                 }
-                completion(.success(qerySnapshot!))
-                return
             }
-            completion(.failure(error!))
         }
     }
 }
+
