@@ -38,6 +38,7 @@
 		54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5091271563FA00A9700A /* FirebaseFirestore */; };
 		54DB5094271563FA00A9700A /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5093271563FA00A9700A /* FirebaseFunctions */; };
 		54DB509D2715A2FA00A9700A /* (null) in Sources */ = {isa = PBXBuildFile; };
+		54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */; };
 		C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */; };
 		C64C428D271464B300CFBDEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428C271464B300CFBDEF /* ContentView.swift */; };
 		C64C428F271464B600CFBDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C428E271464B600CFBDEF /* Assets.xcassets */; };
@@ -96,6 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54DB5094271563FA00A9700A /* FirebaseFunctions in Frameworks */,
+				54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				54DB5090271563FA00A9700A /* FirebaseAuth in Frameworks */,
 				54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */,
 			);
@@ -159,6 +161,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		54FB1C8427306B060099BE81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C64C427E271464B300CFBDEF = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +175,7 @@
 				C64C4289271464B300CFBDEF /* TimeTrackerClient */,
 				54D2FDD7271747F100C66998 /* TimeTrackerClientTests */,
 				C64C4288271464B300CFBDEF /* Products */,
+				54FB1C8427306B060099BE81 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,6 +249,7 @@
 				54DB508F271563FA00A9700A /* FirebaseAuth */,
 				54DB5091271563FA00A9700A /* FirebaseFirestore */,
 				54DB5093271563FA00A9700A /* FirebaseFunctions */,
+				54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */,
 			);
 			productName = TimeTrackerClient;
 			productReference = C64C4287271464B300CFBDEF /* TimeTrackerClient.app */;
@@ -652,6 +663,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFunctions;
+		};
+		54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

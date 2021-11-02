@@ -12,11 +12,16 @@ struct ProjectView: View {
     @EnvironmentObject var userData: DataStore
     
     var body: some View {
-        VStack {
-            List(userData.allTimeSlots){ timeSlot in
-                Text(timeSlot.timesSlots?.description as? String ?? "")
+        List {
+            ForEach(userData.userTimeslots, id: \.id){ timeSlot in
+                VStack(alignment: .leading, spacing: 2){
+                    Text("Time period: \(timeSlot.total)")
+                    Text("Task description: \(timeSlot.timeSlots.description)")
+                    Text("Start time: \(timeSlot.timeSlots.start)")
+                    Text("End time: \(timeSlot.timeSlots.end)")
+                }.padding()
             }
-        }.onAppear(perform: userData.get)
+        }.listStyle(InsetListStyle())
     }
 }
 

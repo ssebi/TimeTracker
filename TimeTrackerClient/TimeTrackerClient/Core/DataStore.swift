@@ -11,7 +11,7 @@ import Firebase
 
 class DataStore: ObservableObject {
     @Published var timeslot: String = ""
-    @Published var allTimeSlots = [TimeSlot]()
+    @Published var userTimeslots = [TimeSlot]()
     
     func addTimeSlot(with data: [String: Any], to path: String, completion: @escaping (Error?) -> Void) {
         Firestore.firestore().collection(path).document().setData(data) { error in
@@ -55,22 +55,19 @@ class DataStore: ObservableObject {
         }
     }
     
-    func get() {
+    func fetchUsersTimeslots() {
         let path = "userId/YErySzP9KBgMsFw64rHrimFAUBZ2/Client x/Project x/timelLoged/19-01-2021/timeslots"
         Firestore.firestore().collection(path).addSnapshotListener { (querySnapshot, error) in
-            guard let documents = querySnapshot?.documents else {
-                print("No documents")
-                return
-            }
-            
-            self.allTimeSlots = documents.map { queryDocumentSnapshot -> TimeSlot in
-                let data = queryDocumentSnapshot.data()
-                let id = queryDocumentSnapshot.documentID
-                let timeSlots = data["timeSlots"]
-                let total = data["total"]
-                
-                let timeSlotDetail = TimeSlotDetail(end: "ssss", start: "xxxx", description: "desc")
-                return TimeSlot(id: id, timeSlots: timeSlotDetail, total: "")
+            if let querySnapshot = querySnapshot{
+                self.userTimeslots = querySnapshot.documents.compactMap { document in
+                    do{
+                        return try document.data(as: TimeSlot.self)
+                    }
+                    catch{
+                        //log error
+                    }
+                    return nil
+                }
             }
         }
     }
@@ -90,8 +87,7 @@ class DataStore: ObservableObject {
     }
     
     init(){
-        fetchData()
-        //get()
+        fetchUsersTimeslots()
     }
     
 }
