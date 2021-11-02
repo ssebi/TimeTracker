@@ -4,7 +4,7 @@
 The big picture is that clients should be able to log their work hours and managers should be able to see those hours and generate invoices.
 
 
-Initial wireframes
+# Initial wireframes
 
 
 <br/>
@@ -24,3 +24,10 @@ Manager time tab
 <br/>
 
 <img src="./doc/manager-time-tab.png"/>
+
+
+# Models
+
+<img src="./doc/Models.jpg"/>
+
+If you want to update the models use the `Models.drawio` file located under the `/doc` folder so that everyone can see the changes

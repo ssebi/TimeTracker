@@ -7,28 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		54DB508D27155F9C00A9700A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54DB508C27155F9C00A9700A /* GoogleService-Info.plist */; };
+		545CCEAB27200FE500811CE3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEAA27200FE500811CE3 /* Utils.swift */; };
+		545CCEAC27200FE500811CE3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEAA27200FE500811CE3 /* Utils.swift */; };
+		545CCEC127229B1C00811CE3 /* TimeSlotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC027229B1C00811CE3 /* TimeSlotModel.swift */; };
+		545CCEC227229B1C00811CE3 /* TimeSlotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC027229B1C00811CE3 /* TimeSlotModel.swift */; };
+		545CCEC427229C5A00811CE3 /* WorkLogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC327229C5A00811CE3 /* WorkLogModel.swift */; };
+		545CCEC527229C5A00811CE3 /* WorkLogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC327229C5A00811CE3 /* WorkLogModel.swift */; };
+		545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC627229D1E00811CE3 /* ProjectModel.swift */; };
+		545CCEC827229D1E00811CE3 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC627229D1E00811CE3 /* ProjectModel.swift */; };
+		545CCECA27229DF800811CE3 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC927229DF800811CE3 /* ClientModel.swift */; };
+		545CCECB27229DF800811CE3 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC927229DF800811CE3 /* ClientModel.swift */; };
+		545CCED82723053E00811CE3 /* DataStoreClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED72723053E00811CE3 /* DataStoreClientTests.swift */; };
+		545CCEDA2723163300811CE3 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED92723163300811CE3 /* DataStore.swift */; };
+		545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDB2726EB0600811CE3 /* AddView.swift */; };
+		545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDE2727274D00811CE3 /* DatePickerView.swift */; };
+		54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB62717234F00C66998 /* GoogleService-Info.plist */; };
+		54D2FDBC2717354800C66998 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBA2717354800C66998 /* Extensions.swift */; };
+		54D2FDBD2717354800C66998 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBB2717354800C66998 /* LoginView.swift */; };
+		54D2FDD9271747F100C66998 /* SessionStoreClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDD8271747F100C66998 /* SessionStoreClientTests.swift */; };
+		54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8EEA92717502900D867F3 /* SessionStore.swift */; };
+		54D8EEAB2717502900D867F3 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8EEA92717502900D867F3 /* SessionStore.swift */; };
+		54D8EEAD271887EF00D867F3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8EEAC271887EF00D867F3 /* UserModel.swift */; };
+		54D8EEAE271887EF00D867F3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8EEAC271887EF00D867F3 /* UserModel.swift */; };
+		54D8EEB3271D78F300D867F3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBA2717354800C66998 /* Extensions.swift */; };
 		54DB5090271563FA00A9700A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB508F271563FA00A9700A /* FirebaseAuth */; };
 		54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5091271563FA00A9700A /* FirebaseFirestore */; };
 		54DB5094271563FA00A9700A /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5093271563FA00A9700A /* FirebaseFunctions */; };
+		54DB509D2715A2FA00A9700A /* (null) in Sources */ = {isa = PBXBuildFile; };
+		54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */; };
 		C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */; };
 		C64C428D271464B300CFBDEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428C271464B300CFBDEF /* ContentView.swift */; };
 		C64C428F271464B600CFBDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C428E271464B600CFBDEF /* Assets.xcassets */; };
 		C64C4292271464B600CFBDEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C4291271464B600CFBDEF /* Preview Assets.xcassets */; };
-		C64C429C271464B600CFBDEF /* TimeTrackerClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C429B271464B600CFBDEF /* TimeTrackerClientTests.swift */; };
-		C64C42A6271464B700CFBDEF /* TimeTrackerClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C42A5271464B700CFBDEF /* TimeTrackerClientUITests.swift */; };
-		C64C42A8271464B700CFBDEF /* TimeTrackerClientUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C42A7271464B700CFBDEF /* TimeTrackerClientUITestsLaunchTests.swift */; };
+		C6ACF57D27317986006D2C43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57927317986006D2C43 /* HomeView.swift */; };
+		C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57A27317986006D2C43 /* ProjectView.swift */; };
+		C6ACF57F27317986006D2C43 /* FilledHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57B27317986006D2C43 /* FilledHomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C64C4298271464B600CFBDEF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C64C427F271464B300CFBDEF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C64C4286271464B300CFBDEF;
-			remoteInfo = TimeTrackerClient;
-		};
-		C64C42A2271464B700CFBDEF /* PBXContainerItemProxy */ = {
+		54D2FDDA271747F100C66998 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C64C427F271464B300CFBDEF /* Project object */;
 			proxyType = 1;
@@ -38,54 +55,114 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		54DB508C27155F9C00A9700A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		545CCEAA27200FE500811CE3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		545CCEC027229B1C00811CE3 /* TimeSlotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotModel.swift; sourceTree = "<group>"; };
+		545CCEC327229C5A00811CE3 /* WorkLogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkLogModel.swift; sourceTree = "<group>"; };
+		545CCEC627229D1E00811CE3 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		545CCEC927229DF800811CE3 /* ClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModel.swift; sourceTree = "<group>"; };
+		545CCED72723053E00811CE3 /* DataStoreClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreClientTests.swift; sourceTree = "<group>"; };
+		545CCED92723163300811CE3 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		545CCEDB2726EB0600811CE3 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		545CCEDE2727274D00811CE3 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		54D2FDB62717234F00C66998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		54D2FDBA2717354800C66998 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = TimeTrackerClient/Core/Extensions.swift; sourceTree = SOURCE_ROOT; };
+		54D2FDBB2717354800C66998 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = TimeTrackerClient/Views/LoginView.swift; sourceTree = SOURCE_ROOT; };
+		54D2FDD6271747F100C66998 /* TimeTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54D2FDD8271747F100C66998 /* SessionStoreClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStoreClientTests.swift; sourceTree = "<group>"; };
+		54D8EEA92717502900D867F3 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		54D8EEAC271887EF00D867F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C64C4287271464B300CFBDEF /* TimeTrackerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientApp.swift; sourceTree = "<group>"; };
 		C64C428C271464B300CFBDEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C64C428E271464B600CFBDEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C64C4291271464B600CFBDEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C64C4297271464B600CFBDEF /* TimeTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C64C429B271464B600CFBDEF /* TimeTrackerClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientTests.swift; sourceTree = "<group>"; };
-		C64C42A1271464B700CFBDEF /* TimeTrackerClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C64C42A5271464B700CFBDEF /* TimeTrackerClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientUITests.swift; sourceTree = "<group>"; };
-		C64C42A7271464B700CFBDEF /* TimeTrackerClientUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C6ACF57927317986006D2C43 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C6ACF57A27317986006D2C43 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
+		C6ACF57B27317986006D2C43 /* FilledHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilledHomeView.swift; sourceTree = "<group>"; };
+		C6B6AFCE272A892C00B5CFBC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		54D2FDD3271747F100C66998 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C64C4284271464B300CFBDEF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				54DB5094271563FA00A9700A /* FirebaseFunctions in Frameworks */,
+				54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				54DB5090271563FA00A9700A /* FirebaseAuth in Frameworks */,
 				54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C64C4294271464B600CFBDEF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C64C429E271464B700CFBDEF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		543DD550272AB3D700D426FC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C6ACF57827317986006D2C43 /* TimeView */,
+				C64C428C271464B300CFBDEF /* ContentView.swift */,
+				545CCEDE2727274D00811CE3 /* DatePickerView.swift */,
+				545CCEDB2726EB0600811CE3 /* AddView.swift */,
+				54D2FDBB2717354800C66998 /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		54D2FDD7271747F100C66998 /* TimeTrackerClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				54D2FDD8271747F100C66998 /* SessionStoreClientTests.swift */,
+				545CCED72723053E00811CE3 /* DataStoreClientTests.swift */,
+			);
+			path = TimeTrackerClientTests;
+			sourceTree = "<group>";
+		};
+		54D8EEA527174EC900D867F3 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				54D8EEA92717502900D867F3 /* SessionStore.swift */,
+				545CCED92723163300811CE3 /* DataStore.swift */,
+				54D2FDBA2717354800C66998 /* Extensions.swift */,
+				545CCEAA27200FE500811CE3 /* Utils.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		54D8EEAF271887FA00D867F3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				54D8EEAC271887EF00D867F3 /* UserModel.swift */,
+				545CCEC027229B1C00811CE3 /* TimeSlotModel.swift */,
+				545CCEC327229C5A00811CE3 /* WorkLogModel.swift */,
+				545CCEC627229D1E00811CE3 /* ProjectModel.swift */,
+				545CCEC927229DF800811CE3 /* ClientModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		54FB1C8427306B060099BE81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C64C427E271464B300CFBDEF = {
 			isa = PBXGroup;
 			children = (
+				54D2FDB62717234F00C66998 /* GoogleService-Info.plist */,
 				C64C4289271464B300CFBDEF /* TimeTrackerClient */,
-				C64C429A271464B600CFBDEF /* TimeTrackerClientTests */,
-				C64C42A4271464B700CFBDEF /* TimeTrackerClientUITests */,
+				54D2FDD7271747F100C66998 /* TimeTrackerClientTests */,
 				C64C4288271464B300CFBDEF /* Products */,
+				54FB1C8427306B060099BE81 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,8 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				C64C4287271464B300CFBDEF /* TimeTrackerClient.app */,
-				C64C4297271464B600CFBDEF /* TimeTrackerClientTests.xctest */,
-				C64C42A1271464B700CFBDEF /* TimeTrackerClientUITests.xctest */,
+				54D2FDD6271747F100C66998 /* TimeTrackerClientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,9 +178,11 @@
 		C64C4289271464B300CFBDEF /* TimeTrackerClient */ = {
 			isa = PBXGroup;
 			children = (
-				54DB508C27155F9C00A9700A /* GoogleService-Info.plist */,
+				C6B6AFCE272A892C00B5CFBC /* Info.plist */,
+				543DD550272AB3D700D426FC /* Views */,
+				54D8EEAF271887FA00D867F3 /* Models */,
+				54D8EEA527174EC900D867F3 /* Core */,
 				C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */,
-				C64C428C271464B300CFBDEF /* ContentView.swift */,
 				C64C428E271464B600CFBDEF /* Assets.xcassets */,
 				C64C4290271464B600CFBDEF /* Preview Content */,
 			);
@@ -119,26 +197,37 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C64C429A271464B600CFBDEF /* TimeTrackerClientTests */ = {
+		C6ACF57827317986006D2C43 /* TimeView */ = {
 			isa = PBXGroup;
 			children = (
-				C64C429B271464B600CFBDEF /* TimeTrackerClientTests.swift */,
+				C6ACF57927317986006D2C43 /* HomeView.swift */,
+				C6ACF57A27317986006D2C43 /* ProjectView.swift */,
+				C6ACF57B27317986006D2C43 /* FilledHomeView.swift */,
 			);
-			path = TimeTrackerClientTests;
-			sourceTree = "<group>";
-		};
-		C64C42A4271464B700CFBDEF /* TimeTrackerClientUITests */ = {
-			isa = PBXGroup;
-			children = (
-				C64C42A5271464B700CFBDEF /* TimeTrackerClientUITests.swift */,
-				C64C42A7271464B700CFBDEF /* TimeTrackerClientUITestsLaunchTests.swift */,
-			);
-			path = TimeTrackerClientUITests;
+			path = TimeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		54D2FDD5271747F100C66998 /* TimeTrackerClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54D2FDDC271747F100C66998 /* Build configuration list for PBXNativeTarget "TimeTrackerClientTests" */;
+			buildPhases = (
+				54D2FDD2271747F100C66998 /* Sources */,
+				54D2FDD3271747F100C66998 /* Frameworks */,
+				54D2FDD4271747F100C66998 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54D2FDDB271747F100C66998 /* PBXTargetDependency */,
+			);
+			name = TimeTrackerClientTests;
+			productName = TimeTrackerClientTests;
+			productReference = 54D2FDD6271747F100C66998 /* TimeTrackerClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C64C4286271464B300CFBDEF /* TimeTrackerClient */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C64C42AB271464B700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerClient" */;
@@ -156,46 +245,11 @@
 				54DB508F271563FA00A9700A /* FirebaseAuth */,
 				54DB5091271563FA00A9700A /* FirebaseFirestore */,
 				54DB5093271563FA00A9700A /* FirebaseFunctions */,
+				54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */,
 			);
 			productName = TimeTrackerClient;
 			productReference = C64C4287271464B300CFBDEF /* TimeTrackerClient.app */;
 			productType = "com.apple.product-type.application";
-		};
-		C64C4296271464B600CFBDEF /* TimeTrackerClientTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C64C42AE271464B700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerClientTests" */;
-			buildPhases = (
-				C64C4293271464B600CFBDEF /* Sources */,
-				C64C4294271464B600CFBDEF /* Frameworks */,
-				C64C4295271464B600CFBDEF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C64C4299271464B600CFBDEF /* PBXTargetDependency */,
-			);
-			name = TimeTrackerClientTests;
-			productName = TimeTrackerClientTests;
-			productReference = C64C4297271464B600CFBDEF /* TimeTrackerClientTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		C64C42A0271464B700CFBDEF /* TimeTrackerClientUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C64C42B1271464B700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerClientUITests" */;
-			buildPhases = (
-				C64C429D271464B700CFBDEF /* Sources */,
-				C64C429E271464B700CFBDEF /* Frameworks */,
-				C64C429F271464B700CFBDEF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C64C42A3271464B700CFBDEF /* PBXTargetDependency */,
-			);
-			name = TimeTrackerClientUITests;
-			productName = TimeTrackerClientUITests;
-			productReference = C64C42A1271464B700CFBDEF /* TimeTrackerClientUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -207,16 +261,12 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					54D2FDD5271747F100C66998 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = C64C4286271464B300CFBDEF;
+					};
 					C64C4286271464B300CFBDEF = {
 						CreatedOnToolsVersion = 13.0;
-					};
-					C64C4296271464B600CFBDEF = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = C64C4286271464B300CFBDEF;
-					};
-					C64C42A0271464B700CFBDEF = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = C64C4286271464B300CFBDEF;
 					};
 				};
 			};
@@ -237,82 +287,135 @@
 			projectRoot = "";
 			targets = (
 				C64C4286271464B300CFBDEF /* TimeTrackerClient */,
-				C64C4296271464B600CFBDEF /* TimeTrackerClientTests */,
-				C64C42A0271464B700CFBDEF /* TimeTrackerClientUITests */,
+				54D2FDD5271747F100C66998 /* TimeTrackerClientTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		54D2FDD4271747F100C66998 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C64C4285271464B300CFBDEF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C64C4292271464B600CFBDEF /* Preview Assets.xcassets in Resources */,
 				C64C428F271464B600CFBDEF /* Assets.xcassets in Resources */,
-				54DB508D27155F9C00A9700A /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C64C4295271464B600CFBDEF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C64C429F271464B700CFBDEF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		54D2FDD2271747F100C66998 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				545CCEAC27200FE500811CE3 /* Utils.swift in Sources */,
+				54D8EEAB2717502900D867F3 /* SessionStore.swift in Sources */,
+				54D8EEAE271887EF00D867F3 /* UserModel.swift in Sources */,
+				54D2FDD9271747F100C66998 /* SessionStoreClientTests.swift in Sources */,
+				545CCED82723053E00811CE3 /* DataStoreClientTests.swift in Sources */,
+				545CCEC527229C5A00811CE3 /* WorkLogModel.swift in Sources */,
+				545CCEC827229D1E00811CE3 /* ProjectModel.swift in Sources */,
+				545CCEC227229B1C00811CE3 /* TimeSlotModel.swift in Sources */,
+				54D8EEB3271D78F300D867F3 /* Extensions.swift in Sources */,
+				545CCECB27229DF800811CE3 /* ClientModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C64C4283271464B300CFBDEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */,
+				545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */,
+				54DB509D2715A2FA00A9700A /* (null) in Sources */,
+				54D8EEAD271887EF00D867F3 /* UserModel.swift in Sources */,
+				C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */,
+				545CCEDA2723163300811CE3 /* DataStore.swift in Sources */,
+				545CCEAB27200FE500811CE3 /* Utils.swift in Sources */,
+				545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */,
+				545CCECA27229DF800811CE3 /* ClientModel.swift in Sources */,
+				C6ACF57F27317986006D2C43 /* FilledHomeView.swift in Sources */,
 				C64C428D271464B300CFBDEF /* ContentView.swift in Sources */,
+				54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */,
+				545CCEC127229B1C00811CE3 /* TimeSlotModel.swift in Sources */,
 				C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C64C4293271464B600CFBDEF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C64C429C271464B600CFBDEF /* TimeTrackerClientTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C64C429D271464B700CFBDEF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C64C42A6271464B700CFBDEF /* TimeTrackerClientUITests.swift in Sources */,
-				C64C42A8271464B700CFBDEF /* TimeTrackerClientUITestsLaunchTests.swift in Sources */,
+				54D2FDBD2717354800C66998 /* LoginView.swift in Sources */,
+				C6ACF57D27317986006D2C43 /* HomeView.swift in Sources */,
+				545CCEC427229C5A00811CE3 /* WorkLogModel.swift in Sources */,
+				54D2FDBC2717354800C66998 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C64C4299271464B600CFBDEF /* PBXTargetDependency */ = {
+		54D2FDDB271747F100C66998 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C64C4286271464B300CFBDEF /* TimeTrackerClient */;
-			targetProxy = C64C4298271464B600CFBDEF /* PBXContainerItemProxy */;
-		};
-		C64C42A3271464B700CFBDEF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C64C4286271464B300CFBDEF /* TimeTrackerClient */;
-			targetProxy = C64C42A2271464B700CFBDEF /* PBXContainerItemProxy */;
+			targetProxy = 54D2FDDA271747F100C66998 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		54D2FDDD271747F100C66998 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LC7N3KMTDD;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeTrackerClient.app/TimeTrackerClient";
+			};
+			name = Debug;
+		};
+		54D2FDDE271747F100C66998 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LC7N3KMTDD;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeTrackerClient.app/TimeTrackerClient";
+			};
+			name = Release;
+		};
 		C64C42A9271464B700CFBDEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -434,12 +537,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeTrackerClient/Preview Content\"";
-				DEVELOPMENT_TEAM = 63DF6735WS;
+				DEVELOPMENT_TEAM = LC7N3KMTDD;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TimeTrackerClient/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -452,7 +557,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClient;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -465,12 +570,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeTrackerClient/Preview Content\"";
-				DEVELOPMENT_TEAM = 63DF6735WS;
+				DEVELOPMENT_TEAM = LC7N3KMTDD;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TimeTrackerClient/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -483,113 +591,27 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClient;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "AppStore TimeTrackerClient Provisioning";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
-		C64C42AF271464B700CFBDEF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 63DF6735WS;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClientTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeTrackerClient.app/TimeTrackerClient";
-			};
-			name = Debug;
-		};
-		C64C42B0271464B700CFBDEF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 63DF6735WS;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClientTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeTrackerClient.app/TimeTrackerClient";
-			};
-			name = Release;
-		};
-		C64C42B2271464B700CFBDEF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 63DF6735WS;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClientUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_TARGET_NAME = TimeTrackerClient;
-			};
-			name = Debug;
-		};
-		C64C42B3271464B700CFBDEF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 63DF6735WS;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient.TimeTrackerClientUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_TARGET_NAME = TimeTrackerClient;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		54D2FDDC271747F100C66998 /* Build configuration list for PBXNativeTarget "TimeTrackerClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54D2FDDD271747F100C66998 /* Debug */,
+				54D2FDDE271747F100C66998 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C64C4282271464B300CFBDEF /* Build configuration list for PBXProject "TimeTrackerClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -604,24 +626,6 @@
 			buildConfigurations = (
 				C64C42AC271464B700CFBDEF /* Debug */,
 				C64C42AD271464B700CFBDEF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C64C42AE271464B700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerClientTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C64C42AF271464B700CFBDEF /* Debug */,
-				C64C42B0271464B700CFBDEF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C64C42B1271464B700CFBDEF /* Build configuration list for PBXNativeTarget "TimeTrackerClientUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C64C42B2271464B700CFBDEF /* Debug */,
-				C64C42B3271464B700CFBDEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -654,6 +658,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFunctions;
+		};
+		54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

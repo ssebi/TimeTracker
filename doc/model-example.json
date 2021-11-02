@@ -1,0 +1,62 @@
+{
+    "email": "blabal@gmail.com",
+    "username": "username1",
+    "clients": [
+        {
+            "name": "Client1",
+            "projects": [
+                {
+                    "name": "Project1",
+                    "timeLogged": [
+                        {
+                            "date": "20-10-2021T15:22:00Z",
+                            "timeSlots": [
+                                {
+                                    "start": "20-10-2021T12:00:00Z",
+                                    "end": "20-10-2021T15:00:00Z",
+                                    "description": "write tests"
+                                },
+                                {
+                                    "start": "20-10-2021T15:00:00Z",
+                                    "end": "20-10-2021T18:00:00Z",
+                                    "description": "write UI tests"
+                                }
+                            ],
+                            "total": 6
+                        }
+                    ],
+                    "totalWork": 6
+                }
+            ],
+            "totalWork": 6
+        },
+        {
+            "name": "Client2",
+            "projects": [
+                {
+                    "name": "Project2",
+                    "timeLogged": [
+                        {
+                            "date": "21-10-2021T15:22:00Z",
+                            "timeSlots": [
+                                {
+                                    "start": "21-10-2021T12:00:00Z",
+                                    "end": "21-10-2021T15:00:00Z",
+                                    "description": "design model objects"
+                                },
+                                {
+                                    "start": "21-10-2021T15:00:00Z",
+                                    "end": "21-10-2021T18:00:00Z",
+                                    "description": "implement UI for login screen"
+                                }
+                            ],
+                            "total": 6
+                        }
+                    ],
+                    "totalWork": 6
+                }
+            ],
+            "totalWork": 6
+        }
+    ]
+}
