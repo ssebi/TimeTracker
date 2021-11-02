@@ -52,43 +52,7 @@ class DataStoreClientTests: XCTestCase {
         
         XCTAssertNotNil(receivedError)
     }
-    
-    func test_getTimeSlot_isSusccesfullOnRead() {
-        let sut = makeSUT(withUserSignedIn: true)
-        let exp = expectation(description: "Wait for fir")
-        var receivedResult: Result<QuerySnapshot, Error>?
-        
-        sut.listenForTimeSlot(from: path) { result in
-            receivedResult = result
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 5)
-        
-        if case let .success(qerySnapshot) = receivedResult {
-            XCTAssertNotNil(qerySnapshot)
-        } else {
-            XCTFail()
-        }
-    }
-    
-    func test_getTimeSlot_isNotSusccesfullWithNoSession() {
-        let sut = makeSUT(withUserSignedIn: false)
-        let exp = expectation(description: "Wait for firebase")
-        var receivedResult: Result<QuerySnapshot, Error>?
 
-        sut.listenForTimeSlot(from: path) { result in
-            receivedResult = result
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1)
-        
-        if case let .failure(error) = receivedResult {
-            XCTAssertNotNil(error)
-        } else {
-            XCTFail()
-        }
-    }
-    
     // MARK: - Helper
     let email: String = "mihai24vic@gmail.com"
     let wrongPassword: String = "123452435324"
