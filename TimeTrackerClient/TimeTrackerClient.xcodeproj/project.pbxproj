@@ -42,7 +42,6 @@
 		C6ACF57D27317986006D2C43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57927317986006D2C43 /* HomeView.swift */; };
 		C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57A27317986006D2C43 /* ProjectView.swift */; };
 		C6ACF57F27317986006D2C43 /* FilledHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57B27317986006D2C43 /* FilledHomeView.swift */; };
-		C6ACF58027317986006D2C43 /* EmptyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57C27317986006D2C43 /* EmptyHomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +79,6 @@
 		C6ACF57927317986006D2C43 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C6ACF57A27317986006D2C43 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		C6ACF57B27317986006D2C43 /* FilledHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilledHomeView.swift; sourceTree = "<group>"; };
-		C6ACF57C27317986006D2C43 /* EmptyHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyHomeView.swift; sourceTree = "<group>"; };
 		C6B6AFCE272A892C00B5CFBC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,7 +203,6 @@
 				C6ACF57927317986006D2C43 /* HomeView.swift */,
 				C6ACF57A27317986006D2C43 /* ProjectView.swift */,
 				C6ACF57B27317986006D2C43 /* FilledHomeView.swift */,
-				C6ACF57C27317986006D2C43 /* EmptyHomeView.swift */,
 			);
 			path = TimeView;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */,
-				C6ACF58027317986006D2C43 /* EmptyHomeView.swift in Sources */,
 				545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */,
 				54DB509D2715A2FA00A9700A /* (null) in Sources */,
 				54D8EEAD271887EF00D867F3 /* UserModel.swift in Sources */,

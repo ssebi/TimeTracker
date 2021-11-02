@@ -14,11 +14,13 @@ struct ProjectView: View {
     var body: some View {
         List {
             ForEach(userData.userTimeslots, id: \.id){ timeSlot in
-                VStack(alignment: .leading, spacing: 2){
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Project name: Project x")
+                    Text("Date: \(timeSlot.timeSlots.start.formatted(date: .omitted, time: .standard))")
+                    Text("Start time: \(timeSlot.timeSlots.start.formatted(date: .omitted, time: .standard))")
+                    Text("End time: \(timeSlot.timeSlots.end.formatted(date: .omitted, time: .standard))")
                     Text("Time period: \(timeSlot.total)")
                     Text("Task description: \(timeSlot.timeSlots.description)")
-                    Text("Start time: \(timeSlot.timeSlots.start)")
-                    Text("End time: \(timeSlot.timeSlots.end)")
                 }.padding()
             }
         }.listStyle(InsetListStyle())

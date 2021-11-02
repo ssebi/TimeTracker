@@ -9,8 +9,6 @@ import SwiftUI
 
 struct DatePickerView: View {
     @EnvironmentObject var startEndDate: StartEndDate
-    @State private var startDate = Date()
-    @State private var endDate = Date()
     
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
@@ -31,13 +29,14 @@ struct DatePickerView: View {
             )
             DatePicker(
                 "End",
-                selection:  $startEndDate.end,
+                selection: $startEndDate.end,
                 in: dateRange,
                 displayedComponents: [.date, .hourAndMinute]
             )
             
             
-            let timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startEndDate.start, to: startEndDate.end)
+            let timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startEndDate.start, to: startEndDate.end
+            )
             HStack{
                 Text("Total h:\(timeInterval.hour!)  - m:\(timeInterval.minute!)")
                 Spacer()
