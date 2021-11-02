@@ -10,6 +10,8 @@ import SwiftUI
 struct AddView: View {
     
     @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var userData: DataStore
+    @EnvironmentObject var startEndDate: StartEndDate
     
     let clients = ["Client 1","Cient 2","Client 3","Client 4"]
     let projects = ["Project 1","Project 2","Project 3","Project 4"]
@@ -23,7 +25,7 @@ struct AddView: View {
         VStack {
             NavigationView {
                 
-                VStack{
+                VStack {
                     Text(Date(), style:  .date)
                         .padding()
                         .font(.subheadline)
@@ -48,9 +50,10 @@ struct AddView: View {
                     Spacer()
                     
                     DatePickerView()
+                        .environmentObject(startEndDate)
                         .padding()
                     
-                    HStack{
+                    HStack {
                         Text("Task description")
                             .padding()
                         Spacer()
@@ -60,7 +63,7 @@ struct AddView: View {
                         .frame(width: UIScreen.width-55, height: 130, alignment: .center)
                     
                     Spacer()
-                    HStack{
+                    HStack {
                         Text("\(showMessage)")
                         Spacer()
                     }
@@ -83,16 +86,19 @@ struct AddView: View {
         let user = session.session
         let userId = user?.uid ?? ""
         var path = ""
-        if user != nil {
-            path = "userId/\(userId)/\(clientSelection)/\(projectSelection)/timelLoged/19-01-2021/timeslots"
-        }
+        let today = Date.now
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "dd-MM-yyyy"
+        let date = dateFormater.string(from: today)
         
-        print("time log saved")
+        if user != nil {
+            path = "userId/\(userId)/\(clientSelection)/\(projectSelection)/timelLoged/\(date)/timeslots"
+        }
         
         let timeslot: [String: Any] = [
             "timeSlots": [
-                "start": "21-10-2022T12:11:00Z",
-                "end": "21-10-2021T15:10:00Z",
+                "start": startEndDate.start,
+                "end": startEndDate.start,
                 "description": description ],
             "total": 5
         ]

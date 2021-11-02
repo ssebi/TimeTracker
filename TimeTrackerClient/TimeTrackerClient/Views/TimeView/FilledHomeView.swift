@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FilledHomeView: View {
     @State var showView = false
+    let startEndDate = StartEndDate(start: Date.now, end: Date.now)
     @EnvironmentObject var session: SessionStore
     
     var body: some View {
@@ -24,7 +25,10 @@ struct FilledHomeView: View {
             }),
             trailing:
                 Button(action: {}, label: {
-                    NavigationLink(destination: AddView()) {
+                    NavigationLink(destination:
+                                    AddView()
+                                    .environmentObject(startEndDate)
+                    ) {
                         Label("+", systemImage: "plus.rectangle.fill")
                             .foregroundColor(.cGreen)
                             .font(.system(size: 30))
