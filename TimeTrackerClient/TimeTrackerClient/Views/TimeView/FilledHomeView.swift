@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FilledHomeView: View {
+    @EnvironmentObject var dataStore: DataStore
     @State var showView = false
     let startEndDate = StartEndDate(start: Date.now, end: Date.now)
     @EnvironmentObject var session: SessionStore
@@ -36,6 +37,7 @@ struct FilledHomeView: View {
                 })
         )
         .navigationTitle("Time Logged")
+        .onAppear(perform: dataStore.fetchUsersTimeslots)
     }
 }
 
