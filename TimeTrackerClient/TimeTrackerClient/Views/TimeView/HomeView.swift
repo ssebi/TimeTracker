@@ -35,8 +35,7 @@ struct HomeView: View {
 							label: {
 								NavigationLink(
 									destination:
-										AddView()
-										.environmentObject(startEndDate)
+										AddView(startEndDate: startEndDate)
 								) {
 									Label("+", systemImage: "plus.rectangle.fill")
 										.foregroundColor(.cGreen)

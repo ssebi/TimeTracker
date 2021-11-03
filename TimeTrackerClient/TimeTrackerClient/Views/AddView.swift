@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct AddView: View {
-    
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var userData: DataStore
-    @EnvironmentObject var startEndDate: StartEndDate
+
+	@ObservedObject var startEndDate: StartEndDate
     
-    let clients = ["Client x", "Client 1", "Cient 2", "Client 3", "Client 4"]
-    let projects = ["Project x", "Project 1", "Project 2", "Project 3", "Project 4"]
     @State private var clientSelection = "Client x"
     @State private var projectSelection = "Project x"
     @State private var description = ""
     @State private var showMessage = ""
+	let clients = ["Client x", "Client 1", "Cient 2", "Client 3", "Client 4"]
+	let projects = ["Project x", "Project 1", "Project 2", "Project 3", "Project 4"]
     var dataStore = DataStore()
     
     var body: some View {
@@ -115,6 +115,6 @@ struct AddView: View {
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
-        AddView()
+        AddView(startEndDate: StartEndDate(start: Date(), end: Date()))
     }
 }
