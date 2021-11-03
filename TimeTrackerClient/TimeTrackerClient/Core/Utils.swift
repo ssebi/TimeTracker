@@ -20,30 +20,6 @@ struct AddButton: ButtonStyle {
     }
 }
 
-struct AddBarButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding()
-            .frame(width: 50, height: 25, alignment: .center)
-            .background(Color.cGreen)
-            .foregroundColor(.white)
-            .cornerRadius(5)
-            .font(.largeTitle .bold())
-    }
-}
-
-struct SubmitButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding()
-            .frame(width: 100, height: 30, alignment: .center)
-            .background(Color.cGreen)
-            .foregroundColor(.white)
-            .cornerRadius(5)
-            .font(.largeTitle .bold())
-    }
-}
-
 extension UIScreen{
    static let width = UIScreen.main.bounds.size.width
    static let height = UIScreen.main.bounds.size.height
