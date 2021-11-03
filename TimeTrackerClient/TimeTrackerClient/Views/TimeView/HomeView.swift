@@ -12,8 +12,6 @@ struct HomeView: View {
 	@EnvironmentObject var dataStore: DataStore
 	@EnvironmentObject var session: SessionStore
 
-	private let startEndDate = StartEndDate(start: Date.now, end: Date.now)
-
 	var body: some View {
 		NavigationView {
 			ProjectView()
@@ -35,7 +33,7 @@ struct HomeView: View {
 							label: {
 								NavigationLink(
 									destination:
-										AddView(startEndDate: startEndDate)
+										AddView()
 								) {
 									Label("+", systemImage: "plus.rectangle.fill")
 										.foregroundColor(.cGreen)

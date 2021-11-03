@@ -11,15 +11,15 @@ struct AddView: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var userData: DataStore
 
-	@ObservedObject var startEndDate: StartEndDate
-    
     @State private var clientSelection = "Client x"
     @State private var projectSelection = "Project x"
     @State private var description = ""
     @State private var showMessage = ""
-	let clients = ["Client x", "Client 1", "Cient 2", "Client 3", "Client 4"]
-	let projects = ["Project x", "Project 1", "Project 2", "Project 3", "Project 4"]
-    var dataStore = DataStore()
+	@State private var startEndDate = StartEndDate(start: Date.now, end: Date.now)
+
+	private let clients = ["Client x", "Client 1", "Cient 2", "Client 3", "Client 4"]
+	private let projects = ["Project x", "Project 1", "Project 2", "Project 3", "Project 4"]
+    private var dataStore = DataStore()
     
     var body: some View {
         VStack {
@@ -115,6 +115,6 @@ struct AddView: View {
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
-        AddView(startEndDate: StartEndDate(start: Date(), end: Date()))
+        AddView()
     }
 }
