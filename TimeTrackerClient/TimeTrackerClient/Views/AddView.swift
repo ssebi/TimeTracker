@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddView: View {
     @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var userData: DataStore
+    @EnvironmentObject var dataStore: DataStore
 
     @State private var clientSelection = "Client x"
     @State private var projectSelection = "Project x"
@@ -19,11 +19,10 @@ struct AddView: View {
 
 	private let clients = ["Client x", "Client 1", "Cient 2", "Client 3", "Client 4"]
 	private let projects = ["Project x", "Project 1", "Project 2", "Project 3", "Project 4"]
-    private var dataStore = DataStore()
-    
+
     var body: some View {
         VStack {
-            Text(Date(), style:  .date)
+            Text(Date(), style: .date)
                 .padding()
                 .font(.subheadline)
             Picker(selection: $projectSelection, label: Text("Project")) {
@@ -70,8 +69,6 @@ struct AddView: View {
             }
             .buttonStyle(AddButton())
             .frame(width: UIScreen.main.bounds.width - 50, height: 100, alignment: .center)
-            
-            
         }
     }
     
