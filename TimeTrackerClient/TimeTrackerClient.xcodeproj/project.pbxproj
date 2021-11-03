@@ -36,7 +36,6 @@
 		54DB509D2715A2FA00A9700A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */; };
 		C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */; };
-		C64C428D271464B300CFBDEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428C271464B300CFBDEF /* ContentView.swift */; };
 		C64C428F271464B600CFBDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C428E271464B600CFBDEF /* Assets.xcassets */; };
 		C64C4292271464B600CFBDEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C4291271464B600CFBDEF /* Preview Assets.xcassets */; };
 		C6ACF57D27317986006D2C43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57927317986006D2C43 /* HomeView.swift */; };
@@ -73,7 +72,6 @@
 		54D8EEAC271887EF00D867F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C64C4287271464B300CFBDEF /* TimeTrackerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientApp.swift; sourceTree = "<group>"; };
-		C64C428C271464B300CFBDEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C64C428E271464B600CFBDEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C64C4291271464B600CFBDEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C6ACF57927317986006D2C43 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				C6ACF57827317986006D2C43 /* TimeView */,
-				C64C428C271464B300CFBDEF /* ContentView.swift */,
 				545CCEDE2727274D00811CE3 /* DatePickerView.swift */,
 				545CCEDB2726EB0600811CE3 /* AddView.swift */,
 				54D2FDBB2717354800C66998 /* LoginView.swift */,
@@ -344,7 +341,6 @@
 				545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */,
 				545CCECA27229DF800811CE3 /* ClientModel.swift in Sources */,
 				C6ACF57F27317986006D2C43 /* FilledHomeView.swift in Sources */,
-				C64C428D271464B300CFBDEF /* ContentView.swift in Sources */,
 				54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */,
 				545CCEC127229B1C00811CE3 /* TimeSlotModel.swift in Sources */,
 				C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */,

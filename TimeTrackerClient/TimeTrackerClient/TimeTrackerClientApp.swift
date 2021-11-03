@@ -18,9 +18,15 @@ struct TimeTrackerClientApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-			ContentView()
-				.environmentObject(sessionStore)
-				.environmentObject(dataStore)
+			Group {
+				if (sessionStore.session != nil ) {
+					HomeView()
+				} else {
+					LoginView(session: sessionStore)
+				}
+			}
+			.environmentObject(sessionStore)
+			.environmentObject(dataStore)
 		}
 	}
 
