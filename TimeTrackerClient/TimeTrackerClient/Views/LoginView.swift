@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LoginView: View {
-
     @State var username: String = ""
     @State var password: String = ""
     let session: SessionStore
@@ -60,13 +59,10 @@ struct LoginView: View {
     func signIn() {
         session.singIn(email: username, password: password){ _ in }
      }
-
 }
 
 struct LoginView_Previews: PreviewProvider {
-
     static var previews: some View {
         LoginView(session: SessionStore())
     }
-
 }

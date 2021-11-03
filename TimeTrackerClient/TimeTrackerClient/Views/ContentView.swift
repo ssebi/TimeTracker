@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var userData: DataStore
-    
-    var body: some View {
-        Group{
-            if(session.session != nil ) {
-                HomeView()
-                    .environmentObject(userData)
-            } else {
-                LoginView(session: session)
-            }
-        }
-    }
+	@EnvironmentObject var dataStore: DataStore
+	@EnvironmentObject var sessionStore: SessionStore
+
+	var body: some View {
+		Group {
+			if(sessionStore.session != nil ) {
+				HomeView()
+			} else {
+				LoginView(session: sessionStore)
+			}
+		}
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .environmentObject(SessionStore())
-            .environmentObject(DataStore())
-    }
+	static var previews: some View {
+		ContentView()
+			.environmentObject(SessionStore())
+			.environmentObject(DataStore())
+	}
 }

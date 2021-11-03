@@ -179,10 +179,10 @@
 			isa = PBXGroup;
 			children = (
 				C6B6AFCE272A892C00B5CFBC /* Info.plist */,
+				C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */,
 				543DD550272AB3D700D426FC /* Views */,
 				54D8EEAF271887FA00D867F3 /* Models */,
 				54D8EEA527174EC900D867F3 /* Core */,
-				C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */,
 				C64C428E271464B600CFBDEF /* Assets.xcassets */,
 				C64C4290271464B600CFBDEF /* Preview Content */,
 			);
