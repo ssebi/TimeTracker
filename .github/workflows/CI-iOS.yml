@@ -1,10 +1,9 @@
 name: CI-iOS
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ develop ]
+    types: [ opened, reopened ]
 
 jobs:
   build-and-test:
