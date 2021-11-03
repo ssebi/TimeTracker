@@ -12,7 +12,6 @@ import Firebase
 struct TimeTrackerClientApp: App {
 
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
 	@StateObject var sessionStore = SessionStore()
 	@StateObject var dataStore = DataStore()
 
@@ -32,10 +31,9 @@ struct TimeTrackerClientApp: App {
 
 	class AppDelegate: NSObject, UIApplicationDelegate {
 		func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-
 			FirebaseApp.configure()
-
 			return true
 		}
 	}
+
 }
