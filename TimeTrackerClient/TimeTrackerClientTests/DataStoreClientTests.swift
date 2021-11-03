@@ -32,7 +32,7 @@ class DataStoreClientTests: XCTestCase {
         XCTAssertNil(receivedError)
     }
     
-    func test_addTimeSlot_isNotSusccesfullWithoutUser() {
+    func _test_addTimeSlot_isNotSusccesfullWithoutUser() {
         let sut = makeSUT(withUserSignedIn: false)
         let slot = TimeSlotDetail(start: Date.now, end: Date.now + 1, description: "First dscription for log time")
         let exp = expectation(description: "Wait for firebase")
