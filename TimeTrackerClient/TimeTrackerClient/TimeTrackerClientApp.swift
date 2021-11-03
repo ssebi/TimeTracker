@@ -21,7 +21,7 @@ struct TimeTrackerClientApp: App {
 				if sessionStore.session != nil {
 					HomeView()
 				} else {
-					LoginView(session: sessionStore)
+					LoginView()
 				}
 			}
 			.environmentObject(sessionStore)
