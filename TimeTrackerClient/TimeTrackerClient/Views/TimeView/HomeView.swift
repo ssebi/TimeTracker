@@ -12,20 +12,12 @@ struct HomeView: View {
 	@EnvironmentObject var dataStore: DataStore
 
 	var body: some View {
-		VStack {
-			NavigationView {
-				FilledHomeView()
-					.environmentObject(dataStore)
-				Spacer()
-			}
-			.navigationBarItems(trailing: HStack{
-				Button("+") {}
-				.buttonStyle(AddBarButton())
-			})
-			.navigationTitle(
-				Text("Today")
-			)
+		NavigationView {
+			FilledHomeView()
 		}
+		.navigationTitle(
+			Text("Today")
+		)
 	}
 }
 
