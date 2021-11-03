@@ -9,7 +9,6 @@ import SwiftUI
 import FirebaseFirestore
 
 struct HomeView: View {
-	@EnvironmentObject var dataStore: DataStore
 	@EnvironmentObject var session: SessionStore
 
 	var body: some View {
@@ -42,7 +41,6 @@ struct HomeView: View {
 							})
 				)
 				.navigationTitle("Time Logged")
-				.onAppear(perform: dataStore.fetchUsersTimeslots)
 		}
 	}
 }

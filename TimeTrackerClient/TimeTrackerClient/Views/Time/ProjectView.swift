@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ProjectView: View {
-	@EnvironmentObject var userData: DataStore
+	@EnvironmentObject var dataStore: DataStore
 
 	var body: some View {
-		List(userData.userTimeslots) { timeSlot in
+		List(dataStore.userTimeslots) { timeSlot in
 			VStack(alignment: .leading, spacing: 2) {
 				Text("Project name: Project x")
 				Text("Date: \(timeSlot.timeSlots.start.formatted(date: .omitted, time: .standard))")
@@ -20,7 +20,9 @@ struct ProjectView: View {
 				Text("Time period: \(timeSlot.total)")
 				Text("Task description: \(timeSlot.timeSlots.description)")
 			}.padding()
-		}.listStyle(InsetListStyle())
+		}
+		.listStyle(InsetListStyle())
+		.onAppear(perform: dataStore.fetchUsersTimeslots)
 	}
 }
 

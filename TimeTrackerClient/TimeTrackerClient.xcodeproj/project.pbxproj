@@ -23,7 +23,6 @@
 		545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDE2727274D00811CE3 /* DatePickerView.swift */; };
 		54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB62717234F00C66998 /* GoogleService-Info.plist */; };
 		54D2FDBC2717354800C66998 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBA2717354800C66998 /* Extensions.swift */; };
-		54D2FDBD2717354800C66998 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBB2717354800C66998 /* LoginView.swift */; };
 		54D2FDD9271747F100C66998 /* SessionStoreClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDD8271747F100C66998 /* SessionStoreClientTests.swift */; };
 		54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8EEA92717502900D867F3 /* SessionStore.swift */; };
 		54D8EEAB2717502900D867F3 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8EEA92717502900D867F3 /* SessionStore.swift */; };
@@ -40,6 +39,7 @@
 		C64C4292271464B600CFBDEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C4291271464B600CFBDEF /* Preview Assets.xcassets */; };
 		C6ACF57D27317986006D2C43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57927317986006D2C43 /* HomeView.swift */; };
 		C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57A27317986006D2C43 /* ProjectView.swift */; };
+		C6DA42E82732DBC800D44D80 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42E72732DBC800D44D80 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,6 @@
 		545CCEDE2727274D00811CE3 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		54D2FDB62717234F00C66998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54D2FDBA2717354800C66998 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = TimeTrackerClient/Core/Extensions.swift; sourceTree = SOURCE_ROOT; };
-		54D2FDBB2717354800C66998 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = TimeTrackerClient/Views/LoginView.swift; sourceTree = SOURCE_ROOT; };
 		54D2FDD6271747F100C66998 /* TimeTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D2FDD8271747F100C66998 /* SessionStoreClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStoreClientTests.swift; sourceTree = "<group>"; };
 		54D8EEA92717502900D867F3 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		C6ACF57927317986006D2C43 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C6ACF57A27317986006D2C43 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		C6B6AFCE272A892C00B5CFBC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6DA42E72732DBC800D44D80 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +103,9 @@
 		543DD550272AB3D700D426FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C6ACF57827317986006D2C43 /* TimeView */,
-				C6DA42E52732DB5500D44D80 /* AddView */,
-				54D2FDBB2717354800C66998 /* LoginView.swift */,
+				C6ACF57827317986006D2C43 /* Time */,
+				C6DA42E52732DB5500D44D80 /* Add */,
+				C6DA42E62732DB9E00D44D80 /* Login */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,22 +191,30 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C6ACF57827317986006D2C43 /* TimeView */ = {
+		C6ACF57827317986006D2C43 /* Time */ = {
 			isa = PBXGroup;
 			children = (
 				C6ACF57927317986006D2C43 /* HomeView.swift */,
 				C6ACF57A27317986006D2C43 /* ProjectView.swift */,
 			);
-			path = TimeView;
+			path = Time;
 			sourceTree = "<group>";
 		};
-		C6DA42E52732DB5500D44D80 /* AddView */ = {
+		C6DA42E52732DB5500D44D80 /* Add */ = {
 			isa = PBXGroup;
 			children = (
 				545CCEDE2727274D00811CE3 /* DatePickerView.swift */,
 				545CCEDB2726EB0600811CE3 /* AddView.swift */,
 			);
-			path = AddView;
+			path = Add;
+			sourceTree = "<group>";
+		};
+		C6DA42E62732DB9E00D44D80 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C6DA42E72732DBC800D44D80 /* LoginView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,9 +356,9 @@
 				54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */,
 				545CCEC127229B1C00811CE3 /* TimeSlotModel.swift in Sources */,
 				C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */,
-				54D2FDBD2717354800C66998 /* LoginView.swift in Sources */,
 				C6ACF57D27317986006D2C43 /* HomeView.swift in Sources */,
 				545CCEC427229C5A00811CE3 /* WorkLogModel.swift in Sources */,
+				C6DA42E82732DBC800D44D80 /* LoginView.swift in Sources */,
 				54D2FDBC2717354800C66998 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
