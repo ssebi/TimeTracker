@@ -19,7 +19,7 @@ struct TimeTrackerClientApp: App {
 	var body: some Scene {
 		WindowGroup {
 			Group {
-				if (sessionStore.session != nil ) {
+				if sessionStore.session != nil {
 					HomeView()
 				} else {
 					LoginView(session: sessionStore)
