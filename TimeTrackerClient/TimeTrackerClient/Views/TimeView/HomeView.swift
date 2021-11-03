@@ -12,7 +12,6 @@ struct HomeView: View {
 	@EnvironmentObject var dataStore: DataStore
 	@EnvironmentObject var session: SessionStore
 
-	@State var showView = false
 	private let startEndDate = StartEndDate(start: Date.now, end: Date.now)
 
 	var body: some View {
