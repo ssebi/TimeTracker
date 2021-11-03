@@ -45,8 +45,7 @@ struct AddView: View {
             
             Spacer()
             
-            DatePickerView()
-                .environmentObject(startEndDate)
+            DatePickerView(startEndDate: $startEndDate)
                 .padding()
             
             HStack {

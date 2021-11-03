@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct DatePickerView: View {
-    @EnvironmentObject var startEndDate: StartEndDate
+    @Binding var startEndDate: StartEndDate
     
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
         let startComponents = DateComponents(year: 2021, month: 1, day: 1)
         let endComponents = DateComponents(year: 2021, month: 12, day: 31, hour: 23, minute: 59, second: 59)
-        return calendar.date(from:startComponents)!
+        return calendar.date(from: startComponents)!
             ...
-            calendar.date(from:endComponents)!
+            calendar.date(from: endComponents)!
     }()
     
     var body: some View {
@@ -47,6 +47,6 @@ struct DatePickerView: View {
 
 struct DatePicker_Previews: PreviewProvider {
     static var previews: some View {
-        DatePickerView()
+		DatePickerView(startEndDate: .constant(StartEndDate(start: Date(), end: Date())))
     }
 }
