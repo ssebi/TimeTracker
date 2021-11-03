@@ -40,7 +40,6 @@
 		C64C4292271464B600CFBDEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C4291271464B600CFBDEF /* Preview Assets.xcassets */; };
 		C6ACF57D27317986006D2C43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57927317986006D2C43 /* HomeView.swift */; };
 		C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57A27317986006D2C43 /* ProjectView.swift */; };
-		C6ACF57F27317986006D2C43 /* FilledHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57B27317986006D2C43 /* FilledHomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +75,6 @@
 		C64C4291271464B600CFBDEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C6ACF57927317986006D2C43 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C6ACF57A27317986006D2C43 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
-		C6ACF57B27317986006D2C43 /* FilledHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilledHomeView.swift; sourceTree = "<group>"; };
 		C6B6AFCE272A892C00B5CFBC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,7 +197,6 @@
 			children = (
 				C6ACF57927317986006D2C43 /* HomeView.swift */,
 				C6ACF57A27317986006D2C43 /* ProjectView.swift */,
-				C6ACF57B27317986006D2C43 /* FilledHomeView.swift */,
 			);
 			path = TimeView;
 			sourceTree = "<group>";
@@ -340,7 +337,6 @@
 				545CCEAB27200FE500811CE3 /* Utils.swift in Sources */,
 				545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */,
 				545CCECA27229DF800811CE3 /* ClientModel.swift in Sources */,
-				C6ACF57F27317986006D2C43 /* FilledHomeView.swift in Sources */,
 				54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */,
 				545CCEC127229B1C00811CE3 /* TimeSlotModel.swift in Sources */,
 				C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */,
