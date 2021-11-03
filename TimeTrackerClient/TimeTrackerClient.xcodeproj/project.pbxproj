@@ -104,8 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				C6ACF57827317986006D2C43 /* TimeView */,
-				545CCEDE2727274D00811CE3 /* DatePickerView.swift */,
-				545CCEDB2726EB0600811CE3 /* AddView.swift */,
+				C6DA42E52732DB5500D44D80 /* AddView */,
 				54D2FDBB2717354800C66998 /* LoginView.swift */,
 			);
 			path = Views;
@@ -199,6 +198,15 @@
 				C6ACF57A27317986006D2C43 /* ProjectView.swift */,
 			);
 			path = TimeView;
+			sourceTree = "<group>";
+		};
+		C6DA42E52732DB5500D44D80 /* AddView */ = {
+			isa = PBXGroup;
+			children = (
+				545CCEDE2727274D00811CE3 /* DatePickerView.swift */,
+				545CCEDB2726EB0600811CE3 /* AddView.swift */,
+			);
+			path = AddView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
