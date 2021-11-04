@@ -52,7 +52,7 @@ class DataStore: ObservableObject {
     }
     
     func fetchUsersTimeslots() {
-        let path = "userId/YErySzP9KBgMsFw64rHrimFAUBZ2/Client 1/Project 1/timeLogged/04-11-2021/timeslots"
+        let path = "userId/YErySzP9KBgMsFw64rHrimFAUBZ2/clients/Client 1/projects/Project 1/timeLogged/04-11-2021/timeslots"
         Firestore.firestore().collection(path).addSnapshotListener { [weak self] (querySnapshot, error) in
             if let querySnapshot = querySnapshot {
                 self?.userTimeslots = querySnapshot.documents.compactMap { document in
