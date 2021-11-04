@@ -82,7 +82,7 @@ struct AddView: View {
         let date = dateFormater.string(from: startEndDate.start)
 
         if user != nil {
-            path = "userId/\(userId)/\(dataStore.selectedClient)/project/\(dataStore.selectedProject)/timelLoged/\(date)/"
+            path = "userId/\(userId)/\(dataStore.clientsNames[dataStore.selectedClient])/project/\(dataStore.projectNames[dataStore.selectedProject])/timelLoged/\(date)/"
 
         }
 
