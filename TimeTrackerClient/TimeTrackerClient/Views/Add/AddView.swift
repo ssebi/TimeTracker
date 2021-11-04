@@ -77,10 +77,9 @@ struct AddView: View {
         let user = session.session
         let userId = user?.uid ?? ""
         var path = ""
-        let today = Date.now
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "dd-MM-yyyy"
-        let date = dateFormater.string(from: today)
+        let date = dateFormater.string(from: startEndDate.start)
 
         if user != nil {
             path = "userId/\(userId)/\(dataStore.selectedClient)/project/\(dataStore.selectedProject)/timelLoged/\(date)/"
