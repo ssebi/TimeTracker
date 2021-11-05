@@ -7,6 +7,9 @@
 
 import Foundation
 
-struct Project: Codable {
+struct Project {
+    var id:  UUID
     var name: String
+    var workLog: WorkLog
+    var totalWork: Int
 }
