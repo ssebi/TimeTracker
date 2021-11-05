@@ -17,10 +17,13 @@ class SessionStoree {
 	init(authProvider: AuthProvider) {
 		self.authProvider = authProvider
 	}
+
+	func signIn() {
+		authProvider.signIn()
+	}
 }
 
 class AuthenticationTests: XCTestCase {
-
 
 	func test_init_doesNotMessageAuthProvider() {
 		let spy = AuthProviderSpy()
@@ -29,6 +32,14 @@ class AuthenticationTests: XCTestCase {
 		XCTAssertEqual(spy.signInCalls, 0)
 	}
 
+	func test_signIn_callsSignInOnAuthProvider() {
+		let spy = AuthProviderSpy()
+		let sut = SessionStoree(authProvider: spy)
+
+		sut.signIn()
+
+		XCTAssertEqual(spy.signInCalls, 1)
+	}
 
 }
 
