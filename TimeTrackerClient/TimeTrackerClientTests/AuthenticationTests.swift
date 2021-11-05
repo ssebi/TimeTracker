@@ -54,9 +54,13 @@ class AuthenticationTests: XCTestCase {
 
 	// MRK: - Helpers
 
-	private func makeSut() -> (AuthProviderSpy, SessionStoree) {
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (AuthProviderSpy, SessionStoree) {
 		let spy = AuthProviderSpy()
 		let sut = SessionStoree(authProvider: spy)
+		addTeardownBlock { [weak spy, weak sut] in
+			XCTAssertNil(spy, file: file, line: line)
+			XCTAssertNil(sut, file: file, line: line)
+		}
 		return (spy, sut)
 	}
 
