@@ -15,7 +15,7 @@ struct AddView: View {
 	@State private var projectSelection = "Project x"
 	@State private var description = ""
 	@State private var showMessage = ""
-	@State private var startEndDate = StartEndDate(start: Date.now, end: Date.now)
+	@State private var startEndDate = StartEndDate(start: Date(), end: Date())
 
 	private let clients = ["Client x", "Client 1", "Cient 2", "Client 3", "Client 4"]
 	private let projects = ["Project x", "Project 1", "Project 2", "Project 3", "Project 4"]
@@ -75,7 +75,7 @@ struct AddView: View {
 		let user = session.session
 		let userId = user?.uid ?? ""
 		var path = ""
-		let today = Date.now
+		let today = Date()
 		let dateFormater = DateFormatter()
 		dateFormater.dateFormat = "dd-MM-yyyy"
 		let date = dateFormater.string(from: today)
@@ -110,7 +110,7 @@ struct AddView: View {
 }
 
 struct AddView_Previews: PreviewProvider {
-	static var previews: some View {
-		AddView()
-	}
+    static var previews: some View {
+        AddView()
+    }
 }
