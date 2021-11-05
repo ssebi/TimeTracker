@@ -10,35 +10,33 @@ import SwiftUI
 struct AddView: View {
 	@EnvironmentObject var session: SessionStore
 	@EnvironmentObject var dataStore: DataStore
-
-	@State private var clientSelection = "Client x"
-	@State private var projectSelection = "Project x"
 	@State private var description = ""
 	@State private var showMessage = ""
 	@State private var startEndDate = StartEndDate(start: Date(), end: Date())
-
-	private let clients = ["Client x", "Client 1", "Cient 2", "Client 3", "Client 4"]
-	private let projects = ["Project x", "Project 1", "Project 2", "Project 3", "Project 4"]
 
 	var body: some View {
 		VStack {
 			Text(Date(), style: .date)
 				.padding()
 				.font(.subheadline)
-			Picker(selection: $projectSelection, label: Text("Project")) {
-				ForEach(clients, id: \.self) { client in
-					Text(client)
+
+			Picker(selection: $dataStore.selectedClient, label: Text("")){
+				ForEach(0 ..< dataStore.clientsNames.count){ index in
+					Text(self.dataStore.clientsNames[index])
 				}
 			}
+			.labelsHidden()
 			.frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
 			.background(Color.cGray)
 			.foregroundColor(.white)
 
-			Picker(selection: $clientSelection, label: Text("Client")) {
-				ForEach(projects, id: \.self) { client in
-					Text(client)
+			Picker(selection: $dataStore.selectedProject, label: Text("")){
+				ForEach(0 ..< dataStore.projectNames.count){ index in
+					Text(self.dataStore.projectNames[index])
 				}
 			}
+			.id(dataStore.id)
+			.labelsHidden()
 			.frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
 			.background(Color.cGray)
 			.foregroundColor(.white)
@@ -68,20 +66,24 @@ struct AddView: View {
 			}
 			.buttonStyle(AddButton())
 			.frame(width: UIScreen.main.bounds.width - 50, height: 100, alignment: .center)
-		}
+		}.onAppear(perform: getPickerData)
+	}
+
+	func getPickerData() {
+		dataStore.fetchUsersClients()
 	}
 
 	func addTime() {
 		let user = session.session
 		let userId = user?.uid ?? ""
 		var path = ""
-		let today = Date()
 		let dateFormater = DateFormatter()
 		dateFormater.dateFormat = "dd-MM-yyyy"
-		let date = dateFormater.string(from: today)
+		let date = dateFormater.string(from: startEndDate.start)
 
 		if user != nil {
-			path = "userId/\(userId)/\(clientSelection)/\(projectSelection)/timelLoged/\(date)/timeslots"
+			path = "userId/\(userId)/clients/\(dataStore.clientsNames[dataStore.selectedClient])/projects/\(dataStore.projectNames[dataStore.selectedProject])/timeLogged/\(date)/timeslots"
+
 		}
 
 		let timeslot: [String: Any] = [
