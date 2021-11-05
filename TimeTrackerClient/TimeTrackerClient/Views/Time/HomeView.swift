@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 struct HomeView: View {
 	@EnvironmentObject var session: SessionStore
+	@EnvironmentObject var dataStore: DataStore
 
 	var body: some View {
 		NavigationView {
@@ -42,6 +43,11 @@ struct HomeView: View {
 				)
 				.navigationTitle("Time Logged")
 		}
+		.onAppear(perform: getPickerData)
+	}
+
+	func getPickerData() {
+		dataStore.fetchUsersClients()
 	}
 }
 

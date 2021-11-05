@@ -66,11 +66,7 @@ struct AddView: View {
 			}
 			.buttonStyle(AddButton())
 			.frame(width: UIScreen.main.bounds.width - 50, height: 100, alignment: .center)
-		}.onAppear(perform: getPickerData)
-	}
-
-	func getPickerData() {
-		dataStore.fetchUsersClients()
+		}
 	}
 
 	func addTime() {

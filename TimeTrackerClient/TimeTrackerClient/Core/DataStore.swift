@@ -38,7 +38,10 @@ class DataStore: ObservableObject {
         projectNames.count
     }
     var projectNames: [String] {
-        clients[selectedClient].projects.map { (project) in
+		guard !clients.isEmpty else {
+			return [String]()
+		}
+        return clients[selectedClient].projects.map { (project) in
             return project.name
         }
     }
@@ -77,7 +80,7 @@ class DataStore: ObservableObject {
                     projects.forEach{ p in
                         project.append(Project(name: "\(p)"))
                     }
-                    return Client.init(id: id as! Int, name: name as! String, projects: project)
+                    return Client(id: id as! Int, name: name as! String, projects: project)
                 }
             }
         }
