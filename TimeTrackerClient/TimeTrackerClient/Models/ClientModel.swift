@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct Client {
-    var id: UUID
+struct Client: Identifiable, Codable {
+    var id: Int = 0
     var name: String
-    var projects: Project
-    var totalWork: Int
+    var projects: [Project]
 }
