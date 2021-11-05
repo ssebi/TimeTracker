@@ -41,6 +41,7 @@
 		C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57A27317986006D2C43 /* ProjectView.swift */; };
 		C6DA42E82732DBC800D44D80 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42E72732DBC800D44D80 /* LoginView.swift */; };
 		C6DA42EA2735477E00D44D80 /* DateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42E92735477E00D44D80 /* DateLabel.swift */; };
+		C6DA42EC27356C4400D44D80 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42EB27356C4400D44D80 /* AuthenticationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		C6B6AFCE272A892C00B5CFBC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6DA42E72732DBC800D44D80 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C6DA42E92735477E00D44D80 /* DateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLabel.swift; sourceTree = "<group>"; };
+		C6DA42EB27356C4400D44D80 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			children = (
 				54D2FDD8271747F100C66998 /* SessionStoreClientTests.swift */,
 				545CCED72723053E00811CE3 /* DataStoreClientTests.swift */,
+				C6DA42EB27356C4400D44D80 /* AuthenticationTests.swift */,
 			);
 			path = TimeTrackerClientTests;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				54D8EEAE271887EF00D867F3 /* UserModel.swift in Sources */,
 				54D2FDD9271747F100C66998 /* SessionStoreClientTests.swift in Sources */,
 				545CCED82723053E00811CE3 /* DataStoreClientTests.swift in Sources */,
+				C6DA42EC27356C4400D44D80 /* AuthenticationTests.swift in Sources */,
 				545CCEC527229C5A00811CE3 /* WorkLogModel.swift in Sources */,
 				545CCEC827229D1E00811CE3 /* ProjectModel.swift in Sources */,
 				545CCEC227229B1C00811CE3 /* TimeSlotModel.swift in Sources */,
