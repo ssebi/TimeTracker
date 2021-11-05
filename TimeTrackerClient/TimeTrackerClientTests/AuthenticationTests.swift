@@ -31,15 +31,13 @@ class SessionStoree {
 class AuthenticationTests: XCTestCase {
 
 	func test_init_doesNotMessageAuthProvider() {
-		let spy = AuthProviderSpy()
-		let _ = SessionStoree(authProvider: spy)
+		let (spy, _) = makeSut()
 
 		XCTAssertEqual(spy.signInCalls, 0)
 	}
 
 	func test_signIn_callsSignInOnAuthProvider() {
-		let spy = AuthProviderSpy()
-		let sut = SessionStoree(authProvider: spy)
+		let (spy, sut) = makeSut()
 
 		sut.signIn()
 
@@ -47,12 +45,19 @@ class AuthenticationTests: XCTestCase {
 	}
 
 	func test_signOut_callsSignOutOnAuthProvider() {
-		let spy = AuthProviderSpy()
-		let sut = SessionStoree(authProvider: spy)
+		let (spy, sut) = makeSut()
 
 		sut.signOut()
 
 		XCTAssertEqual(spy.signOutCalls, 1)
+	}
+
+	// MRK: - Helpers
+
+	private func makeSut() -> (AuthProviderSpy, SessionStoree) {
+		let spy = AuthProviderSpy()
+		let sut = SessionStoree(authProvider: spy)
+		return (spy, sut)
 	}
 
 }
