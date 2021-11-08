@@ -18,8 +18,13 @@ func RegisterUsersController(api *gin.RouterGroup) {
 // @Produce json
 // @Success 200
 // @Router /users [get]
-func GetUsers(c *gin.Context) {
-
+func GetUsers(context *gin.Context) {
+	users, err := getAllUsers()
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to get users"})
+	} else {
+		context.JSON(http.StatusOK, users)
+	}
 }
 
 // @Tags users
@@ -41,10 +46,8 @@ func CreateUser(context *gin.Context) {
 	response, err := saveUser(user)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save new user"})
-		return
 	} else {
 		context.JSON(http.StatusOK, gin.H{"email": response})
-		return
 	}
 }
 

@@ -10,3 +10,7 @@ Content-Type: application/json
   "email": "lupu60@gmail.com"
 }
 
+
+###
+GET {{base}}/api/users
+Content-Type: application/json

@@ -19,12 +19,31 @@ type User struct {
 	UpdatedAt time.Time `bson:"created_at,omitempty" json:"updated_at"`
 }
 
+func getAllUsers() ([]bson.M, error) {
+	//Get MongoDB connection using connectionhelper.
+	client, err := database.GetMongoClient()
+	if err != nil {
+		return nil, err
+	}
+	collection := client.Database(database.DB).Collection(database.USERS)
+	cursor, err := collection.Find(context.TODO(), bson.M{})
+	if err != nil {
+		glg.Error(err)
+	}
+	var users []bson.M
+	if err = cursor.All(context.TODO(), &users); err != nil {
+		glg.Error(err)
+		return nil, err
+	}
+	return users, nil
+}
+
 func saveUser(user User) (interface{}, error) {
 	user.ID = user.Email
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	if err != nil {
 		glg.Error(err)
-		panic(err)
+		return nil, err
 	}
 	//Get MongoDB connection using connectionhelper.
 	client, err := database.GetMongoClient()
