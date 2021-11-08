@@ -1,20 +1,10 @@
 package users
 
 import (
-	"time"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 )
-
-type User struct {
-	ID        primitive.ObjectID `bson:"_id" json:"id"`
-	Username  string             `bson:"user_name" json:"user_name"`
-	Email     string             `bson:"email" json:"email"`
-	Password  string             `bson:"password" json:"password"`
-	CreatedAt time.Time          `bson:"created_at" json:"created_at"`
-	UpdatedAt time.Time          `bson:"created_at" json:"updated_at"`
-}
 
 func RegisterUsersController(api *gin.RouterGroup) {
 	api.GET("/users", GetUsers)
@@ -40,8 +30,22 @@ func GetUser(c *gin.Context) {
 
 }
 
-func CreateUser(c *gin.Context) {
-
+// @Tags users
+// @Produce json
+// Description Create User
+// @Success 200
+// @Router /users [post]
+func CreateUser(context *gin.Context) {
+	var user User
+	context.Bind(&user)
+	response, err := saveUser(user)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save new user"})
+		return
+	} else {
+		context.JSON(http.StatusOK, gin.H{"email": response})
+		return
+	}
 }
 
 func UpdateUser(c *gin.Context) {}

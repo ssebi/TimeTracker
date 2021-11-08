@@ -1,0 +1,12 @@
+
+@base = http://localhost:3000
+
+POST {{base}}/api/users
+Content-Type: application/json
+
+{
+  "user_name": "bogdan",
+  "password": "bogdan123",
+  "email": "lupu60@gmail.com"
+}
+

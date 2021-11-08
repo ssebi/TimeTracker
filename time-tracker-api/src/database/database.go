@@ -23,6 +23,8 @@ const (
 	CONNECTIONSTRING = "mongodb://root:rootpassword@localhost:27017"
 	DB               = "timetracker"
 	USERS            = "col_users"
+	CLIENTS          = "col_clients"
+	PROJECTS         = "col_projects"
 )
 
 //GetMongoClient - Return mongodb connection to work with
