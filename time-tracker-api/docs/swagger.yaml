@@ -1,4 +1,22 @@
 info:
   contact: {}
-paths: {}
+paths:
+  /users:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      tags:
+      - users
+  /users/:id:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      tags:
+      - users
 swagger: "2.0"

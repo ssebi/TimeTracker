@@ -1,34 +1,47 @@
-package shared
+package database
 
 import (
-	"github.com/kpango/glg"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
+	"context"
+	"sync"
+
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var database *gorm.DB
-var err error
+/* Used to create a singleton object of MongoDB client.
+Initialized and exposed through  GetMongoClient().*/
+var clientInstance *mongo.Client
 
-func Init() {
-	//PostgreSQL
-	glg.Info("Database connecting...")
+//Used during creation of singleton client object in GetMongoClient().
+var clientInstanceError error
 
-	dsn := "postgres://postgres:postgres@localhost:5444/time-tracker?sslmode=disable"
+//Used to execute client creation procedure only once.
+var mongoOnce sync.Once
 
-	database, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		glg.Error(err)
-	}
-}
+//I have used below constants just to hold required database config's.
+const (
+	CONNECTIONSTRING = "mongodb://root:rootpassword@localhost:27017"
+	DB               = "timetracker"
+	USERS            = "col_users"
+)
 
-func Database() *gorm.DB {
-	return database
-}
-
-func CloseDb() {
-	db, err := database.DB()
-	if err != nil {
-		glg.Error(err)
-	}
-	db.Close()
+//GetMongoClient - Return mongodb connection to work with
+func GetMongoClient() (*mongo.Client, error) {
+	//Perform connection creation operation only once.
+	mongoOnce.Do(func() {
+		// Set client options
+		clientOptions := options.Client().ApplyURI(CONNECTIONSTRING)
+		// Connect to MongoDB
+		client, err := mongo.Connect(context.TODO(), clientOptions)
+		if err != nil {
+			clientInstanceError = err
+		}
+		// Check the connection
+		err = client.Ping(context.TODO(), nil)
+		if err != nil {
+			clientInstanceError = err
+		}
+		clientInstance = client
+	})
+	return clientInstance, clientInstanceError
 }

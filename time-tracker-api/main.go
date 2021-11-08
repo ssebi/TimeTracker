@@ -1,21 +1,17 @@
 package main
 
 import (
+	"time-tracker/docs"
 	"time-tracker/src/controllers"
-	"time-tracker/src/shared"
 
 	"github.com/gin-gonic/gin"
 	"github.com/kpango/glg"
 	swaggerfiles "github.com/swaggo/files"
 	swagger "github.com/swaggo/gin-swagger"
-	"github.com/swaggo/swag/example/basic/docs"
 )
 
 func main() {
 
-	//Db Connect and Close
-	shared.Init()
-	defer shared.CloseDb()
 	// Gin
 	// gin.SetMode(gin.ReleaseMode)
 	engine := gin.New()
