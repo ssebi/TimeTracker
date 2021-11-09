@@ -88,6 +88,15 @@ class AuthenticationTests: XCTestCase {
         }
     }
 
+    func test_signOut_sessionNoUser() {
+        let (spy, sut) = makeSut()
+
+        sut.signIn(email: email, password: password) { _ in }
+        XCTAssertNotNil(spy.user.email)
+        sut.signOut()
+        XCTAssertNil(spy.user.email)
+    }
+
 	// MRK: - Helpers
 
 	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (AuthProviderSpy, SessionStoree) {
@@ -110,23 +119,24 @@ private class AuthProviderSpy: AuthProvider {
     struct NoUser: Error {}
 	var signInCalls = 0
 	var signOutCalls = 0
-    var user = User(uid: nil, email: nil, username: nil, client: nil)
-    var email = ""
-    var password = ""
+    var email = "test@tes.com"
+    var password = "password"
+    var user = User(uid: "uid", email:" test@tes.com", username: "test", client: "")
 
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
         self.email = email
         self.password = password
 		signInCalls += 1
         completion(.success(User(
-            uid: "id",
-            email: email,
-            username: email,
-            client: ""
+            uid: user.email,
+            email: user.email,
+            username: user.username,
+            client: user.client
         )))
 	}
 
 	func signOut() {
 		signOutCalls += 1
+        user = User(uid: nil, email: nil, username: nil, client: nil)
 	}
 }
