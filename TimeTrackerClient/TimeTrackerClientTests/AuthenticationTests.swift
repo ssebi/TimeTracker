@@ -78,10 +78,9 @@ class AuthenticationTests: XCTestCase {
 
     func test_signIn_sessionHasUser() {
         let (_, sut) = makeSut()
-        let sessionUser: Result<User, Error>? = nil
 
         sut.signIn(email: email, password: password) { result in
-            if case let .success(user) = sessionUser {
+            if case let .success(user) = result {
                 XCTAssertNotNil(user.email)
             } else {
                 XCTFail()
