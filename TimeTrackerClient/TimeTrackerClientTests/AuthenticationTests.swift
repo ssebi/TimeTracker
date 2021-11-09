@@ -46,7 +46,6 @@ class AuthenticationTests: XCTestCase {
 		sut.signIn(email: email, password: password)
 
 		XCTAssertEqual(spy.signInCalls, 1)
-
 	}
 
     func test_signIn_hasValidCredentials() {
