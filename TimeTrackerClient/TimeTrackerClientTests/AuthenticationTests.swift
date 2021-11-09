@@ -19,14 +19,13 @@ protocol AuthProvider {
 class SessionStoree {
     typealias SesionStoreResult = (Result<User, Error>) -> Void
 	let authProvider: AuthProvider
-
 	init(authProvider: AuthProvider) {
 		self.authProvider = authProvider
 	}
 
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
         authProvider.signIn(email: email, password: password) { result in
-
+            completion(.success(User(uid: "id", email: email, username: email, client: "")))
         }
 	}
 
@@ -71,9 +70,22 @@ class AuthenticationTests: XCTestCase {
 	}
 
     func test_signIn_completionHandlerHasValue() {
-        let (spy, _) = makeSut()
-        spy.signIn(email: email, password: password) { result in
+        let (_, sut) = makeSut()
+        sut.signIn(email: email, password: password) { result in
             XCTAssertNotNil(result)
+        }
+    }
+
+    func test_signIn_sessionHasUser() {
+        let (_, sut) = makeSut()
+        let sessionUser: Result<User, Error>? = nil
+
+        sut.signIn(email: email, password: password) { result in
+            if case let .success(user) = sessionUser {
+                XCTAssertNotNil(user.email)
+            } else {
+                XCTFail()
+            }
         }
     }
 
@@ -99,6 +111,7 @@ private class AuthProviderSpy: AuthProvider {
     struct NoUser: Error {}
 	var signInCalls = 0
 	var signOutCalls = 0
+    var user = User(uid: nil, email: nil, username: nil, client: nil)
     var email = ""
     var password = ""
 
@@ -106,7 +119,12 @@ private class AuthProviderSpy: AuthProvider {
         self.email = email
         self.password = password
 		signInCalls += 1
-        completion(.failure(NoUser()))
+        completion(.success(User(
+            uid: "id",
+            email: email,
+            username: email,
+            client: ""
+        )))
 	}
 
 	func signOut() {
