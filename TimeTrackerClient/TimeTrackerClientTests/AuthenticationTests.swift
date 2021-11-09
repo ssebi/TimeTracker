@@ -10,19 +10,24 @@ import XCTest
 protocol AuthProvider {
     var email: String { get }
     var password: String { get }
-    func signIn(email: String, password: String)
+    typealias SesionStoreResult = (Result<User, Error>) -> Void
+
+    func signIn(email: String, password: String, completion: @escaping SesionStoreResult)
 	func signOut()
 }
 
 class SessionStoree {
+    typealias SesionStoreResult = (Result<User, Error>) -> Void
 	let authProvider: AuthProvider
 
 	init(authProvider: AuthProvider) {
 		self.authProvider = authProvider
 	}
 
-    func signIn(email: String, password: String) {
-		authProvider.signIn(email: email, password: password)
+    func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
+        authProvider.signIn(email: email, password: password) { result in
+
+        }
 	}
 
 	func signOut() {
@@ -43,7 +48,7 @@ class AuthenticationTests: XCTestCase {
         let email = "mihai24vic@gmail.com"
         let password = "Patratel1"
 
-		sut.signIn(email: email, password: password)
+        sut.signIn(email: email, password: password) { _ in }
 
 		XCTAssertEqual(spy.signInCalls, 1)
 	}
@@ -51,7 +56,7 @@ class AuthenticationTests: XCTestCase {
     func test_signIn_hasValidCredentials() {
         let (spy, sut) = makeSut()
 
-        sut.signIn(email: email, password: password)
+        sut.signIn(email: email, password: password) { _ in }
 
         XCTAssertEqual(email, spy.email)
         XCTAssertEqual(password, spy.password)
@@ -64,6 +69,13 @@ class AuthenticationTests: XCTestCase {
 
 		XCTAssertEqual(spy.signOutCalls, 1)
 	}
+
+    func test_signIn_completionHandlerHasValue() {
+        let (spy, _) = makeSut()
+        spy.signIn(email: email, password: password) { result in
+            XCTAssertNotNil(result)
+        }
+    }
 
 	// MRK: - Helpers
 
@@ -83,15 +95,18 @@ class AuthenticationTests: XCTestCase {
 }
 
 private class AuthProviderSpy: AuthProvider {
+    typealias SesionStoreResult = (Result<User, Error>) -> Void
+    struct NoUser: Error {}
 	var signInCalls = 0
 	var signOutCalls = 0
     var email = ""
     var password = ""
 
-    func signIn(email: String, password: String) {
+    func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
         self.email = email
         self.password = password
 		signInCalls += 1
+        completion(.failure(NoUser()))
 	}
 
 	func signOut() {
