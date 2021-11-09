@@ -8,7 +8,9 @@
 import XCTest
 
 protocol AuthProvider {
-	func signIn()
+    var email: String { get }
+    var password: String { get }
+    func signIn(email: String, password: String)
 	func signOut()
 }
 
@@ -19,8 +21,8 @@ class SessionStoree {
 		self.authProvider = authProvider
 	}
 
-	func signIn() {
-		authProvider.signIn()
+    func signIn(email: String, password: String) {
+		authProvider.signIn(email: email, password: password)
 	}
 
 	func signOut() {
@@ -38,11 +40,23 @@ class AuthenticationTests: XCTestCase {
 
 	func test_signIn_callsSignInOnAuthProvider() {
 		let (spy, sut) = makeSut()
+        let email = "mihai24vic@gmail.com"
+        let password = "Patratel1"
 
-		sut.signIn()
+		sut.signIn(email: email, password: password)
 
 		XCTAssertEqual(spy.signInCalls, 1)
+
 	}
+
+    func test_signIn_hasValidCredentials() {
+        let (spy, sut) = makeSut()
+
+        sut.signIn(email: email, password: password)
+
+        XCTAssertEqual(email, spy.email)
+        XCTAssertEqual(password, spy.password)
+    }
 
 	func test_signOut_callsSignOutOnAuthProvider() {
 		let (spy, sut) = makeSut()
@@ -64,13 +78,20 @@ class AuthenticationTests: XCTestCase {
 		return (spy, sut)
 	}
 
+    private var email = "test@test.com"
+    private var password = "pass123"
+
 }
 
 private class AuthProviderSpy: AuthProvider {
 	var signInCalls = 0
 	var signOutCalls = 0
+    var email = ""
+    var password = ""
 
-	func signIn() {
+    func signIn(email: String, password: String) {
+        self.email = email
+        self.password = password
 		signInCalls += 1
 	}
 
