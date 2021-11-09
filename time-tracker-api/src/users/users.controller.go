@@ -1,7 +1,7 @@
 package users
 
 import (
-	"net/http"
+	. "time-tracker/src/shared"
 
 	"github.com/gin-gonic/gin"
 )
@@ -21,9 +21,9 @@ func RegisterUsersController(api *gin.RouterGroup) {
 func GetUsers(context *gin.Context) {
 	users, err := getAllUsers()
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to get users"})
+		ErrorResponse(context, err)
 	} else {
-		context.JSON(http.StatusOK, users)
+		SuccessResponse(context, users)
 	}
 }
 
@@ -45,9 +45,9 @@ func CreateUser(context *gin.Context) {
 	context.Bind(&user)
 	response, err := saveUser(user)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save new user"})
+		ErrorResponse(context, err)
 	} else {
-		context.JSON(http.StatusOK, gin.H{"email": response})
+		SuccessResponse(context, response)
 	}
 }
 
