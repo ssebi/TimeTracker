@@ -83,6 +83,14 @@ class FirebaseAuthProviderIntegrationTests: XCTestCase {
             XCTFail()
         }
     }
+
+	func test_checkAuthState_returnsNilWhenUserIsLoggedOut() throws {
+		let sut = makeSUT()
+
+		try sut.signOut()
+
+		XCTAssertNil(sut.checkAuthState())
+	}
     
     // MARK: - Helper
     let email: String = "mihai24vic@gmail.com"

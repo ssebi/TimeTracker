@@ -10,12 +10,14 @@ import Firebase
 class FirebaseAuthProvider: AuthProvider {
 	struct NoUser: Error {}
 
+	private var auth = Auth.auth()
+
 	func checkAuthState() -> User? {
-		return nil
+		Self.mapUser(auth.currentUser)
 	}
 
 	func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
-		Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+		auth.signIn(withEmail: email, password: password) { (result, error) in
 			if let error = error {
 				completion(.failure(error))
 				return
@@ -35,6 +37,16 @@ class FirebaseAuthProvider: AuthProvider {
 	}
 
 	func signOut() throws {
-		try Auth.auth().signOut()
+		try auth.signOut()
+	}
+
+	private static func mapUser(_ user: Firebase.User?) -> TimeTrackerClient.User? {
+		guard let user = user else {
+			return nil
+		}
+		return TimeTrackerClient.User(uid: user.uid,
+									  email: user.email,
+									  username: user.displayName,
+									  client: "")
 	}
 }
