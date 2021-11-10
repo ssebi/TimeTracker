@@ -11,19 +11,30 @@ import Foundation
 class AuthProviderSpy: AuthProvider {
 	struct NoUser: Error {}
 
+	private(set) var checkAuthStateCalls = 0
 	private(set) var signInCalls = 0
 	private(set) var signOutCalls = 0
 	private(set) var email = ""
 	private(set) var password = ""
 
 	private var signOutError: Error?
-	var completion: SesionStoreResult?
+	private var authStateCheckResult: User?
+	private(set) var authCompletion: SesionStoreResult?
+
+	init(user: User?) {
+		authStateCheckResult = user
+	}
+
+	func checkAuthState() -> User? {
+		checkAuthStateCalls += 1
+		return authStateCheckResult
+	}
 
 	func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
 		signInCalls += 1
 		self.email = email
 		self.password = password
-		self.completion = completion
+		self.authCompletion = completion
 	}
 
 	func signOut() throws {
@@ -33,15 +44,19 @@ class AuthProviderSpy: AuthProvider {
 		}
 	}
 
-	func completeSignInWith(result: Result<TimeTrackerClient.User, Error>) {
-		completion?(result)
+	func completeSignInWith(result: Result<TimeTrackerClient.User?, Error>) {
+		authCompletion?(result)
 	}
 
 	func completeSignInWithNoUserFailure() {
-		completion?(.failure(NoUser()))
+		authCompletion?(.failure(NoUser()))
 	}
 
 	func completeSignOutWithFailure() {
 		signOutError = NSError(domain: "test", code: 0)
+	}
+
+	func completeAuthStateCheckWithNoUser() {
+		authStateCheckResult = nil
 	}
 }

@@ -126,7 +126,7 @@
 		54D8EEA527174EC900D867F3 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				C69C8576273BCCCF0089242C /* FirebaseAuthProvider.swift */,
+				C64784C1273C1A040086D169 /* Infra */,
 				54D8EEA92717502900D867F3 /* SessionStore.swift */,
 				C69C8578273BCD0E0089242C /* AuthProvider.swift */,
 				545CCED92723163300811CE3 /* DataStore.swift */,
@@ -153,6 +153,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C64784C1273C1A040086D169 /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+				C69C8576273BCCCF0089242C /* FirebaseAuthProvider.swift */,
+			);
+			path = Infra;
 			sourceTree = "<group>";
 		};
 		C64C427E271464B300CFBDEF = {

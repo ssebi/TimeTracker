@@ -53,6 +53,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
 	class FakeAuthProvider: AuthProvider {
+		func checkAuthState() -> User? { nil }
 		func signIn(email: String, password: String, completion: @escaping SesionStoreResult) { }
 		func signOut() throws { }
 	}
