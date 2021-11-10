@@ -28,11 +28,7 @@ class FirebaseAuthProvider: AuthProvider {
 				return
 			}
 
-			completion(.success(User(
-				uid: result?.user.uid,
-				email: result?.user.email,
-				username: result?.user.displayName,
-				client: "")))
+			completion(.success(Self.mapUser(result?.user)))
 		}
 	}
 

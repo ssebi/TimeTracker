@@ -44,7 +44,7 @@ class AuthProviderSpy: AuthProvider {
 		}
 	}
 
-	func completeSignInWith(result: Result<TimeTrackerClient.User, Error>) {
+	func completeSignInWith(result: Result<TimeTrackerClient.User?, Error>) {
 		authCompletion?(result)
 	}
 

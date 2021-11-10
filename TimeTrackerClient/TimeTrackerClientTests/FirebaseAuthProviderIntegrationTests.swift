@@ -17,7 +17,7 @@ class FirebaseAuthProviderIntegrationTests: XCTestCase {
     func test_signIn_failsWithInvalidCredentials() throws {
         /// Given
         let sut = makeSUT()
-		var sesionStoreResult: Result<TimeTrackerClient.User, Error>? = nil
+		var sesionStoreResult: Result<TimeTrackerClient.User?, Error>? = nil
 
 		/// When
         let exp = expectation(description: "Waiting to complete")
@@ -39,7 +39,7 @@ class FirebaseAuthProviderIntegrationTests: XCTestCase {
     func test_signIn_isSuccessfulOnSingleFunctionCall() {
         /// Given
         let sut = makeSUT()
-		var sesionStoreResult: Result<TimeTrackerClient.User, Error>? = nil
+		var sesionStoreResult: Result<TimeTrackerClient.User?, Error>? = nil
         
         /// When
         let exp = expectation(description: "Waiting to complete")
@@ -52,7 +52,7 @@ class FirebaseAuthProviderIntegrationTests: XCTestCase {
         /// Then
         XCTAssertNotNil(sesionStoreResult)
         if case let .success(user) = sesionStoreResult {
-            XCTAssertEqual(user.email, email)
+            XCTAssertEqual(user?.email, email)
         } else {
             XCTFail()
         }
@@ -61,7 +61,7 @@ class FirebaseAuthProviderIntegrationTests: XCTestCase {
     func test_signIn_isSuccessfulOnMultipleFunctionCalls() throws {
         /// Given
         let sut = makeSUT()
-		var sesionStoreResult: Result<TimeTrackerClient.User, Error>? = nil
+		var sesionStoreResult: Result<TimeTrackerClient.User?, Error>? = nil
         
         /// When
         let exp = expectation(description: "Waiting to complete")
@@ -78,7 +78,7 @@ class FirebaseAuthProviderIntegrationTests: XCTestCase {
         /// Then
         XCTAssertNotNil(sesionStoreResult)
         if case let .success(user) = sesionStoreResult {
-            XCTAssertEqual(user.email, email)
+            XCTAssertEqual(user?.email, email)
         } else {
             XCTFail()
         }
