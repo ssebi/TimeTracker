@@ -43,7 +43,7 @@ class AuthenticationTests: XCTestCase {
 	func test_signIn_callsSignInOnAuthProvider() {
 		let (spy, sut) = makeSut()
 
-        sut.signIn(email: email, password: password) { _ in }
+        sut.signIn(email: someEmail, password: somePassword) { _ in }
 
 		XCTAssertEqual(spy.signInCalls, 1)
 	}
@@ -51,10 +51,10 @@ class AuthenticationTests: XCTestCase {
     func test_signIn_hasValidCredentials() {
         let (spy, sut) = makeSut()
 
-        sut.signIn(email: email, password: password) { _ in }
+        sut.signIn(email: someEmail, password: somePassword) { _ in }
 
-        XCTAssertEqual(email, spy.email)
-        XCTAssertEqual(password, spy.password)
+        XCTAssertEqual(someEmail, spy.email)
+        XCTAssertEqual(somePassword, spy.password)
     }
 
 	func test_signOut_callsSignOutOnAuthProvider() {
@@ -67,7 +67,7 @@ class AuthenticationTests: XCTestCase {
 
     func test_signIn_completionHandlerHasValue() {
         let (_, sut) = makeSut()
-        sut.signIn(email: email, password: password) { result in
+        sut.signIn(email: someEmail, password: somePassword) { result in
             XCTAssertNotNil(result)
         }
     }
@@ -75,7 +75,7 @@ class AuthenticationTests: XCTestCase {
     func test_signIn_sessionHasUser() {
         let (_, sut) = makeSut()
 
-        sut.signIn(email: email, password: password) { result in
+        sut.signIn(email: someEmail, password: somePassword) { result in
             if case let .success(user) = result {
                 XCTAssertNotNil(user.email)
             } else {
@@ -87,7 +87,7 @@ class AuthenticationTests: XCTestCase {
     func test_signOut_sessionNoUser() {
         let (spy, sut) = makeSut()
 
-        sut.signIn(email: email, password: password) { _ in }
+        sut.signIn(email: someEmail, password: somePassword) { _ in }
         XCTAssertNotNil(spy.user.email)
         sut.signOut()
         XCTAssertNil(spy.user.email)
@@ -105,8 +105,8 @@ class AuthenticationTests: XCTestCase {
 		return (spy, sut)
 	}
 
-    private var email = "test@test.com"
-    private var password = "pass123"
+    private var someEmail = "test@test.com"
+    private var somePassword = "pass123"
 
 }
 
