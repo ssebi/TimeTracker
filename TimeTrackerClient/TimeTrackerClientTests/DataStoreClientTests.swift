@@ -7,7 +7,6 @@
 
 import XCTest
 import Firebase
-import Combine
 @testable import TimeTrackerClient
 
 class DataStoreClientTests: XCTestCase {
@@ -60,7 +59,7 @@ class DataStoreClientTests: XCTestCase {
     let path: String = "timeSlots"
 
     private func makeSUT(withUserSignedIn signedIn: Bool, file: StaticString = #filePath, line: UInt = #line) -> DataStore {
-        let session = SessionStore()
+        let session = SessionStore(authProvider: AuthProviderSpy())
 
         if signedIn {
             signIn(session)
@@ -79,14 +78,14 @@ class DataStoreClientTests: XCTestCase {
 
     private func signIn(_ session: SessionStore) {
         let exp = expectation(description: "Waiting to complete")
-        session.singIn(email: email, password: password) { result in
+        session.signIn(email: email, password: password) { result in
             exp.fulfill()
         }
         wait(for: [exp], timeout: 5)
     }
 
     private func signOut(_ sut: SessionStore) {
-        sut.singOut()
+        sut.signOut()
     }
     
 }

@@ -70,7 +70,7 @@ struct AddView: View {
 	}
 
 	func addTime() {
-		let user = session.session
+		let user = session.user
 		let userId = user?.uid ?? ""
 		var path = ""
 		let dateFormater = DateFormatter()

@@ -12,13 +12,13 @@ import Firebase
 struct TimeTrackerClientApp: App {
 
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-	@StateObject var sessionStore = SessionStore()
+	@StateObject var sessionStore = SessionStore(authProvider: FirebaseAuthProvider())
 	@StateObject var dataStore = DataStore()
 
 	var body: some Scene {
 		WindowGroup {
 			Group {
-				if sessionStore.session != nil {
+				if sessionStore.user != nil {
 					HomeView()
 				} else {
 					LoginView()

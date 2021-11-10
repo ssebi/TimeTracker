@@ -6,44 +6,7 @@
 //
 
 import XCTest
-
-protocol AuthProvider {
-    typealias SesionStoreResult = (Result<User, Error>) -> Void
-
-    func signIn(email: String, password: String, completion: @escaping SesionStoreResult)
-	func signOut() throws
-}
-
-class SessionStoree {
-    typealias SesionStoreResult = (Result<User, Error>) -> Void
-
-	var user: User?
-	let authProvider: AuthProvider
-
-	init(authProvider: AuthProvider) {
-		self.authProvider = authProvider
-	}
-
-    func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
-		authProvider.signIn(email: email, password: password) { [weak self] result in
-			if case let .success(user) = result {
-				self?.user = user
-			}
-			completion(result)
-		}
-	}
-
-	@discardableResult
-	func signOut() -> Bool {
-		do {
-			try authProvider.signOut()
-			user = nil
-			return true
-		} catch {
-			return false
-		}
-	}
-}
+@testable import TimeTrackerClient
 
 class AuthenticationTests: XCTestCase {
 
@@ -122,9 +85,9 @@ class AuthenticationTests: XCTestCase {
 
 	// MRK: - Helpers
 
-	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (AuthProviderSpy, SessionStoree) {
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (AuthProviderSpy, SessionStore) {
 		let spy = AuthProviderSpy()
-		let sut = SessionStoree(authProvider: spy)
+		let sut = SessionStore(authProvider: spy)
 		addTeardownBlock { [weak spy, weak sut] in
 			XCTAssertNil(spy, file: file, line: line)
 			XCTAssertNil(sut, file: file, line: line)
@@ -132,7 +95,7 @@ class AuthenticationTests: XCTestCase {
 		return (spy, sut)
 	}
 
-	private func expect(signInToCompleteWithSuccessFor sut: SessionStoree, on action: () -> Void) {
+	private func expect(signInToCompleteWithSuccessFor sut: SessionStore, on action: () -> Void) {
 		let exp = expectation(description: "wait for signIn")
 		sut.signIn(email: someEmail, password: somePassword) { result in
 			if case .success = result {
@@ -143,7 +106,7 @@ class AuthenticationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 
-	private func expect(signInToCompleteWithFailureFor sut: SessionStoree, on action: () -> Void) {
+	private func expect(signInToCompleteWithFailureFor sut: SessionStore, on action: () -> Void) {
 		let exp = expectation(description: "wait for signIn")
 		sut.signIn(email: someEmail, password: somePassword) { result in
 			if case let.failure(err) = result {
@@ -159,44 +122,4 @@ class AuthenticationTests: XCTestCase {
     private var somePassword = "pass123"
 	private lazy var someUser = User(uid: UUID().uuidString, email: someEmail, username: somePassword, client: nil)
 
-}
-
-private class AuthProviderSpy: AuthProvider {
-    typealias SesionStoreResult = (Result<User, Error>) -> Void
-
-	struct NoUser: Error {}
-
-	private(set) var signInCalls = 0
-	private(set) var signOutCalls = 0
-    private(set) var email = ""
-    private(set) var password = ""
-
-	private var signOutError: Error?
-	var completion: SesionStoreResult?
-
-    func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
-		signInCalls += 1
-        self.email = email
-        self.password = password
-		self.completion = completion
-	}
-
-	func signOut() throws {
-		signOutCalls += 1
-		if let err = signOutError {
-			throw err
-		}
-	}
-
-	func completeSignInWith(result: Result<User, Error>) {
-		completion?(result)
-	}
-
-	func completeSignInWithNoUserFailure() {
-		completion?(.failure(NoUser()))
-	}
-
-	func completeSignOutWithFailure() {
-		signOutError = NSError(domain: "test", code: 0)
-	}
 }
