@@ -115,10 +115,10 @@ class AuthenticationTests: XCTestCase {
 private class AuthProviderSpy: AuthProvider {
     typealias SesionStoreResult = (Result<User, Error>) -> Void
     struct NoUser: Error {}
-	var signInCalls = 0
-	var signOutCalls = 0
-    var email = "test@tes.com"
-    var password = "password"
+	private(set) var signInCalls = 0
+	private(set) var signOutCalls = 0
+    private(set) var email = "test@tes.com"
+    private(set) var password = "password"
     var user = User(uid: "uid", email:" test@tes.com", username: "test", client: "")
 	private var signInResult: Result<User, Error>?
 
