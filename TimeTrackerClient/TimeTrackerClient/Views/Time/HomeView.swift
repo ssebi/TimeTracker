@@ -20,7 +20,7 @@ struct HomeView: View {
 					leading:
 						Button(
 							action: {
-								session.singOut()
+								session.signOut()
 							},
 							label: {
 								Label("", systemImage: "power")
@@ -52,9 +52,14 @@ struct HomeView: View {
 }
 
 struct HomeView_Previews: PreviewProvider {
+	class FakeAuthProvider: AuthProvider {
+		func signIn(email: String, password: String, completion: @escaping SesionStoreResult) { }
+		func signOut() throws { }
+	}
+	
 	static var previews: some View {
 		HomeView()
 			.environmentObject(DataStore())
-			.environmentObject(SessionStore())
+			.environmentObject(SessionStore(authProvider: FakeAuthProvider()))
 	}
 }

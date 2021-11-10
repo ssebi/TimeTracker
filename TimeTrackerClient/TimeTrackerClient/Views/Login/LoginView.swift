@@ -57,7 +57,7 @@ struct LoginView: View {
 	}
 
 	func signIn() {
-		session.singIn(email: username, password: password){ _ in }
+		session.signIn(email: username, password: password){ _ in }
 	}
 }
 
