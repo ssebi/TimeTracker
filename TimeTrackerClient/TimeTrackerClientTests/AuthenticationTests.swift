@@ -25,9 +25,9 @@ class SessionStoree {
 	}
 
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
-		authProvider.signIn(email: email, password: password) { result in
+		authProvider.signIn(email: email, password: password) { [weak self] result in
 			if case let .success(user) = result {
-				self.user = user
+				self?.user = user
 			}
 		}
 	}
