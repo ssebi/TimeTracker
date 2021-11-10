@@ -8,8 +8,6 @@
 import XCTest
 
 protocol AuthProvider {
-    var email: String { get }
-    var password: String { get }
     typealias SesionStoreResult = (Result<User, Error>) -> Void
 
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult)
