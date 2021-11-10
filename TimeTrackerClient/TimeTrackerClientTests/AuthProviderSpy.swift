@@ -18,17 +18,19 @@ class AuthProviderSpy: AuthProvider {
 	private(set) var password = ""
 
 	private var signOutError: Error?
-	var completion: SesionStoreResult?
+	private var authStateCheckResult: User?
+	private(set) var authCompletion: SesionStoreResult?
 
-	func checkAuthState(completion: @escaping SesionStoreResult) {
+	func checkAuthState() -> User? {
 		checkAuthStateCalls += 1
+		return authStateCheckResult
 	}
 
 	func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
 		signInCalls += 1
 		self.email = email
 		self.password = password
-		self.completion = completion
+		self.authCompletion = completion
 	}
 
 	func signOut() throws {
@@ -39,14 +41,18 @@ class AuthProviderSpy: AuthProvider {
 	}
 
 	func completeSignInWith(result: Result<TimeTrackerClient.User, Error>) {
-		completion?(result)
+		authCompletion?(result)
 	}
 
 	func completeSignInWithNoUserFailure() {
-		completion?(.failure(NoUser()))
+		authCompletion?(.failure(NoUser()))
 	}
 
 	func completeSignOutWithFailure() {
 		signOutError = NSError(domain: "test", code: 0)
+	}
+
+	func completeAuthStateCheckWithNoUser() {
+		authStateCheckResult = nil
 	}
 }

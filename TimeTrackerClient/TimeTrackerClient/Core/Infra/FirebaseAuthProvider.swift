@@ -10,8 +10,8 @@ import Firebase
 class FirebaseAuthProvider: AuthProvider {
 	struct NoUser: Error {}
 
-	func checkAuthState(completion: @escaping SesionStoreResult) {
-		
+	func checkAuthState() -> User? {
+		return nil
 	}
 
 	func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {

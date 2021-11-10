@@ -89,6 +89,14 @@ class AuthenticationTests: XCTestCase {
 		XCTAssertNil(sut.user)
     }
 
+	func test_init_userIsNilWhenAuthStateCheckDeliversNil() {
+		let (spy, sut) = makeSut()
+
+		spy.completeAuthStateCheckWithNoUser()
+
+		XCTAssertNil(sut.user)
+	}
+
 	// MRK: - Helpers
 
 	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (AuthProviderSpy, SessionStore) {
