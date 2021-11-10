@@ -42,8 +42,6 @@ class AuthenticationTests: XCTestCase {
 
 	func test_signIn_callsSignInOnAuthProvider() {
 		let (spy, sut) = makeSut()
-        let email = "mihai24vic@gmail.com"
-        let password = "Patratel1"
 
         sut.signIn(email: email, password: password) { _ in }
 
