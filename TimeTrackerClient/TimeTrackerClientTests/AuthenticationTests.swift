@@ -100,16 +100,24 @@ class AuthenticationTests: XCTestCase {
     func test_signIn_setsUserValue() {
         let (spy, sut) = makeSut()
 
+		let exp = expectation(description: "wait for signIn")
+        sut.signIn(email: someEmail, password: somePassword) { _ in
+			exp.fulfill()
+		}
 		spy.completeSignInWith(result: .success(someUser))
-        sut.signIn(email: someEmail, password: somePassword) { _ in }
+		wait(for: [exp], timeout: 1)
 
 		XCTAssertNotNil(sut.user)
     }
 
     func test_signOut_setsUserValueAsNil() {
         let (spy, sut) = makeSut()
+		let exp = expectation(description: "wait for signIn")
+        sut.signIn(email: someEmail, password: somePassword) { _ in
+			exp.fulfill()
+		}
 		spy.completeSignInWith(result: .success(someUser))
-        sut.signIn(email: someEmail, password: somePassword) { _ in }
+		wait(for: [exp], timeout: 1)
 
 		sut.signOut()
 
@@ -144,17 +152,12 @@ private class AuthProviderSpy: AuthProvider {
     private(set) var email = "test@tes.com"
     private(set) var password = "password"
 
-	private var signInResult: Result<User, Error>?
-
 	var completion: SesionStoreResult?
 
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
         self.email = email
         self.password = password
 		signInCalls += 1
-		if let signInResult = signInResult {
-			completion(signInResult)
-		}
 		self.completion = completion
 	}
 
@@ -162,12 +165,11 @@ private class AuthProviderSpy: AuthProvider {
 		signOutCalls += 1
 	}
 
-	func completeSignInWith(result: Result<User, Error>?) {
-		signInResult = result
+	func completeSignInWith(result: Result<User, Error>) {
+		completion?(result)
 	}
 
 	func completeSignInWithNoUserFailure() {
-		signInResult = .failure(NoUser())
-		completion?(signInResult!)
+		completion?(.failure(NoUser()))
 	}
 }
