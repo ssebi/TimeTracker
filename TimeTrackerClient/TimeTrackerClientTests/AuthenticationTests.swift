@@ -74,7 +74,7 @@ class AuthenticationTests: XCTestCase {
 
 	func test_signIn_failsWhenAuthProviderSignInFails() {
 		let (spy, sut) = makeSut()
-		
+
 		expect(signInToCompleteWithFailureFor: sut, on: {
 			spy.completeSignInWithNoUserFailure()
 		})
@@ -156,8 +156,8 @@ private class AuthProviderSpy: AuthProvider {
 
 	private(set) var signInCalls = 0
 	private(set) var signOutCalls = 0
-    private(set) var email = "test@tes.com"
-    private(set) var password = "password"
+    private(set) var email = ""
+    private(set) var password = ""
 
 	var completion: SesionStoreResult?
 
