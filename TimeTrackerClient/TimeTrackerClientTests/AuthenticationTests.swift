@@ -16,8 +16,10 @@ protocol AuthProvider {
 
 class SessionStoree {
     typealias SesionStoreResult = (Result<User, Error>) -> Void
+
 	var user: User?
 	let authProvider: AuthProvider
+
 	init(authProvider: AuthProvider) {
 		self.authProvider = authProvider
 	}
@@ -115,7 +117,9 @@ class AuthenticationTests: XCTestCase {
 
 private class AuthProviderSpy: AuthProvider {
     typealias SesionStoreResult = (Result<User, Error>) -> Void
-    struct NoUser: Error {}
+
+	struct NoUser: Error {}
+
 	private(set) var signInCalls = 0
 	private(set) var signOutCalls = 0
     private(set) var email = "test@tes.com"
