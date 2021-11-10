@@ -21,6 +21,10 @@ class AuthProviderSpy: AuthProvider {
 	private var authStateCheckResult: User?
 	private(set) var authCompletion: SesionStoreResult?
 
+	init(user: User?) {
+		authStateCheckResult = user
+	}
+
 	func checkAuthState() -> User? {
 		checkAuthStateCalls += 1
 		return authStateCheckResult

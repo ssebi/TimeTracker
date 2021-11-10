@@ -14,7 +14,7 @@ class SessionStore: ObservableObject {
 
 	init(authProvider: AuthProvider) {
 		self.authProvider = authProvider
-		_ = self.authProvider.checkAuthState()
+		user = self.authProvider.checkAuthState()
 	}
 
 	func signIn(email: String, password: String, completion: @escaping AuthProvider.SesionStoreResult) {

@@ -97,10 +97,16 @@ class AuthenticationTests: XCTestCase {
 		XCTAssertNil(sut.user)
 	}
 
+	func test_init_userHasValueWhenAuthStateCheckDeliversUser() {
+		let (_, sut) = makeSut(user: someUser)
+
+		XCTAssertNotNil(sut.user)
+	}
+
 	// MRK: - Helpers
 
-	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (AuthProviderSpy, SessionStore) {
-		let spy = AuthProviderSpy()
+	private func makeSut(user: User? = nil, file: StaticString = #filePath, line: UInt = #line) -> (AuthProviderSpy, SessionStore) {
+		let spy = AuthProviderSpy(user: user)
 		let sut = SessionStore(authProvider: spy)
 		addTeardownBlock { [weak spy, weak sut] in
 			XCTAssertNil(spy, file: file, line: line)
