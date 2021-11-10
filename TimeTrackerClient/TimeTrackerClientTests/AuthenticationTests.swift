@@ -8,25 +8,40 @@
 import XCTest
 
 protocol AuthProvider {
-    var email: String { get }
-    var password: String { get }
-    func signIn(email: String, password: String)
-	func signOut()
+    typealias SesionStoreResult = (Result<User, Error>) -> Void
+
+    func signIn(email: String, password: String, completion: @escaping SesionStoreResult)
+	func signOut() throws
 }
 
 class SessionStoree {
+    typealias SesionStoreResult = (Result<User, Error>) -> Void
+
+	var user: User?
 	let authProvider: AuthProvider
 
 	init(authProvider: AuthProvider) {
 		self.authProvider = authProvider
 	}
 
-    func signIn(email: String, password: String) {
-		authProvider.signIn(email: email, password: password)
+    func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
+		authProvider.signIn(email: email, password: password) { [weak self] result in
+			if case let .success(user) = result {
+				self?.user = user
+			}
+			completion(result)
+		}
 	}
 
-	func signOut() {
-		authProvider.signOut()
+	@discardableResult
+	func signOut() -> Bool {
+		do {
+			try authProvider.signOut()
+			user = nil
+			return true
+		} catch {
+			return false
+		}
 	}
 }
 
@@ -40,10 +55,8 @@ class AuthenticationTests: XCTestCase {
 
 	func test_signIn_callsSignInOnAuthProvider() {
 		let (spy, sut) = makeSut()
-        let email = "mihai24vic@gmail.com"
-        let password = "Patratel1"
 
-		sut.signIn(email: email, password: password)
+        sut.signIn(email: someEmail, password: somePassword) { _ in }
 
 		XCTAssertEqual(spy.signInCalls, 1)
 	}
@@ -51,10 +64,10 @@ class AuthenticationTests: XCTestCase {
     func test_signIn_hasValidCredentials() {
         let (spy, sut) = makeSut()
 
-        sut.signIn(email: email, password: password)
+        sut.signIn(email: someEmail, password: somePassword) { _ in }
 
-        XCTAssertEqual(email, spy.email)
-        XCTAssertEqual(password, spy.password)
+        XCTAssertEqual(someEmail, spy.email)
+        XCTAssertEqual(somePassword, spy.password)
     }
 
 	func test_signOut_callsSignOutOnAuthProvider() {
@@ -64,6 +77,48 @@ class AuthenticationTests: XCTestCase {
 
 		XCTAssertEqual(spy.signOutCalls, 1)
 	}
+
+	func test_signIn_failsWhenAuthProviderSignInFails() {
+		let (spy, sut) = makeSut()
+
+		expect(signInToCompleteWithFailureFor: sut, on: {
+			spy.completeSignInWithNoUserFailure()
+		})
+	}
+
+    func test_signIn_setsUserValue() {
+        let (spy, sut) = makeSut()
+
+		expect(signInToCompleteWithSuccessFor: sut, on: {
+			spy.completeSignInWith(result: .success(someUser))
+		})
+
+		XCTAssertNotNil(sut.user)
+		XCTAssertEqual(sut.user, someUser)
+    }
+
+	func test_signOut_failsWhenAuthProviderSignOutFails() {
+		let (spy, sut) = makeSut()
+		expect(signInToCompleteWithSuccessFor: sut, on: {
+			spy.completeSignInWith(result: .success(someUser))
+		})
+
+		spy.completeSignOutWithFailure()
+		let result = sut.signOut()
+
+		XCTAssertEqual(result, false)
+	}
+
+    func test_signOut_setsUserValueAsNil() {
+		let (spy, sut) = makeSut()
+		expect(signInToCompleteWithSuccessFor: sut, on: {
+			spy.completeSignInWith(result: .success(someUser))
+		})
+
+		sut.signOut()
+
+		XCTAssertNil(sut.user)
+    }
 
 	// MRK: - Helpers
 
@@ -77,24 +132,71 @@ class AuthenticationTests: XCTestCase {
 		return (spy, sut)
 	}
 
-    private var email = "test@test.com"
-    private var password = "pass123"
+	private func expect(signInToCompleteWithSuccessFor sut: SessionStoree, on action: () -> Void) {
+		let exp = expectation(description: "wait for signIn")
+		sut.signIn(email: someEmail, password: somePassword) { result in
+			if case .success = result {
+				exp.fulfill()
+			}
+		}
+		action()
+		wait(for: [exp], timeout: 1.0)
+	}
+
+	private func expect(signInToCompleteWithFailureFor sut: SessionStoree, on action: () -> Void) {
+		let exp = expectation(description: "wait for signIn")
+		sut.signIn(email: someEmail, password: somePassword) { result in
+			if case let.failure(err) = result {
+				XCTAssertEqual(err as NSError, AuthProviderSpy.NoUser() as NSError)
+				exp.fulfill()
+			}
+		}
+		action()
+		wait(for: [exp], timeout: 1.0)
+	}
+
+    private var someEmail = "test@test.com"
+    private var somePassword = "pass123"
+	private lazy var someUser = User(uid: UUID().uuidString, email: someEmail, username: somePassword, client: nil)
 
 }
 
 private class AuthProviderSpy: AuthProvider {
-	var signInCalls = 0
-	var signOutCalls = 0
-    var email = ""
-    var password = ""
+    typealias SesionStoreResult = (Result<User, Error>) -> Void
 
-    func signIn(email: String, password: String) {
+	struct NoUser: Error {}
+
+	private(set) var signInCalls = 0
+	private(set) var signOutCalls = 0
+    private(set) var email = ""
+    private(set) var password = ""
+
+	private var signOutError: Error?
+	var completion: SesionStoreResult?
+
+    func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
+		signInCalls += 1
         self.email = email
         self.password = password
-		signInCalls += 1
+		self.completion = completion
 	}
 
-	func signOut() {
+	func signOut() throws {
 		signOutCalls += 1
+		if let err = signOutError {
+			throw err
+		}
+	}
+
+	func completeSignInWith(result: Result<User, Error>) {
+		completion?(result)
+	}
+
+	func completeSignInWithNoUserFailure() {
+		completion?(.failure(NoUser()))
+	}
+
+	func completeSignOutWithFailure() {
+		signOutError = NSError(domain: "test", code: 0)
 	}
 }
