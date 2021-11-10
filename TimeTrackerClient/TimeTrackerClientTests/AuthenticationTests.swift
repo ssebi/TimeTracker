@@ -11,7 +11,7 @@ protocol AuthProvider {
     typealias SesionStoreResult = (Result<User, Error>) -> Void
 
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult)
-	func signOut()
+	func signOut() throws
 }
 
 class SessionStoree {
@@ -33,9 +33,15 @@ class SessionStoree {
 		}
 	}
 
-	func signOut() {
-		authProvider.signOut()
-		user = nil
+	@discardableResult
+	func signOut() -> Bool {
+		do {
+			try authProvider.signOut()
+			user = nil
+			return true
+		} catch {
+			return false
+		}
 	}
 }
 
@@ -91,8 +97,20 @@ class AuthenticationTests: XCTestCase {
 		XCTAssertEqual(sut.user, someUser)
     }
 
+	func test_signOut_failsWhenAuthProviderSignOutFails() {
+		let (spy, sut) = makeSut()
+		expect(signInToCompleteWithSuccessFor: sut, on: {
+			spy.completeSignInWith(result: .success(someUser))
+		})
+
+		spy.completeSignOutWithFailure()
+		let result = sut.signOut()
+
+		XCTAssertEqual(result, false)
+	}
+
     func test_signOut_setsUserValueAsNil() {
-        let (spy, sut) = makeSut()
+		let (spy, sut) = makeSut()
 		expect(signInToCompleteWithSuccessFor: sut, on: {
 			spy.completeSignInWith(result: .success(someUser))
 		})
@@ -153,6 +171,7 @@ private class AuthProviderSpy: AuthProvider {
     private(set) var email = ""
     private(set) var password = ""
 
+	private var signOutError: Error?
 	var completion: SesionStoreResult?
 
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
@@ -162,8 +181,11 @@ private class AuthProviderSpy: AuthProvider {
 		self.completion = completion
 	}
 
-	func signOut() {
+	func signOut() throws {
 		signOutCalls += 1
+		if let err = signOutError {
+			throw err
+		}
 	}
 
 	func completeSignInWith(result: Result<User, Error>) {
@@ -172,5 +194,9 @@ private class AuthProviderSpy: AuthProvider {
 
 	func completeSignInWithNoUserFailure() {
 		completion?(.failure(NoUser()))
+	}
+
+	func completeSignOutWithFailure() {
+		signOutError = NSError(domain: "test", code: 0)
 	}
 }
