@@ -20,3 +20,12 @@ class User: ObservableObject {
         self.client = client
     }
 }
+
+extension User: Equatable {
+	static func == (lhs: User, rhs: User) -> Bool {
+		lhs.uid == rhs.uid &&
+		lhs.email == rhs.email &&
+		lhs.username == rhs.username &&
+		lhs.client == rhs.client
+	}
+}

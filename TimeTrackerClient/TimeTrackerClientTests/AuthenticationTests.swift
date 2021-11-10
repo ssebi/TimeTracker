@@ -88,6 +88,7 @@ class AuthenticationTests: XCTestCase {
 		})
 
 		XCTAssertNotNil(sut.user)
+		XCTAssertEqual(sut.user, someUser)
     }
 
     func test_signOut_setsUserValueAsNil() {
