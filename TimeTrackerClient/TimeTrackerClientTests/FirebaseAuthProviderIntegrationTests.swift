@@ -1,6 +1,6 @@
 //
-//  SessionStoreClientTests.swift
-//  SessionStoreClientTests
+//  FirebaseAuthProviderIntegrationTests.swift
+//  FirebaseAuthProviderIntegrationTests
 //
 //  Created by Bocanu Mihai on 13.10.2021.
 //
@@ -10,15 +10,16 @@ import Firebase
 import Combine
 @testable import TimeTrackerClient
 
-class SessionStoreClientTests: XCTestCase {
-	
+class FirebaseAuthProviderIntegrationTests: XCTestCase {
+
     /// sut = system under test
     
     func test_signIn_failsWithInvalidCredentials() throws {
         /// Given
         let sut = makeSUT()
 		var sesionStoreResult: Result<TimeTrackerClient.User, Error>? = nil
-        /// When
+
+		/// When
         let exp = expectation(description: "Waiting to complete")
         sut.signIn(email: email, password: wrongPassword) { result in
             sesionStoreResult = result
@@ -42,7 +43,7 @@ class SessionStoreClientTests: XCTestCase {
         
         /// When
         let exp = expectation(description: "Waiting to complete")
-        sut.signIn(email: email, password: password) { result in
+        sut.signIn(email: email, password: correctPassword) { result in
             sesionStoreResult = result
             exp.fulfill()
         }
@@ -56,7 +57,7 @@ class SessionStoreClientTests: XCTestCase {
             XCTFail()
         }
     }
-    
+
     func test_signIn_isSuccessfulOnMultipleFunctionCalls() throws {
         /// Given
         let sut = makeSUT()
@@ -66,7 +67,7 @@ class SessionStoreClientTests: XCTestCase {
         let exp = expectation(description: "Waiting to complete")
         exp.expectedFulfillmentCount = 3
         for _ in 0..<3 {
-            sut.signIn(email: email, password: password) { result in
+            sut.signIn(email: email, password: correctPassword) { result in
                 sesionStoreResult = result
                 exp.fulfill()
             }
@@ -83,70 +84,13 @@ class SessionStoreClientTests: XCTestCase {
         }
     }
     
-    func test_signIn_setsTheSession() throws {
-        /// Given
-        let sut = makeSUT()
-        
-        /// When
-        let exp = expectation(description: "Waiting to complete")
-        sut.signIn(email: email, password: password) { result in
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 5)
-        
-        /// Then
-        let session = try XCTUnwrap(sut.user)
-        XCTAssertEqual(session.email, email)
-    }
-    
-    func test_signOut_setsSessionAsNil() {
-        let sut = makeSUT()
-        var subscriptions: Set<AnyCancellable> = []
-        
-        let exp = expectation(description: "Waiting for session to have suer")
-        sut.signIn(email: email, password: password, completion: { _ in
-            exp.fulfill()
-        })
-        wait(for: [exp], timeout: 5)
-        
-        XCTAssertTrue(sut.signOut())
-        
-        let exp2 = expectation(description: "Wait for session to be nil")
-		sut.user.publisher.sink(receiveValue: { store in
-            exp2.fulfill()
-        }).store(in: &subscriptions)
-        
-        wait(for: [exp2], timeout: 5)
-        XCTAssertNil(sut.user)
-    }
-
-	/*
-    func test_unbind_handleListener() {
-        var sut: SessionStore? = makeSUT()
-        
-        /// When
-        XCTAssertNotNil(sut?.handle)
-        
-        let exp = expectation(description: "Waiting to complete")
-        sut?.signIn(email: email, password: password) { result in
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 5)
-        
-        sut = nil
-        
-        /// Then
-        XCTAssertNil(sut?.handle)
-    }
-	 */
-    
     // MARK: - Helper
     let email: String = "mihai24vic@gmail.com"
     let wrongPassword: String = "123452435324"
-    let password: String = "Patratel1"
+    let correctPassword: String = "Patratel1"
     
-    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> SessionStore {
-        let sut = SessionStore(authProvider: AuthProviderSpy())
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> FirebaseAuthProvider {
+        let sut = FirebaseAuthProvider()
         
         addTeardownBlock { [weak sut] in
             XCTAssertNil(sut, file: file, line: line)

@@ -29,7 +29,8 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "54D2FDD5271747F100C66998"
@@ -40,9 +41,6 @@
             <SkippedTests>
                <Test
                   Identifier = "DataStoreClientTests">
-               </Test>
-               <Test
-                  Identifier = "SessionStoreClientTests">
                </Test>
             </SkippedTests>
          </TestableReference>
