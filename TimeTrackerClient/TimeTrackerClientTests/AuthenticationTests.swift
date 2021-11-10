@@ -32,6 +32,7 @@ class SessionStoree {
 
 	func signOut() {
 		authProvider.signOut()
+		user = nil
 	}
 }
 
@@ -84,13 +85,14 @@ class AuthenticationTests: XCTestCase {
 		XCTAssertNotNil(sut.user)
     }
 
-    func test_signOut_sessionNoUser() {
+    func test_signOut_setsUserValueAsNil() {
         let (spy, sut) = makeSut()
-
+		spy.completeSignInWithSuccess()
         sut.signIn(email: someEmail, password: somePassword) { _ in }
-        XCTAssertNotNil(spy.user.email)
-        sut.signOut()
-        XCTAssertNil(spy.user.email)
+
+		sut.signOut()
+
+		XCTAssertNil(sut.user)
     }
 
 	// MRK: - Helpers
@@ -131,7 +133,6 @@ private class AuthProviderSpy: AuthProvider {
 
 	func signOut() {
 		signOutCalls += 1
-        user = User(uid: nil, email: nil, username: nil, client: nil)
 	}
 
 	func completeSignInWithSuccess() {
