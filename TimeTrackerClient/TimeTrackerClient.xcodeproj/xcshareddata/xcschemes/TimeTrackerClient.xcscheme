@@ -38,11 +38,6 @@
                BlueprintName = "TimeTrackerClientTests"
                ReferencedContainer = "container:TimeTrackerClient.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "DataStoreClientTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

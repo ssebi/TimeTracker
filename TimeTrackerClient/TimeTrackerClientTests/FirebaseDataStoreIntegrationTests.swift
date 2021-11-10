@@ -1,6 +1,6 @@
 //
-//  x.swift
-//  TimeTrackerClientTests
+//  FirebaseDataStoreIntegrationTests.swift
+//  FirebaseDataStoreIntegrationTests
 //
 //  Created by Bocanu Mihai on 22.10.2021.
 //
@@ -9,7 +9,7 @@ import XCTest
 import Firebase
 @testable import TimeTrackerClient
 
-class DataStoreClientTests: XCTestCase {
+class FirebaseDataStoreIntegrationTests: XCTestCase {
     
     func test_addTimeSlot_isSusccesfullOnAdd() {
         let sut = makeSUT(withUserSignedIn: true)
@@ -26,7 +26,7 @@ class DataStoreClientTests: XCTestCase {
             receivedError = error
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 1)
+        wait(for: [exp], timeout: 5)
         
         XCTAssertNil(receivedError)
     }
@@ -59,7 +59,7 @@ class DataStoreClientTests: XCTestCase {
     let path: String = "timeSlots"
 
     private func makeSUT(withUserSignedIn signedIn: Bool, file: StaticString = #filePath, line: UInt = #line) -> DataStore {
-        let session = SessionStore(authProvider: AuthProviderSpy())
+        let session = SessionStore(authProvider: FirebaseAuthProvider())
 
         if signedIn {
             signIn(session)

@@ -12,7 +12,7 @@
 		545CCEC427229C5A00811CE3 /* WorkLogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC327229C5A00811CE3 /* WorkLogModel.swift */; };
 		545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC627229D1E00811CE3 /* ProjectModel.swift */; };
 		545CCECA27229DF800811CE3 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC927229DF800811CE3 /* ClientModel.swift */; };
-		545CCED82723053E00811CE3 /* DataStoreClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED72723053E00811CE3 /* DataStoreClientTests.swift */; };
+		545CCED82723053E00811CE3 /* FirebaseDataStoreIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED72723053E00811CE3 /* FirebaseDataStoreIntegrationTests.swift */; };
 		545CCEDA2723163300811CE3 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED92723163300811CE3 /* DataStore.swift */; };
 		545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDB2726EB0600811CE3 /* AddView.swift */; };
 		545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDE2727274D00811CE3 /* DatePickerView.swift */; };
@@ -55,7 +55,7 @@
 		545CCEC327229C5A00811CE3 /* WorkLogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkLogModel.swift; sourceTree = "<group>"; };
 		545CCEC627229D1E00811CE3 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		545CCEC927229DF800811CE3 /* ClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModel.swift; sourceTree = "<group>"; };
-		545CCED72723053E00811CE3 /* DataStoreClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreClientTests.swift; sourceTree = "<group>"; };
+		545CCED72723053E00811CE3 /* FirebaseDataStoreIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataStoreIntegrationTests.swift; sourceTree = "<group>"; };
 		545CCED92723163300811CE3 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		545CCEDB2726EB0600811CE3 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		545CCEDE2727274D00811CE3 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				54D2FDD8271747F100C66998 /* FirebaseAuthProviderIntegrationTests.swift */,
-				545CCED72723053E00811CE3 /* DataStoreClientTests.swift */,
+				545CCED72723053E00811CE3 /* FirebaseDataStoreIntegrationTests.swift */,
 				C6DA42EB27356C4400D44D80 /* AuthenticationTests.swift */,
 				C69C857A273BD3DE0089242C /* AuthProviderSpy.swift */,
 			);
@@ -336,7 +336,7 @@
 			files = (
 				54D2FDD9271747F100C66998 /* FirebaseAuthProviderIntegrationTests.swift in Sources */,
 				C69C857B273BD3DE0089242C /* AuthProviderSpy.swift in Sources */,
-				545CCED82723053E00811CE3 /* DataStoreClientTests.swift in Sources */,
+				545CCED82723053E00811CE3 /* FirebaseDataStoreIntegrationTests.swift in Sources */,
 				C6DA42EC27356C4400D44D80 /* AuthenticationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
