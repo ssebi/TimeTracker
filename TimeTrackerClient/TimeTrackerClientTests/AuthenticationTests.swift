@@ -29,6 +29,7 @@ class SessionStoree {
 			if case let .success(user) = result {
 				self?.user = user
 			}
+			completion(result)
 		}
 	}
 
@@ -69,6 +70,24 @@ class AuthenticationTests: XCTestCase {
 		sut.signOut()
 
 		XCTAssertEqual(spy.signOutCalls, 1)
+	}
+
+	func test_signIn_failsWhenAuthProviderSignInFails() {
+		let (spy, sut) = makeSut()
+
+		let exp = expectation(description: "wait for signIn")
+		sut.signIn(email: someEmail, password: somePassword) { result in
+			switch result {
+				case .success:
+					XCTFail()
+				case .failure(let err):
+					XCTAssertEqual(err as NSError, AuthProviderSpy.NoUser() as NSError)
+					exp.fulfill()
+					return
+			}
+		}
+		spy.completeSignInWithNoUserFailure()
+		wait(for: [exp], timeout: 1)
 	}
 
     func test_signIn_completionHandlerHasValue() {
@@ -127,6 +146,8 @@ private class AuthProviderSpy: AuthProvider {
 
 	private var signInResult: Result<User, Error>?
 
+	var completion: SesionStoreResult?
+
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
         self.email = email
         self.password = password
@@ -134,6 +155,7 @@ private class AuthProviderSpy: AuthProvider {
 		if let signInResult = signInResult {
 			completion(signInResult)
 		}
+		self.completion = completion
 	}
 
 	func signOut() {
@@ -142,5 +164,10 @@ private class AuthProviderSpy: AuthProvider {
 
 	func completeSignInWith(result: Result<User, Error>?) {
 		signInResult = result
+	}
+
+	func completeSignInWithNoUserFailure() {
+		signInResult = .failure(NoUser())
+		completion?(signInResult!)
 	}
 }
