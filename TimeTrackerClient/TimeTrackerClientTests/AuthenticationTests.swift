@@ -16,15 +16,18 @@ protocol AuthProvider {
 
 class SessionStoree {
     typealias SesionStoreResult = (Result<User, Error>) -> Void
+	var user: User?
 	let authProvider: AuthProvider
 	init(authProvider: AuthProvider) {
 		self.authProvider = authProvider
 	}
 
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
-        authProvider.signIn(email: email, password: password) { result in
-            completion(.success(User(uid: "id", email: email, username: email, client: "")))
-        }
+		authProvider.signIn(email: email, password: password) { result in
+			if case let .success(user) = result {
+				self.user = user
+			}
+		}
 	}
 
 	func signOut() {
@@ -72,16 +75,13 @@ class AuthenticationTests: XCTestCase {
         }
     }
 
-    func test_signIn_sessionHasUser() {
-        let (_, sut) = makeSut()
+    func test_signIn_setsUserValue() {
+        let (spy, sut) = makeSut()
 
-        sut.signIn(email: someEmail, password: somePassword) { result in
-            if case let .success(user) = result {
-                XCTAssertNotNil(user.email)
-            } else {
-                XCTFail()
-            }
-        }
+		spy.completeSignInWithSuccess()
+        sut.signIn(email: someEmail, password: somePassword) { _ in }
+
+		XCTAssertNotNil(sut.user)
     }
 
     func test_signOut_sessionNoUser() {
@@ -118,21 +118,23 @@ private class AuthProviderSpy: AuthProvider {
     var email = "test@tes.com"
     var password = "password"
     var user = User(uid: "uid", email:" test@tes.com", username: "test", client: "")
+	private var signInResult: Result<User, Error>?
 
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
         self.email = email
         self.password = password
 		signInCalls += 1
-        completion(.success(User(
-            uid: user.email,
-            email: user.email,
-            username: user.username,
-            client: user.client
-        )))
+		if let signInResult = signInResult {
+			completion(signInResult)
+		}
 	}
 
 	func signOut() {
 		signOutCalls += 1
         user = User(uid: nil, email: nil, username: nil, client: nil)
+	}
+
+	func completeSignInWithSuccess() {
+		signInResult = .success(user)
 	}
 }
