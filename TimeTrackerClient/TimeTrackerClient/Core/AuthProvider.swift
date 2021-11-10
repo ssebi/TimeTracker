@@ -8,6 +8,7 @@
 protocol AuthProvider {
 	typealias SesionStoreResult = (Result<User, Error>) -> Void
 
+	func checkAuthState(completion: @escaping SesionStoreResult)
 	func signIn(email: String, password: String, completion: @escaping SesionStoreResult)
 	func signOut() throws
 }

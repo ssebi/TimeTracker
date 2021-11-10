@@ -10,6 +10,10 @@ import Firebase
 class FirebaseAuthProvider: AuthProvider {
 	struct NoUser: Error {}
 
+	func checkAuthState(completion: @escaping SesionStoreResult) {
+		
+	}
+
 	func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
 		Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
 			if let error = error {

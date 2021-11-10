@@ -16,6 +16,12 @@ class AuthenticationTests: XCTestCase {
 		XCTAssertEqual(spy.signInCalls, 0)
 	}
 
+	func test_init_callsCheckAuthState() {
+		let (spy, _) = makeSut()
+
+		XCTAssertEqual(spy.checkAuthStateCalls, 1)
+	}
+
 	func test_signIn_callsSignInOnAuthProvider() {
 		let (spy, sut) = makeSut()
 

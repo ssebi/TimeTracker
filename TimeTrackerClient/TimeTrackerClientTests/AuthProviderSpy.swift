@@ -11,6 +11,7 @@ import Foundation
 class AuthProviderSpy: AuthProvider {
 	struct NoUser: Error {}
 
+	private(set) var checkAuthStateCalls = 0
 	private(set) var signInCalls = 0
 	private(set) var signOutCalls = 0
 	private(set) var email = ""
@@ -18,6 +19,10 @@ class AuthProviderSpy: AuthProvider {
 
 	private var signOutError: Error?
 	var completion: SesionStoreResult?
+
+	func checkAuthState(completion: @escaping SesionStoreResult) {
+		checkAuthStateCalls += 1
+	}
 
 	func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
 		signInCalls += 1

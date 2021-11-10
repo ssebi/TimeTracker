@@ -38,6 +38,14 @@
                BlueprintName = "TimeTrackerClientTests"
                ReferencedContainer = "container:TimeTrackerClient.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "FirebaseAuthProviderIntegrationTests">
+               </Test>
+               <Test
+                  Identifier = "FirebaseDataStoreIntegrationTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
