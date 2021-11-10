@@ -79,7 +79,7 @@ class AuthenticationTests: XCTestCase {
     func test_signIn_setsUserValue() {
         let (spy, sut) = makeSut()
 
-		spy.completeSignInWithSuccess()
+		spy.completeSignInWith(result: .success(someUser))
         sut.signIn(email: someEmail, password: somePassword) { _ in }
 
 		XCTAssertNotNil(sut.user)
@@ -87,7 +87,7 @@ class AuthenticationTests: XCTestCase {
 
     func test_signOut_setsUserValueAsNil() {
         let (spy, sut) = makeSut()
-		spy.completeSignInWithSuccess()
+		spy.completeSignInWith(result: .success(someUser))
         sut.signIn(email: someEmail, password: somePassword) { _ in }
 
 		sut.signOut()
@@ -109,6 +109,7 @@ class AuthenticationTests: XCTestCase {
 
     private var someEmail = "test@test.com"
     private var somePassword = "pass123"
+	private lazy var someUser = User(uid: UUID().uuidString, email: someEmail, username: somePassword, client: nil)
 
 }
 
@@ -119,7 +120,7 @@ private class AuthProviderSpy: AuthProvider {
 	private(set) var signOutCalls = 0
     private(set) var email = "test@tes.com"
     private(set) var password = "password"
-    var user = User(uid: "uid", email:" test@tes.com", username: "test", client: "")
+
 	private var signInResult: Result<User, Error>?
 
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
@@ -135,7 +136,7 @@ private class AuthProviderSpy: AuthProvider {
 		signOutCalls += 1
 	}
 
-	func completeSignInWithSuccess() {
-		signInResult = .success(user)
+	func completeSignInWith(result: Result<User, Error>?) {
+		signInResult = result
 	}
 }
