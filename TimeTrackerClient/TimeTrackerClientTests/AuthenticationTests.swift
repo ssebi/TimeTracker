@@ -156,9 +156,9 @@ private class AuthProviderSpy: AuthProvider {
 	var completion: SesionStoreResult?
 
     func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
+		signInCalls += 1
         self.email = email
         self.password = password
-		signInCalls += 1
 		self.completion = completion
 	}
 
