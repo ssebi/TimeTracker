@@ -74,20 +74,10 @@ class AuthenticationTests: XCTestCase {
 
 	func test_signIn_failsWhenAuthProviderSignInFails() {
 		let (spy, sut) = makeSut()
-
-		let exp = expectation(description: "wait for signIn")
-		sut.signIn(email: someEmail, password: somePassword) { result in
-			switch result {
-				case .success:
-					XCTFail()
-				case .failure(let err):
-					XCTAssertEqual(err as NSError, AuthProviderSpy.NoUser() as NSError)
-					exp.fulfill()
-					return
-			}
-		}
-		spy.completeSignInWithNoUserFailure()
-		wait(for: [exp], timeout: 1)
+		
+		expect(signInToCompleteWithFailureFor: sut, on: {
+			spy.completeSignInWithNoUserFailure()
+		})
 	}
 
     func test_signIn_completionHandlerHasValue() {
@@ -100,24 +90,18 @@ class AuthenticationTests: XCTestCase {
     func test_signIn_setsUserValue() {
         let (spy, sut) = makeSut()
 
-		let exp = expectation(description: "wait for signIn")
-        sut.signIn(email: someEmail, password: somePassword) { _ in
-			exp.fulfill()
-		}
-		spy.completeSignInWith(result: .success(someUser))
-		wait(for: [exp], timeout: 1)
+		expect(signInToCompleteWithSuccessFor: sut, on: {
+			spy.completeSignInWith(result: .success(someUser))
+		})
 
 		XCTAssertNotNil(sut.user)
     }
 
     func test_signOut_setsUserValueAsNil() {
         let (spy, sut) = makeSut()
-		let exp = expectation(description: "wait for signIn")
-        sut.signIn(email: someEmail, password: somePassword) { _ in
-			exp.fulfill()
-		}
-		spy.completeSignInWith(result: .success(someUser))
-		wait(for: [exp], timeout: 1)
+		expect(signInToCompleteWithSuccessFor: sut, on: {
+			spy.completeSignInWith(result: .success(someUser))
+		})
 
 		sut.signOut()
 
@@ -134,6 +118,29 @@ class AuthenticationTests: XCTestCase {
 			XCTAssertNil(sut, file: file, line: line)
 		}
 		return (spy, sut)
+	}
+
+	private func expect(signInToCompleteWithSuccessFor sut: SessionStoree, on action: () -> Void) {
+		let exp = expectation(description: "wait for signIn")
+		sut.signIn(email: someEmail, password: somePassword) { result in
+			if case .success = result {
+				exp.fulfill()
+			}
+		}
+		action()
+		wait(for: [exp], timeout: 1.0)
+	}
+
+	private func expect(signInToCompleteWithFailureFor sut: SessionStoree, on action: () -> Void) {
+		let exp = expectation(description: "wait for signIn")
+		sut.signIn(email: someEmail, password: somePassword) { result in
+			if case let.failure(err) = result {
+				XCTAssertEqual(err as NSError, AuthProviderSpy.NoUser() as NSError)
+				exp.fulfill()
+			}
+		}
+		action()
+		wait(for: [exp], timeout: 1.0)
 	}
 
     private var someEmail = "test@test.com"
