@@ -80,6 +80,7 @@ func saveUser(user User) (interface{}, error) {
 	collection := client.Database(database.DB).Collection(database.USERS)
 
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
+
 	if err != nil {
 		glg.Error(err)
 		return nil, err

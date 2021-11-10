@@ -22,8 +22,11 @@ func SuccessResponse(context *gin.Context, data interface{}) {
 	context.JSON(http.StatusOK, success)
 }
 
-func ErrorResponse(context *gin.Context, err error) {
+func ErrorResponse(context *gin.Context, status int, err error) {
+	if status == 0 {
+		status = http.StatusInternalServerError
+	}
 	response := NewResponse(false)
 	response.Error = err.Error()
-	context.JSON(http.StatusInternalServerError, response)
+	context.AbortWithStatusJSON(status, response)
 }

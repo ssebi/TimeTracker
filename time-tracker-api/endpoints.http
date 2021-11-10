@@ -4,6 +4,7 @@
 POST {{base}}/api/users
 Content-Type: application/json
 
+
 {
   "user_name": "bogdan",
   "password": "bogdan123",
@@ -14,3 +15,9 @@ Content-Type: application/json
 ###
 GET {{base}}/api/users
 Content-Type: application/json
+
+
+###
+GET {{base}}
+Content-Type: application/json
+Authorization: Bearer dsadsa

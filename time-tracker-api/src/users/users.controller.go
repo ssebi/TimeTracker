@@ -21,7 +21,7 @@ func RegisterUsersController(api *gin.RouterGroup) {
 func GetUsers(context *gin.Context) {
 	users, err := getAllUsers()
 	if err != nil {
-		ErrorResponse(context, err)
+		ErrorResponse(context, 0, err)
 	} else {
 		SuccessResponse(context, users)
 	}
@@ -45,7 +45,7 @@ func CreateUser(context *gin.Context) {
 	context.Bind(&user)
 	response, err := saveUser(user)
 	if err != nil {
-		ErrorResponse(context, err)
+		ErrorResponse(context, 0, err)
 	} else {
 		SuccessResponse(context, response)
 	}

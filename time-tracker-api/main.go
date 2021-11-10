@@ -16,6 +16,7 @@ func main() {
 	// gin.SetMode(gin.ReleaseMode)
 	engine := gin.New()
 	engine.Use(gin.Logger())
+	engine.Use(gin.Recovery())
 
 	docs.SwaggerInfo.BasePath = "/api"
 	engine.GET("/swagger/*any", swagger.WrapHandler(swaggerfiles.Handler))
