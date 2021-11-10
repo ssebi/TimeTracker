@@ -91,6 +91,18 @@ class FirebaseAuthProviderIntegrationTests: XCTestCase {
 
 		XCTAssertNil(sut.checkAuthState())
 	}
+
+	func test_checkAuthState_returnsUserWhenUserIsLoggedIn() throws {
+		let sut = makeSUT()
+
+		let exp = expectation(description: "Waiting to complete")
+		sut.signIn(email: email, password: correctPassword, completion: { _ in
+			exp.fulfill()
+		})
+		wait(for: [exp], timeout: 5)
+
+		XCTAssertNotNil(sut.checkAuthState())
+	}
     
     // MARK: - Helper
     let email: String = "mihai24vic@gmail.com"
