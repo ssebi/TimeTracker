@@ -80,13 +80,6 @@ class AuthenticationTests: XCTestCase {
 		})
 	}
 
-    func test_signIn_completionHandlerHasValue() {
-        let (_, sut) = makeSut()
-        sut.signIn(email: someEmail, password: somePassword) { result in
-            XCTAssertNotNil(result)
-        }
-    }
-
     func test_signIn_setsUserValue() {
         let (spy, sut) = makeSut()
 
