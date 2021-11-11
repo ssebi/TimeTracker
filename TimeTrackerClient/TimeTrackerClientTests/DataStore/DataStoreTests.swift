@@ -9,7 +9,13 @@ import XCTest
 
 
 class DataStore {
+    let clientLoader: ClientsLoader
+    let timeslotsLoader: TimeSlotsLoader
 
+    init() {
+        clientLoader = ClientsLoader()
+        timeslotsLoader = TimeSlotsLoader(clients: clientLoader.getClients())
+    }
 }
 
 class ClientsLoader {
@@ -32,7 +38,4 @@ class DataStoreTests: XCTestCase {
 		let ds = DataStore()
 		XCTAssertNotNil(ds)
 	}
-
-
-
 }
