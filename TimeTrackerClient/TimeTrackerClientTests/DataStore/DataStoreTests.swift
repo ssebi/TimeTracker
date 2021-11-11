@@ -7,20 +7,13 @@
 
 import XCTest
 
-
 class DataStore {
-    let clientLoader: ClientsLoader
+    let clientLoader: ClientsLoaderSpy
     let timeslotsLoader: TimeSlotsLoader
 
     init() {
-        clientLoader = ClientsLoader()
+        clientLoader = ClientsLoaderSpy()
         timeslotsLoader = TimeSlotsLoader(clients: clientLoader.getClients())
-    }
-}
-
-class ClientsLoader {
-    func getClients() -> [String] {
-        return ["Client 1", "Client 2"]
     }
 }
 
@@ -45,8 +38,8 @@ class DataStoreTests: XCTestCase {
 
     //: Mark Helpers
 
-    private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoader, DataStore) {
-        let spy = ClientsLoader()
+    private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoaderSpy, DataStore) {
+        let spy = ClientsLoaderSpy()
         let sut = DataStore()
         addTeardownBlock { [weak spy, weak sut] in
             XCTAssertNil(spy, file: file, line: line)
