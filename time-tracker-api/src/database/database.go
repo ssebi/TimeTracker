@@ -24,7 +24,7 @@ const (
 	DB               = "timetracker"
 	USERS            = "col_users"
 	CLIENTS          = "col_clients"
-	PROJECTS         = "col_projects"
+	WORKLOGS         = "col_worklogs"
 )
 
 //GetMongoClient - Return mongodb connection to work with
