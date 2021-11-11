@@ -42,13 +42,6 @@ class DataStoreTests: XCTestCase {
 		XCTAssertNotNil(sut)
 	}
 
-    func test_getClients_isCalled() {
-        let (spy, sut) = makeClientsLoaderSUT()
-        _ = sut.clientLoader.getClients()
-
-		XCTAssertEqual(spy.getCLientsCalls, 1)
-    }
-
     func test_getTimeSlots_callsGetClientsFromClientsLoader() {
         let (clientSpy, _, sut) = makeSut()
 
@@ -66,13 +59,8 @@ class DataStoreTests: XCTestCase {
     }
 
 	// MARK: - Helpers
-	private func makeClientsLoaderSUT() -> (ClientsLoaderSpy, DataStore) {
-		let spy = ClientsLoaderSpy()
-		let sut = DataStore(clientLoader: spy, timeslotsLoader: TimeSlotsLoaderSpy(), timeslotsPublisher: TimeSlotPublisherSpy())
-		return (spy, sut)
-	}
 
-    private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoaderSpy, TimeSlotPublisherSpy, DataStore) {
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoaderSpy, TimeSlotPublisherSpy, DataStore) {
 		let clientsSpy = ClientsLoaderSpy()
         let spy = TimeSlotPublisherSpy()
         let sut = DataStore(clientLoader: clientsSpy, timeslotsLoader: TimeSlotsLoaderSpy(), timeslotsPublisher: spy)
