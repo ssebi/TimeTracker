@@ -31,6 +31,13 @@ class DataStoreTests: XCTestCase {
         XCTAssertNotNil(clients)
     }
 
+    func test_getTimeSlotsNotNil() {
+        let ( _, _, sut) = makeSut()
+        let timeSlots = sut.timeslotsLoader.getTimeSlots()
+
+        XCTAssertNotNil(timeSlots)
+    }
+
     //: Mark Helpers
 
     private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoaderSpy, TimeSlotsLoaderSpy, DataStore) {
