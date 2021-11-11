@@ -7,13 +7,26 @@
 
 import XCTest
 
+protocol TimeSlotsPublisher {
+    func addTimeSlots()
+}
+
+class TimeSlotPublisherSpy: TimeSlotsPublisher {
+    var timeslot = 0
+    func addTimeSlots() {
+        timeslot += 1
+    }
+}
+
 class DataStore {
     let clientLoader: ClientsLoaderSpy
     let timeslotsLoader: TimeSlotsLoader
+    let timeslotPublisher: TimeSlotsPublisher
 
     init() {
         clientLoader = ClientsLoaderSpy()
         timeslotsLoader = TimeSlotsLoaderSpy(clients: clientLoader.getClients())
+        timeslotPublisher = TimeSlotPublisherSpy()
     }
 }
 
