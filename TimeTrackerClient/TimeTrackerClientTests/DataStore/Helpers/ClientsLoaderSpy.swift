@@ -12,7 +12,16 @@ protocol ClientsLoader {
 }
 
 class ClientsLoaderSpy: ClientsLoader {
+	private(set) var getCLientsCalls = 0
+
+	private var clients: [String] = []
+
     func getClients() -> [String] {
-        return ["Client 1", "Client 2"]
+		getCLientsCalls += 1
+		return clients
     }
+
+	func completeGetClientsWith(_ clients: [String]) {
+		self.clients = clients
+	}
 }
