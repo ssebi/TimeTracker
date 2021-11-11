@@ -8,13 +8,14 @@
 import XCTest
 
 protocol TimeSlotsPublisher {
-    func addTimeSlots()
+    func addTimeSlots(timeSlotCount: Int) -> Int
 }
 
 class TimeSlotPublisherSpy: TimeSlotsPublisher {
     var timeslot = 0
-    func addTimeSlots() {
-        timeslot += 1
+    func addTimeSlots(timeSlotCount: Int) -> Int {
+        timeslot += timeSlotCount
+        return timeslot
     }
 }
 
@@ -51,6 +52,13 @@ class DataStoreTests: XCTestCase {
         XCTAssertNotNil(timeSlots)
     }
 
+    func test_addTimeSlot() {
+        let (_, sut) = makeSut()
+        let timeSlotCount = 3
+        let timeSlot = sut.timeslotPublisher.addTimeSlots(timeSlotCount: timeSlotCount)
+
+        XCTAssertEqual(timeSlotCount, timeSlot)
+    }
     //: Mark Helpers
 
     private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (TimeSlotPublisherSpy, DataStore) {
