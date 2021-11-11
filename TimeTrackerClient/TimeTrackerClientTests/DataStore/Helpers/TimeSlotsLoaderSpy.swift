@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+protocol TimeSlotsLoader {
+    func getTimeSlots() -> [String]
+}
+
+class TimeSlotsLoaderSpy: TimeSlotsLoader {
+    let clients: [String]
+
+    init(clients: [String]){
+        self.clients = clients
+    }
+
+    func getTimeSlots() -> [String] {
+        return ["Timeslot 1", "TimeSlot 2"]
+    }
+}
