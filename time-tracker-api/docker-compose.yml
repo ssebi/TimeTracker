@@ -8,3 +8,15 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: rootpassword
+
+  time-tracker-api:
+    image: time-tracker-api
+    hostname: time-tracker-api
+    container_name: time-tracker-api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - ENVIRONMENT='development'
+    ports:
+      - 3000:3000
