@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+protocol ClientsLoader {
+    func getClients() -> [String]
+}
+
+class ClientsLoaderSpy: ClientsLoader {
+    func getClients() -> [String] {
+        return ["Client 1", "Client 2"]
+    }
+}
