@@ -13,15 +13,7 @@ class DataStore {
 
     init() {
         clientLoader = ClientsLoaderSpy()
-        timeslotsLoader = TimeSlotsLoader(clients: clientLoader.getClients())
-    }
-}
-
-class TimeSlotsLoader {
-    let clients: [String]
-
-    init(clients: [String]) {
-        self.clients = clients
+        timeslotsLoader = TimeSlotsLoaderSpy(clients: clientLoader.getClients())
     }
 }
 
@@ -33,7 +25,7 @@ class DataStoreTests: XCTestCase {
 	}
 
     func test_getClientNotNil() {
-        let ( spy, sut) = makeSut()
+        let ( _, sut) = makeSut()
         let clients = sut.clientLoader.getClients()
 
         XCTAssertNotNil(clients)
