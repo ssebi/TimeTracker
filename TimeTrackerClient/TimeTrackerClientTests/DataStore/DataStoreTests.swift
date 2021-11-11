@@ -38,4 +38,21 @@ class DataStoreTests: XCTestCase {
 		let ds = DataStore()
 		XCTAssertNotNil(ds)
 	}
+
+    func test_getClientNotNil() {
+
+    }
+
+    //: Mark Helpers
+
+    private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoader, DataStore) {
+        let spy = ClientsLoader()
+        let sut = DataStore()
+        addTeardownBlock { [weak spy, weak sut] in
+            XCTAssertNil(spy, file: file, line: line)
+            XCTAssertNil(sut, file: file, line: line)
+        }
+        return (spy, sut)
+    }
 }
+
