@@ -13,11 +13,13 @@ protocol TimeSlotsLoader {
 
 class TimeSlotsLoaderSpy: TimeSlotsLoader {
 	private(set) var getTimeSlotsCalls = 0
+	private(set) var clients: [String]?
 
 	private var getTimeSlotsResult: [String] = []
 
 	func getTimeSlots(for clients: [String]) -> [String] {
 		getTimeSlotsCalls += 1
+		self.clients = clients
 		return getTimeSlotsResult
 	}
 
