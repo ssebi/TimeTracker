@@ -29,6 +29,10 @@ class DataStore {
 		self.timeslotsLoader = timeslotsLoader
 		self.timeslotsPublisher = timeslotsPublisher
     }
+
+	func getTimeSlots() -> [String] {
+		timeslotsLoader.getTimeSlots(for: clientLoader.getClients())
+	}
 }
 
 class DataStoreTests: XCTestCase {
@@ -45,15 +49,16 @@ class DataStoreTests: XCTestCase {
 		XCTAssertEqual(spy.getCLientsCalls, 1)
     }
 
-    func test_getTimeSlotsNotNil() {
-        let (_, sut) = makeSut()
-        let timeSlots = sut.timeslotsLoader.getTimeSlots(for: ["", ""])
+    func test_getTimeSlots_callsGetClientsFromClientsLoader() {
+        let (clientSpy, _, sut) = makeSut()
 
-        XCTAssertNotNil(timeSlots)
+		_ = sut.getTimeSlots()
+
+		XCTAssertEqual(clientSpy.getCLientsCalls, 1)
     }
 
     func test_addTimeSlot() {
-        let (_, sut) = makeSut()
+        let (_, _, sut) = makeSut()
         let timeSlotCount = 3
         let timeSlot = sut.timeslotsPublisher.addTimeSlots(timeSlotCount: timeSlotCount)
 
@@ -67,7 +72,7 @@ class DataStoreTests: XCTestCase {
 		return (spy, sut)
 	}
 
-    private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (TimeSlotPublisherSpy, DataStore) {
+    private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoaderSpy, TimeSlotPublisherSpy, DataStore) {
 		let clientsSpy = ClientsLoaderSpy()
         let spy = TimeSlotPublisherSpy()
         let sut = DataStore(clientLoader: clientsSpy, timeslotsLoader: TimeSlotsLoaderSpy(), timeslotsPublisher: spy)
@@ -75,7 +80,7 @@ class DataStoreTests: XCTestCase {
             XCTAssertNil(spy, file: file, line: line)
             XCTAssertNil(sut, file: file, line: line)
         }
-        return (spy, sut)
+        return (clientsSpy, spy, sut)
     }
 }
 
