@@ -1,6 +1,6 @@
 
 @base = http://localhost:3000
-
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1cHU2MEBnbWFpbC5jb20iLCJleHAiOjE2MzY4ODA3ODksImlhdCI6MTYzNjYyMTU4OX0.tOwT94qv8tNTSSSFXDG2PRbyX49vuRVL8uleGpdrmGQ
 POST {{base}}/api/users
 Content-Type: application/json
 
@@ -16,8 +16,31 @@ Content-Type: application/json
 GET {{base}}/api/users
 Content-Type: application/json
 
+###
+GET {{base}}/api/users/
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ###
 GET {{base}}
 Content-Type: application/json
 Authorization: Bearer dsadsa
+
+###
+POST {{base}}/register
+Content-Type: application/json
+
+{
+  "user_name": "bogdan",
+  "password": "bogdan123",
+  "email": "lupu60@gmail.com"
+}
+
+###
+POST {{base}}/login
+Content-Type: application/json
+
+{
+  "password": "bogdan123",
+  "email": "lupu60@gmail.com"
+}

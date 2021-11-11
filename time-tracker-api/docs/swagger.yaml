@@ -1,6 +1,24 @@
 info:
   contact: {}
 paths:
+  /login:
+    post:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      tags:
+      - auth
+  /register:
+    post:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      tags:
+      - auth
   /users:
     get:
       produces:

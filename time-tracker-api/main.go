@@ -15,14 +15,12 @@ func main() {
 	// Gin
 	// gin.SetMode(gin.ReleaseMode)
 	engine := gin.New()
-	engine.Use(gin.Logger())
-	engine.Use(gin.Recovery())
+	engine.Use(gin.Recovery(), gin.Logger())
 
 	docs.SwaggerInfo.BasePath = "/api"
 	engine.GET("/swagger/*any", swagger.WrapHandler(swaggerfiles.Handler))
 
-	api := engine.Group("/api")
-	controllers.Init(engine, api)
+	controllers.Init(engine)
 	host := "http://localhost:3000"
 	glg.Infof("✅ Server running at 👉 %s", host)
 	glg.Infof("📄 Swagger 👉 %s/swagger/index.html", host)

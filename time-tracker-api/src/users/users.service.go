@@ -22,7 +22,7 @@ type User struct {
 	UpdatedAt time.Time `bson:"updated_at,omitempty" json:"updated_at"`
 }
 
-func getAllUsers() ([]bson.M, error) {
+func GetAllUsers() ([]User, error) {
 	//Get MongoDB connection using connectionhelper.
 	client, err := database.GetMongoClient()
 	if err != nil {
@@ -33,7 +33,7 @@ func getAllUsers() ([]bson.M, error) {
 	if err != nil {
 		glg.Error(err)
 	}
-	var users []bson.M
+	var users []User
 	err = cursor.All(context.TODO(), &users)
 	if err != nil {
 		glg.Error(err)
@@ -42,7 +42,7 @@ func getAllUsers() ([]bson.M, error) {
 	return users, nil
 }
 
-func findUserByEmail(email string) (interface{}, error) {
+func FindUserByEmail(email string) (*User, error) {
 	//Get MongoDB connection using connectionhelper.
 	client, err := database.GetMongoClient()
 	if err != nil {
@@ -60,11 +60,11 @@ func findUserByEmail(email string) (interface{}, error) {
 		glg.Error(err)
 		return nil, err
 	}
-	return user, nil
+	return &user, nil
 }
 
-func saveUser(user User) (interface{}, error) {
-	exitingUser, err := findUserByEmail(user.Email)
+func SaveUser(user User) (interface{}, error) {
+	exitingUser, err := FindUserByEmail(user.Email)
 	if err != nil {
 		return nil, err
 	}

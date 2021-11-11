@@ -1,7 +1,7 @@
 package users
 
 import (
-	. "time-tracker/src/shared"
+	shared "time-tracker/src/shared"
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,11 +19,11 @@ func RegisterUsersController(api *gin.RouterGroup) {
 // @Success 200
 // @Router /users [get]
 func GetUsers(context *gin.Context) {
-	users, err := getAllUsers()
+	users, err := GetAllUsers()
 	if err != nil {
-		ErrorResponse(context, 0, err)
+		shared.ErrorResponse(context, 0, err)
 	} else {
-		SuccessResponse(context, users)
+		shared.SuccessResponse(context, users)
 	}
 }
 
@@ -43,11 +43,11 @@ func GetUser(c *gin.Context) {
 func CreateUser(context *gin.Context) {
 	var user User
 	context.Bind(&user)
-	response, err := saveUser(user)
+	response, err := SaveUser(user)
 	if err != nil {
-		ErrorResponse(context, 0, err)
+		shared.ErrorResponse(context, 0, err)
 	} else {
-		SuccessResponse(context, response)
+		shared.SuccessResponse(context, response)
 	}
 }
 

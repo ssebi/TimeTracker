@@ -8,9 +8,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Init(engine *gin.Engine, api *gin.RouterGroup) {
+func Init(engine *gin.Engine) {
 	engine.Use(middlewares.CORSMiddleware())
+	api := engine.Group("/api", middlewares.AuthorizeJWT())
 	RegisterUtilityController(engine)
 	users.RegisterUsersController(api)
-	auth.RegisterAuthController(api)
+	auth.RegisterAuthController(engine)
 }
