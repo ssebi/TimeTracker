@@ -12,6 +12,13 @@ class DataStore {
 
 }
 
+class TimeSlotsLoader {
+    let clients: [String]
+
+    init(clients: [String]) {
+        self.clients = clients
+    }
+}
 
 class DataStoreTests: XCTestCase {
 
@@ -19,5 +26,7 @@ class DataStoreTests: XCTestCase {
 		let ds = DataStore()
 		XCTAssertNotNil(ds)
 	}
+
+
 
 }
