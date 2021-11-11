@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"net/http"
 	"time-tracker/src/shared"
 	"time-tracker/src/users"
 
@@ -21,7 +22,7 @@ func LoginController(context *gin.Context) {
 	context.Bind(&login)
 	response, err := LoginUser(login)
 	if err != nil {
-		shared.ErrorResponse(context, 0, err)
+		shared.ErrorResponse(context, http.StatusUnauthorized, err)
 	} else {
 		shared.SuccessResponse(context, response)
 	}

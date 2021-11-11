@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"errors"
 	"time"
 	"time-tracker/src/users"
 
@@ -58,7 +59,7 @@ func LoginUser(login LoginDTO) (*string, error) {
 
 	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(login.Password))
 	if err != nil {
-		return nil, err
+		return nil, errors.New("wrong password")
 	}
 
 	token := GenerateToken(user.Email)
