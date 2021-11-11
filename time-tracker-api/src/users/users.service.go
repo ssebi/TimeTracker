@@ -42,11 +42,35 @@ func GetAllUsers() ([]User, error) {
 	return users, nil
 }
 
-func FindUserByEmail(email string) (*User, error) {
+func GetUserById(id string) (User, error) {
 	//Get MongoDB connection using connectionhelper.
 	client, err := database.GetMongoClient()
 	if err != nil {
-		return nil, err
+		return User{}, err
+	}
+	collection := client.Database(database.DB).Collection(database.USERS)
+	objectId, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return User{}, errors.New("invalid id")
+	}
+	var user User
+	err = collection.FindOne(context.TODO(), bson.M{"_id": objectId}).Decode(&user)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			// This error means your query did not match any documents.
+			return User{}, nil
+		}
+		glg.Error(err)
+		return User{}, err
+	}
+	return user, nil
+}
+
+func FindUserByEmail(email string) (User, error) {
+	//Get MongoDB connection using connectionhelper.
+	client, err := database.GetMongoClient()
+	if err != nil {
+		return User{}, err
 	}
 	collection := client.Database(database.DB).Collection(database.USERS)
 	var user User
@@ -55,12 +79,12 @@ func FindUserByEmail(email string) (*User, error) {
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			// This error means your query did not match any documents.
-			return nil, nil
+			return User{}, nil
 		}
 		glg.Error(err)
-		return nil, err
+		return User{}, err
 	}
-	return &user, nil
+	return user, nil
 }
 
 func SaveUser(user User) (interface{}, error) {
@@ -68,7 +92,7 @@ func SaveUser(user User) (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-	if exitingUser != nil {
+	if exitingUser.ID != "" {
 		return nil, errors.New("User already exists")
 	}
 
@@ -99,4 +123,24 @@ func SaveUser(user User) (interface{}, error) {
 	}
 	//Return success without any error.
 	return inserted.InsertedID, nil
+}
+
+func DeleteUserById(id string) error {
+	//Get MongoDB connection using connectionhelper.
+	client, err := database.GetMongoClient()
+	if err != nil {
+		return err
+	}
+	collection := client.Database(database.DB).Collection(database.USERS)
+	objectId, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return errors.New("invalid id")
+	}
+	_, err = collection.DeleteOne(context.TODO(), bson.M{"_id": objectId})
+	if err != nil {
+
+		glg.Error(err)
+		return err
+	}
+	return nil
 }

@@ -10,7 +10,6 @@ func RegisterUsersController(api *gin.RouterGroup) {
 	api.GET("/users", GetUsers)
 	api.GET("/users/:id", GetUser)
 	api.POST("/users", CreateUser)
-	api.PUT("/users/:id", UpdateUser)
 	api.DELETE("/users/:id", DeleteUser)
 }
 
@@ -28,16 +27,25 @@ func GetUsers(context *gin.Context) {
 }
 
 // @Tags users
-// @Produce json
+// @Produce application/json
+// Description get user by id
 // @Success 200
 // @Router /users/:id [get]
+// @Param id path string true "User ID"
 func GetUser(c *gin.Context) {
-
+	id := c.Param("id")
+	user, err := GetUserById(id)
+	if err != nil {
+		shared.ErrorResponse(c, 0, err)
+	} else {
+		shared.SuccessResponse(c, user)
+	}
 }
 
 // @Tags users
-// @Produce json
-// Description Create User
+// @Produce application/json
+// @Accept  application/json
+// Description create user
 // @Success 200
 // @Router /users [post]
 func CreateUser(context *gin.Context) {
@@ -51,6 +59,18 @@ func CreateUser(context *gin.Context) {
 	}
 }
 
-func UpdateUser(c *gin.Context) {}
-
-func DeleteUser(c *gin.Context) {}
+// @Tags users
+// @Produce json
+// Description delete user by id
+// @Success 200
+// @Router /users/:id [delete]
+// @Param id path string true "User ID"
+func DeleteUser(c *gin.Context) {
+	id := c.Param("id")
+	err := DeleteUserById(id)
+	if err != nil {
+		shared.ErrorResponse(c, 0, err)
+	} else {
+		shared.SuccessResponse(c, nil)
+	}
+}

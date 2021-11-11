@@ -10,6 +10,19 @@ import (
 	swagger "github.com/swaggo/gin-swagger"
 )
 
+// @title Time Tracker Api
+// @version 1.0
+// @description Time Tracker Api
+// @contact.name Bogdan Lupu
+// @contact.email lupu60@gmail.com
+// @host localhost:3000
+// @BasePath /api/
+// @securityDefinitions.apikey Bearer
+// @in header
+// @name Authorization
+// @Accept  json
+// @Produce  json
+
 func main() {
 
 	// Gin

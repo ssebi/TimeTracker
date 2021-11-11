@@ -21,8 +21,13 @@ Content-Type: application/json
   "password": "bogdan123"
 }
 
+###
+GET {{base}}/api/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
 
 ###
-GET {{base}}/api/users/
+DELETE {{base}}/api/users/618a1ff4ff9d66bab94f47ea
 Content-Type: application/json
 Authorization: Bearer {{token}}

@@ -56,6 +56,9 @@ func LoginUser(login LoginDTO) (*string, error) {
 	if err != nil {
 		return nil, err
 	}
+	if user.ID == "" {
+		return nil, errors.New("user not found")
+	}
 
 	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(login.Password))
 	if err != nil {
