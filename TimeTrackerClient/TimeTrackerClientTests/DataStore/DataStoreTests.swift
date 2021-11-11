@@ -33,7 +33,10 @@ class DataStoreTests: XCTestCase {
 	}
 
     func test_getClientNotNil() {
+        let ( spy, sut) = makeSut()
+        let clients = sut.clientLoader.getClients()
 
+        XCTAssertNotNil(clients)
     }
 
     //: Mark Helpers
