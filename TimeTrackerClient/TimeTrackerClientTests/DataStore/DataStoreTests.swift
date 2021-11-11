@@ -12,6 +12,12 @@ class DataStore {
 
 }
 
+class ClientsLoader {
+    func getClients() -> [String] {
+        return ["Client 1", "Client 2"]
+    }
+}
+
 class TimeSlotsLoader {
     let clients: [String]
 
