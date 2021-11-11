@@ -38,14 +38,14 @@ class DataStoreTests: XCTestCase {
 	}
 
     func test_getClientNotNil() {
-        let ( _,_, sut) = makeSut()
+        let (_, sut) = makeSut()
         let clients = sut.clientLoader.getClients()
 
         XCTAssertNotNil(clients)
     }
 
     func test_getTimeSlotsNotNil() {
-        let ( _, _, sut) = makeSut()
+        let (_, sut) = makeSut()
         let timeSlots = sut.timeslotsLoader.getTimeSlots()
 
         XCTAssertNotNil(timeSlots)
@@ -53,16 +53,14 @@ class DataStoreTests: XCTestCase {
 
     //: Mark Helpers
 
-    private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoaderSpy, TimeSlotsLoaderSpy, DataStore) {
-        let cSpy = ClientsLoaderSpy()
-        let tSpy = TimeSlotsLoaderSpy(clients: cSpy.getClients())
+    private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (TimeSlotPublisherSpy, DataStore) {
+        let spy = TimeSlotPublisherSpy()
         let sut = DataStore()
-        addTeardownBlock { [weak cSpy, weak tSpy, weak sut] in
-            XCTAssertNil(cSpy, file: file, line: line)
-            XCTAssertNil(tSpy, file: file, line: line)
+        addTeardownBlock { [weak spy, weak sut] in
+            XCTAssertNil(spy, file: file, line: line)
             XCTAssertNil(sut, file: file, line: line)
         }
-        return (cSpy, tSpy, sut)
+        return (spy, sut)
     }
 }
 
