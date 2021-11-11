@@ -14,15 +14,15 @@ protocol TimeSlotsPublisher {
 class TimeSlotPublisherSpy: TimeSlotsPublisher {
     var timeslot = 0
     func addTimeSlots(timeSlotCount: Int) -> Int {
-        timeslot += timeSlotCount
+        timeslot = timeSlotCount
         return timeslot
     }
 }
 
 class DataStore {
-    let clientLoader: ClientsLoader
-    let timeslotsLoader: TimeSlotsLoader
-    let timeslotsPublisher: TimeSlotsPublisher
+    private let clientLoader: ClientsLoader
+    private let timeslotsLoader: TimeSlotsLoader
+    private let timeslotsPublisher: TimeSlotsPublisher
 
     init(clientLoader: ClientsLoader, timeslotsLoader: TimeSlotsLoader, timeslotsPublisher: TimeSlotsPublisher) {
 		self.clientLoader = clientLoader
@@ -32,6 +32,10 @@ class DataStore {
 
 	func getTimeSlots() -> [String] {
 		timeslotsLoader.getTimeSlots(for: clientLoader.getClients())
+	}
+
+	func addTimeSlot(timeSlotCount: Int) -> Int {
+		timeslotsPublisher.addTimeSlots(timeSlotCount: timeSlotCount)
 	}
 }
 
@@ -63,7 +67,7 @@ class DataStoreTests: XCTestCase {
     func test_addTimeSlot() {
         let (_, _, _, sut) = makeSut()
         let timeSlotCount = 3
-        let timeSlot = sut.timeslotsPublisher.addTimeSlots(timeSlotCount: timeSlotCount)
+        let timeSlot = sut.addTimeSlot(timeSlotCount: timeSlotCount)
 
         XCTAssertEqual(timeSlotCount, timeSlot)
     }
