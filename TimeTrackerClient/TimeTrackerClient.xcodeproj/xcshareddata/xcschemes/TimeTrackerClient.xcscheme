@@ -40,7 +40,13 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "FirebaseAuthProviderEndToEndTests">
+               </Test>
+               <Test
                   Identifier = "FirebaseAuthProviderIntegrationTests">
+               </Test>
+               <Test
+                  Identifier = "FirebaseDataStoreEndToEndTests">
                </Test>
                <Test
                   Identifier = "FirebaseDataStoreIntegrationTests">

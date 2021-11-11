@@ -25,6 +25,12 @@
                <Test
                   Identifier = "AuthenticationTests">
                </Test>
+               <Test
+                  Identifier = "FirebaseAuthProviderIntegrationTests">
+               </Test>
+               <Test
+                  Identifier = "FirebaseDataStoreIntegrationTests">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>

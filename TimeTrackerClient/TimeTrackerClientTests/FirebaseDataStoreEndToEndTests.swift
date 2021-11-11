@@ -9,7 +9,7 @@ import XCTest
 import Firebase
 @testable import TimeTrackerClient
 
-class FirebaseDataStoreIntegrationTests: XCTestCase {
+class FirebaseDataStoreEndToEndTests: XCTestCase {
     
     func test_addTimeSlot_isSusccesfullOnAdd() {
         let sut = makeSUT(withUserSignedIn: true)

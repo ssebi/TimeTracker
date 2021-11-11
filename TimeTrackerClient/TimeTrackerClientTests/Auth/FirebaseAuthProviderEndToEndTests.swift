@@ -10,7 +10,7 @@ import Firebase
 import Combine
 @testable import TimeTrackerClient
 
-class FirebaseAuthProviderIntegrationTests: XCTestCase {
+class FirebaseAuthProviderEndToEndTests: XCTestCase {
 
     /// sut = system under test
     
