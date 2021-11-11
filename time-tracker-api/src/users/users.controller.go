@@ -46,6 +46,7 @@ func GetUser(c *gin.Context) {
 // @Produce application/json
 // @Accept  application/json
 // Description create user
+// @Param user body users.User true "User"
 // @Success 200
 // @Router /users [post]
 func CreateUser(context *gin.Context) {

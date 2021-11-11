@@ -16,6 +16,7 @@ func RegisterAuthController(engine *gin.Engine) {
 // @Tags auth
 // @Produce json
 // @Success 200
+// @Param login body auth.LoginDTO true "auth"
 // @Router /login [post]
 func LoginController(context *gin.Context) {
 	var login LoginDTO
@@ -31,6 +32,7 @@ func LoginController(context *gin.Context) {
 // @Tags auth
 // @Produce json
 // @Success 200
+// @Param user body users.User true "User"
 // @Router /register [post]
 func Register(context *gin.Context) {
 	var user users.User

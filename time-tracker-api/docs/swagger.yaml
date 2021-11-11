@@ -1,4 +1,30 @@
 basePath: /api/
+definitions:
+  auth.LoginDTO:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  users.User:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      password:
+        type: string
+      updated_at:
+        type: string
+      user_name:
+        type: string
+    type: object
 host: localhost:3000
 info:
   contact:
@@ -10,6 +36,13 @@ info:
 paths:
   /login:
     post:
+      parameters:
+      - description: auth
+        in: body
+        name: login
+        required: true
+        schema:
+          $ref: '#/definitions/auth.LoginDTO'
       produces:
       - application/json
       responses:
@@ -19,6 +52,13 @@ paths:
       - auth
   /register:
     post:
+      parameters:
+      - description: User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/users.User'
       produces:
       - application/json
       responses:
@@ -38,6 +78,13 @@ paths:
     post:
       consumes:
       - application/json
+      parameters:
+      - description: User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/users.User'
       produces:
       - application/json
       responses:

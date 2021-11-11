@@ -34,6 +34,17 @@ var doc = `{
                 "tags": [
                     "auth"
                 ],
+                "parameters": [
+                    {
+                        "description": "auth",
+                        "name": "login",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/auth.LoginDTO"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -48,6 +59,17 @@ var doc = `{
                 ],
                 "tags": [
                     "auth"
+                ],
+                "parameters": [
+                    {
+                        "description": "User",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/users.User"
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -79,6 +101,17 @@ var doc = `{
                 ],
                 "tags": [
                     "users"
+                ],
+                "parameters": [
+                    {
+                        "description": "User",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/users.User"
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -130,6 +163,46 @@ var doc = `{
                     "200": {
                         "description": ""
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "auth.LoginDTO": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "users.User": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
                 }
             }
         }
