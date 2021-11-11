@@ -10,7 +10,7 @@ import SwiftUI
 
 class SessionStore: ObservableObject {
 	@Published var user: User?
-	let authProvider: AuthProvider
+	private let authProvider: AuthProvider
 
 	init(authProvider: AuthProvider) {
 		self.authProvider = authProvider
