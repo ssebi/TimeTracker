@@ -12,7 +12,16 @@ protocol TimeSlotsLoader {
 }
 
 class TimeSlotsLoaderSpy: TimeSlotsLoader {
+	private(set) var getTimeSlotsCalls = 0
+
+	private var getTimeSlotsResult: [String] = []
+
 	func getTimeSlots(for clients: [String]) -> [String] {
-		["Timeslot 1", "TimeSlot 2"]
+		getTimeSlotsCalls += 1
+		return getTimeSlotsResult
+	}
+
+	func completeGetTimeslots(with timeslots: [String]) {
+		getTimeSlotsResult = timeslots
 	}
 }
