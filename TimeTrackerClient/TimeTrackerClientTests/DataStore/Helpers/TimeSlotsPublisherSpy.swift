@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol TimeSlotsPublisher {
+    func addTimeSlots(timeSlotCount: Int) -> Int
+}
+
+class TimeSlotPublisherSpy: TimeSlotsPublisher {
+    var timeslot = 0
+    func addTimeSlots(timeSlotCount: Int) -> Int {
+        timeslot = timeSlotCount
+        return timeslot
+    }
+}
