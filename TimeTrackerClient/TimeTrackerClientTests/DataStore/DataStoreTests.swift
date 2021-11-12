@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import TimeTrackerClient
 
 class DataStore {
     private let clientLoader: ClientsLoader
