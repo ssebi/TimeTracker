@@ -19,7 +19,7 @@ class DataStore {
 		self.timeslotsPublisher = timeslotsPublisher
     }
 
-	func getTimeSlots() -> [String] {
+    func getTimeSlots() -> [TimeSlot] {
 		timeslotsLoader.getTimeSlots(for: clientLoader.getClients())
 	}
 

@@ -6,24 +6,25 @@
 //
 
 import Foundation
+@testable import TimeTrackerClient
 
 protocol TimeSlotsLoader {
-	func getTimeSlots(for clients: [String]) -> [String]
+	func getTimeSlots(for user: [String]) -> [TimeSlot]
 }
 
 class TimeSlotsLoaderSpy: TimeSlotsLoader {
 	private(set) var getTimeSlotsCalls = 0
-	private(set) var clients: [String]?
+	private(set) var user: [String]?
 
-	private var getTimeSlotsResult: [String] = []
+	private var getTimeSlotsResult: [TimeSlot] = []
 
-	func getTimeSlots(for clients: [String]) -> [String] {
+	func getTimeSlots(for user: [String]) -> [TimeSlot] {
 		getTimeSlotsCalls += 1
-		self.clients = clients
+		self.user = user
 		return getTimeSlotsResult
 	}
 
-	func completeGetTimeslots(with timeslots: [String]) {
+	func completeGetTimeslots(with timeslots: [TimeSlot]) {
 		getTimeSlotsResult = timeslots
 	}
 }
