@@ -12,11 +12,13 @@ class DataStore {
     private let clientLoader: ClientsLoader
     private let timeslotsLoader: TimeSlotsLoader
     private let timeslotsPublisher: TimeSlotsPublisher
+    private let userLoader: UserLoader
 
-    init(clientLoader: ClientsLoader, timeslotsLoader: TimeSlotsLoader, timeslotsPublisher: TimeSlotsPublisher) {
+    init(clientLoader: ClientsLoader, timeslotsLoader: TimeSlotsLoader, timeslotsPublisher: TimeSlotsPublisher, userLoader: UserLoader) {
 		self.clientLoader = clientLoader
 		self.timeslotsLoader = timeslotsLoader
 		self.timeslotsPublisher = timeslotsPublisher
+        self.userLoader = userLoader
     }
 
     func getTimeSlots() -> [TimeSlot] {
@@ -26,6 +28,10 @@ class DataStore {
 	func addTimeSlot(timeSlotCount: Int) -> Int {
 		timeslotsPublisher.addTimeSlots(timeSlotCount: timeSlotCount)
 	}
+
+    func getUser() -> User {
+        userLoader.getUser()
+    }
 }
 
 class DataStoreTests: XCTestCase {
