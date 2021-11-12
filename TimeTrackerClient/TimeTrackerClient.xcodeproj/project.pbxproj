@@ -28,6 +28,7 @@
 		54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */; };
 		54FDD3CD273D441B004E93C4 /* ClientsLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FDD3CC273D441B004E93C4 /* ClientsLoaderSpy.swift */; };
 		54FDD3D1273D4C65004E93C4 /* TimeSlotsLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FDD3D0273D4C65004E93C4 /* TimeSlotsLoaderSpy.swift */; };
+		54FDD3D3273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FDD3D2273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift */; };
 		C64784CC273D0E760086D169 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64784CB273D0E760086D169 /* DataStoreTests.swift */; };
 		C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */; };
 		C64C428F271464B600CFBDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C428E271464B600CFBDEF /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		54D8EEAC271887EF00D867F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		54FDD3CC273D441B004E93C4 /* ClientsLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsLoaderSpy.swift; sourceTree = "<group>"; };
 		54FDD3D0273D4C65004E93C4 /* TimeSlotsLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsLoaderSpy.swift; sourceTree = "<group>"; };
+		54FDD3D2273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsPublisherSpy.swift; sourceTree = "<group>"; };
 		C64784CB273D0E760086D169 /* DataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTests.swift; sourceTree = "<group>"; };
 		C64C4287271464B300CFBDEF /* TimeTrackerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientApp.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				54FDD3CC273D441B004E93C4 /* ClientsLoaderSpy.swift */,
 				54FDD3D0273D4C65004E93C4 /* TimeSlotsLoaderSpy.swift */,
+				54FDD3D2273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				54D2FDD9271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift in Sources */,
 				C64784CC273D0E760086D169 /* DataStoreTests.swift in Sources */,
 				C69C857B273BD3DE0089242C /* AuthProviderSpy.swift in Sources */,
+				54FDD3D3273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift in Sources */,
 				545CCED82723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift in Sources */,
 				54FDD3D1273D4C65004E93C4 /* TimeSlotsLoaderSpy.swift in Sources */,
 				C6DA42EC27356C4400D44D80 /* AuthenticationTests.swift in Sources */,
@@ -651,11 +655,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeTrackerClient/Preview Content\"";
-				DEVELOPMENT_TEAM = LC7N3KMTDD;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = TimeTrackerClient/Info.plist;
@@ -673,7 +677,7 @@
 				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "AppStore TimeTrackerClient Provisioning";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

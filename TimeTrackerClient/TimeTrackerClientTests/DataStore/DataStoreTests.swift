@@ -7,18 +7,6 @@
 
 import XCTest
 
-protocol TimeSlotsPublisher {
-    func addTimeSlots(timeSlotCount: Int) -> Int
-}
-
-class TimeSlotPublisherSpy: TimeSlotsPublisher {
-    var timeslot = 0
-    func addTimeSlots(timeSlotCount: Int) -> Int {
-        timeslot = timeSlotCount
-        return timeslot
-    }
-}
-
 class DataStore {
     private let clientLoader: ClientsLoader
     private let timeslotsLoader: TimeSlotsLoader
