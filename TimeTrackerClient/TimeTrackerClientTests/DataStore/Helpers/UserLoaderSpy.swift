@@ -14,9 +14,9 @@ protocol UserLoader {
 
 class UserLoaderSpy: UserLoader {
     private var userId: String = ""
-    private var user: User? = nil
+    private var user: User = User(uid: "xxxxxxxxx", email: "test@test.com", username: "Test", client: "Client 2")
 
     func getUser() -> User {
-        return user!
+        return user
     }
 }
