@@ -6,3 +6,17 @@
 //
 
 import Foundation
+@testable import TimeTrackerClient
+
+protocol UserLoader {
+    func getUser() -> User
+}
+
+class UserLoaderSpy: UserLoader {
+    private var userId: String = ""
+    private var user: User? = nil
+
+    func getUser() -> User {
+        return user!
+    }
+}
