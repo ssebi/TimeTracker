@@ -14,13 +14,13 @@ protocol TimeSlotsLoader {
 
 class TimeSlotsLoaderSpy: TimeSlotsLoader {
 	private(set) var getTimeSlotsCalls = 0
-	private(set) var user: [String]?
+	private(set) var userId: [String]?
 
 	private var getTimeSlotsResult: [TimeSlot] = []
 
-	func getTimeSlots(for user: [String]) -> [TimeSlot] {
+	func getTimeSlots(for userId: [String]) -> [TimeSlot] {
 		getTimeSlotsCalls += 1
-		self.user = user
+		self.userId = userId
 		return getTimeSlotsResult
 	}
 
