@@ -94,9 +94,9 @@ class DataStoreTests: XCTestCase {
         let timeSlots: [TimeSlot] = [TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)]
 
         timeSlotsSpy.completeGetTimeslots(with: timeSlots)
-        _ = sut.getTimeSlots(for: userId)
+        let ts = sut.getTimeSlots(for: userId)
 
-        XCTAssertNotNil(sut.getTimeSlots(for: userId))
+        XCTAssertNotNil(ts)
     }
 
 	// MARK: - Helpers
