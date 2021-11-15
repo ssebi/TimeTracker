@@ -55,14 +55,14 @@ class DataStoreTests: XCTestCase {
         XCTAssertEqual(clientSpy.getClientsCalls, 1)
     }
 
-	func _test_getTimeSlots_sendsClientsFromClientsLoader() {
-		let (clientsSpy, timeSlotsSpy, _, _, sut) = makeSut()
+	func test_getClients_sendsClientsFromClientsLoader() {
+		let (clientsSpy, _, _, _, sut) = makeSut()
 		let clients = ["Client1", "Client2"]
 
 		clientsSpy.completeGetClientsWith(clients)
-		_ = sut.getTimeSlots()
+		_ = sut.getClients()
 
-		XCTAssertEqual(timeSlotsSpy.userId, clients)
+        XCTAssertEqual(clientsSpy.getClients(), clients)
 	}
 
     func test_addTimeSlot() {
