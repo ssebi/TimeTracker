@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Project: Codable {
+struct Project: Codable, Equatable {
     var name: String
 }

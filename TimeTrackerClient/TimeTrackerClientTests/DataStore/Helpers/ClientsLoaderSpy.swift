@@ -6,22 +6,26 @@
 //
 
 import Foundation
+@testable import TimeTrackerClient
 
 protocol ClientsLoader {
-    func getClients() -> [String]
+	typealias Result = (Swift.Result<[Client], Error>) -> Void
+
+	func getClients(completion: @escaping Result)
 }
 
 class ClientsLoaderSpy: ClientsLoader {
 	private(set) var getClientsCalls = 0
 
-	private var clients: [String] = []
+	private var clientsResult: ClientsLoader.Result?
 
-    func getClients() -> [String] {
+	func getClients(completion: @escaping ClientsLoader.Result) {
 		getClientsCalls += 1
-		return clients
-    }
 
-	func completeGetClientsWith(_ clients: [String]) {
-		self.clients = clients
+		clientsResult = completion
+	}
+
+	func completeGetClientsWith(_ clients: [Client]) {
+		clientsResult?(.success(clients))
 	}
 }

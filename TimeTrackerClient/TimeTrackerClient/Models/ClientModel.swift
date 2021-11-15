@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Client: Identifiable, Codable {
+struct Client: Identifiable, Codable, Equatable {
 	var id: Int = 0
     var name: String
     var projects: [Project]

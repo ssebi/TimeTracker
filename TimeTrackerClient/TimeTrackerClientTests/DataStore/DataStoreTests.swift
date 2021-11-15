@@ -28,8 +28,8 @@ class DataStore {
         return timeslot
 	}
 
-    func getClients() -> [String] {
-        clientLoader.getClients()
+	func getClients(completion: @escaping ClientsLoader.Result) {
+        clientLoader.getClients(completion: completion)
     }
 
 	func addTimeSlot(timeSlot: TimeSlot) -> TimeSlot {
@@ -51,10 +51,29 @@ class DataStoreTests: XCTestCase {
     func test_getClients_callsGetClientsFromClientsLoader() {
         let (clientSpy, _, _, _, sut) = makeSut()
 
-		_ = sut.getClients()
+		sut.getClients() { _ in }
 
         XCTAssertEqual(clientSpy.getClientsCalls, 1)
     }
+
+	func test_getClients_returnsClientsOnSuccess() {
+		let (clientSpy, _, _, _, sut) = makeSut()
+		let someClients = [Client(id: Int.random(in: 0...100), name: "Client1", projects: []),
+						   Client(id: Int.random(in: 0...100), name: "Client2", projects: [])]
+		var receivedClients: [Client]? = nil
+
+		let exp = expectation(description: "Wait for completion")
+		sut.getClients() { result in
+			if let clients = try? result.get() {
+				receivedClients = clients
+			}
+			exp.fulfill()
+		}
+		clientSpy.completeGetClientsWith(someClients)
+		wait(for: [exp], timeout: 0.1)
+
+		XCTAssertEqual(receivedClients, someClients)
+	}
 
     func test_addTimeSlot() {
         let (_, _, _, _, sut) = makeSut()
