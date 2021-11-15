@@ -106,7 +106,7 @@ class FirebaseAuthProviderEndToEndTests: XCTestCase {
     
     // MARK: - Helper
     let email: String = "mihai24vic@gmail.com"
-    let wrongPassword: String = "123452435324"
+    let wrongPassword: String = "123452435324" 
     let correctPassword: String = "Patratel1"
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> FirebaseAuthProvider {

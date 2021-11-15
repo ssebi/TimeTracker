@@ -26,6 +26,9 @@
                   Identifier = "AuthenticationTests">
                </Test>
                <Test
+                  Identifier = "DataStoreTests">
+               </Test>
+               <Test
                   Identifier = "FirebaseAuthProviderIntegrationTests">
                </Test>
                <Test
@@ -62,15 +65,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C64C4286271464B300CFBDEF"
-            BuildableName = "TimeTrackerClient.app"
-            BlueprintName = "TimeTrackerClient"
-            ReferencedContainer = "container:TimeTrackerClient.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
