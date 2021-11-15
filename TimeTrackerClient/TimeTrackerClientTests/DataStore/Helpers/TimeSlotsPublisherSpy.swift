@@ -9,14 +9,26 @@ import Foundation
 @testable import TimeTrackerClient
 
 protocol TimeSlotsPublisher {
-    func addTimeSlots(timeSlot: TimeSlot) -> TimeSlot
+	typealias Result = (Swift.Result<TimeSlot, Error>) -> Void
+
+	func addTimeSlots(timeSlot: TimeSlot, completion: @escaping Result)
 }
 
 class TimeSlotPublisherSpy: TimeSlotsPublisher {
-    var timeslot = 0
+    private(set) var timeslotCalls = 0
 
-    func addTimeSlots(timeSlot: TimeSlot) -> TimeSlot {
-        timeslot += 1
-        return timeSlot
+	private var addTimeSlotResult: TimeSlotsPublisher.Result?
+
+	func addTimeSlots(timeSlot: TimeSlot, completion: @escaping TimeSlotsPublisher.Result) {
+        timeslotCalls += 1
+		addTimeSlotResult = completion
     }
+
+	func completeAddTimeSlots(with error: Error) {
+		addTimeSlotResult?(.failure(error))
+	}
+
+	func completeAddTimeSlots(with timeSlot: TimeSlot) {
+		addTimeSlotResult?(.success(timeSlot))
+	}
 }

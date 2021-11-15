@@ -32,8 +32,8 @@ class DataStore {
         clientLoader.getClients(completion: completion)
     }
 
-	func addTimeSlot(timeSlot: TimeSlot) -> TimeSlot {
-		timeslotsPublisher.addTimeSlots(timeSlot: timeSlot)
+	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping TimeSlotsPublisher.Result) {
+		timeslotsPublisher.addTimeSlots(timeSlot: timeSlot, completion: completion)
 	}
 
     func getUser() -> User {
@@ -87,13 +87,27 @@ class DataStoreTests: XCTestCase {
 		XCTAssertEqual(receivedClients, someClients)
 	}
 
-    func test_addTimeSlot() {
+	func test_addTimeSlot_callsPublisher() {
+		let (_, _, _, _, sut) = makeSut()
+		// TODO: - aici testeaza doar daca se incrementeaza `timeslotCalls`
+		XCTFail()
+	}
+
+	func test_addTimeSlot_deliversErrorOnPublisherError() {
+		let (_, _, _, _, sut) = makeSut()
+		// TODO: - testeaza cu `resultFor` ca daca Publisherul arunca eroare si `addTimeSlot` din `DataStore` arunca eroare
+		/// Uira-te la `test_getClients_returnsFailureOnLoaderError`
+		XCTFail()
+	}
+
+    func test_addTimeSlot_deliversSuccessOnPublisherSuccess() {
         let (_, _, _, _, sut) = makeSut()
         let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
-        let newTimeSlot: TimeSlot = TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)
-        let adedTimeSlot = sut.addTimeSlot(timeSlot: newTimeSlot)
+        let newTimeSlot = TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)
 
-        XCTAssertEqual(adedTimeSlot, newTimeSlot)
+		// TODO: - testeaza cu `resultFor` ca daca Publisherul da success si `addTimeSlot` din `DataStore` da success cu `TimeSlot`
+		/// Uira-te la `test_getClients_returnsClientsLoaderOnSuccess`
+		XCTFail()
     }
 
     func test_getTimeslot_sendsTimeSlotsFromTimeSlotsLoader() {
@@ -140,6 +154,18 @@ class DataStoreTests: XCTestCase {
 		let exp = expectation(description: "Wait for completion")
 		var receivedResult: Result<[Client], Error>?
 		sut.getClients() { result in
+			receivedResult = result
+			exp.fulfill()
+		}
+		action()
+		wait(for: [exp], timeout: 0.1)
+		return receivedResult!
+	}
+
+	private func resultFor(sut: DataStore, addTimeSlot timeSlot: TimeSlot, when action: () -> Void) -> Result<TimeSlot, Error> {
+		let exp = expectation(description: "Wait for completion")
+		var receivedResult: Result<TimeSlot, Error>?
+		sut.addTimeSlot(timeSlot: timeSlot) { result in
 			receivedResult = result
 			exp.fulfill()
 		}
