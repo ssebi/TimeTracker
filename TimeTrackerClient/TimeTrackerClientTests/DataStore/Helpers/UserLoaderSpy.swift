@@ -13,8 +13,7 @@ protocol UserLoader {
 }
 
 class UserLoaderSpy: UserLoader {
-    private var userId: String = ""
-    private var user: User = User(uid: "xxxxxxxxx", email: "test@test.com", username: "Test", client: "Client 2")
+    private var user: User = User(uid: "xxx", email: "test@test.com", username: "Test", client: "Client 2")
 
     func getUser() -> User {
         return user
