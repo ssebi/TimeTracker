@@ -6,15 +6,17 @@
 //
 
 import Foundation
+@testable import TimeTrackerClient
 
 protocol TimeSlotsPublisher {
-    func addTimeSlots(timeSlotCount: Int) -> Int
+    func addTimeSlots(timeSlot: TimeSlot) -> TimeSlot
 }
 
 class TimeSlotPublisherSpy: TimeSlotsPublisher {
     var timeslot = 0
-    func addTimeSlots(timeSlotCount: Int) -> Int {
-        timeslot = timeSlotCount
-        return timeslot
+
+    func addTimeSlots(timeSlot: TimeSlot) -> TimeSlot {
+        timeslot += 1
+        return timeSlot
     }
 }
