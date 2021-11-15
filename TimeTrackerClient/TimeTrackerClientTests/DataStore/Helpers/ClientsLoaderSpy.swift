@@ -25,7 +25,11 @@ class ClientsLoaderSpy: ClientsLoader {
 		clientsResult = completion
 	}
 
-	func completeGetClientsWith(_ clients: [Client]) {
+	func completeGetClients(with clients: [Client]) {
 		clientsResult?(.success(clients))
+	}
+
+	func completeGetClients(with error: Error) {
+		clientsResult?(.failure(error))
 	}
 }

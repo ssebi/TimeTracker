@@ -56,7 +56,26 @@ class DataStoreTests: XCTestCase {
         XCTAssertEqual(clientSpy.getClientsCalls, 1)
     }
 
-	func test_getClients_returnsClientsOnSuccess() {
+	func test_getClients_returnsFailureOnLoaderError() {
+		let (clientSpy, _, _, _, sut) = makeSut()
+		let someError = NSError(domain: "test", code: 0)
+
+		let exp = expectation(description: "Wait for completion")
+		sut.getClients() { result in
+			switch result {
+				case .success:
+					XCTFail()
+				case .failure(let error):
+					XCTAssertEqual(someError.domain, (error as NSError).domain)
+					XCTAssertEqual(someError.code, (error as NSError).code)
+			}
+			exp.fulfill()
+		}
+		clientSpy.completeGetClients(with: someError)
+		wait(for: [exp], timeout: 0.1)
+	}
+
+	func test_getClients_returnsClientsLoaderOnSuccess() {
 		let (clientSpy, _, _, _, sut) = makeSut()
 		let someClients = [Client(id: Int.random(in: 0...100), name: "Client1", projects: []),
 						   Client(id: Int.random(in: 0...100), name: "Client2", projects: [])]
@@ -69,7 +88,7 @@ class DataStoreTests: XCTestCase {
 			}
 			exp.fulfill()
 		}
-		clientSpy.completeGetClientsWith(someClients)
+		clientSpy.completeGetClients(with: someClients)
 		wait(for: [exp], timeout: 0.1)
 
 		XCTAssertEqual(receivedClients, someClients)
