@@ -22,7 +22,9 @@ class DataStore {
     }
 
     func getTimeSlots() -> [TimeSlot] {
-		timeslotsLoader.getTimeSlots(for: clientLoader.getClients())
+        let user = userLoader.getUser()
+        let timeslot = timeslotsLoader.getTimeSlots(for: user.uid!)
+        return timeslot
 	}
 
 	func addTimeSlot(timeSlotCount: Int) -> Int {
@@ -42,25 +44,25 @@ class DataStoreTests: XCTestCase {
 	}
 
     func test_getTimeSlots_callsGetClientsFromClientsLoader() {
-        let (clientSpy, _, _, sut) = makeSut()
+        let (_, _, _, userSpy, sut) = makeSut()
 
 		_ = sut.getTimeSlots()
 
-		XCTAssertEqual(clientSpy.getCLientsCalls, 1)
+        XCTAssertEqual(userSpy.getUser(), 1)
     }
 
-	func test_getTimeSlots_sendsClientsFromClientsLoader() {
-		let (clientsSpy, timeSlotsSpy, _, sut) = makeSut()
+	func _test_getTimeSlots_sendsClientsFromClientsLoader() {
+		let (clientsSpy, timeSlotsSpy, _, _, sut) = makeSut()
 		let clients = ["Client1", "Client2"]
 
 		clientsSpy.completeGetClientsWith(clients)
 		_ = sut.getTimeSlots()
 
-		XCTAssertEqual(timeSlotsSpy.clients, clients)
+		XCTAssertEqual(timeSlotsSpy.userId, clients)
 	}
 
     func test_addTimeSlot() {
-        let (_, _, _, sut) = makeSut()
+        let (_, _, _, _, sut) = makeSut()
         let timeSlotCount = 3
         let timeSlot = sut.addTimeSlot(timeSlotCount: timeSlotCount)
 
@@ -69,16 +71,18 @@ class DataStoreTests: XCTestCase {
 
 	// MARK: - Helpers
 
-	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoaderSpy, TimeSlotsLoaderSpy, TimeSlotPublisherSpy, DataStore) {
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoaderSpy, TimeSlotsLoaderSpy, TimeSlotPublisherSpy, UserLoaderSpy, DataStore) {
 		let clientsSpy = ClientsLoaderSpy()
 		let timeslotsSpy = TimeSlotsLoaderSpy()
         let spy = TimeSlotPublisherSpy()
-        let sut = DataStore(clientLoader: clientsSpy, timeslotsLoader: timeslotsSpy, timeslotsPublisher: spy)
+        let userSpy = UserLoaderSpy()
+
+        let sut = DataStore(clientLoader: clientsSpy, timeslotsLoader: timeslotsSpy, timeslotsPublisher: spy, userLoader: userSpy)
         addTeardownBlock { [weak spy, weak sut] in
             XCTAssertNil(spy, file: file, line: line)
             XCTAssertNil(sut, file: file, line: line)
         }
-        return (clientsSpy, timeslotsSpy, spy, sut)
+        return (clientsSpy, timeslotsSpy, spy, userSpy, sut )
     }
 }
 
