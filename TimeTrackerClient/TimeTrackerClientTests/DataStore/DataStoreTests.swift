@@ -21,11 +21,9 @@ class DataStore {
         self.userLoader = userLoader
     }
 
-    func getTimeSlots(for id: String) -> [TimeSlot]? {
+	func getTimeSlots(for id: String, completion: @escaping TimeSlotsLoader.Result) {
         let user = userLoader.getUser()
-        let timeslot = user.uid == id ? timeslotsLoader.getTimeSlots(for: user.uid!) : nil
-
-        return timeslot
+        timeslotsLoader.getTimeSlots(for: user.uid!, completion: completion)
 	}
 
 	func getClients(completion: @escaping ClientsLoader.Result) {
@@ -110,29 +108,31 @@ class DataStoreTests: XCTestCase {
 		XCTFail()
     }
 
-    func test_getTimeslot_sendsTimeSlotsFromTimeSlotsLoader() {
-        let (_, timeSlotsSpy, _, _, sut) = makeSut()
-        let userId = "xxx"
-        let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
-        let timeSlots: [TimeSlot] = [TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)]
+	func test_getTimeslot_callsLoader() {
+		// TODO: -
+		/// testeaza ca `TimeSlotsLoaderSpy.getTimeSlotsCalls` e 1
+		XCTFail()
+	}
 
-        timeSlotsSpy.completeGetTimeslots(with: timeSlots)
-        _ = sut.getTimeSlots(for: userId)
+	func test_getTimeSlot_getTimeSlotForTheCorectUserId() {
+		// TODO: -
+		/// aici testeaza doar ca `TimeSlotsLoaderSpy.userID` se pupa cu id-ul pe care-l trimiti pe `getTimeSlots`
+		XCTFail()
+	}
 
-        XCTAssertEqual(timeSlotsSpy.getTimeSlots(for: userId), timeSlots)
-    }
+	func test_getTimeslot_deliversErrorOnLoaderFailure() {
+		// TODO: -
+		/// foloseste-te de `resultFor` si verifica daca pe `completeWithError` returneaza eroare
+		XCTFail()
+	}
 
-    func test_getTimeSlot_getTimeSlotForTheCorectUserId() {
-        let (_, timeSlotsSpy, _, _, sut) = makeSut()
-        let userId = "xxx"
-        let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
-        let timeSlots: [TimeSlot] = [TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)]
-
-        timeSlotsSpy.completeGetTimeslots(with: timeSlots)
-        let ts = sut.getTimeSlots(for: userId)
-
-        XCTAssertNotNil(ts)
-    }
+	func test_getTimeslot_deliversResultsOnLoaderSuccess() {
+		let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
+		let timeSlots: [TimeSlot] = [TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)]
+		// TODO: -
+		/// foloseste-te de `resultFor` si verifica daca pe `completeWithSuccess` returneaza `[TimeSlot]`
+		XCTFail()
+	}
 
 	// MARK: - Helpers
 
@@ -166,6 +166,18 @@ class DataStoreTests: XCTestCase {
 		let exp = expectation(description: "Wait for completion")
 		var receivedResult: Result<TimeSlot, Error>?
 		sut.addTimeSlot(timeSlot: timeSlot) { result in
+			receivedResult = result
+			exp.fulfill()
+		}
+		action()
+		wait(for: [exp], timeout: 0.1)
+		return receivedResult!
+	}
+
+	private func resultFor(sut: DataStore, userID: String, when action: () -> Void) -> Result<[TimeSlot], Error> {
+		let exp = expectation(description: "Wait for completion")
+		var receivedResult: Result<[TimeSlot], Error>?
+		sut.getTimeSlots(for: userID) { result in
 			receivedResult = result
 			exp.fulfill()
 		}
