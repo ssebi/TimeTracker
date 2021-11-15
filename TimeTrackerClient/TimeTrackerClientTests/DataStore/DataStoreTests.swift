@@ -21,9 +21,10 @@ class DataStore {
         self.userLoader = userLoader
     }
 
-    func getTimeSlots() -> [TimeSlot] {
+    func getTimeSlots(for id: String) -> [TimeSlot]? {
         let user = userLoader.getUser()
-        let timeslot = timeslotsLoader.getTimeSlots(for: user.uid!)
+        let timeslot = user.uid == id ? timeslotsLoader.getTimeSlots(for: user.uid!) : nil
+
         return timeslot
 	}
 
@@ -81,9 +82,21 @@ class DataStoreTests: XCTestCase {
         let timeSlots: [TimeSlot] = [TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)]
 
         timeSlotsSpy.completeGetTimeslots(with: timeSlots)
-        _ = sut.getTimeSlots()
+        _ = sut.getTimeSlots(for: userId)
 
         XCTAssertEqual(timeSlotsSpy.getTimeSlots(for: userId), timeSlots)
+    }
+
+    func test_getTimeSlot_getTimeSlotForTheCorectUserId() {
+        let (_, timeSlotsSpy, _, _, sut) = makeSut()
+        let userId = "xxx"
+        let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
+        let timeSlots: [TimeSlot] = [TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)]
+
+        timeSlotsSpy.completeGetTimeslots(with: timeSlots)
+        _ = sut.getTimeSlots(for: userId)
+
+        XCTAssertNotNil(sut.getTimeSlots(for: userId))
     }
 
 	// MARK: - Helpers
