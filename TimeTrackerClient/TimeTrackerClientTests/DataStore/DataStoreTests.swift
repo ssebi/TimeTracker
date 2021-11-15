@@ -56,16 +56,6 @@ class DataStoreTests: XCTestCase {
         XCTAssertEqual(clientSpy.getClientsCalls, 1)
     }
 
-	func test_getClients_sendsClientsFromClientsLoader() {
-        let (clientsSpy, _, _, _, sut) = makeSut()
-		let clients = ["Client1", "Client2"]
-
-		clientsSpy.completeGetClientsWith(clients)
-		_ = sut.getClients()
-
-        XCTAssertEqual(clientsSpy.getClients(), clients)
-	}
-
     func test_addTimeSlot() {
         let (_, _, _, _, sut) = makeSut()
         let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
