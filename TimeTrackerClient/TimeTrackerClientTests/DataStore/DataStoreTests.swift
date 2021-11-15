@@ -60,37 +60,30 @@ class DataStoreTests: XCTestCase {
 		let (clientSpy, _, _, _, sut) = makeSut()
 		let someError = NSError(domain: "test", code: 0)
 
-		let exp = expectation(description: "Wait for completion")
-		sut.getClients() { result in
-			switch result {
-				case .success:
-					XCTFail()
-				case .failure(let error):
-					XCTAssertEqual(someError.domain, (error as NSError).domain)
-					XCTAssertEqual(someError.code, (error as NSError).code)
-			}
-			exp.fulfill()
+		let result = resultFor(sut: sut, when: {
+			clientSpy.completeGetClients(with: someError)
+		})
+
+		switch result {
+			case .success:
+				XCTFail()
+			case .failure(let error):
+				XCTAssertEqual(someError.domain, (error as NSError).domain)
+				XCTAssertEqual(someError.code, (error as NSError).code)
 		}
-		clientSpy.completeGetClients(with: someError)
-		wait(for: [exp], timeout: 0.1)
 	}
 
-	func test_getClients_returnsClientsLoaderOnSuccess() {
+	func test_getClients_returnsClientsLoaderOnSuccess() throws {
 		let (clientSpy, _, _, _, sut) = makeSut()
 		let someClients = [Client(id: Int.random(in: 0...100), name: "Client1", projects: []),
 						   Client(id: Int.random(in: 0...100), name: "Client2", projects: [])]
 		var receivedClients: [Client]? = nil
 
-		let exp = expectation(description: "Wait for completion")
-		sut.getClients() { result in
-			if let clients = try? result.get() {
-				receivedClients = clients
-			}
-			exp.fulfill()
-		}
-		clientSpy.completeGetClients(with: someClients)
-		wait(for: [exp], timeout: 0.1)
+		let result = resultFor(sut: sut, when: {
+			clientSpy.completeGetClients(with: someClients)
+		})
 
+		receivedClients = try result.get()
 		XCTAssertEqual(receivedClients, someClients)
 	}
 
@@ -142,5 +135,18 @@ class DataStoreTests: XCTestCase {
         }
         return (clientsSpy, timeslotsSpy, spy, userSpy, sut )
     }
+
+	private func resultFor(sut: DataStore, when action: () -> Void) -> Result<[Client], Error> {
+		let exp = expectation(description: "Wait for completion")
+		var receivedResult: Result<[Client], Error>?
+		sut.getClients() { result in
+			receivedResult = result
+			exp.fulfill()
+		}
+		action()
+		wait(for: [exp], timeout: 0.1)
+		return receivedResult!
+	}
+
 }
 
