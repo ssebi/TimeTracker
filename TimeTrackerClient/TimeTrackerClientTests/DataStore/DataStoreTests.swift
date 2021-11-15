@@ -27,6 +27,10 @@ class DataStore {
         return timeslot
 	}
 
+    func getClients() -> [String] {
+        clientLoader.getClients()
+    }
+
 	func addTimeSlot(timeSlotCount: Int) -> Int {
 		timeslotsPublisher.addTimeSlots(timeSlotCount: timeSlotCount)
 	}
@@ -43,12 +47,12 @@ class DataStoreTests: XCTestCase {
 		XCTAssertNotNil(sut)
 	}
 
-    func test_getTimeSlots_callsGetClientsFromClientsLoader() {
-        let (_, _, _, userSpy, sut) = makeSut()
+    func test_getClients_callsGetClientsFromClientsLoader() {
+        let (clientSpy, _, _, _, sut) = makeSut()
 
-		_ = sut.getTimeSlots()
+		_ = sut.getClients()
 
-        XCTAssertEqual(userSpy.getUser(), 1)
+        XCTAssertEqual(clientSpy.getClientsCalls, 1)
     }
 
 	func _test_getTimeSlots_sendsClientsFromClientsLoader() {
