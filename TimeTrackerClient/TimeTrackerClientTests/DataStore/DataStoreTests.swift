@@ -137,9 +137,12 @@ class DataStoreTests: XCTestCase {
 	}
 
 	func test_getTimeSlot_getTimeSlotForTheCorectUserId() {
-		// TODO: -
-		/// aici testeaza doar ca `TimeSlotsLoaderSpy.userID` se pupa cu id-ul pe care-l trimiti pe `getTimeSlots`
-		XCTFail()
+        let (_,timeslotSpy,_,_, sut) = makeSut()
+        let userId = "xxx"
+
+        sut.getTimeSlots(for: userId, completion: {_ in })
+
+        XCTAssertEqual(timeslotSpy.userId, userId)
 	}
 
 	func test_getTimeslot_deliversErrorOnLoaderFailure() {
