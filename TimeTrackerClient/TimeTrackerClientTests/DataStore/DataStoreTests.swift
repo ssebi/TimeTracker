@@ -163,11 +163,20 @@ class DataStoreTests: XCTestCase {
 	}
 
 	func test_getTimeslot_deliversResultsOnLoaderSuccess() {
+        let (_, timeslotSpy, _, _, sut) = makeSut()
 		let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
 		let timeSlots: [TimeSlot] = [TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)]
-		// TODO: -
-		/// foloseste-te de `resultFor` si verifica daca pe `completeWithSuccess` returneaza `[TimeSlot]`
-		XCTFail()
+
+        let result = resultFor(sut: sut, userID: "xxx", when: {
+            timeslotSpy.completeGetTimeslots(with: timeSlots)
+        })
+
+        switch result {
+        case .success(let timeslot):
+            XCTAssertEqual(timeslot, (timeslot as [TimeSlot]))
+        case .failure(_):
+            XCTFail()
+        }
 	}
 
 	// MARK: - Helpers
