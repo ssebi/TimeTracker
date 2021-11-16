@@ -86,13 +86,13 @@ class DataStoreTests: XCTestCase {
 	}
 
 	func test_addTimeSlot_callsPublisher() {
-		let (_, timeslotSpy, _, _, sut) = makeSut()
+		let (_, _, timeslotsSpy, _, sut) = makeSut()
         let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
         let newTimeSlot = TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)
 
         sut.addTimeSlot(timeSlot: newTimeSlot) { _ in }
 
-        XCTAssertEqual(timeslotSpy.getTimeSlotsCalls, 1)
+        XCTAssertEqual(timeslotsSpy.timeslotCalls, 1)
 	}
 
 	func test_addTimeSlot_deliversErrorOnPublisherError() {
