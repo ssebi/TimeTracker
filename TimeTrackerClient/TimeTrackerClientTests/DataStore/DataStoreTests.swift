@@ -96,10 +96,22 @@ class DataStoreTests: XCTestCase {
 	}
 
 	func test_addTimeSlot_deliversErrorOnPublisherError() {
-		let (_, _, _, _, sut) = makeSut()
-		// TODO: - testeaza cu `resultFor` ca daca Publisherul arunca eroare si `addTimeSlot` din `DataStore` arunca eroare
-		/// Uira-te la `test_getClients_returnsFailureOnLoaderError`
-		XCTFail()
+        let (_, _, timeslotsSpy, _, sut) = makeSut()
+        let someError = NSError(domain: "test", code: 0)
+        let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
+        let newTimeSlot = TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)
+
+        let result = resultFor(sut: sut, addTimeSlot: newTimeSlot, when: {
+            timeslotsSpy.completeAddTimeSlots(with: someError)
+        })
+
+        switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                XCTAssertEqual(someError.domain, (error as NSError).domain)
+                XCTAssertEqual(someError.code, (error as NSError).code)
+        }
 	}
 
     func test_addTimeSlot_deliversSuccessOnPublisherSuccess() {
