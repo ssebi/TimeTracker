@@ -129,9 +129,11 @@ class DataStoreTests: XCTestCase {
     }
 
 	func test_getTimeslot_callsLoader() {
-		// TODO: -
-		/// testeaza ca `TimeSlotsLoaderSpy.getTimeSlotsCalls` e 1
-		XCTFail()
+        let (_,timeslotSpy,_,_, sut) = makeSut()
+
+        sut.getTimeSlots(for: "xxx", completion: {_ in })
+
+        XCTAssertEqual(timeslotSpy.getTimeSlotsCalls, 1)
 	}
 
 	func test_getTimeSlot_getTimeSlotForTheCorectUserId() {
