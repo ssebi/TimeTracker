@@ -115,13 +115,17 @@ class DataStoreTests: XCTestCase {
 	}
 
     func test_addTimeSlot_deliversSuccessOnPublisherSuccess() {
-        let (_, _, _, _, sut) = makeSut()
+        let (_, _, timeslotSpy, _, sut) = makeSut()
         let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
         let newTimeSlot = TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)
+        var receivedTimeslot: TimeSlot? = nil
 
-		// TODO: - testeaza cu `resultFor` ca daca Publisherul da success si `addTimeSlot` din `DataStore` da success cu `TimeSlot`
-		/// Uira-te la `test_getClients_returnsClientsLoaderOnSuccess`
-		XCTFail()
+        let result = resultFor(sut: sut, addTimeSlot: newTimeSlot, when: {
+            timeslotSpy.completeAddTimeSlots(with: newTimeSlot)
+        })
+
+        receivedTimeslot = try? result.get()
+        XCTAssertEqual(receivedTimeslot, newTimeSlot)
     }
 
 	func test_getTimeslot_callsLoader() {
