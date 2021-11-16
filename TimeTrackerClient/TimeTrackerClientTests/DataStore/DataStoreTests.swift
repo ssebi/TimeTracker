@@ -146,9 +146,20 @@ class DataStoreTests: XCTestCase {
 	}
 
 	func test_getTimeslot_deliversErrorOnLoaderFailure() {
-		// TODO: -
-		/// foloseste-te de `resultFor` si verifica daca pe `completeWithError` returneaza eroare
-		XCTFail()
+        let (_,timeslotSpy,_,_,sut) = makeSut()
+        let someError = NSError(domain: "Test", code: 0)
+
+        let result = resultFor(sut: sut, userID: "xxx", when: {
+            timeslotSpy.completeGetTimeslots(with: someError)
+        })
+
+        switch result {
+            case .success:
+                XCTFail()
+            case .failure(let error):
+                XCTAssertEqual(someError.domain, (error as NSError).domain)
+                XCTAssertEqual(someError.code, (error as NSError).code)
+        }
 	}
 
 	func test_getTimeslot_deliversResultsOnLoaderSuccess() {
