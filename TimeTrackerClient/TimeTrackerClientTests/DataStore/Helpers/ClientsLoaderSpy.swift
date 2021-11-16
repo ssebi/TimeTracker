@@ -6,13 +6,7 @@
 //
 
 import Foundation
-@testable import TimeTrackerClient
-
-protocol ClientsLoader {
-	typealias Result = (Swift.Result<[Client], Error>) -> Void
-
-	func getClients(completion: @escaping Result)
-}
+import TimeTrackerClient
 
 class ClientsLoaderSpy: ClientsLoader {
 	private(set) var getClientsCalls = 0

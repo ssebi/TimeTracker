@@ -47,7 +47,14 @@ struct HomeView: View {
 	}
 
 	func getPickerData() {
-		dataStore.fetchUsersClients()
+		dataStore.getClients()
+	}
+}
+
+// TODO: - Remove this after implementing `AddView`
+struct AddView: View {
+	var body: some View {
+		Text("AddView")
 	}
 }
 

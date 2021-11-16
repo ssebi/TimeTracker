@@ -6,13 +6,7 @@
 //
 
 import Foundation
-@testable import TimeTrackerClient
-
-protocol TimeSlotsPublisher {
-	typealias Result = (Swift.Result<TimeSlot, Error>) -> Void
-
-	func addTimeSlots(timeSlot: TimeSlot, completion: @escaping Result)
-}
+import TimeTrackerClient
 
 class TimeSlotPublisherSpy: TimeSlotsPublisher {
     private(set) var timeslotCalls = 0

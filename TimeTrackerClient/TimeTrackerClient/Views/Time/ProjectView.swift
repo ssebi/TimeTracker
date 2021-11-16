@@ -28,7 +28,7 @@ struct ProjectView: View {
 			}.padding()
 		}
 		.listStyle(InsetListStyle())
-		.onAppear(perform: dataStore.fetchUsersTimeslots)
+		.onAppear(perform: dataStore.getTimeSlots)
 	}
 }
 

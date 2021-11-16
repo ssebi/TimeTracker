@@ -8,37 +8,6 @@
 import XCTest
 @testable import TimeTrackerClient
 
-class DataStore {
-    private let clientLoader: ClientsLoader
-    private let timeslotsLoader: TimeSlotsLoader
-    private let timeslotsPublisher: TimeSlotsPublisher
-    private let userLoader: UserLoader
-
-    init(clientLoader: ClientsLoader, timeslotsLoader: TimeSlotsLoader, timeslotsPublisher: TimeSlotsPublisher, userLoader: UserLoader) {
-		self.clientLoader = clientLoader
-		self.timeslotsLoader = timeslotsLoader
-		self.timeslotsPublisher = timeslotsPublisher
-        self.userLoader = userLoader
-    }
-
-	func getTimeSlots(for id: String, completion: @escaping TimeSlotsLoader.Result) {
-        let user = userLoader.getUser()
-        timeslotsLoader.getTimeSlots(for: user.uid!, completion: completion)
-	}
-
-	func getClients(completion: @escaping ClientsLoader.Result) {
-        clientLoader.getClients(completion: completion)
-    }
-
-	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping TimeSlotsPublisher.Result) {
-		timeslotsPublisher.addTimeSlots(timeSlot: timeSlot, completion: completion)
-	}
-
-    func getUser() -> User {
-        userLoader.getUser()
-    }
-}
-
 class DataStoreTests: XCTestCase {
 
     func test_getClients_callsGetClientsFromClientsLoader() {

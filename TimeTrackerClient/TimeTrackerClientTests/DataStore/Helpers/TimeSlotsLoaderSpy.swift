@@ -6,13 +6,7 @@
 //
 
 import Foundation
-@testable import TimeTrackerClient
-
-protocol TimeSlotsLoader {
-	typealias Result = (Swift.Result<[TimeSlot], Error>) -> Void
-
-	func getTimeSlots(for user: String, completion: @escaping Result)
-}
+import TimeTrackerClient
 
 class TimeSlotsLoaderSpy: TimeSlotsLoader {
 	private(set) var getTimeSlotsCalls = 0

@@ -8,8 +8,61 @@
 import Foundation
 import Firebase
 
-
 class DataStore: ObservableObject {
+	@Published var clients = [Client]()
+	@Published var userTimeslots = [TimeSlot]()
+
+	private let clientLoader: ClientsLoader
+	private let timeslotsLoader: TimeSlotsLoader
+	private let timeslotsPublisher: TimeSlotsPublisher
+	private let userLoader: UserLoader
+
+	init(
+		clientLoader: ClientsLoader = FirebaseClientsLoader(),
+		timeslotsLoader: TimeSlotsLoader = FirebaseTimeslotsLoader(),
+		timeslotsPublisher: TimeSlotsPublisher = FirebaseTimeslotsPublisher(),
+		userLoader: UserLoader = FirebaseUserLoader()
+	) {
+		self.clientLoader = clientLoader
+		self.timeslotsLoader = timeslotsLoader
+		self.timeslotsPublisher = timeslotsPublisher
+		self.userLoader = userLoader
+	}
+
+	func getTimeSlots() {
+		let user = userLoader.getUser()
+		getTimeSlots(for: user.uid!) { result in
+			// TODO: - Implement
+		}
+	}
+
+	func getTimeSlots(for userID: String, completion: @escaping TimeSlotsLoader.Result) {
+		timeslotsLoader.getTimeSlots(for: userID, completion: completion)
+	}
+
+	func getClients() {
+		getClients { result in
+			// TODO: - Implement
+		}
+	}
+
+	func getClients(completion: @escaping ClientsLoader.Result) {
+		clientLoader.getClients(completion: completion)
+	}
+
+	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping TimeSlotsPublisher.Result) {
+		timeslotsPublisher.addTimeSlots(timeSlot: timeSlot, completion: completion)
+	}
+
+	func getUser() -> User {
+		userLoader.getUser()
+	}
+}
+
+/*
+ We keep this as a reference
+ but we need to remove it after we're done with the transition
+class DataStoree: ObservableObject {
     @Published var timeslot: String = ""
     @Published var userTimeslots = [TimeSlot]()
     @Published var clients = [Client]()
@@ -86,4 +139,4 @@ class DataStore: ObservableObject {
         }
     }
 }
-
+*/
