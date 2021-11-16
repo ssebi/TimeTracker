@@ -41,11 +41,6 @@ class DataStore {
 
 class DataStoreTests: XCTestCase {
 
-	func test_init() {
-		let sut = makeSut()
-		XCTAssertNotNil(sut)
-	}
-
     func test_getClients_callsGetClientsFromClientsLoader() {
         let (clientSpy, _, _, _, sut) = makeSut()
 
@@ -56,7 +51,6 @@ class DataStoreTests: XCTestCase {
 
 	func test_getClients_returnsFailureOnLoaderError() {
 		let (clientSpy, _, _, _, sut) = makeSut()
-		let someError = NSError(domain: "test", code: 0)
 
 		let result = resultFor(sut: sut, when: {
 			clientSpy.completeGetClients(with: someError)
@@ -87,21 +81,16 @@ class DataStoreTests: XCTestCase {
 
 	func test_addTimeSlot_callsPublisher() {
 		let (_, _, timeslotsSpy, _, sut) = makeSut()
-        let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
-        let newTimeSlot = TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)
 
-        sut.addTimeSlot(timeSlot: newTimeSlot) { _ in }
+        sut.addTimeSlot(timeSlot: someTimeSlot) { _ in }
 
         XCTAssertEqual(timeslotsSpy.timeslotCalls, 1)
 	}
 
 	func test_addTimeSlot_deliversErrorOnPublisherError() {
         let (_, _, timeslotsSpy, _, sut) = makeSut()
-        let someError = NSError(domain: "test", code: 0)
-        let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
-        let newTimeSlot = TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)
 
-        let result = resultFor(sut: sut, addTimeSlot: newTimeSlot, when: {
+        let result = resultFor(sut: sut, addTimeSlot: someTimeSlot, when: {
             timeslotsSpy.completeAddTimeSlots(with: someError)
         })
 
@@ -114,22 +103,20 @@ class DataStoreTests: XCTestCase {
         }
 	}
 
-    func test_addTimeSlot_deliversSuccessOnPublisherSuccess() {
+    func test_addTimeSlot_deliversSuccessOnPublisherSuccess() throws {
         let (_, _, timeslotSpy, _, sut) = makeSut()
-        let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
-        let newTimeSlot = TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)
-        var receivedTimeslot: TimeSlot? = nil
+        var receivedTimeslot: TimeSlot?
 
-        let result = resultFor(sut: sut, addTimeSlot: newTimeSlot, when: {
-            timeslotSpy.completeAddTimeSlots(with: newTimeSlot)
+        let result = resultFor(sut: sut, addTimeSlot: someTimeSlot, when: {
+            timeslotSpy.completeAddTimeSlots(with: someTimeSlot)
         })
 
-        receivedTimeslot = try? result.get()
-        XCTAssertEqual(receivedTimeslot, newTimeSlot)
+        receivedTimeslot = try result.get()
+        XCTAssertEqual(receivedTimeslot, someTimeSlot)
     }
 
 	func test_getTimeslot_callsLoader() {
-        let (_,timeslotSpy,_,_, sut) = makeSut()
+        let (_, timeslotSpy, _, _, sut) = makeSut()
 
         sut.getTimeSlots(for: "xxx", completion: {_ in })
 
@@ -137,7 +124,7 @@ class DataStoreTests: XCTestCase {
 	}
 
 	func test_getTimeSlot_getTimeSlotForTheCorectUserId() {
-        let (_,timeslotSpy,_,_, sut) = makeSut()
+        let (_, timeslotSpy, _, _, sut) = makeSut()
         let userId = "xxx"
 
         sut.getTimeSlots(for: userId, completion: {_ in })
@@ -146,8 +133,7 @@ class DataStoreTests: XCTestCase {
 	}
 
 	func test_getTimeslot_deliversErrorOnLoaderFailure() {
-        let (_,timeslotSpy,_,_,sut) = makeSut()
-        let someError = NSError(domain: "Test", code: 0)
+        let (_, timeslotSpy, _, _, sut) = makeSut()
 
         let result = resultFor(sut: sut, userID: "xxx", when: {
             timeslotSpy.completeGetTimeslots(with: someError)
@@ -162,21 +148,15 @@ class DataStoreTests: XCTestCase {
         }
 	}
 
-	func test_getTimeslot_deliversResultsOnLoaderSuccess() {
+	func test_getTimeslot_deliversResultsOnLoaderSuccess() throws {
         let (_, timeslotSpy, _, _, sut) = makeSut()
-		let timeSlotsDetail = TimeSlotDetail(start: Date(), end: Date(), description: "Description t1")
-		let timeSlots: [TimeSlot] = [TimeSlot(id: "1234", timeSlots: timeSlotsDetail, total: 10)]
 
         let result = resultFor(sut: sut, userID: "xxx", when: {
-            timeslotSpy.completeGetTimeslots(with: timeSlots)
+            timeslotSpy.completeGetTimeslots(with: [someTimeSlot])
         })
 
-        switch result {
-        case .success(let timeslot):
-            XCTAssertEqual(timeslot, (timeslot as [TimeSlot]))
-        case .failure(_):
-            XCTFail()
-        }
+		let receivedTimeslots = try result.get()
+		XCTAssertEqual([someTimeSlot], receivedTimeslots)
 	}
 
 	// MARK: - Helpers
@@ -194,6 +174,9 @@ class DataStoreTests: XCTestCase {
         }
         return (clientsSpy, timeslotsSpy, spy, userSpy, sut )
     }
+
+	private lazy var someError = NSError(domain: "Test", code: 0)
+	private lazy var someTimeSlot = TimeSlot(id: "1234", timeSlots: TimeSlotDetail(start: Date(), end: Date(), description: "Description t1"), total: 10)
 
 	private func resultFor(sut: DataStore, when action: () -> Void) -> Result<[Client], Error> {
 		let exp = expectation(description: "Wait for completion")
