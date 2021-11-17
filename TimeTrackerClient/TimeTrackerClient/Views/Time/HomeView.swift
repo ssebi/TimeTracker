@@ -53,9 +53,16 @@ struct HomeView: View {
 
 // TODO: - Remove this after implementing `AddView`
 struct AddView: View {
+    @EnvironmentObject var dataStore: DataStore
+
 	var body: some View {
 		Text("AddView")
-	}
+            .onAppear(perform: getClients)
+    }
+
+    func getClients() {
+        print("xxxxx=>>>>>>>>>>",dataStore.clients)
+    }
 }
 
 struct HomeView_Previews: PreviewProvider {
