@@ -25,3 +25,7 @@ extension UIScreen{
    static let height = UIScreen.main.bounds.size.height
    static let size = UIScreen.main.bounds.size
 }
+
+struct Path {
+    static let clients = "Clients"
+}
