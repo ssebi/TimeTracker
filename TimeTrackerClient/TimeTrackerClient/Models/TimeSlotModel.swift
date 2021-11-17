@@ -10,12 +10,20 @@ import FirebaseFirestoreSwift
 
 public struct TimeSlot: Identifiable, Decodable {
     @DocumentID public var id: String?
-    var timeSlots: TimeSlotDetail
+    var userId: String
+    var clientId: Int
+    var projectId: Int
+    var date: Date
+    var timeSlot: TimeSlotDetail
     var total: Int
 
-    init(id: String, timeSlots: TimeSlotDetail, total: Int){
+    init(id: String, userId: String, clientId: Int, projectId: Int, date: Date, timeSlot: TimeSlotDetail, total: Int){
         self.id = id
-        self.timeSlots = timeSlots
+        self.userId = userId
+        self.clientId = clientId
+        self.projectId = projectId
+        self.date = date
+        self.timeSlot = timeSlot
         self.total = total
     }
 }
@@ -23,7 +31,11 @@ public struct TimeSlot: Identifiable, Decodable {
 extension TimeSlot: Equatable {
     public static func == (lhs: TimeSlot, rhs: TimeSlot) -> Bool {
         lhs.id == rhs.id &&
-        lhs.timeSlots == rhs.timeSlots &&
+        lhs.userId == rhs.userId &&
+        lhs.clientId == rhs.clientId &&
+        lhs.projectId == rhs.projectId &&
+        lhs.date == rhs.date &&
+        lhs.timeSlot == rhs.timeSlot &&
         lhs.total == rhs.total 
     }
 }
