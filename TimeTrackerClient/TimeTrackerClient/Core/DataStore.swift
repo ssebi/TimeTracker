@@ -29,15 +29,15 @@ class DataStore: ObservableObject {
 		self.userLoader = userLoader
 	}
 
-	func getTimeSlots() {
+    func getTimeSlots(clientId: Int, projectId: Int) {
 		let user = userLoader.getUser()
-		getTimeSlots(for: user.uid!) { result in
+        getTimeSlots(for: user.uid!, with: clientId, and: projectId) { result in
 			// TODO: - Implement
 		}
 	}
 
-	func getTimeSlots(for userID: String, completion: @escaping TimeSlotsLoader.Result) {
-		timeslotsLoader.getTimeSlots(for: userID, completion: completion)
+	func getTimeSlots(for userID: String, with client: Int, and project: Int,completion: @escaping TimeSlotsLoader.Result) {
+        timeslotsLoader.getTimeSlots(for: userID, with: client, and: project, completion: completion)
 	}
 
 	func getClients() {
