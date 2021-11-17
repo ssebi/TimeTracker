@@ -32,7 +32,9 @@ class DataStore: ObservableObject {
     func getTimeSlots(clientId: Int, projectId: Int) {
 		let user = userLoader.getUser()
         getTimeSlots(for: user.uid!, with: clientId, and: projectId) { result in
-			// TODO: - Implement
+            if case let .success(timeSlots) = result {
+                return self.userTimeslots = timeSlots
+            }
 		}
 	}
 
