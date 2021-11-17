@@ -14,16 +14,16 @@ public struct TimeSlot: Identifiable, Decodable {
     var clientId: Int
     var projectId: Int
     var date: Date
-    var timeSlot: TimeSlotDetail
+    var timeSlotDetail: TimeSlotDetail
     var total: Int
 
-    init(id: String, userId: String, clientId: Int, projectId: Int, date: Date, timeSlot: TimeSlotDetail, total: Int){
+    init(id: String, userId: String, clientId: Int, projectId: Int, date: Date, timeSlotDetail: TimeSlotDetail, total: Int){
         self.id = id
         self.userId = userId
         self.clientId = clientId
         self.projectId = projectId
         self.date = date
-        self.timeSlot = timeSlot
+        self.timeSlotDetail = timeSlotDetail
         self.total = total
     }
 }
@@ -35,7 +35,7 @@ extension TimeSlot: Equatable {
         lhs.clientId == rhs.clientId &&
         lhs.projectId == rhs.projectId &&
         lhs.date == rhs.date &&
-        lhs.timeSlot == rhs.timeSlot &&
+        lhs.timeSlotDetail == rhs.timeSlotDetail &&
         lhs.total == rhs.total 
     }
 }
