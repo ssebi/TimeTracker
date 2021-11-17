@@ -57,11 +57,6 @@ struct AddView: View {
 
 	var body: some View {
 		Text("AddView")
-            .onAppear(perform: getClients)
-    }
-
-    func getClients() {
-        print("xxxxx=>>>>>>>>>>",dataStore.clients)
     }
 }
 
