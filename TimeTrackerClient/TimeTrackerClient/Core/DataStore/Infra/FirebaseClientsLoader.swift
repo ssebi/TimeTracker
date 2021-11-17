@@ -11,7 +11,6 @@ class FirebaseClientsLoader: ClientsLoader {
             self?.clients = querySnapshot.documents.compactMap{ document in
                     let data = document.data()
                     let name = data["name"]
-                    let id = data["id"]
                     var project = [Project]()
                     guard let projects = data["projects"] as? [String] else {
                         return nil
@@ -19,7 +18,7 @@ class FirebaseClientsLoader: ClientsLoader {
                     projects.forEach{ projectName in
                         project.append(Project(name: "\(projectName)"))
                     }
-                    return Client(id: id as! Int, name: name as! String, projects: project)
+                return Client(id: document.documentID, name: name as! String, projects: project)
                 }
                 completion(.success(self!.clients))
             } else {

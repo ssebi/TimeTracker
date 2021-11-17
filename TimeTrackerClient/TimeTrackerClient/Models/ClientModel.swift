@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Client: Identifiable, Codable, Equatable {
-	public var id: Int = 0
+    public var id: String
     var name: String
     var projects: [Project]
 }
