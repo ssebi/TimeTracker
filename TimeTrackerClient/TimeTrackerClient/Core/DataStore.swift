@@ -42,7 +42,9 @@ class DataStore: ObservableObject {
 
 	func getClients() {
 		getClients { result in
-			// TODO: - Implement
+            if case let .success(clients) = result {
+               return self.clients = clients
+            }
 		}
 	}
 
