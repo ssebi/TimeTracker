@@ -28,4 +28,5 @@ extension UIScreen{
 
 struct Path {
     static let clients = "Clients"
+    static let timeSlot = "timeSlots"
 }
