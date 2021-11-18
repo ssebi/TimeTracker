@@ -25,6 +25,7 @@
 		54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5091271563FA00A9700A /* FirebaseFirestore */; };
 		54DB5094271563FA00A9700A /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5093271563FA00A9700A /* FirebaseFunctions */; };
 		54DB509D2715A2FA00A9700A /* (null) in Sources */ = {isa = PBXBuildFile; };
+		54F983662746887400577AD6 /* TimeSlotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F983652746887400577AD6 /* TimeSlotViewModel.swift */; };
 		54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */; };
 		54FDD3CD273D441B004E93C4 /* ClientsLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FDD3CC273D441B004E93C4 /* ClientsLoaderSpy.swift */; };
 		54FDD3D1273D4C65004E93C4 /* TimeSlotsLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FDD3D0273D4C65004E93C4 /* TimeSlotsLoaderSpy.swift */; };
@@ -78,6 +79,7 @@
 		54D2FDD8271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthProviderEndToEndTests.swift; sourceTree = "<group>"; };
 		54D8EEA92717502900D867F3 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		54D8EEAC271887EF00D867F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		54F983652746887400577AD6 /* TimeSlotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotViewModel.swift; sourceTree = "<group>"; };
 		54FDD3CC273D441B004E93C4 /* ClientsLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsLoaderSpy.swift; sourceTree = "<group>"; };
 		54FDD3D0273D4C65004E93C4 /* TimeSlotsLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsLoaderSpy.swift; sourceTree = "<group>"; };
 		54FDD3D2273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsPublisherSpy.swift; sourceTree = "<group>"; };
@@ -169,6 +171,14 @@
 				545CCEC927229DF800811CE3 /* ClientModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		54F983642746802A00577AD6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				54F983652746887400577AD6 /* TimeSlotViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		54FB1C8427306B060099BE81 /* Frameworks */ = {
@@ -297,6 +307,7 @@
 		C64C4289271464B300CFBDEF /* TimeTrackerClient */ = {
 			isa = PBXGroup;
 			children = (
+				54F983642746802A00577AD6 /* ViewModel */,
 				C6B6AFCE272A892C00B5CFBC /* Info.plist */,
 				C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */,
 				543DD550272AB3D700D426FC /* Views */,
@@ -472,6 +483,7 @@
 				C61F54BB2744007B0083E1A4 /* FirebaseTimeslotsPublisher.swift in Sources */,
 				545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */,
 				545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */,
+				54F983662746887400577AD6 /* TimeSlotViewModel.swift in Sources */,
 				54DB509D2715A2FA00A9700A /* (null) in Sources */,
 				C61F54AE2743FFED0083E1A4 /* ClientsLoader.swift in Sources */,
 				C61F54B92744006A0083E1A4 /* FirebaseTimeslotsLoader.swift in Sources */,
