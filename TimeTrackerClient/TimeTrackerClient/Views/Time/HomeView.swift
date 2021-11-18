@@ -51,15 +51,6 @@ struct HomeView: View {
 	}
 }
 
-// TODO: - Remove this after implementing `AddView`
-struct AddView: View {
-    @EnvironmentObject var dataStore: DataStore
-
-	var body: some View {
-		Text("AddView")
-    }
-}
-
 struct HomeView_Previews: PreviewProvider {
 	class FakeAuthProvider: AuthProvider {
 		func checkAuthState() -> User? { nil }
