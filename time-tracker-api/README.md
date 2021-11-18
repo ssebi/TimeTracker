@@ -11,3 +11,7 @@ git subtree push --prefix time-tracker-api dokku master
 docker build . -t time-tracker-api
 docker run -i -t -p 3000:3000 --name time-tracker-api time-tracker-api
 ```
+
+```
+http://api.time-tracker.ml/
+```
