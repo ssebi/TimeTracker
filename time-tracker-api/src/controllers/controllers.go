@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"time-tracker/src/auth"
+	"time-tracker/src/clients"
 	"time-tracker/src/middlewares"
 	"time-tracker/src/users"
 
@@ -14,4 +15,5 @@ func Init(engine *gin.Engine) {
 	RegisterUtilityController(engine)
 	users.RegisterUsersController(api)
 	auth.RegisterAuthController(engine)
+	clients.RegisterClientsController(api)
 }

@@ -35,9 +35,9 @@ func GetAllUsers() ([]User, error) {
 	}
 	var users []User
 	err = cursor.All(context.TODO(), &users)
-	if err != nil {
+	if err != nil || len(users) == 0 {
 		glg.Error(err)
-		return nil, err
+		return make([]User, 0), err
 	}
 	return users, nil
 }
@@ -97,11 +97,11 @@ func SaveUser(user User) (interface{}, error) {
 	}
 
 	//Get MongoDB connection using connectionhelper.
-	client, err := database.GetMongoClient()
+	mclient, err := database.GetMongoClient()
 	if err != nil {
 		return nil, err
 	}
-	collection := client.Database(database.DB).Collection(database.USERS)
+	collection := mclient.Database(database.DB).Collection(database.USERS)
 
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 
