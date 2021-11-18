@@ -14,7 +14,7 @@ RUN go mod verify
 COPY . .
 RUN make build
 
-FROM golang:alpine as production
+FROM alpine as production
 RUN apk --no-cache add ca-certificates bash
 RUN mkdir -p /var/log/app
 WORKDIR /app/
