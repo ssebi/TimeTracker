@@ -36,8 +36,8 @@ class DataStoreTests: XCTestCase {
 
 	func test_getClients_returnsClientsLoaderOnSuccess() throws {
 		let (clientSpy, _, _, _, sut) = makeSut()
-		let someClients = [Client(id: Int.random(in: 0...100), name: "Client1", projects: []),
-						   Client(id: Int.random(in: 0...100), name: "Client2", projects: [])]
+        let someClients = [Client(id: UUID().uuidString, name: "Client1", projects: []),
+						   Client(id: UUID().uuidString, name: "Client2", projects: [])]
 		var receivedClients: [Client]? = nil
 
 		let result = resultFor(sut: sut, when: {
@@ -51,7 +51,7 @@ class DataStoreTests: XCTestCase {
 	func test_addTimeSlot_callsPublisher() {
 		let (_, _, timeslotsSpy, _, sut) = makeSut()
 
-        sut.addTimeSlot(timeSlot: someTimeSlot) { _ in }
+        sut.addTimeSlot(timeSlot: someTimeSlot, to: Path.timeSlot) { _ in }
 
         XCTAssertEqual(timeslotsSpy.timeslotCalls, 1)
 	}
@@ -87,7 +87,7 @@ class DataStoreTests: XCTestCase {
 	func test_getTimeslot_callsLoader() {
         let (_, timeslotSpy, _, _, sut) = makeSut()
 
-        sut.getTimeSlots(for: "xxx", completion: {_ in })
+        sut.getTimeSlots(for: "xxx", with: 1, and: 1,  completion: {_ in })
 
         XCTAssertEqual(timeslotSpy.getTimeSlotsCalls, 1)
 	}
@@ -96,7 +96,7 @@ class DataStoreTests: XCTestCase {
         let (_, timeslotSpy, _, _, sut) = makeSut()
         let userId = "xxx"
 
-        sut.getTimeSlots(for: userId, completion: {_ in })
+        sut.getTimeSlots(for: userId, with: 1, and: 1, completion: {_ in })
 
         XCTAssertEqual(timeslotSpy.userId, userId)
 	}
@@ -162,7 +162,7 @@ class DataStoreTests: XCTestCase {
 	private func resultFor(sut: DataStore, addTimeSlot timeSlot: TimeSlot, when action: () -> Void) -> Result<TimeSlot, Error> {
 		let exp = expectation(description: "Wait for completion")
 		var receivedResult: Result<TimeSlot, Error>?
-		sut.addTimeSlot(timeSlot: timeSlot) { result in
+        sut.addTimeSlot(timeSlot: timeSlot, to: Path.timeSlot) { result in
 			receivedResult = result
 			exp.fulfill()
 		}
@@ -174,7 +174,7 @@ class DataStoreTests: XCTestCase {
 	private func resultFor(sut: DataStore, userID: String, when action: () -> Void) -> Result<[TimeSlot], Error> {
 		let exp = expectation(description: "Wait for completion")
 		var receivedResult: Result<[TimeSlot], Error>?
-		sut.getTimeSlots(for: userID) { result in
+        sut.getTimeSlots(for: userID, with: 1, and: 1) { result in
 			receivedResult = result
 			exp.fulfill()
 		}
