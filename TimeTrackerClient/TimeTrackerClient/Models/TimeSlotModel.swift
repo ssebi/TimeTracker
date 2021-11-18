@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-public struct TimeSlot: Identifiable, Decodable {
+public struct TimeSlot: Identifiable, Decodable, Encodable {
     @DocumentID public var id: String?
     var userId: String
     var clientId: Int
