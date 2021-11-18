@@ -1,9 +1,12 @@
 package shared
 
 import (
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 type Response struct {
@@ -29,4 +32,12 @@ func ErrorResponse(context *gin.Context, status int, err error) {
 	response := NewResponse(false)
 	response.Error = err.Error()
 	context.AbortWithStatusJSON(status, response)
+}
+
+func GoDotEnvVariable(key string) string {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+	return os.Getenv(key)
 }

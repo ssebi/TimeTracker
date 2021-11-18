@@ -3,6 +3,7 @@ package database
 import (
 	"context"
 	"sync"
+	"time-tracker/src/shared"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -20,11 +21,10 @@ var mongoOnce sync.Once
 
 //I have used below constants just to hold required database config's.
 const (
-	CONNECTIONSTRING = "mongodb://root:rootpassword@localhost:27017"
-	DB               = "timetracker"
-	USERS            = "col_users"
-	CLIENTS          = "col_clients"
-	WORKLOGS         = "col_worklogs"
+	DB       = "timetracker"
+	USERS    = "col_users"
+	CLIENTS  = "col_clients"
+	WORKLOGS = "col_worklogs"
 )
 
 //GetMongoClient - Return mongodb connection to work with
@@ -32,6 +32,7 @@ func GetMongoClient() (*mongo.Client, error) {
 	//Perform connection creation operation only once.
 	mongoOnce.Do(func() {
 		// Set client options
+		CONNECTIONSTRING := shared.GoDotEnvVariable("MONGODB_CONNECTION_STRING")
 		clientOptions := options.Client().ApplyURI(CONNECTIONSTRING)
 		// Connect to MongoDB
 		client, err := mongo.Connect(context.TODO(), clientOptions)

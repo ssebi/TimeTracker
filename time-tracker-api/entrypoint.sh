@@ -7,4 +7,5 @@ APP_ENV=${APP_ENV:-local}
 echo "[$(date)] Running entrypoint script in the '${APP_ENV}' environment..."
 
 echo "[$(date)] Starting server..."
+
 ./server >>/var/log/app/server.log 2>&1
