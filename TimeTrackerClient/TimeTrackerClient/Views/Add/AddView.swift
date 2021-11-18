@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// TODO: - Uncomment when ready
-/*
 struct AddView: View {
 	@EnvironmentObject var session: SessionStore
 	@EnvironmentObject var dataStore: DataStore
@@ -80,31 +78,25 @@ struct AddView: View {
 		let date = dateFormater.string(from: startEndDate.start)
 
 		if user != nil {
-			path = "userId/\(userId)/clients/\(dataStore.clientsNames[dataStore.selectedClient])/projects/\(dataStore.projectNames[dataStore.selectedProject])/timeLogged/\(date)/timeslots"
+			path = "timeSlots"
 
 		}
+        let timeSlotDetail = TimeSlotDetail(start: Date(), end: Date(), description: "String to de tested")
+        let timeSlot = TimeSlot(id: UUID().uuidString, userId: userId, clientId: 1, projectId: 1, date: Date(), timeSlotDetail: timeSlotDetail, total: 20)
 
-		let timeslot: [String: Any] = [
-			"timeSlots": [
-				"start": startEndDate.start,
-				"end": startEndDate.end,
-				"description": description ],
-			"total": 5
-		]
-
-		dataStore.addTimeSlot(with: timeslot, to: path) { error in
-			if error != nil {
-				showMessage = "Failed to save"
-				DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-					showMessage = ""
-				}
-			} else {
-				showMessage = "Time logged saved"
-				description = ""
-				DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-					showMessage = ""
-				}
-			}
+		dataStore.addTimeSlot(timeSlot: timeSlot, to: path) { result in
+            if case let .success(timeSlot) = result {
+                showMessage = "Time logged saved"
+                                description = ""
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    showMessage = ""
+                                }
+            } else {
+                showMessage = "Failed to save"
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    showMessage = ""
+            }
+            }
 		}
 	}
 }
@@ -114,4 +106,3 @@ struct AddView_Previews: PreviewProvider {
         AddView()
     }
 }
-*/
