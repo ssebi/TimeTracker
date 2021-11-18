@@ -3,6 +3,7 @@ package main
 import (
 	"time-tracker/docs"
 	"time-tracker/src/controllers"
+	"time-tracker/src/shared"
 
 	"github.com/gin-gonic/gin"
 	"github.com/kpango/glg"
@@ -24,9 +25,11 @@ import (
 // @Produce  json
 
 func main() {
-
 	// Gin
-	// gin.SetMode(gin.ReleaseMode)
+	env := shared.GoDotEnvVariable("ENV")
+	if env == "production" {
+		gin.SetMode(gin.ReleaseMode)
+	}
 	engine := gin.New()
 	engine.Use(gin.Recovery(), gin.Logger())
 
