@@ -1,6 +1,6 @@
 
 @base = http://localhost:3000
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1cHU2MEBnbWFpbC5jb20iLCJleHAiOjE2MzY4ODA3ODksImlhdCI6MTYzNjYyMTU4OX0.tOwT94qv8tNTSSSFXDG2PRbyX49vuRVL8uleGpdrmGQ
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1cHU2MEBnbWFpbC5jb20iLCJleHAiOjE2Mzc0Mjk1ODYsImlhdCI6MTYzNzE3MDM4Nn0.Zg4uPBZPxdXiEm8iV5IcDpM97LPiEV9LxYt5MAyNYSw
 
 ###
 POST {{base}}/register
@@ -21,6 +21,7 @@ Content-Type: application/json
   "password": "bogdan123"
 }
 
+
 ###
 GET {{base}}/api/users
 Content-Type: application/json
@@ -28,6 +29,16 @@ Authorization: Bearer {{token}}
 
 
 ###
-DELETE {{base}}/api/users/618a1ff4ff9d66bab94f47ea
+GET {{base}}/api/clients
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
+###
+POST {{base}}/api/clients
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "client1",
+  "projects": [{"name": "projects1"},{"name": "projects2"}]
+}

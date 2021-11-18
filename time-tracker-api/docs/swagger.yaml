@@ -10,6 +10,32 @@ definitions:
     - email
     - password
     type: object
+  clients.Client:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      projects:
+        items:
+          $ref: '#/definitions/clients.Project'
+        type: array
+      updated_at:
+        type: string
+    type: object
+  clients.Project:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
   users.User:
     properties:
       created_at:
@@ -34,6 +60,61 @@ info:
   title: Time Tracker Api
   version: "1.0"
 paths:
+  /clients:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      tags:
+      - clients
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Client
+        in: body
+        name: client
+        required: true
+        schema:
+          $ref: '#/definitions/clients.Client'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      tags:
+      - clients
+  /clients/:id:
+    delete:
+      parameters:
+      - description: Client ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      tags:
+      - clients
+    get:
+      parameters:
+      - description: Clients ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      tags:
+      - clients
   /login:
     post:
       parameters:

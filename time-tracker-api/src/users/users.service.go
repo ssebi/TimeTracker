@@ -35,9 +35,12 @@ func GetAllUsers() ([]User, error) {
 	}
 	var users []User
 	err = cursor.All(context.TODO(), &users)
-	if err != nil || len(users) == 0 {
+	if err != nil {
 		glg.Error(err)
 		return make([]User, 0), err
+	}
+	if len(users) == 0 {
+		return make([]User, 0), nil
 	}
 	return users, nil
 }
