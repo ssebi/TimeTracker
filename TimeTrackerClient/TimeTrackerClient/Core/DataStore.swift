@@ -54,8 +54,8 @@ class DataStore: ObservableObject {
 		clientLoader.getClients(completion: completion)
 	}
 
-	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping TimeSlotsPublisher.Result) {
-		timeslotsPublisher.addTimeSlots(timeSlot: timeSlot, completion: completion)
+    func addTimeSlot(timeSlot: TimeSlot, to path: String, completion: @escaping TimeSlotsPublisher.Result) {
+        timeslotsPublisher.addTimeSlots(timeSlot: timeSlot, to: path, completion: completion)
 	}
 
 	func getUser() -> User {
