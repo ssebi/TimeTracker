@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class TimeSlotViewModel {
+    func addTimeSlot(){
+        
+    }
+}
