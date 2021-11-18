@@ -18,8 +18,9 @@ RUN apk --no-cache add ca-certificates bash
 RUN mkdir -p /var/log/app
 WORKDIR /app/
 COPY --from=build /app/server .
-COPY --from=build /app/entrypoint.sh .
-
+COPY .env.production .env
+ENV GIN_MODE=release
+ENV ENV=production
 RUN ls -la
 EXPOSE 3000
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["./time-tracker"]
