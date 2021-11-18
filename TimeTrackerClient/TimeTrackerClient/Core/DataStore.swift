@@ -11,6 +11,40 @@ import Firebase
 class DataStore: ObservableObject {
 	@Published var clients = [Client]()
 	@Published var userTimeslots = [TimeSlot]()
+    @Published var id: UUID = UUID()
+    @Published var selectedClient: Int = 0 {
+        didSet {
+            selectedProject = projectSelections[selectedClient] ?? 0
+            id = UUID()
+        }
+    }
+
+    @Published var selectedProject: Int = 0 {
+        didSet {
+            DispatchQueue.main.async { [selectedProject] in
+                self.projectSelections[self.selectedClient] = selectedProject
+            }
+        }
+    }
+
+    let db = Firestore.firestore()
+    private var projectSelections: [Int: Int] = [:]
+    var clientsNames: [String] {
+        clients.map { (project) in
+            project.name
+        }
+    }
+    var projectNamesCount: Int {
+        projectNames.count
+    }
+    var projectNames: [String] {
+        guard !clients.isEmpty else {
+            return [String]()
+        }
+        return clients[selectedClient].projects.map { (project) in
+            return project.name
+        }
+    }
 
 	private let clientLoader: ClientsLoader
 	private let timeslotsLoader: TimeSlotsLoader
