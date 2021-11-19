@@ -9,14 +9,22 @@ import Foundation
 import SwiftUI
 
 class TimeSlotViewModel: ObservableObject {
-    var dataStore = DataStore()
+    @EnvironmentObject var session: SessionStore
     @Published var description = ""
     @Published var showMessage = ""
     @Published var timeInterval = DateComponents()
     @Published var startEndDate = StartEndDate(start: Date(), end: Date())
+    @State var dateRange: ClosedRange<Date> = {
+        let calendar = Calendar.current
+        let startComponents = DateComponents(year: 2021, month: 1, day: 1)
+        let endComponents = DateComponents(year: 2121, month: 12, day: 31, hour: 23, minute: 59, second: 59)
+        return calendar.date(from: startComponents)!
+        ...
+        calendar.date(from: endComponents)!
+    }()
 
     private var path = "timeSlots"
-
+    var dataStore = DataStore()
     let dateFormatter = DateFormatter()
 
     func addTimeSlot(for userId: String, clientId: Int, projectId: Int) {
@@ -28,6 +36,7 @@ class TimeSlotViewModel: ObservableObject {
         }
 
         timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startEndDate.start, to: startEndDate.end)
+
         let total = ((timeInterval.hour ?? 0)*60) + (timeInterval.minute ?? 0)
 
         let timeSlotDetail = TimeSlotDetail(

@@ -43,7 +43,8 @@ struct AddView: View {
             
             DatePickerView(
                 startEndDate: $timeSlotVM.startEndDate,
-                timeInterval: $timeSlotVM.timeInterval
+                timeInterval: $timeSlotVM.timeInterval,
+                timeSlotVM: timeSlotVM
             )
                 .padding()
 
