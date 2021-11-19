@@ -51,7 +51,7 @@ definitions:
       user_name:
         type: string
     type: object
-host: localhost:3000
+host: https://api.time-tracker.ml/
 info:
   contact:
     email: lupu60@gmail.com

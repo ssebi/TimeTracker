@@ -16,7 +16,7 @@ import (
 // @description Time Tracker Api
 // @contact.name Bogdan Lupu
 // @contact.email lupu60@gmail.com
-// @host http://api.time-tracker.ml/
+// @host https://api.time-tracker.ml/
 // @BasePath /api/
 // @securityDefinitions.apikey Bearer
 // @in header
