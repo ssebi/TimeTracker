@@ -70,10 +70,9 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 	func test_getTimeslots_deliversEmptyResultsOnError() {
 		let (store, sut) = makeSUT()
 
-		sut.getTimeslots()
-		store.completeGetTimeslots(with: anyError)
-
-		XCTAssertEqual(sut.timeslots, [])
+		expect(sut: sut, toCompleteWith: [], when: {
+			store.completeGetTimeslots(with: anyError)
+		})
 	}
 
 	func test_getTimeslots_deliversResultsOnSuccess() {
@@ -81,18 +80,22 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 
 		let someTimeslots = uniqueTimeslots
 
-		sut.getTimeslots()
-		store.completeGetTimeslots(with: someTimeslots)
-
-		XCTAssertEqual(sut.timeslots, someTimeslots)
+		expect(sut: sut, toCompleteWith: someTimeslots, when: {
+			store.completeGetTimeslots(with: someTimeslots)
+		})
 	}
 
 	func test_timeslots_isEmptyOnErrorAfterSuccess() {
 		let (store, sut) = makeSUT()
 
-		sut.getTimeslots()
+		let exp = expectation(description: "Wait for completion")
+		exp.expectedFulfillmentCount = 2
+		sut.getTimeslots() { _ in
+			exp.fulfill()
+		}
 		store.completeGetTimeslots(with: uniqueTimeslots)
 		store.completeGetTimeslots(with: anyError)
+		wait(for: [exp], timeout: 0.1)
 
 		XCTAssertEqual(sut.timeslots, [])
 	}
@@ -120,6 +123,17 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 		let sut = TimeslotsLoader(store: store)
 
 		return (store, sut)
+	}
+
+	private func expect(sut: TimeslotsLoader, toCompleteWith expectedTimeslots: [TimeSlot], when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+		let exp = expectation(description: "Wait for completion")
+		sut.getTimeslots { _ in
+			exp.fulfill()
+		}
+		action()
+		wait(for: [exp], timeout: 0.1)
+
+		XCTAssertEqual(sut.timeslots, expectedTimeslots, file: file, line: line)
 	}
 
 	private let anyError = NSError(domain: "any error", code: 0)
