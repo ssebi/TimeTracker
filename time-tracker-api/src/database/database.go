@@ -32,7 +32,7 @@ func GetMongoClient() (*mongo.Client, error) {
 	//Perform connection creation operation only once.
 	mongoOnce.Do(func() {
 		// Set client options
-		CONNECTIONSTRING := shared.GoDotEnvVariable("MONGODB_CONNECTION_STRING")
+		CONNECTIONSTRING := shared.GoDotEnvVariable("MONGO_URL")
 		clientOptions := options.Client().ApplyURI(CONNECTIONSTRING)
 		// Connect to MongoDB
 		client, err := mongo.Connect(context.TODO(), clientOptions)
