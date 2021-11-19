@@ -23,7 +23,7 @@ struct ProjectView: View {
 			}.padding()
 		}
 		.listStyle(InsetListStyle())
-//		.onAppear(perform: getTimeslots)
+//		.onAppear(perform: dataStore.getTimeSlots)
 	}
 
     func getTimeslots(){
