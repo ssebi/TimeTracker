@@ -40,6 +40,7 @@
 		C61F54BB2744007B0083E1A4 /* FirebaseTimeslotsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54BA2744007B0083E1A4 /* FirebaseTimeslotsPublisher.swift */; };
 		C61F54BD274400960083E1A4 /* FirebaseUserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54BC274400960083E1A4 /* FirebaseUserLoader.swift */; };
 		C61F54BF2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54BE2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift */; };
+		C61F54C12747D8E40083E1A4 /* TimeslotsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54C02747D8E40083E1A4 /* TimeslotsStore.swift */; };
 		C64784CC273D0E760086D169 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64784CB273D0E760086D169 /* DataStoreTests.swift */; };
 		C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */; };
 		C64C428F271464B600CFBDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C428E271464B600CFBDEF /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		C61F54BA2744007B0083E1A4 /* FirebaseTimeslotsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTimeslotsPublisher.swift; sourceTree = "<group>"; };
 		C61F54BC274400960083E1A4 /* FirebaseUserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserLoader.swift; sourceTree = "<group>"; };
 		C61F54BE2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsAPIUseCaseTests.swift; sourceTree = "<group>"; };
+		C61F54C02747D8E40083E1A4 /* TimeslotsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsStore.swift; sourceTree = "<group>"; };
 		C64784CB273D0E760086D169 /* DataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTests.swift; sourceTree = "<group>"; };
 		C64C4287271464B300CFBDEF /* TimeTrackerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientApp.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				C61F54AF2744000D0083E1A4 /* TimeSlotsLoader.swift */,
 				C61F54B1274400180083E1A4 /* TimeSlotsPublisher.swift */,
 				C61F54B3274400280083E1A4 /* UserLoader.swift */,
+				C61F54C02747D8E40083E1A4 /* TimeslotsStore.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C61F54C12747D8E40083E1A4 /* TimeslotsStore.swift in Sources */,
 				C61F54BB2744007B0083E1A4 /* FirebaseTimeslotsPublisher.swift in Sources */,
 				545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */,
 				545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */,

@@ -2,31 +2,6 @@
 import XCTest
 import TimeTrackerClient
 
-public protocol TimeslotsStore {
-
-	typealias GetTimeslotsResult = (Result<[TimeSlot], Error>) -> Void
-
-	func getTimeslots(completion: @escaping GetTimeslotsResult)
-
-}
-
-class TimeslotsLoader {
-
-	let store: TimeslotsStore
-
-	init(store: TimeslotsStore) {
-		self.store = store
-	}
-
-	func getTimeslots(completion: @escaping TimeslotsStore.GetTimeslotsResult) {
-		store.getTimeslots { [weak self] result in
-			guard self != nil else { return }
-			completion(result)
-		}
-	}
-
-}
-
 class TimeslotsAPIUseCaseTests: XCTestCase {
 
 	func test_init_doesNotMessageStore() {
@@ -63,7 +38,7 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 
 	func test_getTimeslots_doesNotGetCalledAfterSUTHasBeenDeinitialized() {
 		let store = TimeslotsStoreSpy()
-		var sut: TimeslotsLoader? = TimeslotsLoader(store: store)
+		var sut: TimeslotsLoader? = RemoteTimeslotsLoader(store: store)
 
 		var receivedResults: [Result<[TimeSlot], Error>] = []
 		sut?.getTimeslots() { result in
@@ -80,7 +55,7 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (TimeslotsStoreSpy, TimeslotsLoader) {
 		let store = TimeslotsStoreSpy()
-		let sut = TimeslotsLoader(store: store)
+		let sut = RemoteTimeslotsLoader(store: store)
 
 		return (store, sut)
 	}
