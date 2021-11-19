@@ -41,6 +41,8 @@ func main() {
 	glg.Infof("✅ Server running at 👉 %s", host)
 	glg.Infof("📄 Swagger 👉 %s/swagger/index.html", host)
 	glg.Infof("🩺 Check Health 👉 %s", host)
+	mongo := shared.GoDotEnvVariable("MONGO_URL")
+	glg.Infof("💾 Using %s", mongo)
 	if env == "production" {
 		engine.Run(":3000")
 	} else {
