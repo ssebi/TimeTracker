@@ -1,24 +1,39 @@
 
 import XCTest
+import TimeTrackerClient
 
 class TimeslotsStore {
+
+	typealias GetTimeslotsResult = (Result<[TimeSlot], Error>) -> Void
+
 	var getTimeslotsCallCount = 0
 
-	func getTimeslots() {
+	func getTimeslots(completion: GetTimeslotsResult) {
 		getTimeslotsCallCount += 1
 	}
+
+	func completeGetTimeslots(with error: Error) {
+
+	}
+
 }
 
 class TimeslotsLoader {
+
 	let store: TimeslotsStore
+
+	var timeslots: [TimeSlot] = []
 
 	init(store: TimeslotsStore) {
 		self.store = store
 	}
 
 	func getTimeslots() {
-		store.getTimeslots()
+		store.getTimeslots { result in
+
+		}
 	}
+
 }
 
 class TimeslotsAPIUseCaseTests: XCTestCase {
@@ -37,6 +52,17 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 		sut.getTimeslots()
 
 		XCTAssertEqual(store.getTimeslotsCallCount, 1)
+	}
+
+	func test_getTimeslots_deliversEmptyResultsOnError() {
+		let store = TimeslotsStore()
+		let sut = TimeslotsLoader(store: store)
+		let anyError = NSError(domain: "any error", code: 0)
+
+		sut.getTimeslots()
+		store.completeGetTimeslots(with: anyError)
+
+		XCTAssertEqual(sut.timeslots, [])
 	}
 
 }
