@@ -16,7 +16,7 @@ import (
 // @description Time Tracker Api
 // @contact.name Bogdan Lupu
 // @contact.email lupu60@gmail.com
-// @host localhost:3000
+// @host http://api.time-tracker.ml/
 // @BasePath /api/
 // @securityDefinitions.apikey Bearer
 // @in header
@@ -41,5 +41,9 @@ func main() {
 	glg.Infof("✅ Server running at 👉 %s", host)
 	glg.Infof("📄 Swagger 👉 %s/swagger/index.html", host)
 	glg.Infof("🩺 Check Health 👉 %s", host)
-	engine.Run(":3000")
+	if env == "production" {
+		engine.Run(":3000")
+	} else {
+		engine.Run("localhost:3000")
+	}
 }

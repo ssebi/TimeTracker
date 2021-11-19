@@ -1,5 +1,6 @@
 
-@base = http://localhost:3000
+# @base = http://localhost:3000
+@base = https://api.time-tracker.ml
 @token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1cHU2MEBnbWFpbC5jb20iLCJleHAiOjE2Mzc0Mjk1ODYsImlhdCI6MTYzNzE3MDM4Nn0.Zg4uPBZPxdXiEm8iV5IcDpM97LPiEV9LxYt5MAyNYSw
 
 ###
@@ -27,6 +28,12 @@ GET {{base}}/api/users
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
+###
+GET {{base}}/api/users/userid/projects
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
 
 ###
 GET {{base}}/api/clients
@@ -42,3 +49,9 @@ Authorization: Bearer {{token}}
   "name": "client1",
   "projects": [{"name": "projects1"},{"name": "projects2"}]
 }
+
+
+
+### create worklog
+
+### get worklog
