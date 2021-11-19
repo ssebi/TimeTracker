@@ -29,16 +29,23 @@ class TimeslotsLoader {
 
 	let store: TimeslotsStore
 
-	var timeslots: [TimeSlot] = []
+	var timeslotsUpdated: (() -> Void)?
+	var timeslots: [TimeSlot] = [] {
+		didSet {
+			timeslotsUpdated?()
+		}
+	}
 
 	init(store: TimeslotsStore) {
 		self.store = store
 	}
 
-	func getTimeslots() {
-		store.getTimeslots { result in
+	func getTimeslots(completion: TimeslotsStore.GetTimeslotsResult? = nil) {
+		store.getTimeslots { [weak self] result in
+			guard let self = self else { return }
 			let timeslots = try? result.get()
 			self.timeslots = timeslots ?? []
+			completion?(result)
 		}
 	}
 
@@ -88,6 +95,21 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 		store.completeGetTimeslots(with: anyError)
 
 		XCTAssertEqual(sut.timeslots, [])
+	}
+
+	func test_getTimeslots_doesNotGetCalledAfterSUTHasBeenDeinitialized() {
+		let store = TimeslotsStore()
+		var sut: TimeslotsLoader? = TimeslotsLoader(store: store)
+
+		var receivedResults: [Result<[TimeSlot], Error>] = []
+		sut?.getTimeslots() { result in
+			receivedResults.append(result)
+		}
+
+		sut = nil
+		store.completeGetTimeslots(with: anyError)
+
+		XCTAssert(receivedResults.isEmpty)
 	}
 
 
