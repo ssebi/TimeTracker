@@ -13,7 +13,7 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 	func test_getTimeslots_callsStore() {
 		let (store, sut) = makeSUT()
 
-		sut.getTimeslots { _ in }
+		sut.getTimeslots(userID: someUserID) { _ in }
 
 		XCTAssertEqual(store.getTimeslotsCallCount, 1)
 	}
@@ -41,7 +41,7 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 		var sut: TimeslotsLoader? = RemoteTimeslotsLoader(store: store)
 
 		var receivedResults: [Result<[TimeSlot], Error>] = []
-		sut?.getTimeslots() { result in
+		sut?.getTimeslots(userID: someUserID) { result in
 			receivedResults.append(result)
 		}
 
@@ -63,7 +63,7 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 	private func expect(sut: TimeslotsLoader, toCompleteWith expectedTimeslots: [TimeSlot], when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
 		let exp = expectation(description: "Wait for completion")
 		var receivedTimeslots: [[TimeSlot]]? = nil
-		sut.getTimeslots { result in
+		sut.getTimeslots(userID: someUserID) { result in
 			if let timeslots = try? result.get() {
 				if receivedTimeslots == nil {
 					receivedTimeslots = [timeslots]
@@ -83,7 +83,7 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 	private func expect(sut: TimeslotsLoader, toCompleteWith expectedError: NSError?, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
 		let exp = expectation(description: "Wait for completion")
 		var receivedErrors: [NSError]? = nil
-		sut.getTimeslots { result in
+		sut.getTimeslots(userID: someUserID) { result in
 			if case let .failure(error) = result {
 				if receivedErrors == nil {
 					receivedErrors = [error as NSError]
@@ -101,6 +101,8 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 	}
 
 	private let anyError = NSError(domain: "any error", code: 0)
+
+	private let someUserID = UUID().uuidString
 
 	private var uniqueTimeslots: [TimeSlot] {
 		[
@@ -129,7 +131,7 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 
 		private var completions: [GetTimeslotsResult] = []
 
-		func getTimeslots(completion: @escaping GetTimeslotsResult) {
+		func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
 			getTimeslotsCallCount += 1
 			completions.append(completion)
 		}

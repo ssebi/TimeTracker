@@ -3,6 +3,6 @@ public protocol TimeslotsStore {
 
 	typealias GetTimeslotsResult = (Result<[TimeSlot], Error>) -> Void
 
-	func getTimeslots(completion: @escaping GetTimeslotsResult)
+	func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult)
 
 }

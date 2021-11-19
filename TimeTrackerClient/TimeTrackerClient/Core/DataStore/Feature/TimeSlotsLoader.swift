@@ -1,20 +1,10 @@
 
-public protocol TimeSlotsLoader {
-	typealias Result = (Swift.Result<[TimeSlot], Error>) -> Void
-
-	func getTimeSlots(for user: String, with client: Int, and project: Int, completion: @escaping Result)
-}
-
-
-/// ============================= REFACTOR =====================================
-
-
 public protocol TimeslotsLoader {
 	typealias GetTimeslotsResult = (Result<[TimeSlot], Error>) -> Void
 
 	var store: TimeslotsStore { get }
 
-	func getTimeslots(completion: @escaping GetTimeslotsResult)
+	func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult)
 
 }
 
@@ -26,8 +16,8 @@ public class RemoteTimeslotsLoader: TimeslotsLoader {
 		self.store = store
 	}
 
-	public func getTimeslots(completion: @escaping TimeslotsStore.GetTimeslotsResult) {
-		store.getTimeslots { [weak self] result in
+	public func getTimeslots(userID: String, completion: @escaping TimeslotsStore.GetTimeslotsResult) {
+		store.getTimeslots(userID: userID) { [weak self] result in
 			guard self != nil else { return }
 			completion(result)
 		}

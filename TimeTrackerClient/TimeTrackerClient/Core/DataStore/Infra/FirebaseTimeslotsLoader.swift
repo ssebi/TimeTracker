@@ -2,24 +2,22 @@
 import Firebase
 import FirebaseFirestoreSwift
 
-class FirebaseTimeslotsLoader: TimeSlotsLoader {
-    let db = Firestore.firestore()
-    private var timeslots = [FirebaseTimeSlot]()
+class FirebaseTimeslotsStore: TimeslotsStore {
 
-    func getTimeSlots(for user: String, with client: Int, and project: Int, completion: @escaping TimeSlotsLoader.Result) {
-        db.collection(Path.timeSlot)
-            .whereField("userId", isEqualTo: user)
-            .addSnapshotListener { [weak self] (querySnapshot, error) in
-                if let querySnapshot = querySnapshot {
-                    self?.timeslots = querySnapshot.documents.compactMap { document in
-                        return try? document.data(as: FirebaseTimeSlot.self)
-                    }
-                    completion(.success(self!.timeslots.toTimeSlot()))
-                } else {
-                    completion(.failure(error!))
-                }
-            }
-    }
+	func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
+		Firestore.firestore().collection(Path.timeSlot)
+			.whereField("userId", isEqualTo: userID)
+			.addSnapshotListener { (querySnapshot, error) in
+				if let querySnapshot = querySnapshot {
+					let timeslots = querySnapshot.documents.compactMap { document in
+						return try? document.data(as: FirebaseTimeSlot.self)
+					}
+					completion(.success(timeslots.toTimeSlot()))
+				} else {
+					completion(.failure(error!))
+				}
+			}
+	}
 
 }
 
