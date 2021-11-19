@@ -8,97 +8,74 @@
 import SwiftUI
 
 struct AddView: View {
-	@EnvironmentObject var session: SessionStore
-	@EnvironmentObject var dataStore: DataStore
-	@State private var description = ""
-	@State private var showMessage = ""
-	@State private var startEndDate = StartEndDate(start: Date(), end: Date())
+    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var dataStore: DataStore
+    @ObservedObject var timeSlotVM = TimeSlotViewModel()
 
-	var body: some View {
-		VStack {
-			Text(Date(), style: .date)
-				.padding()
-				.font(.subheadline)
+    var body: some View {
+        VStack {
+            Text(Date(), style: .date)
+                .padding()
+                .font(.subheadline)
 
-			Picker(selection: $dataStore.selectedClient, label: Text("")){
-				ForEach(0 ..< dataStore.clientsNames.count){ index in
-					Text(self.dataStore.clientsNames[index])
-				}
-			}
-			.labelsHidden()
-			.frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
-			.background(Color.cGray)
-			.foregroundColor(.white)
-
-			Picker(selection: $dataStore.selectedProject, label: Text("")){
-				ForEach(0 ..< dataStore.projectNames.count){ index in
-					Text(self.dataStore.projectNames[index])
-				}
-			}
-			.id(dataStore.id)
-			.labelsHidden()
-			.frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
-			.background(Color.cGray)
-			.foregroundColor(.white)
-
-			Spacer()
-
-			DatePickerView(startEndDate: $startEndDate)
-				.padding()
-
-			HStack {
-				Text("Task description")
-					.padding()
-				Spacer()
-			}
-			TextEditor(text: $description)
-				.border(.gray)
-				.frame(width: UIScreen.width - 55, height: 130, alignment: .center)
-
-			Spacer()
-			HStack {
-				Text("\(showMessage)")
-				Spacer()
-			}
-
-			Button("SUBMIT") {
-				addTime()
-			}
-			.buttonStyle(AddButton())
-			.frame(width: UIScreen.main.bounds.width - 50, height: 100, alignment: .center)
-		}
-	}
-
-	func addTime() {
-		let user = session.user
-		let userId = user?.uid ?? ""
-		var path = ""
-		let dateFormater = DateFormatter()
-		dateFormater.dateFormat = "dd-MM-yyyy"
-		let date = dateFormater.string(from: startEndDate.start)
-
-		if user != nil {
-			path = "timeSlots"
-
-		}
-        let timeSlotDetail = TimeSlotDetail(start: Date(), end: Date(), description: "String to de tested")
-        let timeSlot = TimeSlot(id: UUID().uuidString, userId: userId, clientId: 1, projectId: 1, date: Date(), timeSlotDetail: timeSlotDetail, total: 20)
-
-		dataStore.addTimeSlot(timeSlot: timeSlot, to: path) { result in
-            if case let .success(timeSlot) = result {
-                showMessage = "Time logged saved"
-                                description = ""
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                    showMessage = ""
-                                }
-            } else {
-                showMessage = "Failed to save"
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                    showMessage = ""
+            Picker(selection: $dataStore.selectedClient, label: Text("")){
+                ForEach(0 ..< dataStore.clientsNames.count){ index in
+                    Text(self.dataStore.clientsNames[index])
+                }
             }
+            .labelsHidden()
+            .frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
+            .background(Color.cGray)
+            .foregroundColor(.white)
+
+            Picker(selection: $dataStore.selectedProject, label: Text("")){
+                ForEach(0 ..< dataStore.projectNames.count){ index in
+                    Text(self.dataStore.projectNames[index])
+                }
             }
-		}
-	}
+            .id(dataStore.id)
+            .labelsHidden()
+            .frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
+            .background(Color.cGray)
+            .foregroundColor(.white)
+
+            Spacer()
+            
+            DatePickerView(
+                startEndDate: $timeSlotVM.startEndDate,
+                timeInterval: $timeSlotVM.timeInterval
+            )
+                .padding()
+
+            HStack {
+                Text("Task description")
+                    .padding()
+                Spacer()
+            }
+            TextEditor(text: $timeSlotVM.description)
+                .border(.gray)
+                .frame(width: UIScreen.width - 55, height: 130, alignment: .center)
+
+            Spacer()
+            HStack {
+                Text("\(timeSlotVM.showMessage)")
+                Spacer()
+            }
+
+            Button("SUBMIT") {
+                addTimeSlot()
+            }
+            .buttonStyle(AddButton())
+            .frame(width: UIScreen.main.bounds.width - 50, height: 100, alignment: .center)
+        }
+    }
+
+    func addTimeSlot() {
+        let userId = session.user?.uid ?? ""
+        let clientId = dataStore.selectedClient
+        let projectId = dataStore.selectedProject
+        timeSlotVM.addTimeSlot(for: userId, clientId: clientId, projectId: projectId )
+    }
 }
 
 struct AddView_Previews: PreviewProvider {
