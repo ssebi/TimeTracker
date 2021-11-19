@@ -25,11 +25,8 @@ class TimeSlotViewModel: ObservableObject {
 
     private var path = "timeSlots"
     var dataStore = DataStore()
-    let dateFormatter = DateFormatter()
 
     func addTimeSlot(for userId: String, clientId: Int, projectId: Int) {
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        var date = dateFormatter.date(from: "\(startEndDate.start)")
 
         if userId == "" {
             return showMessage = "The user is not logged"
