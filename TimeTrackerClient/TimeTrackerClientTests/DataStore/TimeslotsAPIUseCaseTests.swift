@@ -39,15 +39,13 @@ class TimeslotsLoader {
 class TimeslotsAPIUseCaseTests: XCTestCase {
 
 	func test_init_doesNotMessageStore() {
-		let store = TimeslotsStore()
-		let _ = TimeslotsLoader(store: store)
+		let (store, _) = makeSUT()
 
 		XCTAssertEqual(store.getTimeslotsCallCount, 0)
 	}
 
 	func test_getTimeslots_callsStore() {
-		let store = TimeslotsStore()
-		let sut = TimeslotsLoader(store: store)
+		let (store, sut) = makeSUT()
 
 		sut.getTimeslots()
 
@@ -55,14 +53,22 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 	}
 
 	func test_getTimeslots_deliversEmptyResultsOnError() {
-		let store = TimeslotsStore()
-		let sut = TimeslotsLoader(store: store)
+		let (store, sut) = makeSUT()
 		let anyError = NSError(domain: "any error", code: 0)
 
 		sut.getTimeslots()
 		store.completeGetTimeslots(with: anyError)
 
 		XCTAssertEqual(sut.timeslots, [])
+	}
+
+	// MARK: - Helpers
+
+	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (TimeslotsStore, TimeslotsLoader) {
+		let store = TimeslotsStore()
+		let sut = TimeslotsLoader(store: store)
+
+		return (store, sut)
 	}
 
 }
