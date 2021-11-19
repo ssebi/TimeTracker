@@ -2,7 +2,11 @@
 import XCTest
 
 class TimeslotsStore {
-	let getTimeslotsCallCount = 0
+	var getTimeslotsCallCount = 0
+
+	func getTimeslots() {
+		getTimeslotsCallCount += 1
+	}
 }
 
 class TimeslotsLoader {
@@ -10,6 +14,10 @@ class TimeslotsLoader {
 
 	init(store: TimeslotsStore) {
 		self.store = store
+	}
+
+	func getTimeslots() {
+		store.getTimeslots()
 	}
 }
 
@@ -20,6 +28,15 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 		let _ = TimeslotsLoader(store: store)
 
 		XCTAssertEqual(store.getTimeslotsCallCount, 0)
+	}
+
+	func test_getTimeslots_callsStore() {
+		let store = TimeslotsStore()
+		let sut = TimeslotsLoader(store: store)
+
+		sut.getTimeslots()
+
+		XCTAssertEqual(store.getTimeslotsCallCount, 1)
 	}
 
 }
