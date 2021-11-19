@@ -2,26 +2,11 @@
 import XCTest
 import TimeTrackerClient
 
-class TimeslotsStore {
+public protocol TimeslotsStore {
 
 	typealias GetTimeslotsResult = (Result<[TimeSlot], Error>) -> Void
 
-	var getTimeslotsCallCount = 0
-
-	private var completions: [GetTimeslotsResult] = []
-
-	func getTimeslots(completion: @escaping GetTimeslotsResult) {
-		getTimeslotsCallCount += 1
-		completions.append(completion)
-	}
-
-	func completeGetTimeslots(with error: Error, at index: Int = 0) {
-		completions[index](.failure(error))
-	}
-
-	func completeGetTimeslots(with timeslots: [TimeSlot], at index: Int = 0) {
-		completions[index](.success(timeslots))
-	}
+	func getTimeslots(completion: @escaping GetTimeslotsResult)
 
 }
 
@@ -101,7 +86,7 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 	}
 
 	func test_getTimeslots_doesNotGetCalledAfterSUTHasBeenDeinitialized() {
-		let store = TimeslotsStore()
+		let store = TimeslotsStoreSpy()
 		var sut: TimeslotsLoader? = TimeslotsLoader(store: store)
 
 		var receivedResults: [Result<[TimeSlot], Error>] = []
@@ -134,8 +119,8 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 
 	// MARK: - Helpers
 
-	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (TimeslotsStore, TimeslotsLoader) {
-		let store = TimeslotsStore()
+	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (TimeslotsStoreSpy, TimeslotsLoader) {
+		let store = TimeslotsStoreSpy()
 		let sut = TimeslotsLoader(store: store)
 
 		return (store, sut)
@@ -173,6 +158,27 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 						end: "2021-11-22T09:48:51Z",
 						description: "some description"),
 				 total: Int.random(in: 0...100))
+	}
+
+	private class TimeslotsStoreSpy: TimeslotsStore {
+
+		var getTimeslotsCallCount = 0
+
+		private var completions: [GetTimeslotsResult] = []
+
+		func getTimeslots(completion: @escaping GetTimeslotsResult) {
+			getTimeslotsCallCount += 1
+			completions.append(completion)
+		}
+
+		func completeGetTimeslots(with error: Error, at index: Int = 0) {
+			completions[index](.failure(error))
+		}
+
+		func completeGetTimeslots(with timeslots: [TimeSlot], at index: Int = 0) {
+			completions[index](.success(timeslots))
+		}
+
 	}
 
 }
