@@ -41,5 +41,5 @@ func main() {
 	glg.Infof("✅ Server running at 👉 %s", host)
 	glg.Infof("📄 Swagger 👉 %s/swagger/index.html", host)
 	glg.Infof("🩺 Check Health 👉 %s", host)
-	engine.Run("localhost:3000")
+	engine.Run(":3000")
 }
