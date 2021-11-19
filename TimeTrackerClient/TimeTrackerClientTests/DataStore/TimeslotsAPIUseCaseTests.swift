@@ -115,6 +115,22 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 		XCTAssert(receivedResults.isEmpty)
 	}
 
+	func test_timeslotsUpdated_getsCalledOnTimeslotChanges() {
+		let (store, sut) = makeSUT()
+
+		let updateTimeslotsExp = expectation(description: "Wait for update timeslots completion")
+		sut.timeslotsUpdated = {
+			updateTimeslotsExp.fulfill()
+		}
+
+		let getTimeslotsExp = expectation(description: "Wait for completion")
+		sut.getTimeslots(completion: { _ in
+			getTimeslotsExp.fulfill()
+		})
+		store.completeGetTimeslots(with: anyError)
+		wait(for: [getTimeslotsExp, updateTimeslotsExp], timeout: 0.1)
+	}
+
 
 	// MARK: - Helpers
 
