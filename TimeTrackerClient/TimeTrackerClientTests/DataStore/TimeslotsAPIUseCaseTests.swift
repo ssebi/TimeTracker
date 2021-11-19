@@ -14,23 +14,14 @@ class TimeslotsLoader {
 
 	let store: TimeslotsStore
 
-	var timeslotsUpdated: (() -> Void)?
-	var timeslots: [TimeSlot] = [] {
-		didSet {
-			timeslotsUpdated?()
-		}
-	}
-
 	init(store: TimeslotsStore) {
 		self.store = store
 	}
 
-	func getTimeslots(completion: TimeslotsStore.GetTimeslotsResult? = nil) {
+	func getTimeslots(completion: @escaping TimeslotsStore.GetTimeslotsResult) {
 		store.getTimeslots { [weak self] result in
-			guard let self = self else { return }
-			let timeslots = try? result.get()
-			self.timeslots = timeslots ?? []
-			completion?(result)
+			guard self != nil else { return }
+			completion(result)
 		}
 	}
 
@@ -47,15 +38,15 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 	func test_getTimeslots_callsStore() {
 		let (store, sut) = makeSUT()
 
-		sut.getTimeslots()
+		sut.getTimeslots { _ in }
 
 		XCTAssertEqual(store.getTimeslotsCallCount, 1)
 	}
 
-	func test_getTimeslots_deliversEmptyResultsOnError() {
+	func test_getTimeslots_deliversErrorOnStoreError() {
 		let (store, sut) = makeSUT()
 
-		expect(sut: sut, toCompleteWith: [], when: {
+		expect(sut: sut, toCompleteWith: anyError, when: {
 			store.completeGetTimeslots(with: anyError)
 		})
 	}
@@ -68,21 +59,6 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 		expect(sut: sut, toCompleteWith: someTimeslots, when: {
 			store.completeGetTimeslots(with: someTimeslots)
 		})
-	}
-
-	func test_timeslots_isEmptyOnErrorAfterSuccess() {
-		let (store, sut) = makeSUT()
-
-		let exp = expectation(description: "Wait for completion")
-		exp.expectedFulfillmentCount = 2
-		sut.getTimeslots() { _ in
-			exp.fulfill()
-		}
-		store.completeGetTimeslots(with: uniqueTimeslots)
-		store.completeGetTimeslots(with: anyError)
-		wait(for: [exp], timeout: 0.1)
-
-		XCTAssertEqual(sut.timeslots, [])
 	}
 
 	func test_getTimeslots_doesNotGetCalledAfterSUTHasBeenDeinitialized() {
@@ -100,23 +76,6 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 		XCTAssert(receivedResults.isEmpty)
 	}
 
-	func test_timeslotsUpdated_getsCalledOnTimeslotChanges() {
-		let (store, sut) = makeSUT()
-
-		let updateTimeslotsExp = expectation(description: "Wait for update timeslots completion")
-		sut.timeslotsUpdated = {
-			updateTimeslotsExp.fulfill()
-		}
-
-		let getTimeslotsExp = expectation(description: "Wait for completion")
-		sut.getTimeslots(completion: { _ in
-			getTimeslotsExp.fulfill()
-		})
-		store.completeGetTimeslots(with: anyError)
-		wait(for: [getTimeslotsExp, updateTimeslotsExp], timeout: 0.1)
-	}
-
-
 	// MARK: - Helpers
 
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (TimeslotsStoreSpy, TimeslotsLoader) {
@@ -128,13 +87,42 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 
 	private func expect(sut: TimeslotsLoader, toCompleteWith expectedTimeslots: [TimeSlot], when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
 		let exp = expectation(description: "Wait for completion")
-		sut.getTimeslots { _ in
+		var receivedTimeslots: [[TimeSlot]]? = nil
+		sut.getTimeslots { result in
+			if let timeslots = try? result.get() {
+				if receivedTimeslots == nil {
+					receivedTimeslots = [timeslots]
+				} else {
+					receivedTimeslots?.append(timeslots)
+				}
+			}
 			exp.fulfill()
 		}
 		action()
 		wait(for: [exp], timeout: 0.1)
 
-		XCTAssertEqual(sut.timeslots, expectedTimeslots, file: file, line: line)
+		XCTAssertEqual(receivedTimeslots?.count, 1)
+		XCTAssertEqual(receivedTimeslots?[0], expectedTimeslots, file: file, line: line)
+	}
+
+	private func expect(sut: TimeslotsLoader, toCompleteWith expectedError: NSError?, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+		let exp = expectation(description: "Wait for completion")
+		var receivedErrors: [NSError]? = nil
+		sut.getTimeslots { result in
+			if case let .failure(error) = result {
+				if receivedErrors == nil {
+					receivedErrors = [error as NSError]
+				} else {
+					receivedErrors?.append(error as NSError)
+				}
+			}
+			exp.fulfill()
+		}
+		action()
+		wait(for: [exp], timeout: 0.1)
+
+		XCTAssertEqual(receivedErrors?.count, 1)
+		XCTAssertEqual(receivedErrors?[0], expectedError, file: file, line: line)
 	}
 
 	private let anyError = NSError(domain: "any error", code: 0)
