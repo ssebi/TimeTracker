@@ -5,6 +5,7 @@ import (
 	"sync"
 	"time-tracker/src/shared"
 
+	"github.com/kpango/glg"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -47,4 +48,14 @@ func GetMongoClient() (*mongo.Client, error) {
 		clientInstance = client
 	})
 	return clientInstance, clientInstanceError
+}
+
+func GetMongoCollection(col string) (*mongo.Collection, error) {
+	client, err := GetMongoClient()
+	if err != nil {
+		glg.Error(err)
+		return nil, err
+	}
+	collection := client.Database(DB).Collection(col)
+	return collection, nil
 }
