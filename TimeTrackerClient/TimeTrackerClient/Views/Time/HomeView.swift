@@ -27,7 +27,7 @@ struct HomeView: View {
 							session.signOut()
 						},
 						label: {
-							Label("", systemImage: "power")
+							Image(systemName: "power")
 								.foregroundColor(.red)
 								.font(.system(size: 20))
 						}),
@@ -39,7 +39,7 @@ struct HomeView: View {
 								destination:
 									AddView()
 							) {
-								Label("+", systemImage: "plus.rectangle.fill")
+								Image(systemName: "plus.rectangle.fill")
 									.foregroundColor(.cGreen)
 									.font(.system(size: 30))
 							}
