@@ -12,11 +12,11 @@ public struct TimeSlot: Identifiable, Decodable, Encodable {
     var userId: String
     var clientId: Int
     var projectId: Int
-    var date: Date
+    var date: String
     var timeSlotDetail: TimeSlotDetail
     var total: Int
 
-    init(id: String, userId: String, clientId: Int, projectId: Int, date: Date, timeSlotDetail: TimeSlotDetail, total: Int){
+    init(id: String, userId: String, clientId: Int, projectId: Int, date: String, timeSlotDetail: TimeSlotDetail, total: Int){
         self.id = id
         self.userId = userId
         self.clientId = clientId
@@ -40,11 +40,11 @@ extension TimeSlot: Equatable {
 }
 
 public struct TimeSlotDetail: Codable {
-    var start: Date
-    var end: Date
+    var start: String
+    var end: String
     var description: String
 
-    init(start: Date, end: Date, description: String){
+    init(start: String, end: String, description: String){
         self.start = start
         self.end = end
         self.description = description

@@ -14,22 +14,21 @@ struct ProjectView: View {
 		List(dataStore.userTimeslots) { timeSlot in
 			VStack(alignment: .leading, spacing: 2) {
 				Text("Project name: Project x")
-				if #available(iOS 15.0, *) {
-					Text("Date: \(timeSlot.timeSlotDetail.start.formatted(date: .abbreviated, time: .omitted))")
-					Text("Start time: \(timeSlot.timeSlotDetail.start.formatted(date: .omitted, time: .standard))")
-					Text("End time: \(timeSlot.timeSlotDetail.end.formatted(date: .omitted, time: .standard))")
-				} else {
-					DateLabel(text: "Date:", date: timeSlot.timeSlotDetail.start, style: .date)
-					DateLabel(text: "Start time:", date: timeSlot.timeSlotDetail.start, style: .time)
-					DateLabel(text: "End time:", date: timeSlot.timeSlotDetail.end, style: .time)
-				}
+					Text("Date: \(timeSlot.timeSlotDetail.start)")
+					Text("Start time: \(timeSlot.timeSlotDetail.start)")
+					Text("End time: \(timeSlot.timeSlotDetail.end)")
+
 				Text("Time period: \(timeSlot.total)")
 				Text("Task description: \(timeSlot.timeSlotDetail.description)")
 			}.padding()
 		}
 		.listStyle(InsetListStyle())
-		.onAppear(perform: dataStore.getTimeSlots)
+		.onAppear(perform: getTimeslots)
 	}
+
+    func getTimeslots(){
+        dataStore.getTimeSlots(clientId: 1, projectId: 1)
+    }
 }
 
 struct Project_Previews: PreviewProvider {

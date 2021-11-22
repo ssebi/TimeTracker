@@ -50,11 +50,11 @@ fileprivate struct FirebaseTimeSlot: Identifiable, Decodable, Encodable {
     var userId: String
     var clientId: Int
     var projectId: Int
-    var date: Date
+    var date: String
     var timeSlotDetail: FirebaseTimeSlotDetail
     var total: Int
 
-    init(id: String, userId: String, clientId: Int, projectId: Int, date: Date, timeSlotDetail: FirebaseTimeSlotDetail, total: Int){
+    init(id: String, userId: String, clientId: Int, projectId: Int, date: String, timeSlotDetail: FirebaseTimeSlotDetail, total: Int){
         self.id = id
         self.userId = userId
         self.clientId = clientId
@@ -66,11 +66,11 @@ fileprivate struct FirebaseTimeSlot: Identifiable, Decodable, Encodable {
 }
 
 fileprivate struct FirebaseTimeSlotDetail: Codable {
-    var start: Date
-    var end: Date
+    var start: String
+    var end: String
     var description: String
 
-    init(start: Date, end: Date, description: String){
+    init(start: String, end: String, description: String){
         self.start = start
         self.end = end
         self.description = description
