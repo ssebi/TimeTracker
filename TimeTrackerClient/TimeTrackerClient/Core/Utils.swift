@@ -12,7 +12,7 @@ struct AddButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .frame(width: 200, height: 100, alignment: .center)
+            .frame(width: UIScreen.main.bounds.width - 55, height: 80, alignment: .center)
             .background(Color.cGreen)
             .foregroundColor(.white)
             .cornerRadius(5)
