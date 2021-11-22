@@ -37,9 +37,8 @@ class TimeslotsLoader {
 
 	func getTimeslots() {
 		store.getTimeslots { result in
-			if let timeslots = try? result.get() {
-				self.timeslots = timeslots
-			}
+			let timeslots = try? result.get()
+			self.timeslots = timeslots ?? []
 		}
 	}
 
@@ -63,7 +62,6 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 
 	func test_getTimeslots_deliversEmptyResultsOnError() {
 		let (store, sut) = makeSUT()
-		let anyError = NSError(domain: "any error", code: 0)
 
 		sut.getTimeslots()
 		store.completeGetTimeslots(with: anyError)
@@ -73,13 +71,23 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 
 	func test_getTimeslots_deliversResultsOnSuccess() {
 		let (store, sut) = makeSUT()
-		let details = TimeSlotDetails(start: "2021-11-22T09:48:51Z",  end: "2021-11-22T09:48:51Z", description: "")
-		let timeslots = [TimeSlot(id: "", userId: "", clientId: 1, projectId: 1, date: "2021-11-22T09:48:51Z", details: details, total: 1)]
+
+		let someTimeslots = uniqueTimeslots
 
 		sut.getTimeslots()
-		store.completeGetTimeslots(with: timeslots)
+		store.completeGetTimeslots(with: someTimeslots)
 
-		XCTAssertEqual(sut.timeslots, timeslots)
+		XCTAssertEqual(sut.timeslots, someTimeslots)
+	}
+
+	func test_timeslots_isEmptyOnErrorAfterSuccess() {
+		let (store, sut) = makeSUT()
+
+		sut.getTimeslots()
+		store.completeGetTimeslots(with: uniqueTimeslots)
+		store.completeGetTimeslots(with: anyError)
+
+		XCTAssertEqual(sut.timeslots, [])
 	}
 
 
@@ -90,6 +98,29 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 		let sut = TimeslotsLoader(store: store)
 
 		return (store, sut)
+	}
+
+	private let anyError = NSError(domain: "any error", code: 0)
+
+	private var uniqueTimeslots: [TimeSlot] {
+		[
+			uniqueTimeslot,
+			uniqueTimeslot,
+		]
+	}
+
+	private var uniqueTimeslot: TimeSlot {
+		TimeSlot(id: UUID().uuidString,
+				 userId: UUID().uuidString,
+				 clientId: Int.random(in: 0...100),
+				 projectId: Int.random(in: 0...100),
+				 date: "2021-11-22T09:48:51Z",
+				 details:
+					TimeSlotDetails(
+						start: "2021-11-22T09:48:51Z",
+						end: "2021-11-22T09:48:51Z",
+						description: "some description"),
+				 total: Int.random(in: 0...100))
 	}
 
 }

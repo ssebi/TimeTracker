@@ -16,7 +16,7 @@ public struct TimeSlot: Identifiable, Codable {
     var details: TimeSlotDetails
     var total: Int
 
-    init(id: String, userId: String, clientId: Int, projectId: Int, date: String, details: TimeSlotDetails, total: Int) {
+    public init(id: String, userId: String, clientId: Int, projectId: Int, date: String, details: TimeSlotDetails, total: Int) {
         self.id = id
         self.userId = userId
         self.clientId = clientId
@@ -44,7 +44,7 @@ public struct TimeSlotDetails: Codable {
     var end: String
     var description: String
 
-    init(start: String, end: String, description: String){
+    public init(start: String, end: String, description: String) {
         self.start = start
         self.end = end
         self.description = description
