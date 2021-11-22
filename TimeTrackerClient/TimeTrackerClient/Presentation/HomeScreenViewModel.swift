@@ -17,7 +17,10 @@ public class HomeScreenViewModel: ObservableObject {
 		guard let userID = userLoader.getUser().uid else {
 			return
 		}
-		timeslotsLoader.getTimeslots(userID: userID) { result in
+		timeslotsLoader.getTimeslots(userID: userID) { [weak self] result in
+			guard let self = self else {
+				return
+			}
 			self.timeslots = (try? result.get()) ?? []
 		}
 	}

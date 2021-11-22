@@ -57,6 +57,9 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 		let store = TimeslotsStoreSpy()
 		let sut = RemoteTimeslotsLoader(store: store)
 
+		trackForMemoryLeaks(store, file: file, line: line)
+		trackForMemoryLeaks(sut, file: file, line: line)
+
 		return (store, sut)
 	}
 

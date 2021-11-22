@@ -26,6 +26,10 @@ class HomePresentationTests: XCTestCase {
 		let loader = TimeslotsLoaderSpy(store: store)
 		let sut = HomeScreenViewModel(timeslotsLoader: loader, userLoader: UserLoaderMock())
 
+		trackForMemoryLeaks(store, file: file, line: line)
+		trackForMemoryLeaks(loader, file: file, line: line)
+		trackForMemoryLeaks(sut, file: file, line: line)
+
 		return (sut, loader)
 	}
 
