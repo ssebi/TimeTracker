@@ -30,13 +30,13 @@ private extension Sequence where Element == FirebaseTimeSlot {
 				clientId: firebaseTimeSlot.clientId,
 				projectId: firebaseTimeSlot.projectId,
 				date: firebaseTimeSlot.date,
-				details: firebaseTimeSlot.timeSlotDetail.toTimeSlotDetail(),
+				details: firebaseTimeSlot.details.toTimeSlotDetail(),
 				total: firebaseTimeSlot.total)
 		}
 	}
 }
 
-extension FirebaseTimeSlotDetail {
+extension FirebaseTimeSlotDetails {
 	func toTimeSlotDetail() -> TimeSlotDetails {
 		TimeSlotDetails(start: start, end: end, description: description)
 	}
@@ -48,11 +48,11 @@ fileprivate struct FirebaseTimeSlot: Codable {
 	var clientId: Int
 	var projectId: Int
 	var date: String
-	var timeSlotDetail: FirebaseTimeSlotDetail
+	var details: FirebaseTimeSlotDetails
 	var total: Int
 }
 
-fileprivate struct FirebaseTimeSlotDetail: Codable {
+private struct FirebaseTimeSlotDetails: Codable {
 	var start: String
 	var end: String
 	var description: String

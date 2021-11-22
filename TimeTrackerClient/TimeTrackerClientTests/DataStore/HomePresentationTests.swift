@@ -37,11 +37,11 @@ class HomePresentationTests: XCTestCase {
 				 userId: UUID().uuidString,
 				 clientId: Int.random(in: 0...100),
 				 projectId: Int.random(in: 0...100),
-				 date: Date(),
-				 timeSlotDetail:
-					TimeSlotDetail(
-						start: Date(),
-						end: Date() + 1000,
+				 date: "2021-11-22T09:48:51Z",
+				 details:
+					TimeSlotDetails(
+						start: "2021-11-22T09:48:51Z",
+						end: "2021-11-22T09:48:51Z",
 						description: "some description"),
 				 total: Int.random(in: 0...100))
 	}

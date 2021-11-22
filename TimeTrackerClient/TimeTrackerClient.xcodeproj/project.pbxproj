@@ -347,13 +347,13 @@
 		C64C4289271464B300CFBDEF /* TimeTrackerClient */ = {
 			isa = PBXGroup;
 			children = (
-				C61F54C9274810EC0083E1A4 /* Composers */,
-				C61F54C6274810760083E1A4 /* Presentation */,
-				54F983642746802A00577AD6 /* ViewModel */,
 				C6B6AFCE272A892C00B5CFBC /* Info.plist */,
 				C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */,
+				C61F54C9274810EC0083E1A4 /* Composers */,
+				54F983642746802A00577AD6 /* ViewModel */,
 				543DD550272AB3D700D426FC /* Views */,
 				54D8EEAF271887FA00D867F3 /* Models */,
+				C61F54C6274810760083E1A4 /* Presentation */,
 				54D8EEA527174EC900D867F3 /* Core */,
 				C64C428E271464B600CFBDEF /* Assets.xcassets */,
 				C64C4290271464B600CFBDEF /* Preview Content */,
