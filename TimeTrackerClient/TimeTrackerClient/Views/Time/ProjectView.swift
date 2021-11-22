@@ -8,32 +8,29 @@
 import SwiftUI
 
 struct ProjectView: View {
-	@EnvironmentObject var dataStore: DataStore
+	let timeslot: TimeSlot
 
 	var body: some View {
-		List(dataStore.userTimeslots) { timeSlot in
-			VStack(alignment: .leading, spacing: 2) {
-				Text("Project name: Project x")
-					Text("Date: \(timeSlot.details.start)")
-					Text("Start time: \(timeSlot.details.start)")
-					Text("End time: \(timeSlot.details.end)")
-
-				Text("Time period: \(timeSlot.total)")
-				Text("Task description: \(timeSlot.details.description)")
-			}.padding()
-		}
-		.listStyle(InsetListStyle())
-//		.onAppear(perform: getTimeslots)
+		VStack(alignment: .leading, spacing: 2) {
+			Text("Project name: Project x")
+			if #available(iOS 15.0, *) {
+				Text("Date: \(timeslot.date.formatted(date: .abbreviated, time: .omitted))")
+				Text("Start time: \(timeslot.details.start.formatted(date: .omitted, time: .standard))")
+				Text("End time: \(timeslot.details.end.formatted(date: .omitted, time: .standard))")
+			} else {
+				DateLabel(text: "Date:", date: timeslot.date, style: .date)
+				DateLabel(text: "Start time:", date: timeslot.details.start, style: .time)
+				DateLabel(text: "End time:", date: timeslot.details.end, style: .time)
+			}
+			Text("Time period: \(timeslot.total)")
+			Text("Task description: \(timeslot.details.description)")
+		}.padding()
 	}
-
-    func getTimeslots(){
-        dataStore.getTimeSlots(clientId: 1, projectId: 1)
-    }
 }
 
 struct Project_Previews: PreviewProvider {
 	static var previews: some View {
-		ProjectView()
+		ProjectView(timeslot: TimeSlot(id: "", userId: "", clientId: 1, projectId: 1, date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: ""), total: 1))
 			.environmentObject(DataStore())
 	}
 }

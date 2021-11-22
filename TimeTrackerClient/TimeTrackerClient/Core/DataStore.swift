@@ -47,33 +47,17 @@ class DataStore: ObservableObject {
     }
 
 	private let clientLoader: ClientsLoader
-	private let timeslotsLoader: TimeSlotsLoader
 	private let timeslotsPublisher: TimeSlotsPublisher
 	private let userLoader: UserLoader
 
 	init(
 		clientLoader: ClientsLoader = FirebaseClientsLoader(),
-		timeslotsLoader: TimeSlotsLoader = FirebaseTimeslotsLoader(),
 		timeslotsPublisher: TimeSlotsPublisher = FirebaseTimeslotsPublisher(),
 		userLoader: UserLoader = FirebaseUserLoader()
 	) {
 		self.clientLoader = clientLoader
-		self.timeslotsLoader = timeslotsLoader
 		self.timeslotsPublisher = timeslotsPublisher
 		self.userLoader = userLoader
-	}
-
-    func getTimeSlots(clientId: Int, projectId: Int) {
-		let user = userLoader.getUser()
-        getTimeSlots(for: user.uid!, with: clientId, and: projectId) { result in
-            if case let .success(timeSlots) = result {
-                return self.userTimeslots = timeSlots
-            }
-		}
-	}
-
-	func getTimeSlots(for userID: String, with client: Int, and project: Int,completion: @escaping TimeSlotsLoader.Result) {
-        timeslotsLoader.getTimeSlots(for: userID, with: client, and: project, completion: completion)
 	}
 
 	func getClients() {

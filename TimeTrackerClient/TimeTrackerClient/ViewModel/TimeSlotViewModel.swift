@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 class TimeSlotViewModel: ObservableObject {
-    @EnvironmentObject var session: SessionStore
     @Published var description = ""
     @Published var showMessage = ""
     @Published var timeInterval = DateComponents()
@@ -26,16 +25,7 @@ class TimeSlotViewModel: ObservableObject {
     private var path = "timeSlots"
     var dataStore = DataStore()
 
-    func formatDate(date: Date) -> String {
-		if #available(iOS 15.0, *) {
-			return date.formatted(.iso8601)
-		} else {
-			return ISO8601DateFormatter().string(from: date)
-		}
-    }
-
     func addTimeSlot(for userId: String, clientId: Int, projectId: Int) {
-
         if userId == "" {
             return showMessage = "The user is not logged"
         }
@@ -44,24 +34,18 @@ class TimeSlotViewModel: ObservableObject {
 
         let total = ((timeInterval.hour ?? 0)*60) + (timeInterval.minute ?? 0)
 
-        let date = formatDate(date: startEndDate.start)
-        let startDate = formatDate(date: startEndDate.start)
-        let endDate = formatDate(date: startEndDate.start)
-
         let timeSlotDetail = TimeSlotDetails(
-            start: startDate,
-            end: endDate,
+			start: startEndDate.start,
+			end: startEndDate.end,
             description: description
         )
-
-
 
         let timeSlot = TimeSlot(
             id: UUID().uuidString,
             userId: userId,
             clientId: clientId,
             projectId: projectId,
-            date: date,
+			date: startEndDate.start,
             details: timeSlotDetail,
             total: total)
 
@@ -80,6 +64,4 @@ class TimeSlotViewModel: ObservableObject {
             }
         }
     }
-
-    init() {}
 }

@@ -12,11 +12,11 @@ public struct TimeSlot: Identifiable, Codable {
     var userId: String
     var clientId: Int
     var projectId: Int
-    var date: String
+    var date: Date
     var details: TimeSlotDetails
     var total: Int
 
-    init(id: String, userId: String, clientId: Int, projectId: Int, date: String, details: TimeSlotDetails, total: Int) {
+    public init(id: String, userId: String, clientId: Int, projectId: Int, date: Date, details: TimeSlotDetails, total: Int) {
         self.id = id
         self.userId = userId
         self.clientId = clientId
@@ -40,11 +40,11 @@ extension TimeSlot: Equatable {
 }
 
 public struct TimeSlotDetails: Codable {
-    var start: String
-    var end: String
+    var start: Date
+    var end: Date
     var description: String
 
-    init(start: String, end: String, description: String){
+    public init(start: Date, end: Date, description: String) {
         self.start = start
         self.end = end
         self.description = description

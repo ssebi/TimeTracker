@@ -51,6 +51,9 @@
                <Test
                   Identifier = "FirebaseDataStoreIntegrationTests">
                </Test>
+               <Test
+                  Identifier = "FirebaseTimeslotsDataStoreEndToEndTests">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>

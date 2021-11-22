@@ -12,42 +12,45 @@ struct HomeView: View {
 	@EnvironmentObject var session: SessionStore
 	@EnvironmentObject var dataStore: DataStore
 
+	@ObservedObject private(set) var viewModel: HomeScreenViewModel
+
 	var body: some View {
 		NavigationView {
-			ProjectView()
-				.padding()
-				.navigationBarItems(
-					leading:
-						Button(
-							action: {
-								session.signOut()
-							},
-							label: {
-								Label("", systemImage: "power")
-									.foregroundColor(.red)
-									.font(.system(size: 20))
-							}),
-					trailing:
-						Button(
-							action: { },
-							label: {
-								NavigationLink(
-									destination:
-										AddView()
-								) {
-									Label("+", systemImage: "plus.rectangle.fill")
-										.foregroundColor(.cGreen)
-										.font(.system(size: 30))
-								}
-							})
-				)
-				.navigationTitle("Time Logged")
+			List(viewModel.timeslots) { timeslot in
+				ProjectView(timeslot: timeslot)
+			}
+			.listStyle(InsetListStyle())
+			.padding()
+			.navigationBarItems(
+				leading:
+					Button(
+						action: {
+							session.signOut()
+						},
+						label: {
+							Label("", systemImage: "power")
+								.foregroundColor(.red)
+								.font(.system(size: 20))
+						}),
+				trailing:
+					Button(
+						action: { },
+						label: {
+							NavigationLink(
+								destination:
+									AddView()
+							) {
+								Label("+", systemImage: "plus.rectangle.fill")
+									.foregroundColor(.cGreen)
+									.font(.system(size: 30))
+							}
+						})
+			)
+			.navigationTitle("Time Logged")
+			.onAppear {
+				dataStore.getClients()
+			}
 		}
-		.onAppear(perform: getPickerData)
-	}
-
-	func getPickerData() {
-		dataStore.getClients()
 	}
 }
 
@@ -59,8 +62,7 @@ struct HomeView_Previews: PreviewProvider {
 	}
 	
 	static var previews: some View {
-		HomeView()
-			.environmentObject(DataStore())
+		HomeView(viewModel: HomeScreenViewModel(timeslotsLoader: RemoteTimeslotsLoader(store: FirebaseTimeslotsStore()), userLoader: FirebaseUserLoader()))
 			.environmentObject(SessionStore(authProvider: FakeAuthProvider()))
 	}
 }
