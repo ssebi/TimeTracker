@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Project: Codable {
+public struct Project: Codable, Hashable {
     var name: String
 }

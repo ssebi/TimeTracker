@@ -12,7 +12,7 @@ struct AddButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .frame(width: 200, height: 100, alignment: .center)
+            .frame(width: UIScreen.main.bounds.width - 55, height: 80, alignment: .center)
             .background(Color.cGreen)
             .foregroundColor(.white)
             .cornerRadius(5)
@@ -24,4 +24,9 @@ extension UIScreen{
    static let width = UIScreen.main.bounds.size.width
    static let height = UIScreen.main.bounds.size.height
    static let size = UIScreen.main.bounds.size
+}
+
+struct Path {
+    static let clients = "Clients"
+    static let timeSlot = "timeSlots"
 }

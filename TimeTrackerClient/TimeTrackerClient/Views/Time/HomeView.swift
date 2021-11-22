@@ -10,51 +10,55 @@ import FirebaseFirestore
 
 struct HomeView: View {
 	@EnvironmentObject var session: SessionStore
-	@EnvironmentObject var dataStore: DataStore
+
+	@ObservedObject private(set) var viewModel: HomeScreenViewModel
 
 	var body: some View {
 		NavigationView {
-			ProjectView()
-				.padding()
-				.navigationBarItems(
-					leading:
-						Button(
-							action: {
-								session.singOut()
-							},
-							label: {
-								Label("", systemImage: "power")
-									.foregroundColor(.red)
-									.font(.system(size: 20))
-							}),
-					trailing:
-						Button(
-							action: { },
-							label: {
-								NavigationLink(
-									destination:
-										AddView()
-								) {
-									Label("+", systemImage: "plus.rectangle.fill")
-										.foregroundColor(.cGreen)
-										.font(.system(size: 30))
-								}
-							})
-				)
-				.navigationTitle("Time Logged")
+			List(viewModel.timeslots) { timeslot in
+				ProjectView(timeslot: timeslot)
+			}
+			.listStyle(InsetListStyle())
+			.padding()
+			.navigationBarItems(
+				leading:
+					Button(
+						action: {
+							session.signOut()
+						},
+						label: {
+							Image(systemName: "power")
+								.foregroundColor(.red)
+								.font(.system(size: 20))
+						}),
+				trailing:
+					Button(
+						action: { },
+						label: {
+							NavigationLink(
+								destination:
+									AddView()
+							) {
+								Image(systemName: "plus.rectangle.fill")
+									.foregroundColor(.cGreen)
+									.font(.system(size: 30))
+							}
+						})
+			)
+			.navigationTitle("Time Logged")
 		}
-		.onAppear(perform: getPickerData)
-	}
-
-	func getPickerData() {
-		dataStore.fetchUsersClients()
 	}
 }
 
 struct HomeView_Previews: PreviewProvider {
+	class FakeAuthProvider: AuthProvider {
+		func checkAuthState() -> User? { nil }
+		func signIn(email: String, password: String, completion: @escaping SesionStoreResult) { }
+		func signOut() throws { }
+	}
+	
 	static var previews: some View {
-		HomeView()
-			.environmentObject(DataStore())
-			.environmentObject(SessionStore())
+		HomeView(viewModel: HomeScreenViewModel(timeslotsLoader: RemoteTimeslotsLoader(store: FirebaseTimeslotsStore()), userLoader: FirebaseUserLoader()))
+			.environmentObject(SessionStore(authProvider: FakeAuthProvider()))
 	}
 }

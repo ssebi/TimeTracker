@@ -10,105 +10,78 @@ import SwiftUI
 struct AddView: View {
 	@EnvironmentObject var session: SessionStore
 	@EnvironmentObject var dataStore: DataStore
-	@State private var description = ""
-	@State private var showMessage = ""
-	@State private var startEndDate = StartEndDate(start: Date(), end: Date())
+	@ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: FirebaseClientsLoader())
 
 	var body: some View {
-		VStack {
-			Text(Date(), style: .date)
-				.padding()
-				.font(.subheadline)
-
-			Picker(selection: $dataStore.selectedClient, label: Text("")){
-				ForEach(0 ..< dataStore.clientsNames.count){ index in
-					Text(self.dataStore.clientsNames[index])
-				}
-			}
-			.labelsHidden()
-			.frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
-			.background(Color.cGray)
-			.foregroundColor(.white)
-
-			Picker(selection: $dataStore.selectedProject, label: Text("")){
-				ForEach(0 ..< dataStore.projectNames.count){ index in
-					Text(self.dataStore.projectNames[index])
-				}
-			}
-			.id(dataStore.id)
-			.labelsHidden()
-			.frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
-			.background(Color.cGray)
-			.foregroundColor(.white)
-
-			Spacer()
-
-			DatePickerView(startEndDate: $startEndDate)
-				.padding()
-
-			HStack {
-				Text("Task description")
+		ScrollView {
+			VStack {
+				Text(Date(), style: .date)
 					.padding()
-				Spacer()
-			}
-			TextEditor(text: $description)
-				.border(.gray)
-				.frame(width: UIScreen.width - 55, height: 130, alignment: .center)
+					.font(.subheadline)
 
-			Spacer()
-			HStack {
-				Text("\(showMessage)")
-				Spacer()
-			}
+				if !timeSlotVM.isLoading {
+					VStack {
+						Picker(selection: $timeSlotVM.selectedClient, label: Text("")) {
+							ForEach(0 ..< timeSlotVM.clientsNames.count) { index in
+								Text(timeSlotVM.clientsNames[index])
+							}
+						}
+						.pickerStyle(SegmentedPickerStyle())
 
-			Button("SUBMIT") {
-				addTime()
+						Picker(selection: $timeSlotVM.selectedProject, label: Text("")){
+							ForEach(0 ..< timeSlotVM.projectNames.count) { index in
+								Text(timeSlotVM.projectNames[index])
+							}
+						}
+						.id(timeSlotVM.id)
+						.pickerStyle(SegmentedPickerStyle())
+					}
+					.labelsHidden()
+				}
+
+				Spacer()
+
+				DatePickerView(
+					startEndDate: $timeSlotVM.startEndDate,
+					timeInterval: $timeSlotVM.timeInterval,
+					timeSlotVM: timeSlotVM
+				)
+					.padding()
+
+				HStack {
+					Text("Task description")
+						.padding()
+					Spacer()
+				}
+				TextEditor(text: $timeSlotVM.description)
+					.border(.gray)
+					.frame(width: UIScreen.width - 55, height: 80, alignment: .center)
+
+				Spacer()
+				HStack {
+					Text("\(timeSlotVM.showMessage)")
+					Spacer()
+				}
+
+				Button("SUBMIT") {
+					addTimeSlot()
+				}
+				.buttonStyle(AddButton())
 			}
-			.buttonStyle(AddButton())
-			.frame(width: UIScreen.main.bounds.width - 50, height: 100, alignment: .center)
 		}
+		.padding()
 	}
 
-	func addTime() {
-		let user = session.session
-		let userId = user?.uid ?? ""
-		var path = ""
-		let dateFormater = DateFormatter()
-		dateFormater.dateFormat = "dd-MM-yyyy"
-		let date = dateFormater.string(from: startEndDate.start)
-
-		if user != nil {
-			path = "userId/\(userId)/clients/\(dataStore.clientsNames[dataStore.selectedClient])/projects/\(dataStore.projectNames[dataStore.selectedProject])/timeLogged/\(date)/timeslots"
-
-		}
-
-		let timeslot: [String: Any] = [
-			"timeSlots": [
-				"start": startEndDate.start,
-				"end": startEndDate.end,
-				"description": description ],
-			"total": 5
-		]
-
-		dataStore.addTimeSlot(with: timeslot, to: path) { error in
-			if error != nil {
-				showMessage = "Failed to save"
-				DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-					showMessage = ""
-				}
-			} else {
-				showMessage = "Time logged saved"
-				description = ""
-				DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-					showMessage = ""
-				}
-			}
-		}
+	func addTimeSlot() {
+		let userId = session.user?.uid ?? ""
+		let clientId = timeSlotVM.selectedClient
+		let projectId = timeSlotVM.selectedProject
+		timeSlotVM.addTimeSlot(for: userId, clientId: clientId, projectId: projectId )
 	}
 }
 
 struct AddView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddView()
-    }
+	static var previews: some View {
+		AddView()
+	}
 }
