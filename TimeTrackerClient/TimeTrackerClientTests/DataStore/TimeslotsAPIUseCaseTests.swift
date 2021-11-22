@@ -116,11 +116,11 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 				 userId: UUID().uuidString,
 				 clientId: Int.random(in: 0...100),
 				 projectId: Int.random(in: 0...100),
-				 date: "2021-11-22T09:48:51Z",
+				 date: Date(),
 				 details:
 					TimeSlotDetails(
-						start: "2021-11-22T09:48:51Z",
-						end: "2021-11-22T09:48:51Z",
+						start: Date(),
+						end: Date(),
 						description: "some description"),
 				 total: Int.random(in: 0...100))
 	}

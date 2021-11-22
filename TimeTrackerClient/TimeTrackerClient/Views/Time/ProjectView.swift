@@ -14,13 +14,13 @@ struct ProjectView: View {
 		VStack(alignment: .leading, spacing: 2) {
 			Text("Project name: Project x")
 			if #available(iOS 15.0, *) {
-				Text("Date: \(Date().formatted(date: .abbreviated, time: .omitted))")
-				Text("Start time: \(Date().formatted(date: .omitted, time: .standard))")
-				Text("End time: \(Date().formatted(date: .omitted, time: .standard))")
+				Text("Date: \(timeslot.date.formatted(date: .abbreviated, time: .omitted))")
+				Text("Start time: \(timeslot.details.start.formatted(date: .omitted, time: .standard))")
+				Text("End time: \(timeslot.details.end.formatted(date: .omitted, time: .standard))")
 			} else {
-				DateLabel(text: "Date:", date: Date(), style: .date)
-				DateLabel(text: "Start time:", date: Date(), style: .time)
-				DateLabel(text: "End time:", date: Date(), style: .time)
+				DateLabel(text: "Date:", date: timeslot.date, style: .date)
+				DateLabel(text: "Start time:", date: timeslot.details.start, style: .time)
+				DateLabel(text: "End time:", date: timeslot.details.end, style: .time)
 			}
 			Text("Time period: \(timeslot.total)")
 			Text("Task description: \(timeslot.details.description)")
@@ -30,7 +30,7 @@ struct ProjectView: View {
 
 struct Project_Previews: PreviewProvider {
 	static var previews: some View {
-		ProjectView(timeslot: TimeSlot(id: "", userId: "", clientId: 1, projectId: 1, date: "2021-11-22T09:48:51Z", details: TimeSlotDetails(start: "2021-11-22T09:48:51Z", end: "2021-11-22T09:48:51Z", description: ""), total: 1))
+		ProjectView(timeslot: TimeSlot(id: "", userId: "", clientId: 1, projectId: 1, date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: ""), total: 1))
 			.environmentObject(DataStore())
 	}
 }

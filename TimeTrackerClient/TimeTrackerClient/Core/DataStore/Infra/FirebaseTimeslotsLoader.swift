@@ -9,8 +9,14 @@ class FirebaseTimeslotsStore: TimeslotsStore {
 			.whereField("userId", isEqualTo: userID)
 			.addSnapshotListener { (querySnapshot, error) in
 				if let querySnapshot = querySnapshot {
-					let timeslots = querySnapshot.documents.compactMap { document in
-						try? document.data(as: FirebaseTimeSlot.self)
+					let timeslots = querySnapshot.documents.compactMap { document -> FirebaseTimeSlot? in
+						let decoder = JSONDecoder()
+						decoder.dateDecodingStrategy = .iso8601
+						if let data = try? JSONSerialization.data(withJSONObject: document.data()) {
+							return try? decoder.decode(FirebaseTimeSlot.self, from: data)
+						} else {
+							return nil
+						}
 					}
 					completion(.success(timeslots.toTimeSlot()))
 				} else {
@@ -47,13 +53,13 @@ fileprivate struct FirebaseTimeSlot: Codable {
 	var userId: String
 	var clientId: Int
 	var projectId: Int
-	var date: String
+	var date: Date
 	var details: FirebaseTimeSlotDetails
 	var total: Int
 }
 
 private struct FirebaseTimeSlotDetails: Codable {
-	var start: String
-	var end: String
+	var start: Date
+	var end: Date
 	var description: String
 }

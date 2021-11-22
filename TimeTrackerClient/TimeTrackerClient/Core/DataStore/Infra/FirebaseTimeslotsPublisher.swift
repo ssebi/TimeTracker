@@ -8,6 +8,7 @@ class FirebaseTimeslotsPublisher: TimeSlotsPublisher {
         var data: [String: Any] = [:]
         do{
             let jsonEncoder = JSONEncoder()
+			jsonEncoder.dateEncodingStrategy = .iso8601
             let encodedJson = try jsonEncoder.encode(timeSlot)
             data = try JSONSerialization.jsonObject(with: encodedJson) as! [String : Any]
         } catch {
