@@ -6,42 +6,53 @@
 //
 
 import Foundation
-import FirebaseFirestoreSwift
 
-struct TimeSlot: Identifiable, Decodable {
-    @DocumentID var id: String?
-    var timeSlots: TimeSlotDetail
+public struct TimeSlot: Identifiable, Codable {
+    public var id: String?
+    var userId: String
+    var clientId: Int
+    var projectId: Int
+    var date: Date
+    var details: TimeSlotDetails
     var total: Int
 
-    init(id: String, timeSlots: TimeSlotDetail, total: Int){
+    public init(id: String, userId: String, clientId: Int, projectId: Int, date: Date, details: TimeSlotDetails, total: Int) {
         self.id = id
-        self.timeSlots = timeSlots
+        self.userId = userId
+        self.clientId = clientId
+        self.projectId = projectId
+        self.date = date
+        self.details = details
         self.total = total
     }
 }
 
 extension TimeSlot: Equatable {
-    static func == (lhs: TimeSlot, rhs: TimeSlot) -> Bool {
+    public static func == (lhs: TimeSlot, rhs: TimeSlot) -> Bool {
         lhs.id == rhs.id &&
-        lhs.timeSlots == rhs.timeSlots &&
+        lhs.userId == rhs.userId &&
+        lhs.clientId == rhs.clientId &&
+        lhs.projectId == rhs.projectId &&
+        lhs.date == rhs.date &&
+        lhs.details == rhs.details &&
         lhs.total == rhs.total 
     }
 }
 
-struct TimeSlotDetail: Codable {
+public struct TimeSlotDetails: Codable {
     var start: Date
     var end: Date
     var description: String
 
-    init(start: Date, end: Date, description: String){
+    public init(start: Date, end: Date, description: String) {
         self.start = start
         self.end = end
         self.description = description
     }
 }
 
-extension TimeSlotDetail: Equatable {
-    static func == (lhs: TimeSlotDetail, rhs: TimeSlotDetail) -> Bool {
+extension TimeSlotDetails: Equatable {
+    public static func == (lhs: TimeSlotDetails, rhs: TimeSlotDetails) -> Bool {
         lhs.start == rhs.start &&
         lhs.end == rhs.end &&
         lhs.description == rhs.description

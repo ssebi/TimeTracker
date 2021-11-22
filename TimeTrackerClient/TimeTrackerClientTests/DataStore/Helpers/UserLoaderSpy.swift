@@ -6,11 +6,7 @@
 //
 
 import Foundation
-@testable import TimeTrackerClient
-
-protocol UserLoader {
-    func getUser() -> User
-}
+import TimeTrackerClient
 
 class UserLoaderSpy: UserLoader {
     private var user: User = User(uid: "xxx", email: "test@test.com", username: "Test", client: "Client 2")

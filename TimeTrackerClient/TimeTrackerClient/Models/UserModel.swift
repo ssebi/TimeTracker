@@ -7,13 +7,13 @@
 
 import Combine
 
-class User: ObservableObject {
+public class User: ObservableObject {
     @Published var uid: String?
     @Published var email: String?
     @Published var username: String?
     @Published var client: String?
     
-    init(uid: String?, email: String?, username: String?, client: String?) {
+    public init(uid: String?, email: String?, username: String?, client: String?) {
         self.uid = uid
         self.email = email
         self.username = username
@@ -22,7 +22,7 @@ class User: ObservableObject {
 }
 
 extension User: Equatable {
-	static func == (lhs: User, rhs: User) -> Bool {
+	public static func == (lhs: User, rhs: User) -> Bool {
 		lhs.uid == rhs.uid &&
 		lhs.email == rhs.email &&
 		lhs.username == rhs.username &&
