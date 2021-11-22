@@ -9,16 +9,19 @@ class FirebaseTimeslotsDataStoreEndToEndTests: XCTestCase {
 		let validUserID = "YErySzP9KBgMsFw64rHrimFAUBZ2"
 
 		let exp = expectation(description: "Wait for completion")
-		var receivedTimeslots: [TimeSlot] = []
+		var receivedError: Error? = nil
 		sut.getTimeslots(userID: validUserID) { result in
-			if let timeslots = try? result.get() {
-				receivedTimeslots = timeslots
+			switch result {
+				case let .failure(error):
+					receivedError = error
+				case .success:
+					receivedError = nil
 			}
 			exp.fulfill()
 		}
 		wait(for: [exp], timeout: 5.0)
 
-		XCTAssertEqual(receivedTimeslots.isEmpty, false)
+		XCTAssertNil(receivedError)
 	}
 
 }
