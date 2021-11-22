@@ -26,19 +26,12 @@ class TimeSlotViewModel: ObservableObject {
     private var path = "timeSlots"
     var dataStore = DataStore()
 
-    func formatDate(date: Date, time: Bool) -> String {
-        let dateFormatter = DateFormatter()
-
-        if !time {
-            dateFormatter.timeStyle = DateFormatter.Style.none
-            dateFormatter.dateStyle = DateFormatter.Style.short
-            dateFormatter.dateFormat = "dd-MM-yyyy"
-
-        } else {
-            dateFormatter.timeStyle = DateFormatter.Style.short
-            dateFormatter.dateStyle = DateFormatter.Style.none
-        }
-        return dateFormatter.string(from: date)
+    func formatDate(date: Date) -> String {
+		if #available(iOS 15.0, *) {
+			return date.formatted(.iso8601)
+		} else {
+			return ISO8601DateFormatter().string(from: date)
+		}
     }
 
     func addTimeSlot(for userId: String, clientId: Int, projectId: Int) {
@@ -51,9 +44,9 @@ class TimeSlotViewModel: ObservableObject {
 
         let total = ((timeInterval.hour ?? 0)*60) + (timeInterval.minute ?? 0)
 
-        let date = formatDate(date: startEndDate.start, time: false)
-        let startDate = formatDate(date: startEndDate.start, time: true)
-        let endDate = formatDate(date: startEndDate.start, time: true)
+        let date = formatDate(date: startEndDate.start)
+        let startDate = formatDate(date: startEndDate.start)
+        let endDate = formatDate(date: startEndDate.start)
 
         let timeSlotDetail = TimeSlotDetail(
             start: startDate,
