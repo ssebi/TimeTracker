@@ -33,15 +33,15 @@ private extension Sequence where Element == FirebaseTimeSlot {
                 clientId: firebaseTimeSlot.clientId,
                 projectId: firebaseTimeSlot.projectId,
                 date: firebaseTimeSlot.date,
-                timeSlotDetail: firebaseTimeSlot.timeSlotDetail.toTimeSlotDetail(),
+                details: firebaseTimeSlot.timeSlotDetail.toTimeSlotDetail(),
                 total: firebaseTimeSlot.total)
         }
     }
 }
 
 extension FirebaseTimeSlotDetail {
-    func toTimeSlotDetail() -> TimeSlotDetail {
-        TimeSlotDetail(start: start, end: end, description: description)
+    func toTimeSlotDetail() -> TimeSlotDetails {
+        TimeSlotDetails(start: start, end: end, description: description)
     }
 }
 

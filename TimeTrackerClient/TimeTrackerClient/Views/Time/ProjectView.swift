@@ -14,16 +14,16 @@ struct ProjectView: View {
 		List(dataStore.userTimeslots) { timeSlot in
 			VStack(alignment: .leading, spacing: 2) {
 				Text("Project name: Project x")
-					Text("Date: \(timeSlot.timeSlotDetail.start)")
-					Text("Start time: \(timeSlot.timeSlotDetail.start)")
-					Text("End time: \(timeSlot.timeSlotDetail.end)")
+					Text("Date: \(timeSlot.details.start)")
+					Text("Start time: \(timeSlot.details.start)")
+					Text("End time: \(timeSlot.details.end)")
 
 				Text("Time period: \(timeSlot.total)")
-				Text("Task description: \(timeSlot.timeSlotDetail.description)")
+				Text("Task description: \(timeSlot.details.description)")
 			}.padding()
 		}
 		.listStyle(InsetListStyle())
-		.onAppear(perform: getTimeslots)
+//		.onAppear(perform: getTimeslots)
 	}
 
     func getTimeslots(){

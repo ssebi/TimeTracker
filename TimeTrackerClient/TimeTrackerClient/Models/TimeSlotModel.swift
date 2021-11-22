@@ -7,22 +7,22 @@
 
 import Foundation
 
-public struct TimeSlot: Identifiable, Decodable, Encodable {
+public struct TimeSlot: Identifiable, Codable {
     public var id: String?
     var userId: String
     var clientId: Int
     var projectId: Int
     var date: String
-    var timeSlotDetail: TimeSlotDetail
+    var details: TimeSlotDetails
     var total: Int
 
-    init(id: String, userId: String, clientId: Int, projectId: Int, date: String, timeSlotDetail: TimeSlotDetail, total: Int){
+    init(id: String, userId: String, clientId: Int, projectId: Int, date: String, details: TimeSlotDetails, total: Int) {
         self.id = id
         self.userId = userId
         self.clientId = clientId
         self.projectId = projectId
         self.date = date
-        self.timeSlotDetail = timeSlotDetail
+        self.details = details
         self.total = total
     }
 }
@@ -34,12 +34,12 @@ extension TimeSlot: Equatable {
         lhs.clientId == rhs.clientId &&
         lhs.projectId == rhs.projectId &&
         lhs.date == rhs.date &&
-        lhs.timeSlotDetail == rhs.timeSlotDetail &&
+        lhs.details == rhs.details &&
         lhs.total == rhs.total 
     }
 }
 
-public struct TimeSlotDetail: Codable {
+public struct TimeSlotDetails: Codable {
     var start: String
     var end: String
     var description: String
@@ -51,8 +51,8 @@ public struct TimeSlotDetail: Codable {
     }
 }
 
-extension TimeSlotDetail: Equatable {
-    public static func == (lhs: TimeSlotDetail, rhs: TimeSlotDetail) -> Bool {
+extension TimeSlotDetails: Equatable {
+    public static func == (lhs: TimeSlotDetails, rhs: TimeSlotDetails) -> Bool {
         lhs.start == rhs.start &&
         lhs.end == rhs.end &&
         lhs.description == rhs.description

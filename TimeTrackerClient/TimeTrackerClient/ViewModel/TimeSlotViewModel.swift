@@ -48,7 +48,7 @@ class TimeSlotViewModel: ObservableObject {
         let startDate = formatDate(date: startEndDate.start)
         let endDate = formatDate(date: startEndDate.start)
 
-        let timeSlotDetail = TimeSlotDetail(
+        let timeSlotDetail = TimeSlotDetails(
             start: startDate,
             end: endDate,
             description: description
@@ -62,7 +62,7 @@ class TimeSlotViewModel: ObservableObject {
             clientId: clientId,
             projectId: projectId,
             date: date,
-            timeSlotDetail: timeSlotDetail,
+            details: timeSlotDetail,
             total: total)
 
         dataStore.addTimeSlot(timeSlot: timeSlot, to: path) { result in

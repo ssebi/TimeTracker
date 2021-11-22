@@ -145,7 +145,7 @@ class DataStoreTests: XCTestCase {
     }
 
 	private lazy var someError = NSError(domain: "Test", code: 0)
-    private lazy var someTimeSlot = TimeSlot(id: "1234", userId: "xxx", clientId: 1, projectId: 1, date: Date(), timeSlotDetail: TimeSlotDetail(start: Date(), end: Date(), description: "Description t1"), total: 10)
+	private lazy var someTimeSlot = TimeSlot(id: "1234", userId: "xxx", clientId: 1, projectId: 1, date: "2021-11-22T09:48:51Z", details: TimeSlotDetails(start: "2021-11-22T09:48:51Z", end: "2021-11-22T09:48:51Z", description: "description"), total: 1)
 
 	private func resultFor(sut: DataStore, when action: () -> Void) -> Result<[Client], Error> {
 		let exp = expectation(description: "Wait for completion")

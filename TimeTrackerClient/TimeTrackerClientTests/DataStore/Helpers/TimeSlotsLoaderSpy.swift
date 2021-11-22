@@ -14,7 +14,7 @@ class TimeSlotsLoaderSpy: TimeSlotsLoader {
 
 	private var getTimeSlotsResult: TimeSlotsLoader.Result?
 
-	func getTimeSlots(for user: String, completion: @escaping TimeSlotsLoader.Result) {
+	func getTimeSlots(for user: String, with client: Int, and project: Int, completion: @escaping TimeSlotsLoader.Result) {
 		getTimeSlotsCalls += 1
 		userId = user
 		getTimeSlotsResult = completion
