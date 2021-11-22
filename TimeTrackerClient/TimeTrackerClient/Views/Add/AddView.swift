@@ -57,7 +57,7 @@ struct AddView: View {
             }
             TextEditor(text: $timeSlotVM.description)
                 .border(.gray)
-                .frame(width: UIScreen.width - 55, height: 130, alignment: .center)
+                .frame(width: UIScreen.width - 55, height: 120, alignment: .center)
 
             Spacer()
             HStack {
@@ -71,6 +71,7 @@ struct AddView: View {
             .buttonStyle(AddButton())
             .frame(width: UIScreen.main.bounds.width - 50, height: 100, alignment: .center)
         }
+        .padding()
     }
 
     func addTimeSlot() {
