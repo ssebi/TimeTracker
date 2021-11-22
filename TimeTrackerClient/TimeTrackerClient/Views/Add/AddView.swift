@@ -22,7 +22,7 @@ struct AddView: View {
 				if !timeSlotVM.isLoading {
 					VStack {
 						Picker(selection: $timeSlotVM.selectedClient, label: Text("")) {
-							ForEach(0 ..< timeSlotVM.clientsNames.count){ index in
+							ForEach(0 ..< timeSlotVM.clientsNames.count) { index in
 								Text(timeSlotVM.clientsNames[index])
 							}
 						}
