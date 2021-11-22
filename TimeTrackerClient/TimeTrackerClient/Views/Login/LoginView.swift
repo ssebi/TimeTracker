@@ -13,7 +13,8 @@ struct LoginView: View {
 	@State var password: String = ""
 
 	var body: some View {
-		VStack {
+        ScrollView{
+            VStack {
 			Image("timeTrackerIcon")
 				.resizable()
 				.frame(width: 200, height: 230, alignment: .center)
@@ -54,6 +55,7 @@ struct LoginView: View {
 					.padding(.bottom, 50)
 			}
 		}
+        }
 	}
 
 	func signIn() {
