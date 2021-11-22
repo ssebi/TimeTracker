@@ -25,10 +25,6 @@ struct ProjectView: View {
 		.listStyle(InsetListStyle())
 //		.onAppear(perform: dataStore.getTimeSlots)
 	}
-
-    func getTimeslots(){
-        dataStore.getTimeSlots(clientId: 1, projectId: 1)
-    }
 }
 
 struct Project_Previews: PreviewProvider {
