@@ -2,28 +2,28 @@
 import Firebase
 
 class FirebaseClientsLoader: ClientsLoader {
-    let db = Firestore.firestore()
-    var clients = [Client]()
-
+	struct UndefinedError: Error { }
 	func getClients(completion: @escaping ClientsLoader.Result) {
-        db.collection(Path.clients).addSnapshotListener { [weak self] (querySnapshot, error) in
-            if let querySnapshot = querySnapshot {
-            self?.clients = querySnapshot.documents.compactMap{ document in
-                    let data = document.data()
-                    let name = data["name"]
-                    var project = [Project]()
-                    guard let projects = data["projects"] as? [String] else {
-                        return nil
-                    }
-                    projects.forEach{ projectName in
-                        project.append(Project(name: "\(projectName)"))
-                    }
-                return Client(id: document.documentID, name: name as! String, projects: project)
-                }
-                completion(.success(self!.clients))
-            } else {
-                completion(.failure(error!))
-            }
-        }
+		Firestore.firestore().collection(Path.clients).addSnapshotListener { snapshot, error in
+			if let snapshot = snapshot {
+				let clients = snapshot.documents.compactMap { document -> Client? in
+					let data = document.data()
+					var project = [Project]()
+					guard let name = data["name"] as? String,
+						  let projects = data["projects"] as? [String] else {
+						return nil
+					}
+					projects.forEach { name in
+						project.append(Project(name: name))
+					}
+					return Client(id: document.documentID, name: name, projects: project)
+				}
+				completion(.success(clients))
+			} else if let error = error {
+				completion(.failure(error))
+			} else {
+				completion(.failure(UndefinedError()))
+			}
+		}
 	}
 }

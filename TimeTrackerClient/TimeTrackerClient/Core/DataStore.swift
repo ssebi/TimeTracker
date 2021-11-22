@@ -9,42 +9,10 @@ import Foundation
 import Firebase
 
 class DataStore: ObservableObject {
-	@Published var clients = [Client]()
 	@Published var userTimeslots = [TimeSlot]()
-    @Published var id: UUID = UUID()
-    @Published var selectedClient: Int = 0 {
-        didSet {
-            selectedProject = projectSelections[selectedClient] ?? 0
-            id = UUID()
-        }
-    }
-
-    @Published var selectedProject: Int = 0 {
-        didSet {
-            DispatchQueue.main.async { [selectedProject] in
-                self.projectSelections[self.selectedClient] = selectedProject
-            }
-        }
-    }
 
     let db = Firestore.firestore()
-    private var projectSelections: [Int: Int] = [:]
-    var clientsNames: [String] {
-        clients.map { (project) in
-            project.name
-        }
-    }
-    var projectNamesCount: Int {
-        projectNames.count
-    }
-    var projectNames: [String] {
-        guard !clients.isEmpty else {
-            return [String]()
-        }
-        return clients[selectedClient].projects.map { (project) in
-            return project.name
-        }
-    }
+
 
 	private let clientLoader: ClientsLoader
 	private let timeslotsPublisher: TimeSlotsPublisher
@@ -58,18 +26,6 @@ class DataStore: ObservableObject {
 		self.clientLoader = clientLoader
 		self.timeslotsPublisher = timeslotsPublisher
 		self.userLoader = userLoader
-	}
-
-	func getClients() {
-		getClients { result in
-            if case let .success(clients) = result {
-               return self.clients = clients
-            }
-		}
-	}
-
-	func getClients(completion: @escaping ClientsLoader.Result) {
-		clientLoader.getClients(completion: completion)
 	}
 
     func addTimeSlot(timeSlot: TimeSlot, to path: String, completion: @escaping TimeSlotsPublisher.Result) {

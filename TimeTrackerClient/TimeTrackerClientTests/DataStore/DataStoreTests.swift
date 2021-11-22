@@ -10,43 +10,43 @@ import XCTest
 
 class DataStoreTests: XCTestCase {
 
-    func test_getClients_callsGetClientsFromClientsLoader() {
-        let (clientSpy, _, _, sut) = makeSut()
+//    func test_getClients_callsGetClientsFromClientsLoader() {
+//        let (clientSpy, _, _, sut) = makeSut()
+//
+//		sut.getClients() { _ in }
+//
+//        XCTAssertEqual(clientSpy.getClientsCalls, 1)
+//    }
 
-		sut.getClients() { _ in }
+//	func test_getClients_returnsFailureOnLoaderError() {
+//		let (clientSpy, _, _, sut) = makeSut()
+//
+//		let result = resultFor(sut: sut, when: {
+//			clientSpy.completeGetClients(with: someError)
+//		})
+//
+//		switch result {
+//			case .success:
+//				XCTFail()
+//			case .failure(let error):
+//				XCTAssertEqual(someError.domain, (error as NSError).domain)
+//				XCTAssertEqual(someError.code, (error as NSError).code)
+//		}
+//	}
 
-        XCTAssertEqual(clientSpy.getClientsCalls, 1)
-    }
-
-	func test_getClients_returnsFailureOnLoaderError() {
-		let (clientSpy, _, _, sut) = makeSut()
-
-		let result = resultFor(sut: sut, when: {
-			clientSpy.completeGetClients(with: someError)
-		})
-
-		switch result {
-			case .success:
-				XCTFail()
-			case .failure(let error):
-				XCTAssertEqual(someError.domain, (error as NSError).domain)
-				XCTAssertEqual(someError.code, (error as NSError).code)
-		}
-	}
-
-	func test_getClients_returnsClientsLoaderOnSuccess() throws {
-		let (clientSpy, _, _, sut) = makeSut()
-        let someClients = [Client(id: UUID().uuidString, name: "Client1", projects: []),
-						   Client(id: UUID().uuidString, name: "Client2", projects: [])]
-		var receivedClients: [Client]? = nil
-
-		let result = resultFor(sut: sut, when: {
-			clientSpy.completeGetClients(with: someClients)
-		})
-
-		receivedClients = try result.get()
-		XCTAssertEqual(receivedClients, someClients)
-	}
+//	func test_getClients_returnsClientsLoaderOnSuccess() throws {
+//		let (clientSpy, _, _, sut) = makeSut()
+//        let someClients = [Client(id: UUID().uuidString, name: "Client1", projects: []),
+//						   Client(id: UUID().uuidString, name: "Client2", projects: [])]
+//		var receivedClients: [Client]? = nil
+//
+//		let result = resultFor(sut: sut, when: {
+//			clientSpy.completeGetClients(with: someClients)
+//		})
+//
+//		receivedClients = try result.get()
+//		XCTAssertEqual(receivedClients, someClients)
+//	}
 
 	func test_addTimeSlot_callsPublisher() {
 		let (_, timeslotsSpy, _, sut) = makeSut()
@@ -102,17 +102,17 @@ class DataStoreTests: XCTestCase {
 	private lazy var someError = NSError(domain: "Test", code: 0)
 	private lazy var someTimeSlot = TimeSlot(id: "1234", userId: "xxx", clientId: 1, projectId: 1, date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: "description"), total: 1)
 
-	private func resultFor(sut: DataStore, when action: () -> Void) -> Result<[Client], Error> {
-		let exp = expectation(description: "Wait for completion")
-		var receivedResult: Result<[Client], Error>?
-		sut.getClients() { result in
-			receivedResult = result
-			exp.fulfill()
-		}
-		action()
-		wait(for: [exp], timeout: 0.1)
-		return receivedResult!
-	}
+//	private func resultFor(sut: DataStore, when action: () -> Void) -> Result<[Client], Error> {
+//		let exp = expectation(description: "Wait for completion")
+//		var receivedResult: Result<[Client], Error>?
+//		sut.getClients() { result in
+//			receivedResult = result
+//			exp.fulfill()
+//		}
+//		action()
+//		wait(for: [exp], timeout: 0.1)
+//		return receivedResult!
+//	}
 
 	private func resultFor(sut: DataStore, addTimeSlot timeSlot: TimeSlot, when action: () -> Void) -> Result<TimeSlot, Error> {
 		let exp = expectation(description: "Wait for completion")

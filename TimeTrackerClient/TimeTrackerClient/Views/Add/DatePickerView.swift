@@ -38,6 +38,6 @@ struct DatePicker_Previews: PreviewProvider {
     static var previews: some View {
         DatePickerView(startEndDate: .constant(StartEndDate(start: Date(), end: Date())),
                        timeInterval: .constant(DateComponents()),
-                        timeSlotVM: TimeSlotViewModel())
+					   timeSlotVM: TimeSlotViewModel(clientsLoader: FirebaseClientsLoader()))
     }
 }

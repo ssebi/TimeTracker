@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 class TimeSlotViewModel: ObservableObject {
+	@Published var isLoading = false
     @Published var description = ""
     @Published var showMessage = ""
     @Published var timeInterval = DateComponents()
@@ -24,6 +25,56 @@ class TimeSlotViewModel: ObservableObject {
 
     private var path = "timeSlots"
     var dataStore = DataStore()
+
+	let clientsLoader: ClientsLoader
+	@Published var clients = [Client]()
+	@Published var id: UUID = UUID()
+	@Published var selectedClient: Int = 0 {
+		didSet {
+			selectedProject = projectSelections[selectedClient] ?? 0
+			id = UUID()
+		}
+	}
+	@Published var selectedProject: Int = 0 {
+		didSet {
+			DispatchQueue.main.async { [selectedProject] in
+				self.projectSelections[self.selectedClient] = selectedProject
+			}
+		}
+	}
+
+	private var projectSelections: [Int: Int] = [:]
+	var clientsNames: [String] {
+		clients.map { (project) in
+			project.name
+		}
+	}
+	var projectNamesCount: Int {
+		projectNames.count
+	}
+	var projectNames: [String] {
+		guard !clients.isEmpty else {
+			return [String]()
+		}
+		return clients[selectedClient].projects.map { (project) in
+			return project.name
+		}
+	}
+	
+	init(clientsLoader: ClientsLoader) {
+		self.clientsLoader = clientsLoader
+
+		isLoading = true
+		clientsLoader.getClients { [weak self] result in
+			guard let self = self else {
+				return
+			}
+			if let clients = try? result.get() {
+				self.clients = clients
+			}
+			self.isLoading = false
+		}
+	}
 
     func addTimeSlot(for userId: String, clientId: Int, projectId: Int) {
         if userId == "" {

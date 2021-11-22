@@ -10,7 +10,7 @@ import SwiftUI
 struct AddView: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var dataStore: DataStore
-    @ObservedObject var timeSlotVM = TimeSlotViewModel()
+    @ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: FirebaseClientsLoader())
 
     var body: some View {
         VStack {
@@ -18,26 +18,28 @@ struct AddView: View {
                 .padding()
                 .font(.subheadline)
 
-            Picker(selection: $dataStore.selectedClient, label: Text("")){
-                ForEach(0 ..< dataStore.clientsNames.count){ index in
-                    Text(self.dataStore.clientsNames[index])
-                }
-            }
-            .labelsHidden()
-            .frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
-            .background(Color.cGray)
-            .foregroundColor(.white)
+			if !timeSlotVM.isLoading {
+				Picker(selection: $timeSlotVM.selectedClient, label: Text("")) {
+					ForEach(0 ..< timeSlotVM.clientsNames.count){ index in
+						Text(timeSlotVM.clientsNames[index])
+					}
+				}
+				.labelsHidden()
+				.frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
+				.background(Color.cGray)
+				.foregroundColor(.white)
 
-            Picker(selection: $dataStore.selectedProject, label: Text("")){
-                ForEach(0 ..< dataStore.projectNames.count){ index in
-                    Text(self.dataStore.projectNames[index])
-                }
-            }
-            .id(dataStore.id)
-            .labelsHidden()
-            .frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
-            .background(Color.cGray)
-            .foregroundColor(.white)
+				Picker(selection: $timeSlotVM.selectedProject, label: Text("")){
+					ForEach(0 ..< timeSlotVM.projectNames.count) { index in
+						Text(timeSlotVM.projectNames[index])
+					}
+				}
+				.id(timeSlotVM.id)
+				.labelsHidden()
+				.frame(width: UIScreen.main.bounds.width - 50 , height: 60, alignment: .center)
+				.background(Color.cGray)
+				.foregroundColor(.white)
+			}
 
             Spacer()
             
@@ -73,8 +75,8 @@ struct AddView: View {
 
     func addTimeSlot() {
         let userId = session.user?.uid ?? ""
-        let clientId = dataStore.selectedClient
-        let projectId = dataStore.selectedProject
+        let clientId = timeSlotVM.selectedClient
+        let projectId = timeSlotVM.selectedProject
         timeSlotVM.addTimeSlot(for: userId, clientId: clientId, projectId: projectId )
     }
 }

@@ -10,7 +10,6 @@ import FirebaseFirestore
 
 struct HomeView: View {
 	@EnvironmentObject var session: SessionStore
-	@EnvironmentObject var dataStore: DataStore
 
 	@ObservedObject private(set) var viewModel: HomeScreenViewModel
 
@@ -47,9 +46,6 @@ struct HomeView: View {
 						})
 			)
 			.navigationTitle("Time Logged")
-			.onAppear {
-				dataStore.getClients()
-			}
 		}
 	}
 }
