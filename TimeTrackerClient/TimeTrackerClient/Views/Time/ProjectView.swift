@@ -31,6 +31,6 @@ struct ProjectView: View {
 struct Project_Previews: PreviewProvider {
 	static var previews: some View {
 		ProjectView(timeslot: TimeSlot(id: "", userId: "", clientId: 1, projectId: 1, date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: ""), total: 1))
-			.environmentObject(DataStore())
+			.previewLayout(.sizeThatFits)
 	}
 }

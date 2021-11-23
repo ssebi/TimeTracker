@@ -58,7 +58,50 @@ struct HomeView_Previews: PreviewProvider {
 	}
 	
 	static var previews: some View {
-		HomeView(viewModel: HomeScreenViewModel(timeslotsLoader: RemoteTimeslotsLoader(store: FirebaseTimeslotsStore()), userLoader: FirebaseUserLoader()))
+		HomeView(viewModel: HomeScreenViewModel(timeslotsLoader: RemoteTimeslotsLoaderMock(store: MockStore()), userLoader: UserLoaderMock()))
 			.environmentObject(SessionStore(authProvider: FakeAuthProvider()))
 	}
+
+	private class MockStore: TimeslotsStore {
+		func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
+			completion(.success(uniqueTimeslots))
+		}
+	}
+
+	private class UserLoaderMock: UserLoader {
+		func getUser() -> User {
+			User(uid: UUID().uuidString, email: "somteEmail@test.com", username: "Test", client: "Client")
+		}
+	}
+
+	private class RemoteTimeslotsLoaderMock: TimeslotsLoader {
+		var store: TimeslotsStore
+		func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
+			completion(.success(uniqueTimeslots))
+		}
+		init(store: TimeslotsStore) {
+			self.store = store
+		}
+	}
 }
+
+var uniqueTimeslots: [TimeSlot] = {
+	[
+		uniqueTimeslot,
+		uniqueTimeslot,
+	]
+}()
+
+var uniqueTimeslot: TimeSlot = {
+	TimeSlot(id: UUID().uuidString,
+			 userId: UUID().uuidString,
+			 clientId: Int.random(in: 0...100),
+			 projectId: Int.random(in: 0...100),
+			 date: Date(),
+			 details:
+				TimeSlotDetails(
+					start: Date(),
+					end: Date(),
+					description: "some description"),
+			 total: Int.random(in: 0...100))
+	}()

@@ -9,11 +9,7 @@ import Foundation
 import Firebase
 
 class DataStore: ObservableObject {
-	@Published var userTimeslots = [TimeSlot]()
-
-    let db = Firestore.firestore()
-
-
+	
 	private let clientLoader: ClientsLoader
 	private let timeslotsPublisher: TimeSlotsPublisher
 	private let userLoader: UserLoader
