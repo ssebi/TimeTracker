@@ -174,6 +174,7 @@
 		54D8EEA527174EC900D867F3 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				54D8EEAF271887FA00D867F3 /* Models */,
 				C61F54AB2743FFDD0083E1A4 /* DataStore */,
 				C64784C3273CF5EC0086D169 /* Auth */,
 				545CCED92723163300811CE3 /* DataStore.swift */,
@@ -193,14 +194,6 @@
 				545CCEC927229DF800811CE3 /* ClientModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		54F983642746802A00577AD6 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				54F983652746887400577AD6 /* TimeSlotViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		54FB1C8427306B060099BE81 /* Frameworks */ = {
@@ -255,6 +248,7 @@
 		C61F54C6274810760083E1A4 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				54F983652746887400577AD6 /* TimeSlotViewModel.swift */,
 				C61F54C7274810810083E1A4 /* HomeScreenViewModel.swift */,
 			);
 			path = Presentation;
@@ -359,9 +353,7 @@
 				C6B6AFCE272A892C00B5CFBC /* Info.plist */,
 				C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */,
 				C61F54C9274810EC0083E1A4 /* Composers */,
-				54F983642746802A00577AD6 /* ViewModel */,
 				543DD550272AB3D700D426FC /* Views */,
-				54D8EEAF271887FA00D867F3 /* Models */,
 				C61F54C6274810760083E1A4 /* Presentation */,
 				54D8EEA527174EC900D867F3 /* Core */,
 				C64C428E271464B600CFBDEF /* Assets.xcassets */,
