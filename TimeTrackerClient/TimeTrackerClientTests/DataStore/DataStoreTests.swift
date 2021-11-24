@@ -10,14 +10,6 @@ import XCTest
 
 class DataStoreTests: XCTestCase {
 
-	func test_addTimeSlot_callsPublisher() {
-		let (timeslotsSpy, _, sut) = makeSut()
-
-        sut.addTimeSlot(timeSlot: someTimeSlot, to: Path.timeSlot) { _ in }
-
-        XCTAssertEqual(timeslotsSpy.timeslotCalls, 1)
-	}
-
 	func test_addTimeSlot_deliversErrorOnPublisherError() {
         let (timeslotsSpy, _, sut) = makeSut()
 
