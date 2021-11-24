@@ -64,18 +64,6 @@ class DataStoreTests: XCTestCase {
 	private lazy var someError = NSError(domain: "Test", code: 0)
 	private lazy var someTimeSlot = TimeSlot(id: "1234", userId: "xxx", clientId: 1, projectId: 1, date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: "description"), total: 1)
 
-//	private func resultFor(sut: DataStore, when action: () -> Void) -> Result<[Client], Error> {
-//		let exp = expectation(description: "Wait for completion")
-//		var receivedResult: Result<[Client], Error>?
-//		sut.getClients() { result in
-//			receivedResult = result
-//			exp.fulfill()
-//		}
-//		action()
-//		wait(for: [exp], timeout: 0.1)
-//		return receivedResult!
-//	}
-
 	private func resultFor(sut: DataStore, addTimeSlot timeSlot: TimeSlot, when action: () -> Void) -> Result<TimeSlot, Error> {
 		let exp = expectation(description: "Wait for completion")
 		var receivedResult: Result<TimeSlot, Error>?

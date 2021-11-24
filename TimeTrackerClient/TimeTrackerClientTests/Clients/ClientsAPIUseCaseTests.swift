@@ -54,17 +54,12 @@ class ClientsAPIUseCaseTests: XCTestCase {
 
 	func test_getClients_returnsFailureOnStoreError() {
 		let (sut, store) = makeSUT()
-		var receivedResult: (Result<[Client], Error>)?
 
-		let exp = expectation(description: "Wait for completion")
-		sut.getClients { result in
-			receivedResult = result
-			exp.fulfill()
+		let receivedResult = resultFor(sut: sut) {
+			store.completeGetClients(with: someError)
 		}
-		store.completeGetClients(with: someError)
-		wait(for: [exp], timeout: 0.1)
 
-		switch receivedResult! {
+		switch receivedResult {
 			case .success:
 				XCTFail()
 			case .failure(let error):
@@ -79,13 +74,10 @@ class ClientsAPIUseCaseTests: XCTestCase {
 						   Client(id: UUID().uuidString, name: "Client2", projects: [])]
 		var receivedClients: [Client]? = nil
 
-		let exp = expectation(description: "Wait for completion")
-		sut.getClients { result in
-			receivedClients = try? result.get()
-			exp.fulfill()
+		let result = resultFor(sut: sut) {
+			store.completeGetClients(with: someClients)
 		}
-		store.completeGetClients(with: someClients)
-		wait(for: [exp], timeout: 0.1)
+		receivedClients = try result.get()
 
 		XCTAssertEqual(receivedClients, someClients)
 	}
@@ -97,6 +89,18 @@ class ClientsAPIUseCaseTests: XCTestCase {
 		let sut = RemoteClientsLoader(store: store)
 
 		return (sut, store)
+	}
+
+	private func resultFor(sut: RemoteClientsLoader, when action: () -> Void) -> Result<[Client], Error> {
+		let exp = expectation(description: "Wait for completion")
+		var receivedResult: Result<[Client], Error>?
+		sut.getClients() { result in
+			receivedResult = result
+			exp.fulfill()
+		}
+		action()
+		wait(for: [exp], timeout: 0.1)
+		return receivedResult!
 	}
 
 	private lazy var someError = NSError(domain: "Test", code: 0)
