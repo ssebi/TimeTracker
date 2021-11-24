@@ -15,6 +15,10 @@ class TimeslotsStoreSpy {
 	func completeAddTimeSlots(with error: Error, at index: Int = 0) {
 		completions[index](error)
 	}
+
+	func completeAddTimeSlotsWithSuccess(at index: Int = 0) {
+		completions[index](nil)
+	}
 }
 
 class RemoteTimeSlotsPublisher {
@@ -60,6 +64,21 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 		XCTAssertNotNil(receivedError)
 		XCTAssertEqual(someError.domain, (receivedError as NSError?)?.domain)
 		XCTAssertEqual(someError.code, (receivedError as NSError?)?.code)
+	}
+
+	func test_addTimeSlot_deliversSuccessOnPublisherSuccess() throws {
+		let (sut, store) = makeSUT()
+		var receivedError: Error?
+
+		let exp = expectation(description: "Wait for completion")
+		sut.addTimeSlot(timeSlot: someTimeSlot) { error in
+			receivedError = error
+			exp.fulfill()
+		}
+		store.completeAddTimeSlotsWithSuccess()
+		wait(for: [exp], timeout: 0.1)
+
+		XCTAssertNil(receivedError)
 	}
 
 	// MARK: - Helpers

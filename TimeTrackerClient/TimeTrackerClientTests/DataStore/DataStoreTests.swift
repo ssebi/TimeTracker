@@ -10,18 +10,6 @@ import XCTest
 
 class DataStoreTests: XCTestCase {
 
-    func test_addTimeSlot_deliversSuccessOnPublisherSuccess() throws {
-        let (timeslotSpy, _, sut) = makeSut()
-        var receivedTimeslot: TimeSlot?
-
-        let result = resultFor(sut: sut, addTimeSlot: someTimeSlot, when: {
-            timeslotSpy.completeAddTimeSlots(with: someTimeSlot)
-        })
-
-        receivedTimeslot = try result.get()
-        XCTAssertEqual(receivedTimeslot, someTimeSlot)
-    }
-
 	// MARK: - Helpers
 
 	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (TimeSlotPublisherSpy, UserLoaderSpy, DataStore) {
