@@ -1,21 +1,25 @@
 
 import XCTest
-import TimeTrackerClient
+@testable import TimeTrackerClient
 
 class ClientsStore {
 	private(set) var getClientsCallCount = 0
 
-	private var getClientsResult: Error?
+	private var getClientsResult: Result<[Client], Error>?
 
 	func getClients(completion: @escaping (Result<[Client], Error>) -> Void) {
 		getClientsCallCount += 1
-		if let error = getClientsResult {
-			completion(.failure(error))
+		if let result = getClientsResult {
+			completion(result)
 		}
 	}
 
 	func completeGetClients(with error: Error) {
-		getClientsResult = error
+		getClientsResult = .failure(error)
+	}
+
+	func completeGetClients(with clients: [Client]) {
+		getClientsResult = .success(clients)
 	}
 }
 
@@ -63,6 +67,20 @@ class ClientsAPIUseCaseTests: XCTestCase {
 				XCTAssertEqual(someError.domain, (error as NSError).domain)
 				XCTAssertEqual(someError.code, (error as NSError).code)
 		}
+	}
+
+	func test_getClients_returnsClientsLoaderOnSuccess() throws {
+		let (sut, store) = makeSUT()
+		let someClients = [Client(id: UUID().uuidString, name: "Client1", projects: []),
+						   Client(id: UUID().uuidString, name: "Client2", projects: [])]
+		var receivedClients: [Client]? = nil
+
+		store.completeGetClients(with: someClients)
+		sut.getClients { result in
+			receivedClients = try? result.get()
+		}
+
+		XCTAssertEqual(receivedClients, someClients)
 	}
 
 	// MARK: - Helpers

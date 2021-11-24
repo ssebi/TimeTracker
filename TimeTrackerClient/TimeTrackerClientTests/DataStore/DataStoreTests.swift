@@ -10,20 +10,6 @@ import XCTest
 
 class DataStoreTests: XCTestCase {
 
-//	func test_getClients_returnsClientsLoaderOnSuccess() throws {
-//		let (clientSpy, _, _, sut) = makeSut()
-//        let someClients = [Client(id: UUID().uuidString, name: "Client1", projects: []),
-//						   Client(id: UUID().uuidString, name: "Client2", projects: [])]
-//		var receivedClients: [Client]? = nil
-//
-//		let result = resultFor(sut: sut, when: {
-//			clientSpy.completeGetClients(with: someClients)
-//		})
-//
-//		receivedClients = try result.get()
-//		XCTAssertEqual(receivedClients, someClients)
-//	}
-
 	func test_addTimeSlot_callsPublisher() {
 		let (_, timeslotsSpy, _, sut) = makeSut()
 
