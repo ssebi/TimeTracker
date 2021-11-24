@@ -2,8 +2,13 @@
 import XCTest
 @testable import TimeTrackerClient
 
-class ClientsStore {
+private protocol ClientsStore {
 	typealias GetClientsResult = (Result<[Client], Error>) -> Void
+
+	func getClients(completion: @escaping GetClientsResult)
+}
+
+private class ClientsStoreSpy: ClientsStore {
 
 	var getClientsCallCount: Int {
 		completions.count
@@ -22,16 +27,23 @@ class ClientsStore {
 	func completeGetClients(with clients: [Client], at index: Int = 0) {
 		completions[index](.success(clients))
 	}
+
 }
 
-class RemoteClientsLoader {
-	private let store: ClientsStore
+private protocol ClientsLoader {
+	var store: ClientsStore { get }
+
+	func getClients(completion: @escaping ClientsStore.GetClientsResult)
+}
+
+private class RemoteClientsLoader: ClientsLoader {
+	let store: ClientsStore
 
 	init(store: ClientsStore) {
 		self.store = store
 	}
 
-	func getClients(completion: @escaping (Result<[Client], Error>) -> Void) {
+	func getClients(completion: @escaping ClientsStore.GetClientsResult) {
 		store.getClients(completion: completion)
 	}
 }
@@ -84,14 +96,14 @@ class ClientsAPIUseCaseTests: XCTestCase {
 
 	// MARK: - Helpers
 
-	private func makeSUT() -> (RemoteClientsLoader, ClientsStore) {
-		let store = ClientsStore()
+	private func makeSUT() -> (ClientsLoader, ClientsStoreSpy) {
+		let store = ClientsStoreSpy()
 		let sut = RemoteClientsLoader(store: store)
 
 		return (sut, store)
 	}
 
-	private func resultFor(sut: RemoteClientsLoader, when action: () -> Void) -> Result<[Client], Error> {
+	private func resultFor(sut: ClientsLoader, when action: () -> Void) -> Result<[Client], Error> {
 		let exp = expectation(description: "Wait for completion")
 		var receivedResult: Result<[Client], Error>?
 		sut.getClients() { result in
