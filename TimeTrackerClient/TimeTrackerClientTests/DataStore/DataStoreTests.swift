@@ -10,22 +10,6 @@ import XCTest
 
 class DataStoreTests: XCTestCase {
 
-	func test_addTimeSlot_deliversErrorOnPublisherError() {
-        let (timeslotsSpy, _, sut) = makeSut()
-
-        let result = resultFor(sut: sut, addTimeSlot: someTimeSlot, when: {
-            timeslotsSpy.completeAddTimeSlots(with: someError)
-        })
-
-        switch result {
-            case .success:
-                XCTFail()
-            case .failure(let error):
-                XCTAssertEqual(someError.domain, (error as NSError).domain)
-                XCTAssertEqual(someError.code, (error as NSError).code)
-        }
-	}
-
     func test_addTimeSlot_deliversSuccessOnPublisherSuccess() throws {
         let (timeslotSpy, _, sut) = makeSut()
         var receivedTimeslot: TimeSlot?

@@ -3,10 +3,17 @@ import XCTest
 import TimeTrackerClient
 
 class TimeslotsStoreSpy {
-	private(set) var addTimeslotsCallCount = 0
+	var addTimeslotsCallCount: Int {
+		completions.count
+	}
+	private var completions: [(Error?) -> Void] = []
 
-	func addTimeSlot(timeSlot: TimeSlot) {
-		addTimeslotsCallCount += 1
+	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
+		completions.append(completion)
+	}
+
+	func completeAddTimeSlots(with error: Error, at index: Int = 0) {
+		completions[index](error)
 	}
 }
 
@@ -17,8 +24,8 @@ class RemoteTimeSlotsPublisher {
 		self.store = store
 	}
 
-	func addTimeSlot(timeSlot: TimeSlot) {
-		store.addTimeSlot(timeSlot: timeSlot)
+	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
+		store.addTimeSlot(timeSlot: timeSlot, completion: completion)
 	}
 }
 
@@ -33,9 +40,26 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 	func test_addTimeSlot_callsPublisher() {
 		let (sut, store) = makeSUT()
 
-		sut.addTimeSlot(timeSlot: someTimeSlot)
+		sut.addTimeSlot(timeSlot: someTimeSlot) { _ in }
 
 		XCTAssertEqual(store.addTimeslotsCallCount, 1)
+	}
+
+	func test_addTimeSlot_deliversErrorOnPublisherError() {
+		let (sut, store) = makeSUT()
+		var receivedError: Error?
+
+		let exp = expectation(description: "Wait for completion")
+		sut.addTimeSlot(timeSlot: someTimeSlot) { error in
+			receivedError = error
+			exp.fulfill()
+		}
+		store.completeAddTimeSlots(with: someError)
+		wait(for: [exp], timeout: 0.1)
+
+		XCTAssertNotNil(receivedError)
+		XCTAssertEqual(someError.domain, (receivedError as NSError?)?.domain)
+		XCTAssertEqual(someError.code, (receivedError as NSError?)?.code)
 	}
 
 	// MARK: - Helpers
@@ -47,6 +71,7 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 		return (sut, store)
 	}
 
+	private lazy var someError = NSError(domain: "Test", code: 0)
 	private lazy var someTimeSlot = TimeSlot(id: "1234", userId: "xxx", clientId: 1, projectId: 1, date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: "description"), total: 1)
 
 }
