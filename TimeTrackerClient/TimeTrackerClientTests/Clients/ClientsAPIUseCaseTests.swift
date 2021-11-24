@@ -3,11 +3,13 @@ import XCTest
 @testable import TimeTrackerClient
 
 class ClientsStore {
+	typealias GetClientsResult = (Result<[Client], Error>) -> Void
+
 	private(set) var getClientsCallCount = 0
 
 	private var getClientsResult: Result<[Client], Error>?
 
-	func getClients(completion: @escaping (Result<[Client], Error>) -> Void) {
+	func getClients(completion: @escaping GetClientsResult) {
 		getClientsCallCount += 1
 		if let result = getClientsResult {
 			completion(result)
