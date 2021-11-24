@@ -11,7 +11,7 @@ import XCTest
 class DataStoreTests: XCTestCase {
 
 	func test_addTimeSlot_callsPublisher() {
-		let (_, timeslotsSpy, _, sut) = makeSut()
+		let (timeslotsSpy, _, sut) = makeSut()
 
         sut.addTimeSlot(timeSlot: someTimeSlot, to: Path.timeSlot) { _ in }
 
@@ -19,7 +19,7 @@ class DataStoreTests: XCTestCase {
 	}
 
 	func test_addTimeSlot_deliversErrorOnPublisherError() {
-        let (_, timeslotsSpy, _, sut) = makeSut()
+        let (timeslotsSpy, _, sut) = makeSut()
 
         let result = resultFor(sut: sut, addTimeSlot: someTimeSlot, when: {
             timeslotsSpy.completeAddTimeSlots(with: someError)
@@ -35,7 +35,7 @@ class DataStoreTests: XCTestCase {
 	}
 
     func test_addTimeSlot_deliversSuccessOnPublisherSuccess() throws {
-        let (_, timeslotSpy, _, sut) = makeSut()
+        let (timeslotSpy, _, sut) = makeSut()
         var receivedTimeslot: TimeSlot?
 
         let result = resultFor(sut: sut, addTimeSlot: someTimeSlot, when: {
@@ -48,17 +48,16 @@ class DataStoreTests: XCTestCase {
 
 	// MARK: - Helpers
 
-	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoaderSpy, TimeSlotPublisherSpy, UserLoaderSpy, DataStore) {
-		let clientsSpy = ClientsLoaderSpy()
+	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (TimeSlotPublisherSpy, UserLoaderSpy, DataStore) {
         let spy = TimeSlotPublisherSpy()
         let userSpy = UserLoaderSpy()
 
-        let sut = DataStore(clientLoader: clientsSpy, timeslotsPublisher: spy, userLoader: userSpy)
+        let sut = DataStore(timeslotsPublisher: spy, userLoader: userSpy)
         addTeardownBlock { [weak spy, weak sut] in
             XCTAssertNil(spy, file: file, line: line)
             XCTAssertNil(sut, file: file, line: line)
         }
-        return (clientsSpy, spy, userSpy, sut )
+        return (spy, userSpy, sut)
     }
 
 	private lazy var someError = NSError(domain: "Test", code: 0)

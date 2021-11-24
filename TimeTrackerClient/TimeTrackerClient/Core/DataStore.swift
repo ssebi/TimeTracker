@@ -9,17 +9,14 @@ import Foundation
 import Firebase
 
 class DataStore: ObservableObject {
-	
-	private let clientLoader: ClientsLoader
+
 	private let timeslotsPublisher: TimeSlotsPublisher
 	private let userLoader: UserLoader
 
 	init(
-		clientLoader: ClientsLoader = FirebaseClientsLoader(),
 		timeslotsPublisher: TimeSlotsPublisher = FirebaseTimeslotsPublisher(),
 		userLoader: UserLoader = FirebaseUserLoader()
 	) {
-		self.clientLoader = clientLoader
 		self.timeslotsPublisher = timeslotsPublisher
 		self.userLoader = userLoader
 	}

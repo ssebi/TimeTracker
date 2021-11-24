@@ -35,9 +35,10 @@ struct DatePickerView: View {
 }
 
 struct DatePicker_Previews: PreviewProvider {
+	// TODO: - Remove ViewModel from here, just pass what it needs
     static var previews: some View {
         DatePickerView(startEndDate: .constant(StartEndDate(start: Date(), end: Date())),
                        timeInterval: .constant(DateComponents()),
-					   timeSlotVM: TimeSlotViewModel(clientsLoader: FirebaseClientsLoader()))
+					   timeSlotVM: TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore())))
     }
 }

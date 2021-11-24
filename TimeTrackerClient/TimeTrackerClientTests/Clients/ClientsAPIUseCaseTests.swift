@@ -2,11 +2,6 @@
 import XCTest
 @testable import TimeTrackerClient
 
-private protocol ClientsStore {
-	typealias GetClientsResult = (Result<[Client], Error>) -> Void
-
-	func getClients(completion: @escaping GetClientsResult)
-}
 
 private class ClientsStoreSpy: ClientsStore {
 
@@ -28,24 +23,6 @@ private class ClientsStoreSpy: ClientsStore {
 		completions[index](.success(clients))
 	}
 
-}
-
-private protocol ClientsLoader {
-	var store: ClientsStore { get }
-
-	func getClients(completion: @escaping ClientsStore.GetClientsResult)
-}
-
-private class RemoteClientsLoader: ClientsLoader {
-	let store: ClientsStore
-
-	init(store: ClientsStore) {
-		self.store = store
-	}
-
-	func getClients(completion: @escaping ClientsStore.GetClientsResult) {
-		store.getClients(completion: completion)
-	}
 }
 
 class ClientsAPIUseCaseTests: XCTestCase {
