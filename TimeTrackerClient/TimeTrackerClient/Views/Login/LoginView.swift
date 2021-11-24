@@ -19,15 +19,15 @@ struct LoginView: View {
 
 					Text("Time Tracker")
 						.padding()
-						.font(.title)
-						.padding(.bottom, 40)
 						.foregroundColor(Color.cBlack)
+                        .font(Font.custom("Avenir-Light", size: 60.0))
 
 					Spacer()
 
 					Group {
                         Text("\(viewModel.errrorMessage)")
                             .foregroundColor(.red)
+                            .font(Font.custom("Avenir-Light", size: 30))
                             .padding()
                         TextField("E-mail", text: $viewModel.username)
 							.padding()
@@ -56,6 +56,7 @@ struct LoginView: View {
                             viewModel.signIn()
                         }) {
                             Text("Login")
+                                .font(Font.custom("Avenir-Light", size: 25))
                                 .frame(maxWidth: .infinity, alignment: .center)
                         }
                         .frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
