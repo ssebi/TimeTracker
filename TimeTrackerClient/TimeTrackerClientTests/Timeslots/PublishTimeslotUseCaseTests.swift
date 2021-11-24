@@ -2,15 +2,15 @@
 import XCTest
 import TimeTrackerClient
 
-private protocol TimeslotsStore {
-	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void)
-}
-
 private class TimeslotsStoreSpy: TimeslotsStore {
 	var addTimeslotsCallCount: Int {
 		completions.count
 	}
 	private var completions: [(Error?) -> Void] = []
+
+	func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
+		
+	}
 
 	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
 		completions.append(completion)

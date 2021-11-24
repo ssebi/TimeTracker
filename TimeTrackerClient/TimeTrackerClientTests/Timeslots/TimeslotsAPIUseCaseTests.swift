@@ -114,6 +114,10 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 			completions.append(completion)
 		}
 
+		func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
+			
+		}
+
 		func completeGetTimeslots(with error: Error, at index: Int = 0) {
 			completions[index](.failure(error))
 		}

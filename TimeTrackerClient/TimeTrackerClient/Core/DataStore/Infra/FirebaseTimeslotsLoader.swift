@@ -25,6 +25,10 @@ class FirebaseTimeslotsStore: TimeslotsStore {
 			}
 	}
 
+	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
+		
+	}
+
 }
 
 private extension Sequence where Element == FirebaseTimeSlot {
