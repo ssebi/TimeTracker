@@ -26,6 +26,9 @@ struct LoginView: View {
 					Spacer()
 
 					Group {
+                        Text("\(viewModel.errrorMessage)")
+                            .foregroundColor(.red)
+                            .padding()
                         TextField("E-mail", text: $viewModel.username)
 							.padding()
 							.background(Color.cGray)
@@ -33,27 +36,34 @@ struct LoginView: View {
 							.accentColor(.white)
 							.autocapitalization(.none)
 							.disableAutocorrection(true)
+                            .onTapGesture {
+                                viewModel.errrorMessage = ""
+                            }
 
                         SecureField("Password", text: $viewModel.password)
 							.padding()
 							.background(Color.cGray)
 							.accentColor(.white)
 							.cornerRadius(5.0)
+                            .onTapGesture {
+                                viewModel.errrorMessage = ""
+                            }
 					}
 					.padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
-
 					Spacer()
-					Button(action: {
-                        viewModel.signIn()
-					}) {
-						Text("Login")
-							.frame(maxWidth: .infinity, alignment: .center)
-					}
-					.frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
-					.foregroundColor(.white)
-					.background(Color.blue)
-					.cornerRadius(5)
-					.padding(.bottom, 50)
+                    Section {
+                        Button(action: {
+                            viewModel.signIn()
+                        }) {
+                            Text("Login")
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .cornerRadius(5)
+                        .padding(.bottom, 50)
+                    }
 				}
 			}
             .frame(maxWidth: .infinity)

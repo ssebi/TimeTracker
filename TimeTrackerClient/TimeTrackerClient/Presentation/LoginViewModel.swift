@@ -12,6 +12,9 @@ import GameKit
 public class LoginViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
+    @Published var showError = true
+
+    @Published var errrorMessage = ""
 
     @Published var isLoading = true
     var session: SessionStore
@@ -24,8 +27,11 @@ public class LoginViewModel: ObservableObject {
     func signIn() {
         isLoading = true
         print(username)
-        session.signIn(email: username, password: password) { [weak self] _ in
+        session.signIn(email: username, password: password) { [weak self] result in
             self?.isLoading = false
+            if case let .failure(result) =  result {
+                self?.errrorMessage = result.localizedDescription
+            }
         }
     }
 
