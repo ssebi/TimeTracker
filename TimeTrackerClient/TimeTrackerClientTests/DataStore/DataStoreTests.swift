@@ -10,22 +10,6 @@ import XCTest
 
 class DataStoreTests: XCTestCase {
 
-//	func test_getClients_returnsFailureOnLoaderError() {
-//		let (clientSpy, _, _, sut) = makeSut()
-//
-//		let result = resultFor(sut: sut, when: {
-//			clientSpy.completeGetClients(with: someError)
-//		})
-//
-//		switch result {
-//			case .success:
-//				XCTFail()
-//			case .failure(let error):
-//				XCTAssertEqual(someError.domain, (error as NSError).domain)
-//				XCTAssertEqual(someError.code, (error as NSError).code)
-//		}
-//	}
-
 //	func test_getClients_returnsClientsLoaderOnSuccess() throws {
 //		let (clientSpy, _, _, sut) = makeSut()
 //        let someClients = [Client(id: UUID().uuidString, name: "Client1", projects: []),
