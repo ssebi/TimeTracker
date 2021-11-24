@@ -10,9 +10,11 @@ import SwiftUI
 struct LoginView: View {
     @EnvironmentObject var session: SessionStore
     @ObservedObject var loginVM = LoginViewModel()
+    @State var username: String = ""
+    @State var password: String = ""
 
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             ZStack {
                 VStack {
 
@@ -29,19 +31,22 @@ struct LoginView: View {
                     Spacer()
 
                     Group {
-                        TextField("E-mail", text: $loginVM.username)
+                        TextField("E-mail", text: $username )
                             .padding()
                             .background(Color.cGray)
                             .cornerRadius(5.0)
+                            .accentColor(.white)
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
 
-                        SecureField("Password", text: $loginVM.password)
+                        SecureField("Password", text: $password)
                             .padding()
                             .background(Color.cGray)
+                            .accentColor(.white)
                             .cornerRadius(5.0)
                     }
                     .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
+
                     Spacer()
                     Button(action: {
                         signIn()
@@ -55,7 +60,8 @@ struct LoginView: View {
                     .cornerRadius(5)
                     .padding(.bottom, 50)
                 }
-                if (loginVM.isLoading) {
+
+                if loginVM.isLoading {
                     ProgressIndicator()
                 }
             }
@@ -63,7 +69,10 @@ struct LoginView: View {
     }
 
     func signIn() {
-        session.signIn(email: loginVM.username, password: loginVM.password){ _ in }
+        loginVM.isLoading = true
+        session.signIn(email: username, password: password){ _ in
+            loginVM.isLoading = false
+        }
     }
 }
 
