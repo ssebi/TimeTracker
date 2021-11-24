@@ -23,8 +23,9 @@ class TimeSlotViewModel: ObservableObject {
         calendar.date(from: endComponents)!
     }()
 
-	let clientsLoader: ClientsLoader
-	let timeslotPublisher: TimeSlotsPublisher
+	private let clientsLoader: ClientsLoader
+	private let timeslotPublisher: TimeSlotsPublisher
+	private let userLoader: UserLoader
 	@Published var clients = [Client]()
 	@Published var id: UUID = UUID()
 	@Published var selectedClient: Int = 0 {
@@ -59,9 +60,10 @@ class TimeSlotViewModel: ObservableObject {
 		}
 	}
 	
-	init(clientsLoader: ClientsLoader, timeslotPublisher: TimeSlotsPublisher) {
+	init(clientsLoader: ClientsLoader, timeslotPublisher: TimeSlotsPublisher, userLoader: UserLoader) {
 		self.clientsLoader = clientsLoader
 		self.timeslotPublisher = timeslotPublisher
+		self.userLoader = userLoader
 
 		isLoading = true
 		clientsLoader.getClients { [weak self] result in
@@ -75,10 +77,10 @@ class TimeSlotViewModel: ObservableObject {
 		}
 	}
 
-    func addTimeSlot(for userId: String, clientId: Int, projectId: Int) {
-        if userId == "" {
-            return showMessage = "The user is not logged"
-        }
+    func addTimeSlot(clientId: Int, projectId: Int) {
+		guard let userID = userLoader.getUser().uid else {
+			return showMessage = "The user is not logged"
+		}
 
         timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startEndDate.start, to: startEndDate.end)
 
@@ -92,7 +94,7 @@ class TimeSlotViewModel: ObservableObject {
 
         let timeSlot = TimeSlot(
             id: UUID().uuidString,
-            userId: userId,
+            userId: userID,
             clientId: clientId,
             projectId: projectId,
 			date: startEndDate.start,
