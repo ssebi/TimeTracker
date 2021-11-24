@@ -10,14 +10,6 @@ import XCTest
 
 class DataStoreTests: XCTestCase {
 
-//    func test_getClients_callsGetClientsFromClientsLoader() {
-//        let (clientSpy, _, _, sut) = makeSut()
-//
-//		sut.getClients() { _ in }
-//
-//        XCTAssertEqual(clientSpy.getClientsCalls, 1)
-//    }
-
 //	func test_getClients_returnsFailureOnLoaderError() {
 //		let (clientSpy, _, _, sut) = makeSut()
 //
