@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+public class LoginViewModel: ObservableObject {
+    @Published var isLoading = false
+
+    init(){
+        isLoading = true
+    }
+}
