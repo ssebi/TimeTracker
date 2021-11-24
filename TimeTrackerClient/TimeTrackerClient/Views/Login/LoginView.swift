@@ -14,6 +14,7 @@ struct LoginView: View {
 
 	var body: some View {
         ScrollView{
+            ProgressIndicator()
             VStack {
 			Image("timeTrackerIcon")
 				.resizable()
