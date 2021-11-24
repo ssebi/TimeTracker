@@ -13,7 +13,6 @@ struct TimeTrackerClientApp: App {
 
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 	@StateObject var sessionStore = SessionStore(authProvider: FirebaseAuthProvider())
-	@StateObject var dataStore = DataStore()
 
 	private var remoteTimeslotsLoader: TimeslotsLoader {
 		RemoteTimeslotsLoader(store: FirebaseTimeslotsStore())
@@ -29,7 +28,6 @@ struct TimeTrackerClientApp: App {
 				}
 			}
 			.environmentObject(sessionStore)
-			.environmentObject(dataStore)
 		}
 	}
 

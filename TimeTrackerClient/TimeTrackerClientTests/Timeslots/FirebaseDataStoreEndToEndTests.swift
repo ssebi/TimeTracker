@@ -61,7 +61,7 @@ class FirebaseDataStoreEndToEndTests: XCTestCase {
     let password: String = "Patratel1"
     let path: String = "timeSlots"
 
-	private func makeSUT(withUserSignedIn signedIn: Bool, file: StaticString = #filePath, line: UInt = #line) -> TimeTrackerClient.DataStore {
+	private func makeSUT(withUserSignedIn signedIn: Bool, file: StaticString = #filePath, line: UInt = #line) -> TimeSlotsPublisher {
         let session = SessionStore(authProvider: FirebaseAuthProvider())
 
         if signedIn {
@@ -70,7 +70,7 @@ class FirebaseDataStoreEndToEndTests: XCTestCase {
             signOut(session)
         }
 
-		let sut = TimeTrackerClient.DataStore()
+		let sut = RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore())
         
         addTeardownBlock { [weak session, weak sut] in
             XCTAssertNil(session, file: file, line: line)
