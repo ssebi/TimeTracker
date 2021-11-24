@@ -3,7 +3,9 @@ import TimeTrackerClient
 
 class TimeslotsStoreSpy: TimeslotsStore {
 
-	var getTimeslotsCallCount = 0
+	var getTimeslotsCallCount: Int {
+		getTimeslotsCompletions.count
+	}
 	var addTimeslotsCallCount: Int {
 		addTimeslotsCompletions.count
 	}
@@ -13,7 +15,6 @@ class TimeslotsStoreSpy: TimeslotsStore {
 
 
 	func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
-		getTimeslotsCallCount += 1
 		getTimeslotsCompletions.append(completion)
 	}
 
