@@ -51,7 +51,7 @@ class ClientsAPIUseCaseTests: XCTestCase {
 		XCTAssertEqual(store.getClientsCallCount, 1)
 	}
 
-	func test_getClients_returnsFailureOnLoaderError() {
+	func test_getClients_returnsFailureOnStoreError() {
 		let (sut, store) = makeSUT()
 		var receivedResult: (Result<[Client], Error>)?
 
@@ -69,7 +69,7 @@ class ClientsAPIUseCaseTests: XCTestCase {
 		}
 	}
 
-	func test_getClients_returnsClientsLoaderOnSuccess() throws {
+	func test_getClients_returnsClientsOnStoreSuccess() throws {
 		let (sut, store) = makeSUT()
 		let someClients = [Client(id: UUID().uuidString, name: "Client1", projects: []),
 						   Client(id: UUID().uuidString, name: "Client2", projects: [])]
