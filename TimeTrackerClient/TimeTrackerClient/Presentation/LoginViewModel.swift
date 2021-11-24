@@ -9,11 +9,10 @@ import Foundation
 import SwiftUI
 
 public class LoginViewModel: ObservableObject {
-    @State var username: String = ""
-    @State var password: String = ""
     @Published var isLoading = true
 
     init(){
+        
         isLoading = false
     }
 }
