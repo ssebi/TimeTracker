@@ -5,23 +5,22 @@ import XCTest
 class ClientsStore {
 	typealias GetClientsResult = (Result<[Client], Error>) -> Void
 
-	private(set) var getClientsCallCount = 0
+	var getClientsCallCount: Int {
+		completions.count
+	}
 
-	private var getClientsResult: Result<[Client], Error>?
+	private var completions: [GetClientsResult] = []
 
 	func getClients(completion: @escaping GetClientsResult) {
-		getClientsCallCount += 1
-		if let result = getClientsResult {
-			completion(result)
-		}
+		completions.append(completion)
 	}
 
-	func completeGetClients(with error: Error) {
-		getClientsResult = .failure(error)
+	func completeGetClients(with error: Error, at index: Int = 0) {
+		completions[index](.failure(error))
 	}
 
-	func completeGetClients(with clients: [Client]) {
-		getClientsResult = .success(clients)
+	func completeGetClients(with clients: [Client], at index: Int = 0) {
+		completions[index](.success(clients))
 	}
 }
 
@@ -57,10 +56,13 @@ class ClientsAPIUseCaseTests: XCTestCase {
 		let (sut, store) = makeSUT()
 		var receivedResult: (Result<[Client], Error>)?
 
-		store.completeGetClients(with: someError)
+		let exp = expectation(description: "Wait for completion")
 		sut.getClients { result in
 			receivedResult = result
+			exp.fulfill()
 		}
+		store.completeGetClients(with: someError)
+		wait(for: [exp], timeout: 0.1)
 
 		switch receivedResult! {
 			case .success:
@@ -77,10 +79,13 @@ class ClientsAPIUseCaseTests: XCTestCase {
 						   Client(id: UUID().uuidString, name: "Client2", projects: [])]
 		var receivedClients: [Client]? = nil
 
-		store.completeGetClients(with: someClients)
+		let exp = expectation(description: "Wait for completion")
 		sut.getClients { result in
 			receivedClients = try? result.get()
+			exp.fulfill()
 		}
+		store.completeGetClients(with: someClients)
+		wait(for: [exp], timeout: 0.1)
 
 		XCTAssertEqual(receivedClients, someClients)
 	}
