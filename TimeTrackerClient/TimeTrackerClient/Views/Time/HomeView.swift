@@ -66,6 +66,9 @@ struct HomeView_Previews: PreviewProvider {
 		func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
 			completion(.success(uniqueTimeslots))
 		}
+		func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
+			completion(nil)
+		}
 	}
 
 	private class UserLoaderMock: UserLoader {

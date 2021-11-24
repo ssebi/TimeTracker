@@ -1,6 +1,21 @@
 
 public protocol TimeSlotsPublisher {
-	typealias Result = (Swift.Result<TimeSlot, Error>) -> Void
 
-    func addTimeSlots(timeSlot: TimeSlot, to path: String, completion: @escaping Result)
+	var store: TimeslotsStore { get }
+
+	func addTimeSlot(_ timeSlot: TimeSlot, completion: @escaping (Error?) -> Void)
+
+}
+
+
+class RemoteTimeSlotsPublisher: TimeSlotsPublisher {
+	let store: TimeslotsStore
+
+	init(store: TimeslotsStore) {
+		self.store = store
+	}
+
+	func addTimeSlot(_ timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
+		store.addTimeSlot(timeSlot: timeSlot, completion: completion)
+	}
 }
