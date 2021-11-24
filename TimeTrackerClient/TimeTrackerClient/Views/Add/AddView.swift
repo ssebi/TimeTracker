@@ -9,8 +9,8 @@ import SwiftUI
 
 struct AddView: View {
 	@EnvironmentObject var session: SessionStore
-	@EnvironmentObject var dataStore: DataStore
-	@ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()))
+	
+	@ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()), timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()))
 
 	var body: some View {
 		ScrollView {

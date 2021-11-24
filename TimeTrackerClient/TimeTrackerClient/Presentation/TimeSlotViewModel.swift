@@ -23,9 +23,8 @@ class TimeSlotViewModel: ObservableObject {
         calendar.date(from: endComponents)!
     }()
 
-    var dataStore = DataStore()
-
 	let clientsLoader: ClientsLoader
+	let timeslotPublisher: TimeSlotsPublisher
 	@Published var clients = [Client]()
 	@Published var id: UUID = UUID()
 	@Published var selectedClient: Int = 0 {
@@ -60,8 +59,9 @@ class TimeSlotViewModel: ObservableObject {
 		}
 	}
 	
-	init(clientsLoader: ClientsLoader) {
+	init(clientsLoader: ClientsLoader, timeslotPublisher: TimeSlotsPublisher) {
 		self.clientsLoader = clientsLoader
+		self.timeslotPublisher = timeslotPublisher
 
 		isLoading = true
 		clientsLoader.getClients { [weak self] result in
@@ -99,7 +99,7 @@ class TimeSlotViewModel: ObservableObject {
             details: timeSlotDetail,
             total: total)
 
-        dataStore.addTimeSlot(timeSlot: timeSlot) { error in
+        timeslotPublisher.addTimeSlot(timeSlot) { error in
             if error == nil {
                 self.showMessage = "Time logged saved"
                 self.description = ""
