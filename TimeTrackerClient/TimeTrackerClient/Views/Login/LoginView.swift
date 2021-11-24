@@ -9,14 +9,13 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var session: SessionStore
-    @State var username: String = ""
-    @State var password: String = ""
     @ObservedObject var loginVM = LoginViewModel()
 
     var body: some View {
-        ScrollView{
-            ZStack{
+        ScrollView {
+            ZStack {
                 VStack {
+
                     Image("timeTrackerIcon")
                         .resizable()
                         .frame(width: 200, height: 230, alignment: .center)
@@ -29,35 +28,34 @@ struct LoginView: View {
 
                     Spacer()
 
-                    VStack {
-                        Group {
-                            TextField("E-mail", text: $username)
-                                .padding()
-                                .background(Color.cGray)
-                                .cornerRadius(5.0)
-                                .autocapitalization(.none)
-                                .disableAutocorrection(true)
+                    Group {
+                        TextField("E-mail", text: $loginVM.username)
+                            .padding()
+                            .background(Color.cGray)
+                            .cornerRadius(5.0)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
 
-                            SecureField("Password", text: $password)
-                                .padding()
-                                .background(Color.cGray)
-                                .cornerRadius(5.0)
-                        }
-                        .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
-
-                        Spacer()
-
-                        Button("Login", action: {
-                            signIn()
-                        })
-                            .foregroundColor(.white)
-                            .frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
-                            .background(Color.cGreen)
-                            .cornerRadius(5)
-                            .padding(.bottom, 50)
+                        SecureField("Password", text: $loginVM.password)
+                            .padding()
+                            .background(Color.cGray)
+                            .cornerRadius(5.0)
                     }
+                    .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
+                    Spacer()
+                    Button(action: {
+                        signIn()
+                    }) {
+                        Text("Login")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                    .frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
+                    .foregroundColor(.white)
+                    .background(Color.cGreen)
+                    .cornerRadius(5)
+                    .padding(.bottom, 50)
                 }
-                if (loginVM.isLoading){
+                if (loginVM.isLoading) {
                     ProgressIndicator()
                 }
             }
@@ -65,7 +63,7 @@ struct LoginView: View {
     }
 
     func signIn() {
-        session.signIn(email: username, password: password){ _ in }
+        session.signIn(email: loginVM.username, password: loginVM.password){ _ in }
     }
 }
 
