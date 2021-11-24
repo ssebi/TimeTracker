@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-	@EnvironmentObject var session: SessionStore
-	@ObservedObject var loginVM = LoginViewModel()
-	@State var username: String = ""
-	@State var password: String = ""
-
+    @ObservedObject private(set) var viewModel: LoginViewModel
 	var body: some View {
 		ZStack {
 			ScrollView(showsIndicators: false) {
@@ -30,7 +26,7 @@ struct LoginView: View {
 					Spacer()
 
 					Group {
-						TextField("E-mail", text: $username )
+                        TextField("E-mail", text: $viewModel.username)
 							.padding()
 							.background(Color.cGray)
 							.cornerRadius(5.0)
@@ -38,7 +34,7 @@ struct LoginView: View {
 							.autocapitalization(.none)
 							.disableAutocorrection(true)
 
-						SecureField("Password", text: $password)
+                        SecureField("Password", text: $viewModel.password)
 							.padding()
 							.background(Color.cGray)
 							.accentColor(.white)
@@ -48,35 +44,29 @@ struct LoginView: View {
 
 					Spacer()
 					Button(action: {
-						signIn()
+                        viewModel.signIn()
 					}) {
 						Text("Login")
 							.frame(maxWidth: .infinity, alignment: .center)
 					}
 					.frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
 					.foregroundColor(.white)
-					.background(Color.cGreen)
+					.background(Color.blue)
 					.cornerRadius(5)
 					.padding(.bottom, 50)
 				}
 			}
+            .frame(maxWidth: .infinity)
 
-			if loginVM.isLoading {
+			if viewModel.isLoading {
 				ProgressIndicator()
 			}
-		}
-	}
-
-	func signIn() {
-		loginVM.isLoading = true
-		session.signIn(email: username, password: password){ _ in
-			loginVM.isLoading = false
 		}
 	}
 }
 
 struct LoginView_Previews: PreviewProvider {
 	static var previews: some View {
-		LoginView(loginVM: LoginViewModel())
+        LoginView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
 	}
 }
