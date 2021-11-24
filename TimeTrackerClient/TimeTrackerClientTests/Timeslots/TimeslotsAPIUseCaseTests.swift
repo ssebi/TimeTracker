@@ -103,25 +103,4 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 		XCTAssertEqual(receivedErrors?[0], expectedError, file: file, line: line)
 	}
 
-	private class TimeslotsStoreSpy: TimeslotsStore {
-
-		var getTimeslotsCallCount = 0
-
-		private var completions: [GetTimeslotsResult] = []
-
-		func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
-			getTimeslotsCallCount += 1
-			completions.append(completion)
-		}
-
-		func completeGetTimeslots(with error: Error, at index: Int = 0) {
-			completions[index](.failure(error))
-		}
-
-		func completeGetTimeslots(with timeslots: [TimeSlot], at index: Int = 0) {
-			completions[index](.success(timeslots))
-		}
-
-	}
-
 }

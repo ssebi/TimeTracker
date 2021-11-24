@@ -13,7 +13,6 @@
 		545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC627229D1E00811CE3 /* ProjectModel.swift */; };
 		545CCECA27229DF800811CE3 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC927229DF800811CE3 /* ClientModel.swift */; };
 		545CCED82723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */; };
-		545CCEDA2723163300811CE3 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED92723163300811CE3 /* DataStore.swift */; };
 		545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDB2726EB0600811CE3 /* AddView.swift */; };
 		545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDE2727274D00811CE3 /* DatePickerView.swift */; };
 		54A3FC21274E399200E36C92 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A3FC20274E399200E36C92 /* ProgressIndicator.swift */; };
@@ -29,16 +28,12 @@
 		54DB509D2715A2FA00A9700A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		54F983662746887400577AD6 /* TimeSlotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F983652746887400577AD6 /* TimeSlotViewModel.swift */; };
 		54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */; };
-		54FDD3CD273D441B004E93C4 /* ClientsLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FDD3CC273D441B004E93C4 /* ClientsLoaderSpy.swift */; };
-		54FDD3D3273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FDD3D2273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift */; };
-		54FDD3D5273EA9C9004E93C4 /* UserLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FDD3D4273EA9C9004E93C4 /* UserLoaderSpy.swift */; };
 		C61F54AE2743FFED0083E1A4 /* ClientsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54AD2743FFED0083E1A4 /* ClientsLoader.swift */; };
 		C61F54B02744000D0083E1A4 /* TimeSlotsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54AF2744000D0083E1A4 /* TimeSlotsLoader.swift */; };
 		C61F54B2274400180083E1A4 /* TimeSlotsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54B1274400180083E1A4 /* TimeSlotsPublisher.swift */; };
 		C61F54B4274400280083E1A4 /* UserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54B3274400280083E1A4 /* UserLoader.swift */; };
 		C61F54B7274400580083E1A4 /* FirebaseClientsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54B6274400580083E1A4 /* FirebaseClientsLoader.swift */; };
 		C61F54B92744006A0083E1A4 /* FirebaseTimeslotsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54B82744006A0083E1A4 /* FirebaseTimeslotsLoader.swift */; };
-		C61F54BB2744007B0083E1A4 /* FirebaseTimeslotsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54BA2744007B0083E1A4 /* FirebaseTimeslotsPublisher.swift */; };
 		C61F54BD274400960083E1A4 /* FirebaseUserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54BC274400960083E1A4 /* FirebaseUserLoader.swift */; };
 		C61F54BF2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54BE2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift */; };
 		C61F54C12747D8E40083E1A4 /* TimeslotsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54C02747D8E40083E1A4 /* TimeslotsStore.swift */; };
@@ -46,10 +41,13 @@
 		C61F54C52747E5D00083E1A4 /* HomePresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54C42747E5D00083E1A4 /* HomePresentationTests.swift */; };
 		C61F54C8274810810083E1A4 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54C7274810810083E1A4 /* HomeScreenViewModel.swift */; };
 		C61F54CE2748139A0083E1A4 /* HomeScreenUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54CD2748139A0083E1A4 /* HomeScreenUIComposer.swift */; };
-		C64784CC273D0E760086D169 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64784CB273D0E760086D169 /* DataStoreTests.swift */; };
 		C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */; };
 		C64C428F271464B600CFBDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C428E271464B600CFBDEF /* Assets.xcassets */; };
 		C64C4292271464B600CFBDEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C4291271464B600CFBDEF /* Preview Assets.xcassets */; };
+		C65EECCE274E3087006ACD6A /* ClientsAPIUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECCD274E3087006ACD6A /* ClientsAPIUseCaseTests.swift */; };
+		C65EECD0274E409F006ACD6A /* ClientsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECCF274E409F006ACD6A /* ClientsStore.swift */; };
+		C65EECD2274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */; };
+		C65EECD4274E54A9006ACD6A /* TimeslotsStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECD3274E54A9006ACD6A /* TimeslotsStoreSpy.swift */; };
 		C67C26DB274BDC5500124F12 /* TimeslotsLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26DA274BDC5500124F12 /* TimeslotsLoaderSpy.swift */; };
 		C67C26DD274BDC8C00124F12 /* MockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26DC274BDC8C00124F12 /* MockStore.swift */; };
 		C67C26DF274BDCA000124F12 /* UserLoaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26DE274BDCA000124F12 /* UserLoaderMock.swift */; };
@@ -82,7 +80,6 @@
 		545CCEC627229D1E00811CE3 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		545CCEC927229DF800811CE3 /* ClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModel.swift; sourceTree = "<group>"; };
 		545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataStoreEndToEndTests.swift; sourceTree = "<group>"; };
-		545CCED92723163300811CE3 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		545CCEDB2726EB0600811CE3 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		545CCEDE2727274D00811CE3 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		54A3FC20274E399200E36C92 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
@@ -94,16 +91,12 @@
 		54D8EEA92717502900D867F3 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		54D8EEAC271887EF00D867F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		54F983652746887400577AD6 /* TimeSlotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotViewModel.swift; sourceTree = "<group>"; };
-		54FDD3CC273D441B004E93C4 /* ClientsLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsLoaderSpy.swift; sourceTree = "<group>"; };
-		54FDD3D2273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsPublisherSpy.swift; sourceTree = "<group>"; };
-		54FDD3D4273EA9C9004E93C4 /* UserLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoaderSpy.swift; sourceTree = "<group>"; };
 		C61F54AD2743FFED0083E1A4 /* ClientsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsLoader.swift; sourceTree = "<group>"; };
 		C61F54AF2744000D0083E1A4 /* TimeSlotsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsLoader.swift; sourceTree = "<group>"; };
 		C61F54B1274400180083E1A4 /* TimeSlotsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsPublisher.swift; sourceTree = "<group>"; };
 		C61F54B3274400280083E1A4 /* UserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoader.swift; sourceTree = "<group>"; };
 		C61F54B6274400580083E1A4 /* FirebaseClientsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClientsLoader.swift; sourceTree = "<group>"; };
 		C61F54B82744006A0083E1A4 /* FirebaseTimeslotsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTimeslotsLoader.swift; sourceTree = "<group>"; };
-		C61F54BA2744007B0083E1A4 /* FirebaseTimeslotsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTimeslotsPublisher.swift; sourceTree = "<group>"; };
 		C61F54BC274400960083E1A4 /* FirebaseUserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserLoader.swift; sourceTree = "<group>"; };
 		C61F54BE2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsAPIUseCaseTests.swift; sourceTree = "<group>"; };
 		C61F54C02747D8E40083E1A4 /* TimeslotsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsStore.swift; sourceTree = "<group>"; };
@@ -111,11 +104,14 @@
 		C61F54C42747E5D00083E1A4 /* HomePresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresentationTests.swift; sourceTree = "<group>"; };
 		C61F54C7274810810083E1A4 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		C61F54CD2748139A0083E1A4 /* HomeScreenUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenUIComposer.swift; sourceTree = "<group>"; };
-		C64784CB273D0E760086D169 /* DataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTests.swift; sourceTree = "<group>"; };
 		C64C4287271464B300CFBDEF /* TimeTrackerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientApp.swift; sourceTree = "<group>"; };
 		C64C428E271464B600CFBDEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C64C4291271464B600CFBDEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C65EECCD274E3087006ACD6A /* ClientsAPIUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsAPIUseCaseTests.swift; sourceTree = "<group>"; };
+		C65EECCF274E409F006ACD6A /* ClientsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsStore.swift; sourceTree = "<group>"; };
+		C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishTimeslotUseCaseTests.swift; sourceTree = "<group>"; };
+		C65EECD3274E54A9006ACD6A /* TimeslotsStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsStoreSpy.swift; sourceTree = "<group>"; };
 		C67C26DA274BDC5500124F12 /* TimeslotsLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsLoaderSpy.swift; sourceTree = "<group>"; };
 		C67C26DC274BDC8C00124F12 /* MockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStore.swift; sourceTree = "<group>"; };
 		C67C26DE274BDCA000124F12 /* UserLoaderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoaderMock.swift; sourceTree = "<group>"; };
@@ -168,9 +164,9 @@
 		54D2FDD7271747F100C66998 /* TimeTrackerClientTests */ = {
 			isa = PBXGroup;
 			children = (
-				C67C26E2274BDE0600124F12 /* Helpers */,
+				C67C26E2274BDE0600124F12 /* SharedHelpers */,
+				C65EECCC274E306A006ACD6A /* Clients */,
 				C61F54CA274811010083E1A4 /* Timeslots */,
-				C64784CD273D0F4B0086D169 /* DataStore */,
 				C64784C4273CF6170086D169 /* Auth */,
 			);
 			path = TimeTrackerClientTests;
@@ -182,7 +178,6 @@
 				54D8EEAF271887FA00D867F3 /* Models */,
 				C61F54AB2743FFDD0083E1A4 /* DataStore */,
 				C64784C3273CF5EC0086D169 /* Auth */,
-				545CCED92723163300811CE3 /* DataStore.swift */,
 				54D2FDBA2717354800C66998 /* Extensions.swift */,
 				545CCEAA27200FE500811CE3 /* Utils.swift */,
 			);
@@ -208,16 +203,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		54FDD3CB273D43FC004E93C4 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				54FDD3CC273D441B004E93C4 /* ClientsLoaderSpy.swift */,
-				54FDD3D2273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift */,
-				54FDD3D4273EA9C9004E93C4 /* UserLoaderSpy.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		C61F54AB2743FFDD0083E1A4 /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +220,7 @@
 				C61F54B1274400180083E1A4 /* TimeSlotsPublisher.swift */,
 				C61F54B3274400280083E1A4 /* UserLoader.swift */,
 				C61F54C02747D8E40083E1A4 /* TimeslotsStore.swift */,
+				C65EECCF274E409F006ACD6A /* ClientsStore.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -244,7 +230,6 @@
 			children = (
 				C61F54B6274400580083E1A4 /* FirebaseClientsLoader.swift */,
 				C61F54B82744006A0083E1A4 /* FirebaseTimeslotsLoader.swift */,
-				C61F54BA2744007B0083E1A4 /* FirebaseTimeslotsPublisher.swift */,
 				C61F54BC274400960083E1A4 /* FirebaseUserLoader.swift */,
 			);
 			path = Infra;
@@ -273,6 +258,8 @@
 			children = (
 				C67C26D9274BDC4700124F12 /* Helpers */,
 				C61F54BE2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift */,
+				545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */,
+				C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */,
 				C61F54C42747E5D00083E1A4 /* HomePresentationTests.swift */,
 				C61F54C22747DDE10083E1A4 /* FirebaseTimeslotsDataStoreEndToEndTests.swift */,
 			);
@@ -323,16 +310,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		C64784CD273D0F4B0086D169 /* DataStore */ = {
-			isa = PBXGroup;
-			children = (
-				54FDD3CB273D43FC004E93C4 /* Helpers */,
-				545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */,
-				C64784CB273D0E760086D169 /* DataStoreTests.swift */,
-			);
-			path = DataStore;
-			sourceTree = "<group>";
-		};
 		C64C427E271464B300CFBDEF = {
 			isa = PBXGroup;
 			children = (
@@ -376,9 +353,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		C65EECCC274E306A006ACD6A /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				C65EECCD274E3087006ACD6A /* ClientsAPIUseCaseTests.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
 		C67C26D9274BDC4700124F12 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C65EECD3274E54A9006ACD6A /* TimeslotsStoreSpy.swift */,
 				C67C26DA274BDC5500124F12 /* TimeslotsLoaderSpy.swift */,
 				C67C26DC274BDC8C00124F12 /* MockStore.swift */,
 				C67C26DE274BDCA000124F12 /* UserLoaderMock.swift */,
@@ -386,13 +372,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		C67C26E2274BDE0600124F12 /* Helpers */ = {
+		C67C26E2274BDE0600124F12 /* SharedHelpers */ = {
 			isa = PBXGroup;
 			children = (
 				C67C26E0274BDDAF00124F12 /* SharedTestHelpers.swift */,
 				C67C26E3274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift */,
 			);
-			path = Helpers;
+			path = SharedHelpers;
 			sourceTree = "<group>";
 		};
 		C6ACF57827317986006D2C43 /* Time */ = {
@@ -535,18 +521,17 @@
 				C61F54C32747DDE10083E1A4 /* FirebaseTimeslotsDataStoreEndToEndTests.swift in Sources */,
 				C67C26DB274BDC5500124F12 /* TimeslotsLoaderSpy.swift in Sources */,
 				C67C26E4274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
-				54FDD3CD273D441B004E93C4 /* ClientsLoaderSpy.swift in Sources */,
 				C67C26DD274BDC8C00124F12 /* MockStore.swift in Sources */,
-				54FDD3D5273EA9C9004E93C4 /* UserLoaderSpy.swift in Sources */,
 				54D2FDD9271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift in Sources */,
-				C64784CC273D0E760086D169 /* DataStoreTests.swift in Sources */,
 				C69C857B273BD3DE0089242C /* AuthProviderSpy.swift in Sources */,
 				C67C26E1274BDDAF00124F12 /* SharedTestHelpers.swift in Sources */,
 				C61F54BF2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift in Sources */,
+				C65EECD2274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift in Sources */,
 				C61F54C52747E5D00083E1A4 /* HomePresentationTests.swift in Sources */,
 				C67C26DF274BDCA000124F12 /* UserLoaderMock.swift in Sources */,
-				54FDD3D3273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift in Sources */,
 				545CCED82723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift in Sources */,
+				C65EECD4274E54A9006ACD6A /* TimeslotsStoreSpy.swift in Sources */,
+				C65EECCE274E3087006ACD6A /* ClientsAPIUseCaseTests.swift in Sources */,
 				C6DA42EC27356C4400D44D80 /* AuthenticationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,9 +554,9 @@
 				C61F54B02744000D0083E1A4 /* TimeSlotsLoader.swift in Sources */,
 				54D8EEAD271887EF00D867F3 /* UserModel.swift in Sources */,
 				C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */,
+				C65EECD0274E409F006ACD6A /* ClientsStore.swift in Sources */,
 				C61F54B4274400280083E1A4 /* UserLoader.swift in Sources */,
 				C61F54B7274400580083E1A4 /* FirebaseClientsLoader.swift in Sources */,
-				545CCEDA2723163300811CE3 /* DataStore.swift in Sources */,
 				545CCEAB27200FE500811CE3 /* Utils.swift in Sources */,
 				545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */,
 				545CCECA27229DF800811CE3 /* ClientModel.swift in Sources */,

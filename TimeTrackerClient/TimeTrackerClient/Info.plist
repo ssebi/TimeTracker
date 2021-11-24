@@ -29,6 +29,8 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>FirebaseAppDelegateProxyEnabled </key>
+	<false/>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UILaunchScreen</key>

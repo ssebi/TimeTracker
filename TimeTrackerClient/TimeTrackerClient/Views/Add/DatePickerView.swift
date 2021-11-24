@@ -10,20 +10,20 @@ import SwiftUI
 struct DatePickerView: View {
     @Binding var startEndDate: StartEndDate
     @Binding var timeInterval: DateComponents
-    @State var timeSlotVM: TimeSlotViewModel
+    @State var dateRange: ClosedRange<Date>
     
     var body: some View {
         VStack {
             DatePicker(
                 "Start",
                 selection: $startEndDate.start,
-                in: timeSlotVM.dateRange,
+                in: dateRange,
                 displayedComponents: [.date, .hourAndMinute]
             )
             DatePicker(
                 "End",
                 selection: $startEndDate.end,
-                in: timeSlotVM.dateRange,
+                in: dateRange,
                 displayedComponents: [.date, .hourAndMinute]
             )
             HStack{
@@ -38,6 +38,7 @@ struct DatePicker_Previews: PreviewProvider {
     static var previews: some View {
         DatePickerView(startEndDate: .constant(StartEndDate(start: Date(), end: Date())),
                        timeInterval: .constant(DateComponents()),
-					   timeSlotVM: TimeSlotViewModel(clientsLoader: FirebaseClientsLoader()))
+					   dateRange: Date()...Date().addingTimeInterval(3600))
+			.previewLayout(.sizeThatFits)
     }
 }

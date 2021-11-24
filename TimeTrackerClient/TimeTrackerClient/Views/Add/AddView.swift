@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct AddView: View {
-	@EnvironmentObject var session: SessionStore
-	@EnvironmentObject var dataStore: DataStore
-	@ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: FirebaseClientsLoader())
+	// TODO: - Move ViewModel initialization in a factory method
+	@ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()),
+													   timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()),
+													   userLoader: FirebaseUserLoader())
 
 	var body: some View {
 		ScrollView(showsIndicators: false) {
@@ -44,7 +45,7 @@ struct AddView: View {
 				DatePickerView(
 					startEndDate: $timeSlotVM.startEndDate,
 					timeInterval: $timeSlotVM.timeInterval,
-					timeSlotVM: timeSlotVM
+					dateRange: timeSlotVM.dateRange
 				)
 					.padding()
 
@@ -73,10 +74,9 @@ struct AddView: View {
 	}
 
 	func addTimeSlot() {
-		let userId = session.user?.uid ?? ""
 		let clientId = timeSlotVM.selectedClient
 		let projectId = timeSlotVM.selectedProject
-		timeSlotVM.addTimeSlot(for: userId, clientId: clientId, projectId: projectId )
+		timeSlotVM.addTimeSlot(clientId: clientId, projectId: projectId )
 	}
 }
 
