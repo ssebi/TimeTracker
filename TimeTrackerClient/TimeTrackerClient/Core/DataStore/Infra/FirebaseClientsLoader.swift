@@ -1,9 +1,11 @@
 
 import Firebase
 
-class FirebaseClientsLoader: ClientsLoader {
+class FirebaseClientsStore: ClientsStore {
+
 	struct UndefinedError: Error { }
-	func getClients(completion: @escaping ClientsLoader.Result) {
+
+	func getClients(completion: @escaping ClientsStore.GetClientsResult) {
 		Firestore.firestore().collection(Path.clients).addSnapshotListener { snapshot, error in
 			if let snapshot = snapshot {
 				let clients = snapshot.documents.compactMap { document -> Client? in
@@ -26,4 +28,5 @@ class FirebaseClientsLoader: ClientsLoader {
 			}
 		}
 	}
+
 }
