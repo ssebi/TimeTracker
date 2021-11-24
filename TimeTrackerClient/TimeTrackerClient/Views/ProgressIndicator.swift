@@ -16,15 +16,15 @@ struct ProgressIndicator: View {
 
         ZStack {
             Circle()
-                .stroke(lineWidth: 10)
+                .stroke(lineWidth: 4)
                 .fill(Color.init(red: 0.96, green: 0.96, blue: 0.96))
-                .frame(width: 150, height: 150)
+                .frame(width: 40, height: 40)
 
             Circle()
                 .trim(from: animateStart ? 1/3 : 1/9, to: animateEnd ? 2/5 : 1)
-                .stroke(lineWidth: 10)
+                .stroke(lineWidth: 4)
                 .rotationEffect(.degrees(isCircleRotating ? 360 : 0))
-                .frame(width: 150, height: 150)
+                .frame(width: 40, height: 40)
                 .foregroundColor(Color.blue)
                 .onAppear() {
                     withAnimation(Animation
