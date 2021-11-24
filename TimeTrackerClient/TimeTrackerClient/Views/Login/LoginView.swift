@@ -60,7 +60,7 @@ struct LoginView: View {
                         }
                         .frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
                         .foregroundColor(.white)
-                        .background(Color.blue)
+                        .background(LinearGradient.loginButton)
                         .cornerRadius(5)
                         .padding(.bottom, 50)
                     }

@@ -30,3 +30,9 @@ struct Path {
     static let clients = "Clients"
     static let timeSlot = "timeSlots"
 }
+
+extension LinearGradient {
+    static let loginButton = LinearGradient(gradient: Gradient(colors: [Color.caribeanGreen, Color.cBlue]),
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing)
+}
