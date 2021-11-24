@@ -53,13 +53,9 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 		let (sut, store) = makeSUT()
 		var receivedError: Error?
 
-		let exp = expectation(description: "Wait for completion")
-		sut.addTimeSlot(timeSlot: someTimeSlot) { error in
-			receivedError = error
-			exp.fulfill()
+		receivedError = resultFor(sut: sut, addTimeSlot: someTimeSlot) {
+			store.completeAddTimeSlots(with: someError)
 		}
-		store.completeAddTimeSlots(with: someError)
-		wait(for: [exp], timeout: 0.1)
 
 		XCTAssertNotNil(receivedError)
 		XCTAssertEqual(someError.domain, (receivedError as NSError?)?.domain)
@@ -70,13 +66,9 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 		let (sut, store) = makeSUT()
 		var receivedError: Error?
 
-		let exp = expectation(description: "Wait for completion")
-		sut.addTimeSlot(timeSlot: someTimeSlot) { error in
-			receivedError = error
-			exp.fulfill()
+		receivedError = resultFor(sut: sut, addTimeSlot: someTimeSlot) {
+			store.completeAddTimeSlotsWithSuccess()
 		}
-		store.completeAddTimeSlotsWithSuccess()
-		wait(for: [exp], timeout: 0.1)
 
 		XCTAssertNil(receivedError)
 	}
@@ -88,6 +80,18 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 		let sut = RemoteTimeSlotsPublisher(store: store)
 
 		return (sut, store)
+	}
+
+	private func resultFor(sut: RemoteTimeSlotsPublisher, addTimeSlot timeSlot: TimeSlot, when action: () -> Void) -> Error? {
+		let exp = expectation(description: "Wait for completion")
+		var receivedResult: Error?
+		sut.addTimeSlot(timeSlot: timeSlot) { result in
+			receivedResult = result
+			exp.fulfill()
+		}
+		action()
+		wait(for: [exp], timeout: 0.1)
+		return receivedResult
 	}
 
 	private lazy var someError = NSError(domain: "Test", code: 0)
