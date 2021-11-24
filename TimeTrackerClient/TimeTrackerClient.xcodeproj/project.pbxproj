@@ -49,6 +49,7 @@
 		C65EECCE274E3087006ACD6A /* ClientsAPIUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECCD274E3087006ACD6A /* ClientsAPIUseCaseTests.swift */; };
 		C65EECD0274E409F006ACD6A /* ClientsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECCF274E409F006ACD6A /* ClientsStore.swift */; };
 		C65EECD2274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */; };
+		C65EECD4274E54A9006ACD6A /* TimeslotsStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECD3274E54A9006ACD6A /* TimeslotsStoreSpy.swift */; };
 		C67C26DB274BDC5500124F12 /* TimeslotsLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26DA274BDC5500124F12 /* TimeslotsLoaderSpy.swift */; };
 		C67C26DD274BDC8C00124F12 /* MockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26DC274BDC8C00124F12 /* MockStore.swift */; };
 		C67C26DF274BDCA000124F12 /* UserLoaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26DE274BDCA000124F12 /* UserLoaderMock.swift */; };
@@ -114,6 +115,7 @@
 		C65EECCD274E3087006ACD6A /* ClientsAPIUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsAPIUseCaseTests.swift; sourceTree = "<group>"; };
 		C65EECCF274E409F006ACD6A /* ClientsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsStore.swift; sourceTree = "<group>"; };
 		C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishTimeslotUseCaseTests.swift; sourceTree = "<group>"; };
+		C65EECD3274E54A9006ACD6A /* TimeslotsStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsStoreSpy.swift; sourceTree = "<group>"; };
 		C67C26DA274BDC5500124F12 /* TimeslotsLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsLoaderSpy.swift; sourceTree = "<group>"; };
 		C67C26DC274BDC8C00124F12 /* MockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStore.swift; sourceTree = "<group>"; };
 		C67C26DE274BDCA000124F12 /* UserLoaderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoaderMock.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 			children = (
 				C67C26E0274BDDAF00124F12 /* SharedTestHelpers.swift */,
 				C67C26E3274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift */,
+				C65EECD3274E54A9006ACD6A /* TimeslotsStoreSpy.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				C67C26DF274BDCA000124F12 /* UserLoaderMock.swift in Sources */,
 				54FDD3D3273E8EDF004E93C4 /* TimeSlotsPublisherSpy.swift in Sources */,
 				545CCED82723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift in Sources */,
+				C65EECD4274E54A9006ACD6A /* TimeslotsStoreSpy.swift in Sources */,
 				C65EECCE274E3087006ACD6A /* ClientsAPIUseCaseTests.swift in Sources */,
 				C6DA42EC27356C4400D44D80 /* AuthenticationTests.swift in Sources */,
 			);

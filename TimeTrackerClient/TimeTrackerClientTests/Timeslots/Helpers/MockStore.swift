@@ -8,7 +8,7 @@ class MockStore: TimeslotsStore {
 	}
 
 	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
-		
+		completion(nil)
 	}
 	
 }
