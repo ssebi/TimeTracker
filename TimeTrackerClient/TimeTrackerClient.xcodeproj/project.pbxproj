@@ -15,6 +15,7 @@
 		545CCED82723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */; };
 		545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDB2726EB0600811CE3 /* AddView.swift */; };
 		545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDE2727274D00811CE3 /* DatePickerView.swift */; };
+		54A3FC21274E399200E36C92 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A3FC20274E399200E36C92 /* ProgressIndicator.swift */; };
 		54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB62717234F00C66998 /* GoogleService-Info.plist */; };
 		54D2FDBC2717354800C66998 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBA2717354800C66998 /* Extensions.swift */; };
 		54D2FDD9271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDD8271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift */; };
@@ -80,6 +81,7 @@
 		545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataStoreEndToEndTests.swift; sourceTree = "<group>"; };
 		545CCEDB2726EB0600811CE3 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		545CCEDE2727274D00811CE3 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		54A3FC20274E399200E36C92 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		54D2FDB62717234F00C66998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54D2FDBA2717354800C66998 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = TimeTrackerClient/Core/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		54D2FDD6271747F100C66998 /* TimeTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +151,7 @@
 		543DD550272AB3D700D426FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				54A3FC20274E399200E36C92 /* ProgressIndicator.swift */,
 				C6ACF57827317986006D2C43 /* Time */,
 				C6DA42E52732DB5500D44D80 /* Add */,
 				C6DA42E62732DB9E00D44D80 /* Login */,
@@ -537,6 +540,7 @@
 				C61F54C12747D8E40083E1A4 /* TimeslotsStore.swift in Sources */,
 				545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */,
 				C61F54CE2748139A0083E1A4 /* HomeScreenUIComposer.swift in Sources */,
+				54A3FC21274E399200E36C92 /* ProgressIndicator.swift in Sources */,
 				545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */,
 				54F983662746887400577AD6 /* TimeSlotViewModel.swift in Sources */,
 				54DB509D2715A2FA00A9700A /* (null) in Sources */,
