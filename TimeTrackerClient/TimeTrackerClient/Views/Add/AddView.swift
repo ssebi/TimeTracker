@@ -14,7 +14,7 @@ struct AddView: View {
 													   userLoader: FirebaseUserLoader())
 
 	var body: some View {
-		ScrollView {
+		ScrollView(showsIndicators: false) {
 			VStack {
 				Text(Date(), style: .date)
 					.padding()
@@ -27,7 +27,7 @@ struct AddView: View {
 								Text(timeSlotVM.clientsNames[index])
 							}
 						}
-						.pickerStyle(SegmentedPickerStyle())
+						.pickerStyle(MenuPickerStyle())
 
 						Picker(selection: $timeSlotVM.selectedProject, label: Text("")){
 							ForEach(0 ..< timeSlotVM.projectNames.count) { index in
@@ -35,7 +35,7 @@ struct AddView: View {
 							}
 						}
 						.id(timeSlotVM.id)
-						.pickerStyle(SegmentedPickerStyle())
+						.pickerStyle(MenuPickerStyle())
 					}
 					.labelsHidden()
 				}
