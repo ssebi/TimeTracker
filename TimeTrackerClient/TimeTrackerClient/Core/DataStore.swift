@@ -14,15 +14,15 @@ class DataStore: ObservableObject {
 	private let userLoader: UserLoader
 
 	init(
-		timeslotsPublisher: TimeSlotsPublisher = FirebaseTimeslotsPublisher(),
+		timeslotsPublisher: TimeSlotsPublisher = RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()),
 		userLoader: UserLoader = FirebaseUserLoader()
 	) {
 		self.timeslotsPublisher = timeslotsPublisher
 		self.userLoader = userLoader
 	}
 
-    func addTimeSlot(timeSlot: TimeSlot, to path: String, completion: @escaping TimeSlotsPublisher.Result) {
-        timeslotsPublisher.addTimeSlots(timeSlot: timeSlot, to: path, completion: completion)
+    func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
+        timeslotsPublisher.addTimeSlot(timeSlot, completion: completion)
 	}
 
 	func getUser() -> User {

@@ -23,7 +23,6 @@ class TimeSlotViewModel: ObservableObject {
         calendar.date(from: endComponents)!
     }()
 
-    private var path = "timeSlots"
     var dataStore = DataStore()
 
 	let clientsLoader: ClientsLoader
@@ -100,8 +99,8 @@ class TimeSlotViewModel: ObservableObject {
             details: timeSlotDetail,
             total: total)
 
-        dataStore.addTimeSlot(timeSlot: timeSlot, to: path) { result in
-            if case .success(_) = result {
+        dataStore.addTimeSlot(timeSlot: timeSlot) { error in
+            if error == nil {
                 self.showMessage = "Time logged saved"
                 self.description = ""
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
