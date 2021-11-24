@@ -2,7 +2,11 @@
 import XCTest
 import TimeTrackerClient
 
-class TimeslotsStoreSpy {
+private protocol TimeslotsStore {
+	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void)
+}
+
+private class TimeslotsStoreSpy: TimeslotsStore {
 	var addTimeslotsCallCount: Int {
 		completions.count
 	}
@@ -21,8 +25,15 @@ class TimeslotsStoreSpy {
 	}
 }
 
-class RemoteTimeSlotsPublisher {
-	let store: TimeslotsStoreSpy
+private protocol TimeSlotsPublisher {
+	var store: TimeslotsStore { get }
+
+	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void)
+}
+
+
+private class RemoteTimeSlotsPublisher: TimeSlotsPublisher {
+	let store: TimeslotsStore
 
 	init(store: TimeslotsStoreSpy) {
 		self.store = store
@@ -75,14 +86,14 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 
 	// MARK: - Helpers
 
-	private func makeSUT() -> (RemoteTimeSlotsPublisher, TimeslotsStoreSpy) {
+	private func makeSUT() -> (TimeSlotsPublisher, TimeslotsStoreSpy) {
 		let store = TimeslotsStoreSpy()
 		let sut = RemoteTimeSlotsPublisher(store: store)
 
 		return (sut, store)
 	}
 
-	private func resultFor(sut: RemoteTimeSlotsPublisher, addTimeSlot timeSlot: TimeSlot, when action: () -> Void) -> Error? {
+	private func resultFor(sut: TimeSlotsPublisher, addTimeSlot timeSlot: TimeSlot, when action: () -> Void) -> Error? {
 		let exp = expectation(description: "Wait for completion")
 		var receivedResult: Error?
 		sut.addTimeSlot(timeSlot: timeSlot) { result in
