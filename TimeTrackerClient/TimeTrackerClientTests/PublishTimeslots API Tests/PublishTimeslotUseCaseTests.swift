@@ -1,6 +1,6 @@
 
 import XCTest
-@testable import TimeTrackerClient
+import TimeTrackerClient
 
 class PublishTimeslotUseCaseTests: XCTestCase {
 
@@ -23,12 +23,12 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 		var receivedError: Error?
 
 		receivedError = resultFor(sut: sut, addTimeSlot: someTimeSlot) {
-			store.completeAddTimeSlots(with: someError)
+			store.completeAddTimeSlots(with: anyError)
 		}
 
 		XCTAssertNotNil(receivedError)
-		XCTAssertEqual(someError.domain, (receivedError as NSError?)?.domain)
-		XCTAssertEqual(someError.code, (receivedError as NSError?)?.code)
+		XCTAssertEqual(anyError.domain, (receivedError as NSError?)?.domain)
+		XCTAssertEqual(anyError.code, (receivedError as NSError?)?.code)
 	}
 
 	func test_addTimeSlot_deliversSuccessOnPublisherSuccess() throws {
@@ -44,9 +44,12 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 
 	// MARK: - Helpers
 
-	private func makeSUT() -> (TimeSlotsPublisher, TimeslotsStoreSpy) {
+	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (TimeSlotsPublisher, TimeslotsStoreSpy) {
 		let store = TimeslotsStoreSpy()
 		let sut = RemoteTimeSlotsPublisher(store: store)
+
+		trackForMemoryLeaks(store, file: file, line: line)
+		trackForMemoryLeaks(sut, file: file, line: line)
 
 		return (sut, store)
 	}
@@ -63,7 +66,14 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 		return receivedResult
 	}
 
-	private lazy var someError = NSError(domain: "Test", code: 0)
-    private lazy var someTimeSlot = TimeSlot(id: "1234", userId: "xxx", clientName: "Client Name", projectName: "Projet Name", date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: "description"), total: 1)
+	private lazy var someTimeSlot = TimeSlot(id: "1234",
+											 userId: "xxx",
+											 clientName: "someClient",
+											 projectName: "someProject",
+											 date: Date(),
+											 details: TimeSlotDetails(start: Date(),
+																	  end: Date(),
+																	  description: "description"),
+											 total: 1)
 
 }

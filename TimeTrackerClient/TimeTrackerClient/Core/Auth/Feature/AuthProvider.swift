@@ -5,7 +5,7 @@
 //  Created by VSebastian on 10.11.2021.
 //
 
-protocol AuthProvider {
+public protocol AuthProvider {
 	typealias SesionStoreResult = (Result<User?, Error>) -> Void
 
 	func checkAuthState() -> User?

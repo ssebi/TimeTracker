@@ -87,6 +87,8 @@ struct AddView: View {
                                         .font(.subheadline))
                 .navigationTitle("Add work log")
             }
+            .offset(y: -keyboardResponder.currentHeight*0.5)
+
         }
         .padding()
     }

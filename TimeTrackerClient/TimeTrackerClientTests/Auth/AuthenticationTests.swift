@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import TimeTrackerClient
+import TimeTrackerClient
 
 class AuthenticationTests: XCTestCase {
 
@@ -108,10 +108,10 @@ class AuthenticationTests: XCTestCase {
 	private func makeSut(user: User? = nil, file: StaticString = #filePath, line: UInt = #line) -> (AuthProviderSpy, SessionStore) {
 		let spy = AuthProviderSpy(user: user)
 		let sut = SessionStore(authProvider: spy)
-		addTeardownBlock { [weak spy, weak sut] in
-			XCTAssertNil(spy, file: file, line: line)
-			XCTAssertNil(sut, file: file, line: line)
-		}
+
+		trackForMemoryLeaks(spy, file: file, line: line)
+		trackForMemoryLeaks(sut, file: file, line: line)
+
 		return (spy, sut)
 	}
 

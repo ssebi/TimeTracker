@@ -1,29 +1,6 @@
 
 import XCTest
-@testable import TimeTrackerClient
-
-
-private class ClientsStoreSpy: ClientsStore {
-
-	var getClientsCallCount: Int {
-		completions.count
-	}
-
-	private var completions: [GetClientsResult] = []
-
-	func getClients(completion: @escaping GetClientsResult) {
-		completions.append(completion)
-	}
-
-	func completeGetClients(with error: Error, at index: Int = 0) {
-		completions[index](.failure(error))
-	}
-
-	func completeGetClients(with clients: [Client], at index: Int = 0) {
-		completions[index](.success(clients))
-	}
-
-}
+import TimeTrackerClient
 
 class ClientsAPIUseCaseTests: XCTestCase {
 
@@ -45,15 +22,15 @@ class ClientsAPIUseCaseTests: XCTestCase {
 		let (sut, store) = makeSUT()
 
 		let receivedResult = resultFor(sut: sut) {
-			store.completeGetClients(with: someError)
+			store.completeGetClients(with: anyError)
 		}
 
 		switch receivedResult {
 			case .success:
 				XCTFail()
 			case .failure(let error):
-				XCTAssertEqual(someError.domain, (error as NSError).domain)
-				XCTAssertEqual(someError.code, (error as NSError).code)
+				XCTAssertEqual(anyError.domain, (error as NSError).domain)
+				XCTAssertEqual(anyError.code, (error as NSError).code)
 		}
 	}
 
@@ -73,9 +50,12 @@ class ClientsAPIUseCaseTests: XCTestCase {
 
 	// MARK: - Helpers
 
-	private func makeSUT() -> (ClientsLoader, ClientsStoreSpy) {
+	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoader, ClientsStoreSpy) {
 		let store = ClientsStoreSpy()
 		let sut = RemoteClientsLoader(store: store)
+
+		trackForMemoryLeaks(store, file: file, line: line)
+		trackForMemoryLeaks(sut, file: file, line: line)
 
 		return (sut, store)
 	}
@@ -92,6 +72,24 @@ class ClientsAPIUseCaseTests: XCTestCase {
 		return receivedResult!
 	}
 
-	private lazy var someError = NSError(domain: "Test", code: 0)
+	private class ClientsStoreSpy: ClientsStore {
+		var getClientsCallCount: Int {
+			completions.count
+		}
+
+		private var completions: [GetClientsResult] = []
+
+		func getClients(completion: @escaping GetClientsResult) {
+			completions.append(completion)
+		}
+
+		func completeGetClients(with error: Error, at index: Int = 0) {
+			completions[index](.failure(error))
+		}
+
+		func completeGetClients(with clients: [Client], at index: Int = 0) {
+			completions[index](.success(clients))
+		}
+	}
 
 }

@@ -26,6 +26,9 @@
                   Identifier = "AuthenticationTests">
                </Test>
                <Test
+                  Identifier = "ClientsAPIUseCaseTests">
+               </Test>
+               <Test
                   Identifier = "DataStoreTests">
                </Test>
                <Test
@@ -33,6 +36,15 @@
                </Test>
                <Test
                   Identifier = "FirebaseDataStoreIntegrationTests">
+               </Test>
+               <Test
+                  Identifier = "HomePresentationTests">
+               </Test>
+               <Test
+                  Identifier = "PublishTimeslotUseCaseTests">
+               </Test>
+               <Test
+                  Identifier = "TimeslotsUseCaseTests">
                </Test>
             </SkippedTests>
          </TestableReference>
