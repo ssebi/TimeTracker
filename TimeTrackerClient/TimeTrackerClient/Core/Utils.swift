@@ -16,7 +16,7 @@ struct AddButton: ButtonStyle {
             .background(LinearGradient.gradientButton)
             .foregroundColor(.white)
             .cornerRadius(5)
-            .font(.largeTitle .bold())
+            .font(Font.custom("Avenir-Next", size: 30))
     }
 }
 
