@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 struct HomeView: View {
 	@EnvironmentObject var session: SessionStore
+    @State private var showConfirmation = false
 
 	@ObservedObject private(set) var viewModel: HomeScreenViewModel
 
@@ -25,7 +26,7 @@ struct HomeView: View {
 				leading:
 					Button(
 						action: {
-							session.signOut()
+                            showConfirmation = true
 						},
 						label: {
 							Image(systemName: "power")
@@ -45,7 +46,17 @@ struct HomeView: View {
 									.font(.system(size: 30))
 							}
 						})
-			)
+            ).alert(isPresented: $showConfirmation){
+                Alert(
+                    title: Text("Log out"),
+                    message: Text("Are you sure you want to log out?"),
+                    primaryButton: .destructive(Text("Yes"), action: {
+                        session.signOut()
+                    }),
+                    secondaryButton: .cancel(Text("Cancel"), action: {
+                    })
+                )
+            }
 			.navigationTitle("Time Logged")
 		}
 	}
