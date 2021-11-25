@@ -10,27 +10,44 @@ import SwiftUI
 struct DatePickerView: View {
     @Binding var startEndDate: StartEndDate
     @Binding var timeInterval: DateComponents
-    @State var timeSlotVM: TimeSlotViewModel
+    @State var dateRange: ClosedRange<Date>
     
     var body: some View {
         VStack {
+            Text("Start time")
+
             DatePicker(
-                "Start",
+                "",
                 selection: $startEndDate.start,
-                in: timeSlotVM.dateRange,
+                in: dateRange,
                 displayedComponents: [.date, .hourAndMinute]
-            )
+            ).datePickerStyle(.wheel)
+                .frame(height: 100)
+                .clipped()
+                .labelsHidden()
+                .padding(.bottom)
+
+            Text("End time")
+
             DatePicker(
-                "End",
+                "",
                 selection: $startEndDate.end,
-                in: timeSlotVM.dateRange,
+                in: dateRange,
                 displayedComponents: [.date, .hourAndMinute]
-            )
+            ).datePickerStyle(.wheel)
+                .frame(height: 100)
+                .clipped()
+                .labelsHidden()
+
             HStack{
-                Text("Total h:\(timeInterval.hour ?? 0)  - m:\(timeInterval.minute ?? 0)")
+                Text("Total duration")
                 Spacer()
+                Text("\(timeInterval.hour ?? 0) h: \(timeInterval.minute ?? 0) m")
+                    .font(Font.custom("Avenir-Next", size: 25))
             }
-        }
+            .padding(.top)
+
+        }.font(Font.custom("Avenir-Light", size: 20))
     }
 }
 
@@ -38,6 +55,7 @@ struct DatePicker_Previews: PreviewProvider {
     static var previews: some View {
         DatePickerView(startEndDate: .constant(StartEndDate(start: Date(), end: Date())),
                        timeInterval: .constant(DateComponents()),
-					   timeSlotVM: TimeSlotViewModel(clientsLoader: FirebaseClientsLoader()))
+					   dateRange: Date()...Date().addingTimeInterval(3600))
+			.previewLayout(.sizeThatFits)
     }
 }

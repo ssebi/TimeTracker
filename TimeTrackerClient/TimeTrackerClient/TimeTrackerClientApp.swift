@@ -13,7 +13,6 @@ struct TimeTrackerClientApp: App {
 
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 	@StateObject var sessionStore = SessionStore(authProvider: FirebaseAuthProvider())
-	@StateObject var dataStore = DataStore()
 
 	private var remoteTimeslotsLoader: TimeslotsLoader {
 		RemoteTimeslotsLoader(store: FirebaseTimeslotsStore())
@@ -25,11 +24,10 @@ struct TimeTrackerClientApp: App {
 				if sessionStore.user != nil {
 					HomeScreenUIComposer.makeHomeScreen(timeslotsLoader: remoteTimeslotsLoader, userLoader: FirebaseUserLoader())
 				} else {
-					LoginView()
+                    LoginView(viewModel: LoginViewModel(session: sessionStore))
 				}
 			}
 			.environmentObject(sessionStore)
-			.environmentObject(dataStore)
 		}
 	}
 

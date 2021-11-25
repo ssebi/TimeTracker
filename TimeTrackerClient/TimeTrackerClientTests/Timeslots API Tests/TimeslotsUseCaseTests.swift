@@ -2,7 +2,7 @@
 import XCTest
 import TimeTrackerClient
 
-class TimeslotsAPIUseCaseTests: XCTestCase {
+class TimeslotsUseCaseTests: XCTestCase {
 
 	func test_init_doesNotMessageStore() {
 		let (store, _) = makeSUT()
@@ -101,27 +101,6 @@ class TimeslotsAPIUseCaseTests: XCTestCase {
 
 		XCTAssertEqual(receivedErrors?.count, 1)
 		XCTAssertEqual(receivedErrors?[0], expectedError, file: file, line: line)
-	}
-
-	private class TimeslotsStoreSpy: TimeslotsStore {
-
-		var getTimeslotsCallCount = 0
-
-		private var completions: [GetTimeslotsResult] = []
-
-		func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
-			getTimeslotsCallCount += 1
-			completions.append(completion)
-		}
-
-		func completeGetTimeslots(with error: Error, at index: Int = 0) {
-			completions[index](.failure(error))
-		}
-
-		func completeGetTimeslots(with timeslots: [TimeSlot], at index: Int = 0) {
-			completions[index](.success(timeslots))
-		}
-
 	}
 
 }

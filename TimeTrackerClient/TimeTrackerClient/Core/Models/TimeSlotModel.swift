@@ -10,17 +10,17 @@ import Foundation
 public struct TimeSlot: Identifiable, Codable {
     public var id: String?
     var userId: String
-    var clientId: Int
-    var projectId: Int
+    var clientName: String
+    var projectName: String
     var date: Date
     var details: TimeSlotDetails
     var total: Int
 
-    public init(id: String, userId: String, clientId: Int, projectId: Int, date: Date, details: TimeSlotDetails, total: Int) {
+    public init(id: String, userId: String, clientName: String, projectName: String, date: Date, details: TimeSlotDetails, total: Int) {
         self.id = id
         self.userId = userId
-        self.clientId = clientId
-        self.projectId = projectId
+        self.clientName = clientName
+        self.projectName = projectName
         self.date = date
         self.details = details
         self.total = total
@@ -31,8 +31,8 @@ extension TimeSlot: Equatable {
     public static func == (lhs: TimeSlot, rhs: TimeSlot) -> Bool {
         lhs.id == rhs.id &&
         lhs.userId == rhs.userId &&
-        lhs.clientId == rhs.clientId &&
-        lhs.projectId == rhs.projectId &&
+        lhs.clientName == rhs.clientName &&
+        lhs.projectName == rhs.projectName &&
         lhs.date == rhs.date &&
         lhs.details == rhs.details &&
         lhs.total == rhs.total 

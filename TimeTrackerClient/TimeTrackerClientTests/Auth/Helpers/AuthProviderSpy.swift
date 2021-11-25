@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import TimeTrackerClient
+import TimeTrackerClient
 
 class AuthProviderSpy: AuthProvider {
 	struct NoUser: Error {}

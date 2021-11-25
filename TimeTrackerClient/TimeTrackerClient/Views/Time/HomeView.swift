@@ -10,21 +10,23 @@ import FirebaseFirestore
 
 struct HomeView: View {
 	@EnvironmentObject var session: SessionStore
+    @State private var showConfirmation = false
 
 	@ObservedObject private(set) var viewModel: HomeScreenViewModel
 
 	var body: some View {
 		NavigationView {
-			List(viewModel.timeslots) { timeslot in
-				ProjectView(timeslot: timeslot)
-			}
-			.listStyle(InsetListStyle())
-			.padding()
+            ScrollView{
+                ForEach(viewModel.timeslots) { timeslot in
+                    ProjectView(timeslot: timeslot)
+                        .padding([.trailing, .leading, .top])
+                }
+            }
 			.navigationBarItems(
 				leading:
 					Button(
 						action: {
-							session.signOut()
+                            showConfirmation = true
 						},
 						label: {
 							Image(systemName: "power")
@@ -40,11 +42,21 @@ struct HomeView: View {
 									AddView()
 							) {
 								Image(systemName: "plus.rectangle.fill")
-									.foregroundColor(.cGreen)
+                                    .gradientForeground(colors: [.caribeanGreen, .cBlue])
 									.font(.system(size: 30))
 							}
 						})
-			)
+            ).alert(isPresented: $showConfirmation){
+                Alert(
+                    title: Text("Log out"),
+                    message: Text("Are you sure you want to log out?"),
+                    primaryButton: .destructive(Text("Yes"), action: {
+                        session.signOut()
+                    }),
+                    secondaryButton: .cancel(Text("Cancel"), action: {
+                    })
+                )
+            }
 			.navigationTitle("Time Logged")
 		}
 	}
@@ -65,6 +77,9 @@ struct HomeView_Previews: PreviewProvider {
 	private class MockStore: TimeslotsStore {
 		func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
 			completion(.success(uniqueTimeslots))
+		}
+		func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
+			completion(nil)
 		}
 	}
 
@@ -95,8 +110,8 @@ var uniqueTimeslots: [TimeSlot] = {
 var uniqueTimeslot: TimeSlot = {
 	TimeSlot(id: UUID().uuidString,
 			 userId: UUID().uuidString,
-			 clientId: Int.random(in: 0...100),
-			 projectId: Int.random(in: 0...100),
+			 clientName: "Some clinet",
+			 projectName: "Some project",
 			 date: Date(),
 			 details:
 				TimeSlotDetails(

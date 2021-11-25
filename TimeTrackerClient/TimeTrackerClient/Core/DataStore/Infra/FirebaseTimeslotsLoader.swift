@@ -25,6 +25,26 @@ class FirebaseTimeslotsStore: TimeslotsStore {
 			}
 	}
 
+	func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
+		var data: [String: Any] = [:]
+		do{
+			let jsonEncoder = JSONEncoder()
+			jsonEncoder.dateEncodingStrategy = .iso8601
+			let encodedJson = try jsonEncoder.encode(timeSlot)
+			data = try JSONSerialization.jsonObject(with: encodedJson) as! [String : Any]
+		} catch {
+			completion(error)
+		}
+
+		Firestore.firestore().collection("timeSlots").document().setData(data) { error in
+			if error != nil {
+				completion(error!)
+				return
+			}
+			completion(nil)
+		}
+	}
+
 }
 
 private extension Sequence where Element == FirebaseTimeSlot {
@@ -33,8 +53,8 @@ private extension Sequence where Element == FirebaseTimeSlot {
 			TimeSlot(
 				id: firebaseTimeSlot.id,
 				userId: firebaseTimeSlot.userId,
-				clientId: firebaseTimeSlot.clientId,
-				projectId: firebaseTimeSlot.projectId,
+				clientName: firebaseTimeSlot.clientName,
+                projectName: firebaseTimeSlot.projectName,
 				date: firebaseTimeSlot.date,
 				details: firebaseTimeSlot.details.toTimeSlotDetail(),
 				total: firebaseTimeSlot.total)
@@ -51,8 +71,8 @@ extension FirebaseTimeSlotDetails {
 fileprivate struct FirebaseTimeSlot: Codable {
 	var id: String
 	var userId: String
-	var clientId: Int
-	var projectId: Int
+	var clientName: String
+	var projectName: String
 	var date: Date
 	var details: FirebaseTimeSlotDetails
 	var total: Int
