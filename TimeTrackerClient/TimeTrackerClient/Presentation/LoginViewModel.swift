@@ -6,7 +6,6 @@
 //
 
 import Foundation
-<<<<<<< HEAD
 import SwiftUI
 
 public class LoginViewModel: ObservableObject {
@@ -17,5 +16,11 @@ public class LoginViewModel: ObservableObject {
         isLoading = false
     }
 }
-=======
->>>>>>> c228f4b (Add LoginViewModel)
+
+public class LoginViewModel: ObservableObject {
+    @Published var isLoading = false
+
+    init(){
+        isLoading = true
+    }
+}
