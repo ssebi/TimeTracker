@@ -73,9 +73,10 @@ struct AddView: View {
     }
 
     func addTimeSlot() {
-        let clientId = timeSlotVM.selectedClient
-        let projectId = timeSlotVM.selectedProject
-        timeSlotVM.addTimeSlot(clientId: clientId, projectId: projectId )
+        let clientName = timeSlotVM.clientsNames[timeSlotVM.selectedClient]
+        let projectName = timeSlotVM.projectNames[timeSlotVM.selectedProject]
+
+        timeSlotVM.addTimeSlot(clientName: clientName, projectName: projectName )
     }
 }
 

@@ -53,8 +53,8 @@ private extension Sequence where Element == FirebaseTimeSlot {
 			TimeSlot(
 				id: firebaseTimeSlot.id,
 				userId: firebaseTimeSlot.userId,
-				clientId: firebaseTimeSlot.clientId,
-				projectId: firebaseTimeSlot.projectId,
+				clientName: firebaseTimeSlot.clientName,
+                projectName: firebaseTimeSlot.projectName,
 				date: firebaseTimeSlot.date,
 				details: firebaseTimeSlot.details.toTimeSlotDetail(),
 				total: firebaseTimeSlot.total)
@@ -71,8 +71,8 @@ extension FirebaseTimeSlotDetails {
 fileprivate struct FirebaseTimeSlot: Codable {
 	var id: String
 	var userId: String
-	var clientId: Int
-	var projectId: Int
+	var clientName: String
+	var projectName: String
 	var date: Date
 	var details: FirebaseTimeSlotDetails
 	var total: Int

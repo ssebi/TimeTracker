@@ -14,7 +14,7 @@ struct ProjectView: View {
         VStack{
 
             HStack{
-                Text("Project Name")
+                Text("\(timeslot.projectName)")
                     .font(Font.custom("Avenir-Next", size: 20) .weight(.bold))
                 Spacer()
                 DateLabel(text: "", date: timeslot.date, style: .date)
@@ -63,7 +63,7 @@ struct ProjectView: View {
 
 struct Project_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectView(timeslot: TimeSlot(id: "", userId: "", clientId: 1, projectId: 1, date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: ""), total: 1))
+        ProjectView(timeslot: TimeSlot(id: "", userId: "", clientName: "Some Name", projectName: "Some project", date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: ""), total: 1))
             .previewLayout(.sizeThatFits)
     }
 }
