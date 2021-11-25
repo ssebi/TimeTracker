@@ -35,7 +35,7 @@ struct LoginView: View {
 							.padding()
 							.background(Color.cGray)
 							.cornerRadius(5.0)
-							.accentColor(.white)
+							.foregroundColor(.cBlack)
 							.autocapitalization(.none)
 							.disableAutocorrection(true)
                             .onTapGesture {
@@ -46,6 +46,7 @@ struct LoginView: View {
 							.padding()
 							.background(Color.cGray)
 							.accentColor(.white)
+                            .foregroundColor(.cBlack)
 							.cornerRadius(5.0)
                             .onTapGesture {
                                 viewModel.errrorMessage = ""
@@ -67,7 +68,6 @@ struct LoginView: View {
                         .background(LinearGradient.gradientButton)
                         .cornerRadius(5)
                     }
-
 				}
                 .offset(y: -keyboardResponder.currentHeight*0.5)
 
