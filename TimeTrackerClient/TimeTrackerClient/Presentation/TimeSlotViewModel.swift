@@ -13,7 +13,11 @@ class TimeSlotViewModel: ObservableObject {
     @Published var description = ""
     @Published var showMessage = ""
     @Published var timeInterval = DateComponents()
-    @Published var startEndDate = StartEndDate(start: Date(), end: Date())
+    @Published var startEndDate = StartEndDate(start: Date(), end: Date()) {
+        didSet {
+            timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startEndDate.start, to: startEndDate.end)
+        }
+    }
     @State var dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
         let startComponents = DateComponents(year: 2021, month: 1, day: 1)
