@@ -85,6 +85,7 @@ struct AddView: View {
                 .navigationBarItems(trailing: Text(Date(), style: .date)
                                         .padding()
                                         .font(.subheadline))
+                .navigationTitle("Add work log")
             }
             .offset(y: -keyboardResponder.currentHeight*0.5)
 
