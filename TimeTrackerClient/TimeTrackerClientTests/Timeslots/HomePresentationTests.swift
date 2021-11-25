@@ -55,7 +55,6 @@ class HomePresentationTests: XCTestCase {
 	}
 
 	private class MockStore: TimeslotsStore {
-
 		func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
 			completion(.success([]))
 		}
@@ -63,7 +62,12 @@ class HomePresentationTests: XCTestCase {
 		func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
 			completion(nil)
 		}
+	}
 
+	private class UserLoaderMock: UserLoader {
+		func getUser() -> User {
+			User(uid: UUID().uuidString, email: "somteEmail@test.com", username: "Test", client: "Client")
+		}
 	}
 
 }
