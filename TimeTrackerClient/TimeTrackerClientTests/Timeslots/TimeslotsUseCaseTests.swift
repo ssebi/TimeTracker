@@ -2,7 +2,7 @@
 import XCTest
 import TimeTrackerClient
 
-class TimeslotsAPIUseCaseTests: XCTestCase {
+class TimeslotsUseCaseTests: XCTestCase {
 
 	func test_init_doesNotMessageStore() {
 		let (store, _) = makeSUT()

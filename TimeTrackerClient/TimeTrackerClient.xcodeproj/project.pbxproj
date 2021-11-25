@@ -33,7 +33,7 @@
 		C61F54B7274400580083E1A4 /* FirebaseClientsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54B6274400580083E1A4 /* FirebaseClientsLoader.swift */; };
 		C61F54B92744006A0083E1A4 /* FirebaseTimeslotsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54B82744006A0083E1A4 /* FirebaseTimeslotsLoader.swift */; };
 		C61F54BD274400960083E1A4 /* FirebaseUserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54BC274400960083E1A4 /* FirebaseUserLoader.swift */; };
-		C61F54BF2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54BE2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift */; };
+		C61F54BF2747A66D0083E1A4 /* TimeslotsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54BE2747A66D0083E1A4 /* TimeslotsUseCaseTests.swift */; };
 		C61F54C12747D8E40083E1A4 /* TimeslotsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54C02747D8E40083E1A4 /* TimeslotsStore.swift */; };
 		C61F54C32747DDE10083E1A4 /* FirebaseTimeslotsDataStoreEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54C22747DDE10083E1A4 /* FirebaseTimeslotsDataStoreEndToEndTests.swift */; };
 		C61F54C52747E5D00083E1A4 /* HomePresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54C42747E5D00083E1A4 /* HomePresentationTests.swift */; };
@@ -94,7 +94,7 @@
 		C61F54B6274400580083E1A4 /* FirebaseClientsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClientsLoader.swift; sourceTree = "<group>"; };
 		C61F54B82744006A0083E1A4 /* FirebaseTimeslotsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTimeslotsLoader.swift; sourceTree = "<group>"; };
 		C61F54BC274400960083E1A4 /* FirebaseUserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserLoader.swift; sourceTree = "<group>"; };
-		C61F54BE2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsAPIUseCaseTests.swift; sourceTree = "<group>"; };
+		C61F54BE2747A66D0083E1A4 /* TimeslotsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsUseCaseTests.swift; sourceTree = "<group>"; };
 		C61F54C02747D8E40083E1A4 /* TimeslotsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsStore.swift; sourceTree = "<group>"; };
 		C61F54C22747DDE10083E1A4 /* FirebaseTimeslotsDataStoreEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTimeslotsDataStoreEndToEndTests.swift; sourceTree = "<group>"; };
 		C61F54C42747E5D00083E1A4 /* HomePresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresentationTests.swift; sourceTree = "<group>"; };
@@ -251,7 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				C67C26D9274BDC4700124F12 /* Helpers */,
-				C61F54BE2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift */,
+				C61F54BE2747A66D0083E1A4 /* TimeslotsUseCaseTests.swift */,
 				545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */,
 				C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */,
 				C61F54C42747E5D00083E1A4 /* HomePresentationTests.swift */,
@@ -519,7 +519,7 @@
 				54D2FDD9271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift in Sources */,
 				C69C857B273BD3DE0089242C /* AuthProviderSpy.swift in Sources */,
 				C67C26E1274BDDAF00124F12 /* SharedTestHelpers.swift in Sources */,
-				C61F54BF2747A66D0083E1A4 /* TimeslotsAPIUseCaseTests.swift in Sources */,
+				C61F54BF2747A66D0083E1A4 /* TimeslotsUseCaseTests.swift in Sources */,
 				C65EECD2274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift in Sources */,
 				C61F54C52747E5D00083E1A4 /* HomePresentationTests.swift in Sources */,
 				C67C26DF274BDCA000124F12 /* UserLoaderMock.swift in Sources */,
