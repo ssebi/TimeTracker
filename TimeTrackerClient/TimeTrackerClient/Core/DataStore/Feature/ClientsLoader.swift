@@ -5,14 +5,14 @@ public protocol ClientsLoader {
 	func getClients(completion: @escaping ClientsStore.GetClientsResult)
 }
 
-class RemoteClientsLoader: ClientsLoader {
-	let store: ClientsStore
+public class RemoteClientsLoader: ClientsLoader {
+	public let store: ClientsStore
 
-	init(store: ClientsStore) {
+	public init(store: ClientsStore) {
 		self.store = store
 	}
 
-	func getClients(completion: @escaping ClientsStore.GetClientsResult) {
+	public func getClients(completion: @escaping ClientsStore.GetClientsResult) {
 		store.getClients(completion: completion)
 	}
 }

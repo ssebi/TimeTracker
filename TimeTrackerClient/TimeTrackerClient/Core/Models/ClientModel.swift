@@ -11,4 +11,10 @@ public struct Client: Identifiable, Codable, Equatable {
     public var id: String
     var name: String
     var projects: [Project]
+
+	public init(id: String, name: String, projects: [Project]) {
+		self.id = id
+		self.name = name
+		self.projects = projects
+	}
 }
