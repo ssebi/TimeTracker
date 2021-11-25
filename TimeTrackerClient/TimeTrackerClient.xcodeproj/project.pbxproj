@@ -46,7 +46,6 @@
 		C65EECD0274E409F006ACD6A /* ClientsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECCF274E409F006ACD6A /* ClientsStore.swift */; };
 		C65EECD2274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */; };
 		C65EECD4274E54A9006ACD6A /* TimeslotsStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECD3274E54A9006ACD6A /* TimeslotsStoreSpy.swift */; };
-		C67C26DD274BDC8C00124F12 /* MockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26DC274BDC8C00124F12 /* MockStore.swift */; };
 		C67C26DF274BDCA000124F12 /* UserLoaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26DE274BDCA000124F12 /* UserLoaderMock.swift */; };
 		C67C26E1274BDDAF00124F12 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26E0274BDDAF00124F12 /* SharedTestHelpers.swift */; };
 		C67C26E4274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26E3274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift */; };
@@ -107,7 +106,6 @@
 		C65EECCF274E409F006ACD6A /* ClientsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsStore.swift; sourceTree = "<group>"; };
 		C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishTimeslotUseCaseTests.swift; sourceTree = "<group>"; };
 		C65EECD3274E54A9006ACD6A /* TimeslotsStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsStoreSpy.swift; sourceTree = "<group>"; };
-		C67C26DC274BDC8C00124F12 /* MockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStore.swift; sourceTree = "<group>"; };
 		C67C26DE274BDCA000124F12 /* UserLoaderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoaderMock.swift; sourceTree = "<group>"; };
 		C67C26E0274BDDAF00124F12 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		C67C26E3274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
@@ -357,7 +355,6 @@
 			isa = PBXGroup;
 			children = (
 				C65EECD3274E54A9006ACD6A /* TimeslotsStoreSpy.swift */,
-				C67C26DC274BDC8C00124F12 /* MockStore.swift */,
 				C67C26DE274BDCA000124F12 /* UserLoaderMock.swift */,
 			);
 			path = Helpers;
@@ -511,7 +508,6 @@
 			files = (
 				C61F54C32747DDE10083E1A4 /* FirebaseTimeslotsDataStoreEndToEndTests.swift in Sources */,
 				C67C26E4274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
-				C67C26DD274BDC8C00124F12 /* MockStore.swift in Sources */,
 				54D2FDD9271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift in Sources */,
 				C69C857B273BD3DE0089242C /* AuthProviderSpy.swift in Sources */,
 				C67C26E1274BDDAF00124F12 /* SharedTestHelpers.swift in Sources */,
