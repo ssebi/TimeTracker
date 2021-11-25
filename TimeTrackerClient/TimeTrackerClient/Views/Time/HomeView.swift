@@ -15,11 +15,12 @@ struct HomeView: View {
 
 	var body: some View {
 		NavigationView {
-			List(viewModel.timeslots) { timeslot in
-				ProjectView(timeslot: timeslot)
-			}
-			.listStyle(InsetListStyle())
-			.padding()
+            ScrollView{
+                ForEach(viewModel.timeslots) { timeslot in
+                    ProjectView(timeslot: timeslot)
+                        .padding([.trailing, .leading, .top])
+                }
+            }
 			.navigationBarItems(
 				leading:
 					Button(
