@@ -153,9 +153,13 @@
 		54D2FDD7271747F100C66998 /* TimeTrackerClientTests */ = {
 			isa = PBXGroup;
 			children = (
-				C67C26E2274BDE0600124F12 /* SharedHelpers */,
-				C65EECCC274E306A006ACD6A /* Clients */,
-				C61F54CA274811010083E1A4 /* Timeslots */,
+				C67C26E2274BDE0600124F12 /* Helpers */,
+				C65EECCC274E306A006ACD6A /* Clients API Tests */,
+				C61F54CA274811010083E1A4 /* Timeslots API Tests */,
+				C65EECD9274FC0F1006ACD6A /* Timeslots Presentation Tests */,
+				C65EECDA274FC126006ACD6A /* Timeslots EndToEnd Tests */,
+				C65EECD8274FC0D3006ACD6A /* PublishTimeslots API Tests */,
+				C65EECDB274FC1AA006ACD6A /* PublishTimeslots EndToEnd Tests */,
 				C64784C4273CF6170086D169 /* Auth */,
 			);
 			path = TimeTrackerClientTests;
@@ -241,17 +245,13 @@
 			path = Composers;
 			sourceTree = "<group>";
 		};
-		C61F54CA274811010083E1A4 /* Timeslots */ = {
+		C61F54CA274811010083E1A4 /* Timeslots API Tests */ = {
 			isa = PBXGroup;
 			children = (
 				C67C26D9274BDC4700124F12 /* Helpers */,
 				C61F54BE2747A66D0083E1A4 /* TimeslotsUseCaseTests.swift */,
-				545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */,
-				C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */,
-				C61F54C42747E5D00083E1A4 /* HomePresentationTests.swift */,
-				C61F54C22747DDE10083E1A4 /* FirebaseTimeslotsDataStoreEndToEndTests.swift */,
 			);
-			path = Timeslots;
+			path = "Timeslots API Tests";
 			sourceTree = "<group>";
 		};
 		C64784C1273C1A040086D169 /* Infra */ = {
@@ -341,12 +341,44 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C65EECCC274E306A006ACD6A /* Clients */ = {
+		C65EECCC274E306A006ACD6A /* Clients API Tests */ = {
 			isa = PBXGroup;
 			children = (
 				C65EECCD274E3087006ACD6A /* ClientsAPIUseCaseTests.swift */,
 			);
-			path = Clients;
+			path = "Clients API Tests";
+			sourceTree = "<group>";
+		};
+		C65EECD8274FC0D3006ACD6A /* PublishTimeslots API Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */,
+			);
+			path = "PublishTimeslots API Tests";
+			sourceTree = "<group>";
+		};
+		C65EECD9274FC0F1006ACD6A /* Timeslots Presentation Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C61F54C42747E5D00083E1A4 /* HomePresentationTests.swift */,
+			);
+			path = "Timeslots Presentation Tests";
+			sourceTree = "<group>";
+		};
+		C65EECDA274FC126006ACD6A /* Timeslots EndToEnd Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C61F54C22747DDE10083E1A4 /* FirebaseTimeslotsDataStoreEndToEndTests.swift */,
+			);
+			path = "Timeslots EndToEnd Tests";
+			sourceTree = "<group>";
+		};
+		C65EECDB274FC1AA006ACD6A /* PublishTimeslots EndToEnd Tests */ = {
+			isa = PBXGroup;
+			children = (
+				545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */,
+			);
+			path = "PublishTimeslots EndToEnd Tests";
 			sourceTree = "<group>";
 		};
 		C67C26D9274BDC4700124F12 /* Helpers */ = {
@@ -357,13 +389,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		C67C26E2274BDE0600124F12 /* SharedHelpers */ = {
+		C67C26E2274BDE0600124F12 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				C67C26E0274BDDAF00124F12 /* SharedTestHelpers.swift */,
 				C67C26E3274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift */,
 			);
-			path = SharedHelpers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		C6ACF57827317986006D2C43 /* Time */ = {
