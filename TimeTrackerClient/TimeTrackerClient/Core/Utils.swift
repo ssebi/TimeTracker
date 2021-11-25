@@ -12,8 +12,8 @@ struct AddButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .frame(width: UIScreen.main.bounds.width - 55, height: 80, alignment: .center)
-            .background(Color.cGreen)
+            .frame(width: UIScreen.main.bounds.width - 55, height: 50, alignment: .center)
+            .background(LinearGradient.gradientButton)
             .foregroundColor(.white)
             .cornerRadius(5)
             .font(.largeTitle .bold())
@@ -32,7 +32,16 @@ struct Path {
 }
 
 extension LinearGradient {
-    static let loginButton = LinearGradient(gradient: Gradient(colors: [Color.caribeanGreen, Color.cBlue]),
+    static let gradientButton = LinearGradient(gradient: Gradient(colors: [Color.caribeanGreen, Color.cBlue]),
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing)
+}
+
+extension View {
+    public func gradientForeground(colors: [Color]) -> some View {
+        self.overlay(LinearGradient(gradient: .init(colors: colors),
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing))
+            .mask(self)
+    }
 }

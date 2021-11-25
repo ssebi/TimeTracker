@@ -41,7 +41,7 @@ struct HomeView: View {
 									AddView()
 							) {
 								Image(systemName: "plus.rectangle.fill")
-									.foregroundColor(.cGreen)
+                                    .gradientForeground(colors: [.caribeanGreen, .cBlue])
 									.font(.system(size: 30))
 							}
 						})
