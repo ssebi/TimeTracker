@@ -13,6 +13,7 @@ public class LoginViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var showError = true
+    @Published var toggle = true
 
     @Published var errrorMessage = ""
 
