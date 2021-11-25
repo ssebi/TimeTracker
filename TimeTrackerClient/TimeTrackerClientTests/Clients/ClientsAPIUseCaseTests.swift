@@ -50,9 +50,12 @@ class ClientsAPIUseCaseTests: XCTestCase {
 
 	// MARK: - Helpers
 
-	private func makeSUT() -> (ClientsLoader, ClientsStoreSpy) {
+	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (ClientsLoader, ClientsStoreSpy) {
 		let store = ClientsStoreSpy()
 		let sut = RemoteClientsLoader(store: store)
+
+		trackForMemoryLeaks(store, file: file, line: line)
+		trackForMemoryLeaks(sut, file: file, line: line)
 
 		return (sut, store)
 	}
