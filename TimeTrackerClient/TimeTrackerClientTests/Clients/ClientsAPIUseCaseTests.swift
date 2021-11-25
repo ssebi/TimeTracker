@@ -22,15 +22,15 @@ class ClientsAPIUseCaseTests: XCTestCase {
 		let (sut, store) = makeSUT()
 
 		let receivedResult = resultFor(sut: sut) {
-			store.completeGetClients(with: someError)
+			store.completeGetClients(with: anyError)
 		}
 
 		switch receivedResult {
 			case .success:
 				XCTFail()
 			case .failure(let error):
-				XCTAssertEqual(someError.domain, (error as NSError).domain)
-				XCTAssertEqual(someError.code, (error as NSError).code)
+				XCTAssertEqual(anyError.domain, (error as NSError).domain)
+				XCTAssertEqual(anyError.code, (error as NSError).code)
 		}
 	}
 
@@ -68,8 +68,6 @@ class ClientsAPIUseCaseTests: XCTestCase {
 		wait(for: [exp], timeout: 0.1)
 		return receivedResult!
 	}
-
-	private lazy var someError = NSError(domain: "Test", code: 0)
 
 	private class ClientsStoreSpy: ClientsStore {
 		var getClientsCallCount: Int {
