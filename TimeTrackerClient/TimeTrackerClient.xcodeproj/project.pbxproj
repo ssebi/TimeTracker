@@ -12,7 +12,7 @@
 		545CCEC427229C5A00811CE3 /* WorkLogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC327229C5A00811CE3 /* WorkLogModel.swift */; };
 		545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC627229D1E00811CE3 /* ProjectModel.swift */; };
 		545CCECA27229DF800811CE3 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEC927229DF800811CE3 /* ClientModel.swift */; };
-		545CCED82723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */; };
+		545CCED82723053E00811CE3 /* FirebasePublishTimeslotsEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED72723053E00811CE3 /* FirebasePublishTimeslotsEndToEndTests.swift */; };
 		545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDB2726EB0600811CE3 /* AddView.swift */; };
 		545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDE2727274D00811CE3 /* DatePickerView.swift */; };
 		54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB62717234F00C66998 /* GoogleService-Info.plist */; };
@@ -74,7 +74,7 @@
 		545CCEC327229C5A00811CE3 /* WorkLogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkLogModel.swift; sourceTree = "<group>"; };
 		545CCEC627229D1E00811CE3 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		545CCEC927229DF800811CE3 /* ClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModel.swift; sourceTree = "<group>"; };
-		545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataStoreEndToEndTests.swift; sourceTree = "<group>"; };
+		545CCED72723053E00811CE3 /* FirebasePublishTimeslotsEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePublishTimeslotsEndToEndTests.swift; sourceTree = "<group>"; };
 		545CCEDB2726EB0600811CE3 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		545CCEDE2727274D00811CE3 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		54D2FDB62717234F00C66998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -376,7 +376,7 @@
 		C65EECDB274FC1AA006ACD6A /* PublishTimeslots EndToEnd Tests */ = {
 			isa = PBXGroup;
 			children = (
-				545CCED72723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift */,
+				545CCED72723053E00811CE3 /* FirebasePublishTimeslotsEndToEndTests.swift */,
 			);
 			path = "PublishTimeslots EndToEnd Tests";
 			sourceTree = "<group>";
@@ -543,7 +543,7 @@
 				C61F54BF2747A66D0083E1A4 /* TimeslotsUseCaseTests.swift in Sources */,
 				C65EECD2274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift in Sources */,
 				C61F54C52747E5D00083E1A4 /* HomePresentationTests.swift in Sources */,
-				545CCED82723053E00811CE3 /* FirebaseDataStoreEndToEndTests.swift in Sources */,
+				545CCED82723053E00811CE3 /* FirebasePublishTimeslotsEndToEndTests.swift in Sources */,
 				C65EECD4274E54A9006ACD6A /* TimeslotsStoreSpy.swift in Sources */,
 				C65EECCE274E3087006ACD6A /* ClientsAPIUseCaseTests.swift in Sources */,
 				C6DA42EC27356C4400D44D80 /* AuthenticationTests.swift in Sources */,

@@ -9,22 +9,16 @@ import XCTest
 import Firebase
 @testable import TimeTrackerClient
 
-class FirebaseDataStoreEndToEndTests: XCTestCase {
+class FirebasePublishTimeslotsEndToEndTests: XCTestCase {
 
-	// TODO: - Fix tests
-	/*
     func test_addTimeSlot_isSusccesfullOnAdd() {
         let sut = makeSUT(withUserSignedIn: true)
-        let slot = TimeSlotDetail(start: Date() + 1, end: Date() + 1, description: "First dscription for log time")
-        let exp = expectation(description: "Wait for firebase")
-        var receivedError: Error?
-        let data: [String: Any] = [
-            "start": slot.start,
-            "end": slot.end,
-            "description": slot.description,
-        ]
+        let details = TimeSlotDetails(start: Date(), end: Date() + 1, description: "EndToEndTesting")
+		let timeslot = TimeSlot(id: UUID().uuidString, userId: UUID().uuidString, clientId: 1, projectId: 1, date: Date(), details: details, total: 1)
+		var receivedError: Error?
 
-        sut.addTimeSlot(with: data, to: path) { error in
+		let exp = expectation(description: "Wait for firebase")
+        sut.addTimeSlot(timeslot) { error in
             receivedError = error
             exp.fulfill()
         }
@@ -32,30 +26,9 @@ class FirebaseDataStoreEndToEndTests: XCTestCase {
         
         XCTAssertNil(receivedError)
     }
-    
-    func _test_addTimeSlot_isNotSusccesfullWithoutUser() {
-        let sut = makeSUT(withUserSignedIn: false)
-        let slot = TimeSlotDetail(start: Date(), end: Date() + 1, description: "First dscription for log time")
-        let exp = expectation(description: "Wait for firebase")
-        let data: [String: Any] = [
-            "start": slot.start,
-            "end": slot.end,
-            "description": slot.description,
-        ]
-
-        var receivedError: Error?
-        sut.addTimeSlot(with: data, to: path) { error in
-            receivedError = error
-            exp.fulfill()
-        }
-        
-        wait(for: [exp], timeout: 1)
-        
-        XCTAssertNotNil(receivedError)
-    }
-	 */
-
+	
     // MARK: - Helper
+
     let email: String = "mihai24vic@gmail.com"
     let wrongPassword: String = "123452435324"
     let password: String = "Patratel1"
@@ -76,6 +49,7 @@ class FirebaseDataStoreEndToEndTests: XCTestCase {
             XCTAssertNil(session, file: file, line: line)
             XCTAssertNil(sut, file: file, line: line)
         }
+
         return sut
     }
 
