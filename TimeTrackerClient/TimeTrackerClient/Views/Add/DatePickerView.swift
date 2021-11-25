@@ -42,7 +42,7 @@ struct DatePickerView: View {
             HStack{
                 Text("Total duration")
                 Spacer()
-                Text("\(timeInterval.hour ?? 0):\(timeInterval.minute ?? 0)")
+                Text("\(timeInterval.hour ?? 0) h: \(timeInterval.minute ?? 0) m")
                     .font(Font.custom("Avenir-Next", size: 25))
             }
             .padding(.top)
