@@ -14,23 +14,40 @@ struct DatePickerView: View {
     
     var body: some View {
         VStack {
+            Text("Start time")
+
             DatePicker(
-                "Start",
+                "",
                 selection: $startEndDate.start,
                 in: dateRange,
                 displayedComponents: [.date, .hourAndMinute]
-            )
+            ).datePickerStyle(.wheel)
+                .frame(height: 100)
+                .clipped()
+                .labelsHidden()
+                .padding(.bottom)
+
+            Text("End time")
+
             DatePicker(
-                "End",
+                "",
                 selection: $startEndDate.end,
                 in: dateRange,
                 displayedComponents: [.date, .hourAndMinute]
-            )
+            ).datePickerStyle(.wheel)
+                .frame(height: 100)
+                .clipped()
+                .labelsHidden()
+
             HStack{
-                Text("Total h:\(timeInterval.hour ?? 0)  - m:\(timeInterval.minute ?? 0)")
+                Text("Total duration")
                 Spacer()
+                Text("\(timeInterval.hour ?? 0):\(timeInterval.minute ?? 0)")
+                    .font(Font.custom("Avenir-Next", size: 25))
             }
-        }
+            .padding(.top)
+
+        }.font(Font.custom("Avenir-Light", size: 20))
     }
 }
 
