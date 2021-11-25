@@ -44,9 +44,12 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 
 	// MARK: - Helpers
 
-	private func makeSUT() -> (TimeSlotsPublisher, TimeslotsStoreSpy) {
+	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (TimeSlotsPublisher, TimeslotsStoreSpy) {
 		let store = TimeslotsStoreSpy()
 		let sut = RemoteTimeSlotsPublisher(store: store)
+
+		trackForMemoryLeaks(store, file: file, line: line)
+		trackForMemoryLeaks(sut, file: file, line: line)
 
 		return (sut, store)
 	}
