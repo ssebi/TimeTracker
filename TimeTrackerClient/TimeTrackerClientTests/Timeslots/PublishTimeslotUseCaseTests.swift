@@ -1,6 +1,6 @@
 
 import XCTest
-@testable import TimeTrackerClient
+import TimeTrackerClient
 
 class PublishTimeslotUseCaseTests: XCTestCase {
 
@@ -63,6 +63,14 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 		return receivedResult
 	}
 
-	private lazy var someTimeSlot = TimeSlot(id: "1234", userId: "xxx", clientId: 1, projectId: 1, date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: "description"), total: 1)
+	private lazy var someTimeSlot = TimeSlot(id: "1234",
+											 userId: "xxx",
+											 clientId: 1,
+											 projectId: 1,
+											 date: Date(),
+											 details: TimeSlotDetails(start: Date(),
+																	  end: Date(),
+																	  description: "description"),
+											 total: 1)
 
 }
