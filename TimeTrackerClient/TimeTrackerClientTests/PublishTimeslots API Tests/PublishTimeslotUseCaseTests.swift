@@ -68,8 +68,8 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 
 	private lazy var someTimeSlot = TimeSlot(id: "1234",
 											 userId: "xxx",
-											 clientId: 1,
-											 projectId: 1,
+											 clientName: "someClient",
+											 projectName: "someProject",
 											 date: Date(),
 											 details: TimeSlotDetails(start: Date(),
 																	  end: Date(),

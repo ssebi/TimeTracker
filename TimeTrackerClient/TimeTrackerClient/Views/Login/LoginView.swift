@@ -8,63 +8,81 @@
 import SwiftUI
 
 struct LoginView: View {
-	@EnvironmentObject var session: SessionStore
-	@State var username: String = ""
-	@State var password: String = ""
+    @ObservedObject private(set) var viewModel: LoginViewModel
+    @ObservedObject var keyboardResponder = KeyboardResponder()
 
 	var body: some View {
-        ScrollView{
-            VStack {
-			Image("timeTrackerIcon")
-				.resizable()
-				.frame(width: 200, height: 230, alignment: .center)
+		ZStack {
+			ScrollView(showsIndicators: false) {
+				VStack {
+					Image("timeTrackerIcon")
+						.resizable()
+						.frame(width: 200, height: 230, alignment: .center)
 
-			Text("Time Tracker")
-				.padding()
-				.font(.title)
-				.padding(.bottom, 40)
-				.foregroundColor(Color.cBlack)
-
-			Spacer()
-
-			VStack {
-				Group {
-					TextField("E-mail", text: $username)
+					Text("Time Tracker")
 						.padding()
-						.background(Color.cGray)
-						.cornerRadius(5.0)
-						.autocapitalization(.none)
-						.disableAutocorrection(true)
+						.foregroundColor(Color.cBlack)
+                        .font(Font.custom("Avenir-Light", size: 60.0))
 
-					SecureField("Password", text: $password)
-						.padding()
-						.background(Color.cGray)
-						.cornerRadius(5.0)
+					Spacer()
+
+					Group {
+                        Text("\(viewModel.errrorMessage)")
+                            .foregroundColor(.red)
+                            .font(Font.custom("Avenir-Light", size: 20))
+                            .padding()
+                        TextField("E-mail", text: $viewModel.username)
+							.padding()
+							.background(Color.cGray)
+							.cornerRadius(5.0)
+							.foregroundColor(.cBlack)
+							.autocapitalization(.none)
+							.disableAutocorrection(true)
+                            .onTapGesture {
+                                viewModel.errrorMessage = ""
+                            }
+
+                        SecureField("Password", text: $viewModel.password)
+							.padding()
+							.background(Color.cGray)
+							.accentColor(.white)
+                            .foregroundColor(.cBlack)
+							.cornerRadius(5.0)
+                            .onTapGesture {
+                                viewModel.errrorMessage = ""
+                            }
+					}
+					.padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
+
+					Spacer()
+                    Section {
+                        Button(action: {
+                            viewModel.signIn()
+                        }) {
+                            Text("Login")
+                                .font(Font.custom("Avenir-Light", size: 25))
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
+                        .foregroundColor(.white)
+                        .background(LinearGradient.gradientButton)
+                        .cornerRadius(5)
+                    }
 				}
-				.padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
+                .offset(y: -keyboardResponder.currentHeight*0.5)
 
-				Spacer()
+			}
+            .frame(maxWidth: .infinity)
 
-				Button("Login", action: {
-					signIn()
-				})
-					.foregroundColor(.white)
-					.frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
-					.background(Color.cGreen)
-					.cornerRadius(5)
-					.padding(.bottom, 50)
+			if viewModel.isLoading {
+				ProgressIndicator()
 			}
 		}
-        }
-	}
-
-	func signIn() {
-		session.signIn(email: username, password: password){ _ in }
 	}
 }
 
 struct LoginView_Previews: PreviewProvider {
 	static var previews: some View {
-		LoginView()
+        LoginView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
 	}
 }

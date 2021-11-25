@@ -13,7 +13,11 @@ class TimeSlotViewModel: ObservableObject {
     @Published var description = ""
     @Published var showMessage = ""
     @Published var timeInterval = DateComponents()
-    @Published var startEndDate = StartEndDate(start: Date(), end: Date())
+    @Published var startEndDate = StartEndDate(start: Date(), end: Date()) {
+        didSet {
+            timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startEndDate.start, to: startEndDate.end)
+        }
+    }
     @State var dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
         let startComponents = DateComponents(year: 2021, month: 1, day: 1)
@@ -77,7 +81,7 @@ class TimeSlotViewModel: ObservableObject {
 		}
 	}
 
-    func addTimeSlot(clientId: Int, projectId: Int) {
+    func addTimeSlot(clientName: String, projectName: String) {
 		guard let userID = userLoader.getUser().uid else {
 			return showMessage = "The user is not logged"
 		}
@@ -95,8 +99,8 @@ class TimeSlotViewModel: ObservableObject {
         let timeSlot = TimeSlot(
             id: UUID().uuidString,
             userId: userID,
-            clientId: clientId,
-            projectId: projectId,
+            clientName: clientName,
+            projectName: projectName,
 			date: startEndDate.start,
             details: timeSlotDetail,
             total: total)

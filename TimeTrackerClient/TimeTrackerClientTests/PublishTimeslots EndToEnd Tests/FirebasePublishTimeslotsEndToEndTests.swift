@@ -14,7 +14,7 @@ class FirebasePublishTimeslotsEndToEndTests: XCTestCase {
     func test_addTimeSlot_isSusccesfullOnAdd() {
         let sut = makeSUT(withUserSignedIn: true)
         let details = TimeSlotDetails(start: Date(), end: Date() + 1, description: "EndToEndTesting")
-		let timeslot = TimeSlot(id: UUID().uuidString, userId: UUID().uuidString, clientId: 1, projectId: 1, date: Date(), details: details, total: 1)
+		let timeslot = TimeSlot(id: UUID().uuidString, userId: UUID().uuidString, clientName: "someClient", projectName: "SomeProject", date: Date(), details: details, total: 1)
 		var receivedError: Error?
 
 		let exp = expectation(description: "Wait for firebase")
