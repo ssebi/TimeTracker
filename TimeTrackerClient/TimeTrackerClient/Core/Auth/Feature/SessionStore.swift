@@ -8,16 +8,16 @@
 import Combine
 import SwiftUI
 
-class SessionStore: ObservableObject {
-	@Published var user: User?
+public class SessionStore: ObservableObject {
+	@Published public private(set) var user: User?
 	private let authProvider: AuthProvider
 
-	init(authProvider: AuthProvider) {
+	public init(authProvider: AuthProvider) {
 		self.authProvider = authProvider
 		user = self.authProvider.checkAuthState()
 	}
 
-	func signIn(email: String, password: String, completion: @escaping AuthProvider.SesionStoreResult) {
+	public func signIn(email: String, password: String, completion: @escaping AuthProvider.SesionStoreResult) {
 		authProvider.signIn(email: email, password: password) { [weak self] result in
 			if case let .success(user) = result {
 				self?.user = user
@@ -27,7 +27,7 @@ class SessionStore: ObservableObject {
 	}
 
 	@discardableResult
-	func signOut() -> Bool {
+	public func signOut() -> Bool {
 		do {
 			try authProvider.signOut()
 			user = nil
