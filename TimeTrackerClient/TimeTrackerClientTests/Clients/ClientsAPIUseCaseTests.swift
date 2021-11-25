@@ -2,29 +2,6 @@
 import XCTest
 @testable import TimeTrackerClient
 
-
-private class ClientsStoreSpy: ClientsStore {
-
-	var getClientsCallCount: Int {
-		completions.count
-	}
-
-	private var completions: [GetClientsResult] = []
-
-	func getClients(completion: @escaping GetClientsResult) {
-		completions.append(completion)
-	}
-
-	func completeGetClients(with error: Error, at index: Int = 0) {
-		completions[index](.failure(error))
-	}
-
-	func completeGetClients(with clients: [Client], at index: Int = 0) {
-		completions[index](.success(clients))
-	}
-
-}
-
 class ClientsAPIUseCaseTests: XCTestCase {
 
 	func test_init_doesNotMessageStore() {
@@ -93,5 +70,25 @@ class ClientsAPIUseCaseTests: XCTestCase {
 	}
 
 	private lazy var someError = NSError(domain: "Test", code: 0)
+
+	private class ClientsStoreSpy: ClientsStore {
+		var getClientsCallCount: Int {
+			completions.count
+		}
+
+		private var completions: [GetClientsResult] = []
+
+		func getClients(completion: @escaping GetClientsResult) {
+			completions.append(completion)
+		}
+
+		func completeGetClients(with error: Error, at index: Int = 0) {
+			completions[index](.failure(error))
+		}
+
+		func completeGetClients(with clients: [Client], at index: Int = 0) {
+			completions[index](.success(clients))
+		}
+	}
 
 }
