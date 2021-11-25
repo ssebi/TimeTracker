@@ -64,6 +64,6 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 	}
 
 	private lazy var someError = NSError(domain: "Test", code: 0)
-	private lazy var someTimeSlot = TimeSlot(id: "1234", userId: "xxx", clientId: 1, projectId: 1, date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: "description"), total: 1)
+    private lazy var someTimeSlot = TimeSlot(id: "1234", userId: "xxx", clientName: "Client Name", projectName: "Projet Name", date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: "description"), total: 1)
 
 }
