@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
+    @ObservedObject var keyboardResponder = KeyboardResponder()
+
 	var body: some View {
 		ZStack {
 			ScrollView(showsIndicators: false) {
@@ -27,7 +29,7 @@ struct LoginView: View {
 					Group {
                         Text("\(viewModel.errrorMessage)")
                             .foregroundColor(.red)
-                            .font(Font.custom("Avenir-Light", size: 30))
+                            .font(Font.custom("Avenir-Light", size: 20))
                             .padding()
                         TextField("E-mail", text: $viewModel.username)
 							.padding()
@@ -50,6 +52,7 @@ struct LoginView: View {
                             }
 					}
 					.padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
+
 					Spacer()
                     Section {
                         Button(action: {
@@ -63,9 +66,11 @@ struct LoginView: View {
                         .foregroundColor(.white)
                         .background(LinearGradient.loginButton)
                         .cornerRadius(5)
-                        .padding(.bottom, 50)
                     }
+
 				}
+                .offset(y: -keyboardResponder.currentHeight*0.5)
+
 			}
             .frame(maxWidth: .infinity)
 
