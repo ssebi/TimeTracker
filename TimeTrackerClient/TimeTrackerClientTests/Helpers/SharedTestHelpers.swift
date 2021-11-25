@@ -12,8 +12,8 @@ var uniqueTimeslots: [TimeSlot] {
 var uniqueTimeslot: TimeSlot {
 	TimeSlot(id: UUID().uuidString,
 			 userId: UUID().uuidString,
-			 clientId: Int.random(in: 0...100),
-			 projectId: Int.random(in: 0...100),
+			 clientName: "Some Name",
+			 projectName: "Some Project",
 			 date: Date(),
 			 details:
 				TimeSlotDetails(
