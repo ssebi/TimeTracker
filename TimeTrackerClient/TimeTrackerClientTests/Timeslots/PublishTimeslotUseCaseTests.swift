@@ -23,12 +23,12 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 		var receivedError: Error?
 
 		receivedError = resultFor(sut: sut, addTimeSlot: someTimeSlot) {
-			store.completeAddTimeSlots(with: someError)
+			store.completeAddTimeSlots(with: anyError)
 		}
 
 		XCTAssertNotNil(receivedError)
-		XCTAssertEqual(someError.domain, (receivedError as NSError?)?.domain)
-		XCTAssertEqual(someError.code, (receivedError as NSError?)?.code)
+		XCTAssertEqual(anyError.domain, (receivedError as NSError?)?.domain)
+		XCTAssertEqual(anyError.code, (receivedError as NSError?)?.code)
 	}
 
 	func test_addTimeSlot_deliversSuccessOnPublisherSuccess() throws {
@@ -63,7 +63,6 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 		return receivedResult
 	}
 
-	private lazy var someError = NSError(domain: "Test", code: 0)
 	private lazy var someTimeSlot = TimeSlot(id: "1234", userId: "xxx", clientId: 1, projectId: 1, date: Date(), details: TimeSlotDetails(start: Date(), end: Date(), description: "description"), total: 1)
 
 }
