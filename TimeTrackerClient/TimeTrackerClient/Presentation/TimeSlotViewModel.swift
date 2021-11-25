@@ -77,7 +77,7 @@ class TimeSlotViewModel: ObservableObject {
 		}
 	}
 
-    func addTimeSlot(clientId: Int, projectId: Int) {
+    func addTimeSlot(clientName: String, projectName: String) {
 		guard let userID = userLoader.getUser().uid else {
 			return showMessage = "The user is not logged"
 		}
@@ -95,8 +95,8 @@ class TimeSlotViewModel: ObservableObject {
         let timeSlot = TimeSlot(
             id: UUID().uuidString,
             userId: userID,
-            clientId: clientId,
-            projectId: projectId,
+            clientName: clientName,
+            projectName: projectName,
 			date: startEndDate.start,
             details: timeSlotDetail,
             total: total)
