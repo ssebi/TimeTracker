@@ -67,7 +67,7 @@ struct AddView: View {
                 }.font(Font.custom("Avenir-Next", size: 20))
 
                 TextEditor(text: $timeSlotVM.description)
-                    .border(LinearGradient.gradientButton)
+                    .border(LinearGradient.gradientBackground)
                     .frame(width: UIScreen.width - 55, height: 80, alignment: .center)
 
                 Spacer()
