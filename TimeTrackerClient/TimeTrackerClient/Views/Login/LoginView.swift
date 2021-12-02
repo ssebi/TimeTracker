@@ -21,34 +21,26 @@ struct LoginView: View {
             }.ignoresSafeArea()
 
             ScrollView(showsIndicators: false) {
-                ZStack{
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .fill(Color.white)
-                        .frame(width: UIScreen.main.bounds.width - 65, height: UIScreen.main.bounds.height / 2)
-                        .shadow(color: .gray, radius: 30, x: 10, y:0)
-                    VStack {
-                        LogoView()
+                VStack{
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(Color.white)
+                            .frame(width: UIScreen.main.bounds.width - 65, height: UIScreen.main.bounds.height / 2)
+                            .shadow(color: .gray, radius: 30, x: 10, y:0)
+                            .offset(y: UIScreen.main.bounds.height / 4)
 
-                        Spacer()
-
-                        Text("Login with your")
-                        HStack{
-                            Text("TIME")
-                            Text("TRACKER").bold()
+                        VStack {
+                            LogoView()
+                            Spacer()
+                            LoginFormView(viewModel: viewModel)
                         }
-                        Text("account")
-                            .padding()
-                            .foregroundColor(Color.cBlack)
-                            .font(Font.custom("Avenir-Light", size: 30.0))
-                            //.offset(x: 0, y: 20)
-
-                        LoginFormView(viewModel: viewModel)
+                        .offset(y: -keyboardResponder.currentHeight*0.5)
                     }
-                    .offset(y: -keyboardResponder.currentHeight*0.5)
+                    Spacer()
+                    LoginFooterView()
                 }
-
             }
-            .frame(maxWidth: .infinity)
+            .frame(minWidth: UIScreen.main.bounds.width, idealWidth: UIScreen.main.bounds.width, maxWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.height, idealHeight: UIScreen.main.bounds.height, maxHeight: UIScreen.main.bounds.height, alignment: .center)
 
             if viewModel.isLoading {
                 ProgressIndicator()
