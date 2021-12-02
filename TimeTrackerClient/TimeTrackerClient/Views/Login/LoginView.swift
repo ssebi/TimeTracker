@@ -22,20 +22,17 @@ struct LoginView: View {
 
           // ScrollView(showsIndicators: false) {
                 VStack{
+                    Spacer()
+                    LogoView()
                     ZStack{
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
                             .fill(Color.white)
                             .frame(width: UIScreen.main.bounds.width - 65, height: UIScreen.main.bounds.height / 2)
                             .shadow(color: .gray, radius: 30, x: 10, y:0)
-                            .offset(y: UIScreen.main.bounds.height / 4)
 
-                        VStack {
-                            LogoView()
-
-                            LoginFormView(viewModel: viewModel)
-                        }
-                        .offset(y: -keyboardResponder.currentHeight*0.5)
+                        LoginFormView(viewModel: viewModel)
                     }
+                    .offset(y: -keyboardResponder.currentHeight*0.5)
                     Spacer()
                     LoginFooterView()
                 }

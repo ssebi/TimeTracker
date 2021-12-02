@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginFooterView: View {
     var body: some View {
         VStack{
-            Spacer()
             Text("Forgot password?")
                 .padding()
             Text("Register a new account")
