@@ -15,8 +15,7 @@ struct LoginFormView: View {
             VStack{
                 Text("Login with your")
                 HStack{
-                    Text("TIME")
-                    Text("TRACKER").bold()
+                    Group{Text("TIME") + Text("TRACKER").bold()}
                     Text("account")
                 }
             }

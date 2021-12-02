@@ -20,8 +20,11 @@ struct LoginView: View {
                     .fill(Color.white)
             }.ignoresSafeArea()
 
-          // ScrollView(showsIndicators: false) {
+            LoginFooterView()
+            
+            ScrollView(showsIndicators: false) {
                 VStack{
+
                     Spacer()
                     LogoView()
                     ZStack{
@@ -34,10 +37,11 @@ struct LoginView: View {
                     }
                     .offset(y: -keyboardResponder.currentHeight*0.5)
                     Spacer()
-                    LoginFooterView()
+
                 }
-//            }
-//            .frame(minWidth: UIScreen.main.bounds.width / 2, idealWidth: UIScreen.main.bounds.width, maxWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.height, idealHeight: UIScreen.main.bounds.height, maxHeight: UIScreen.main.bounds.height, alignment: .center)
+                .offset(y: UIScreen.main.bounds.height / 10)
+            }
+
 
             if viewModel.isLoading {
                 ProgressIndicator()

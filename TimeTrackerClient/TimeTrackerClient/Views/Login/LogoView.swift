@@ -13,8 +13,7 @@ struct LogoView: View {
             Image("logo")
                 .resizable()
                 .frame(width: 50, height: 50, alignment: .center)
-            Text("time")
-            Text("TRACKER").bold()
+            Group{Text("TIME") + Text("TRACKER").bold()}
         }
         .foregroundColor(.white)
         .font(Font.custom("Avenir-Light", size: 35.0))
