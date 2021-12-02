@@ -21,17 +21,18 @@ struct LoginView: View {
             }.ignoresSafeArea()
 
             LoginFooterView()
-            
+
             ScrollView(showsIndicators: false) {
                 VStack{
-
                     Spacer()
+
                     LogoView()
+
                     ZStack{
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
                             .fill(Color.white)
-                            .frame(width: UIScreen.main.bounds.width - 65, height: UIScreen.main.bounds.height / 2)
-                            .shadow(color: .gray, radius: 30, x: 10, y:0)
+                            .frame(width: UIScreen.main.bounds.width - 65, height: (UIScreen.main.bounds.height / 2) + 70)
+                            .shadow(color: .gray, radius: 10, x: 10, y:10)
 
                         LoginFormView(viewModel: viewModel)
                     }

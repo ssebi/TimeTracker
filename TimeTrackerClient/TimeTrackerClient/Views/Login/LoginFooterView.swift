@@ -15,6 +15,7 @@ struct LoginFooterView: View {
                 .padding()
             Text("Register a new account")
         }
+        .padding()
         .foregroundColor(.cGray)
     }
 }
