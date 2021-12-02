@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginFormView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
-
+    
     var body: some View {
         VStack{
             VStack{
@@ -22,7 +22,7 @@ struct LoginFormView: View {
             }
             .foregroundColor(Color.cBlack)
             .font(Font.custom("Avenir-Light", size: 20.0))
-
+            
             Group {
                 Text("\(viewModel.errrorMessage)")
                     .foregroundColor(.red)
@@ -42,7 +42,7 @@ struct LoginFormView: View {
                             viewModel.errrorMessage = ""
                         }
                 }.underlineTextField()
-
+                
                 HStack {
                     Image(systemName: "lock.fill")
                     SecureField("", text: $viewModel.password)
@@ -57,7 +57,7 @@ struct LoginFormView: View {
                 }.underlineTextField()
             }
             .padding(EdgeInsets(top: 1, leading: 45, bottom: 1, trailing: 45))
-
+            
             Section {
                 Button(action: {
                     viewModel.signIn()
