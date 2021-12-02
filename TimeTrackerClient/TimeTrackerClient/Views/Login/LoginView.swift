@@ -20,7 +20,7 @@ struct LoginView: View {
                     .fill(Color.white)
             }.ignoresSafeArea()
 
-            ScrollView(showsIndicators: false) {
+          // ScrollView(showsIndicators: false) {
                 VStack{
                     ZStack{
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -31,7 +31,7 @@ struct LoginView: View {
 
                         VStack {
                             LogoView()
-                            Spacer()
+
                             LoginFormView(viewModel: viewModel)
                         }
                         .offset(y: -keyboardResponder.currentHeight*0.5)
@@ -39,8 +39,8 @@ struct LoginView: View {
                     Spacer()
                     LoginFooterView()
                 }
-            }
-            .frame(minWidth: UIScreen.main.bounds.width, idealWidth: UIScreen.main.bounds.width, maxWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.height, idealHeight: UIScreen.main.bounds.height, maxHeight: UIScreen.main.bounds.height, alignment: .center)
+//            }
+//            .frame(minWidth: UIScreen.main.bounds.width / 2, idealWidth: UIScreen.main.bounds.width, maxWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.height, idealHeight: UIScreen.main.bounds.height, maxHeight: UIScreen.main.bounds.height, alignment: .center)
 
             if viewModel.isLoading {
                 ProgressIndicator()

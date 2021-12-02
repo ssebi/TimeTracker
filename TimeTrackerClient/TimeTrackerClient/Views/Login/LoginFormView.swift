@@ -34,7 +34,6 @@ struct LoginFormView: View {
                         .placeholder(when: viewModel.password.isEmpty) {
                             Text("E-mail").foregroundColor(.cGray)
                         }
-                        .padding()
                         .cornerRadius(10)
                         .foregroundColor(.cBlack)
                         .autocapitalization(.none)
@@ -50,7 +49,6 @@ struct LoginFormView: View {
                         .placeholder(when: viewModel.password.isEmpty) {
                             Text("Password").foregroundColor(.cGray)
                         }
-                        .padding()
                         .foregroundColor(.cBlack)
                         .cornerRadius(10)
                         .onTapGesture {
@@ -58,9 +56,7 @@ struct LoginFormView: View {
                         }
                 }.underlineTextField()
             }
-            .padding(EdgeInsets(top: 10, leading: 45, bottom: 1, trailing: 45))
-
-            Spacer()
+            .padding(EdgeInsets(top: 1, leading: 45, bottom: 1, trailing: 45))
 
             Section {
                 Button(action: {
@@ -74,8 +70,10 @@ struct LoginFormView: View {
                 .foregroundColor(.white)
                 .background(LinearGradient.gradientBackground)
                 .cornerRadius(30)
+                .padding(EdgeInsets(top: 50, leading: 45, bottom: 1, trailing: 45))
             }
         }
+        .frame(width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height / 2) - 10, alignment: .center)
     }
 }
 
