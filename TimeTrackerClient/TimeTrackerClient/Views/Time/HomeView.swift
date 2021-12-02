@@ -16,48 +16,53 @@ struct HomeView: View {
 
 	var body: some View {
 		NavigationView {
-            ScrollView{
-                ForEach(viewModel.timeslots) { timeslot in
-                    ProjectView(timeslot: timeslot)
-                        .padding([.trailing, .leading, .top])
+            ZStack{
+                Rectangle()
+                    .fill(Color.projectViewBackground)
+                    .ignoresSafeArea()
+                ScrollView{
+                    ForEach(viewModel.timeslots) { timeslot in
+                        ProjectView(timeslot: timeslot)
+                            .padding([.trailing, .leading, .top])
+                    }
                 }
+                .navigationBarItems(
+                    leading:
+                        Button(
+                            action: {
+                                showConfirmation = true
+                            },
+                            label: {
+                                Image(systemName: "power")
+                                    .foregroundColor(.red)
+                                    .font(.system(size: 20))
+                            }),
+                    trailing:
+                        Button(
+                            action: { },
+                            label: {
+                                NavigationLink(
+                                    destination:
+                                        AddView()
+                                ) {
+                                    Image(systemName: "plus.rectangle.fill")
+                                        .gradientForeground(colors: [.gradientTop, .gradientBottom])
+                                        .font(.system(size: 30))
+                                }
+                            })
+                ).alert(isPresented: $showConfirmation){
+                    Alert(
+                        title: Text("Log out"),
+                        message: Text("Are you sure you want to log out?"),
+                        primaryButton: .destructive(Text("Yes"), action: {
+                            session.signOut()
+                        }),
+                        secondaryButton: .cancel(Text("Cancel"), action: {
+                        })
+                    )
+                }
+                .navigationTitle("Time Logged")
             }
-			.navigationBarItems(
-				leading:
-					Button(
-						action: {
-                            showConfirmation = true
-						},
-						label: {
-							Image(systemName: "power")
-								.foregroundColor(.red)
-								.font(.system(size: 20))
-						}),
-				trailing:
-					Button(
-						action: { },
-						label: {
-							NavigationLink(
-								destination:
-									AddView()
-							) {
-								Image(systemName: "plus.rectangle.fill")
-                                    .gradientForeground(colors: [.gradientTop, .gradientBottom])
-									.font(.system(size: 30))
-							}
-						})
-            ).alert(isPresented: $showConfirmation){
-                Alert(
-                    title: Text("Log out"),
-                    message: Text("Are you sure you want to log out?"),
-                    primaryButton: .destructive(Text("Yes"), action: {
-                        session.signOut()
-                    }),
-                    secondaryButton: .cancel(Text("Cancel"), action: {
-                    })
-                )
-            }
-			.navigationTitle("Time Logged")
 		}
 	}
 }

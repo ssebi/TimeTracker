@@ -18,6 +18,8 @@ extension Color {
     static let gradientBottom = Color("backgroundGradientBottom")
     static let cWhite = Color("customWhite")
     static let shadow = Color("shadow")
+    static let projectView = Color("projectView")
+    static let projectViewBackground = Color("projectViewBackground") 
 }
 
 extension LinearGradient {

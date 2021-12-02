@@ -12,7 +12,6 @@ struct ProjectView: View {
 
     var body: some View {
         VStack{
-
             HStack{
                 Text("\(timeslot.projectName)")
                     .font(Font.custom("Avenir-Next", size: 20) .weight(.bold))
@@ -55,7 +54,8 @@ struct ProjectView: View {
         }
         .frame(maxWidth: .infinity, alignment: .center)
         .cornerRadius(10)
-        .background(Color(red: 32/255, green: 36/255, blue: 38/255))
+        .background(Color.projectView)
+        .foregroundColor(.cBlack)
         .modifier(CardModifier())
         .foregroundColor(.white)
     }
@@ -73,7 +73,10 @@ struct CardModifier: ViewModifier {
         content
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
-
+            .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(LinearGradient.gradientBackground, lineWidth: 2)
+                )
     }
 
 }
