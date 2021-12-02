@@ -11,78 +11,54 @@ struct LoginView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
     @ObservedObject var keyboardResponder = KeyboardResponder()
 
-	var body: some View {
-		ZStack {
-			ScrollView(showsIndicators: false) {
-				VStack {
-					Image("timeTrackerIcon")
-						.resizable()
-						.frame(width: 200, height: 230, alignment: .center)
+    var body: some View {
+        ZStack {
+            VStack{
+                Rectangle()
+                    .fill(LinearGradient.gradientBackground)
+                Rectangle()
+                    .fill(Color.white)
+            }.ignoresSafeArea()
 
-					Text("Time Tracker")
-						.padding()
-						.foregroundColor(Color.cBlack)
-                        .font(Font.custom("Avenir-Light", size: 60.0))
+            ScrollView(showsIndicators: false) {
+                ZStack{
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(Color.white)
+                        .frame(width: UIScreen.main.bounds.width - 65, height: UIScreen.main.bounds.height / 2)
+                        .shadow(color: .gray, radius: 30, x: 10, y:0)
+                    VStack {
+                        LogoView()
 
-					Spacer()
+                        Spacer()
 
-					Group {
-                        Text("\(viewModel.errrorMessage)")
-                            .foregroundColor(.red)
-                            .font(Font.custom("Avenir-Light", size: 20))
-                            .padding()
-                        TextField("E-mail", text: $viewModel.username)
-							.padding()
-							.background(Color.cGray)
-							.cornerRadius(5.0)
-							.foregroundColor(.cBlack)
-							.autocapitalization(.none)
-							.disableAutocorrection(true)
-                            .onTapGesture {
-                                viewModel.errrorMessage = ""
-                            }
-
-                        SecureField("Password", text: $viewModel.password)
-							.padding()
-							.background(Color.cGray)
-							.accentColor(.white)
-                            .foregroundColor(.cBlack)
-							.cornerRadius(5.0)
-                            .onTapGesture {
-                                viewModel.errrorMessage = ""
-                            }
-					}
-					.padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
-
-					Spacer()
-                    Section {
-                        Button(action: {
-                            viewModel.signIn()
-                        }) {
-                            Text("Login")
-                                .font(Font.custom("Avenir-Light", size: 25))
-                                .frame(maxWidth: .infinity, alignment: .center)
+                        Text("Login with your")
+                        HStack{
+                            Text("TIME")
+                            Text("TRACKER").bold()
                         }
-                        .frame(width: UIScreen.main.bounds.width - 45, height: 50, alignment: .center)
-                        .foregroundColor(.white)
-                        .background(LinearGradient.gradientButton)
-                        .cornerRadius(5)
-                    }
-				}
-                .offset(y: -keyboardResponder.currentHeight*0.5)
+                        Text("account")
+                            .padding()
+                            .foregroundColor(Color.cBlack)
+                            .font(Font.custom("Avenir-Light", size: 30.0))
+                            //.offset(x: 0, y: 20)
 
-			}
+                        LoginFormView(viewModel: viewModel)
+                    }
+                    .offset(y: -keyboardResponder.currentHeight*0.5)
+                }
+
+            }
             .frame(maxWidth: .infinity)
 
-			if viewModel.isLoading {
-				ProgressIndicator()
-			}
-		}
-	}
+            if viewModel.isLoading {
+                ProgressIndicator()
+            }
+        }
+    }
 }
 
 struct LoginView_Previews: PreviewProvider {
-	static var previews: some View {
+    static var previews: some View {
         LoginView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
-	}
+    }
 }
