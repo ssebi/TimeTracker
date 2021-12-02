@@ -30,7 +30,7 @@ struct LoginFormView: View {
                 HStack {
                     Image(systemName: "person.fill")
                     TextField("", text: $viewModel.username)
-                        .placeholder(when: viewModel.password.isEmpty) {
+                        .placeholder(when: viewModel.username.isEmpty) {
                             Text("E-mail").foregroundColor(.cGray)
                         }
                         .cornerRadius(10)
