@@ -16,6 +16,8 @@ extension Color {
     static let caribeanGreen = Color("CaribbeanGreen")
     static let gradientTop = Color("backgroundGradientTop")
     static let gradientBottom = Color("backgroundGradientBottom")
+    static let cWhite = Color("customWhite")
+    static let shadow = Color("shadow")
 }
 
 extension LinearGradient {
