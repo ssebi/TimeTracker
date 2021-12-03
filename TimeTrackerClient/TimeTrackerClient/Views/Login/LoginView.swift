@@ -29,7 +29,7 @@ struct LoginView: View {
 
                         ZStack{
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .fill(Color.cWhite)
+                                .fill(Color.loginCard)
                                 .frame(width: UIScreen.main.bounds.width - 65, height: (UIScreen.main.bounds.height / 2) + 70)
                                 .shadow(color: .shadow, radius: 15, x: 5, y:5)
 

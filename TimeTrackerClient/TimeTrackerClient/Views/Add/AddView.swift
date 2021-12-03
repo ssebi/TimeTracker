@@ -10,9 +10,7 @@ import SwiftUI
 struct AddView: View {
     @ObservedObject var keyboardResponder = KeyboardResponder()
     // TODO: - Move ViewModel initialization in a factory method
-    @ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()),
-                                                       timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()),
-                                                       userLoader: FirebaseUserLoader())
+    @State var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()), timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()), userLoader: FirebaseUserLoader())
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -98,7 +96,6 @@ struct AddView: View {
     func addTimeSlot() {
         let clientName = timeSlotVM.clientsNames[timeSlotVM.selectedClient]
         let projectName = timeSlotVM.projectNames[timeSlotVM.selectedProject]
-        timeSlotVM.showMessage = "xxx"
         timeSlotVM.addTimeSlot(clientName: clientName, projectName: projectName )
     }
 }
