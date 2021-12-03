@@ -73,6 +73,10 @@ struct CardModifier: ViewModifier {
         content
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.2), radius: 5, x: 10, y: 10)
+            .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.black.opacity(0.2), lineWidth: 1)
+                )
     }
 
 }
