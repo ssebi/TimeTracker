@@ -72,11 +72,7 @@ struct CardModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .cornerRadius(20)
-            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
-            .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(LinearGradient.gradientBackground, lineWidth: 2)
-                )
+            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 10, y: 10)
     }
 
 }

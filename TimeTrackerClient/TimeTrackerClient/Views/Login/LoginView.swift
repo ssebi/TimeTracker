@@ -31,7 +31,7 @@ struct LoginView: View {
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
                                 .fill(Color.loginCard)
                                 .frame(width: UIScreen.main.bounds.width - 65, height: (UIScreen.main.bounds.height / 2) + 70)
-                                .shadow(color: .shadow, radius: 15, x: 5, y:5)
+                                .shadow(color: Color.black.opacity(0.2), radius: 15, x: 5, y:5)
                             
                             LoginFormView(viewModel: viewModel)
                         }
