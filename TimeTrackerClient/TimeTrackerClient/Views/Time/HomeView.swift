@@ -16,70 +16,72 @@ struct HomeView: View {
     @ObservedObject private(set) var viewModel: HomeScreenViewModel
 
     var body: some View {
-        NavigationView {
-            ZStack{
-                Rectangle()
-                    .fill(Color.projectViewBackground)
-                    .ignoresSafeArea()
+        ZStack{
+            NavigationView {
+                ZStack{
+                    Rectangle()
+                        .fill(Color.projectViewBackground)
+                        .ignoresSafeArea()
 
-                ScrollView {
-                    ForEach(viewModel.timeslots) { timeslot in
-                        ProjectView(timeslot: timeslot)
-                            .padding([.trailing, .leading, .top])
+                    ScrollView {
+                        ForEach(viewModel.timeslots) { timeslot in
+                            ProjectView(timeslot: timeslot)
+                                .padding([.trailing, .leading, .top])
+                        }
                     }
-                }
 
-                VStack {
-                    Spacer()
-                    HStack {
+                    VStack {
                         Spacer()
-                        Button(
-                            action: {},
-                            label: {
-                                NavigationLink(
-                                    destination:
-                                        addView
-                                ) {
-                                    Text("+")
-                                        .font(.system(.largeTitle))
-                                        .frame(width: 77, height: 70)
-                                        .foregroundColor(Color.white)
-                                        .padding(.bottom, 7)
-                                }
+                        HStack {
+                            Spacer()
+                            Button(
+                                action: {},
+                                label: {
+                                    NavigationLink(
+                                        destination:
+                                            addView
+                                    ) {
+                                        Text("+")
+                                            .font(.system(.largeTitle))
+                                            .frame(width: 77, height: 70)
+                                            .foregroundColor(Color.white)
+                                            .padding(.bottom, 7)
+                                    }
 
-                            })
-                            .background(LinearGradient.gradientBackground)
-                            .cornerRadius(38.5)
-                            .padding()
-                            .shadow(color: Color.black.opacity(0.3),
-                                    radius: 3,
-                                    x: 3,
-                                    y: 3)
+                                })
+                                .background(LinearGradient.gradientBackground)
+                                .cornerRadius(38.5)
+                                .padding()
+                                .shadow(color: Color.black.opacity(0.3),
+                                        radius: 3,
+                                        x: 3,
+                                        y: 3)
+                        }
                     }
-                }
-                .navigationBarItems(
-                    leading:
-                        Button(
-                            action: {
-                                showConfirmation = true
-                            },
-                            label: {
-                                Image(systemName: "power")
-                                    .foregroundColor(.red)
-                                    .font(.system(size: 20))
+                    .navigationBarItems(
+                        leading:
+                            Button(
+                                action: {
+                                    showConfirmation = true
+                                },
+                                label: {
+                                    Image(systemName: "power")
+                                        .foregroundColor(.red)
+                                        .font(.system(size: 20))
+                                })
+                    ).alert(isPresented: $showConfirmation){
+                        Alert(
+                            title: Text("Log out"),
+                            message: Text("Are you sure you want to log out?"),
+                            primaryButton: .destructive(Text("Yes"), action: {
+                                session.signOut()
+                            }),
+                            secondaryButton: .cancel(Text("Cancel"), action: {
                             })
-                ).alert(isPresented: $showConfirmation){
-                    Alert(
-                        title: Text("Log out"),
-                        message: Text("Are you sure you want to log out?"),
-                        primaryButton: .destructive(Text("Yes"), action: {
-                            session.signOut()
-                        }),
-                        secondaryButton: .cancel(Text("Cancel"), action: {
-                        })
-                    )
+                        )
+                    }
+                    .navigationTitle("Time Logged")
                 }
-                .navigationTitle("Time Logged")
             }
         }
     }
