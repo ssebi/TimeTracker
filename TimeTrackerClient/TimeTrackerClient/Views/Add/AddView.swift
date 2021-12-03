@@ -10,7 +10,7 @@ import SwiftUI
 struct AddView: View {
     @ObservedObject var keyboardResponder = KeyboardResponder()
     // TODO: - Move ViewModel initialization in a factory method
-    @State var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()), timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()), userLoader: FirebaseUserLoader())
+    @ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()), timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()), userLoader: FirebaseUserLoader())
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -61,6 +61,13 @@ struct AddView: View {
                     .padding()
 
                 HStack {
+                    Text(timeSlotVM.showMessage)
+                        .padding()
+                        .foregroundColor(.red)
+                    Spacer()
+                }
+
+                HStack {
                     Text("Task description")
                         .padding()
                     Spacer()
@@ -71,12 +78,6 @@ struct AddView: View {
                     .frame(width: UIScreen.width - 55, height: 80, alignment: .center)
 
                 Spacer()
-
-                HStack {
-                    Text(timeSlotVM.showMessage)
-                        .font(Font.custom("Avenir-Next", size: 20))
-                    Spacer()
-                }
 
                 Button("SUBMIT") {
                     addTimeSlot()

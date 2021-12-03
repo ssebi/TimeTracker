@@ -11,6 +11,7 @@ import FirebaseFirestore
 struct HomeView: View {
 	@EnvironmentObject var session: SessionStore
     @State private var showConfirmation = false
+    var addView =  AddView()
 
 	@ObservedObject private(set) var viewModel: HomeScreenViewModel
 
@@ -43,7 +44,7 @@ struct HomeView: View {
                             label: {
                                 NavigationLink(
                                     destination:
-                                        AddView()
+                                       addView
                                 ) {
                                     Image(systemName: "plus.rectangle.fill")
                                         .gradientForeground(colors: [.gradientTop, .gradientBottom])
