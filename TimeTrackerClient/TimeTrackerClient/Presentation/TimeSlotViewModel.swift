@@ -113,6 +113,7 @@ class TimeSlotViewModel: ObservableObject {
             self.showMessage = "You must select an hour interval!"
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.showValidationAlert = false
+                self.showMessage = ""
             }
         }
 
@@ -122,6 +123,7 @@ class TimeSlotViewModel: ObservableObject {
             self.showMessage = "Please provide a task description!"
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.showValidationAlert = false
+                self.showMessage = ""
             }
         }
 
