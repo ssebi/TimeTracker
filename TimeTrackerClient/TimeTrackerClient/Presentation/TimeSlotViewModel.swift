@@ -84,6 +84,7 @@ class TimeSlotViewModel: ObservableObject {
     }
 
     func addTimeSlot(clientName: String, projectName: String) {
+        isValid = false
         guard let userID = userLoader.getUser().uid else {
             return showMessage = "The user is not logged!"
         }
@@ -110,7 +111,7 @@ class TimeSlotViewModel: ObservableObject {
         if (total != 0) {
             isValid = true
         } else {
-            self.showMessage = "You must select an hour interval!"
+            self.showMessage = "You must select a time interval!"
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.showValidationAlert = false
                 self.showMessage = ""
@@ -120,7 +121,7 @@ class TimeSlotViewModel: ObservableObject {
         if (timeSlotDetail.description != "") {
             isValid = true
         } else {
-            self.showMessage = "Please provide a task description!"
+            self.showMessage = "Provide a task description!"
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.showValidationAlert = false
                 self.showMessage = ""

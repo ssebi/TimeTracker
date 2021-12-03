@@ -18,11 +18,11 @@ struct CustomAlertView: View {
                 .background(Color.white)
                 .mask(Circle().padding(.top, 25))
             Spacer()
-            Text("\(message)").foregroundColor(Color.white)
+            Text("\(message)").foregroundColor(Color.white).font(.title)
             Spacer()
         }
         .frame(width: UIScreen.main.bounds.width-50, height: 200)
-        .background(Color.black.opacity(0.5))
+        .background(Color.gray.opacity(0.5).blur(radius: 10))
             .cornerRadius(12)
             .clipped()
     }
@@ -30,6 +30,6 @@ struct CustomAlertView: View {
 
 struct CustomAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomAlertView( message: .constant(""))
+        CustomAlertView( message: .constant("This is an error"))
     }
 }

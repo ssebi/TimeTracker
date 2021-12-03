@@ -158,10 +158,10 @@
 			isa = PBXGroup;
 			children = (
 				54A3FC20274E399200E36C92 /* ProgressIndicator.swift */,
+				54CC8113275A656A004E1062 /* CustomAlertView.swift */,
 				C6ACF57827317986006D2C43 /* Time */,
 				C6DA42E52732DB5500D44D80 /* Add */,
 				C6DA42E62732DB9E00D44D80 /* Login */,
-				54CC8113275A656A004E1062 /* CustomAlertView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

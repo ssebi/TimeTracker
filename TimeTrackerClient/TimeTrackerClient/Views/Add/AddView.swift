@@ -91,7 +91,7 @@ struct AddView: View {
                 .offset(y: -keyboardResponder.currentHeight*0.5)
 
             }
-                .padding()
+            .padding()
 
             if timeSlotVM.showValidationAlert {
                 CustomAlertView(message: $timeSlotVM.showMessage)
@@ -103,11 +103,12 @@ struct AddView: View {
 
     func addTimeSlot() {
         timeSlotVM.showValidationAlert = true
-            let clientName = timeSlotVM.clientsNames[timeSlotVM.selectedClient]
-            let projectName = timeSlotVM.projectNames[timeSlotVM.selectedProject]
-            timeSlotVM.addTimeSlot(clientName: clientName, projectName: projectName )
-            //self.presentationMode.wrappedValue.dismiss()
-
+        let clientName = timeSlotVM.clientsNames[timeSlotVM.selectedClient]
+        let projectName = timeSlotVM.projectNames[timeSlotVM.selectedProject]
+        timeSlotVM.addTimeSlot(clientName: clientName, projectName: projectName )
+        if (timeSlotVM.isValid) {
+            self.presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 
