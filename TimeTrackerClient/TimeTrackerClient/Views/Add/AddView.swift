@@ -24,11 +24,12 @@ struct AddView: View {
                         ){
                             ForEach(0 ..< timeSlotVM.clientsNames.count) { index in
                                 Text(timeSlotVM.clientsNames[index])
+                                    .foregroundColor(.cBlack)
                             }
                         }
                         .pickerStyle(.menu)
                         .frame(width: (UIScreen.width - 55) / 2, height: 40)
-                        .background(Color.cGray)
+                        .background(Color.gray.opacity(0.2))
                         .foregroundColor(.cBlack)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
 
@@ -39,12 +40,13 @@ struct AddView: View {
                         ){
                             ForEach(0 ..< timeSlotVM.projectNames.count) { index in
                                 Text(timeSlotVM.projectNames[index])
+                                    .foregroundColor(.cBlack)
                             }
                         }
                         .id(timeSlotVM.id)
                         .pickerStyle(.menu)
                         .frame(width: (UIScreen.width - 55) / 2, height: 40)
-                        .background(Color.cGray)
+                        .background(Color.gray.opacity(0.2))
                         .foregroundColor(.cBlack)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                     }
@@ -73,7 +75,7 @@ struct AddView: View {
                 Spacer()
 
                 HStack {
-                    Text("\(timeSlotVM.showMessage)")
+                    Text(timeSlotVM.showMessage)
                         .font(Font.custom("Avenir-Next", size: 20))
                     Spacer()
                 }
@@ -96,7 +98,7 @@ struct AddView: View {
     func addTimeSlot() {
         let clientName = timeSlotVM.clientsNames[timeSlotVM.selectedClient]
         let projectName = timeSlotVM.projectNames[timeSlotVM.selectedProject]
-
+        timeSlotVM.showMessage = "xxx"
         timeSlotVM.addTimeSlot(clientName: clientName, projectName: projectName )
     }
 }
