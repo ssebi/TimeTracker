@@ -7,6 +7,7 @@ class FirebaseTimeslotsStore: TimeslotsStore {
 	func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
 		Firestore.firestore().collection(Path.timeSlot)
 			.whereField("userId", isEqualTo: userID)
+            .order(by: "date")
 			.addSnapshotListener { (querySnapshot, error) in
 				if let querySnapshot = querySnapshot {
 					let timeslots = querySnapshot.documents.compactMap { document -> FirebaseTimeSlot? in
