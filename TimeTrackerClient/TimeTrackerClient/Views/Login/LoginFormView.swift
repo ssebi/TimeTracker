@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginFormView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
+    @State private var isSecured: Bool = true
 
     var body: some View {
         VStack{
@@ -37,6 +38,7 @@ struct LoginFormView: View {
                         .foregroundColor(.cBlack)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .textContentType(.some(.emailAddress))
                         .keyboardType(.emailAddress)
 
                         .onTapGesture {
@@ -46,15 +48,36 @@ struct LoginFormView: View {
 
                 HStack {
                     Image(systemName: "lock.fill")
-                    SecureField("", text: $viewModel.password)
-                        .placeholder(when: viewModel.password.isEmpty) {
-                            Text("Password").foregroundColor(.cGray)
-                        }
-                        .foregroundColor(.cBlack)
-                        .cornerRadius(10)
-                        .onTapGesture {
-                            viewModel.errrorMessage = ""
-                        }
+
+                    ZStack(alignment: .trailing) {
+                                if isSecured {
+                                    SecureField("", text: $viewModel.password)
+                                        .placeholder(when: viewModel.password.isEmpty) {
+                                            Text("Password").foregroundColor(.cGray)
+                                        }
+                                        .foregroundColor(.cBlack)
+                                        .cornerRadius(10)
+                                        .onTapGesture {
+                                            viewModel.errrorMessage = ""
+                                        }
+                                } else {
+                                    TextField("", text: $viewModel.password)
+                                        .placeholder(when: viewModel.password.isEmpty) {
+                                            Text("Password").foregroundColor(.cGray)
+                                        }
+                                        .foregroundColor(.cBlack)
+                                        .cornerRadius(10)
+                                        .onTapGesture {
+                                            viewModel.errrorMessage = ""
+                                        }
+                                }
+                                Button(action: {
+                                    isSecured.toggle()
+                                }) {
+                                    Image(systemName: self.isSecured ? "eye.slash" : "eye")
+                                        .accentColor(.cGray)
+                                }
+                            }
                 }.underlineTextField()
             }
             .padding(EdgeInsets(top: 1, leading: 45, bottom: 1, trailing: 45))
