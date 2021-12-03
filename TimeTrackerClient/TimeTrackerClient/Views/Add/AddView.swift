@@ -11,6 +11,7 @@ struct AddView: View {
     @ObservedObject var keyboardResponder = KeyboardResponder()
     // TODO: - Move ViewModel initialization in a factory method
     @ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()), timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()), userLoader: FirebaseUserLoader())
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -99,6 +100,7 @@ struct AddView: View {
         let clientName = timeSlotVM.clientsNames[timeSlotVM.selectedClient]
         let projectName = timeSlotVM.projectNames[timeSlotVM.selectedProject]
         timeSlotVM.addTimeSlot(clientName: clientName, projectName: projectName )
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
 
