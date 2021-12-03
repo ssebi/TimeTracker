@@ -88,6 +88,7 @@ struct AddView: View {
                                         .font(.subheadline))
                 .navigationTitle("Add work log")
             }
+            .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
             .offset(y: -keyboardResponder.currentHeight*0.5)
 
         }
