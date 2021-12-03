@@ -27,7 +27,7 @@ struct ProgressIndicator: View {
                 .stroke(lineWidth: 4)
                 .rotationEffect(.degrees(isCircleRotating ? 360 : 0))
                 .frame(width: 35, height: 35)
-                .foregroundColor(Color.blue)
+                .foregroundColor(Color.gradientBottom)
                 .onAppear() {
                     withAnimation(Animation
                                     .linear(duration: 1)

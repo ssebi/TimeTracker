@@ -13,17 +13,11 @@ struct AddButton: ButtonStyle {
         configuration.label
             .padding()
             .frame(width: UIScreen.main.bounds.width - 55, height: 50, alignment: .center)
-            .background(LinearGradient.gradientButton)
+            .background(LinearGradient.gradientBackground)
             .foregroundColor(.white)
             .cornerRadius(5)
             .font(Font.custom("Avenir-Next", size: 30))
     }
-}
-
-extension UIScreen{
-   static let width = UIScreen.main.bounds.size.width
-   static let height = UIScreen.main.bounds.size.height
-   static let size = UIScreen.main.bounds.size
 }
 
 struct Path {
@@ -31,17 +25,5 @@ struct Path {
     static let timeSlot = "timeSlots"
 }
 
-extension LinearGradient {
-    static let gradientButton = LinearGradient(gradient: Gradient(colors: [Color.caribeanGreen, Color.cBlue]),
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing)
-}
 
-extension View {
-    public func gradientForeground(colors: [Color]) -> some View {
-        self.overlay(LinearGradient(gradient: .init(colors: colors),
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing))
-            .mask(self)
-    }
-}
+

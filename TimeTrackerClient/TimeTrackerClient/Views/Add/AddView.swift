@@ -10,9 +10,7 @@ import SwiftUI
 struct AddView: View {
     @ObservedObject var keyboardResponder = KeyboardResponder()
     // TODO: - Move ViewModel initialization in a factory method
-    @ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()),
-                                                       timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()),
-                                                       userLoader: FirebaseUserLoader())
+    @ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()), timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()), userLoader: FirebaseUserLoader())
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -24,11 +22,12 @@ struct AddView: View {
                         ){
                             ForEach(0 ..< timeSlotVM.clientsNames.count) { index in
                                 Text(timeSlotVM.clientsNames[index])
+                                    .foregroundColor(.cBlack)
                             }
                         }
                         .pickerStyle(.menu)
                         .frame(width: (UIScreen.width - 55) / 2, height: 40)
-                        .background(Color.cGray)
+                        .background(Color.gray.opacity(0.2))
                         .foregroundColor(.cBlack)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
 
@@ -39,12 +38,13 @@ struct AddView: View {
                         ){
                             ForEach(0 ..< timeSlotVM.projectNames.count) { index in
                                 Text(timeSlotVM.projectNames[index])
+                                    .foregroundColor(.cBlack)
                             }
                         }
                         .id(timeSlotVM.id)
                         .pickerStyle(.menu)
                         .frame(width: (UIScreen.width - 55) / 2, height: 40)
-                        .background(Color.cGray)
+                        .background(Color.gray.opacity(0.2))
                         .foregroundColor(.cBlack)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                     }
@@ -61,22 +61,23 @@ struct AddView: View {
                     .padding()
 
                 HStack {
+                    Text(timeSlotVM.showMessage)
+                        .padding()
+                        .foregroundColor(.red)
+                    Spacer()
+                }
+
+                HStack {
                     Text("Task description")
                         .padding()
                     Spacer()
                 }.font(Font.custom("Avenir-Next", size: 20))
 
                 TextEditor(text: $timeSlotVM.description)
-                    .border(LinearGradient.gradientButton)
+                    .border(LinearGradient.gradientBackground)
                     .frame(width: UIScreen.width - 55, height: 80, alignment: .center)
 
                 Spacer()
-
-                HStack {
-                    Text("\(timeSlotVM.showMessage)")
-                        .font(Font.custom("Avenir-Next", size: 20))
-                    Spacer()
-                }
 
                 Button("SUBMIT") {
                     addTimeSlot()
@@ -96,7 +97,6 @@ struct AddView: View {
     func addTimeSlot() {
         let clientName = timeSlotVM.clientsNames[timeSlotVM.selectedClient]
         let projectName = timeSlotVM.projectNames[timeSlotVM.selectedProject]
-
         timeSlotVM.addTimeSlot(clientName: clientName, projectName: projectName )
     }
 }
