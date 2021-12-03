@@ -10,44 +10,42 @@ import SwiftUI
 struct LoginView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
     @ObservedObject var keyboardResponder = KeyboardResponder()
-
+    
     var body: some View {
         ZStack {
-            VStack{
+            VStack {
                 Rectangle()
                     .fill(LinearGradient.gradientBackground)
                 Rectangle()
                     .fill(Color.cWhite)
             }.ignoresSafeArea()
-
+            
             ScrollView(showsIndicators: false) {
-                VStack{
-                    VStack{
+                VStack {
+                    VStack {
                         Spacer()
-
+                        
                         LogoView()
-
-                        ZStack{
+                        
+                        ZStack {
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
                                 .fill(Color.loginCard)
                                 .frame(width: UIScreen.main.bounds.width - 65, height: (UIScreen.main.bounds.height / 2) + 70)
                                 .shadow(color: .shadow, radius: 15, x: 5, y:5)
-
-
+                            
                             LoginFormView(viewModel: viewModel)
-
                         }
                     }
                     .offset(y: -keyboardResponder.currentHeight*0.5)
                     Spacer()
-
+                    
                 }
                 .offset(y: UIScreen.main.bounds.height / 10)
-
+                
                 LoginFooterView()
                     .offset(y: 60)
             }
-
+            
             if viewModel.isLoading {
                 ProgressIndicator()
             }
