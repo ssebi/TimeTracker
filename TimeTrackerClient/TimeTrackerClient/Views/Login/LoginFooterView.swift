@@ -17,14 +17,14 @@ struct LoginFooterView: View {
                 showAlert = true
                     }
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Comming soon"), message: Text("This functionality is under development"), dismissButton: .default(Text("Got it!")))
+                        Alert(title: Text("Coming soon"), message: Text("This functionality is under development"), dismissButton: .default(Text("Got it!")))
                     }
                     .padding()
             Button("Create a new account") {
                 showAlert = true
                     }
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Comming soon"), message: Text("This functionality is under development"), dismissButton: .default(Text("Got it!")))
+                        Alert(title: Text("Coming soon"), message: Text("This functionality is under development"), dismissButton: .default(Text("Got it!")))
                     }
         }
         .padding()

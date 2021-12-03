@@ -20,7 +20,6 @@ struct LoginView: View {
                     .fill(Color.cWhite)
             }.ignoresSafeArea()
 
-
             ScrollView(showsIndicators: false) {
                 VStack{
                     VStack{
@@ -36,8 +35,7 @@ struct LoginView: View {
 
 
                             LoginFormView(viewModel: viewModel)
-                            LoginFooterView()
-                                .offset(y: 100)
+
                         }
                     }
                     .offset(y: -keyboardResponder.currentHeight*0.5)
@@ -45,6 +43,9 @@ struct LoginView: View {
 
                 }
                 .offset(y: UIScreen.main.bounds.height / 10)
+
+                LoginFooterView()
+                    .offset(y: 60)
             }
 
             if viewModel.isLoading {
