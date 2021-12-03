@@ -37,6 +37,7 @@ struct LoginFormView: View {
                         .foregroundColor(.cBlack)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .keyboardType(.emailAddress)
                         .onTapGesture {
                             viewModel.errrorMessage = ""
                         }
