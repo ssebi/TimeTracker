@@ -108,25 +108,25 @@ class TimeSlotViewModel: ObservableObject {
             details: timeSlotDetail,
             total: total)
 
-        if (total != 0) {
-            isValid = true
-        } else {
+        if (total == 0) {
             self.showMessage = "You must select a time interval!"
+            isValid = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.showValidationAlert = false
                 self.showMessage = ""
             }
         }
 
-        if (timeSlotDetail.description != "") {
-            isValid = true
-        } else {
+        if (timeSlotDetail.description == "") {
             self.showMessage = "Provide a task description!"
+            isValid = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.showValidationAlert = false
                 self.showMessage = ""
             }
         }
+
+        if (timeSlotDetail.description == "") && (total == 0) {isValid = true}
 
         if isValid {
             timeslotPublisher.addTimeSlot(timeSlot) { error in
