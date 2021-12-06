@@ -33,24 +33,23 @@ struct LoginFormView: View {
                 HStack {
                     Image(systemName: "person.fill")
                     CustomTextField(
-                        keyboardType: UIKeyboardType.default,
-                        returnVal: UIReturnKeyType.next,
-                        tag: 0,
                         text: $viewModel.username,
-                        isfocusAble: self.$focused,
-                        placeholder: "E-mail"
-                    )
-                        .cornerRadius(10)
-                        .foregroundColor(.cBlack)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                        .frame(height: 30, alignment: .center)
-                        .textContentType(.some(.emailAddress))
-                        .keyboardType(.emailAddress)
-
-                        .onTapGesture {
-                            viewModel.errrorMessage = ""
-                        }
+                        isSecured: false,
+                        keyboard: .default,
+                        returnKeyType: UIReturnKeyType.next,
+                        placeholder: "E-mail",
+                        onSubmit: { }, tag: 0 )
+                            .tag(0)
+                            .cornerRadius(10)
+                            .foregroundColor(.cBlack)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .frame(height: 30, alignment: .center)
+                            .textContentType(.some(.emailAddress))
+                            .keyboardType(.emailAddress)
+                            .onTapGesture {
+                                viewModel.errrorMessage = ""
+                            }
                 }
                 .underlineTextField()
                 .frame(height: 50, alignment: .center)
@@ -59,29 +58,28 @@ struct LoginFormView: View {
                     Image(systemName: "lock.fill")
 
                     ZStack(alignment: .trailing) {
-                                    CustomTextField(
-                                        keyboardType: UIKeyboardType.default,
-                                        returnVal: UIReturnKeyType.done,
-                                        tag: 1,
-                                        text: $viewModel.password,
-                                        isfocusAble: self.$focused,
-                                        isSecured: true,
-                                        placeholder: "Password"
-                                    )
-                                        .foregroundColor(.cBlack)
-                                        .cornerRadius(10)
-                                        .frame(height: 30, alignment: .center)
-                                        .textContentType(.some(.password))
-                                        .onTapGesture {
-                                            viewModel.errrorMessage = ""
-                                        }
-//                                Button(action: {
-//                                    isSecured.toggle()
-//                                }) {
-//                                    Image(systemName: self.isSecured ? "eye.slash" : "eye")
-//                                        .accentColor(.cGray)
-//                                }
-                            }
+                        CustomTextField(
+                            text: $viewModel.password,
+                            isSecured: isSecured,
+                            keyboard: .default,
+                            returnKeyType: UIReturnKeyType.done,
+                            placeholder: "Password",
+                            onSubmit: { viewModel.signIn()}, tag: 1)
+                                .tag(1)
+                                .foregroundColor(.cBlack)
+                                .cornerRadius(10)
+                                .frame(height: 30, alignment: .center)
+                                .textContentType(.some(.password))
+                                .onTapGesture {
+                                    viewModel.errrorMessage = ""
+                                }
+                        Button(action: {
+                            isSecured.toggle()
+                        }) {
+                            Image(systemName: self.isSecured ? "eye.slash" : "eye")
+                                .accentColor(.cGray)
+                        }
+                    }
                 }
                 .underlineTextField()
                 .frame(height: 50, alignment: .center)
@@ -111,63 +109,5 @@ struct LoginFormView: View {
 struct LoginFormView_Previews: PreviewProvider {
     static var previews: some View {
         LoginFormView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
-    }
-}
-
-struct CustomTextField: UIViewRepresentable {
-    let keyboardType: UIKeyboardType
-    let returnVal: UIReturnKeyType
-    let tag: Int
-    @Binding var text: String
-    @Binding var isfocusAble: [Bool]
-    var isSecured: Bool = false
-    var placeholder: String
-
-    func makeUIView(context: Context) -> UITextField {
-        let textField = UITextField(frame: .zero)
-        textField.keyboardType = self.keyboardType
-        textField.returnKeyType = self.returnVal
-        textField.tag = self.tag
-        textField.delegate = context.coordinator
-        textField.autocorrectionType = .no
-        textField.isSecureTextEntry = isSecured
-        textField.placeholder = placeholder
-
-        return textField
-    }
-
-    func updateUIView(_ uiView: UITextField, context: Context) {
-        if isfocusAble[tag] {
-            uiView.becomeFirstResponder()
-        } else {
-            uiView.resignFirstResponder()
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    class Coordinator: NSObject, UITextFieldDelegate {
-        var parent: CustomTextField
-
-        init(_ textField: CustomTextField) {
-            self.parent = textField
-        }
-
-        func updatefocus(textfield: UITextField) {
-            textfield.becomeFirstResponder()
-        }
-
-func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            if parent.tag == 0 {
-                parent.isfocusAble = [false, true]
-                parent.text = textField.text ?? ""
-            } else if parent.tag == 1 {
-                parent.isfocusAble = [false, false]
-                parent.text = textField.text ?? ""
-         }
-        return true
-        }
     }
 }
