@@ -44,13 +44,16 @@ struct LoginFormView: View {
                         .foregroundColor(.cBlack)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .frame(height: 30, alignment: .center)
                         .textContentType(.some(.emailAddress))
                         .keyboardType(.emailAddress)
 
                         .onTapGesture {
                             viewModel.errrorMessage = ""
                         }
-                }.underlineTextField()
+                }
+                .underlineTextField()
+                .frame(height: 50, alignment: .center)
 
                 HStack {
                     Image(systemName: "lock.fill")
@@ -67,10 +70,11 @@ struct LoginFormView: View {
                                     )
                                         .foregroundColor(.cBlack)
                                         .cornerRadius(10)
+                                        .frame(height: 30, alignment: .center)
+                                        .textContentType(.some(.password))
                                         .onTapGesture {
                                             viewModel.errrorMessage = ""
                                         }
-
 //                                Button(action: {
 //                                    isSecured.toggle()
 //                                }) {
@@ -78,10 +82,11 @@ struct LoginFormView: View {
 //                                        .accentColor(.cGray)
 //                                }
                             }
-                }.underlineTextField()
+                }
+                .underlineTextField()
+                .frame(height: 50, alignment: .center)
             }
             .padding(EdgeInsets(top: 10, leading: 45, bottom: 10, trailing: 45))
-            .frame(width: .infinity, height: 50, alignment: .center)
 
             Section {
                 Button(action: {
