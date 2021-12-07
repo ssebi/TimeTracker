@@ -72,7 +72,6 @@ struct AddView: View {
                     TextEditor(text: $timeSlotVM.description)
                         .border(LinearGradient.gradientBackground)
                         .frame(width: UIScreen.width - 55, height: 80, alignment: .center)
-
                     Spacer()
 
                     Button("SUBMIT") {
@@ -86,7 +85,7 @@ struct AddView: View {
                 }
                 .blur(radius: timeSlotVM.showValidationAlert ? 30 : 0)
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
-                .offset(y: -keyboardResponder.currentHeight*0.5)
+                .offset(y: -keyboardResponder.currentHeight*0.9)
 
             }
             .padding()
