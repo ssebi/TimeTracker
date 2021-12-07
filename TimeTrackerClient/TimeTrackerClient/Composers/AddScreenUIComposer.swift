@@ -3,11 +3,11 @@ struct AddScreenUIComposer {
 
 	private init() { }
 
-	static func makeAddScreen() -> AddView {
+	static func makeAddScreen(clientsLoader: ClientsLoader, timeslotsPublisher: TimeSlotsPublisher, userLoader: UserLoader) -> AddView {
 		AddView(timeSlotVM:
-					TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()),
-									  timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()),
-									  userLoader: FirebaseUserLoader()))
+					TimeSlotViewModel(clientsLoader: clientsLoader,
+									  timeslotPublisher: timeslotsPublisher,
+									  userLoader: userLoader))
 	}
 
 }
