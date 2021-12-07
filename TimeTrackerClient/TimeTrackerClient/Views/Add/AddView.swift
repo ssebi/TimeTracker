@@ -10,7 +10,7 @@ import SwiftUI
 struct AddView: View {
     @ObservedObject var keyboardResponder = KeyboardResponder()
 	@ObservedObject var timeSlotVM: TimeSlotViewModel
-	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+	@Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         ZStack{
@@ -111,6 +111,7 @@ struct AddView: View {
 }
 
 struct AddView_Previews: PreviewProvider {
+	// TODO: - Fix Crashing Preview
     static var previews: some View {
         AddView(timeSlotVM: TimeSlotViewModel(
 			clientsLoader: ClientLoaderMock(store: MockClientsStore()),

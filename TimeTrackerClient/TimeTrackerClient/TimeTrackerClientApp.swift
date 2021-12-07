@@ -14,15 +14,33 @@ struct TimeTrackerClientApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 	@StateObject var sessionStore = SessionStore(authProvider: FirebaseAuthProvider())
 
+	private var clientsStore: ClientsStore = {
+		FirebaseClientsStore()
+	}()
+	private var timeslotsStore: TimeslotsStore = {
+		FirebaseTimeslotsStore()
+	}()
+	private var userLoader: FirebaseUserLoader = {
+		FirebaseUserLoader()
+	}()
+	
 	private var remoteTimeslotsLoader: TimeslotsLoader {
-		RemoteTimeslotsLoader(store: FirebaseTimeslotsStore())
+		RemoteTimeslotsLoader(store: timeslotsStore)
+	}
+	private var remoteClientsLoader: ClientsLoader {
+		RemoteClientsLoader(store: clientsStore)
+	}
+	private var remoteTimeslotsPublisher: TimeSlotsPublisher {
+		RemoteTimeSlotsPublisher(store: timeslotsStore)
 	}
 	
 	var body: some Scene {
 		WindowGroup {
 			Group {
 				if sessionStore.user != nil {
-					HomeScreenUIComposer.makeHomeScreen(timeslotsLoader: remoteTimeslotsLoader, userLoader: FirebaseUserLoader())
+					HomeScreenUIComposer.makeHomeScreen(timeslotsLoader: remoteTimeslotsLoader, userLoader: userLoader, addView: {
+						AddScreenUIComposer.makeAddScreen(clientsLoader: remoteClientsLoader, timeslotsPublisher: remoteTimeslotsPublisher, userLoader: userLoader)
+					})
 				} else {
                     LoginView(viewModel: LoginViewModel(session: sessionStore))
 				}
