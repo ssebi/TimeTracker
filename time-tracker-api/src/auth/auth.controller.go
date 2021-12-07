@@ -37,7 +37,7 @@ func LoginController(context *gin.Context) {
 func Register(context *gin.Context) {
 	var user users.User
 	context.Bind(&user)
-	response, err := users.SaveUser(user)
+	response, err := users.CreateUser(user)
 	if err != nil {
 		shared.ErrorResponse(context, 0, err)
 	} else {

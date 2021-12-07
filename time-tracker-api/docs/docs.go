@@ -253,6 +253,21 @@ var doc = `{
                     }
                 }
             }
+        },
+        "/users/:id/projects": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -320,11 +335,20 @@ var doc = `{
                 "email": {
                     "type": "string"
                 },
+                "first_name": {
+                    "type": "string"
+                },
                 "id": {
                     "type": "string"
                 },
                 "password": {
                     "type": "string"
+                },
+                "projects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/clients.Project"
+                    }
                 },
                 "updated_at": {
                     "type": "string"

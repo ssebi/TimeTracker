@@ -1,7 +1,7 @@
 #
-# @base = http://localhost:3000
-@base = https://api.time-tracker.ml
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1cHU2MEBnbWFpbC5jb20iLCJleHAiOjE2Mzc0Mjk1ODYsImlhdCI6MTYzNzE3MDM4Nn0.Zg4uPBZPxdXiEm8iV5IcDpM97LPiEV9LxYt5MAyNYSw
+@base = http://localhost:3000
+# @base = https://api.time-tracker.ml
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1cHU2MEBnbWFpbC5jb20iLCJleHAiOjE2MzkxNTI1MTksImlhdCI6MTYzODg5MzMxOX0.nMeKv85MOFOagopCWGkIlw0WMvNjwEpfQNzAcjgKyXM
 
 ###
 POST {{base}}/register
@@ -29,13 +29,6 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ###
-GET {{base}}/api/users/userid/projects
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-
-
-###
 GET {{base}}/api/clients
 Content-Type: application/json
 Authorization: Bearer {{token}}
@@ -52,6 +45,34 @@ Authorization: Bearer {{token}}
 
 
 
+###
+GET {{base}}/api/users/619a8695a6e8de3abda0d312
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+POST {{base}}/api/users/619a8695a6e8de3abda0d312/projects
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "id": "619780122fe146d80c548d3c"
+}
+
+
+
 ### create worklog
+###
+POST {{base}}/api/users/619a8695a6e8de3abda0d312/worklog
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "project_id": "619780122fe146d80c548d3c",
+  "hours":6,
+  "description":"working on the register page"
+}
+
+
 
 ### get worklog

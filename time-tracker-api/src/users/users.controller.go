@@ -1,24 +1,42 @@
 package users
 
 import (
+	"time-tracker/src/clients"
 	shared "time-tracker/src/shared"
 
 	"github.com/gin-gonic/gin"
 )
 
 func RegisterUsersController(api *gin.RouterGroup) {
-	api.GET("/users", GetUsers)
-	api.GET("/users/:id", GetUser)
-	api.POST("/users", CreateUser)
-	api.DELETE("/users/:id", DeleteUser)
+	api.GET("/users", GetUsersController)
+	api.POST("/users/:id/projects", AddUserProjectController)
+	api.GET("/users/:id", GetUserController)
+	api.POST("/users", CreateUserController)
+	api.DELETE("/users/:id", DeleteUserController)
+}
+
+// @Tags users
+// @Produce json
+// @Success 200
+// @Router /users/:id/projects [POST]
+func AddUserProjectController(c *gin.Context) {
+	var project clients.Project
+	c.Bind(&project)
+	id := c.Param("id")
+	err := AddUserProject(id, project)
+	if err != nil {
+		shared.ErrorResponse(c, 0, err)
+	} else {
+		shared.SuccessResponse(c, nil)
+	}
 }
 
 // @Tags users
 // @Produce json
 // @Success 200
 // @Router /users [get]
-func GetUsers(context *gin.Context) {
-	users, err := GetAllUsers()
+func GetUsersController(context *gin.Context) {
+	users, err := GetUsers()
 	if err != nil {
 		shared.ErrorResponse(context, 0, err)
 	} else {
@@ -32,7 +50,7 @@ func GetUsers(context *gin.Context) {
 // @Success 200
 // @Router /users/:id [get]
 // @Param id path string true "User ID"
-func GetUser(c *gin.Context) {
+func GetUserController(c *gin.Context) {
 	id := c.Param("id")
 	user, err := GetUserById(id)
 	if err != nil {
@@ -49,10 +67,10 @@ func GetUser(c *gin.Context) {
 // @Param user body users.User true "User"
 // @Success 200
 // @Router /users [post]
-func CreateUser(context *gin.Context) {
+func CreateUserController(context *gin.Context) {
 	var user User
 	context.Bind(&user)
-	response, err := SaveUser(user)
+	response, err := CreateUser(user)
 	if err != nil {
 		shared.ErrorResponse(context, 0, err)
 	} else {
@@ -66,7 +84,7 @@ func CreateUser(context *gin.Context) {
 // @Success 200
 // @Router /users/:id [delete]
 // @Param id path string true "User ID"
-func DeleteUser(c *gin.Context) {
+func DeleteUserController(c *gin.Context) {
 	id := c.Param("id")
 	err := DeleteUserById(id)
 	if err != nil {

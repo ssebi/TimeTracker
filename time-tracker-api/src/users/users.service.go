@@ -3,33 +3,80 @@ package users
 import (
 	"context"
 	"errors"
+	"log"
 	"time"
+	"time-tracker/src/clients"
 	"time-tracker/src/database"
+	shared "time-tracker/src/shared"
 
 	"github.com/kpango/glg"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"golang.org/x/crypto/bcrypt"
 )
 
 type User struct {
-	ID        string    `bson:"_id,omitempty" json:"id"`
-	Username  string    `bson:"user_name" json:"user_name"`
-	Email     string    `bson:"email" json:"email"`
-	Password  string    `bson:"password" json:"password"`
-	CreatedAt time.Time `bson:"created_at,omitempty" json:"created_at"`
-	UpdatedAt time.Time `bson:"updated_at,omitempty" json:"updated_at"`
+	ID        string            `bson:"_id,omitempty" json:"id"`
+	Username  string            `bson:"user_name" json:"user_name"`
+	FirstName string            `bson:"first_name" json:"first_name"`
+	Email     string            `bson:"email" json:"email"`
+	Password  string            `bson:"password" json:"password"`
+	CreatedAt time.Time         `bson:"created_at,omitempty" json:"created_at"`
+	UpdatedAt time.Time         `bson:"updated_at,omitempty" json:"updated_at"`
+	Projects  []clients.Project `bson:"projects" json:"projects"`
 }
 
-func GetAllUsers() ([]User, error) {
-	//Get MongoDB connection using connectionhelper.
-	client, err := database.GetMongoClient()
+func AddUserProject(id string, project clients.Project) error {
+	project, err := clients.GetProjectById(project.ID)
+	if err != nil {
+		return errors.New("project not found")
+	}
+
+	user, err := GetUserById(id)
+	if err != nil {
+		return errors.New("user not found")
+	}
+	for _, v := range user.Projects {
+		if v.ID == project.ID {
+			return errors.New("project already exists")
+		}
+	}
+	userCollection, err := database.GetMongoCollection(database.USERS)
+	if err != nil {
+		return err
+	}
+	objectId, err := primitive.ObjectIDFromHex(user.ID)
+	if err != nil {
+		return errors.New("invalid id")
+	}
+	data, err := shared.ToDoc(project)
+	if err != nil {
+		return err
+	}
+	_, err = userCollection.UpdateOne(
+		context.TODO(),
+		bson.M{"_id": objectId},
+		bson.D{
+			{"$addToSet", bson.M{"projects": data}},
+		},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return nil
+}
+
+func GetUsers() ([]User, error) {
+	collection, err := database.GetMongoCollection(database.USERS)
 	if err != nil {
 		return nil, err
 	}
-	collection := client.Database(database.DB).Collection(database.USERS)
-	cursor, err := collection.Find(context.TODO(), bson.M{})
+	projection := bson.D{
+		{"password", 0},
+	}
+	cursor, err := collection.Find(context.TODO(), bson.D{}, options.Find().SetProjection(projection))
 	if err != nil {
 		glg.Error(err)
 	}
@@ -45,23 +92,21 @@ func GetAllUsers() ([]User, error) {
 	return users, nil
 }
 
-func GetUserById(id string) (User, error) {
-	//Get MongoDB connection using connectionhelper.
-	client, err := database.GetMongoClient()
+func GetUserById(id string) (user User, err error) {
+	collection, err := database.GetMongoCollection(database.USERS)
 	if err != nil {
 		return User{}, err
 	}
-	collection := client.Database(database.DB).Collection(database.USERS)
 	objectId, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
 		return User{}, errors.New("invalid id")
 	}
-	var user User
-	err = collection.FindOne(context.TODO(), bson.M{"_id": objectId}).Decode(&user)
+	projection := bson.D{{"password", 0}}
+	err = collection.FindOne(context.TODO(), bson.M{"_id": objectId}, options.FindOne().SetProjection(projection)).Decode(&user)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			// This error means your query did not match any documents.
-			return User{}, nil
+			return user, errors.New("user not found")
 		}
 		glg.Error(err)
 		return User{}, err
@@ -90,7 +135,7 @@ func FindUserByEmail(email string) (User, error) {
 	return user, nil
 }
 
-func SaveUser(user User) (interface{}, error) {
+func CreateUser(user User) (interface{}, error) {
 	exitingUser, err := FindUserByEmail(user.Email)
 	if err != nil {
 		return nil, err

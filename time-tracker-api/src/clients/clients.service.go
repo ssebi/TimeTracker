@@ -2,6 +2,7 @@ package clients
 
 import (
 	"context"
+	"errors"
 	"time"
 	"time-tracker/src/database"
 
@@ -25,18 +26,15 @@ type Client struct {
 	UpdatedAt time.Time `bson:"updated_at,omitempty" json:"updated_at"`
 }
 
-func GetAllClients() ([]Client, error) {
-	//Get MongoDB connection using connectionhelper.
-	mclient, err := database.GetMongoClient()
+func GetAllClients() (clients []Client, err error) {
+	collection, err := database.GetMongoCollection(database.CLIENTS)
 	if err != nil {
 		return nil, err
 	}
-	collection := mclient.Database(database.DB).Collection(database.CLIENTS)
 	cursor, err := collection.Find(context.TODO(), bson.M{})
 	if err != nil {
 		glg.Error(err)
 	}
-	var clients []Client
 	err = cursor.All(context.TODO(), &clients)
 	if err != nil {
 		glg.Error(err)
@@ -48,12 +46,39 @@ func GetAllClients() ([]Client, error) {
 	return clients, nil
 }
 
-func SaveClient(client Client) (interface{}, error) {
-	//Get MongoDB connection using connectionhelper.
-	mclient, err := database.GetMongoClient()
+func GetProjectById(id string) (Project, error) {
+	collection, err := database.GetMongoCollection(database.CLIENTS)
 	if err != nil {
-		return nil, err
+		return Project{}, err
 	}
+
+	objectId, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return Project{}, errors.New("invalid id")
+	}
+
+	var client Client
+	filter := bson.M{
+		"projects": bson.M{
+			"$elemMatch": bson.M{"_id": objectId},
+		},
+	}
+
+	err = collection.FindOne(context.TODO(), filter).Decode(&client)
+	if err != nil {
+		return Project{}, err
+	}
+
+	var project Project
+	for _, v := range client.Projects {
+		if v.ID == id {
+			project = v
+		}
+	}
+	return project, nil
+}
+
+func SaveClient(client Client) (interface{}, error) {
 	insertableProjects := make([]interface{}, len(client.Projects))
 	for i, v := range client.Projects {
 		insertableProjects[i] = bson.M{
@@ -63,7 +88,11 @@ func SaveClient(client Client) (interface{}, error) {
 			"updated_at": time.Now(),
 		}
 	}
-	collection := mclient.Database(database.DB).Collection(database.CLIENTS)
+
+	collection, err := database.GetMongoCollection(database.CLIENTS)
+	if err != nil {
+		return nil, err
+	}
 	inserted, err := collection.InsertOne(context.TODO(), bson.M{
 		"name":       client.Name,
 		"projects":   insertableProjects,

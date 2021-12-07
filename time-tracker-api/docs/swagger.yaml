@@ -42,10 +42,16 @@ definitions:
         type: string
       email:
         type: string
+      first_name:
+        type: string
       id:
         type: string
       password:
         type: string
+      projects:
+        items:
+          $ref: '#/definitions/clients.Project'
+        type: array
       updated_at:
         type: string
       user_name:
@@ -195,6 +201,15 @@ paths:
         name: id
         required: true
         type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      tags:
+      - users
+  /users/:id/projects:
+    post:
       produces:
       - application/json
       responses:
