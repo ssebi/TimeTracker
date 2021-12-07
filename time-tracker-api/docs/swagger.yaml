@@ -217,6 +217,23 @@ paths:
           description: ""
       tags:
       - users
+  /users/:id/worklog:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      tags:
+      - users
+    post:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      tags:
+      - users
 securityDefinitions:
   Bearer:
     in: header
