@@ -9,9 +9,8 @@ import SwiftUI
 
 struct AddView: View {
     @ObservedObject var keyboardResponder = KeyboardResponder()
-    // TODO: - Move ViewModel initialization in a factory method
-    @ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()), timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()), userLoader: FirebaseUserLoader())
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+	@ObservedObject var timeSlotVM: TimeSlotViewModel
+	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
         ZStack{
@@ -113,6 +112,42 @@ struct AddView: View {
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
-        AddView()
+        AddView(timeSlotVM: TimeSlotViewModel(
+			clientsLoader: ClientLoaderMock(store: MockClientsStore()),
+			timeslotPublisher: TimeSlotsPublisherMock(store: MockTimeslotStore()),
+			userLoader: UserLoaderMock()))
     }
+
+	private class MockClientsStore: ClientsStore {
+		func getClients(completion: @escaping GetClientsResult) { }
+	}
+	private class ClientLoaderMock: ClientsLoader {
+		var store: ClientsStore
+		init(store: ClientsStore) {
+			self.store = store
+		}
+		func getClients(completion: @escaping (Result<[Client], Error>) -> Void) {
+			completion(.success([]))
+		}
+	}
+
+	private class MockTimeslotStore: TimeslotsStore {
+		func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) { }
+		func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) { }
+	}
+	private class TimeSlotsPublisherMock: TimeSlotsPublisher {
+		var store: TimeslotsStore
+		init(store: TimeslotsStore) {
+			self.store = store
+		}
+		func addTimeSlot(_ timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
+			completion(nil)
+		}
+	}
+
+	private class UserLoaderMock: UserLoader {
+		func getUser() -> User {
+			User(uid: UUID().uuidString, email: "somteEmail@test.com", username: "Test", client: "Client")
+		}
+	}
 }

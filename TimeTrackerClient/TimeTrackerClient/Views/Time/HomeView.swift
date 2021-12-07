@@ -11,7 +11,7 @@ import FirebaseFirestore
 struct HomeView: View {
     @EnvironmentObject var session: SessionStore
     @State private var showConfirmation = false
-    var addView =  AddView()
+	var addView = AddScreenUIComposer.makeAddScreen()
 
     @ObservedObject private(set) var viewModel: HomeScreenViewModel
 

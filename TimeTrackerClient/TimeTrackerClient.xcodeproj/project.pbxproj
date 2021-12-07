@@ -60,6 +60,7 @@
 		C69C857B273BD3DE0089242C /* AuthProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C857A273BD3DE0089242C /* AuthProviderSpy.swift */; };
 		C6ACF57D27317986006D2C43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57927317986006D2C43 /* HomeView.swift */; };
 		C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57A27317986006D2C43 /* ProjectView.swift */; };
+		C6BCDCED275F959100CAEF84 /* AddScreenUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCDCEC275F959100CAEF84 /* AddScreenUIComposer.swift */; };
 		C6DA42E82732DBC800D44D80 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42E72732DBC800D44D80 /* LoginView.swift */; };
 		C6DA42EA2735477E00D44D80 /* DateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42E92735477E00D44D80 /* DateLabel.swift */; };
 		C6DA42EC27356C4400D44D80 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42EB27356C4400D44D80 /* AuthenticationTests.swift */; };
@@ -127,6 +128,7 @@
 		C6ACF57927317986006D2C43 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C6ACF57A27317986006D2C43 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		C6B6AFCE272A892C00B5CFBC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6BCDCEC275F959100CAEF84 /* AddScreenUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScreenUIComposer.swift; sourceTree = "<group>"; };
 		C6DA42E72732DBC800D44D80 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C6DA42E92735477E00D44D80 /* DateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLabel.swift; sourceTree = "<group>"; };
 		C6DA42EB27356C4400D44D80 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				C61F54CD2748139A0083E1A4 /* HomeScreenUIComposer.swift */,
+				C6BCDCEC275F959100CAEF84 /* AddScreenUIComposer.swift */,
 			);
 			path = Composers;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				C61F54B7274400580083E1A4 /* FirebaseClientsLoader.swift in Sources */,
 				54CC81102758FDF1004E1062 /* LoginFormView.swift in Sources */,
 				545CCEAB27200FE500811CE3 /* Utils.swift in Sources */,
+				C6BCDCED275F959100CAEF84 /* AddScreenUIComposer.swift in Sources */,
 				54CC81122759071C004E1062 /* LoginFooterView.swift in Sources */,
 				545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */,
 				54CC8114275A656A004E1062 /* CustomAlertView.swift in Sources */,
