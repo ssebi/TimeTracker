@@ -92,7 +92,7 @@ struct AddView: View {
             .padding()
 
             if timeSlotVM.showValidationAlert {
-                CustomAlertView(message: $timeSlotVM.showMessage)
+                CustomAlertView(isValid: timeSlotVM.isValid, message: $timeSlotVM.showMessage)
             }
 
         }
@@ -105,7 +105,9 @@ struct AddView: View {
         let projectName = timeSlotVM.projectNames[timeSlotVM.selectedProject]
         timeSlotVM.addTimeSlot(clientName: clientName, projectName: projectName )
         if (timeSlotVM.isValid) {
-            self.presentationMode.wrappedValue.dismiss()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                self.presentationMode.wrappedValue.dismiss()
+            }
         }
     }
 }

@@ -30,6 +30,6 @@ struct CustomAlertView: View {
 
 struct CustomAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomAlertView( message: .constant("This is an error"))
+        CustomAlertView(isValid: true, message: .constant("This is an error"))
     }
 }
