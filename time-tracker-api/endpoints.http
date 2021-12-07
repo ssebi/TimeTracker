@@ -1,6 +1,6 @@
 #
-@base = http://localhost:3000
-# @base = https://api.time-tracker.ml
+# @base = http://localhost:3000
+@base = https://api.time-tracker.ml
 @token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1cHU2MEBnbWFpbC5jb20iLCJleHAiOjE2MzkxNTI1MTksImlhdCI6MTYzODg5MzMxOX0.nMeKv85MOFOagopCWGkIlw0WMvNjwEpfQNzAcjgKyXM
 
 ###

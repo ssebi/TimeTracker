@@ -22,7 +22,7 @@ var mongoOnce sync.Once
 
 //I have used below constants just to hold required database config's.
 const (
-	DB       = "timetracker"
+	DB       = "mongo_time_tracking"
 	USERS    = "col_users"
 	CLIENTS  = "col_clients"
 	WORKLOGS = "col_worklogs"
