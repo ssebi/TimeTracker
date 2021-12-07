@@ -126,7 +126,9 @@ class TimeSlotViewModel: ObservableObject {
             }
         }
 
-        if (timeSlotDetail.description == "") && (total == 0) {isValid = true}
+		if !timeSlotDetail.description.isEmpty && total != 0 {
+			isValid = true
+		}
 
         if isValid {
             timeslotPublisher.addTimeSlot(timeSlot) { error in
