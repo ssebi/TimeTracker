@@ -15,7 +15,7 @@ class TimeSlotViewModel: ObservableObject {
     @Published var timeInterval = DateComponents()
     @Published var isValid = false
     @Published var showValidationAlert = false
-    @Published var startEndDate = StartEndDate(start: Date(), end: Date()) {
+    @Published var startEndDate = StartEndDate(start: Date(), end: Date().addingTimeInterval(1)) {
         didSet {
             timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startEndDate.start, to: startEndDate.end)
         }
