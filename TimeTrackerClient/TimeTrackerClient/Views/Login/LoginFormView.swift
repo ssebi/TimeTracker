@@ -90,7 +90,7 @@ struct LoginFormView: View {
                 }.underlineTextField()
             }
             .padding(EdgeInsets(top: 10, leading: 45, bottom: 10, trailing: 45))
-            .frame(width: .infinity, height: 50, alignment: .center)
+            .frame(height: 50, alignment: .center)
 
             Section {
                 Button(action: {
