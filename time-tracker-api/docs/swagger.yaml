@@ -57,6 +57,17 @@ definitions:
       user_name:
         type: string
     type: object
+  users.Worklog:
+    properties:
+      description:
+        type: string
+      hours:
+        type: integer
+      id:
+        type: string
+      project_id:
+        type: string
+    type: object
 host: https://api.time-tracker.ml/
 info:
   contact:
@@ -227,6 +238,13 @@ paths:
       tags:
       - users
     post:
+      parameters:
+      - description: worklog
+        in: body
+        name: worklog
+        required: true
+        schema:
+          $ref: '#/definitions/users.Worklog'
       produces:
       - application/json
       responses:

@@ -290,6 +290,17 @@ var doc = `{
                 "tags": [
                     "users"
                 ],
+                "parameters": [
+                    {
+                        "description": "worklog",
+                        "name": "worklog",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/users.Worklog"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -382,6 +393,23 @@ var doc = `{
                     "type": "string"
                 },
                 "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "users.Worklog": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "hours": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "project_id": {
                     "type": "string"
                 }
             }

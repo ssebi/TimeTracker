@@ -37,6 +37,7 @@ func AddUserProjectController(c *gin.Context) {
 // @Produce json
 // @Success 200
 // @Router /users/:id/worklog [POST]
+// @Param worklog body users.Worklog true "worklog"
 func AddUserWorklogController(c *gin.Context) {
 	var worklog Worklog
 	c.Bind(&worklog)
