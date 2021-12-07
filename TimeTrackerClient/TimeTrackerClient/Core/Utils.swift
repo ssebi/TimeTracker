@@ -71,7 +71,6 @@ struct CustomTextField: UIViewRepresentable {
     }
 
     class Coordinator : NSObject, UITextFieldDelegate {
-
         var parent: CustomTextField
 
         init(_ uiTextView: CustomTextField) {
@@ -92,12 +91,9 @@ struct CustomTextField: UIViewRepresentable {
                 nextTextField.becomeFirstResponder()
             } else {
                 textField.resignFirstResponder()
+				parent.commitHandler?()
             }
             return false
-        }
-
-        func textFieldDidEndEditing(_ textField: UITextField) {
-            parent.commitHandler?()
         }
     }
 }

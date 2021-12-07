@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginFormView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
     @State private var isSecured: Bool = true
-
+	
     var body: some View {
         VStack{
             VStack{
