@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginFormView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
     @State private var isSecured: Bool = true
-    @State var focused: [Bool] = [true, false]
 
     var body: some View {
         VStack{
@@ -23,55 +22,63 @@ struct LoginFormView: View {
             }
             .foregroundColor(Color.cBlack)
             .font(Font.custom("Avenir-Light", size: 20.0))
-
+            Text("\(viewModel.errrorMessage)")
+                .foregroundColor(.red)
+                .font(Font.custom("Avenir-Light", size: 20))
+                .padding()
+                .frame(width: UIScreen.main.bounds.width - 60, alignment: .center)
             Group {
-                Text("\(viewModel.errrorMessage)")
-                    .foregroundColor(.red)
-                    .font(Font.custom("Avenir-Light", size: 20))
-                    .padding()
-
                 HStack {
                     Image(systemName: "person.fill")
-                    TextField("", text: $viewModel.username)
-                        .placeholder(when: viewModel.username.isEmpty) {
-                            Text("E-mail").foregroundColor(.cGray)
-                        }
-                        .cornerRadius(10)
+                    CustomTextField(
+                        "E-mail",
+                        text: self.$viewModel.username,
+                        keyboardType: .emailAddress,
+                        tag: 1,
+                        isSecure: false,
+                        returnKeyType: .next,
+                        onCommit: {}
+                    )
                         .foregroundColor(.cBlack)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                        .keyboardType(.emailAddress)
+                        .textContentType(.emailAddress)
                         .onTapGesture {
                             viewModel.errrorMessage = ""
                         }
                 }.underlineTextField()
-
                 HStack {
                     Image(systemName: "lock.fill")
 
                     ZStack(alignment: .trailing) {
                         if isSecured {
-                            SecureField("", text: $viewModel.password)
-                                       .placeholder(when: viewModel.password.isEmpty) {
-                                           Text("Password").foregroundColor(.cGray)
-                                       }
-                                       .foregroundColor(.cBlack)
-                                       .cornerRadius(10)
-                                       .onTapGesture {
-                                           viewModel.errrorMessage = ""
-                                       }
-                                       .underlineTextField()
+                            CustomTextField(
+                                "Password",
+                                text: self.$viewModel.password,
+                                keyboardType: .default, tag: 2,
+                                isSecure: true,
+                                returnKeyType: .send,
+                                onCommit: {
+                                    viewModel.signIn()
+                                })
+                                .foregroundColor(.cBlack)
+                                .textContentType(.password)
+                                .onTapGesture {
+                                    viewModel.errrorMessage = ""
+                                }
                         } else {
-                            TextField("", text: $viewModel.password)
-                                       .placeholder(when: viewModel.password.isEmpty) {
-                                           Text("Password").foregroundColor(.cGray)
-                                       }
-                                       .foregroundColor(.cBlack)
-                                       .cornerRadius(10)
-                                       .onTapGesture {
-                                           viewModel.errrorMessage = ""
-                                       }
-                                       .underlineTextField()
+                            CustomTextField(
+                                "Password",
+                                text: self.$viewModel.password,
+                                keyboardType: .default,
+                                tag: 2, isSecure: false,
+                                returnKeyType: .send,
+                                onCommit: {
+                                    viewModel.signIn()
+                                })
+                                .foregroundColor(.cBlack)
+                                .textContentType(.password)
+                                .onTapGesture {
+                                    viewModel.errrorMessage = ""
+                                }
                         }
                         Button(action: {
                             isSecured.toggle()
@@ -80,11 +87,10 @@ struct LoginFormView: View {
                                 .accentColor(.cGray)
                         }
                     }
-                }
-                .underlineTextField()
-                .frame(height: 50, alignment: .center)
+                }.underlineTextField()
             }
             .padding(EdgeInsets(top: 10, leading: 45, bottom: 10, trailing: 45))
+            .frame(width: .infinity, height: 50, alignment: .center)
 
             Section {
                 Button(action: {
