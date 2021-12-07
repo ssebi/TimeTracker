@@ -32,47 +32,47 @@ struct LoginFormView: View {
 
                 HStack {
                     Image(systemName: "person.fill")
-                    CustomTextField(
-                        text: $viewModel.username,
-                        isSecured: false,
-                        keyboard: .default,
-                        returnKeyType: UIReturnKeyType.next,
-                        placeholder: "E-mail",
-                        onSubmit: { }, tag: 0 )
-                            .tag(0)
-                            .cornerRadius(10)
-                            .foregroundColor(.cBlack)
-                            .autocapitalization(.none)
-                            .disableAutocorrection(true)
-                            .frame(height: 30, alignment: .center)
-                            .textContentType(.some(.emailAddress))
-                            .keyboardType(.emailAddress)
-                            .onTapGesture {
-                                viewModel.errrorMessage = ""
-                            }
-                }
-                .underlineTextField()
-                .frame(height: 50, alignment: .center)
+                    TextField("", text: $viewModel.username)
+                        .placeholder(when: viewModel.username.isEmpty) {
+                            Text("E-mail").foregroundColor(.cGray)
+                        }
+                        .cornerRadius(10)
+                        .foregroundColor(.cBlack)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .keyboardType(.emailAddress)
+                        .onTapGesture {
+                            viewModel.errrorMessage = ""
+                        }
+                }.underlineTextField()
 
                 HStack {
                     Image(systemName: "lock.fill")
 
                     ZStack(alignment: .trailing) {
-                        CustomTextField(
-                            text: $viewModel.password,
-                            isSecured: isSecured,
-                            keyboard: .default,
-                            returnKeyType: UIReturnKeyType.done,
-                            placeholder: "Password",
-                            onSubmit: { viewModel.signIn()}, tag: 1)
-                                .tag(1)
-                                .foregroundColor(.cBlack)
-                                .cornerRadius(10)
-                                .frame(height: 30, alignment: .center)
-                                .textContentType(.some(.password))
-                                .onTapGesture {
-                                    viewModel.errrorMessage = ""
-                                }
+                        if isSecured {
+                            SecureField("", text: $viewModel.password)
+                                       .placeholder(when: viewModel.password.isEmpty) {
+                                           Text("Password").foregroundColor(.cGray)
+                                       }
+                                       .foregroundColor(.cBlack)
+                                       .cornerRadius(10)
+                                       .onTapGesture {
+                                           viewModel.errrorMessage = ""
+                                       }
+                                       .underlineTextField()
+                        } else {
+                            TextField("", text: $viewModel.password)
+                                       .placeholder(when: viewModel.password.isEmpty) {
+                                           Text("Password").foregroundColor(.cGray)
+                                       }
+                                       .foregroundColor(.cBlack)
+                                       .cornerRadius(10)
+                                       .onTapGesture {
+                                           viewModel.errrorMessage = ""
+                                       }
+                                       .underlineTextField()
+                        }
                         Button(action: {
                             isSecured.toggle()
                         }) {

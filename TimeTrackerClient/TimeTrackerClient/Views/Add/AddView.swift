@@ -13,8 +13,6 @@ struct AddView: View {
     @ObservedObject var timeSlotVM = TimeSlotViewModel(clientsLoader: RemoteClientsLoader(store: FirebaseClientsStore()), timeslotPublisher: RemoteTimeSlotsPublisher(store: FirebaseTimeslotsStore()), userLoader: FirebaseUserLoader())
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    //@State var showValidationAlert = false
-
     var body: some View {
         ZStack{
             ScrollView(showsIndicators: false) {
