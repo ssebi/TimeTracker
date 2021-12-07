@@ -17,6 +17,13 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+type Worklog struct {
+	ID          string `bson:"_id,omitempty" json:"id"`
+	ProjectId   string `bson:"project_id" json:"project_id"`
+	Hours       int    `bson:"hours" json:"hours"`
+	Description string `bson:"description" json:"description"`
+}
+
 type User struct {
 	ID        string            `bson:"_id,omitempty" json:"id"`
 	Username  string            `bson:"user_name" json:"user_name"`
@@ -26,6 +33,62 @@ type User struct {
 	CreatedAt time.Time         `bson:"created_at,omitempty" json:"created_at"`
 	UpdatedAt time.Time         `bson:"updated_at,omitempty" json:"updated_at"`
 	Projects  []clients.Project `bson:"projects" json:"projects"`
+}
+
+func GetUserWorklog(id string) ([]Worklog, error) {
+	user, err := GetUserById(id)
+	if err != nil {
+		return nil, errors.New("user not found")
+	}
+	worklogCollection, err := database.GetMongoCollection(database.WORKLOGS)
+	if err != nil {
+		return nil, err
+	}
+
+	cursor, err := worklogCollection.Find(context.TODO(), bson.M{"user_id": user.ID}, options.Find())
+	if err != nil {
+		glg.Error(err)
+	}
+	var worklogs []Worklog
+	err = cursor.All(context.TODO(), &worklogs)
+	if err != nil {
+		glg.Error(err)
+		return make([]Worklog, 0), err
+	}
+	if len(worklogs) == 0 {
+		return make([]Worklog, 0), nil
+	}
+	return worklogs, nil
+
+}
+
+func AddUserWorklog(id string, worklog Worklog) error {
+	project, err := clients.GetProjectById(worklog.ProjectId)
+	if err != nil {
+		return errors.New("project not found")
+	}
+	user, err := GetUserById(id)
+	if err != nil {
+		return errors.New("user not found")
+	}
+
+	worklogCollection, err := database.GetMongoCollection(database.WORKLOGS)
+	if err != nil {
+		return err
+	}
+	_, err = worklogCollection.InsertOne(context.TODO(), bson.M{
+		"user_id":     user.ID,
+		"project_id":  project.ID,
+		"hours":       worklog.Hours,
+		"description": worklog.Description,
+		"created_at":  time.Now(),
+		"updated_at":  time.Now(),
+	})
+	if err != nil {
+		glg.Error(err)
+		return err
+	}
+	return nil
 }
 
 func AddUserProject(id string, project clients.Project) error {

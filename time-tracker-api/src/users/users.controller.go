@@ -10,6 +10,8 @@ import (
 func RegisterUsersController(api *gin.RouterGroup) {
 	api.GET("/users", GetUsersController)
 	api.POST("/users/:id/projects", AddUserProjectController)
+	api.POST("/users/:id/worklog", AddUserWorklogController)
+	api.GET("/users/:id/worklog", GetWorklogController)
 	api.GET("/users/:id", GetUserController)
 	api.POST("/users", CreateUserController)
 	api.DELETE("/users/:id", DeleteUserController)
@@ -28,6 +30,36 @@ func AddUserProjectController(c *gin.Context) {
 		shared.ErrorResponse(c, 0, err)
 	} else {
 		shared.SuccessResponse(c, nil)
+	}
+}
+
+// @Tags users
+// @Produce json
+// @Success 200
+// @Router /users/:id/worklog [POST]
+func AddUserWorklogController(c *gin.Context) {
+	var worklog Worklog
+	c.Bind(&worklog)
+	id := c.Param("id")
+	err := AddUserWorklog(id, worklog)
+	if err != nil {
+		shared.ErrorResponse(c, 0, err)
+	} else {
+		shared.SuccessResponse(c, nil)
+	}
+}
+
+// @Tags users
+// @Produce json
+// @Success 200
+// @Router /users/:id/worklog [GET]
+func GetWorklogController(c *gin.Context) {
+	id := c.Param("id")
+	worklog, err := GetUserWorklog(id)
+	if err != nil {
+		shared.ErrorResponse(c, 0, err)
+	} else {
+		shared.SuccessResponse(c, worklog)
 	}
 }
 

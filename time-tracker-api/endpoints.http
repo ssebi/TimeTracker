@@ -39,8 +39,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "client1",
-  "projects": [{"name": "projects1"},{"name": "projects2"}]
+  "name": "client3",
+  "projects": [{"name": "projects1"},{"name": "projects2"},{"name": "projects2"}]
 }
 
 
@@ -56,10 +56,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "id": "619780122fe146d80c548d3c"
+  "id": "61af87c0b7aaf37d9a9c3903"
 }
-
-
 
 ### create worklog
 ###
@@ -69,10 +67,13 @@ Authorization: Bearer {{token}}
 
 {
   "project_id": "619780122fe146d80c548d3c",
-  "hours":6,
-  "description":"working on the register page"
+  "hours":2,
+  "description":"working on the register page in the frontend"
 }
 
 
 
 ### get worklog
+GET {{base}}/api/users/619a8695a6e8de3abda0d312/worklog
+Content-Type: application/json
+Authorization: Bearer {{token}}
