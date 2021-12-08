@@ -99,12 +99,15 @@ class TimeSlotViewModel: ObservableObject {
             description: description
         )
 
+        let dateComponent = Calendar.current.dateComponents([.day, .year, .month], from: startEndDate.start)
+        let date = Calendar.current.date(from:dateComponent) ?? startEndDate.start
+
         let timeSlot = TimeSlot(
             id: UUID().uuidString,
             userId: userID,
             clientName: clientName,
             projectName: projectName,
-            date: startEndDate.start,
+            date: date,
             details: timeSlotDetail,
             total: total)
 

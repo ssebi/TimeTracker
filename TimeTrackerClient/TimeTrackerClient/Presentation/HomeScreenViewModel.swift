@@ -1,11 +1,17 @@
 
 import Combine
+import Foundation
 
 public class HomeScreenViewModel: ObservableObject {
 
 	private let timeslotsLoader: TimeslotsLoader
 	private let userLoader: UserLoader
 	@Published public private(set) var timeslots: [TimeSlot] = []
+    let dateFormater = DateFormatter()
+
+    var categories: [String:[TimeSlot]] {
+        Dictionary(grouping: timeslots, by:{ $0.date.description})
+    }
 
 	public init(timeslotsLoader: TimeslotsLoader, userLoader: UserLoader) {
 		self.timeslotsLoader = timeslotsLoader

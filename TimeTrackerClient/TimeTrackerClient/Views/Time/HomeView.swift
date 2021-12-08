@@ -28,10 +28,14 @@ struct HomeView: View {
                         PullToRefresh(coordinateSpaceName: "pullToRefresh") {
                             viewModel.setup()
                             }
-                        ForEach(viewModel.timeslots) { timeslot in
-                            ProjectView(timeslot: timeslot)
-                                .padding([.trailing, .leading, .top])
+                        ForEach(viewModel.categories.keys.sorted(), id: \.self) { key in
+
+                            Text("\(key)")
                         }
+//                        ForEach(viewModel.timeslots) { timeslot in
+//                                ProjectView(timeslot: timeslot)
+//                                    .padding([.trailing, .leading, .top])
+//                        }
                     }.coordinateSpace(name: "pullToRefresh")
 
                     VStack {
