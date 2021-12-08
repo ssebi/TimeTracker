@@ -13,7 +13,7 @@ public class HomeScreenViewModel: ObservableObject {
 		setup()
 	}
 
-	private func setup() {
+	func setup() {
 		guard let userID = userLoader.getUser().uid else {
 			return
 		}

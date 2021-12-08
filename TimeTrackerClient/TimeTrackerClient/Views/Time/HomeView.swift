@@ -25,11 +25,14 @@ struct HomeView: View {
                         .ignoresSafeArea()
 
                     ScrollView {
+                        PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                            viewModel.setup()
+                            }
                         ForEach(viewModel.timeslots) { timeslot in
                             ProjectView(timeslot: timeslot)
                                 .padding([.trailing, .leading, .top])
                         }
-                    }
+                    }.coordinateSpace(name: "pullToRefresh")
 
                     VStack {
                         Spacer()
