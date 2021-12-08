@@ -16,10 +16,9 @@ public class HomeScreenViewModel: ObservableObject {
 	public init(timeslotsLoader: TimeslotsLoader, userLoader: UserLoader) {
 		self.timeslotsLoader = timeslotsLoader
 		self.userLoader = userLoader
-		setup()
 	}
 
-	func setup() {
+	func refresh() {
 		guard let userID = userLoader.getUser().uid else {
 			return
 		}

@@ -25,17 +25,11 @@ struct HomeView: View {
                         .ignoresSafeArea()
 
                     ScrollView {
-                        PullToRefresh(coordinateSpaceName: "pullToRefresh") {
-                            viewModel.setup()
-                            }
-                        ForEach(viewModel.categories.keys.sorted(), id: \.self) { key in
-
-                            Text("\(key)")
+                        PullToRefresh(coordinateSpaceName: "pullToRefresh", onRefresh: viewModel.refresh)
+                        ForEach(viewModel.timeslots) { timeslot in
+                                ProjectView(timeslot: timeslot)
+                                    .padding([.trailing, .leading, .top])
                         }
-//                        ForEach(viewModel.timeslots) { timeslot in
-//                                ProjectView(timeslot: timeslot)
-//                                    .padding([.trailing, .leading, .top])
-//                        }
                     }.coordinateSpace(name: "pullToRefresh")
 
                     VStack {
@@ -89,7 +83,7 @@ struct HomeView: View {
                         )
                     }
                     .navigationTitle("Time Logged")
-                }
+                }.onAppear(perform: viewModel.refresh)
             }
         }
     }
