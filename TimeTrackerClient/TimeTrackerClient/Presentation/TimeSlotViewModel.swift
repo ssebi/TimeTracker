@@ -15,7 +15,9 @@ class TimeSlotViewModel: ObservableObject {
     @Published var timeInterval = DateComponents()
     @Published var isValid = false
     @Published var showValidationAlert = false
-    @Published var startEndDate = StartEndDate(start: Date(), end: Date().addingTimeInterval(1)) {
+    @Published var startEndDate = StartEndDate(
+        start: Date(),
+        end: Calendar.current.date(byAdding: .hour, value: 1, to: Date())?.addingTimeInterval(1) ?? Date()) {
         didSet {
             timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startEndDate.start, to: startEndDate.end)
         }
@@ -81,7 +83,9 @@ class TimeSlotViewModel: ObservableObject {
             }
             self.isLoading = false
         }
+        timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startEndDate.start, to: startEndDate.end)
     }
+
 
     func addTimeSlot(clientName: String, projectName: String) {
         isValid = false
@@ -89,7 +93,7 @@ class TimeSlotViewModel: ObservableObject {
             return showMessage = "The user is not logged!"
         }
 
-        timeInterval = Calendar.current.dateComponents([.hour, .minute], from: startEndDate.start, to: startEndDate.end)
+
 
         let total = ((timeInterval.hour ?? 0)*60) + (timeInterval.minute ?? 0)
 
