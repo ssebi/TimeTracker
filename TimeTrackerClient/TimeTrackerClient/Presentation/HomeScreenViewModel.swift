@@ -7,7 +7,11 @@ public class HomeScreenViewModel: ObservableObject {
 	private let timeslotsLoader: TimeslotsLoader
 	private let userLoader: UserLoader
 	@Published public private(set) var timeslots: [TimeSlot] = []
-    let dateFormatter = DateFormatter()
+	let dateFormatter: DateFormatter = {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "E, dd-MMMM-yyyy"
+		return dateFormatter
+	}()
     
     var categories: [Date:[TimeSlot]] {
         Dictionary(grouping: timeslots, by:{ $0.sortDate })

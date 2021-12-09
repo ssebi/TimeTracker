@@ -32,7 +32,7 @@ struct HomeView: View {
                                         .fill(Color.gray)
                                         .opacity(0.1)
                                     VStack{
-                                        Text(formatDate(key: key))
+										Text(key, formatter: viewModel.dateFormatter)
                                         ForEach(viewModel.categories[key] ?? []) { timeslot in
                                             ProjectView(timeslot: timeslot)
                                                 .padding([.trailing, .leading])
@@ -96,12 +96,6 @@ struct HomeView: View {
                 }.onAppear(perform: viewModel.refresh)
             }
         }
-    }
-
-    func formatDate(key: Date) -> String {
-        viewModel.dateFormatter.dateFormat = "E, dd-MMMM-yyyy"
-        let formatedDate = viewModel.dateFormatter.string(from: key)
-        return formatedDate
     }
 }
 
