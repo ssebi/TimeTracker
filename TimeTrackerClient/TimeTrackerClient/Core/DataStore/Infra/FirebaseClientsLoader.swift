@@ -6,7 +6,7 @@ class FirebaseClientsStore: ClientsStore {
 	struct UndefinedError: Error { }
 
 	func getClients(completion: @escaping ClientsStore.GetClientsResult) {
-		Firestore.firestore().collection(Path.clients).addSnapshotListener { snapshot, error in
+		Firestore.firestore().collection(Path.clients).getDocuments { snapshot, error in
 			if let snapshot = snapshot {
 				let clients = snapshot.documents.compactMap { document -> Client? in
 					let data = document.data()

@@ -105,6 +105,7 @@ struct AddView: View {
         if (timeSlotVM.isValid) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.presentationMode.wrappedValue.dismiss()
+                
             }
         }
     }

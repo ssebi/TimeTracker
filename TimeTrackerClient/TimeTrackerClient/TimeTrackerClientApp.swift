@@ -54,9 +54,9 @@ extension TimeTrackerClientApp {
 			FirebaseUserLoader()
 		}()
 
-		fileprivate lazy var addScreen: AddView = {
+		fileprivate var addScreen: AddView {
 			AddScreenUIComposer.makeAddScreen(clientsLoader: remoteClientsLoader, timeslotsPublisher: remoteTimeslotsPublisher, userLoader: userLoader)
-		}()
+		}
 
 		fileprivate var remoteTimeslotsLoader: TimeslotsLoader {
 			RemoteTimeslotsLoader(store: timeslotsStore)
