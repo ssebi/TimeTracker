@@ -26,13 +26,13 @@ struct HomeView: View {
 
                     ScrollView {
                         PullToRefresh(coordinateSpaceName: "pullToRefresh", onRefresh: viewModel.refresh)
-                            ForEach(viewModel.categories.keys.sorted(by: <), id: \.self) { key in
+                            ForEach(viewModel.categories.keys.sorted(by: >), id: \.self) { key in
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 15)
                                         .fill(Color.gray)
                                         .opacity(0.1)
                                     VStack{
-                                        Text("\(key)")
+                                        Text(formatDate(key: key))
                                         ForEach(viewModel.categories[key] ?? []) { timeslot in
                                             ProjectView(timeslot: timeslot)
                                                 .padding([.trailing, .leading])
@@ -96,6 +96,12 @@ struct HomeView: View {
                 }.onAppear(perform: viewModel.refresh)
             }
         }
+    }
+
+    func formatDate(key: Date) -> String {
+        viewModel.dateFormatter.dateFormat = "E, dd-MMMM-yyyy"
+        let formatedDate = viewModel.dateFormatter.string(from: key)
+        return formatedDate
     }
 }
 

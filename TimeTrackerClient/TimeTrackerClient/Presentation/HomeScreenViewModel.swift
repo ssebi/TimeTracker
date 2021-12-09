@@ -7,9 +7,9 @@ public class HomeScreenViewModel: ObservableObject {
 	private let timeslotsLoader: TimeslotsLoader
 	private let userLoader: UserLoader
 	@Published public private(set) var timeslots: [TimeSlot] = []
-    let dateFormater = DateFormatter()
-
-    var categories: [String:[TimeSlot]] {
+    let dateFormatter = DateFormatter()
+    
+    var categories: [Date:[TimeSlot]] {
         Dictionary(grouping: timeslots, by:{ $0.sortDate })
     }
 
@@ -32,12 +32,9 @@ public class HomeScreenViewModel: ObservableObject {
 }
 
 private extension TimeSlot {
-    var sortDate: String {
+    var sortDate: Date {
         let dateComp = Calendar.current.dateComponents([.day, .month, .year], from: date)
         let date = Calendar.current.date(from: dateComp) ?? Date.distantFuture
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, dd-MMMM-yyyy"
-        return dateFormatter.string(from: date)
+        return date
     }
 }
