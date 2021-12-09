@@ -12,7 +12,7 @@ struct HomeView: View {
     @EnvironmentObject var session: SessionStore
     @State private var showConfirmation = false
 
-	var addView: () -> AddView
+    var addView: () -> AddView
 
     @ObservedObject private(set) var viewModel: HomeScreenViewModel
 
@@ -26,10 +26,20 @@ struct HomeView: View {
 
                     ScrollView {
                         PullToRefresh(coordinateSpaceName: "pullToRefresh", onRefresh: viewModel.refresh)
-                        ForEach(viewModel.timeslots) { timeslot in
-                                ProjectView(timeslot: timeslot)
-                                    .padding([.trailing, .leading, .top])
-                        }
+                            ForEach(viewModel.categories.keys.sorted(by: <), id: \.self) { key in
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .fill(Color.gray)
+                                        .opacity(0.1)
+                                    VStack{
+                                        Text("\(key)")
+                                        ForEach(viewModel.categories[key] ?? []) { timeslot in
+                                            ProjectView(timeslot: timeslot)
+                                                .padding([.trailing, .leading])
+                                        }
+                                    }.padding([.top, .bottom])
+                                }
+                            }
                     }.coordinateSpace(name: "pullToRefresh")
 
                     VStack {
@@ -96,29 +106,29 @@ struct HomeView_Previews: PreviewProvider {
         func signOut() throws { }
     }
 
-	static var previews: some View {
-		HomeView(
-			addView: { AddScreenUIComposer.makeAddScreen(clientsLoader: ClientLoaderMock(store: MockClientsStore()),
-														 timeslotsPublisher: TimeSlotsPublisherMock(store: MockStore()),
-														 userLoader: UserLoaderMock()) },
-			viewModel: HomeScreenViewModel(timeslotsLoader: RemoteTimeslotsLoaderMock(store: MockStore()),
-										   userLoader: UserLoaderMock())
-		)
-			.environmentObject(SessionStore(authProvider: FakeAuthProvider()))
+    static var previews: some View {
+        HomeView(
+            addView: { AddScreenUIComposer.makeAddScreen(clientsLoader: ClientLoaderMock(store: MockClientsStore()),
+                                                         timeslotsPublisher: TimeSlotsPublisherMock(store: MockStore()),
+                                                         userLoader: UserLoaderMock()) },
+            viewModel: HomeScreenViewModel(timeslotsLoader: RemoteTimeslotsLoaderMock(store: MockStore()),
+                                           userLoader: UserLoaderMock())
+        )
+            .environmentObject(SessionStore(authProvider: FakeAuthProvider()))
     }
 
-	private class MockClientsStore: ClientsStore {
-		func getClients(completion: @escaping GetClientsResult) { }
-	}
-	private class ClientLoaderMock: ClientsLoader {
-		var store: ClientsStore
-		init(store: ClientsStore) {
-			self.store = store
-		}
-		func getClients(completion: @escaping (Result<[Client], Error>) -> Void) {
-			completion(.success([]))
-		}
-	}
+    private class MockClientsStore: ClientsStore {
+        func getClients(completion: @escaping GetClientsResult) { }
+    }
+    private class ClientLoaderMock: ClientsLoader {
+        var store: ClientsStore
+        init(store: ClientsStore) {
+            self.store = store
+        }
+        func getClients(completion: @escaping (Result<[Client], Error>) -> Void) {
+            completion(.success([]))
+        }
+    }
 
     private class MockStore: TimeslotsStore {
         func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
@@ -144,15 +154,15 @@ struct HomeView_Previews: PreviewProvider {
             self.store = store
         }
     }
-	private class TimeSlotsPublisherMock: TimeSlotsPublisher {
-		var store: TimeslotsStore
-		init(store: TimeslotsStore) {
-			self.store = store
-		}
-		func addTimeSlot(_ timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
-			completion(nil)
-		}
-	}
+    private class TimeSlotsPublisherMock: TimeSlotsPublisher {
+        var store: TimeslotsStore
+        init(store: TimeslotsStore) {
+            self.store = store
+        }
+        func addTimeSlot(_ timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
+            completion(nil)
+        }
+    }
 }
 
 var uniqueTimeslots: [TimeSlot] = {

@@ -10,7 +10,7 @@ public class HomeScreenViewModel: ObservableObject {
     let dateFormater = DateFormatter()
 
     var categories: [String:[TimeSlot]] {
-        Dictionary(grouping: timeslots, by:{ $0.date.description})
+        Dictionary(grouping: timeslots, by:{ $0.sortDate })
     }
 
 	public init(timeslotsLoader: TimeslotsLoader, userLoader: UserLoader) {
@@ -29,5 +29,15 @@ public class HomeScreenViewModel: ObservableObject {
 			self.timeslots = (try? result.get()) ?? []
 		}
 	}
+}
 
+private extension TimeSlot {
+    var sortDate: String {
+        let dateComp = Calendar.current.dateComponents([.day, .month, .year], from: date)
+        let date = Calendar.current.date(from: dateComp) ?? Date.distantFuture
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, dd-MMMM-yyyy"
+        return dateFormatter.string(from: date)
+    }
 }
