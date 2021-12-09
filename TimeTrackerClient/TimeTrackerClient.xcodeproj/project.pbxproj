@@ -18,6 +18,10 @@
 		54A3FC21274E399200E36C92 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A3FC20274E399200E36C92 /* ProgressIndicator.swift */; };
 		54A3FC23274E3B8D00E36C92 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A3FC22274E3B8D00E36C92 /* LoginViewModel.swift */; };
 		54CC810C274ECD94004E1062 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC810B274ECD94004E1062 /* KeyboardResponder.swift */; };
+		54CC810E2758FD76004E1062 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC810D2758FD76004E1062 /* LogoView.swift */; };
+		54CC81102758FDF1004E1062 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC810F2758FDF1004E1062 /* LoginFormView.swift */; };
+		54CC81122759071C004E1062 /* LoginFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC81112759071C004E1062 /* LoginFooterView.swift */; };
+		54CC8114275A656A004E1062 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC8113275A656A004E1062 /* CustomAlertView.swift */; };
 		54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB62717234F00C66998 /* GoogleService-Info.plist */; };
 		54D2FDBC2717354800C66998 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBA2717354800C66998 /* Extensions.swift */; };
 		54D2FDD9271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDD8271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift */; };
@@ -56,6 +60,7 @@
 		C69C857B273BD3DE0089242C /* AuthProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C857A273BD3DE0089242C /* AuthProviderSpy.swift */; };
 		C6ACF57D27317986006D2C43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57927317986006D2C43 /* HomeView.swift */; };
 		C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57A27317986006D2C43 /* ProjectView.swift */; };
+		C6BCDCED275F959100CAEF84 /* AddScreenUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCDCEC275F959100CAEF84 /* AddScreenUIComposer.swift */; };
 		C6DA42E82732DBC800D44D80 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42E72732DBC800D44D80 /* LoginView.swift */; };
 		C6DA42EA2735477E00D44D80 /* DateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42E92735477E00D44D80 /* DateLabel.swift */; };
 		C6DA42EC27356C4400D44D80 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42EB27356C4400D44D80 /* AuthenticationTests.swift */; };
@@ -83,6 +88,10 @@
 		54A3FC20274E399200E36C92 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		54A3FC22274E3B8D00E36C92 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		54CC810B274ECD94004E1062 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		54CC810D2758FD76004E1062 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		54CC810F2758FDF1004E1062 /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
+		54CC81112759071C004E1062 /* LoginFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFooterView.swift; sourceTree = "<group>"; };
+		54CC8113275A656A004E1062 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		54D2FDB62717234F00C66998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54D2FDBA2717354800C66998 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = TimeTrackerClient/Core/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		54D2FDD6271747F100C66998 /* TimeTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +128,7 @@
 		C6ACF57927317986006D2C43 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C6ACF57A27317986006D2C43 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		C6B6AFCE272A892C00B5CFBC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6BCDCEC275F959100CAEF84 /* AddScreenUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScreenUIComposer.swift; sourceTree = "<group>"; };
 		C6DA42E72732DBC800D44D80 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C6DA42E92735477E00D44D80 /* DateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLabel.swift; sourceTree = "<group>"; };
 		C6DA42EB27356C4400D44D80 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
@@ -150,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				54A3FC20274E399200E36C92 /* ProgressIndicator.swift */,
+				54CC8113275A656A004E1062 /* CustomAlertView.swift */,
 				C6ACF57827317986006D2C43 /* Time */,
 				C6DA42E52732DB5500D44D80 /* Add */,
 				C6DA42E62732DB9E00D44D80 /* Login */,
@@ -249,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				C61F54CD2748139A0083E1A4 /* HomeScreenUIComposer.swift */,
+				C6BCDCEC275F959100CAEF84 /* AddScreenUIComposer.swift */,
 			);
 			path = Composers;
 			sourceTree = "<group>";
@@ -430,6 +442,9 @@
 			isa = PBXGroup;
 			children = (
 				C6DA42E72732DBC800D44D80 /* LoginView.swift */,
+				54CC810D2758FD76004E1062 /* LogoView.swift */,
+				54CC810F2758FDF1004E1062 /* LoginFormView.swift */,
+				54CC81112759071C004E1062 /* LoginFooterView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -580,11 +595,16 @@
 				54CC810C274ECD94004E1062 /* KeyboardResponder.swift in Sources */,
 				C61F54B4274400280083E1A4 /* UserLoader.swift in Sources */,
 				C61F54B7274400580083E1A4 /* FirebaseClientsLoader.swift in Sources */,
+				54CC81102758FDF1004E1062 /* LoginFormView.swift in Sources */,
 				545CCEAB27200FE500811CE3 /* Utils.swift in Sources */,
+				C6BCDCED275F959100CAEF84 /* AddScreenUIComposer.swift in Sources */,
+				54CC81122759071C004E1062 /* LoginFooterView.swift in Sources */,
 				545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */,
+				54CC8114275A656A004E1062 /* CustomAlertView.swift in Sources */,
 				545CCECA27229DF800811CE3 /* ClientModel.swift in Sources */,
 				54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */,
 				545CCEC127229B1C00811CE3 /* TimeSlotModel.swift in Sources */,
+				54CC810E2758FD76004E1062 /* LogoView.swift in Sources */,
 				C61F54C8274810810083E1A4 /* HomeScreenViewModel.swift in Sources */,
 				C69C8577273BCCCF0089242C /* FirebaseAuthProvider.swift in Sources */,
 				C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */,
@@ -800,7 +820,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.5;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -834,7 +854,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.5;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = TimeTracker;

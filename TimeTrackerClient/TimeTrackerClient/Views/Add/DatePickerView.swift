@@ -26,6 +26,7 @@ struct DatePickerView: View {
                 .clipped()
                 .labelsHidden()
                 .padding(.bottom)
+                .environment(\.locale, Locale(identifier: "en_GB"))
 
             Text("End time")
 
@@ -38,6 +39,7 @@ struct DatePickerView: View {
                 .frame(height: 100)
                 .clipped()
                 .labelsHidden()
+                .environment(\.locale, Locale(identifier: "en_GB"))
 
             HStack{
                 Text("Total duration")

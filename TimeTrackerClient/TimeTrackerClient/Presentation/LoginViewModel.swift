@@ -27,7 +27,6 @@ public class LoginViewModel: ObservableObject {
 
     func signIn() {
         isLoading = true
-        print(username)
         session.signIn(email: username, password: password) { [weak self] result in
             self?.isLoading = false
             if case let .failure(result) =  result {
