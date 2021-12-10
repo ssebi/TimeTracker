@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
 		C6B2B24D276256D400705659 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B24C276256D400705659 /* AppDelegate.swift */; };
 		C6B2B24F276256D400705659 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B24E276256D400705659 /* SceneDelegate.swift */; };
 		C6B2B251276256D400705659 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B250276256D400705659 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5468DDF62763C16D00E39DD9 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		C6B2B249276256D400705659 /* TimeTrackerManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B2B24C276256D400705659 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6B2B24E276256D400705659 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				C6B2B255276256D500705659 /* Assets.xcassets */,
 				C6B2B257276256D500705659 /* LaunchScreen.storyboard */,
 				C6B2B25A276256D500705659 /* Info.plist */,
+				5468DDF62763C16D00E39DD9 /* DesignableView.swift */,
 			);
 			path = TimeTrackerManager;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */,
 				C6B2B251276256D400705659 /* ViewController.swift in Sources */,
 				C6B2B24D276256D400705659 /* AppDelegate.swift in Sources */,
 				C6B2B24F276256D400705659 /* SceneDelegate.swift in Sources */,
@@ -451,7 +455,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 63DF6735WS;
+				DEVELOPMENT_TEAM = LC7N3KMTDD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimeTrackerManager/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -481,7 +485,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 63DF6735WS;
+				DEVELOPMENT_TEAM = LC7N3KMTDD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimeTrackerManager/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
