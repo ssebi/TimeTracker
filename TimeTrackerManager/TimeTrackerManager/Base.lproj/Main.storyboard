@@ -24,8 +24,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ibm-3f-mWg">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMd-zk-F0a">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sO9-5E-TuW">
-                                        <rect key="frame" x="42.5" y="0.0" width="329.5" height="150"/>
+                                        <rect key="frame" x="42.5" y="136" width="329" height="150"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Vw6-O2-blB">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -35,7 +39,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timeTRAKER Manager" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Itr-Hh-r95">
-                                                <rect key="frame" x="158" y="45" width="171.5" height="60"/>
+                                                <rect key="frame" x="158" y="45" width="171" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="doM-Dj-ueG"/>
                                                 </constraints>
@@ -46,7 +50,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="jNE-pw-uaq">
-                                        <rect key="frame" x="0.0" y="158" width="414" height="238"/>
+                                        <rect key="frame" x="0.0" y="294" width="414" height="238"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="W4e-46-2zL">
                                                 <rect key="frame" x="16" y="8" width="382" height="125"/>
@@ -142,7 +146,7 @@
                                         <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
                                     </stackView>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="150" translatesAutoresizingMaskIntoConstraints="NO" id="9WZ-5J-3AN">
-                                        <rect key="frame" x="0.0" y="404" width="414" height="385.5"/>
+                                        <rect key="frame" x="0.0" y="540" width="414" height="249.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nRI-Rf-sjR">
@@ -169,6 +173,14 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="jNE-pw-uaq" firstAttribute="leading" secondItem="9WZ-5J-3AN" secondAttribute="leading" id="3CY-Mx-Hal"/>
+                                    <constraint firstItem="sO9-5E-TuW" firstAttribute="leading" secondItem="ibm-3f-mWg" secondAttribute="leading" constant="42.5" id="3tG-Z3-XeV"/>
+                                    <constraint firstItem="CMd-zk-F0a" firstAttribute="leading" secondItem="jNE-pw-uaq" secondAttribute="leading" id="8s2-Sl-mPb"/>
+                                    <constraint firstAttribute="bottom" secondItem="9WZ-5J-3AN" secondAttribute="bottom" constant="28.5" id="iIc-Le-1dI"/>
+                                    <constraint firstItem="sO9-5E-TuW" firstAttribute="top" secondItem="ibm-3f-mWg" secondAttribute="top" constant="136" id="jW8-Cc-1eu"/>
+                                    <constraint firstItem="CMd-zk-F0a" firstAttribute="leading" secondItem="ibm-3f-mWg" secondAttribute="leading" id="kY6-ND-HS1"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
