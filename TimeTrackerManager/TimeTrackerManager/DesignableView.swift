@@ -32,4 +32,10 @@ class DesignableView: UIView {
             layer.shadowOffset.height = shadowOffsetY
         }
     }
+
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+        }
+    }
 }

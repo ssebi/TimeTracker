@@ -83,6 +83,9 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
                                                                 <real key="value" value="3"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="30"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3r-Xr-GDd" customClass="DesignableView" customModule="TimeTrackerManager" customModuleProvider="target">
@@ -114,6 +117,9 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
                                                                 <real key="value" value="3"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="30"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
@@ -137,6 +143,9 @@
                                                         <integer key="value" value="30"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vae-df-jCb"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
@@ -188,6 +197,10 @@
                             <constraint firstItem="ibm-3f-mWg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="s6o-aw-JF1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="NUp-tM-3fJ" id="M9v-sK-bn3"/>
+                        <outlet property="passwordTextField" destination="mYG-59-C6k" id="1Sc-LD-Lse"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
