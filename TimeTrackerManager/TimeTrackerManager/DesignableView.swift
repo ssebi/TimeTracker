@@ -21,9 +21,9 @@ class DesignableView: UIView {
         }
     }
 
-    @IBInspectable var shadowOpacity: CGFloat = 0 {
+    @IBInspectable var shadowOpacity: Float = 0.5 {
         didSet {
-            layer.shadowOpacity = Float(shadowOpacity)
+            layer.shadowOpacity = shadowOpacity
         }
     }
 
