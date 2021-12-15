@@ -5,6 +5,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -289,10 +290,10 @@
             </objects>
             <point key="canvasLocation" x="3161" y="875"/>
         </scene>
-        <!--Root View Controller-->
+        <!--UsersViewController-->
         <scene sceneID="jXV-KX-278">
             <objects>
-                <tableViewController id="ES8-fL-tRz" sceneMemberID="viewController">
+                <tableViewController title="UsersViewController" id="ES8-fL-tRz" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="81l-mQ-F2P">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -312,28 +313,55 @@
                             <outlet property="delegate" destination="ES8-fL-tRz" id="agJ-mG-vyJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="LbF-PL-IoZ"/>
+                    <navigationItem key="navigationItem" title="Users" id="LbF-PL-IoZ">
+                        <barButtonItem key="rightBarButtonItem" title="Add new user" id="pzv-13-IWw">
+                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                            <connections>
+                                <segue destination="8Cz-Ao-HkL" kind="show" id="BYi-RY-0nW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XfF-t8-Sel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="681" y="892"/>
+            <point key="canvasLocation" x="310" y="1663"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ekg-zG-8HT">
+            <objects>
+                <viewController id="8Cz-Ao-HkL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tj3-cl-lMf">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="r5Q-hc-25v"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="svO-eE-ps8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hCK-Mw-Maw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1016" y="1663"/>
         </scene>
         <!--Users-->
         <scene sceneID="HZg-JK-jC1">
             <objects>
-                <navigationController id="jhL-nd-bag" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="jhL-nd-bag" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Users" id="d6d-Me-5AV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="URx-Ax-hnR">
                         <rect key="frame" x="0.0" y="24" width="834" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AZu-WI-Hqg">
+                        <rect key="frame" x="0.0" y="1079" width="834" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="ES8-fL-tRz" kind="relationship" relationship="rootViewController" id="6Qs-WP-AHt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMa-Uq-bRb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9" y="892"/>
+            <point key="canvasLocation" x="786" y="874"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DoR-h9-4qo">
@@ -360,6 +388,7 @@
     </scenes>
     <resources>
         <image name="logo" width="485" height="485"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="customGreen">
             <color red="0.0" green="0.80800002813339233" blue="0.78799998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
