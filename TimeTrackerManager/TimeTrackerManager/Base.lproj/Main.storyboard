@@ -346,11 +346,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="jhL-nd-bag" kind="relationship" relationship="viewControllers" id="6fr-zM-6u9"/>
                         <segue destination="LBy-Eh-0Xf" kind="relationship" relationship="viewControllers" id="pxL-ek-3ha"/>
                         <segue destination="euy-27-zgf" kind="relationship" relationship="viewControllers" id="t48-QU-Fr9"/>
                         <segue destination="1Ya-ar-Cf1" kind="relationship" relationship="viewControllers" id="qa4-gW-mon"/>
                         <segue destination="fO9-Rp-Dyv" kind="relationship" relationship="viewControllers" id="WdN-qF-h3M"/>
-                        <segue destination="jhL-nd-bag" kind="relationship" relationship="viewControllers" id="6fr-zM-6u9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HsS-HH-VO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
