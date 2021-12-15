@@ -8,13 +8,13 @@
 import Foundation
 
 public struct TimeSlot: Identifiable, Codable {
-    public var id: String?
-    var userId: String
-    var clientName: String
-    var projectName: String
-    var date: Date
-    var details: TimeSlotDetails
-    var total: Int
+    public let id: String?
+    public let userId: String
+    public let clientName: String
+    public let projectName: String
+    public let date: Date
+    public let details: TimeSlotDetails
+    public let total: Int
 
     public init(id: String, userId: String, clientName: String, projectName: String, date: Date, details: TimeSlotDetails, total: Int) {
         self.id = id
