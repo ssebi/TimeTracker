@@ -326,10 +326,10 @@
             </objects>
             <point key="canvasLocation" x="310" y="1663"/>
         </scene>
-        <!--View Controller-->
+        <!--Add new User-->
         <scene sceneID="Ekg-zG-8HT">
             <objects>
-                <viewController id="8Cz-Ao-HkL" sceneMemberID="viewController">
+                <viewController title="Add new User" id="8Cz-Ao-HkL" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tj3-cl-lMf">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
