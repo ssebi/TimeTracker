@@ -6,9 +6,7 @@
 //
 
 import XCTest
-import Firebase
-import Combine
-@testable import TimeTrackerClient
+@testable import TimeTrackerAuth
 
 class FirebaseAuthProviderEndToEndTests: XCTestCase {
 
@@ -17,7 +15,7 @@ class FirebaseAuthProviderEndToEndTests: XCTestCase {
     func test_signIn_failsWithInvalidCredentials() throws {
         /// Given
         let sut = makeSUT()
-		var sesionStoreResult: Result<TimeTrackerClient.User?, Error>? = nil
+		var sesionStoreResult: Result<User?, Error>? = nil
 
 		/// When
         let exp = expectation(description: "Waiting to complete")
@@ -39,7 +37,7 @@ class FirebaseAuthProviderEndToEndTests: XCTestCase {
     func test_signIn_isSuccessfulOnSingleFunctionCall() {
         /// Given
         let sut = makeSUT()
-		var sesionStoreResult: Result<TimeTrackerClient.User?, Error>? = nil
+		var sesionStoreResult: Result<User?, Error>? = nil
         
         /// When
         let exp = expectation(description: "Waiting to complete")
@@ -61,7 +59,7 @@ class FirebaseAuthProviderEndToEndTests: XCTestCase {
     func test_signIn_isSuccessfulOnMultipleFunctionCalls() throws {
         /// Given
         let sut = makeSUT()
-		var sesionStoreResult: Result<TimeTrackerClient.User?, Error>? = nil
+		var sesionStoreResult: Result<User?, Error>? = nil
         
         /// When
         let exp = expectation(description: "Waiting to complete")

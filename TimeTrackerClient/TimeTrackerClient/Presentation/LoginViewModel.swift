@@ -5,9 +5,8 @@
 //  Created by Bocanu Mihai on 24.11.2021.
 //
 
-import Foundation
-import SwiftUI
-import GameKit
+import Combine
+import TimeTrackerAuth
 
 public class LoginViewModel: ObservableObject {
     @Published var username: String = ""

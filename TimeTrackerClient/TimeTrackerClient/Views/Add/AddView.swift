@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TimeTrackerAuth
 
 struct AddView: View {
     @ObservedObject var keyboardResponder = KeyboardResponder()

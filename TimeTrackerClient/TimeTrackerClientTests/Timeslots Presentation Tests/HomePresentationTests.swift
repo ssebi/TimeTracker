@@ -1,6 +1,7 @@
 
 import XCTest
 import TimeTrackerClient
+import TimeTrackerAuth
 
 class HomePresentationTests: XCTestCase {
 
