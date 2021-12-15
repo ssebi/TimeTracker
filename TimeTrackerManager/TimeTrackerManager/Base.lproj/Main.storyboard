@@ -184,7 +184,7 @@
             </objects>
             <point key="canvasLocation" x="136.23188405797103" y="117.1875"/>
         </scene>
-        <!--Item-->
+        <!--Clients-->
         <scene sceneID="vvC-Rg-Lq5">
             <objects>
                 <viewController id="euy-27-zgf" sceneMemberID="viewController">
@@ -194,13 +194,13 @@
                         <viewLayoutGuide key="safeArea" id="zg3-YI-0Q6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="i78-45-UaQ"/>
+                    <tabBarItem key="tabBarItem" title="Clients" id="i78-45-UaQ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aX6-qI-JOi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2372" y="875"/>
         </scene>
-        <!--Item-->
+        <!--Invoice-->
         <scene sceneID="lHd-JM-ESP">
             <objects>
                 <viewController id="fO9-Rp-Dyv" sceneMemberID="viewController">
@@ -210,13 +210,13 @@
                         <viewLayoutGuide key="safeArea" id="9Ut-YT-R68"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="YaB-ZH-Ih4"/>
+                    <tabBarItem key="tabBarItem" title="Invoice" id="YaB-ZH-Ih4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6r-1r-RdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4038" y="875"/>
         </scene>
-        <!--Item 2-->
+        <!--Projects-->
         <scene sceneID="uyC-FB-kzW">
             <objects>
                 <viewController id="LBy-Eh-0Xf" sceneMemberID="viewController">
@@ -226,13 +226,13 @@
                         <viewLayoutGuide key="safeArea" id="RDu-oi-BD1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="CC4-2J-AyD"/>
+                    <tabBarItem key="tabBarItem" title="Projects" id="CC4-2J-AyD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiA-jU-faY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1581" y="875"/>
         </scene>
-        <!--Item-->
+        <!--Time-->
         <scene sceneID="6oX-uo-aNZ">
             <objects>
                 <viewController id="1Ya-ar-Cf1" sceneMemberID="viewController">
@@ -242,13 +242,13 @@
                         <viewLayoutGuide key="safeArea" id="san-Ot-5bZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Xx1-cx-dtg"/>
+                    <tabBarItem key="tabBarItem" title="Time" id="Xx1-cx-dtg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1QN-hh-ch2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3161" y="875"/>
         </scene>
-        <!--Item 1-->
+        <!--Users-->
         <scene sceneID="R2k-Ta-ypo">
             <objects>
                 <viewController id="NQ1-W7-4fO" sceneMemberID="viewController">
@@ -258,7 +258,7 @@
                         <viewLayoutGuide key="safeArea" id="KS8-Po-wgv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="fW9-sp-71I"/>
+                    <tabBarItem key="tabBarItem" title="Users" id="fW9-sp-71I"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfs-DO-h4N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
