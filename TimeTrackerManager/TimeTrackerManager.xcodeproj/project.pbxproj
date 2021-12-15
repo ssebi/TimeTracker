@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
+		54AE368A276A21E500407F04 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE3689276A21E500407F04 /* AddUserViewController.swift */; };
 		C6B2B24D276256D400705659 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B24C276256D400705659 /* AppDelegate.swift */; };
 		C6B2B24F276256D400705659 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B24E276256D400705659 /* SceneDelegate.swift */; };
 		C6B2B251276256D400705659 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B250276256D400705659 /* LoginViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		5468DDF62763C16D00E39DD9 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		54AE3689276A21E500407F04 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		C6B2B249276256D400705659 /* TimeTrackerManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B2B24C276256D400705659 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6B2B24E276256D400705659 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				C6B2B257276256D500705659 /* LaunchScreen.storyboard */,
 				C6B2B25A276256D500705659 /* Info.plist */,
 				5468DDF62763C16D00E39DD9 /* DesignableView.swift */,
+				54AE3689276A21E500407F04 /* AddUserViewController.swift */,
 			);
 			path = TimeTrackerManager;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54AE368A276A21E500407F04 /* AddUserViewController.swift in Sources */,
 				5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */,
 				C6B2B251276256D400705659 /* LoginViewController.swift in Sources */,
 				C6B2B24D276256D400705659 /* AppDelegate.swift in Sources */,
