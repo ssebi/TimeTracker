@@ -35,7 +35,6 @@ let package = Package(
             name: "TimeTrackerAuthTests",
             dependencies: [
 				"TimeTrackerAuth",
-//				.product(name: "FirebaseAuth", package: "Firebase"),
 			]),
     ]
 )
