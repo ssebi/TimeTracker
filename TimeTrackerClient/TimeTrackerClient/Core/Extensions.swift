@@ -5,9 +5,7 @@
 //  Created by Bocanu Mihai on 12.10.2021.
 //
 
-import Foundation
 import SwiftUI
-import UIKit
 
 extension Color {
     static let cGray = Color("customGray")
@@ -30,7 +28,7 @@ extension LinearGradient {
                                             endPoint: .bottomTrailing)
 }
 
-extension UIScreen{
+extension UIScreen {
    static let width = UIScreen.main.bounds.size.width
    static let height = UIScreen.main.bounds.size.height
    static let size = UIScreen.main.bounds.size

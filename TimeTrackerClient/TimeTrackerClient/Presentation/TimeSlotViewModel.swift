@@ -5,7 +5,6 @@
 //  Created by Bocanu Mihai on 18.11.2021.
 //
 
-import Foundation
 import SwiftUI
 
 class TimeSlotViewModel: ObservableObject {

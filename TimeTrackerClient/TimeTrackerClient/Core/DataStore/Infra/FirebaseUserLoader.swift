@@ -1,8 +1,7 @@
 
-import Firebase
+import FirebaseAuth
 import TimeTrackerAuth
 
-// TODO: - Might have to remove this along side the protocol
 class FirebaseUserLoader: UserLoader {
 	func getUser() -> TimeTrackerAuth.User {
         let currentUser = Auth.auth().currentUser

@@ -1,6 +1,5 @@
 
-import Firebase
-import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 class FirebaseTimeslotsStore: TimeslotsStore {
 

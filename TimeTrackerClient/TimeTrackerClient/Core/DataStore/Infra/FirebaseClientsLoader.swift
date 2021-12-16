@@ -1,5 +1,5 @@
 
-import Firebase
+import FirebaseFirestore
 
 class FirebaseClientsStore: ClientsStore {
 
