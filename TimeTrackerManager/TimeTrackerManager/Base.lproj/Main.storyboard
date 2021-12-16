@@ -336,7 +336,7 @@
         <!--Add new User-->
         <scene sceneID="Ekg-zG-8HT">
             <objects>
-                <viewController title="Add new User" id="8Cz-Ao-HkL" customClass="AddUserViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add new User" hidesBottomBarWhenPushed="YES" id="8Cz-Ao-HkL" customClass="AddUserViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tj3-cl-lMf">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -461,13 +461,13 @@
                                                 <attributedString key="attributedText">
                                                     <fragment content="*The user will receive a link for creating their password.">
                                                         <attributes>
-                                                            <color key="NSColor" name="customGray"/>
+                                                            <color key="NSColor" red="0.97128564119338989" green="0.97144109010696411" blue="0.98657315969467163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <font key="NSFont" size="16" name="AvenirNext-DemiBold"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
-                                                <nil key="highlightedColor"/>
+                                                <color key="highlightedColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.12941176469999999" green="0.54901960780000003" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -511,6 +511,7 @@
                                     <constraint firstItem="L7i-An-kOB" firstAttribute="top" secondItem="GND-iB-sGh" secondAttribute="top" id="Qc1-K6-ejQ"/>
                                     <constraint firstAttribute="bottom" secondItem="L7i-An-kOB" secondAttribute="bottom" id="Qx9-4H-sWc"/>
                                     <constraint firstItem="m0S-sP-D1w" firstAttribute="leading" secondItem="to2-xF-usO" secondAttribute="trailing" constant="10" id="Rjq-kT-5cD"/>
+                                    <constraint firstAttribute="trailing" secondItem="fZL-Jf-Z0k" secondAttribute="trailing" multiplier="0.4" constant="50" id="SX5-Hm-vD2"/>
                                     <constraint firstItem="tLp-Uc-L7K" firstAttribute="leading" secondItem="L7i-An-kOB" secondAttribute="trailing" constant="9" id="XgP-sl-JIa"/>
                                     <constraint firstAttribute="bottom" secondItem="tLp-Uc-L7K" secondAttribute="bottom" constant="50" id="boC-Vx-thH"/>
                                     <constraint firstItem="fZL-Jf-Z0k" firstAttribute="top" secondItem="BKt-nJ-b8e" secondAttribute="bottom" constant="30" id="e5r-CL-rzE"/>
@@ -530,7 +531,9 @@
                                         <exclude reference="ltz-r6-g3C"/>
                                         <exclude reference="92k-6I-GGr"/>
                                         <exclude reference="Pby-yi-X0j"/>
+                                        <exclude reference="SX5-Hm-vD2"/>
                                         <exclude reference="e5r-CL-rzE"/>
+                                        <exclude reference="xYC-zR-yMe"/>
                                         <exclude reference="0Ua-Ag-Ogs"/>
                                         <exclude reference="3Ot-xo-4dv"/>
                                         <exclude reference="3WU-R3-eGf"/>
@@ -560,6 +563,7 @@
                                         <include reference="pl5-uZ-gEl"/>
                                         <include reference="gOA-EF-XMN"/>
                                         <include reference="Pby-yi-X0j"/>
+                                        <include reference="SX5-Hm-vD2"/>
                                         <include reference="3Ot-xo-4dv"/>
                                         <exclude reference="8xh-13-MRT"/>
                                         <include reference="boC-Vx-thH"/>
@@ -571,6 +575,7 @@
                                         <include reference="7T3-Bz-1O3"/>
                                         <include reference="ltz-r6-g3C"/>
                                         <include reference="92k-6I-GGr"/>
+                                        <include reference="xYC-zR-yMe"/>
                                         <include reference="3WU-R3-eGf"/>
                                         <include reference="PK8-cm-oFs"/>
                                         <include reference="llj-7R-sW3"/>
@@ -641,9 +646,6 @@
     <resources>
         <image name="logo" width="485" height="485"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
-        <namedColor name="customGray">
-            <color red="0.69800001382827759" green="0.74500000476837158" blue="0.76499998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="customGreen">
             <color red="0.0" green="0.80800002813339233" blue="0.78799998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
