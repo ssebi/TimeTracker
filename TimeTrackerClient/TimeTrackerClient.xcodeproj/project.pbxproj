@@ -25,7 +25,6 @@
 		54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB62717234F00C66998 /* GoogleService-Info.plist */; };
 		54D2FDBC2717354800C66998 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBA2717354800C66998 /* Extensions.swift */; };
 		54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5091271563FA00A9700A /* FirebaseFirestore */; };
-		54DB5094271563FA00A9700A /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5093271563FA00A9700A /* FirebaseFunctions */; };
 		54DB509D2715A2FA00A9700A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		54F983662746887400577AD6 /* TimeSlotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F983652746887400577AD6 /* TimeSlotViewModel.swift */; };
 		54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */; };
@@ -134,7 +133,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54DB5094271563FA00A9700A /* FirebaseFunctions in Frameworks */,
 				C64DB3C5276A3D6A00C352D8 /* TimeTrackerAuth in Frameworks */,
 				54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */,
@@ -435,7 +433,6 @@
 			name = TimeTrackerClient;
 			packageProductDependencies = (
 				54DB5091271563FA00A9700A /* FirebaseFirestore */,
-				54DB5093271563FA00A9700A /* FirebaseFunctions */,
 				54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */,
 				C64DB3C4276A3D6A00C352D8 /* TimeTrackerAuth */,
 			);
@@ -856,11 +853,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
-		};
-		54DB5093271563FA00A9700A /* FirebaseFunctions */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFunctions;
 		};
 		54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */ = {
 			isa = XCSwiftPackageProductDependency;
