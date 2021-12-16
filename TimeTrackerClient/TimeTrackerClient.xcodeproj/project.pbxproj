@@ -27,7 +27,6 @@
 		54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5091271563FA00A9700A /* FirebaseFirestore */; };
 		54DB509D2715A2FA00A9700A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		54F983662746887400577AD6 /* TimeSlotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F983652746887400577AD6 /* TimeSlotViewModel.swift */; };
-		54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */; };
 		C61F54AE2743FFED0083E1A4 /* ClientsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54AD2743FFED0083E1A4 /* ClientsLoader.swift */; };
 		C61F54B02744000D0083E1A4 /* TimeSlotsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54AF2744000D0083E1A4 /* TimeSlotsLoader.swift */; };
 		C61F54B2274400180083E1A4 /* TimeSlotsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F54B1274400180083E1A4 /* TimeSlotsPublisher.swift */; };
@@ -134,7 +133,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C64DB3C5276A3D6A00C352D8 /* TimeTrackerAuth in Frameworks */,
-				54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,7 +431,6 @@
 			name = TimeTrackerClient;
 			packageProductDependencies = (
 				54DB5091271563FA00A9700A /* FirebaseFirestore */,
-				54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */,
 				C64DB3C4276A3D6A00C352D8 /* TimeTrackerAuth */,
 			);
 			productName = TimeTrackerClient;
@@ -853,11 +850,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
-		};
-		54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseFirestoreSwift-Beta";
 		};
 		C64DB3C4276A3D6A00C352D8 /* TimeTrackerAuth */ = {
 			isa = XCSwiftPackageProductDependency;
