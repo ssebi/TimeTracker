@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import TimeTrackerClient
+import TimeTrackerAuth
 
 class AuthProviderSpy: AuthProvider {
 	struct NoUser: Error {}
@@ -44,7 +44,7 @@ class AuthProviderSpy: AuthProvider {
 		}
 	}
 
-	func completeSignInWith(result: Result<TimeTrackerClient.User?, Error>) {
+	func completeSignInWith(result: Result<User?, Error>) {
 		authCompletion?(result)
 	}
 

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TimeTrackerAuth
 
 struct LoginView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel

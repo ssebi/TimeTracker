@@ -6,7 +6,6 @@
 //
 
 import Combine
-import SwiftUI
 
 public class SessionStore: ObservableObject {
 	@Published public private(set) var user: User?

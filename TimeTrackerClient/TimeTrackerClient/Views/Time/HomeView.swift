@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FirebaseFirestore
+import TimeTrackerAuth
 
 struct HomeView: View {
     @EnvironmentObject var session: SessionStore

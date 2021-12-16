@@ -24,10 +24,6 @@
 		54CC8114275A656A004E1062 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC8113275A656A004E1062 /* CustomAlertView.swift */; };
 		54D2FDB72717234F00C66998 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54D2FDB62717234F00C66998 /* GoogleService-Info.plist */; };
 		54D2FDBC2717354800C66998 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDBA2717354800C66998 /* Extensions.swift */; };
-		54D2FDD9271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D2FDD8271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift */; };
-		54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8EEA92717502900D867F3 /* SessionStore.swift */; };
-		54D8EEAD271887EF00D867F3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8EEAC271887EF00D867F3 /* UserModel.swift */; };
-		54DB5090271563FA00A9700A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB508F271563FA00A9700A /* FirebaseAuth */; };
 		54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5091271563FA00A9700A /* FirebaseFirestore */; };
 		54DB5094271563FA00A9700A /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 54DB5093271563FA00A9700A /* FirebaseFunctions */; };
 		54DB509D2715A2FA00A9700A /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -49,21 +45,19 @@
 		C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */; };
 		C64C428F271464B600CFBDEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C428E271464B600CFBDEF /* Assets.xcassets */; };
 		C64C4292271464B600CFBDEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C4291271464B600CFBDEF /* Preview Assets.xcassets */; };
+		C64DB3C3276A3C9700C352D8 /* FirebaseAuthProviderEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DB3C2276A3C9700C352D8 /* FirebaseAuthProviderEndToEndTests.swift */; };
+		C64DB3C5276A3D6A00C352D8 /* TimeTrackerAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C64DB3C4276A3D6A00C352D8 /* TimeTrackerAuth */; };
 		C65EECCE274E3087006ACD6A /* ClientsAPIUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECCD274E3087006ACD6A /* ClientsAPIUseCaseTests.swift */; };
 		C65EECD0274E409F006ACD6A /* ClientsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECCF274E409F006ACD6A /* ClientsStore.swift */; };
 		C65EECD2274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */; };
 		C65EECD4274E54A9006ACD6A /* TimeslotsStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65EECD3274E54A9006ACD6A /* TimeslotsStoreSpy.swift */; };
 		C67C26E1274BDDAF00124F12 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26E0274BDDAF00124F12 /* SharedTestHelpers.swift */; };
 		C67C26E4274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67C26E3274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift */; };
-		C69C8577273BCCCF0089242C /* FirebaseAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C8576273BCCCF0089242C /* FirebaseAuthProvider.swift */; };
-		C69C8579273BCD0E0089242C /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C8578273BCD0E0089242C /* AuthProvider.swift */; };
-		C69C857B273BD3DE0089242C /* AuthProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C857A273BD3DE0089242C /* AuthProviderSpy.swift */; };
 		C6ACF57D27317986006D2C43 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57927317986006D2C43 /* HomeView.swift */; };
 		C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF57A27317986006D2C43 /* ProjectView.swift */; };
 		C6BCDCED275F959100CAEF84 /* AddScreenUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCDCEC275F959100CAEF84 /* AddScreenUIComposer.swift */; };
 		C6DA42E82732DBC800D44D80 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42E72732DBC800D44D80 /* LoginView.swift */; };
 		C6DA42EA2735477E00D44D80 /* DateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42E92735477E00D44D80 /* DateLabel.swift */; };
-		C6DA42EC27356C4400D44D80 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA42EB27356C4400D44D80 /* AuthenticationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,9 +89,6 @@
 		54D2FDB62717234F00C66998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54D2FDBA2717354800C66998 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = TimeTrackerClient/Core/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		54D2FDD6271747F100C66998 /* TimeTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		54D2FDD8271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthProviderEndToEndTests.swift; sourceTree = "<group>"; };
-		54D8EEA92717502900D867F3 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
-		54D8EEAC271887EF00D867F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		54F983652746887400577AD6 /* TimeSlotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotViewModel.swift; sourceTree = "<group>"; };
 		C61F54AD2743FFED0083E1A4 /* ClientsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsLoader.swift; sourceTree = "<group>"; };
 		C61F54AF2744000D0083E1A4 /* TimeSlotsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsLoader.swift; sourceTree = "<group>"; };
@@ -116,22 +107,19 @@
 		C64C428A271464B300CFBDEF /* TimeTrackerClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerClientApp.swift; sourceTree = "<group>"; };
 		C64C428E271464B600CFBDEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C64C4291271464B600CFBDEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C64DB3C2276A3C9700C352D8 /* FirebaseAuthProviderEndToEndTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuthProviderEndToEndTests.swift; sourceTree = "<group>"; };
 		C65EECCD274E3087006ACD6A /* ClientsAPIUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsAPIUseCaseTests.swift; sourceTree = "<group>"; };
 		C65EECCF274E409F006ACD6A /* ClientsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsStore.swift; sourceTree = "<group>"; };
 		C65EECD1274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishTimeslotUseCaseTests.swift; sourceTree = "<group>"; };
 		C65EECD3274E54A9006ACD6A /* TimeslotsStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotsStoreSpy.swift; sourceTree = "<group>"; };
 		C67C26E0274BDDAF00124F12 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		C67C26E3274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
-		C69C8576273BCCCF0089242C /* FirebaseAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthProvider.swift; sourceTree = "<group>"; };
-		C69C8578273BCD0E0089242C /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
-		C69C857A273BD3DE0089242C /* AuthProviderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProviderSpy.swift; sourceTree = "<group>"; };
 		C6ACF57927317986006D2C43 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C6ACF57A27317986006D2C43 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		C6B6AFCE272A892C00B5CFBC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6BCDCEC275F959100CAEF84 /* AddScreenUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScreenUIComposer.swift; sourceTree = "<group>"; };
 		C6DA42E72732DBC800D44D80 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C6DA42E92735477E00D44D80 /* DateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLabel.swift; sourceTree = "<group>"; };
-		C6DA42EB27356C4400D44D80 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +135,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				54DB5094271563FA00A9700A /* FirebaseFunctions in Frameworks */,
+				C64DB3C5276A3D6A00C352D8 /* TimeTrackerAuth in Frameworks */,
 				54FB1C8627306B060099BE81 /* FirebaseFirestoreSwift-Beta in Frameworks */,
-				54DB5090271563FA00A9700A /* FirebaseAuth in Frameworks */,
 				54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,6 +159,7 @@
 		54D2FDD7271747F100C66998 /* TimeTrackerClientTests */ = {
 			isa = PBXGroup;
 			children = (
+				C64DB3C1276A3C7A00C352D8 /* Auth EndToEnd Tests */,
 				C67C26E2274BDE0600124F12 /* Helpers */,
 				C65EECCC274E306A006ACD6A /* Clients API Tests */,
 				C61F54CA274811010083E1A4 /* Timeslots API Tests */,
@@ -178,7 +167,6 @@
 				C65EECDA274FC126006ACD6A /* Timeslots EndToEnd Tests */,
 				C65EECD8274FC0D3006ACD6A /* PublishTimeslots API Tests */,
 				C65EECDB274FC1AA006ACD6A /* PublishTimeslots EndToEnd Tests */,
-				C64784C4273CF6170086D169 /* Auth */,
 			);
 			path = TimeTrackerClientTests;
 			sourceTree = "<group>";
@@ -188,7 +176,6 @@
 			children = (
 				54D8EEAF271887FA00D867F3 /* Models */,
 				C61F54AB2743FFDD0083E1A4 /* DataStore */,
-				C64784C3273CF5EC0086D169 /* Auth */,
 				54D2FDBA2717354800C66998 /* Extensions.swift */,
 				545CCEAA27200FE500811CE3 /* Utils.swift */,
 			);
@@ -198,7 +185,6 @@
 		54D8EEAF271887FA00D867F3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				54D8EEAC271887EF00D867F3 /* UserModel.swift */,
 				545CCEC027229B1C00811CE3 /* TimeSlotModel.swift */,
 				545CCEC327229C5A00811CE3 /* WorkLogModel.swift */,
 				545CCEC627229D1E00811CE3 /* ProjectModel.swift */,
@@ -274,50 +260,6 @@
 			path = "Timeslots API Tests";
 			sourceTree = "<group>";
 		};
-		C64784C1273C1A040086D169 /* Infra */ = {
-			isa = PBXGroup;
-			children = (
-				C69C8576273BCCCF0089242C /* FirebaseAuthProvider.swift */,
-			);
-			path = Infra;
-			sourceTree = "<group>";
-		};
-		C64784C2273C306A0086D169 /* Feature */ = {
-			isa = PBXGroup;
-			children = (
-				54D8EEA92717502900D867F3 /* SessionStore.swift */,
-				C69C8578273BCD0E0089242C /* AuthProvider.swift */,
-			);
-			path = Feature;
-			sourceTree = "<group>";
-		};
-		C64784C3273CF5EC0086D169 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				C64784C1273C1A040086D169 /* Infra */,
-				C64784C2273C306A0086D169 /* Feature */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		C64784C4273CF6170086D169 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				C64784C5273CF62B0086D169 /* Helpers */,
-				C6DA42EB27356C4400D44D80 /* AuthenticationTests.swift */,
-				54D2FDD8271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		C64784C5273CF62B0086D169 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				C69C857A273BD3DE0089242C /* AuthProviderSpy.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		C64C427E271464B300CFBDEF = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +302,14 @@
 				C64C4291271464B600CFBDEF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C64DB3C1276A3C7A00C352D8 /* Auth EndToEnd Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C64DB3C2276A3C9700C352D8 /* FirebaseAuthProviderEndToEndTests.swift */,
+			);
+			path = "Auth EndToEnd Tests";
 			sourceTree = "<group>";
 		};
 		C65EECCC274E306A006ACD6A /* Clients API Tests */ = {
@@ -484,10 +434,10 @@
 			);
 			name = TimeTrackerClient;
 			packageProductDependencies = (
-				54DB508F271563FA00A9700A /* FirebaseAuth */,
 				54DB5091271563FA00A9700A /* FirebaseFirestore */,
 				54DB5093271563FA00A9700A /* FirebaseFunctions */,
 				54FB1C8527306B060099BE81 /* FirebaseFirestoreSwift-Beta */,
+				C64DB3C4276A3D6A00C352D8 /* TimeTrackerAuth */,
 			);
 			productName = TimeTrackerClient;
 			productReference = C64C4287271464B300CFBDEF /* TimeTrackerClient.app */;
@@ -561,16 +511,14 @@
 			files = (
 				C61F54C32747DDE10083E1A4 /* FirebaseTimeslotsDataStoreEndToEndTests.swift in Sources */,
 				C67C26E4274BDF9900124F12 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
-				54D2FDD9271747F100C66998 /* FirebaseAuthProviderEndToEndTests.swift in Sources */,
-				C69C857B273BD3DE0089242C /* AuthProviderSpy.swift in Sources */,
 				C67C26E1274BDDAF00124F12 /* SharedTestHelpers.swift in Sources */,
 				C61F54BF2747A66D0083E1A4 /* TimeslotsUseCaseTests.swift in Sources */,
 				C65EECD2274E4961006ACD6A /* PublishTimeslotUseCaseTests.swift in Sources */,
 				C61F54C52747E5D00083E1A4 /* HomePresentationTests.swift in Sources */,
 				545CCED82723053E00811CE3 /* FirebasePublishTimeslotsEndToEndTests.swift in Sources */,
 				C65EECD4274E54A9006ACD6A /* TimeslotsStoreSpy.swift in Sources */,
+				C64DB3C3276A3C9700C352D8 /* FirebaseAuthProviderEndToEndTests.swift in Sources */,
 				C65EECCE274E3087006ACD6A /* ClientsAPIUseCaseTests.swift in Sources */,
-				C6DA42EC27356C4400D44D80 /* AuthenticationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,7 +537,6 @@
 				C61F54AE2743FFED0083E1A4 /* ClientsLoader.swift in Sources */,
 				C61F54B92744006A0083E1A4 /* FirebaseTimeslotsLoader.swift in Sources */,
 				C61F54B02744000D0083E1A4 /* TimeSlotsLoader.swift in Sources */,
-				54D8EEAD271887EF00D867F3 /* UserModel.swift in Sources */,
 				C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */,
 				C65EECD0274E409F006ACD6A /* ClientsStore.swift in Sources */,
 				54CC810C274ECD94004E1062 /* KeyboardResponder.swift in Sources */,
@@ -602,13 +549,10 @@
 				545CCEC727229D1E00811CE3 /* ProjectModel.swift in Sources */,
 				54CC8114275A656A004E1062 /* CustomAlertView.swift in Sources */,
 				545CCECA27229DF800811CE3 /* ClientModel.swift in Sources */,
-				54D8EEAA2717502900D867F3 /* SessionStore.swift in Sources */,
 				545CCEC127229B1C00811CE3 /* TimeSlotModel.swift in Sources */,
 				54CC810E2758FD76004E1062 /* LogoView.swift in Sources */,
 				C61F54C8274810810083E1A4 /* HomeScreenViewModel.swift in Sources */,
-				C69C8577273BCCCF0089242C /* FirebaseAuthProvider.swift in Sources */,
 				C64C428B271464B300CFBDEF /* TimeTrackerClientApp.swift in Sources */,
-				C69C8579273BCD0E0089242C /* AuthProvider.swift in Sources */,
 				C6ACF57D27317986006D2C43 /* HomeView.swift in Sources */,
 				545CCEC427229C5A00811CE3 /* WorkLogModel.swift in Sources */,
 				C6DA42EA2735477E00D44D80 /* DateLabel.swift in Sources */,
@@ -908,11 +852,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		54DB508F271563FA00A9700A /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
 		54DB5091271563FA00A9700A /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -927,6 +866,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseFirestoreSwift-Beta";
+		};
+		C64DB3C4276A3D6A00C352D8 /* TimeTrackerAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TimeTrackerAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

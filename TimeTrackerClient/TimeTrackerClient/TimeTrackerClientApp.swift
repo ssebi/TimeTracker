@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import TimeTrackerAuth
 
 @main
 struct TimeTrackerClientApp: App {

@@ -5,18 +5,20 @@
 //  Created by VSebastian on 10.11.2021.
 //
 
-import Firebase
+import FirebaseAuth
 
-class FirebaseAuthProvider: AuthProvider {
+public class FirebaseAuthProvider: AuthProvider {
 	struct NoUser: Error {}
 
 	private var auth = Auth.auth()
 
-	func checkAuthState() -> User? {
+	public init() { }
+
+	public func checkAuthState() -> User? {
 		Self.mapUser(auth.currentUser)
 	}
 
-	func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
+	public func signIn(email: String, password: String, completion: @escaping SesionStoreResult) {
 		auth.signIn(withEmail: email, password: password) { (result, error) in
 			if let error = error {
 				completion(.failure(error))
@@ -32,17 +34,17 @@ class FirebaseAuthProvider: AuthProvider {
 		}
 	}
 
-	func signOut() throws {
+	public func signOut() throws {
 		try auth.signOut()
 	}
 
-	private static func mapUser(_ user: Firebase.User?) -> TimeTrackerClient.User? {
+	private static func mapUser(_ user: FirebaseAuth.User?) -> User? {
 		guard let user = user else {
 			return nil
 		}
-		return TimeTrackerClient.User(uid: user.uid,
-									  email: user.email,
-									  username: user.displayName,
-									  client: "")
+		return User(uid: user.uid,
+					email: user.email,
+					username: user.displayName,
+					client: "")
 	}
 }

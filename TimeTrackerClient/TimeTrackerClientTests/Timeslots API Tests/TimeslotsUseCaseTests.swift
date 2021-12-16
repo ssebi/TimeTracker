@@ -26,12 +26,12 @@ class TimeslotsUseCaseTests: XCTestCase {
 		})
 	}
 
-	func test_getTimeslots_deliversResultsOnSuccess() {
+	func test_getTimeslots_deliversResultsOnSuccessSortedByDateDescending() {
 		let (store, sut) = makeSUT()
 
 		let someTimeslots = uniqueTimeslots
 
-		expect(sut: sut, toCompleteWith: someTimeslots, when: {
+		expect(sut: sut, toCompleteWith: someTimeslots.sorted(by: { $0.date > $1.date }), when: {
 			store.completeGetTimeslots(with: someTimeslots)
 		})
 	}
