@@ -9,6 +9,10 @@ import UIKit
 
 class UserListCell: UITableViewCell {
 
+    @IBOutlet var userName: UILabel!
+    @IBOutlet var userProfilePicture: UIImageView!
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

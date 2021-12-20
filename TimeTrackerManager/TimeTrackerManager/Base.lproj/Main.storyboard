@@ -344,13 +344,16 @@
                                         <constraint firstItem="OI1-hs-GFn" firstAttribute="top" secondItem="TSk-FG-DfE" secondAttribute="topMargin" constant="5" id="5Q5-Ui-BGR"/>
                                         <constraint firstAttribute="bottom" secondItem="BgJ-f4-o87" secondAttribute="bottom" id="DEx-6V-W86"/>
                                         <constraint firstItem="hFJ-Zp-c2C" firstAttribute="centerY" secondItem="TSk-FG-DfE" secondAttribute="centerY" id="FoQ-W0-fZd"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hFJ-Zp-c2C" secondAttribute="trailing" constant="20" symbolic="YES" id="KZi-hW-yIr"/>
                                         <constraint firstItem="hFJ-Zp-c2C" firstAttribute="leading" secondItem="BgJ-f4-o87" secondAttribute="trailing" constant="10" id="RwP-Dr-UEb"/>
                                         <constraint firstItem="CTD-12-OQk" firstAttribute="bottom" secondItem="TSk-FG-DfE" secondAttribute="bottomMargin" constant="10" id="bjT-ut-t91"/>
                                         <constraint firstItem="BgJ-f4-o87" firstAttribute="top" secondItem="TSk-FG-DfE" secondAttribute="top" id="gQ5-My-OEU"/>
                                         <constraint firstItem="CTD-12-OQk" firstAttribute="leading" secondItem="BgJ-f4-o87" secondAttribute="trailing" constant="10" id="h7R-mK-vxD"/>
                                         <constraint firstItem="fXW-ol-84F" firstAttribute="top" secondItem="TSk-FG-DfE" secondAttribute="top" constant="78" id="lWk-1a-J6Q"/>
+                                        <constraint firstItem="fXW-ol-84F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CTD-12-OQk" secondAttribute="trailing" constant="8" symbolic="YES" id="nN2-HM-O6w"/>
                                         <constraint firstItem="BgJ-f4-o87" firstAttribute="leading" secondItem="TSk-FG-DfE" secondAttribute="leading" id="ors-cb-T92"/>
                                         <constraint firstItem="OI1-hs-GFn" firstAttribute="leading" secondItem="BgJ-f4-o87" secondAttribute="trailing" constant="10" id="vuN-vE-wqe"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OI1-hs-GFn" secondAttribute="trailing" constant="20" symbolic="YES" id="xzV-FY-JcH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
