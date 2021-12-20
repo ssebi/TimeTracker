@@ -31,9 +31,10 @@ extension UserTableViewController {
             fatalError("Unable to deque UserCell")
         }
         let user = User.testData[indexPath.row]
-        let image = UIImage(systemName: "user.fill")
+        let image = UIImage(systemName: "person.fill.viewfinder")
 
         cell.userName.text = user.name
+        cell.userProfilePicture.image = image
         return cell
     }
 }

@@ -204,7 +204,11 @@
                         <viewLayoutGuide key="safeArea" id="zg3-YI-0Q6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Clients" selectedImage="person.3.fill" catalog="system" id="i78-45-UaQ"/>
+                    <tabBarItem key="tabBarItem" title="Clients" id="i78-45-UaQ">
+                        <imageReference key="image" image="person.circle.fill" catalog="system" symbolScale="large"/>
+                        <color key="badgeColor" name="customGray"/>
+                        <imageReference key="selectedImage" image="person.circle.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aX6-qI-JOi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -235,7 +239,11 @@
                         <viewLayoutGuide key="safeArea" id="9Ut-YT-R68"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Invoice" selectedImage="newspaper" catalog="system" id="YaB-ZH-Ih4"/>
+                    <tabBarItem key="tabBarItem" title="Invoice" id="YaB-ZH-Ih4">
+                        <imageReference key="image" image="newspaper.fill" catalog="system" symbolScale="large"/>
+                        <color key="badgeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <imageReference key="selectedImage" image="newspaper" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6r-1r-RdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -260,7 +268,11 @@
                         <viewLayoutGuide key="safeArea" id="RDu-oi-BD1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Projects" selectedImage="tray.circle" catalog="system" id="CC4-2J-AyD"/>
+                    <tabBarItem key="tabBarItem" title="Projects" id="CC4-2J-AyD">
+                        <imageReference key="image" image="tray.circle.fill" catalog="system" symbolScale="large"/>
+                        <color key="badgeColor" name="customGray"/>
+                        <imageReference key="selectedImage" image="tray.circle" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiA-jU-faY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -285,7 +297,9 @@
                         <viewLayoutGuide key="safeArea" id="san-Ot-5bZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Time" selectedImage="clock.arrow.2.circlepath" catalog="system" id="Xx1-cx-dtg"/>
+                    <tabBarItem key="tabBarItem" title="Time" selectedImage="clock.arrow.2.circlepath" catalog="system" id="Xx1-cx-dtg">
+                        <imageReference key="image" image="clock.arrow.2.circlepath" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1QN-hh-ch2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -700,13 +714,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCK-Mw-Maw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210.3703703703702" y="1662.7777777777778"/>
+            <point key="canvasLocation" x="1210.144927536232" y="1662.7232142857142"/>
         </scene>
         <!--Users-->
         <scene sceneID="HZg-JK-jC1">
             <objects>
                 <navigationController toolbarHidden="NO" id="jhL-nd-bag" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Users" selectedImage="person.circle.fill" catalog="system" id="d6d-Me-5AV"/>
+                    <tabBarItem key="tabBarItem" title="Users" id="d6d-Me-5AV">
+                        <imageReference key="image" image="person.3.fill" catalog="system" symbolScale="large"/>
+                        <color key="badgeColor" red="0.16082283850000001" green="0.56054133179999999" blue="0.45203018189999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <imageReference key="selectedImage" image="person.3.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="URx-Ax-hnR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -750,10 +768,15 @@
         <image name="clock.arrow.2.circlepath" catalog="system" width="128" height="103"/>
         <image name="logo" width="485" height="485"/>
         <image name="newspaper" catalog="system" width="128" height="111"/>
+        <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill.badge.plus" catalog="system" width="128" height="124"/>
         <image name="tray.circle" catalog="system" width="128" height="121"/>
+        <image name="tray.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="customGray">
+            <color red="0.69800001382827759" green="0.74500000476837158" blue="0.76499998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="customGreen">
             <color red="0.0" green="0.80800002813339233" blue="0.78799998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
