@@ -345,11 +345,11 @@
                                 <rect key="frame" x="0.0" y="70" width="810" height="1010"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7i-An-kOB">
-                                        <rect key="frame" x="0.0" y="0.0" width="537" height="1010"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="541" height="1010"/>
                                         <color key="backgroundColor" red="0.12941176469999999" green="0.54901960780000003" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BKt-nJ-b8e">
-                                        <rect key="frame" x="200" y="100" width="337" height="150"/>
+                                        <rect key="frame" x="200" y="100" width="475" height="150"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="LGN-DZ-29B">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -380,14 +380,25 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeTracker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="to2-xF-usO">
-                                                <rect key="frame" x="160" y="54.5" width="177" height="41"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="to2-xF-usO">
+                                                <rect key="frame" x="160" y="54.5" width="315" height="41"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="TimeTracker ">
+                                                        <attributes>
+                                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <font key="NSFont" size="30" name="AvenirNext-Bold"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="Manager">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.16082283850000001" green="0.56054133179999999" blue="0.45203018189999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="30" name="AvenirNext-Bold"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.12941176469999999" green="0.54901960780000003" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="mzf-yC-vue">
                                         <rect key="frame" x="100" y="275" width="400" height="460"/>
@@ -477,19 +488,13 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLp-Uc-L7K">
-                                        <rect key="frame" x="547" y="810" width="253" height="50"/>
+                                        <rect key="frame" x="551" y="809.5" width="249" height="50.5"/>
                                         <color key="tintColor" red="0.20000000000000001" green="0.85098039219999999" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Create user" buttonSize="large"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0S-sP-D1w">
-                                        <rect key="frame" x="547" y="154.5" width="131" height="41"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
-                                        <color key="textColor" red="0.12941176469999999" green="0.54901960780000003" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZL-Jf-Z0k">
-                                        <rect key="frame" x="547" y="331.5" width="214.5" height="36"/>
+                                        <rect key="frame" x="563" y="304" width="214.5" height="36"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="26"/>
                                         <color key="textColor" red="0.12941176469999999" green="0.54901960780000003" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -500,28 +505,26 @@
                                     <constraint firstAttribute="bottom" secondItem="tLp-Uc-L7K" secondAttribute="bottom" constant="50" id="0Ua-Ag-Ogs"/>
                                     <constraint firstItem="tLp-Uc-L7K" firstAttribute="centerX" secondItem="GND-iB-sGh" secondAttribute="centerX" id="3Ot-xo-4dv"/>
                                     <constraint firstAttribute="bottom" secondItem="tLp-Uc-L7K" secondAttribute="bottom" constant="150" id="3WU-R3-eGf"/>
+                                    <constraint firstAttribute="trailing" secondItem="fZL-Jf-Z0k" secondAttribute="trailing" constant="32.5" id="7HA-oy-LMY"/>
                                     <constraint firstItem="L7i-An-kOB" firstAttribute="leading" secondItem="GND-iB-sGh" secondAttribute="leading" id="7Ku-2v-VoW"/>
                                     <constraint firstItem="BKt-nJ-b8e" firstAttribute="leading" secondItem="GND-iB-sGh" secondAttribute="leading" constant="200" id="7T3-Bz-1O3"/>
                                     <constraint firstAttribute="trailing" secondItem="tLp-Uc-L7K" secondAttribute="trailing" constant="9" id="8xh-13-MRT"/>
-                                    <constraint firstItem="fZL-Jf-Z0k" firstAttribute="top" secondItem="BKt-nJ-b8e" secondAttribute="bottom" constant="81.5" id="92k-6I-GGr"/>
-                                    <constraint firstItem="L7i-An-kOB" firstAttribute="trailing" secondItem="BKt-nJ-b8e" secondAttribute="trailing" id="Caz-4o-Wob"/>
+                                    <constraint firstItem="L7i-An-kOB" firstAttribute="trailing" secondItem="BKt-nJ-b8e" secondAttribute="trailing" constant="-134" id="Caz-4o-Wob"/>
                                     <constraint firstItem="mzf-yC-vue" firstAttribute="centerY" secondItem="GND-iB-sGh" secondAttribute="centerY" id="DfH-pK-Ldk"/>
+                                    <constraint firstItem="fZL-Jf-Z0k" firstAttribute="top" secondItem="GND-iB-sGh" secondAttribute="top" constant="304" id="G8h-Gi-ot9"/>
                                     <constraint firstAttribute="trailing" secondItem="tLp-Uc-L7K" secondAttribute="trailing" constant="10" id="PK8-cm-oFs"/>
                                     <constraint firstItem="fZL-Jf-Z0k" firstAttribute="top" secondItem="BKt-nJ-b8e" secondAttribute="bottom" constant="30" id="Pby-yi-X0j"/>
                                     <constraint firstItem="L7i-An-kOB" firstAttribute="top" secondItem="GND-iB-sGh" secondAttribute="top" id="Qc1-K6-ejQ"/>
                                     <constraint firstAttribute="bottom" secondItem="L7i-An-kOB" secondAttribute="bottom" id="Qx9-4H-sWc"/>
-                                    <constraint firstItem="m0S-sP-D1w" firstAttribute="leading" secondItem="to2-xF-usO" secondAttribute="trailing" constant="10" id="Rjq-kT-5cD"/>
                                     <constraint firstAttribute="trailing" secondItem="fZL-Jf-Z0k" secondAttribute="trailing" multiplier="0.4" constant="50" id="SX5-Hm-vD2"/>
                                     <constraint firstItem="tLp-Uc-L7K" firstAttribute="leading" secondItem="L7i-An-kOB" secondAttribute="trailing" constant="9" id="XgP-sl-JIa"/>
                                     <constraint firstAttribute="bottom" secondItem="tLp-Uc-L7K" secondAttribute="bottom" constant="50" id="boC-Vx-thH"/>
                                     <constraint firstItem="fZL-Jf-Z0k" firstAttribute="top" secondItem="BKt-nJ-b8e" secondAttribute="bottom" constant="30" id="e5r-CL-rzE"/>
                                     <constraint firstItem="mzf-yC-vue" firstAttribute="leading" secondItem="GND-iB-sGh" secondAttribute="leading" constant="30" id="gOA-EF-XMN"/>
-                                    <constraint firstItem="m0S-sP-D1w" firstAttribute="bottom" secondItem="to2-xF-usO" secondAttribute="bottom" id="jr2-nq-KuE"/>
                                     <constraint firstItem="tLp-Uc-L7K" firstAttribute="leading" secondItem="L7i-An-kOB" secondAttribute="trailing" constant="10" id="llj-7R-sW3"/>
                                     <constraint firstItem="mzf-yC-vue" firstAttribute="leading" secondItem="GND-iB-sGh" secondAttribute="leading" constant="100" id="ltz-r6-g3C"/>
                                     <constraint firstItem="BKt-nJ-b8e" firstAttribute="leading" secondItem="GND-iB-sGh" secondAttribute="leading" constant="47" id="pl5-uZ-gEl"/>
                                     <constraint firstAttribute="trailing" secondItem="tLp-Uc-L7K" secondAttribute="trailing" constant="50" id="sHe-ho-hBc"/>
-                                    <constraint firstItem="fZL-Jf-Z0k" firstAttribute="leading" secondItem="L7i-An-kOB" secondAttribute="trailing" constant="10" id="xYC-zR-yMe"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -529,11 +532,11 @@
                                         <exclude reference="pl5-uZ-gEl"/>
                                         <exclude reference="gOA-EF-XMN"/>
                                         <exclude reference="ltz-r6-g3C"/>
-                                        <exclude reference="92k-6I-GGr"/>
+                                        <exclude reference="7HA-oy-LMY"/>
+                                        <exclude reference="G8h-Gi-ot9"/>
                                         <exclude reference="Pby-yi-X0j"/>
                                         <exclude reference="SX5-Hm-vD2"/>
                                         <exclude reference="e5r-CL-rzE"/>
-                                        <exclude reference="xYC-zR-yMe"/>
                                         <exclude reference="0Ua-Ag-Ogs"/>
                                         <exclude reference="3Ot-xo-4dv"/>
                                         <exclude reference="3WU-R3-eGf"/>
@@ -574,8 +577,8 @@
                                     <mask key="constraints">
                                         <include reference="7T3-Bz-1O3"/>
                                         <include reference="ltz-r6-g3C"/>
-                                        <include reference="92k-6I-GGr"/>
-                                        <include reference="xYC-zR-yMe"/>
+                                        <include reference="7HA-oy-LMY"/>
+                                        <include reference="G8h-Gi-ot9"/>
                                         <include reference="3WU-R3-eGf"/>
                                         <include reference="PK8-cm-oFs"/>
                                         <include reference="llj-7R-sW3"/>
