@@ -24,7 +24,7 @@ jobs:
       run: sudo xcode-select --switch /Applications/Xcode_13.0.app/Contents/Developer
     
     - name: Build
-      run: xcodebuild build-for-testing -scheme "CI" -destination "platform=iOS Simulator,name=iPhone 13,OS=15.0" ONLY_ACTIVE_ARCH=YES | xcpretty
+      run: xcodebuild build-for-testing -scheme "CI" -destination "platform=iOS Simulator,name=iPhone 13,OS=15.0" ONLY_ACTIVE_ARCH=YES
     
     - name: Test
-      run: xcodebuild test-without-building -scheme "CI" -destination "platform=iOS Simulator,name=iPhone 13,OS=15.0" ONLY_ACTIVE_ARCH=YES | xcpretty
+      run: xcodebuild test-without-building -scheme "CI" -destination "platform=iOS Simulator,name=iPhone 13,OS=15.0" ONLY_ACTIVE_ARCH=YES
