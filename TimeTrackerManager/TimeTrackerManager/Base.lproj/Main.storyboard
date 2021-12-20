@@ -493,7 +493,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Create user" buttonSize="large"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZL-Jf-Z0k">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new user" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZL-Jf-Z0k">
                                         <rect key="frame" x="563" y="304" width="214.5" height="36"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="26"/>
                                         <color key="textColor" red="0.12941176469999999" green="0.54901960780000003" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -512,6 +512,7 @@
                                     <constraint firstItem="L7i-An-kOB" firstAttribute="trailing" secondItem="BKt-nJ-b8e" secondAttribute="trailing" constant="-134" id="Caz-4o-Wob"/>
                                     <constraint firstItem="mzf-yC-vue" firstAttribute="centerY" secondItem="GND-iB-sGh" secondAttribute="centerY" id="DfH-pK-Ldk"/>
                                     <constraint firstItem="fZL-Jf-Z0k" firstAttribute="top" secondItem="GND-iB-sGh" secondAttribute="top" constant="304" id="G8h-Gi-ot9"/>
+                                    <constraint firstItem="to2-xF-usO" firstAttribute="leading" secondItem="L7i-An-kOB" secondAttribute="trailing" constant="-181" id="One-Q5-ZQ9"/>
                                     <constraint firstAttribute="trailing" secondItem="tLp-Uc-L7K" secondAttribute="trailing" constant="10" id="PK8-cm-oFs"/>
                                     <constraint firstItem="fZL-Jf-Z0k" firstAttribute="top" secondItem="BKt-nJ-b8e" secondAttribute="bottom" constant="30" id="Pby-yi-X0j"/>
                                     <constraint firstItem="L7i-An-kOB" firstAttribute="top" secondItem="GND-iB-sGh" secondAttribute="top" id="Qc1-K6-ejQ"/>
@@ -525,8 +526,12 @@
                                     <constraint firstItem="mzf-yC-vue" firstAttribute="leading" secondItem="GND-iB-sGh" secondAttribute="leading" constant="100" id="ltz-r6-g3C"/>
                                     <constraint firstItem="BKt-nJ-b8e" firstAttribute="leading" secondItem="GND-iB-sGh" secondAttribute="leading" constant="47" id="pl5-uZ-gEl"/>
                                     <constraint firstAttribute="trailing" secondItem="tLp-Uc-L7K" secondAttribute="trailing" constant="50" id="sHe-ho-hBc"/>
+                                    <constraint firstItem="fZL-Jf-Z0k" firstAttribute="leading" secondItem="L7i-An-kOB" secondAttribute="trailing" constant="22" id="vBn-ZE-YEC"/>
                                 </constraints>
                                 <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="BKt-nJ-b8e"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <exclude reference="7T3-Bz-1O3"/>
                                         <exclude reference="pl5-uZ-gEl"/>
@@ -574,6 +579,9 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="BKt-nJ-b8e"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <include reference="7T3-Bz-1O3"/>
                                         <include reference="ltz-r6-g3C"/>
