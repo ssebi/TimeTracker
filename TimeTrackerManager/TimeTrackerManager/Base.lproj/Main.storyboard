@@ -193,9 +193,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Clients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npw-WT-FP3">
-                                <rect key="frame" x="186" y="438" width="53" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npw-WT-FP3">
+                                <rect key="frame" x="188" y="453" width="52.333333333333343" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -203,6 +202,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zg3-YI-0Q6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="npw-WT-FP3" firstAttribute="centerX" secondItem="jLs-Bp-u7r" secondAttribute="centerX" id="MrW-mR-AXj"/>
+                            <constraint firstItem="npw-WT-FP3" firstAttribute="centerY" secondItem="jLs-Bp-u7r" secondAttribute="centerY" id="SVp-rv-bH9"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Clients" id="i78-45-UaQ">
                         <imageReference key="image" image="person.circle.fill" catalog="system" symbolScale="large"/>
@@ -212,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aX6-qI-JOi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2371.0144927536235" y="874.55357142857144"/>
+            <point key="canvasLocation" x="2370.5607476635514" y="874.08207343412528"/>
         </scene>
         <!--Invoice-->
         <scene sceneID="lHd-JM-ESP">
@@ -222,9 +225,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdX-Hr-uWr">
-                                <rect key="frame" x="186" y="438" width="54" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdX-Hr-uWr">
+                                <rect key="frame" x="187" y="453" width="54" height="21"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Invoice">
                                         <attributes>
@@ -238,6 +240,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9Ut-YT-R68"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gdX-Hr-uWr" firstAttribute="centerX" secondItem="cMn-fQ-Axm" secondAttribute="centerX" id="a2E-hp-LhK"/>
+                            <constraint firstItem="gdX-Hr-uWr" firstAttribute="centerY" secondItem="cMn-fQ-Axm" secondAttribute="centerY" id="mFx-rs-cyD"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Invoice" id="YaB-ZH-Ih4">
                         <imageReference key="image" image="newspaper.fill" catalog="system" symbolScale="large"/>
@@ -257,9 +263,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Projects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cl-xb-eDK">
-                                <rect key="frame" x="186" y="438" width="63" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cl-xb-eDK">
+                                <rect key="frame" x="183" y="453" width="63" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -267,6 +272,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RDu-oi-BD1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4Cl-xb-eDK" firstAttribute="centerX" secondItem="bGF-5b-GE2" secondAttribute="centerX" id="9lb-bb-ScR"/>
+                            <constraint firstItem="4Cl-xb-eDK" firstAttribute="centerY" secondItem="bGF-5b-GE2" secondAttribute="centerY" id="PUY-Pb-51y"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Projects" id="CC4-2J-AyD">
                         <imageReference key="image" image="tray.circle.fill" catalog="system" symbolScale="large"/>
@@ -286,9 +295,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6G-nJ-vYh">
-                                <rect key="frame" x="186" y="438" width="38" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6G-nJ-vYh">
+                                <rect key="frame" x="195" y="453" width="38" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -296,6 +304,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="san-Ot-5bZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K6G-nJ-vYh" firstAttribute="centerY" secondItem="yzP-U4-niH" secondAttribute="centerY" id="DHt-r0-JHM"/>
+                            <constraint firstItem="K6G-nJ-vYh" firstAttribute="centerX" secondItem="yzP-U4-niH" secondAttribute="centerX" id="oqV-FQ-Xu8"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Time" selectedImage="clock.arrow.2.circlepath" catalog="system" id="Xx1-cx-dtg">
                         <imageReference key="image" image="clock.arrow.2.circlepath" catalog="system" symbolScale="large"/>
@@ -351,7 +363,7 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 lei" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXW-ol-84F">
-                                            <rect key="frame" x="366.33333333333326" y="72" width="51.666666666666686" height="20.333333333333329"/>
+                                            <rect key="frame" x="366.33333333333331" y="72" width="51.666666666666686" height="20.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
