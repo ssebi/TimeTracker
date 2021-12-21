@@ -15,7 +15,7 @@ class ClientsAPIUseCaseTests: XCTestCase {
 
 		sut.getClients() { _ in }
 
-		XCTAssertEqual(store.getClientsCallCount, 0)
+		XCTAssertEqual(store.getClientsCallCount, 1)
 	}
 
 	func test_getClients_returnsFailureOnStoreError() {
