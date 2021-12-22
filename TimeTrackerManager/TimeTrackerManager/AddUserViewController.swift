@@ -19,6 +19,10 @@ class AddUserViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(AddUserViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+    @IBAction func createUserButtonPressed(_ sender: UIButton!) {
+        print("user created")
+    }
+
     @objc func keyboardWillShow(notification: NSNotification) {
 
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
