@@ -19,8 +19,8 @@ class AddUserViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(AddUserViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @IBAction func createUserButtonPressed(_ sender: UIButton!) {
-        print("user created")
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {

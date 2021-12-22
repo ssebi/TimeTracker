@@ -522,9 +522,6 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
-                                        <connections>
-                                            <action selector="CreateUserButtonPressed:" destination="8Cz-Ao-HkL" eventType="touchUpInside" id="yCw-P9-kDV"/>
-                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="197-Rx-1m7" userLabel="Logo Stack">
                                         <rect key="frame" x="421" y="50" width="423" height="100"/>
