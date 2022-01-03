@@ -165,10 +165,19 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9EA-ec-gXJ">
+                                <rect key="frame" x="512" y="893.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="9EA-ec-gXJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="53Q-og-sfr"/>
+                            <constraint firstItem="9EA-ec-gXJ" firstAttribute="width" relation="lessThanOrEqual" secondItem="ibm-3f-mWg" secondAttribute="width" id="Aph-0a-EE1"/>
+                            <constraint firstItem="9EA-ec-gXJ" firstAttribute="top" secondItem="lXT-zP-aeD" secondAttribute="bottom" constant="20" id="VGj-uk-YVX"/>
                             <constraint firstItem="lXT-zP-aeD" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="cUr-na-NT7"/>
                             <constraint firstItem="lXT-zP-aeD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lOd-5K-Qzg"/>
                             <constraint firstItem="lXT-zP-aeD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w1M-Oz-zVp"/>
@@ -176,6 +185,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="NUp-tM-3fJ" id="M9v-sK-bn3"/>
+                        <outlet property="errorLabel" destination="9EA-ec-gXJ" id="N5z-ql-kpH"/>
                         <outlet property="passwordTextField" destination="mYG-59-C6k" id="1Sc-LD-Lse"/>
                         <segue destination="snx-eN-Ve1" kind="show" identifier="showMainTabBar" id="hkF-K7-jQA"/>
                     </connections>
@@ -727,6 +737,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
