@@ -165,7 +165,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9EA-ec-gXJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9EA-ec-gXJ">
                                 <rect key="frame" x="512" y="893.5" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
@@ -187,7 +187,7 @@
                         <outlet property="emailTextField" destination="NUp-tM-3fJ" id="M9v-sK-bn3"/>
                         <outlet property="errorLabel" destination="9EA-ec-gXJ" id="N5z-ql-kpH"/>
                         <outlet property="passwordTextField" destination="mYG-59-C6k" id="1Sc-LD-Lse"/>
-                        <segue destination="snx-eN-Ve1" kind="show" identifier="showMainTabBar" id="hkF-K7-jQA"/>
+                        <segue destination="snx-eN-Ve1" kind="showDetail" identifier="showMainTabBar" id="hkF-K7-jQA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
