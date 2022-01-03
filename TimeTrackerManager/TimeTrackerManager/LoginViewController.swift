@@ -28,9 +28,11 @@ class LoginViewController: UIViewController {
     @IBAction func logInButtonPressed(_ sender: Any) {
         session.signIn(email: emailTextField.text!, password: passwordTextField.text!) { [weak self] result in
             if case let .failure(result) =  result {
-                //
+                return
 			}
-			debugPrint("⬇️ \(result)")
+            if case let .success(result) = result {
+                self?.performSegue(withIdentifier: "showMainTabBar", sender: self)
+            }
         }
     }
 }
