@@ -101,7 +101,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="716" height="50"/>
                                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                                <textInputTraits key="textInputTraits" returnKeyType="go" textContentType="password"/>
+                                                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" smartDashesType="no" textContentType="password"/>
                                                                                             </textField>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -181,9 +181,6 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="9EA-ec-gXJ" firstAttribute="width" relation="lessThanOrEqual" secondItem="ibm-3f-mWg" secondAttribute="width" id="Y4R-Da-dOV"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -217,7 +214,7 @@
                         <outlet property="emailTextField" destination="NUp-tM-3fJ" id="M9v-sK-bn3"/>
                         <outlet property="errorLabel" destination="9EA-ec-gXJ" id="N5z-ql-kpH"/>
                         <outlet property="passwordTextField" destination="mYG-59-C6k" id="1Sc-LD-Lse"/>
-                        <segue destination="snx-eN-Ve1" kind="showDetail" identifier="showMainTabBar" id="hkF-K7-jQA"/>
+                        <segue destination="snx-eN-Ve1" kind="show" identifier="showMainTabBar" id="hkF-K7-jQA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -722,8 +719,9 @@
         <!--Tab Bar Controller-->
         <scene sceneID="DoR-h9-4qo">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" id="snx-eN-Ve1" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" modalPresentationStyle="fullScreen" id="snx-eN-Ve1" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="J7w-aw-jQ9"/>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1eI-ny-boS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
