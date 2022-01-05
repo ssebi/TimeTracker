@@ -11,6 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: GPG version
+      run: gpg --version
+
     - name: Install provisioning profile
       run: |
         gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.MAN_PROFILE }}" --output .github/secrets/TimeTrackerManagerProfile.mobileprovision .github/secrets/TimeTrackerManagerProfile.mobileprovision.gpg
