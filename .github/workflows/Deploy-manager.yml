@@ -37,9 +37,6 @@ jobs:
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
 
-    - name: Set build number
-      run: /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $GITHUB_RUN_NUMR" "TimeTrackerMBEanager/TimeTrackerManager/Info.plist"
-
     - name: Build
       run: xcodebuild clean archive -sdk iphoneos -workspace TimeTracker.xcworkspace -configuration "Release" -scheme "TimeTrackerManager" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/TimeTrackerManager.xcarchive" | xcpretty
 
