@@ -13,6 +13,7 @@ class AddUserViewController: UIViewController {
     @IBOutlet var firsNameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
+    var user = UserPublisher()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,23 +26,7 @@ class AddUserViewController: UIViewController {
     }
 
     @IBAction func createUserButtonPressed(_ sender: Any) {
-        Auth.auth().createUser(withEmail: self.emailTextField.text ?? "", password: "Patratel1") { authResult, error in
-            if let error = error {
-                print("\(error)")
-            }
-            if let result = authResult {
-                print("auth :, \(result)")
-                Auth.auth().sendPasswordReset(withEmail: self.emailTextField.text ?? "") { error in
-                    if let err = error {
-                        print("there was an error resetting your password")
-                    } else {
-                        print("the user should be created and an email should be sent")
-                    }
-                }
-            }
-        }
-
-
+        user.addUser(email: self.emailTextField?.text ?? "", password: "Balonas1")
     }
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
