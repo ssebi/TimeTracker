@@ -466,7 +466,7 @@
             <objects>
                 <viewController title="Add new User" hidesBottomBarWhenPushed="YES" id="8Cz-Ao-HkL" customClass="AddUserViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tj3-cl-lMf">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GND-iB-sGh">
@@ -569,6 +569,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="createUserButtonPressed:" destination="8Cz-Ao-HkL" eventType="touchUpInside" id="BMg-F2-ihu"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="197-Rx-1m7" userLabel="Logo Stack">
                                         <rect key="frame" x="101" y="50" width="423" height="100"/>
@@ -699,6 +702,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="svO-eE-ps8"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="XxR-qg-c31" id="iQj-oa-MTI"/>
+                        <outlet property="firsNameTextField" destination="fbE-JC-Vjd" id="6aZ-tt-Y1B"/>
+                        <outlet property="lastNameTextField" destination="3j9-vH-ZDu" id="gxd-nk-BDn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCK-Mw-Maw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

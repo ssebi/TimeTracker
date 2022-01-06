@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class AddUserViewController: UIViewController {
+
+    @IBOutlet var firsNameTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var lastNameTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +24,25 @@ class AddUserViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(AddUserViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+    @IBAction func createUserButtonPressed(_ sender: Any) {
+        Auth.auth().createUser(withEmail: self.emailTextField.text ?? "", password: "Patratel1") { authResult, error in
+            if let error = error {
+                print("\(error)")
+            }
+            if let result = authResult {
+                print("auth :, \(result)")
+                Auth.auth().sendPasswordReset(withEmail: self.emailTextField.text ?? "") { error in
+                    if let err = error {
+                        print("there was an error resetting your password")
+                    } else {
+                        print("the user should be created and an email should be sent")
+                    }
+                }
+            }
+        }
+
+
+    }
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
     }
