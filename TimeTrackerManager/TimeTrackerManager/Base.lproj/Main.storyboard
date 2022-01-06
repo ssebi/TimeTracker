@@ -192,11 +192,15 @@
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="4LS-OE-Q1m" firstAttribute="centerX" secondItem="Vsa-Cw-aT1" secondAttribute="centerX" id="dFW-mt-Oub"/>
                                             <constraint firstItem="ibm-3f-mWg" firstAttribute="width" secondItem="Vsa-Cw-aT1" secondAttribute="width" multiplier="0.730469" id="gaW-Bo-iSh"/>
                                             <constraint firstItem="4LS-OE-Q1m" firstAttribute="centerY" secondItem="Vsa-Cw-aT1" secondAttribute="centerY" id="kCc-71-RDc"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="LEJ-Wb-lua" appends="YES" id="tMz-Y7-30h"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -227,6 +231,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LEJ-Wb-lua">
+                    <connections>
+                        <action selector="tapOutside:" destination="BYZ-38-t0r" id="ICh-Ky-Zi1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1345.8984375" y="126.93997071742312"/>
         </scene>
