@@ -28,9 +28,6 @@ class AddUserViewController: UIViewController {
     @IBAction func createUserButtonPressed(_ sender: Any) {
         validationError(title: "This is ", message: "Please validate user")
         user.addUser(email: self.emailTextField?.text ?? "", password: "Balonas1")
-        //self.navigationController?.popViewController(animated: true)
-
-
     }
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
@@ -66,7 +63,13 @@ class AddUserViewController: UIViewController {
 extension AddUserViewController {
     func validationError(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+            self.dismisView()
+        }))
         self.present(alert, animated: true, completion: nil)
+    }
+
+    func dismisView(){
+        self.navigationController?.popViewController(animated: true)
     }
 }
