@@ -27,6 +27,7 @@ class AddUserViewController: UIViewController {
 
     @IBAction func createUserButtonPressed(_ sender: Any) {
         user.addUser(email: self.emailTextField?.text ?? "", password: "Balonas1")
+        self.navigationController?.popViewController(animated: true)
     }
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
