@@ -21,13 +21,16 @@ class AddUserViewController: UIViewController {
         // call the 'keyboardWillShow' function when the view controller receive the notification that a keyboard is going to be shown
         NotificationCenter.default.addObserver(self, selector: #selector(AddUserViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 
-          // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
+        // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
         NotificationCenter.default.addObserver(self, selector: #selector(AddUserViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     @IBAction func createUserButtonPressed(_ sender: Any) {
+        validationError(title: "This is ", message: "Please validate user")
         user.addUser(email: self.emailTextField?.text ?? "", password: "Balonas1")
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+
+
     }
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
@@ -36,26 +39,34 @@ class AddUserViewController: UIViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
 
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-           // if keyboard size is not available for some reason, dont do anything
-           return
+            // if keyboard size is not available for some reason, dont do anything
+            return
         }
 
-      // move the root view up by the distance of keyboard height
-      self.view.frame.origin.y = 0 - keyboardSize.height
+        // move the root view up by the distance of keyboard height
+        self.view.frame.origin.y = 0 - keyboardSize.height
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-      // move back the root view origin to zero
-      self.view.frame.origin.y = 0
+        // move back the root view origin to zero
+        self.view.frame.origin.y = 0
     }
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+
+}
+
+extension AddUserViewController {
+    func validationError(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
-    */
-
 }
