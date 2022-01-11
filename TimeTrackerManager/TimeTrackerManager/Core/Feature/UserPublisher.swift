@@ -9,25 +9,56 @@ import Foundation
 import Firebase
 
 class UserPublisher {
-    
-    public init(){
-
+    typealias UserPublisherCompletion = (Result<Void, UserPublisherError>) -> Void
+    enum UserPublisherError: Error {
+        case passwordResetFailed
+        case userCreationFailed
+        case addUserFailed
     }
 
-    public func addUser(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                print("\(error)")
+    public func addUser(email: String, password: String, completion: @escaping UserPublisherCompletion) {
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+            if let _ = error {
+                completion(.failure(.addUserFailed))
             }
             if let result = authResult {
-                print("auth :, \(result)")
-                Auth.auth().sendPasswordReset(withEmail: email) { error in
-                    if let err = error {
-                        print("there was an error resetting your password")
-                    } else {
-                        print("the user should be created and an email should be sent")
+                self?.createUser(result.user) { result in
+                    switch result {
+                        case .success:
+                            self?.resetPass(email: email, completion: { _ in
+                                completion(.success(()))
+                                //TODO: do something on err
+                            })
+
+                        case .failure(let error):
+                            completion(.failure(error))
+                            //TODO: delete created user
                     }
                 }
+            }
+        }
+    }
+
+    private func createUser(_ user: Firebase.User, completion: @escaping UserPublisherCompletion) {
+        let data = [
+            "userId": user.uid
+        ]
+
+        Firestore.firestore().collection("users").document().setData(data) { error in
+            if let _ = error {
+                completion(.failure(.userCreationFailed))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+
+    private func resetPass(email: String, completion: @escaping UserPublisherCompletion) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let _ = error {
+                completion(.failure(.passwordResetFailed))
+            } else {
+                completion(.success(()))
             }
         }
     }
