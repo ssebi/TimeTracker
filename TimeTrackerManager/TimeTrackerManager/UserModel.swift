@@ -17,14 +17,12 @@ struct UserCell {
 }
 
 class User {
-    let email: String?
-    let password: String?
-    let firstName: String?
-    let lastName: String?
+    let email: String
+    let firstName: String
+    let lastName: String
 
-    init(email: String, password: String, firstName: String, lastName: String) {
+    init(email: String, firstName: String, lastName: String) {
         self.email = email
-        self.password = password
         self.firstName = firstName
         self.lastName = lastName
     }
