@@ -21,7 +21,7 @@
                BlueprintIdentifier = "TimeTrackerAuthTests"
                BuildableName = "TimeTrackerAuthTests"
                BlueprintName = "TimeTrackerAuthTests"
-               ReferencedContainer = "container:../TimeTrackerAuth">
+               ReferencedContainer = "container:TimeTrackerAuth">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -32,7 +32,7 @@
                BlueprintIdentifier = "54D2FDD5271747F100C66998"
                BuildableName = "TimeTrackerClientTests.xctest"
                BlueprintName = "TimeTrackerClientTests"
-               ReferencedContainer = "container:TimeTrackerClient.xcodeproj">
+               ReferencedContainer = "container:TimeTrackerClient/TimeTrackerClient.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,7 +53,7 @@
             BlueprintIdentifier = "C64C4286271464B300CFBDEF"
             BuildableName = "TimeTrackerClient.app"
             BlueprintName = "TimeTrackerClient"
-            ReferencedContainer = "container:TimeTrackerClient.xcodeproj">
+            ReferencedContainer = "container:TimeTrackerClient/TimeTrackerClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
