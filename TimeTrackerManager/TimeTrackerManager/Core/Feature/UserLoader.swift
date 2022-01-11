@@ -12,7 +12,7 @@ class UserLoader {
     struct UndefinedError: Error { }
     typealias GetUsersResult = (Result<[User], Error>) -> Void
 
-        func getClients(completion: @escaping GetUsersResult) {
+        func getUsers(completion: @escaping GetUsersResult) {
             Firestore.firestore().collection(Path.users).getDocuments { snapshot, error in
                 if let snapshot = snapshot {
                     let user = snapshot.documents.compactMap { document -> User? in
