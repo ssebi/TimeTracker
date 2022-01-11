@@ -9,18 +9,18 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
 
-    var user = UserLoader()
+    var userLoader = UserLoader()
+    var user: [User] = []
     // Data
     @IBOutlet var UserTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        user.getClients { result in
-            print("xxxx>>>>", result)
-        }
-
     }
 
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     // MARK: - Table view data source
 }
 
@@ -35,10 +35,18 @@ extension UserTableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.usersCellIdentifier, for: indexPath) as? UserListCell else {
             fatalError("Unable to deque UserCell")
         }
-        let user = UserCell.testData[indexPath.row]
+        //let user = UserCell.testData[indexPath.row]
+
+      userLoader.getUsers { result in
+            if let user = try? result.get() {
+                self.user = user
+            }
+        }
+
         let image = UIImage(systemName: "person.fill.viewfinder")
 
-        cell.userName.text = user.name
+        //
+        cell.userName.text = user[indexPath.row].firstName
         cell.userProfilePicture.image = image
         return cell
     }
