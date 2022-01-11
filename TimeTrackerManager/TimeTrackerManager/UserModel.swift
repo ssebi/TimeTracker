@@ -16,6 +16,20 @@ struct UserCell {
     let hourRate: Int
 }
 
+class User {
+    let email: String?
+    let password: String?
+    let firstName: String?
+    let lastName: String?
+
+    init(email: String, password: String, firstName: String, lastName: String) {
+        self.email = email
+        self.password = password
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+}
+
 extension UserCell {
     static var testData = [
         UserCell(name: "User 1", profilePicture: UIImage(contentsOfFile: ""), totalHours: 20, projects: ["Project x, Porject Y"], hourRate: 20),
