@@ -2,7 +2,7 @@ name: Deploy-Manager
 
 on:
   push:
-    branches: [ feature/manager-CI ]
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
