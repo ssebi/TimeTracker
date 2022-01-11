@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
-		547B01E9278DCFCE00636A90 /* UserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01E8278DCFCE00636A90 /* UserLoader.swift */; };
 		54AE368A276A21E500407F04 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE3689276A21E500407F04 /* AddUserViewController.swift */; };
 		54AE368C2770BD8300407F04 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE368B2770BD8200407F04 /* UserTableViewController.swift */; };
 		54AE36902770C7CF00407F04 /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE368F2770C7CF00407F04 /* UserListCell.swift */; };
@@ -48,7 +47,6 @@
 
 /* Begin PBXFileReference section */
 		5468DDF62763C16D00E39DD9 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
-		547B01E8278DCFCE00636A90 /* UserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoader.swift; sourceTree = "<group>"; };
 		54AE3689276A21E500407F04 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		54AE368B2770BD8200407F04 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		54AE368F2770C7CF00407F04 /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				54E38BD52786EEE200625F92 /* UserPublisher.swift */,
-				547B01E8278DCFCE00636A90 /* UserLoader.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -340,7 +337,6 @@
 				54AE368C2770BD8300407F04 /* UserTableViewController.swift in Sources */,
 				C6B2B24F276256D400705659 /* SceneDelegate.swift in Sources */,
 				54E38BD62786EEE200625F92 /* UserPublisher.swift in Sources */,
-				547B01E9278DCFCE00636A90 /* UserLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,8 +543,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LC7N3KMTDD;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -567,7 +562,6 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.timeTrackerManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = TimeTrackerManagerProfile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
