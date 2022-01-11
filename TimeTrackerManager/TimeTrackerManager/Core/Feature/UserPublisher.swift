@@ -16,13 +16,13 @@ class UserPublisher {
         case addUserFailed
     }
 
-    public func addUser(email: String, password: String, completion: @escaping UserPublisherCompletion) {
+    public func addUser(email: String, password: String, firstName: String, lastName: String, completion: @escaping UserPublisherCompletion) {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
             if let _ = error {
                 completion(.failure(.addUserFailed))
             }
             if let result = authResult {
-                self?.createUser(result.user) { result in
+                self?.createUser(result.user, firstName: firstName, lastName: lastName) { result in
                     switch result {
                         case .success:
                             self?.resetPass(email: email, completion: { _ in
@@ -39,9 +39,11 @@ class UserPublisher {
         }
     }
 
-    private func createUser(_ user: Firebase.User, completion: @escaping UserPublisherCompletion) {
+    private func createUser(_ user: Firebase.User, firstName: String, lastName: String, completion: @escaping UserPublisherCompletion) {
         let data = [
-            "userId": user.uid
+            "userId": user.uid,
+            "firstName": firstName,
+            "lastName": lastName
         ]
 
         Firestore.firestore().collection("users").document().setData(data) { error in

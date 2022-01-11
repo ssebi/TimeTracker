@@ -27,17 +27,22 @@ class AddUserViewController: UIViewController {
     }
 
     @IBAction func createUserButtonPressed(_ sender: Any) {
-        user.addUser(email: self.emailTextField?.text ?? "", password: "Balonas1") { [weak self] result in
+        user.addUser(
+                email: self.emailTextField?.text ?? "",
+                password: "Balonas1",
+                firstName: firsNameTextField.text ?? "",
+                lastName: lastNameTextField.text ?? "" ) { [weak self] result in
+
             guard let self = self else { return }
             switch result {
                 case .success:
-                    self.validationError(title: "Success", message: "User Created")
+                    self.validationError(title: "Success", message: "User Created", hasError: false)
                     
                 case .failure(let error):
                     if error == UserPublisher.UserPublisherError.passwordResetFailed {
-                        self.validationError(title: "Error", message: "Please validate user")
+                        self.validationError(title: "Error", message: "Please validate user", hasError: true)
                     } else {
-                        self.validationError(title: "Error", message: "Something went wrong")
+                        self.validationError(title: "Error", message: "Something went wrong", hasError: true)
                     }
             }
         }
@@ -74,10 +79,10 @@ class AddUserViewController: UIViewController {
 }
 
 extension AddUserViewController {
-    func validationError(title: String, message: String) {
+    func validationError(title: String, message: String, hasError: Bool) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-            self.dismisView()
+            if !hasError { self.dismisView() }
         }))
         self.present(alert, animated: true, completion: nil)
     }
