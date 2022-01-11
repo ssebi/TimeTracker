@@ -9,11 +9,16 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
 
+    var user = UserLoader()
     // Data
     @IBOutlet var UserTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        user.getClients { result in
+            print("xxxx>>>>", result)
+        }
+
     }
 
     // MARK: - Table view data source
