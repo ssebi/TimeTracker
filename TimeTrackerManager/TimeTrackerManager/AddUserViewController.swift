@@ -13,6 +13,7 @@ class AddUserViewController: UIViewController {
     @IBOutlet var firsNameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
+
     var user = UserPublisher()
 
     override func viewDidLoad() {
@@ -26,8 +27,20 @@ class AddUserViewController: UIViewController {
     }
 
     @IBAction func createUserButtonPressed(_ sender: Any) {
-        validationError(title: "This is ", message: "Please validate user")
-        user.addUser(email: self.emailTextField?.text ?? "", password: "Balonas1")
+        user.addUser(email: self.emailTextField?.text ?? "", password: "Balonas1") { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+                case .success:
+                    self.validationError(title: "Success", message: "User Created")
+                    
+                case .failure(let error):
+                    if error == UserPublisher.UserPublisherError.passwordResetFailed {
+                        self.validationError(title: "Error", message: "Please validate user")
+                    } else {
+                        self.validationError(title: "Error", message: "Something went wrong")
+                    }
+            }
+        }
     }
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
