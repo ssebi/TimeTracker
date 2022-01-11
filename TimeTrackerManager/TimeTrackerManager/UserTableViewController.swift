@@ -23,14 +23,14 @@ extension UserTableViewController {
     static let usersCellIdentifier = "UserListCell"
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return User.testData.count
+        return UserCell.testData.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.usersCellIdentifier, for: indexPath) as? UserListCell else {
             fatalError("Unable to deque UserCell")
         }
-        let user = User.testData[indexPath.row]
+        let user = UserCell.testData[indexPath.row]
         let image = UIImage(systemName: "person.fill.viewfinder")
 
         cell.userName.text = user.name
