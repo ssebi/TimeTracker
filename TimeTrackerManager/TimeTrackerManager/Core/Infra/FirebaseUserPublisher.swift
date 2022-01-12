@@ -2,8 +2,10 @@
 import Foundation
 import Firebase
 
-class FirebaseUserPublisher {
+class FirebaseUserPublisher: UserPublisher {
+    
     typealias UserPublisherCompletion = (Result<Void, UserPublisherError>) -> Void
+
     enum UserPublisherError: Error {
         case passwordResetFailed
         case userCreationFailed
