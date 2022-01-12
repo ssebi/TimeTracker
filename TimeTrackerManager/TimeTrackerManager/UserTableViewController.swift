@@ -16,6 +16,12 @@ class UserTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        userLoader.getUsers() { result in
+            if let user = try? result.get() {
+                self.user = user
+            }
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -27,8 +33,10 @@ class UserTableViewController: UITableViewController {
 extension UserTableViewController {
     static let usersCellIdentifier = "UserListCell"
 
+
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return user.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,13 +45,7 @@ extension UserTableViewController {
         }
         //let user = UserCell.testData[indexPath.row]
 
-        userLoader.getUsers() { result in
-            if let user = try? result.get() {
-                self.user = user
-            }
-        }
-
-        //cell.userName.text = user[indexPath.row].firstName
+        cell.userName.text = user[indexPath.row].firstName
         cell.userProfilePicture.image = UIImage(systemName: "person.fill.viewfinder")
 
         return cell
