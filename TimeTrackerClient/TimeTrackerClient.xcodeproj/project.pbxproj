@@ -85,7 +85,7 @@
 		54CC81112759071C004E1062 /* LoginFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFooterView.swift; sourceTree = "<group>"; };
 		54CC8113275A656A004E1062 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		54D2FDB62717234F00C66998 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		54D2FDBA2717354800C66998 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = TimeTrackerClient/Core/Extensions.swift; sourceTree = SOURCE_ROOT; };
+		54D2FDBA2717354800C66998 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = TimeTrackerClient/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		54D2FDD6271747F100C66998 /* TimeTrackerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeTrackerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F983652746887400577AD6 /* TimeSlotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotViewModel.swift; sourceTree = "<group>"; };
 		C61F54AD2743FFED0083E1A4 /* ClientsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsLoader.swift; sourceTree = "<group>"; };
@@ -172,8 +172,6 @@
 			children = (
 				54D8EEAF271887FA00D867F3 /* Models */,
 				C61F54AB2743FFDD0083E1A4 /* DataStore */,
-				54D2FDBA2717354800C66998 /* Extensions.swift */,
-				545CCEAA27200FE500811CE3 /* Utils.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -288,6 +286,8 @@
 				C64C428E271464B600CFBDEF /* Assets.xcassets */,
 				C64C4290271464B600CFBDEF /* Preview Content */,
 				54CC810B274ECD94004E1062 /* KeyboardResponder.swift */,
+				54D2FDBA2717354800C66998 /* Extensions.swift */,
+				545CCEAA27200FE500811CE3 /* Utils.swift */,
 			);
 			path = TimeTrackerClient;
 			sourceTree = "<group>";
