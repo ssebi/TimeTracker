@@ -9,7 +9,7 @@ import UIKit
 
 class UserTableViewController: UITableViewController {
 
-    var userLoader = UserLoader()
+    var userLoader = FirebaseUserLoader()
     var user: [User] = []
     // Data
     @IBOutlet var UserTableView: UITableView!
@@ -28,7 +28,7 @@ extension UserTableViewController {
     static let usersCellIdentifier = "UserListCell"
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserCell.testData.count
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,17 +37,15 @@ extension UserTableViewController {
         }
         //let user = UserCell.testData[indexPath.row]
 
-      userLoader.getUsers { result in
+        userLoader.getUsers() { result in
             if let user = try? result.get() {
                 self.user = user
             }
         }
 
-        let image = UIImage(systemName: "person.fill.viewfinder")
+        //cell.userName.text = user[indexPath.row].firstName
+        cell.userProfilePicture.image = UIImage(systemName: "person.fill.viewfinder")
 
-        //
-        cell.userName.text = user[indexPath.row].firstName
-        cell.userProfilePicture.image = image
         return cell
     }
 }

@@ -8,5 +8,6 @@
 import Foundation
 
 struct Path {
-   static let users = "users"
+    static let users = "users"
+    static let timeSlots = "timeSlots"
 }

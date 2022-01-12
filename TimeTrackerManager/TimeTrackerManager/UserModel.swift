@@ -20,11 +20,13 @@ class User {
     let email: String
     let firstName: String
     let lastName: String
+    let userId: String
 
-    init(email: String, firstName: String, lastName: String) {
+    init(email: String, firstName: String, lastName: String, userId: String) {
         self.email = email
         self.firstName = firstName
         self.lastName = lastName
+        self.userId = userId
     }
 }
 
