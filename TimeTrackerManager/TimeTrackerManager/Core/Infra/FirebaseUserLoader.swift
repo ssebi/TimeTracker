@@ -8,7 +8,10 @@
 import Foundation
 import Firebase
 
-class FirebaseUserLoader: UserLoader  {
+class FirebaseUserLoader  {
+    struct UndefinedError: Error { }
+    typealias GetUsersResult = (Result<[User], Error>) -> Void
+    typealias GetUserInfoResult = (Result<Void, Error>) -> Void
 
     func getUsers(completion: @escaping GetUsersResult) {
         //        Firestore.firestore().collection("users").getDocuments() { (querySnapshot, err) in

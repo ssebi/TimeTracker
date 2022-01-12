@@ -14,7 +14,7 @@ class AddUserViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
 
-    var user = UserPublisher()
+    var user = FirebaseUserPublisher()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class AddUserViewController: UIViewController {
                     self.validationError(title: "Success", message: "User Created", hasError: false)
                     
                 case .failure(let error):
-                    if error == UserPublisher.UserPublisherError.passwordResetFailed {
+                    if error == FirebaseUserPublisher.UserPublisherError.passwordResetFailed {
                         self.validationError(title: "Error", message: "Please validate user", hasError: true)
                     } else {
                         self.validationError(title: "Error", message: "Something went wrong", hasError: true)

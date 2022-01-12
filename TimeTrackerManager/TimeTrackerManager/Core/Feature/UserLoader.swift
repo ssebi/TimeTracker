@@ -1,13 +1,13 @@
 
 public protocol UserLoader {
 
-    struct UndefinedError: Error {}
+//    struct UndefinedError: Error {}
+//
+//    typealias GetUsersResult = (Result<[User], Error>) -> Void
+//
+//    typealias GetUserInfoResult = (Result<Void, Error>) -> Void
+//
+//    func getUsers(completion: @escaping GetUsersResult)
 
-    typealias GetUsersResult = (Result<[User], Error>) -> Void
-
-    typealias GetUserInfoResult = (Result<Void, Error>) -> Void
-
-    func getUsers(completion: @escaping GetUsersResult)
-    
 }
 
