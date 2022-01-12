@@ -1,6 +1,7 @@
 
 import Combine
 import Foundation
+import TimeTrackerCore
 
 public class HomeScreenViewModel: ObservableObject {
 

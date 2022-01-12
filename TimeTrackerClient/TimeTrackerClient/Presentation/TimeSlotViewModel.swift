@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TimeTrackerCore
 
 class TimeSlotViewModel: ObservableObject {
     @Published var isLoading = false

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import TimeTrackerAuth
+import TimeTrackerCore
 
 struct HomeView: View {
     @EnvironmentObject var session: SessionStore
