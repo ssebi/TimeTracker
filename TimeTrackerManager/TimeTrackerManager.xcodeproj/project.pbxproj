@@ -10,6 +10,7 @@
 		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
 		547B01EB278DD8C800636A90 /* FirebaseUserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EA278DD8C800636A90 /* FirebaseUserLoader.swift */; };
 		547B01ED278DDAB700636A90 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EC278DDAB700636A90 /* Utils.swift */; };
+		547B01F8278F609800636A90 /* TimeTrackerCore in Frameworks */ = {isa = PBXBuildFile; productRef = 547B01F7278F609800636A90 /* TimeTrackerCore */; };
 		54AE368A276A21E500407F04 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE3689276A21E500407F04 /* AddUserViewController.swift */; };
 		54AE368C2770BD8300407F04 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE368B2770BD8200407F04 /* UserTableViewController.swift */; };
 		54AE36902770C7CF00407F04 /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE368F2770C7CF00407F04 /* UserListCell.swift */; };
@@ -81,6 +82,7 @@
 				C6B2B28227625B0900705659 /* FirebaseFirestore in Frameworks */,
 				54C34F8A277364B9004C11E1 /* TimeTrackerAuth in Frameworks */,
 				54C34F8827736432004C11E1 /* FirebaseAuth in Frameworks */,
+				547B01F8278F609800636A90 /* TimeTrackerCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +216,7 @@
 				C6B2B28127625B0900705659 /* FirebaseFirestore */,
 				54C34F8727736432004C11E1 /* FirebaseAuth */,
 				54C34F89277364B9004C11E1 /* TimeTrackerAuth */,
+				547B01F7278F609800636A90 /* TimeTrackerCore */,
 			);
 			productName = TimeTrackerManager;
 			productReference = C6B2B249276256D400705659 /* TimeTrackerManager.app */;
@@ -725,6 +728,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		547B01F7278F609800636A90 /* TimeTrackerCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TimeTrackerCore;
+		};
 		54C34F8727736432004C11E1 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C6B2B28027625B0900705659 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

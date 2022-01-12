@@ -11,6 +11,7 @@
 		545CCED82723053E00811CE3 /* FirebasePublishTimeslotsEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCED72723053E00811CE3 /* FirebasePublishTimeslotsEndToEndTests.swift */; };
 		545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDB2726EB0600811CE3 /* AddView.swift */; };
 		545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDE2727274D00811CE3 /* DatePickerView.swift */; };
+		547B01F6278F607200636A90 /* TimeTrackerCore in Frameworks */ = {isa = PBXBuildFile; productRef = 547B01F5278F607200636A90 /* TimeTrackerCore */; };
 		54A3FC21274E399200E36C92 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A3FC20274E399200E36C92 /* ProgressIndicator.swift */; };
 		54A3FC23274E3B8D00E36C92 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A3FC22274E3B8D00E36C92 /* LoginViewModel.swift */; };
 		54CC810C274ECD94004E1062 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC810B274ECD94004E1062 /* KeyboardResponder.swift */; };
@@ -107,6 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C64DB3C5276A3D6A00C352D8 /* TimeTrackerAuth in Frameworks */,
+				547B01F6278F607200636A90 /* TimeTrackerCore in Frameworks */,
 				54DB5092271563FA00A9700A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +355,7 @@
 			packageProductDependencies = (
 				54DB5091271563FA00A9700A /* FirebaseFirestore */,
 				C64DB3C4276A3D6A00C352D8 /* TimeTrackerAuth */,
+				547B01F5278F607200636A90 /* TimeTrackerCore */,
 			);
 			productName = TimeTrackerClient;
 			productReference = C64C4287271464B300CFBDEF /* TimeTrackerClient.app */;
@@ -754,6 +757,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		547B01F5278F607200636A90 /* TimeTrackerCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TimeTrackerCore;
+		};
 		54DB5091271563FA00A9700A /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 54DB508E271563FA00A9700A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
