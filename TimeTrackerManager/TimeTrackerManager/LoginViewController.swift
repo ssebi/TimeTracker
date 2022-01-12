@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var errorLabel: UILabel!
 
+
     private lazy var session = SessionStore(authProvider: FirebaseAuthProvider())
     var isLoading = true
 
@@ -23,8 +24,14 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
+
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
 	}
+
+    @IBAction func tapOutside(_ sender: Any) {
+        view.endEditing(true)
+    }
 
     @IBAction func logInButtonPressed(_ sender: Any) {
         session.signIn(email: emailTextField.text!, password: passwordTextField.text!) { [weak self] result in
@@ -35,6 +42,17 @@ class LoginViewController: UIViewController {
                 self?.performSegue(withIdentifier: "showMainTabBar", sender: self)
             }
         }
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField === emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            logInButtonPressed(textField)
+        }
+        return true
     }
 }
 

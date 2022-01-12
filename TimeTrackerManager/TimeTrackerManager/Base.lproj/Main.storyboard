@@ -15,7 +15,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,11 +62,11 @@
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qqo-9e-44m" customClass="DesignableView" customModule="TimeTrackerManager" customModuleProvider="target">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="716" height="50"/>
                                                                                         <subviews>
-                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-tM-3fJ">
+                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail address" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-tM-3fJ">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="716" height="50"/>
                                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="email"/>
+                                                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                                                                                 <userDefinedRuntimeAttributes>
                                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                                                         <integer key="value" value="30"/>
@@ -106,7 +106,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="716" height="50"/>
                                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" smartDashesType="no" textContentType="password"/>
+                                                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" smartDashesType="no" textContentType="password"/>
                                                                                             </textField>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -192,11 +192,15 @@
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="4LS-OE-Q1m" firstAttribute="centerX" secondItem="Vsa-Cw-aT1" secondAttribute="centerX" id="dFW-mt-Oub"/>
                                             <constraint firstItem="ibm-3f-mWg" firstAttribute="width" secondItem="Vsa-Cw-aT1" secondAttribute="width" multiplier="0.730469" id="gaW-Bo-iSh"/>
                                             <constraint firstItem="4LS-OE-Q1m" firstAttribute="centerY" secondItem="Vsa-Cw-aT1" secondAttribute="centerY" id="kCc-71-RDc"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="LEJ-Wb-lua" appends="YES" id="tMz-Y7-30h"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -227,6 +231,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LEJ-Wb-lua">
+                    <connections>
+                        <action selector="tapOutside:" destination="BYZ-38-t0r" id="ICh-Ky-Zi1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1345.8984375" y="126.93997071742312"/>
         </scene>
@@ -569,6 +578,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="createUserButtonPressed:" destination="8Cz-Ao-HkL" eventType="touchUpInside" id="BMg-F2-ihu"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="197-Rx-1m7" userLabel="Logo Stack">
                                         <rect key="frame" x="101" y="50" width="423" height="100"/>
@@ -699,6 +711,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="svO-eE-ps8"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="XxR-qg-c31" id="iQj-oa-MTI"/>
+                        <outlet property="firsNameTextField" destination="fbE-JC-Vjd" id="6aZ-tt-Y1B"/>
+                        <outlet property="lastNameTextField" destination="3j9-vH-ZDu" id="gxd-nk-BDn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCK-Mw-Maw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -767,7 +784,7 @@
             <color red="0.69800001382827759" green="0.74500000476837158" blue="0.76499998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="customGreen">
-            <color red="0.0" green="0.80800002813339233" blue="0.78799998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.80784313725490198" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
