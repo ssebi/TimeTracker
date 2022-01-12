@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-class UserLoader  {
+class FirebaseUserLoader  {
     struct UndefinedError: Error { }
     typealias GetUsersResult = (Result<[User], Error>) -> Void
     typealias GetUserInfoResult = (Result<Void, Error>) -> Void
