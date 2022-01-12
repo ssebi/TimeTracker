@@ -16,12 +16,6 @@ class UserTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        userLoader.getUsers() { result in
-            if let user = try? result.get() {
-                self.user = user
-            }
-        }
     }
 
     required init?(coder: NSCoder) {
@@ -34,8 +28,12 @@ extension UserTableViewController {
     static let usersCellIdentifier = "UserListCell"
 
 
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        userLoader.getUsers() { result in
+            if let user = try? result.get() {
+                self.user = user
+            }
+        }
         return user.count
     }
 
@@ -43,7 +41,6 @@ extension UserTableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.usersCellIdentifier, for: indexPath) as? UserListCell else {
             fatalError("Unable to deque UserCell")
         }
-        //let user = UserCell.testData[indexPath.row]
 
         cell.userName.text = user[indexPath.row].firstName
         cell.userProfilePicture.image = UIImage(systemName: "person.fill.viewfinder")
