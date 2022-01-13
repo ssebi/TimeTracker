@@ -1,6 +1,6 @@
 
 import XCTest
-import TimeTrackerClient
+import TimeTrackerCore
 
 class ClientsAPIUseCaseTests: XCTestCase {
 

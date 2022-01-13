@@ -1,6 +1,7 @@
 
 import XCTest
-import TimeTrackerClient
+import TimeTrackerCore
+@testable import TimeTrackerAuth
 
 class TimeslotsUseCaseTests: XCTestCase {
 

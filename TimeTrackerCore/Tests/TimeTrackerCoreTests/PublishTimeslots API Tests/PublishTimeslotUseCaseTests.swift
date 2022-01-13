@@ -1,6 +1,6 @@
 
 import XCTest
-import TimeTrackerClient
+import TimeTrackerCore
 
 class PublishTimeslotUseCaseTests: XCTestCase {
 
@@ -46,7 +46,7 @@ class PublishTimeslotUseCaseTests: XCTestCase {
 
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (TimeSlotsPublisher, TimeslotsStoreSpy) {
 		let store = TimeslotsStoreSpy()
-		let sut = RemoteTimeSlotsPublisher(store: store)
+        let sut = RemoteTimeSlotsPublisher(store: store)
 
 		trackForMemoryLeaks(store, file: file, line: line)
 		trackForMemoryLeaks(sut, file: file, line: line)

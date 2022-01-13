@@ -7,8 +7,8 @@
 
 import XCTest
 import Firebase
-import TimeTrackerAuth
-@testable import TimeTrackerClient
+@testable import TimeTrackerAuth
+@testable import TimeTrackerCore
 
 class FirebasePublishTimeslotsEndToEndTests: XCTestCase {
 

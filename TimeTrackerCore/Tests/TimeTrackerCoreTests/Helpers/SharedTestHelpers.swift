@@ -1,6 +1,6 @@
 
 import Foundation
-import TimeTrackerClient
+import TimeTrackerCore
 
 var uniqueTimeslots: [TimeSlot] {
 	[

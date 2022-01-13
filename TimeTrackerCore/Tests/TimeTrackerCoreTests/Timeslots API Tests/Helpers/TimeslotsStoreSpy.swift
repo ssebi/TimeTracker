@@ -1,5 +1,5 @@
 
-import TimeTrackerClient
+import TimeTrackerCore
 
 class TimeslotsStoreSpy: TimeslotsStore {
 

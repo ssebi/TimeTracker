@@ -1,6 +1,6 @@
 
 import XCTest
-@testable import TimeTrackerClient
+@testable import TimeTrackerCore
 
 class FirebaseTimeslotsDataStoreEndToEndTests: XCTestCase {
 
