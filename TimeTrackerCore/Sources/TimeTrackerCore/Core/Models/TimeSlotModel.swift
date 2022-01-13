@@ -35,14 +35,14 @@ extension TimeSlot: Equatable {
         lhs.projectName == rhs.projectName &&
         lhs.date == rhs.date &&
         lhs.details == rhs.details &&
-        lhs.total == rhs.total 
+        lhs.total == rhs.total
     }
 }
 
 public struct TimeSlotDetails: Codable {
-    var start: Date
-    var end: Date
-    var description: String
+    public let start: Date
+    public let end: Date
+    public let description: String
 
     public init(start: Date, end: Date, description: String) {
         self.start = start
@@ -59,11 +59,12 @@ extension TimeSlotDetails: Equatable {
     }
 }
 
-class StartEndDate: ObservableObject {
-    var start: Date
-    var end: Date
+//TODO: move to client
+public class StartEndDate: ObservableObject {
+    public var start: Date
+    public var end: Date
     
-    init(start: Date, end: Date) {
+    public init(start: Date, end: Date) {
         self.start = start
         self.end = end
     }

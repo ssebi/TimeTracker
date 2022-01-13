@@ -19,11 +19,6 @@ struct AddButton: ButtonStyle {
     }
 }
 
-struct Path {
-    static let clients = "Clients"
-    static let timeSlot = "timeSlots"
-}
-
 struct CustomTextField: UIViewRepresentable {
     @Binding var text: String
     let placeholder: String

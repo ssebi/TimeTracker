@@ -8,5 +8,9 @@
 import Foundation
 
 public struct Project: Codable, Hashable {
-    var name: String
+    public init(name: String){
+        self.name = name
+    }
+
+    public let name: String
 }
