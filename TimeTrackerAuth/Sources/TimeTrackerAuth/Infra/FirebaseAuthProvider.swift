@@ -6,6 +6,7 @@
 //
 
 import FirebaseAuth
+import TimeTrackerCore
 
 public class FirebaseAuthProvider: AuthProvider {
 	struct NoUser: Error {}
