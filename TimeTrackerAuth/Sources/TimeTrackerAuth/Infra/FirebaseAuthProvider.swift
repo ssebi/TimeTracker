@@ -15,7 +15,7 @@ public class FirebaseAuthProvider: AuthProvider {
 
 	public init() { }
 
-	public func checkAuthState() -> User? {
+    public func checkAuthState() -> TimeTrackerCore.User? {
 		Self.mapUser(auth.currentUser)
 	}
 
@@ -39,7 +39,7 @@ public class FirebaseAuthProvider: AuthProvider {
 		try auth.signOut()
 	}
 
-	private static func mapUser(_ user: FirebaseAuth.User?) -> User? {
+    private static func mapUser(_ user: FirebaseAuth.User?) -> TimeTrackerCore.User? {
 		guard let user = user else {
 			return nil
 		}

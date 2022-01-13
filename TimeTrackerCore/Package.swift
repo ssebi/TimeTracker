@@ -23,9 +23,6 @@ let package = Package(
             url: "https://github.com/firebase/firebase-ios-sdk.git",
             .upToNextMajor(from: "8.0.0")
         ),
-        .package(
-            name: "TimeTrackerAuth",
-            path: "../TimeTrackerAuth")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -35,7 +32,6 @@ let package = Package(
             dependencies: [
                 .product(name: "FirebaseAuth", package: "Firebase"),
                 .product(name: "FirebaseFirestore", package: "Firebase"),
-                .product(name: "TimeTrackerAuth", package: "TimeTrackerAuth"),
                 
             ]),
         .testTarget(

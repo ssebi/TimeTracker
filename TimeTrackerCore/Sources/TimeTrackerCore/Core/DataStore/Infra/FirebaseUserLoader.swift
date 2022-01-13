@@ -1,12 +1,11 @@
 
 import FirebaseAuth
-import TimeTrackerAuth
 
 public class FirebaseUserLoader: UserLoader {
     public init(){}
 
     //TODO: Move user to CORE
-    public func getUser() -> TimeTrackerAuth.User {
+    public func getUser() -> User {
         let currentUser = Auth.auth().currentUser
         if currentUser != nil {
             return User(uid: currentUser?.uid, email: currentUser?.email, username: currentUser?.displayName, client: "")
