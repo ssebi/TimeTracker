@@ -1,8 +1,9 @@
 
 import Foundation
 import Firebase
+import TimeTrackerCore
 
-class FirebaseUserPublisher: UserPublisher {
+class FirebaseUserPublisher {
     
     typealias UserPublisherCompletion = (Result<Void, UserPublisherError>) -> Void
 
