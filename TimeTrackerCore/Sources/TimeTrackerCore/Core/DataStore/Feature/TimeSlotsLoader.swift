@@ -16,7 +16,7 @@ public class RemoteTimeslotsLoader: TimeslotsLoader {
 		self.store = store
 	}
 
-	public func getTimeslots(userID: String, completion: @escaping TimeslotsStore.GetTimeslotsResult) {
+    public func getTimeslots(userID: String, completion: @escaping TimeslotsStore.GetTimeslotsResult) {
 		store.getTimeslots(userID: userID) { [weak self] result in
 			guard let self = self else { return }
 			switch result {
