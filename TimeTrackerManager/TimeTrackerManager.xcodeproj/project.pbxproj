@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
-		547B01EB278DD8C800636A90 /* FirebaseUserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EA278DD8C800636A90 /* FirebaseUserLoader.swift */; };
+		547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */; };
 		547B01ED278DDAB700636A90 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EC278DDAB700636A90 /* Utils.swift */; };
 		547B01F8278F609800636A90 /* TimeTrackerCore in Frameworks */ = {isa = PBXBuildFile; productRef = 547B01F7278F609800636A90 /* TimeTrackerCore */; };
 		54AE368A276A21E500407F04 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE3689276A21E500407F04 /* AddUserViewController.swift */; };
@@ -50,7 +50,7 @@
 
 /* Begin PBXFileReference section */
 		5468DDF62763C16D00E39DD9 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
-		547B01EA278DD8C800636A90 /* FirebaseUserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserLoader.swift; sourceTree = "<group>"; };
+		547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUsersLoader.swift; sourceTree = "<group>"; };
 		547B01EC278DDAB700636A90 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		54AE3689276A21E500407F04 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		54AE368B2770BD8200407F04 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				54E38BD52786EEE200625F92 /* FirebaseUserPublisher.swift */,
-				547B01EA278DD8C800636A90 /* FirebaseUserLoader.swift */,
+				547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -347,7 +347,7 @@
 				547B01ED278DDAB700636A90 /* Utils.swift in Sources */,
 				C6B2B24F276256D400705659 /* SceneDelegate.swift in Sources */,
 				54E38BD62786EEE200625F92 /* FirebaseUserPublisher.swift in Sources */,
-				547B01EB278DD8C800636A90 /* FirebaseUserLoader.swift in Sources */,
+				547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

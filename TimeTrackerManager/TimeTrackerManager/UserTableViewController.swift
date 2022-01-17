@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import TimeTrackerCore
 
 class UserTableViewController: UITableViewController {
 
-    var userLoader = FirebaseUserLoader()
+    var userLoader = FirebaseUsersLoader(store: FirebaseTimeslotsStore())
     var users: [User] = [] {
         didSet { tableView.reloadData() }
     }

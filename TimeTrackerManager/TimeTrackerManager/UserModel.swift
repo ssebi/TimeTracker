@@ -21,12 +21,14 @@ class User {
     let firstName: String
     let lastName: String
     let userId: String
+    let userDetails: [UserCell]?
 
-    init(email: String, firstName: String, lastName: String, userId: String) {
+    init(email: String, firstName: String, lastName: String, userId: String, userDetails: [UserCell]?) {
         self.email = email
         self.firstName = firstName
         self.lastName = lastName
         self.userId = userId
+        self.userDetails = userDetails
     }
 }
 
