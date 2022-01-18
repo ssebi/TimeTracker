@@ -75,4 +75,11 @@ extension UserTableViewController {
             userLoader.deleteUser(userCell.documentId)
         }
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let userDetail = users[indexPath.row]
+        let userDetailVC = UserDetailViewController()
+        userDetailVC.userDetail = userDetail
+        self.present(userDetailVC, animated: true)
+    }
 }
