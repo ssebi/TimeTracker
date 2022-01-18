@@ -27,6 +27,7 @@ class FirebaseUsersLoader  {
             if let snapshot = snapshot {
                 let users = snapshot.documents.compactMap { document -> UserCell? in
                     let data = document.data()
+                    let documentId = document.documentID
                     let userId = data["userId"] as? String ?? ""
                     var totalHours = 0
                     var allProjects = Set<String>()
@@ -47,7 +48,7 @@ class FirebaseUsersLoader  {
                     let profilePicture = data["profilePicture"] as? String ?? ""
                     let hourRate = data["hourRate"] as? String ?? "$100"
 
-                    return UserCell(name: name, userId: userId, profilePicture: profilePicture, totalHours: totalHours, projects: projects, hourRate: hourRate)
+                    return UserCell(name: name, userId: userId, profilePicture: profilePicture, totalHours: totalHours, projects: projects, hourRate: hourRate, documentId: documentId)
                 }
                 completion(.success((users)))
             } else if let error = error {
@@ -70,8 +71,8 @@ class FirebaseUsersLoader  {
         }
     }
 
-    public func deleteUser(_ userId: String) {
-        Firestore.firestore().collection("users").document(userId).delete() { err in
+    public func deleteUser(_ docId: String) {
+        Firestore.firestore().collection("users").document(docId).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
             } else {

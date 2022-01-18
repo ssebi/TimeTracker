@@ -72,7 +72,7 @@ extension UserTableViewController {
         let userCell = users[indexPath.row]
         if editingStyle == .delete {
             self.users.remove(at: indexPath.row)
-            userLoader.deleteUser(userCell.userId)
+            userLoader.deleteUser(userCell.documentId)
         }
     }
 }

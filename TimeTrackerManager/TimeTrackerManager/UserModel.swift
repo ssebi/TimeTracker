@@ -16,6 +16,7 @@ struct UserCell {
     var totalHours: Int?
     var projects: String?
     var hourRate: String?
+    var documentId: String
 }
 
 class User {
