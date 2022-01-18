@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 struct Path {
-    static let users = "users"
+    static var users = "users"
     static let timeSlots = "timeSlots"
 }
+

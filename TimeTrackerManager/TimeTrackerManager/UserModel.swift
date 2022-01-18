@@ -7,36 +7,28 @@
 
 import Foundation
 import UIKit
+import TimeTrackerCore
 
 struct UserCell {
-    let name: String
-    let profilePicture: UIImage?
-    let totalHours: Int
-    let projects: [String]
-    let hourRate: Int
+    var name: String
+    var profilePicture: String
+    var totalHours: Int?
+    var projects: String?
+    var hourRate: String?
 }
 
 class User {
-    let email: String
-    let firstName: String
-    let lastName: String
-    let userId: String
-    let userDetails: [UserCell]?
+    var email: String
+    var firstName: String
+    var lastName: String
+    var userId: String
+    var userDetails: UserCell
 
-    init(email: String, firstName: String, lastName: String, userId: String, userDetails: [UserCell]?) {
+    init(email: String, firstName: String, lastName: String, userId: String, userDetails: UserCell) {
         self.email = email
         self.firstName = firstName
         self.lastName = lastName
         self.userId = userId
         self.userDetails = userDetails
     }
-}
-
-extension UserCell {
-    static var testData = [
-        UserCell(name: "User 1", profilePicture: UIImage(contentsOfFile: ""), totalHours: 20, projects: ["Project x, Porject Y"], hourRate: 20),
-        UserCell(name: "User 2", profilePicture: UIImage(contentsOfFile: ""), totalHours: 11, projects: ["Project 1"], hourRate: 22),
-        UserCell(name: "User 3",  profilePicture: UIImage(contentsOfFile: ""), totalHours: 30, projects: ["PROJECT XXX"], hourRate: 50),
-        UserCell(name: "user 5", profilePicture: UIImage(contentsOfFile: ""), totalHours: 120, projects: ["Project second", "Secodn Project" ], hourRate: 120)
-    ]
 }

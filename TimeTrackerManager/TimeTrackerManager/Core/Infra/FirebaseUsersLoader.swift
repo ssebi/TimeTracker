@@ -9,6 +9,8 @@ import Foundation
 import Firebase
 import TimeTrackerCore
 import SwiftUI
+import UIKit
+import WebKit
 
 class FirebaseUsersLoader  {
 
@@ -17,36 +19,40 @@ class FirebaseUsersLoader  {
     }
 
     struct UndefinedError: Error { }
-    typealias GetUsersResult = (Result<[User], Error>) -> Void
+    typealias GetUsersResult = (Result<[UserCell], Error>) -> Void
     typealias GetUserInfoResult = (Result<Void, Error>) -> Void
     typealias GetTimeslotsResult = (Result<[TimeSlot], Error>) -> Void
     var store: TimeslotsStore
 
+
     func getUsers(completion: @escaping GetUsersResult) {
-        var userTimeSlots = [Any]()
         Firestore.firestore().collection(Path.users).getDocuments() { (snapshot, error) in
             if let snapshot = snapshot {
-                let user = snapshot.documents.compactMap { document -> User? in
+                let users = snapshot.documents.compactMap { document -> UserCell? in
                     let data = document.data()
-                    let email = data["email"] as? String ?? ""
-                    let firstName = data["firstName"] as? String ?? " "
-                    let lastName = data["lastName"] as? String ?? ""
                     let userId = data["userId"] as? String ?? ""
+                    var totalHours = 0
+                    var allProjects = Set<String>()
 
-                    return User(email: email, firstName: firstName, lastName: lastName, userId: userId, userDetails: [])
-                }
-                completion(.success((user)))
-                user.forEach { userId in
-                    self.getUserTimeslots(userId.userId) { result in
+                   self.getUserTimeslots(userId) { result in
                         if case let .success(result) = result {
-                            userTimeSlots.append(result)
-                            print("success XX", userTimeSlots)
+                            result.forEach { timeSlot in
+                                totalHours += timeSlot.total
+                                allProjects.insert(timeSlot.projectName)
+                            }
                         }
                         if case let .failure(error) = result {
                             print("ERROR", error)
                         }
                     }
+                    let projects = "\(allProjects)"
+                    let name = "\(data["firstName"] ?? "") \(data["lastName"] ?? "")"
+                    let profilePicture = data["profilePicture"] as? String ?? ""
+                    let hourRate = data["hourRate"] as? String ?? "$100"
+
+                    return UserCell(name: name, profilePicture: profilePicture, totalHours: totalHours, projects: projects, hourRate: hourRate)
                 }
+                completion(.success((users)))
             } else if let error = error {
                 completion(.failure(error))
             } else {

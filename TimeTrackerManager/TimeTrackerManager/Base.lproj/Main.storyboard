@@ -437,8 +437,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="hourRate" destination="fXW-ol-84F" id="YZ7-SO-mbT"/>
+                                    <outlet property="totalHours" destination="CTD-12-OQk" id="kqq-qc-1Co"/>
                                     <outlet property="userName" destination="OI1-hs-GFn" id="g0c-9k-Gp9"/>
                                     <outlet property="userProfilePicture" destination="BgJ-f4-o87" id="HP0-Kw-GD9"/>
+                                    <outlet property="userProjects" destination="hFJ-Zp-c2C" id="p41-IF-wx6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

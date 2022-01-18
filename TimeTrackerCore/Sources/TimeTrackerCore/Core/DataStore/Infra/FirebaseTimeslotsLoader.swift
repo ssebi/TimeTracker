@@ -18,7 +18,6 @@ public class FirebaseTimeslotsStore: TimeslotsStore {
                             return nil
                         }
                     }
-                    print("timeslots ==>> ", timeslots)
                     completion(.success(timeslots.toTimeSlot()))
                 } else {
                     completion(.failure(error!))

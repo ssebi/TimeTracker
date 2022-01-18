@@ -11,7 +11,7 @@ import TimeTrackerCore
 class UserTableViewController: UITableViewController {
 
     var userLoader = FirebaseUsersLoader(store: FirebaseTimeslotsStore())
-    var users: [User] = [] {
+    var users: [UserCell] = [] {
         didSet { tableView.reloadData() }
     }
     // Data
@@ -28,8 +28,8 @@ class UserTableViewController: UITableViewController {
     // MARK: - Table view data source
     func loadUserData() {
         userLoader.getUsers() { result in
-            if let user = try? result.get() {
-                self.users = user
+            if let users = try? result.get() {
+                self.users = users
             }
         }
     }
@@ -49,8 +49,21 @@ extension UserTableViewController {
         }
 
         let userCell = users[indexPath.row]
-        cell.userName.text = userCell.firstName
-        cell.userProfilePicture.image = UIImage(systemName: "person.fill.viewfinder")
+
+        let url = URL(string: "https://avatars.dicebear.com/api/bottts/xx.png")
+        DispatchQueue.global().async {
+                // Fetch Image Data
+                if let data = try? Data(contentsOf: url!) {
+                    DispatchQueue.main.async {
+                        cell.userProfilePicture.image = UIImage(data: data)!
+                    }
+                }
+            }
+
+        cell.userName.text = userCell.name
+        cell.totalHours.text = "\(userCell.totalHours ?? 0)"
+        cell.hourRate.text = userCell.hourRate
+        cell.userProjects.text = userCell.projects
 
         return cell
     }
