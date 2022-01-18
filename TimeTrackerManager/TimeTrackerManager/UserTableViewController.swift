@@ -67,4 +67,12 @@ extension UserTableViewController {
 
         return cell
     }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let userCell = users[indexPath.row]
+        if editingStyle == .delete {
+            self.users.remove(at: indexPath.row)
+            userLoader.deleteUser(userCell.userId)
+        }
+    }
 }

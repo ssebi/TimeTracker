@@ -8,9 +8,6 @@
 import Foundation
 import Firebase
 import TimeTrackerCore
-import SwiftUI
-import UIKit
-import WebKit
 
 class FirebaseUsersLoader  {
 
@@ -50,7 +47,7 @@ class FirebaseUsersLoader  {
                     let profilePicture = data["profilePicture"] as? String ?? ""
                     let hourRate = data["hourRate"] as? String ?? "$100"
 
-                    return UserCell(name: name, profilePicture: profilePicture, totalHours: totalHours, projects: projects, hourRate: hourRate)
+                    return UserCell(name: name, userId: userId, profilePicture: profilePicture, totalHours: totalHours, projects: projects, hourRate: hourRate)
                 }
                 completion(.success((users)))
             } else if let error = error {
@@ -69,6 +66,16 @@ class FirebaseUsersLoader  {
 
                 case let .failure(error):
                     completion(.failure(error))
+            }
+        }
+    }
+
+    public func deleteUser(_ userId: String) {
+        Firestore.firestore().collection("users").document(userId).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
             }
         }
     }

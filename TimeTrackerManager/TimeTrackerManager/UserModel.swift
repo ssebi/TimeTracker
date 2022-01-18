@@ -11,6 +11,7 @@ import TimeTrackerCore
 
 struct UserCell {
     var name: String
+    var userId: String
     var profilePicture: String
     var totalHours: Int?
     var projects: String?
