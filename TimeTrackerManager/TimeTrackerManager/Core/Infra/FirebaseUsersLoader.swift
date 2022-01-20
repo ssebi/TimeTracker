@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import TimeTrackerCore
+import UIKit
 
 class FirebaseUsersLoader  {
 
@@ -25,14 +26,14 @@ class FirebaseUsersLoader  {
     func getUsers(completion: @escaping GetUsersResult) {
         Firestore.firestore().collection(Path.users).getDocuments() { (snapshot, error) in
             if let snapshot = snapshot {
-                let users = snapshot.documents.compactMap { document -> UserCell? in
+                let users = snapshot.documents.compactMap { [weak self] document -> UserCell? in
                     let data = document.data()
                     let documentId = document.documentID
                     let userId = data["userId"] as? String ?? ""
                     var totalHours = 0
                     var allProjects = Set<String>()
 
-                   self.getUserTimeslots(userId) { result in
+                    self?.getUserTimeslots(userId) { result in
                         if case let .success(result) = result {
                             result.forEach { timeSlot in
                                 totalHours += timeSlot.total
@@ -40,7 +41,7 @@ class FirebaseUsersLoader  {
                             }
                         }
                         if case let .failure(error) = result {
-                            print("ERROR", error)
+                            completion(.failure(error))
                         }
                     }
                     let projects = "\(allProjects)"
@@ -59,7 +60,7 @@ class FirebaseUsersLoader  {
         }
     }
 
-    public func getUserTimeslots(_ userId: String, completion: @escaping TimeslotsStore.GetTimeslotsResult) {
+    private func getUserTimeslots(_ userId: String, completion: @escaping TimeslotsStore.GetTimeslotsResult) {
         store.getTimeslots(userID: userId) { result in
             switch result {
                 case let .success(timeslots):
@@ -71,7 +72,7 @@ class FirebaseUsersLoader  {
         }
     }
 
-    public func deleteUser(_ docId: String) {
+    func deleteUser(_ docId: String) {
         Firestore.firestore().collection("users").document(docId).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
