@@ -41,7 +41,7 @@ class FirebaseUserPublisher {
             "userId": user.uid,
             "firstName": firstName,
             "lastName": lastName,
-            "profilePicture": "https://avatars.dicebear.com/api/bottts/:\(firstName).svg"
+            "profilePicture": "https://avatars.dicebear.com/api/bottts/:\(firstName).png"
         ]
 
         Firestore.firestore().collection("users").document().setData(data) { error in
