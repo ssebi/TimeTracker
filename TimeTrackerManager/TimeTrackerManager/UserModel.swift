@@ -10,27 +10,11 @@ import UIKit
 import TimeTrackerCore
 
 struct UserCell {
-    var name: String
-    var userId: String
-    var profilePicture: String
-    var totalHours: Int?
-    var projects: String?
-    var hourRate: String?
-    var documentId: String
-}
-
-class User {
-    var email: String
-    var firstName: String
-    var lastName: String
-    var userId: String
-    var userDetails: UserCell
-
-    init(email: String, firstName: String, lastName: String, userId: String, userDetails: UserCell) {
-        self.email = email
-        self.firstName = firstName
-        self.lastName = lastName
-        self.userId = userId
-        self.userDetails = userDetails
-    }
+    let name: String
+    let userId: String
+    let profilePicture: String
+    let totalHours: Int?
+    let projects: String?
+    let hourRate: String?
+    let documentId: String
 }
