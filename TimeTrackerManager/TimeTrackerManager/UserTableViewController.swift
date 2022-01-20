@@ -50,15 +50,14 @@ extension UserTableViewController {
 
         let userCell = users[indexPath.row]
 
-        let url = URL(string: "https://avatars.dicebear.com/api/bottts/xx.png")
-        DispatchQueue.global().async {
-                // Fetch Image Data
-                if let data = try? Data(contentsOf: url!) {
-                    DispatchQueue.main.async {
-                        cell.userProfilePicture.image = UIImage(data: data)!
-                    }
-                }
-            }
+//        let url = URL(string: "https://avatars.dicebear.com/api/bottts/xxxx.png")
+//        DispatchQueue.global().async {
+//            if let data = try? Data(contentsOf: url!) {
+//                    DispatchQueue.main.async {
+//                        cell.userProfilePicture.image = UIImage(data: data)!
+//                    }
+//                }
+//            }
 
         cell.userName.text = userCell.name
         cell.totalHours.text = "\(userCell.totalHours ?? 0)"
