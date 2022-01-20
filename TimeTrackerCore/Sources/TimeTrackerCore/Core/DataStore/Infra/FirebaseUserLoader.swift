@@ -4,7 +4,6 @@ import FirebaseAuth
 public class FirebaseUserLoader: UserLoader {
     public init(){}
 
-    //TODO: Move user to CORE
     public func getUser() -> User {
         let currentUser = Auth.auth().currentUser
         if currentUser != nil {
