@@ -32,16 +32,17 @@ public class FirebaseTimeslotsStore: TimeslotsStore {
             jsonEncoder.dateEncodingStrategy = .iso8601
             let encodedJson = try jsonEncoder.encode(timeSlot)
             data = try JSONSerialization.jsonObject(with: encodedJson) as! [String : Any]
+
+            Firestore.firestore().collection("timeSlots").document().setData(data) { error in
+                if error != nil {
+                    completion(error!)
+                    return
+                }
+                completion(nil)
+            }
+            
         } catch {
             completion(error)
-        }
-
-        Firestore.firestore().collection("timeSlots").document().setData(data) { error in
-            if error != nil {
-                completion(error!)
-                return
-            }
-            completion(nil)
         }
     }
 
