@@ -25,38 +25,40 @@ class FirebaseUsersLoader  {
 
     func getUsers(completion: @escaping GetUsersResult) {
         Firestore.firestore().collection(Path.users).getDocuments() { (snapshot, error) in
-            if let snapshot = snapshot {
-                let users = snapshot.documents.compactMap { [weak self] document -> UserCell? in
-                    let data = document.data()
-                    let documentId = document.documentID
-                    let userId = data["userId"] as? String ?? ""
-                    var totalHours = 0
-                    var allProjects = Set<String>()
+			guard error == nil else {
+				completion(.failure(error!))
+				return
+			}
+			guard let snapshot = snapshot else {
+				completion(.failure(UndefinedError()))
+				return
+			}
+			let users = snapshot.documents.compactMap { [weak self] document -> UserCell? in
+				let data = document.data()
+				let documentId = document.documentID
+				let userId = data["userId"] as? String ?? ""
+				var totalHours = 0
+				var allProjects = Set<String>()
 
-                    self?.getUserTimeslots(userId) { result in
-                        if case let .success(result) = result {
-                            result.forEach { timeSlot in
-                                totalHours += timeSlot.total
-                                allProjects.insert(timeSlot.projectName)
-                            }
-                        }
-                        if case let .failure(error) = result {
-                            completion(.failure(error))
-                        }
-                    }
-                    let projects = "\(allProjects)"
-                    let name = "\(data["firstName"] ?? "") \(data["lastName"] ?? "")"
-                    let profilePicture = data["profilePicture"] as? String ?? ""
-                    let hourRate = data["hourRate"] as? String ?? "$100"
+				self?.getUserTimeslots(userId) { result in
+					if case let .success(result) = result {
+						result.forEach { timeSlot in
+							totalHours += timeSlot.total
+							allProjects.insert(timeSlot.projectName)
+						}
+					}
+					if case let .failure(error) = result {
+						completion(.failure(error))
+					}
+				}
+				let projects = "\(allProjects)"
+				let name = "\(data["firstName"] ?? "") \(data["lastName"] ?? "")"
+				let profilePicture = data["profilePicture"] as? String ?? ""
+				let hourRate = data["hourRate"] as? String ?? "$100"
 
-                    return UserCell(name: name, userId: userId, profilePicture: profilePicture, totalHours: totalHours, projects: projects, hourRate: hourRate, documentId: documentId)
-                }
-                completion(.success((users)))
-            } else if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.failure(UndefinedError()))
-            }
+				return UserCell(name: name, userId: userId, profilePicture: profilePicture, totalHours: totalHours, projects: projects, hourRate: hourRate, documentId: documentId)
+			}
+			completion(.success((users)))
         }
     }
 
