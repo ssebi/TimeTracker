@@ -57,7 +57,6 @@
 		54AE368B2770BD8200407F04 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		54AE368F2770C7CF00407F04 /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
 		54BAC8532796F80000684981 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
-		54C34F85277361B5004C11E1 /* TimeTrackerAuth */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TimeTrackerAuth; path = ../TimeTrackerAuth; sourceTree = "<group>"; };
 		54E38BD52786EEE200625F92 /* FirebaseUserPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserPublisher.swift; sourceTree = "<group>"; };
 		C68C87C72771FF83002B6746 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C6B2B249276256D400705659 /* TimeTrackerManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,14 +104,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		54C34F84277361B5004C11E1 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				54C34F85277361B5004C11E1 /* TimeTrackerAuth */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		54C34F8627736432004C11E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,7 +131,6 @@
 		C6B2B240276256D400705659 = {
 			isa = PBXGroup;
 			children = (
-				54C34F84277361B5004C11E1 /* Packages */,
 				C6B2B27E276259D000705659 /* GoogleService-Info.plist */,
 				C6B2B24B276256D400705659 /* TimeTrackerManager */,
 				C6B2B262276256D500705659 /* TimeTrackerManagerTests */,
