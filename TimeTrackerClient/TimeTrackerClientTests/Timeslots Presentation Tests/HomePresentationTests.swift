@@ -1,8 +1,7 @@
 
 import XCTest
-import TimeTrackerCore
 import TimeTrackerClient
-@testable import TimeTrackerAuth
+import TimeTrackerCore
 
 class HomePresentationTests: XCTestCase {
 
@@ -76,7 +75,7 @@ class HomePresentationTests: XCTestCase {
 	}
 
 	private class UserLoaderMock: UserLoader {
-        func getUser() -> TimeTrackerAuth.User {
+        func getUser() -> User {
 			User(uid: UUID().uuidString, email: "somteEmail@test.com", username: "Test", client: "Client")
 		}
 	}
