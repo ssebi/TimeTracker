@@ -13,10 +13,10 @@ struct UserCell {
     let name: String
     let userId: String
     let profilePicture: String
-    let totalHours: Int?
-    let projects: String?
+	let documentId: String
     let hourRate: String?
-    let documentId: String
+
+	let timeSlots: ((String, @escaping TimeslotsStore.GetTimeslotsResult) -> Void)?
 }
 
 extension UserCell {

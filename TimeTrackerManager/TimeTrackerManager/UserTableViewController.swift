@@ -61,9 +61,25 @@ extension UserTableViewController {
 		}
 
         cell.userName.text = userCell.name
-        cell.totalHours.text = "\(userCell.totalHours ?? 0)"
         cell.hourRate.text = userCell.hourRate
-        cell.userProjects.text = userCell.projects
+
+		DispatchQueue.global().async {
+			userCell.timeSlots?(userCell.userId) { result in
+				var totalHours = 0
+				var allProjects = Set<String>()
+
+				if let success = try? result.get() {
+					success.forEach { timeSlot in
+						totalHours += timeSlot.total
+						allProjects.insert(timeSlot.projectName)
+					}
+					DispatchQueue.main.async {
+						cell.totalHours.text = "\(totalHours)"
+						cell.userProjects.text = "\(allProjects)"
+					}
+				}
+			}
+		}
 
         return cell
     }

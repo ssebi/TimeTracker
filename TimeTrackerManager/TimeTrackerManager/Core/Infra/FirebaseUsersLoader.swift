@@ -37,26 +37,16 @@ class FirebaseUsersLoader  {
 				let data = document.data()
 				let documentId = document.documentID
 				let userId = data["userId"] as? String ?? ""
-				var totalHours = 0
-				var allProjects = Set<String>()
-
-				self?.getUserTimeslots(userId) { result in
-					if case let .success(result) = result {
-						result.forEach { timeSlot in
-							totalHours += timeSlot.total
-							allProjects.insert(timeSlot.projectName)
-						}
-					}
-					if case let .failure(error) = result {
-						completion(.failure(error))
-					}
-				}
-				let projects = "\(allProjects)"
 				let name = "\(data["firstName"] ?? "") \(data["lastName"] ?? "")"
 				let profilePicture = data["profilePicture"] as? String ?? ""
 				let hourRate = data["hourRate"] as? String ?? "$100"
 
-				return UserCell(name: name, userId: userId, profilePicture: profilePicture, totalHours: totalHours, projects: projects, hourRate: hourRate, documentId: documentId)
+				return UserCell(name: name,
+								userId: userId,
+								profilePicture: profilePicture,
+								documentId: documentId,
+								hourRate: hourRate,
+								timeSlots: self?.getUserTimeslots)
 			}
 			completion(.success((users)))
         }
