@@ -7,25 +7,52 @@
 
 import UIKit
 
-class UserDetailViewController: UIViewController {
+final class UserDetailViewController: UIViewController {
+    let userDetail: UserCell
 
-    var userDetail: UserCell? = nil
+	private let profilePictureImageView = UIImageView()
 
-    var safeArea: UILayoutGuide!
-    let profilePicture: UIImageView? = nil
+	init(userDetail: UserCell) {
+		self.userDetail = userDetail
+		super.init(nibName: nil, bundle: nil)
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
-        safeArea = view.layoutMarginsGuide
+		view.backgroundColor = .systemBackground
+
+		setupViewHierarchy()
+		loadImage()
     }
 
-    func setProfilePicture() {
-        guard let image = profilePicture else { return }
-        view.addSubview(image)
+    private func setupViewHierarchy() {
+		profilePictureImageView.contentMode = .scaleAspectFit
+		view.addSubview(profilePictureImageView)
+		profilePictureImageView.translatesAutoresizingMaskIntoConstraints = false
 
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        image.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 50).isActive = true
+		let horizontalSpacing: CGFloat = 24
+		NSLayoutConstraint.activate([
+			profilePictureImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			profilePictureImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+			profilePictureImageView.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor, constant: horizontalSpacing),
+			profilePictureImageView.trailingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalSpacing),
+		])
     }
+
+	private func loadImage() {
+		DispatchQueue.global().async { [self] in
+			if let data = try? Data(contentsOf: userDetail.profilePictureURLOrDefault),
+			   let image = UIImage(data: data) {
+				DispatchQueue.main.async {
+					profilePictureImageView.image = image
+				}
+			} else {
+				profilePictureImageView.image = UIImage(systemName: "xmark.icloud")!
+			}
+		}
+	}
 }

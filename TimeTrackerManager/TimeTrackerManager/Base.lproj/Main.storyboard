@@ -442,7 +442,6 @@
                                     <outlet property="userName" destination="OI1-hs-GFn" id="g0c-9k-Gp9"/>
                                     <outlet property="userProfilePicture" destination="BgJ-f4-o87" id="HP0-Kw-GD9"/>
                                     <outlet property="userProjects" destination="hFJ-Zp-c2C" id="p41-IF-wx6"/>
-                                    <segue destination="dhO-fC-UJ4" kind="showDetail" id="RgP-CO-4L2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -473,30 +472,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XfF-t8-Sel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="308.203125" y="1662.5183016105416"/>
-        </scene>
-        <!--User Detail View Controller-->
-        <scene sceneID="YMZ-kO-UAz">
-            <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="dhO-fC-UJ4" customClass="UserDetailViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qA8-jt-gaj">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di8-cn-F8B">
-                                <rect key="frame" x="331" y="277" width="42" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="BFu-Ag-ryM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ReS-FQ-1H9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="307.6171875" y="2387.7013177159588"/>
         </scene>
         <!--Add new User-->
         <scene sceneID="Ekg-zG-8HT">
