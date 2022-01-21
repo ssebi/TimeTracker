@@ -2,6 +2,18 @@
 import FirebaseFirestore
 
 public class FirebaseTimeslotsStore: TimeslotsStore {
+	private var jsonDecoder: JSONDecoder = {
+		let decoder = JSONDecoder()
+		decoder.dateDecodingStrategy = .iso8601
+		return decoder
+	}()
+
+	private var jsonEncoder: JSONEncoder = {
+		let encoder = JSONEncoder()
+		encoder.dateEncodingStrategy = .iso8601
+		return encoder
+	}()
+
     public init(){}
 
     public func getTimeslots(userID: String, completion: @escaping GetTimeslotsResult) {
@@ -9,11 +21,9 @@ public class FirebaseTimeslotsStore: TimeslotsStore {
             .whereField("userId", isEqualTo: userID)
             .getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
-                    let timeslots = querySnapshot.documents.compactMap { document -> FirebaseTimeSlot? in
-                        let decoder = JSONDecoder()
-                        decoder.dateDecodingStrategy = .iso8601
+                    let timeslots = querySnapshot.documents.compactMap { [weak self] document -> FirebaseTimeSlot? in
                         if let data = try? JSONSerialization.data(withJSONObject: document.data()) {
-                            return try? decoder.decode(FirebaseTimeSlot.self, from: data)
+							return try? self?.jsonDecoder.decode(FirebaseTimeSlot.self, from: data)
                         } else {
                             return nil
                         }
@@ -27,9 +37,7 @@ public class FirebaseTimeslotsStore: TimeslotsStore {
 
     public func addTimeSlot(timeSlot: TimeSlot, completion: @escaping (Error?) -> Void) {
         var data: [String: Any] = [:]
-        do{
-            let jsonEncoder = JSONEncoder()
-            jsonEncoder.dateEncodingStrategy = .iso8601
+        do {
             let encodedJson = try jsonEncoder.encode(timeSlot)
             data = try JSONSerialization.jsonObject(with: encodedJson) as! [String : Any]
 
