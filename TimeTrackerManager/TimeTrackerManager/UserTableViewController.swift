@@ -49,18 +49,16 @@ extension UserTableViewController {
         }
 
         let userCell = users[indexPath.row]
-        var url = URL(string: userCell.profilePicture)
-
-        DispatchQueue.global().async {
-            if (url == nil) {
-                url = URL(string: "https://avatars.dicebear.com/api/bottts/avatar.png")
-            }
-            if let data = try? Data(contentsOf: url!) {
-                    DispatchQueue.main.async {
-                        cell.userProfilePicture.image = UIImage(data: data)!
-                    }
-                }
-            }
+		DispatchQueue.global().async {
+			if let data = try? Data(contentsOf: userCell.profilePictureURLOrDefault),
+			   let image = UIImage(data: data) {
+				DispatchQueue.main.async {
+					cell.userProfilePicture.image = image
+				}
+			} else {
+				cell.userProfilePicture.image = UIImage(systemName: "xmark.icloud")!
+			}
+		}
 
         cell.userName.text = userCell.name
         cell.totalHours.text = "\(userCell.totalHours ?? 0)"

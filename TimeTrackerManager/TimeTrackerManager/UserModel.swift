@@ -18,3 +18,9 @@ struct UserCell {
     let hourRate: String?
     let documentId: String
 }
+
+extension UserCell {
+	var profilePictureURLOrDefault: URL {
+		URL(string: profilePicture) ?? Constants.defaultProfileImageURL
+	}
+}
