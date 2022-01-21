@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import TimeTrackerAuth
+@testable import TimeTrackerCore
 
 class FirebaseAuthProviderEndToEndTests: XCTestCase {
 
@@ -105,7 +106,7 @@ class FirebaseAuthProviderEndToEndTests: XCTestCase {
     // MARK: - Helper
     let email: String = "mihai24vic@gmail.com"
     let wrongPassword: String = "123452435324" 
-    let correctPassword: String = "Patratel1"
+    let correctPassword: String = "Balonas1"
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> FirebaseAuthProvider {
         let sut = FirebaseAuthProvider()

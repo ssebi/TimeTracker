@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import TimeTrackerCore
 import TimeTrackerAuth
 
 class AuthenticationTests: XCTestCase {

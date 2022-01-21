@@ -437,8 +437,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="hourRate" destination="fXW-ol-84F" id="YZ7-SO-mbT"/>
+                                    <outlet property="totalHours" destination="CTD-12-OQk" id="kqq-qc-1Co"/>
                                     <outlet property="userName" destination="OI1-hs-GFn" id="g0c-9k-Gp9"/>
                                     <outlet property="userProfilePicture" destination="BgJ-f4-o87" id="HP0-Kw-GD9"/>
+                                    <outlet property="userProjects" destination="hFJ-Zp-c2C" id="p41-IF-wx6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -696,12 +699,20 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <activityIndicatorView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="3YC-xM-a52">
+                                <rect key="frame" x="333.5" y="479.5" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3YC-xM-a52" secondAttribute="height" multiplier="1:1" id="bvS-M3-AMM"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="r5Q-hc-25v"/>
                         <color key="backgroundColor" red="0.16082283850000001" green="0.56054133179999999" blue="0.45203018189999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="3YC-xM-a52" firstAttribute="centerX" secondItem="Tj3-cl-lMf" secondAttribute="centerX" id="9ED-Qb-uR9"/>
                             <constraint firstItem="GND-iB-sGh" firstAttribute="trailing" secondItem="r5Q-hc-25v" secondAttribute="trailing" id="BBP-c2-hrf"/>
                             <constraint firstItem="GND-iB-sGh" firstAttribute="top" secondItem="r5Q-hc-25v" secondAttribute="top" id="Cfa-Vb-EQe"/>
+                            <constraint firstItem="3YC-xM-a52" firstAttribute="centerY" secondItem="Tj3-cl-lMf" secondAttribute="centerY" id="FyE-X1-n7v"/>
                             <constraint firstAttribute="bottom" secondItem="GND-iB-sGh" secondAttribute="bottom" id="NTF-wJ-b2D"/>
                             <constraint firstItem="197-Rx-1m7" firstAttribute="top" secondItem="r5Q-hc-25v" secondAttribute="top" constant="50" id="jbo-s8-xSX"/>
                             <constraint firstItem="GND-iB-sGh" firstAttribute="leading" secondItem="r5Q-hc-25v" secondAttribute="leading" id="t9u-5N-qpI"/>
@@ -712,6 +723,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="svO-eE-ps8"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="3YC-xM-a52" id="Ed6-Oa-crA"/>
                         <outlet property="emailTextField" destination="XxR-qg-c31" id="iQj-oa-MTI"/>
                         <outlet property="firsNameTextField" destination="fbE-JC-Vjd" id="6aZ-tt-Y1B"/>
                         <outlet property="lastNameTextField" destination="3j9-vH-ZDu" id="gxd-nk-BDn"/>

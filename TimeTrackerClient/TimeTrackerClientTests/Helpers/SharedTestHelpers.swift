@@ -1,6 +1,6 @@
 
 import Foundation
-import TimeTrackerClient
+import TimeTrackerCore
 
 var uniqueTimeslots: [TimeSlot] {
 	[
@@ -22,7 +22,3 @@ var uniqueTimeslot: TimeSlot {
 					description: "some description"),
 			 total: Int.random(in: 0...100))
 }
-
-let anyError = NSError(domain: "any error", code: 0)
-
-let someUserID = UUID().uuidString

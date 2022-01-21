@@ -13,12 +13,13 @@ class AddUserViewController: UIViewController {
     @IBOutlet var firsNameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var user = FirebaseUserPublisher()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        activityIndicator.isHidden = true
         // call the 'keyboardWillShow' function when the view controller receive the notification that a keyboard is going to be shown
         NotificationCenter.default.addObserver(self, selector: #selector(AddUserViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 
@@ -26,7 +27,17 @@ class AddUserViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(AddUserViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+    func toggleSpiner(isHidden: Bool) {
+        activityIndicator.isHidden = isHidden
+        if isHidden == true {
+            activityIndicator.stopAnimating()
+        } else {
+            activityIndicator.startAnimating()
+        }
+    }
+
     @IBAction func createUserButtonPressed(_ sender: Any) {
+        self.toggleSpiner(isHidden: false)
         user.addUser(
                 email: self.emailTextField?.text ?? "",
                 password: "Balonas1",
@@ -80,8 +91,10 @@ class AddUserViewController: UIViewController {
 
 extension AddUserViewController {
     func validationError(title: String, message: String, hasError: Bool) {
+        self.toggleSpiner(isHidden: true)
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+
             if !hasError { self.dismisView() }
         }))
         self.present(alert, animated: true, completion: nil)

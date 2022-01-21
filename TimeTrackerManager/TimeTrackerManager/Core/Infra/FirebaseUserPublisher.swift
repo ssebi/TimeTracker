@@ -1,8 +1,9 @@
 
 import Foundation
 import Firebase
+import TimeTrackerCore
 
-class FirebaseUserPublisher: UserPublisher {
+class FirebaseUserPublisher {
     
     typealias UserPublisherCompletion = (Result<Void, UserPublisherError>) -> Void
 
@@ -39,7 +40,8 @@ class FirebaseUserPublisher: UserPublisher {
         let data = [
             "userId": user.uid,
             "firstName": firstName,
-            "lastName": lastName
+            "lastName": lastName,
+            "profilePicture": "https://avatars.dicebear.com/api/bottts/:\(firstName).png"
         ]
 
         Firestore.firestore().collection("users").document().setData(data) { error in

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import TimeTrackerCore
 import TimeTrackerAuth
 
 class AuthProviderSpy: AuthProvider {

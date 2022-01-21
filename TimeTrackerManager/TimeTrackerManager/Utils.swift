@@ -11,3 +11,8 @@ struct Path {
     static let users = "users"
     static let timeSlots = "timeSlots"
 }
+
+
+struct Constants {
+	static let defaultProfileImageURL = URL(string: "https://avatars.dicebear.com/api/bottts/avatar.png")!
+}

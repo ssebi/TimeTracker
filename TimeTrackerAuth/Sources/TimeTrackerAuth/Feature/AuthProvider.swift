@@ -4,6 +4,7 @@
 //
 //  Created by VSebastian on 10.11.2021.
 //
+import TimeTrackerCore
 
 public protocol AuthProvider {
 	typealias SesionStoreResult = (Result<User?, Error>) -> Void

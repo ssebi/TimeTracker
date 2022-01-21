@@ -7,4 +7,3 @@ extension XCTestCase {
 		}
 	}
 }
-

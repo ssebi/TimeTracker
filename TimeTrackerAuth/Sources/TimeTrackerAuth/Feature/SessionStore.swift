@@ -6,6 +6,7 @@
 //
 
 import Combine
+import TimeTrackerCore
 
 public class SessionStore: ObservableObject {
 	@Published public private(set) var user: User?

@@ -1,7 +1,7 @@
 
 import XCTest
 import TimeTrackerClient
-import TimeTrackerAuth
+import TimeTrackerCore
 
 class HomePresentationTests: XCTestCase {
 
@@ -31,7 +31,7 @@ class HomePresentationTests: XCTestCase {
 
 	// MARK: - Helpers
 
-	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (HomeScreenViewModel, TimeslotsLoaderSpy) {
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (HomeScreenViewModel, TimeslotsLoaderSpy) {
 		let store = MockStore()
 		let loader = TimeslotsLoaderSpy(store: store)
 		let sut = HomeScreenViewModel(timeslotsLoader: loader, userLoader: UserLoaderMock())
@@ -75,7 +75,7 @@ class HomePresentationTests: XCTestCase {
 	}
 
 	private class UserLoaderMock: UserLoader {
-		func getUser() -> User {
+        func getUser() -> User {
 			User(uid: UUID().uuidString, email: "somteEmail@test.com", username: "Test", client: "Client")
 		}
 	}

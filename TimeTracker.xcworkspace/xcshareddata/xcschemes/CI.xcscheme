@@ -35,6 +35,17 @@
                ReferencedContainer = "container:TimeTrackerClient/TimeTrackerClient.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "TimeTrackerCoreTests"
+               BuildableName = "TimeTrackerCoreTests"
+               BlueprintName = "TimeTrackerCoreTests"
+               ReferencedContainer = "container:TimeTrackerCore">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

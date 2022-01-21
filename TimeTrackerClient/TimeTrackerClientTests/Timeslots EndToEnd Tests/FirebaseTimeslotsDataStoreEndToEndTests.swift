@@ -1,12 +1,12 @@
 
 import XCTest
-@testable import TimeTrackerClient
+import TimeTrackerCore
 
 class FirebaseTimeslotsDataStoreEndToEndTests: XCTestCase {
 
 	func test() {
 		let sut = FirebaseTimeslotsStore()
-		let validUserID = "YErySzP9KBgMsFw64rHrimFAUBZ2"
+		let validUserID = "l7z4cGrBsNfwRHcWC9P9kqTOVtl1"
 
 		let exp = expectation(description: "Wait for completion")
 		var receivedError: Error? = nil

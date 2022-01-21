@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
-		547B01EB278DD8C800636A90 /* FirebaseUserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EA278DD8C800636A90 /* FirebaseUserLoader.swift */; };
+		547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */; };
 		547B01ED278DDAB700636A90 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EC278DDAB700636A90 /* Utils.swift */; };
-		547B01F0278ED2B800636A90 /* UserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EF278ED2B800636A90 /* UserLoader.swift */; };
-		547B01F2278ED2D400636A90 /* UserPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01F1278ED2D400636A90 /* UserPublisher.swift */; };
+		547B01F8278F609800636A90 /* TimeTrackerCore in Frameworks */ = {isa = PBXBuildFile; productRef = 547B01F7278F609800636A90 /* TimeTrackerCore */; };
 		54AE368A276A21E500407F04 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE3689276A21E500407F04 /* AddUserViewController.swift */; };
 		54AE368C2770BD8300407F04 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE368B2770BD8200407F04 /* UserTableViewController.swift */; };
 		54AE36902770C7CF00407F04 /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE368F2770C7CF00407F04 /* UserListCell.swift */; };
+		54BAC8542796F80000684981 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BAC8532796F80000684981 /* UserDetailViewController.swift */; };
 		54C34F8827736432004C11E1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 54C34F8727736432004C11E1 /* FirebaseAuth */; };
 		54C34F8A277364B9004C11E1 /* TimeTrackerAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 54C34F89277364B9004C11E1 /* TimeTrackerAuth */; };
 		54E38BD62786EEE200625F92 /* FirebaseUserPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E38BD52786EEE200625F92 /* FirebaseUserPublisher.swift */; };
@@ -51,14 +51,12 @@
 
 /* Begin PBXFileReference section */
 		5468DDF62763C16D00E39DD9 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
-		547B01EA278DD8C800636A90 /* FirebaseUserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserLoader.swift; sourceTree = "<group>"; };
+		547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUsersLoader.swift; sourceTree = "<group>"; };
 		547B01EC278DDAB700636A90 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		547B01EF278ED2B800636A90 /* UserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoader.swift; sourceTree = "<group>"; };
-		547B01F1278ED2D400636A90 /* UserPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPublisher.swift; sourceTree = "<group>"; };
 		54AE3689276A21E500407F04 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		54AE368B2770BD8200407F04 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		54AE368F2770C7CF00407F04 /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
-		54C34F85277361B5004C11E1 /* TimeTrackerAuth */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TimeTrackerAuth; path = ../TimeTrackerAuth; sourceTree = "<group>"; };
+		54BAC8532796F80000684981 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		54E38BD52786EEE200625F92 /* FirebaseUserPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserPublisher.swift; sourceTree = "<group>"; };
 		C68C87C72771FF83002B6746 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C6B2B249276256D400705659 /* TimeTrackerManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +83,7 @@
 				C6B2B28227625B0900705659 /* FirebaseFirestore in Frameworks */,
 				54C34F8A277364B9004C11E1 /* TimeTrackerAuth in Frameworks */,
 				54C34F8827736432004C11E1 /* FirebaseAuth in Frameworks */,
+				547B01F8278F609800636A90 /* TimeTrackerCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,23 +104,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		547B01EE278ED28D00636A90 /* Feature */ = {
-			isa = PBXGroup;
-			children = (
-				547B01EF278ED2B800636A90 /* UserLoader.swift */,
-				547B01F1278ED2D400636A90 /* UserPublisher.swift */,
-			);
-			path = Feature;
-			sourceTree = "<group>";
-		};
-		54C34F84277361B5004C11E1 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				54C34F85277361B5004C11E1 /* TimeTrackerAuth */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		54C34F8627736432004C11E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,7 +114,6 @@
 		54E38BD42786EEAD00625F92 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				547B01EE278ED28D00636A90 /* Feature */,
 				54E38BD72786EEFD00625F92 /* Infra */,
 			);
 			path = Core;
@@ -142,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				54E38BD52786EEE200625F92 /* FirebaseUserPublisher.swift */,
-				547B01EA278DD8C800636A90 /* FirebaseUserLoader.swift */,
+				547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -150,7 +131,6 @@
 		C6B2B240276256D400705659 = {
 			isa = PBXGroup;
 			children = (
-				54C34F84277361B5004C11E1 /* Packages */,
 				C6B2B27E276259D000705659 /* GoogleService-Info.plist */,
 				C6B2B24B276256D400705659 /* TimeTrackerManager */,
 				C6B2B262276256D500705659 /* TimeTrackerManagerTests */,
@@ -187,6 +167,7 @@
 				54AE368B2770BD8200407F04 /* UserTableViewController.swift */,
 				54AE368F2770C7CF00407F04 /* UserListCell.swift */,
 				547B01EC278DDAB700636A90 /* Utils.swift */,
+				54BAC8532796F80000684981 /* UserDetailViewController.swift */,
 			);
 			path = TimeTrackerManager;
 			sourceTree = "<group>";
@@ -228,6 +209,7 @@
 				C6B2B28127625B0900705659 /* FirebaseFirestore */,
 				54C34F8727736432004C11E1 /* FirebaseAuth */,
 				54C34F89277364B9004C11E1 /* TimeTrackerAuth */,
+				547B01F7278F609800636A90 /* TimeTrackerCore */,
 			);
 			productName = TimeTrackerManager;
 			productReference = C6B2B249276256D400705659 /* TimeTrackerManager.app */;
@@ -348,9 +330,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				547B01F2278ED2D400636A90 /* UserPublisher.swift in Sources */,
 				54AE36902770C7CF00407F04 /* UserListCell.swift in Sources */,
 				54AE368A276A21E500407F04 /* AddUserViewController.swift in Sources */,
+				54BAC8542796F80000684981 /* UserDetailViewController.swift in Sources */,
 				C68C87C82771FF83002B6746 /* UserModel.swift in Sources */,
 				5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */,
 				C6B2B251276256D400705659 /* LoginViewController.swift in Sources */,
@@ -358,9 +340,8 @@
 				54AE368C2770BD8300407F04 /* UserTableViewController.swift in Sources */,
 				547B01ED278DDAB700636A90 /* Utils.swift in Sources */,
 				C6B2B24F276256D400705659 /* SceneDelegate.swift in Sources */,
-				547B01F0278ED2B800636A90 /* UserLoader.swift in Sources */,
 				54E38BD62786EEE200625F92 /* FirebaseUserPublisher.swift in Sources */,
-				547B01EB278DD8C800636A90 /* FirebaseUserLoader.swift in Sources */,
+				547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +722,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		547B01F7278F609800636A90 /* TimeTrackerCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TimeTrackerCore;
+		};
 		54C34F8727736432004C11E1 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C6B2B28027625B0900705659 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
