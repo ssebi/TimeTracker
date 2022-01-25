@@ -391,14 +391,62 @@
                     <view key="view" contentMode="scaleToFill" id="c59-Au-eYq">
                         <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new Clients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggh-z6-ETK">
+                                <rect key="frame" x="290.5" y="156" width="123" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-35-kmw">
+                                <rect key="frame" x="100" y="432.5" width="313.5" height="130.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Client name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JLV-IN-1o7">
+                                        <rect key="frame" x="20" y="20" width="271" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a project name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="exr-PW-9ty">
+                                        <rect key="frame" x="20" y="76" width="271" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UPD-35-kmw" secondAttribute="height" multiplier="313:130" id="fyX-zm-qgc"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MmG-Zj-B1F">
+                                <rect key="frame" x="100" y="839" width="504" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Add client"/>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="FN0-SF-0rM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FN0-SF-0rM" firstAttribute="bottom" secondItem="MmG-Zj-B1F" secondAttribute="bottom" constant="121.5" id="2Gl-ZV-laV"/>
+                            <constraint firstItem="MmG-Zj-B1F" firstAttribute="leading" secondItem="FN0-SF-0rM" secondAttribute="leading" constant="100" id="HUd-9c-X7T"/>
+                            <constraint firstItem="UPD-35-kmw" firstAttribute="leading" secondItem="MmG-Zj-B1F" secondAttribute="leading" id="MqK-Nt-NSJ"/>
+                            <constraint firstItem="UPD-35-kmw" firstAttribute="trailing" secondItem="ggh-z6-ETK" secondAttribute="trailing" id="Mqt-Ya-08r"/>
+                            <constraint firstItem="FN0-SF-0rM" firstAttribute="trailing" secondItem="MmG-Zj-B1F" secondAttribute="trailing" constant="100" id="XWj-zk-5jF"/>
+                            <constraint firstItem="ggh-z6-ETK" firstAttribute="centerX" secondItem="c59-Au-eYq" secondAttribute="centerX" id="h33-Pt-sdr"/>
+                            <constraint firstItem="ggh-z6-ETK" firstAttribute="top" secondItem="FN0-SF-0rM" secondAttribute="top" constant="100" id="hyj-Sp-lIQ"/>
+                            <constraint firstItem="UPD-35-kmw" firstAttribute="centerY" secondItem="c59-Au-eYq" secondAttribute="centerY" id="zJQ-qc-W5a"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s2H-SU-Voz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ylx-dF-2Z7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3309" y="1605"/>
+            <point key="canvasLocation" x="3308.7890625" y="1604.9780380673499"/>
         </scene>
         <!--Clients-->
         <scene sceneID="afD-g1-xJP">
