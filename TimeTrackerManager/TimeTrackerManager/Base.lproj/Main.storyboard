@@ -239,6 +239,57 @@
             </objects>
             <point key="canvasLocation" x="1345.8984375" y="126.93997071742312"/>
         </scene>
+        <!--Root View Controller-->
+        <scene sceneID="ii4-o5-2JO">
+            <objects>
+                <tableViewController id="MJq-oc-f3b" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bj7-Jf-DCg">
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6Yi-VD-3l5">
+                                <rect key="frame" x="0.0" y="50" width="704" height="51.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Yi-VD-3l5" id="haF-WP-P6X">
+                                    <rect key="frame" x="0.0" y="0.0" width="704" height="51.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MJq-oc-f3b" id="Ypu-Dp-gQK"/>
+                            <outlet property="delegate" destination="MJq-oc-f3b" id="HdT-f0-Oof"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="Tnk-mK-IHT">
+                        <barButtonItem key="rightBarButtonItem" id="NM9-CW-zdT">
+                            <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
+                            <color key="tintColor" red="0.12941176469999999" green="0.54901960780000003" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0qq-5f-mJ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1430" y="1546"/>
+        </scene>
+        <!--Projects-->
+        <scene sceneID="Vqg-Gy-hdL">
+            <objects>
+                <navigationController id="TGf-OL-63Y" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Projects" image="tray.circle.fill" catalog="system" selectedImage="tray.circle" id="jkR-uc-2jW"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rao-Le-D74">
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="MJq-oc-f3b" kind="relationship" relationship="rootViewController" id="muP-bV-Y0u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qtB-LO-Xb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1672" y="828"/>
+        </scene>
         <!--Clients-->
         <scene sceneID="vvC-Rg-Lq5">
             <objects>
@@ -308,38 +359,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6r-1r-RdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4038" y="875"/>
-        </scene>
-        <!--Projects-->
-        <scene sceneID="uyC-FB-kzW">
-            <objects>
-                <viewController id="LBy-Eh-0Xf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bGF-5b-GE2">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cl-xb-eDK">
-                                <rect key="frame" x="320.5" y="487.5" width="63" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="RDu-oi-BD1"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="4Cl-xb-eDK" firstAttribute="centerX" secondItem="bGF-5b-GE2" secondAttribute="centerX" id="9lb-bb-ScR"/>
-                            <constraint firstItem="4Cl-xb-eDK" firstAttribute="centerY" secondItem="bGF-5b-GE2" secondAttribute="centerY" id="PUY-Pb-51y"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Projects" id="CC4-2J-AyD">
-                        <imageReference key="image" image="tray.circle.fill" catalog="system" symbolScale="large"/>
-                        <color key="badgeColor" name="customGray"/>
-                        <imageReference key="selectedImage" image="tray.circle" catalog="system" symbolScale="large"/>
-                    </tabBarItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZiA-jU-faY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1581" y="875"/>
         </scene>
         <!--Time-->
         <scene sceneID="6oX-uo-aNZ">
@@ -471,7 +490,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XfF-t8-Sel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="308.203125" y="1662.5183016105416"/>
+            <point key="canvasLocation" x="-305" y="1533"/>
         </scene>
         <!--Add new User-->
         <scene sceneID="Ekg-zG-8HT">
@@ -731,7 +750,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCK-Mw-Maw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1209.9609375" y="1662.5183016105416"/>
+            <point key="canvasLocation" x="395" y="1546"/>
         </scene>
         <!--Users-->
         <scene sceneID="HZg-JK-jC1">
@@ -752,7 +771,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMa-Uq-bRb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786" y="874"/>
+            <point key="canvasLocation" x="935" y="828"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DoR-h9-4qo">
@@ -767,10 +786,10 @@
                     </tabBar>
                     <connections>
                         <segue destination="jhL-nd-bag" kind="relationship" relationship="viewControllers" id="6fr-zM-6u9"/>
-                        <segue destination="LBy-Eh-0Xf" kind="relationship" relationship="viewControllers" id="pxL-ek-3ha"/>
                         <segue destination="euy-27-zgf" kind="relationship" relationship="viewControllers" id="t48-QU-Fr9"/>
                         <segue destination="1Ya-ar-Cf1" kind="relationship" relationship="viewControllers" id="qa4-gW-mon"/>
                         <segue destination="fO9-Rp-Dyv" kind="relationship" relationship="viewControllers" id="WdN-qF-h3M"/>
+                        <segue destination="TGf-OL-63Y" kind="relationship" relationship="viewControllers" id="97E-qB-w2O"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HsS-HH-VO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -790,6 +809,7 @@
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill.badge.plus" catalog="system" width="128" height="124"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="tray.circle" catalog="system" width="128" height="121"/>
         <image name="tray.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="customGray">
