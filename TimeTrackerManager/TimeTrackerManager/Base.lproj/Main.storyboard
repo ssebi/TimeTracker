@@ -266,12 +266,31 @@
                         <barButtonItem key="rightBarButtonItem" id="NM9-CW-zdT">
                             <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
                             <color key="tintColor" red="0.12941176469999999" green="0.54901960780000003" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <segue destination="57H-e0-Dej" kind="show" id="2If-PG-47V"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qq-5f-mJ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1430" y="1546"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="lOA-dG-Ibo">
+            <objects>
+                <viewController id="57H-e0-Dej" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="doa-x6-2nS">
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="uxp-0t-rRU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CIG-fM-MxP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="crQ-8T-VnC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2153" y="1539"/>
         </scene>
         <!--Projects-->
         <scene sceneID="Vqg-Gy-hdL">
