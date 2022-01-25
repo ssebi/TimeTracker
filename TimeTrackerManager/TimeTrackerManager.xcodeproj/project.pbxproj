@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5440DC5E27A04FF500F9E666 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440DC5D27A04FF500F9E666 /* ProjectsTableViewController.swift */; };
+		5440DC6027A0503500F9E666 /* AddProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440DC5F27A0503500F9E666 /* AddProjectsViewController.swift */; };
 		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
 		547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */; };
 		547B01ED278DDAB700636A90 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EC278DDAB700636A90 /* Utils.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5440DC5D27A04FF500F9E666 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
+		5440DC5F27A0503500F9E666 /* AddProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectsViewController.swift; sourceTree = "<group>"; };
 		5468DDF62763C16D00E39DD9 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUsersLoader.swift; sourceTree = "<group>"; };
 		547B01EC278DDAB700636A90 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -104,6 +108,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5440DC5A27A04FBF00F9E666 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2B250276256D400705659 /* LoginViewController.swift */,
+				5440DC5C27A04FCD00F9E666 /* Projects */,
+				5440DC5B27A04FC600F9E666 /* Users */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5440DC5B27A04FC600F9E666 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				54AE368B2770BD8200407F04 /* UserTableViewController.swift */,
+				54BAC8532796F80000684981 /* UserDetailViewController.swift */,
+				54AE3689276A21E500407F04 /* AddUserViewController.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		5440DC5C27A04FCD00F9E666 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				5440DC5D27A04FF500F9E666 /* ProjectsTableViewController.swift */,
+				5440DC5F27A0503500F9E666 /* AddProjectsViewController.swift */,
+			);
+			path = Projects;
+			sourceTree = "<group>";
+		};
 		54C34F8627736432004C11E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +147,7 @@
 		54E38BD42786EEAD00625F92 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5440DC5A27A04FBF00F9E666 /* Controller */,
 				54E38BD72786EEFD00625F92 /* Infra */,
 			);
 			path = Core;
@@ -157,17 +191,13 @@
 				C68C87C72771FF83002B6746 /* UserModel.swift */,
 				C6B2B24C276256D400705659 /* AppDelegate.swift */,
 				C6B2B24E276256D400705659 /* SceneDelegate.swift */,
-				C6B2B250276256D400705659 /* LoginViewController.swift */,
 				C6B2B252276256D400705659 /* Main.storyboard */,
 				C6B2B255276256D500705659 /* Assets.xcassets */,
 				C6B2B257276256D500705659 /* LaunchScreen.storyboard */,
 				C6B2B25A276256D500705659 /* Info.plist */,
 				5468DDF62763C16D00E39DD9 /* DesignableView.swift */,
-				54AE3689276A21E500407F04 /* AddUserViewController.swift */,
-				54AE368B2770BD8200407F04 /* UserTableViewController.swift */,
 				54AE368F2770C7CF00407F04 /* UserListCell.swift */,
 				547B01EC278DDAB700636A90 /* Utils.swift */,
-				54BAC8532796F80000684981 /* UserDetailViewController.swift */,
 			);
 			path = TimeTrackerManager;
 			sourceTree = "<group>";
@@ -336,6 +366,8 @@
 				C68C87C82771FF83002B6746 /* UserModel.swift in Sources */,
 				5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */,
 				C6B2B251276256D400705659 /* LoginViewController.swift in Sources */,
+				5440DC6027A0503500F9E666 /* AddProjectsViewController.swift in Sources */,
+				5440DC5E27A04FF500F9E666 /* ProjectsTableViewController.swift in Sources */,
 				C6B2B24D276256D400705659 /* AppDelegate.swift in Sources */,
 				54AE368C2770BD8300407F04 /* UserTableViewController.swift in Sources */,
 				547B01ED278DDAB700636A90 /* Utils.swift in Sources */,
