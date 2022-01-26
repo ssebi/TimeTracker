@@ -382,17 +382,26 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Totla hours to invoice: 125" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqb-Jm-qM1">
+                                            <rect key="frame" x="486" y="78.5" width="198" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="xmI-R9-dGC" firstAttribute="leading" secondItem="ZQd-OX-cnw" secondAttribute="trailing" constant="50" id="DUP-j9-1PM"/>
                                         <constraint firstItem="NuP-xK-JbP" firstAttribute="leading" secondItem="xmI-R9-dGC" secondAttribute="leading" id="FYC-Mc-e0Y"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xmI-R9-dGC" secondAttribute="trailing" constant="20" symbolic="YES" id="G4c-vW-4J4"/>
                                         <constraint firstAttribute="bottom" secondItem="ZQd-OX-cnw" secondAttribute="bottom" constant="5" id="O1D-nE-W02"/>
+                                        <constraint firstAttribute="bottom" secondItem="dqb-Jm-qM1" secondAttribute="bottom" constant="20" symbolic="YES" id="QpN-Nu-62b"/>
                                         <constraint firstItem="ZQd-OX-cnw" firstAttribute="leading" secondItem="0ji-We-BZk" secondAttribute="leading" constant="20" id="RzQ-uW-ez7"/>
                                         <constraint firstItem="xmI-R9-dGC" firstAttribute="top" secondItem="0ji-We-BZk" secondAttribute="topMargin" id="SuR-Im-AxE"/>
                                         <constraint firstItem="NuP-xK-JbP" firstAttribute="top" secondItem="xmI-R9-dGC" secondAttribute="bottom" constant="8" symbolic="YES" id="URX-Lq-hMB"/>
+                                        <constraint firstItem="dqb-Jm-qM1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZQd-OX-cnw" secondAttribute="trailing" constant="8" symbolic="YES" id="aWp-2s-6pa"/>
                                         <constraint firstItem="ZQd-OX-cnw" firstAttribute="top" secondItem="0ji-We-BZk" secondAttribute="top" constant="5" id="lvn-n0-DGe"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NuP-xK-JbP" secondAttribute="trailing" constant="20" symbolic="YES" id="npT-AW-1Zr"/>
+                                        <constraint firstAttribute="trailing" secondItem="dqb-Jm-qM1" secondAttribute="trailing" constant="20" symbolic="YES" id="sIt-KL-3Dg"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
