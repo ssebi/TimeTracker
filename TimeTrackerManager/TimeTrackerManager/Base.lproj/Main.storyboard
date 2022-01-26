@@ -298,7 +298,7 @@
                 <navigationController id="TGf-OL-63Y" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Projects" image="tray.circle.fill" catalog="system" selectedImage="tray.circle" id="jkR-uc-2jW"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rao-Le-D74">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
