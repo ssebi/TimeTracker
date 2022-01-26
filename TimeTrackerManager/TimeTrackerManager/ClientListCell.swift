@@ -8,14 +8,10 @@
 import UIKit
 
 class ClientListCell: UITableViewCell {
-
-
     @IBOutlet var clientsAvatar: UIImageView!
-
     @IBOutlet var clientName: UILabel!
-    
     @IBOutlet var clientsProject: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
