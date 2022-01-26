@@ -2,7 +2,7 @@ name: Deploy-Manager
 
 on:
   push:
-    branches: [ main ]
+    branches: [ trigger-deploy ]
 
 jobs:
   build-and-deploy:
