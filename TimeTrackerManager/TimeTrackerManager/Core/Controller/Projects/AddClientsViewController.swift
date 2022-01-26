@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddProjectsViewController: UIViewController {
+class AddClientsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

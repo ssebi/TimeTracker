@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5440DC5E27A04FF500F9E666 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440DC5D27A04FF500F9E666 /* ProjectsTableViewController.swift */; };
-		5440DC6027A0503500F9E666 /* AddProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440DC5F27A0503500F9E666 /* AddProjectsViewController.swift */; };
+		5440DC5E27A04FF500F9E666 /* ClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440DC5D27A04FF500F9E666 /* ClientsTableViewController.swift */; };
+		5440DC6027A0503500F9E666 /* AddClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440DC5F27A0503500F9E666 /* AddClientsViewController.swift */; };
 		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
 		547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */; };
 		547B01ED278DDAB700636A90 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EC278DDAB700636A90 /* Utils.swift */; };
@@ -52,8 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5440DC5D27A04FF500F9E666 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
-		5440DC5F27A0503500F9E666 /* AddProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectsViewController.swift; sourceTree = "<group>"; };
+		5440DC5D27A04FF500F9E666 /* ClientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsTableViewController.swift; sourceTree = "<group>"; };
+		5440DC5F27A0503500F9E666 /* AddClientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClientsViewController.swift; sourceTree = "<group>"; };
 		5468DDF62763C16D00E39DD9 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUsersLoader.swift; sourceTree = "<group>"; };
 		547B01EC278DDAB700636A90 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 		5440DC5C27A04FCD00F9E666 /* Projects */ = {
 			isa = PBXGroup;
 			children = (
-				5440DC5D27A04FF500F9E666 /* ProjectsTableViewController.swift */,
-				5440DC5F27A0503500F9E666 /* AddProjectsViewController.swift */,
+				5440DC5D27A04FF500F9E666 /* ClientsTableViewController.swift */,
+				5440DC5F27A0503500F9E666 /* AddClientsViewController.swift */,
 			);
 			path = Projects;
 			sourceTree = "<group>";
@@ -366,8 +366,8 @@
 				C68C87C82771FF83002B6746 /* UserModel.swift in Sources */,
 				5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */,
 				C6B2B251276256D400705659 /* LoginViewController.swift in Sources */,
-				5440DC6027A0503500F9E666 /* AddProjectsViewController.swift in Sources */,
-				5440DC5E27A04FF500F9E666 /* ProjectsTableViewController.swift in Sources */,
+				5440DC6027A0503500F9E666 /* AddClientsViewController.swift in Sources */,
+				5440DC5E27A04FF500F9E666 /* ClientsTableViewController.swift in Sources */,
 				C6B2B24D276256D400705659 /* AppDelegate.swift in Sources */,
 				54AE368C2770BD8300407F04 /* UserTableViewController.swift in Sources */,
 				547B01ED278DDAB700636A90 /* Utils.swift in Sources */,
