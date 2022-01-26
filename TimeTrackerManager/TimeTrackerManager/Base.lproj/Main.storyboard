@@ -381,9 +381,6 @@
             </objects>
             <point key="canvasLocation" x="4038" y="875"/>
         </scene>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         <!--Projects-->
         <scene sceneID="uyC-FB-kzW">
             <objects>
@@ -417,9 +414,6 @@
             <point key="canvasLocation" x="1581" y="875"/>
         </scene>
         <!--Root View Controller-->
-=======
-        <!--Clients-->
->>>>>>> 0d9b81d (Add client LIst Cell)
         <scene sceneID="Cmw-5f-z8t">
             <objects>
                 <tableViewController title="Clients" id="NT7-T0-urm" customClass="ClientsTableViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
