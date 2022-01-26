@@ -383,6 +383,7 @@
         </scene>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <!--Projects-->
         <scene sceneID="uyC-FB-kzW">
             <objects>
@@ -416,15 +417,18 @@
             <point key="canvasLocation" x="1581" y="875"/>
         </scene>
         <!--Root View Controller-->
+=======
+        <!--Clients-->
+>>>>>>> 0d9b81d (Add client LIst Cell)
         <scene sceneID="Cmw-5f-z8t">
             <objects>
-                <tableViewController id="NT7-T0-urm" customClass="ClientsTableViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Clients" id="NT7-T0-urm" customClass="ClientsTableViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="0yt-vR-ftj">
                         <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oJw-Y5-NdC" customClass="ClientListCell" customModule="TimeTrackerManager" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClientListCell" id="oJw-Y5-NdC" customClass="ClientListCell" customModule="TimeTrackerManager" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="704" height="119"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oJw-Y5-NdC" id="0ji-We-BZk">
