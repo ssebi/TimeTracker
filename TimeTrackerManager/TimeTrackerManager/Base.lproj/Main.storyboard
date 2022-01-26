@@ -502,11 +502,17 @@
                                     <action selector="addClientButtonPressed:" destination="NN6-gF-ahP" eventType="touchUpInside" id="o19-CM-Lyj"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="bZx-x7-LVW">
+                                <rect key="frame" x="333.5" y="479.5" width="37" height="37"/>
+                                <color key="color" red="0.12941176469999999" green="0.54901960780000003" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FN0-SF-0rM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bZx-x7-LVW" firstAttribute="centerY" secondItem="c59-Au-eYq" secondAttribute="centerY" id="0Tn-Vv-srf"/>
                             <constraint firstItem="FN0-SF-0rM" firstAttribute="bottom" secondItem="MmG-Zj-B1F" secondAttribute="bottom" constant="121.5" id="2Gl-ZV-laV"/>
+                            <constraint firstItem="bZx-x7-LVW" firstAttribute="centerX" secondItem="c59-Au-eYq" secondAttribute="centerX" id="89t-5j-g8E"/>
                             <constraint firstItem="MmG-Zj-B1F" firstAttribute="leading" secondItem="FN0-SF-0rM" secondAttribute="leading" constant="100" id="HUd-9c-X7T"/>
                             <constraint firstItem="UPD-35-kmw" firstAttribute="leading" secondItem="MmG-Zj-B1F" secondAttribute="leading" id="MqK-Nt-NSJ"/>
                             <constraint firstItem="UPD-35-kmw" firstAttribute="trailing" secondItem="ggh-z6-ETK" secondAttribute="trailing" id="Mqt-Ya-08r"/>
@@ -518,6 +524,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="s2H-SU-Voz"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="bZx-x7-LVW" id="4a2-Tw-hxK"/>
                         <outlet property="clientName" destination="JLV-IN-1o7" id="X7c-jH-QVk"/>
                         <outlet property="clientProject" destination="exr-PW-9ty" id="DQx-6X-3iA"/>
                     </connections>
