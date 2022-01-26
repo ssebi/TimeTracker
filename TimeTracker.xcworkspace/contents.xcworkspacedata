@@ -2,9 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:TimeTrackerClient/TimeTrackerClient.xcodeproj">
+      location = "group:TimeTrackerCore">
+   </FileRef>
+   <FileRef
+      location = "group:TimeTrackerAuth">
    </FileRef>
    <FileRef
       location = "group:TimeTrackerManager/TimeTrackerManager.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TimeTrackerClient/TimeTrackerClient.xcodeproj">
    </FileRef>
 </Workspace>

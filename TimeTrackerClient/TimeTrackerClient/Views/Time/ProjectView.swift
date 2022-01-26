@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TimeTrackerCore
 
 struct ProjectView: View {
     let timeslot: TimeSlot

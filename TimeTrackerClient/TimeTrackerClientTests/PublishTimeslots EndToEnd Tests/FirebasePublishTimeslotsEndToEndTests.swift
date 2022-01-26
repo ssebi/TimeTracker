@@ -7,14 +7,17 @@
 
 import XCTest
 import Firebase
-@testable import TimeTrackerClient
+import TimeTrackerCore
+import TimeTrackerAuth
 
 class FirebasePublishTimeslotsEndToEndTests: XCTestCase {
 
     func test_addTimeSlot_isSusccesfullOnAdd() {
         let sut = makeSUT(withUserSignedIn: true)
         let details = TimeSlotDetails(start: Date(), end: Date() + 1, description: "EndToEndTesting")
-		let timeslot = TimeSlot(id: UUID().uuidString, userId: UUID().uuidString, clientName: "someClient", projectName: "SomeProject", date: Date(), details: details, total: 1)
+		let userID = FirebaseUserLoader().getUser().uid
+		XCTAssertNotNil(userID)
+		let timeslot = TimeSlot(id: UUID().uuidString, userId: userID!, clientName: "Client 3", projectName: "Project 2ZXY3", date: Date(), details: details, total: 1)
 		var receivedError: Error?
 
 		let exp = expectation(description: "Wait for firebase")
@@ -31,7 +34,7 @@ class FirebasePublishTimeslotsEndToEndTests: XCTestCase {
 
     let email: String = "mihai24vic@gmail.com"
     let wrongPassword: String = "123452435324"
-    let password: String = "Patratel1"
+    let password: String = "Balonas1"
     let path: String = "timeSlots"
 
 	private func makeSUT(withUserSignedIn signedIn: Bool, file: StaticString = #filePath, line: UInt = #line) -> TimeSlotsPublisher {

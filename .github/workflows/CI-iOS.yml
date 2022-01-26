@@ -8,6 +8,8 @@ on:
     branches: [ develop ]
     types: [ opened, reopened ]
 
+  workflow_dispatch:
+
 jobs:
   build-and-test:
     runs-on: macos-11
@@ -15,9 +17,14 @@ jobs:
     timeout-minutes: 30
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+    
     - name: Select Xcode
       run: sudo xcode-select --switch /Applications/Xcode_13.0.app/Contents/Developer
-    - name: Build and Test
-      run: xcodebuild clean test -workspace TimeTracker.xcworkspace -scheme "TimeTrackerClient" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 13,OS=15.0" ONLY_ACTIVE_ARCH=YES | xcpretty -s
-
+    
+    - name: Build
+      run: xcodebuild build-for-testing -scheme "CI" -destination "platform=iOS Simulator,name=iPhone 13,OS=15.0" ONLY_ACTIVE_ARCH=YES
+    
+    - name: Test
+      run: xcodebuild test-without-building -scheme "CI" -destination "platform=iOS Simulator,name=iPhone 13,OS=15.0" ONLY_ACTIVE_ARCH=YES

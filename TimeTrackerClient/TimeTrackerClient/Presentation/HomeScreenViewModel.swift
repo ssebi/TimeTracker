@@ -1,6 +1,7 @@
 
 import Combine
 import Foundation
+import TimeTrackerCore
 
 public class HomeScreenViewModel: ObservableObject {
 
@@ -22,7 +23,7 @@ public class HomeScreenViewModel: ObservableObject {
 		self.userLoader = userLoader
 	}
 
-	func refresh() {
+	public func refresh() {
 		guard let userID = userLoader.getUser().uid else {
 			return
 		}

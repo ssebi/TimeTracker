@@ -1,3 +1,4 @@
+import TimeTrackerCore
 
 struct HomeScreenUIComposer {
 

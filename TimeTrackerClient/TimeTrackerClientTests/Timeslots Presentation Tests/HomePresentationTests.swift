@@ -1,19 +1,29 @@
 
 import XCTest
 import TimeTrackerClient
+import TimeTrackerCore
 
 class HomePresentationTests: XCTestCase {
 
-	func test_init_callsLoadTimeslots() {
+	func test_init_doesNotMessageLoader() {
 		let (_, loader) = makeSUT()
 
-		XCTAssertEqual(loader.getTimeslotsCallCount, 1)
+		XCTAssertEqual(loader.getTimeslotsCallCount, 0)
+	}
+
+	func test_refresh_callsLoader() {
+		let (sut, spy) = makeSUT()
+
+		sut.refresh()
+
+		XCTAssertEqual(spy.getTimeslotsCallCount, 1)
 	}
 
 	func test_setup_storesTimeslotsOnSuccess() {
 		let (sut, loader) = makeSUT()
 		let timeslots = uniqueTimeslots
 
+		sut.refresh()
 		loader.completeLoadTimeslots(with: timeslots)
 
 		XCTAssertEqual(sut.timeslots, timeslots)
@@ -21,7 +31,7 @@ class HomePresentationTests: XCTestCase {
 
 	// MARK: - Helpers
 
-	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (HomeScreenViewModel, TimeslotsLoaderSpy) {
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (HomeScreenViewModel, TimeslotsLoaderSpy) {
 		let store = MockStore()
 		let loader = TimeslotsLoaderSpy(store: store)
 		let sut = HomeScreenViewModel(timeslotsLoader: loader, userLoader: UserLoaderMock())
@@ -65,7 +75,7 @@ class HomePresentationTests: XCTestCase {
 	}
 
 	private class UserLoaderMock: UserLoader {
-		func getUser() -> User {
+        func getUser() -> User {
 			User(uid: UUID().uuidString, email: "somteEmail@test.com", username: "Test", client: "Client")
 		}
 	}
