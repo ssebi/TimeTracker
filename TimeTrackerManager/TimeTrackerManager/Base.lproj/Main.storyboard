@@ -452,12 +452,12 @@
             </objects>
             <point key="canvasLocation" x="2601" y="1605"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Clients View Controller-->
         <scene sceneID="tBm-Yi-neb">
             <objects>
-                <viewController id="NN6-gF-ahP" sceneMemberID="viewController">
+                <viewController id="NN6-gF-ahP" customClass="AddClientsViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c59-Au-eYq">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new Clients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggh-z6-ETK">
@@ -474,6 +474,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="clientName:" destination="Mvr-mt-R5W" eventType="editingDidEnd" id="l06-49-eOM"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a project name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="exr-PW-9ty">
                                         <rect key="frame" x="20" y="76" width="271" height="34"/>
@@ -495,6 +498,9 @@
                                         <fragment content="Add client"/>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="addClientButtonPressed:" destination="NN6-gF-ahP" eventType="touchUpInside" id="o19-CM-Lyj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FN0-SF-0rM"/>
@@ -511,8 +517,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s2H-SU-Voz"/>
+                    <connections>
+                        <outlet property="clientName" destination="JLV-IN-1o7" id="X7c-jH-QVk"/>
+                        <outlet property="clientProject" destination="exr-PW-9ty" id="DQx-6X-3iA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ylx-dF-2Z7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Mvr-mt-R5W" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3308.7890625" y="1604.9780380673499"/>
         </scene>
