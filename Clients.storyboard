@@ -10,22 +10,68 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Clients-->
         <scene sceneID="5FK-eG-OVW">
             <objects>
-                <tableViewController id="gMe-av-VWM" sceneMemberID="viewController">
+                <tableViewController id="gMe-av-VWM" customClass="ClientsTableViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="IVt-ZH-reQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Id5-Rs-0vP">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ClientListCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Id5-Rs-0vP" customClass="ClientListCell" customModule="TimeTrackerManager" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="100.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Id5-Rs-0vP" id="FI9-VA-uVc">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Id5-Rs-0vP" id="FI9-VA-uVc" customClass="ClientListCell" customModule="TimeTrackerManager" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f7p-1P-2NU">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="AuZ-XV-xTi"/>
+                                                <constraint firstAttribute="width" constant="100" id="ryz-rQ-pFe"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaV-vR-UgZ">
+                                            <rect key="frame" x="108" y="11" width="56" height="28"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ery-mE-UyH">
+                                            <rect key="frame" x="108" y="47" width="59" height="22"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total hours to invoice:  320h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkw-Tn-eu7">
+                                            <rect key="frame" x="185" y="67" width="209" height="22"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ery-mE-UyH" firstAttribute="leading" secondItem="f7p-1P-2NU" secondAttribute="trailing" constant="8" symbolic="YES" id="QPr-EE-gdE"/>
+                                        <constraint firstItem="KaV-vR-UgZ" firstAttribute="top" secondItem="FI9-VA-uVc" secondAttribute="topMargin" id="Rm7-s5-eg3"/>
+                                        <constraint firstItem="f7p-1P-2NU" firstAttribute="leading" secondItem="FI9-VA-uVc" secondAttribute="leading" id="ToO-Dq-jdr"/>
+                                        <constraint firstItem="ery-mE-UyH" firstAttribute="top" secondItem="KaV-vR-UgZ" secondAttribute="bottom" constant="8" symbolic="YES" id="X99-7o-mDs"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="pkw-Tn-eu7" secondAttribute="bottom" constant="0.5" id="Y6Z-88-fGY"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ery-mE-UyH" secondAttribute="trailing" constant="227" id="ehh-Y3-JY4"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="KaV-vR-UgZ" secondAttribute="trailing" constant="230" id="fah-a1-nT6"/>
+                                        <constraint firstItem="KaV-vR-UgZ" firstAttribute="leading" secondItem="f7p-1P-2NU" secondAttribute="trailing" constant="8" symbolic="YES" id="gnb-zv-6N0"/>
+                                        <constraint firstItem="pkw-Tn-eu7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="f7p-1P-2NU" secondAttribute="trailing" constant="8" symbolic="YES" id="mzL-YG-ZTc"/>
+                                        <constraint firstItem="f7p-1P-2NU" firstAttribute="top" secondItem="FI9-VA-uVc" secondAttribute="top" id="q8V-bD-Ndu"/>
+                                        <constraint firstItem="pkw-Tn-eu7" firstAttribute="trailing" secondItem="FI9-VA-uVc" secondAttribute="trailingMargin" id="ukD-k9-nKh"/>
+                                        <constraint firstAttribute="bottom" secondItem="f7p-1P-2NU" secondAttribute="bottom" id="zpa-qK-ed0"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="clientName" destination="KaV-vR-UgZ" id="1QE-e4-DZ2"/>
+                                    <outlet property="clientsAvatar" destination="f7p-1P-2NU" id="eQS-wS-kil"/>
+                                    <outlet property="clientsProject" destination="ery-mE-UyH" id="rzc-tm-fIf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -33,7 +79,7 @@
                             <outlet property="delegate" destination="gMe-av-VWM" id="4FV-YU-8fc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="AZk-Jk-tvj">
+                    <navigationItem key="navigationItem" title="Clients" id="AZk-Jk-tvj">
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="QSt-Ak-CRW">
                             <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                             <color key="tintColor" red="0.20392156859999999" green="0.67450980390000004" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
