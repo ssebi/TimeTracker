@@ -5,6 +5,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,7 +25,7 @@
                         <segue destination="h8L-kv-od0" kind="relationship" relationship="viewControllers" id="pxL-ek-3ha"/>
                         <segue destination="2mt-2r-dcX" kind="relationship" relationship="viewControllers" id="qa4-gW-mon"/>
                         <segue destination="i6z-Rj-06f" kind="relationship" relationship="viewControllers" id="WdN-qF-h3M"/>
-                        <segue destination="GJn-kq-rDi" kind="relationship" relationship="viewControllers" id="c0g-K2-8ex"/>
+                        <segue destination="SgH-vU-vdi" kind="relationship" relationship="viewControllers" id="c0g-K2-8ex"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HsS-HH-VO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -79,21 +80,61 @@
             </objects>
             <point key="canvasLocation" x="2720" y="529"/>
         </scene>
-        <!--Clients-->
-        <scene sceneID="J3O-ew-25q">
+        <!--Root View Controller-->
+        <scene sceneID="5FK-eG-OVW">
             <objects>
-                <viewControllerPlaceholder storyboardName="Clients" id="GJn-kq-rDi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="IKo-qV-Xwj"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lhn-5T-Ity" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tableViewController id="gMe-av-VWM" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="IVt-ZH-reQ">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Id5-Rs-0vP">
+                                <rect key="frame" x="0.0" y="50" width="428" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Id5-Rs-0vP" id="FI9-VA-uVc">
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gMe-av-VWM" id="4dh-ha-wL0"/>
+                            <outlet property="delegate" destination="gMe-av-VWM" id="4FV-YU-8fc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="AZk-Jk-tvj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UUU-3b-9UG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3888" y="430"/>
+        </scene>
+        <!--Clients-->
+        <scene sceneID="fvS-iq-yzf">
+            <objects>
+                <navigationController id="SgH-vU-vdi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Clients" image="scale.3d" catalog="system" selectedImage="scale.3d" id="H9A-oI-LyQ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wx2-Ws-2O7">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gMe-av-VWM" kind="relationship" relationship="rootViewController" id="UeE-ju-9ui"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xoa-ot-BY0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3008" y="430"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="labelColor"/>
     <resources>
+        <image name="scale.3d" catalog="system" width="128" height="112"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
