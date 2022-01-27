@@ -33,9 +33,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="aIC-jX-Bv3">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Dyn-Hx-sNC">
-                            <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.12941176469999999" green="0.54901960780000003" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Dyn-Hx-sNC">
+                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                            <color key="tintColor" red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -65,7 +65,7 @@
     <resources>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <image name="list.bullet.rectangle.fill" catalog="system" width="128" height="93"/>
-        <image name="plus.circle" catalog="system" width="32" height="32"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
