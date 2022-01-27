@@ -1,56 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LBy-Eh-0Xf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2oZ-zo-ztp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Projects-->
-        <scene sceneID="uyC-FB-kzW">
+        <!--Root View Controller-->
+        <scene sceneID="W3d-Cc-JiR">
             <objects>
-                <viewController id="LBy-Eh-0Xf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bGF-5b-GE2">
+                <tableViewController id="Eh9-eP-AQY" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="qXa-ze-suP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cl-xb-eDK">
-                                <rect key="frame" x="175.5" y="437.5" width="63" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="RDu-oi-BD1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="4Cl-xb-eDK" firstAttribute="centerX" secondItem="bGF-5b-GE2" secondAttribute="centerX" id="9lb-bb-ScR"/>
-                            <constraint firstItem="4Cl-xb-eDK" firstAttribute="centerY" secondItem="bGF-5b-GE2" secondAttribute="centerY" id="PUY-Pb-51y"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Projects" id="CC4-2J-AyD">
-                        <imageReference key="image" image="tray.circle" catalog="system" symbolScale="large"/>
-                        <color key="badgeColor" name="customGray"/>
-                        <imageReference key="selectedImage" image="tray.circle.fill" catalog="system" symbolScale="large"/>
-                    </tabBarItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZiA-jU-faY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2Rt-eJ-dFZ">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Rt-eJ-dFZ" id="b73-at-Wdq">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Eh9-eP-AQY" id="W8H-8s-2fm"/>
+                            <outlet property="delegate" destination="Eh9-eP-AQY" id="zUj-2F-AcT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="aIC-jX-Bv3"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BIJ-b7-YH4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1581" y="875"/>
+            <point key="canvasLocation" x="2458" y="884"/>
+        </scene>
+        <!--Projects-->
+        <scene sceneID="eN6-IR-rvM">
+            <objects>
+                <navigationController id="2oZ-zo-ztp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Projects" image="list.bullet.rectangle" catalog="system" selectedImage="list.bullet.rectangle.fill" id="kU2-vi-vO0"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P8I-KE-H92">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Eh9-eP-AQY" kind="relationship" relationship="rootViewController" id="80p-uI-uuO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="raq-ur-i0e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1578" y="884"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="labelColor"/>
     <resources>
-        <image name="tray.circle" catalog="system" width="128" height="121"/>
-        <image name="tray.circle.fill" catalog="system" width="128" height="121"/>
-        <namedColor name="customGray">
-            <color red="0.69800001382827759" green="0.74500000476837158" blue="0.76499998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
+        <image name="list.bullet.rectangle.fill" catalog="system" width="128" height="93"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -401,7 +401,7 @@
     <resources>
         <image name="logo" width="485" height="485"/>
         <image name="person.2.circle" catalog="system" width="128" height="121"/>
-        <image name="person.2.circle.fill" width="128" height="128"/>
+        <image name="person.2.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill.badge.plus" catalog="system" width="128" height="124"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
