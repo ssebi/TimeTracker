@@ -91,14 +91,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="LbF-PL-IoZ">
                         <barButtonItem key="rightBarButtonItem" title="Add new user" id="pzv-13-IWw">
-                            <imageReference key="image" image="person.fill.badge.plus" catalog="system" symbolScale="large" renderingMode="hierarchical">
+                            <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="hierarchical">
                                 <hierarchicalColors>
-                                    <color red="0.16082283850000001" green="0.56054133179999999" blue="0.45203018189999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color red="0.16082283850000001" green="0.56054133179999999" blue="0.45203018189999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color red="0.16082283850000001" green="0.56054133179999999" blue="0.45203018189999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color red="0.66115826369999997" green="0.8620097041" blue="0.92671054600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </hierarchicalColors>
                             </imageReference>
-                            <color key="tintColor" red="0.12941176469999999" green="0.54901960780000003" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="8Cz-Ao-HkL" kind="show" id="BYi-RY-0nW"/>
                             </connections>
@@ -407,7 +407,7 @@
         <image name="logo" width="485" height="485"/>
         <image name="person.2.circle" catalog="system" width="128" height="121"/>
         <image name="person.2.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="person.fill.badge.plus" catalog="system" width="128" height="124"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
