@@ -35,7 +35,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="AZk-Jk-tvj">
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="QSt-Ak-CRW">
-                            <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
+                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                             <color key="tintColor" red="0.20392156859999999" green="0.67450980390000004" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="Qu0-cT-QWh" kind="show" id="ZeL-gq-JIO"/>
@@ -62,10 +62,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jg5-RT-SMD">
-                                <rect key="frame" x="107" y="787" width="200" height="50"/>
+                                <rect key="frame" x="57" y="787" width="300" height="50"/>
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.67450980390000004" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="KbN-Ee-Zpp"/>
+                                    <constraint firstAttribute="width" constant="300" id="KbN-Ee-Zpp"/>
                                     <constraint firstAttribute="height" constant="50" id="aLx-UD-r3q"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
@@ -197,7 +197,7 @@
     </scenes>
     <color key="tintColor" systemColor="labelColor"/>
     <resources>
-        <image name="plus.circle" catalog="system" width="32" height="32"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="scale.3d" catalog="system" width="128" height="112"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
