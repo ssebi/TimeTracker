@@ -10,6 +10,7 @@ import Foundation
 struct Path {
     static let users = "users"
     static let timeSlots = "timeSlots"
+    static let clients = "Clients"
 }
 
 
