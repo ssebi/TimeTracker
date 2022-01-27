@@ -466,7 +466,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="UserTableView" destination="81l-mQ-F2P" id="kdz-LS-1RA"/>
+                        <outlet property="userTableView" destination="81l-mQ-F2P" id="QnE-wX-2UX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XfF-t8-Sel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

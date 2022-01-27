@@ -15,7 +15,7 @@ class UserTableViewController: UITableViewController {
         didSet { tableView.reloadData() }
     }
     // Data
-    @IBOutlet var UserTableView: UITableView!
+    @IBOutlet var userTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
