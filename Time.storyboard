@@ -32,8 +32,8 @@
                             <constraint firstItem="K6G-nJ-vYh" firstAttribute="centerX" secondItem="yzP-U4-niH" secondAttribute="centerX" id="oqV-FQ-Xu8"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Time" selectedImage="clock" catalog="system" id="Xx1-cx-dtg">
-                        <imageReference key="image" image="clock.fill" catalog="system" symbolScale="large"/>
+                    <tabBarItem key="tabBarItem" title="Time" selectedImage="clock.fill" catalog="system" id="Xx1-cx-dtg">
+                        <imageReference key="image" image="clock" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1QN-hh-ch2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

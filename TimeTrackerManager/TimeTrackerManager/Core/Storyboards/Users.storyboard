@@ -381,7 +381,7 @@
         <scene sceneID="HZg-JK-jC1">
             <objects>
                 <navigationController id="jhL-nd-bag" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Users" id="d6d-Me-5AV">
+                    <tabBarItem key="tabBarItem" title="Users" image="person.2.circle" catalog="system" selectedImage="person.2.circle.fill" id="d6d-Me-5AV">
                         <color key="badgeColor" red="0.16082283850000001" green="0.56054133179999999" blue="0.45203018189999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="URx-Ax-hnR">
@@ -400,6 +400,8 @@
     <color key="tintColor" systemColor="labelColor"/>
     <resources>
         <image name="logo" width="485" height="485"/>
+        <image name="person.2.circle" catalog="system" width="128" height="121"/>
+        <image name="person.2.circle.fill" width="128" height="128"/>
         <image name="person.fill.badge.plus" catalog="system" width="128" height="124"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -34,9 +34,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Projects" id="CC4-2J-AyD">
-                        <imageReference key="image" image="tray.circle.fill" catalog="system" symbolScale="large"/>
+                        <imageReference key="image" image="tray.circle" catalog="system" symbolScale="large"/>
                         <color key="badgeColor" name="customGray"/>
-                        <imageReference key="selectedImage" image="tray.circle" catalog="system" symbolScale="large"/>
+                        <imageReference key="selectedImage" image="tray.circle.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiA-jU-faY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
