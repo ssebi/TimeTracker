@@ -196,6 +196,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6B2B273276256D500705659 /* Build configuration list for PBXNativeTarget "TimeTrackerManager" */;
 			buildPhases = (
+				C6EA960F27A299EB00113D2D /* ShellScript */,
 				C6B2B245276256D400705659 /* Sources */,
 				C6B2B246276256D400705659 /* Frameworks */,
 				C6B2B247276256D400705659 /* Resources */,
@@ -324,6 +325,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C6EA960F27A299EB00113D2D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C6B2B245276256D400705659 /* Sources */ = {
