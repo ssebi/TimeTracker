@@ -20,7 +20,11 @@ class AddClientsViewController: UIViewController {
 
     }
     @IBAction func addClientButtonPressed(_ sender: Any) {
-        clientPublisher.createClient(clientName.text ?? "", project: clientProject.text ?? "") { [weak self] result in
+        guard clientName.text != nil,
+              clientProject.text != nil else {
+            return
+        }
+        clientPublisher.createClient(clientName.text!, project: clientProject.text! ) { [weak self] result in
             guard let self = self else { return }
             switch result {
                 case .success:
