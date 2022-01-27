@@ -181,7 +181,22 @@
         <scene sceneID="fvS-iq-yzf">
             <objects>
                 <navigationController id="SgH-vU-vdi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Clients" image="scale.3d" catalog="system" selectedImage="scale.3d" id="H9A-oI-LyQ"/>
+                    <tabBarItem key="tabBarItem" title="Clients" id="H9A-oI-LyQ">
+                        <imageReference key="image" image="scale.3d" catalog="system" renderingMode="hierarchical">
+                            <hierarchicalColors>
+                                <color red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color red="0.66115826369999997" green="0.8620097041" blue="0.92671054600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                        <imageReference key="selectedImage" image="scale.3d" catalog="system" renderingMode="hierarchical">
+                            <hierarchicalColors>
+                                <color red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wx2-Ws-2O7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -204,6 +219,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
