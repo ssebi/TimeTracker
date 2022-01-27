@@ -581,6 +581,11 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="createUserButtonPressed:" destination="8Cz-Ao-HkL" eventType="touchUpInside" id="BMg-F2-ihu"/>
                                         </connections>
@@ -665,10 +670,10 @@
                                         <exclude reference="L7i-An-kOB"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="XbV-La-Stt"/>
-                                        <exclude reference="e81-ux-Vlf"/>
                                         <exclude reference="0lp-Cq-00p"/>
                                         <exclude reference="p8J-DS-ego"/>
+                                        <exclude reference="XbV-La-Stt"/>
+                                        <exclude reference="e81-ux-Vlf"/>
                                         <exclude reference="95z-SF-Fzh"/>
                                         <exclude reference="P5X-qA-R70"/>
                                         <exclude reference="PbL-ZM-oKA"/>
@@ -683,8 +688,8 @@
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="tfX-3j-YYZ"/>
-                                        <include reference="e81-ux-Vlf"/>
                                         <include reference="0lp-Cq-00p"/>
+                                        <include reference="e81-ux-Vlf"/>
                                         <include reference="P5X-qA-R70"/>
                                         <include reference="PbL-ZM-oKA"/>
                                         <include reference="gro-6G-con"/>
@@ -693,8 +698,8 @@
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <mask key="constraints">
-                                        <include reference="XbV-La-Stt"/>
                                         <include reference="p8J-DS-ego"/>
+                                        <include reference="XbV-La-Stt"/>
                                         <include reference="95z-SF-Fzh"/>
                                     </mask>
                                 </variation>
