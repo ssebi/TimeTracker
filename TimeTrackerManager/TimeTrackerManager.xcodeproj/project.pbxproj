@@ -15,6 +15,8 @@
 		54075A2A27A2E07E003B1A79 /* Projects.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54075A2827A2E07E003B1A79 /* Projects.storyboard */; };
 		54075A2E27A2E202003B1A79 /* AddClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A2C27A2E202003B1A79 /* AddClientsViewController.swift */; };
 		54075A2F27A2E202003B1A79 /* ClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A2D27A2E202003B1A79 /* ClientsTableViewController.swift */; };
+		54075A3227A2E284003B1A79 /* FirebaseClientPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A3027A2E284003B1A79 /* FirebaseClientPublisher.swift */; };
+		54075A3327A2E284003B1A79 /* FirebaseClientsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A3127A2E284003B1A79 /* FirebaseClientsLoader.swift */; };
 		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
 		547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */; };
 		547B01ED278DDAB700636A90 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EC278DDAB700636A90 /* Utils.swift */; };
@@ -66,6 +68,8 @@
 		54075A2927A2E07E003B1A79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Projects.storyboard; sourceTree = "<group>"; };
 		54075A2C27A2E202003B1A79 /* AddClientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddClientsViewController.swift; sourceTree = "<group>"; };
 		54075A2D27A2E202003B1A79 /* ClientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsTableViewController.swift; sourceTree = "<group>"; };
+		54075A3027A2E284003B1A79 /* FirebaseClientPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClientPublisher.swift; sourceTree = "<group>"; };
+		54075A3127A2E284003B1A79 /* FirebaseClientsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClientsLoader.swift; sourceTree = "<group>"; };
 		5468DDF62763C16D00E39DD9 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUsersLoader.swift; sourceTree = "<group>"; };
 		547B01EC278DDAB700636A90 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -144,6 +148,43 @@
 			path = Clients;
 			sourceTree = "<group>";
 		};
+		54075A3427A2E291003B1A79 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				54BAC8532796F80000684981 /* UserDetailViewController.swift */,
+				54AE3689276A21E500407F04 /* AddUserViewController.swift */,
+				54AE368F2770C7CF00407F04 /* UserListCell.swift */,
+				54AE368B2770BD8200407F04 /* UserTableViewController.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		54075A3527A2E2B4003B1A79 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2B250276256D400705659 /* LoginViewController.swift */,
+				54075A2B27A2E1E7003B1A79 /* Clients */,
+				54075A3427A2E291003B1A79 /* Users */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		54075A3627A2E2DA003B1A79 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				54075A3727A2E2E3003B1A79 /* Users */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		54075A3727A2E2E3003B1A79 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				C68C87C72771FF83002B6746 /* UserModel.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		54C34F8627736432004C11E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +195,8 @@
 		54E38BD42786EEAD00625F92 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				54075A2B27A2E1E7003B1A79 /* Clients */,
+				54075A3627A2E2DA003B1A79 /* Models */,
+				54075A3527A2E2B4003B1A79 /* Controllers */,
 				54075A1A27A2CD04003B1A79 /* Storyboards */,
 				54E38BD72786EEFD00625F92 /* Infra */,
 			);
@@ -164,6 +206,8 @@
 		54E38BD72786EEFD00625F92 /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				54075A3027A2E284003B1A79 /* FirebaseClientPublisher.swift */,
+				54075A3127A2E284003B1A79 /* FirebaseClientsLoader.swift */,
 				54E38BD52786EEE200625F92 /* FirebaseUserPublisher.swift */,
 				547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */,
 			);
@@ -196,18 +240,12 @@
 			isa = PBXGroup;
 			children = (
 				54E38BD42786EEAD00625F92 /* Core */,
-				C68C87C72771FF83002B6746 /* UserModel.swift */,
 				C6B2B24C276256D400705659 /* AppDelegate.swift */,
 				C6B2B24E276256D400705659 /* SceneDelegate.swift */,
-				C6B2B250276256D400705659 /* LoginViewController.swift */,
 				C6B2B255276256D500705659 /* Assets.xcassets */,
 				C6B2B25A276256D500705659 /* Info.plist */,
 				5468DDF62763C16D00E39DD9 /* DesignableView.swift */,
-				54AE3689276A21E500407F04 /* AddUserViewController.swift */,
-				54AE368B2770BD8200407F04 /* UserTableViewController.swift */,
-				54AE368F2770C7CF00407F04 /* UserListCell.swift */,
 				547B01EC278DDAB700636A90 /* Utils.swift */,
-				54BAC8532796F80000684981 /* UserDetailViewController.swift */,
 			);
 			path = TimeTrackerManager;
 			sourceTree = "<group>";
@@ -397,6 +435,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54075A3327A2E284003B1A79 /* FirebaseClientsLoader.swift in Sources */,
+				54075A3227A2E284003B1A79 /* FirebaseClientPublisher.swift in Sources */,
 				54AE36902770C7CF00407F04 /* UserListCell.swift in Sources */,
 				54AE368A276A21E500407F04 /* AddUserViewController.swift in Sources */,
 				54BAC8542796F80000684981 /* UserDetailViewController.swift in Sources */,
