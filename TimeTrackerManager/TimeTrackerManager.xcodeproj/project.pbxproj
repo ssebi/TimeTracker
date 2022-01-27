@@ -17,6 +17,7 @@
 		54075A2F27A2E202003B1A79 /* ClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A2D27A2E202003B1A79 /* ClientsTableViewController.swift */; };
 		54075A3227A2E284003B1A79 /* FirebaseClientPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A3027A2E284003B1A79 /* FirebaseClientPublisher.swift */; };
 		54075A3327A2E284003B1A79 /* FirebaseClientsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A3127A2E284003B1A79 /* FirebaseClientsLoader.swift */; };
+		54075A3927A2E350003B1A79 /* ClientListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A3827A2E350003B1A79 /* ClientListCell.swift */; };
 		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
 		547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */; };
 		547B01ED278DDAB700636A90 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EC278DDAB700636A90 /* Utils.swift */; };
@@ -70,6 +71,7 @@
 		54075A2D27A2E202003B1A79 /* ClientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsTableViewController.swift; sourceTree = "<group>"; };
 		54075A3027A2E284003B1A79 /* FirebaseClientPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClientPublisher.swift; sourceTree = "<group>"; };
 		54075A3127A2E284003B1A79 /* FirebaseClientsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClientsLoader.swift; sourceTree = "<group>"; };
+		54075A3827A2E350003B1A79 /* ClientListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientListCell.swift; sourceTree = "<group>"; };
 		5468DDF62763C16D00E39DD9 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUsersLoader.swift; sourceTree = "<group>"; };
 		547B01EC278DDAB700636A90 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		54075A2B27A2E1E7003B1A79 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
+				54075A3827A2E350003B1A79 /* ClientListCell.swift */,
 				54075A2C27A2E202003B1A79 /* AddClientsViewController.swift */,
 				54075A2D27A2E202003B1A79 /* ClientsTableViewController.swift */,
 			);
@@ -449,6 +452,7 @@
 				54AE368C2770BD8300407F04 /* UserTableViewController.swift in Sources */,
 				547B01ED278DDAB700636A90 /* Utils.swift in Sources */,
 				C6B2B24F276256D400705659 /* SceneDelegate.swift in Sources */,
+				54075A3927A2E350003B1A79 /* ClientListCell.swift in Sources */,
 				54E38BD62786EEE200625F92 /* FirebaseUserPublisher.swift in Sources */,
 				547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */,
 			);
