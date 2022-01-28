@@ -68,6 +68,11 @@ extension ClientsTableViewController {
         return cell
     }
 
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        present(ClientsDetailViewController(), animated: true)
+//
+//    }
+
     func configRefreshControl() {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
