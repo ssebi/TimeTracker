@@ -21,6 +21,7 @@ class UserTableViewController: UITableViewController {
         super.viewDidLoad()
 		navigationController?.navigationBar.tintColor = .white
         loadUserData()
+        configRefreshControl()
     }
 
     required init?(coder: NSCoder) {
@@ -28,7 +29,7 @@ class UserTableViewController: UITableViewController {
     }
     // MARK: - Table view data source
     func loadUserData() {
-        userLoader.getUsers() { result in
+        userLoader.getUsers { result in
             if let users = try? result.get() {
                 self.users = users
             }
@@ -39,13 +40,15 @@ class UserTableViewController: UITableViewController {
 extension UserTableViewController {
     static let usersCellIdentifier = "UserListCell"
 
-    //TODO: use new api for tableview
+    // tod: use new api for tableview
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         users.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.usersCellIdentifier, for: indexPath) as? UserListCell else {
+        guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: Self.usersCellIdentifier,
+                for: indexPath) as? UserListCell else {
             fatalError("Unable to deque UserCell")
         }
 
@@ -85,7 +88,11 @@ extension UserTableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(
+            _ tableView: UITableView,
+            commit editingStyle: UITableViewCell.EditingStyle,
+            forRowAt indexPath: IndexPath) {
+
         let userCell = users[indexPath.row]
         if editingStyle == .delete {
             self.users.remove(at: indexPath.row)
@@ -97,4 +104,15 @@ extension UserTableViewController {
         present(UserDetailViewController(userDetail: users[indexPath.row]), animated: true)
     }
 
+    func configRefreshControl() {
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+
+    @objc func handleRefreshControl() {
+        loadUserData()
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+        }
+    }
 }
