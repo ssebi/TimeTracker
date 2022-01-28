@@ -20,6 +20,7 @@ class AddClientsViewController: UIViewController {
 
     }
     @IBAction func addClientButtonPressed(_ sender: Any) {
+        toggleSpiner(isHidden: false)
         guard clientName.text != nil,
               clientProject.text != nil else {
             return
