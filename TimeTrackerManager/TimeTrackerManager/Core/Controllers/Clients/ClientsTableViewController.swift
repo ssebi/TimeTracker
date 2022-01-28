@@ -22,7 +22,7 @@ class ClientsTableViewController: UITableViewController {
     }
 
     func loadClientsData() {
-        clientsLoader.getClients() { result in
+        clientsLoader.getClients { result in
             if let clients = try? result.get() {
                 self.clients = clients
             }
@@ -37,11 +37,12 @@ extension ClientsTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.clientCellIdentifier, for: indexPath) as? ClientListCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.clientCellIdentifier,
+                                                       for: indexPath) as? ClientListCell else {
             fatalError("Unable to deque client Cell")
         }
 
-        //temporary leave it like this
+        // temporary leave it like this
         let clientRandomAvatarUrl = URL(string: "https://avatars.dicebear.com/api/miniavs/client.png")
 
         let clientCell = clients[indexPath.row]

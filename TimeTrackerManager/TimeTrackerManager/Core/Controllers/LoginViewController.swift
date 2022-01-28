@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var errorLabel: UILabel!
 
-
     private lazy var session = SessionStore(authProvider: FirebaseAuthProvider())
     var isLoading = true
 
@@ -38,7 +37,7 @@ class LoginViewController: UIViewController {
             if case let .failure(result) =  result {
                 self?.errorLabel.text = result.localizedDescription
 			}
-            if case .success(_) = result {
+            if case .success = result {
                 self?.performSegue(withIdentifier: "showMainTabBar", sender: self)
             }
         }
@@ -55,4 +54,3 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
 }
-

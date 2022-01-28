@@ -16,14 +16,14 @@ class FirebaseClientsLoader {
     typealias GetClientsResult = (Result<[Client], Error>) -> Void
 
     func getClients(completion: @escaping GetClientsResult) {
-        store.getClients(){ result in
-            if case .success(_) = result {
+        store.getClients { result in
+            if case .success = result {
                 completion(result)
             }
         }
     }
 
-    init(store: ClientsStore){
+    init(store: ClientsStore) {
         self.store = store
     }
 }
