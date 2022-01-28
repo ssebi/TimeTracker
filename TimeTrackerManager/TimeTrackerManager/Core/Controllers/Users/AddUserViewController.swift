@@ -58,7 +58,8 @@ class AddUserViewController: UIViewController {
             }
         }
     }
-    override func viewDidDisappear(_ animated: Bool) {
+
+    deinit {
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -66,16 +67,12 @@ class AddUserViewController: UIViewController {
 
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
                                     as? NSValue)?.cgRectValue else {
-            // if keyboard size is not available for some reason, dont do anything
             return
         }
-
-        // move the root view up by the distance of keyboard height
         self.view.frame.origin.y = 0 - keyboardSize.height
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        // move back the root view origin to zero
         self.view.frame.origin.y = 0
     }
     /*
