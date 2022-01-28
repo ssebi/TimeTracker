@@ -21,6 +21,7 @@ class UserTableViewController: UITableViewController {
         super.viewDidLoad()
 		navigationController?.navigationBar.tintColor = .white
         loadUserData()
+        configRefreshControl()
     }
 
     required init?(coder: NSCoder) {
@@ -101,5 +102,17 @@ extension UserTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         present(UserDetailViewController(userDetail: users[indexPath.row]), animated: true)
+    }
+
+    func configRefreshControl() {
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+
+    @objc func handleRefreshControl() {
+        loadUserData()
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
 }

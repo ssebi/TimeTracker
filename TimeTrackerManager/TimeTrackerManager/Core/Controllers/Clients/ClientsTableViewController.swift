@@ -18,6 +18,7 @@ class ClientsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configRefreshControl()
         loadClientsData()
     }
 
@@ -65,5 +66,17 @@ extension ClientsTableViewController {
         cell.clientsProject.text = "\(projects)"
 
         return cell
+    }
+
+    func configRefreshControl() {
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+
+    @objc func handleRefreshControl() {
+        loadClientsData()
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
 }
