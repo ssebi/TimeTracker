@@ -58,8 +58,8 @@
                                         <constraint firstItem="f7p-1P-2NU" firstAttribute="leading" secondItem="FI9-VA-uVc" secondAttribute="leading" id="ToO-Dq-jdr"/>
                                         <constraint firstItem="ery-mE-UyH" firstAttribute="top" secondItem="KaV-vR-UgZ" secondAttribute="bottom" constant="8" symbolic="YES" id="X99-7o-mDs"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="pkw-Tn-eu7" secondAttribute="bottom" constant="0.5" id="Y6Z-88-fGY"/>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ery-mE-UyH" secondAttribute="trailing" constant="227" id="ehh-Y3-JY4"/>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="KaV-vR-UgZ" secondAttribute="trailing" constant="230" id="fah-a1-nT6"/>
+                                        <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="ery-mE-UyH" secondAttribute="trailing" constant="227" id="ehh-Y3-JY4"/>
+                                        <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="KaV-vR-UgZ" secondAttribute="trailing" constant="230" id="fah-a1-nT6"/>
                                         <constraint firstItem="KaV-vR-UgZ" firstAttribute="leading" secondItem="f7p-1P-2NU" secondAttribute="trailing" constant="8" symbolic="YES" id="gnb-zv-6N0"/>
                                         <constraint firstItem="pkw-Tn-eu7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="f7p-1P-2NU" secondAttribute="trailing" constant="8" symbolic="YES" id="mzL-YG-ZTc"/>
                                         <constraint firstItem="f7p-1P-2NU" firstAttribute="top" secondItem="FI9-VA-uVc" secondAttribute="top" id="q8V-bD-Ndu"/>
