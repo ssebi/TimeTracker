@@ -32,7 +32,6 @@ class ClientsTableViewController: UITableViewController {
 
 extension ClientsTableViewController {
     static let clientCellIdentifier = "ClientListCell"
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         clients.count
     }
