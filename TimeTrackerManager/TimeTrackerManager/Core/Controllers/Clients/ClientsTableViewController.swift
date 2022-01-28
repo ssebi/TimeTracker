@@ -56,9 +56,13 @@ extension ClientsTableViewController {
                 cell.clientsAvatar.image = UIImage(systemName: "xmark.icloud")!
             }
         }
+        var projects = [String]()
+        clientCell.projects.forEach { project in
+            projects.append(project.name)
+        }
 
         cell.clientName.text = clientCell.name
-        cell.clientsProject.text = "\(clientCell.projects)"
+        cell.clientsProject.text = "\(projects)"
 
         return cell
     }
