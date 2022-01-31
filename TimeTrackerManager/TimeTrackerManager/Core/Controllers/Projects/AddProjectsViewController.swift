@@ -14,16 +14,17 @@ class AddProjectsViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet var clientPicker: UIPickerView!
     var clientPickerData: [String] = [String]()
 
+    let clientsLoader = FirebaseClientsLoader(store: FirebaseClientsStore())
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadClientsData()
+        loadClientPicker()
         NotificationCenter.default.addObserver(self, selector: #selector(AddProjectsViewController.keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(AddProjectsViewController.keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
-        loadClientPicker()
-        clientPickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
     }
     @IBAction func createProjectButtonPressed(_ sender: Any) {
 
@@ -63,5 +64,15 @@ extension AddProjectsViewController {
 
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
+    }
+
+    func loadClientsData() {
+        clientsLoader.getClients { result in
+            if let clients = try? result.get() {
+                clients.forEach { client in
+                    self.clientPickerData.append(client.name)
+                }
+            }
+        }
     }
 }
