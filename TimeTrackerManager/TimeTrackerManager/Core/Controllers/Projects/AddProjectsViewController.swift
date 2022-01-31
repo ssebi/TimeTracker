@@ -33,7 +33,7 @@ class AddProjectsViewController: UIViewController, UIPickerViewDelegate, UIPicke
 
     @IBAction func createProjectButtonPressed(_ sender: Any) {
         toggleSpiner(isHidden: false)
-        guard projectName.text != nil else {
+        guard !projectName.hasText, !selectedClient.isEmpty else {
             self.validationError(title: "Error", message: "Something went wrong", hasError: true)
             return
         }

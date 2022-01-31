@@ -27,6 +27,7 @@ final class UserDetailViewController: UIViewController {
 
 		setupViewHierarchy()
 		loadImage()
+
     }
 
     private func setupViewHierarchy() {

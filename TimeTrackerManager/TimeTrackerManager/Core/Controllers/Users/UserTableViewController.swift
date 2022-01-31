@@ -78,8 +78,8 @@ extension UserTableViewController {
 						allProjects.insert(timeSlot.projectName)
 					}
 					DispatchQueue.main.async {
-						cell.totalHours.text = "\(totalHours)"
-						cell.userProjects.text = "\(allProjects)"
+						cell.totalHours.text = "Total h:\(totalHours)"
+                        cell.userProjects.text = allProjects.joined(separator: ", ")
 					}
 				}
 			}
