@@ -7,6 +7,7 @@
 
 import UIKit
 import TimeTrackerCore
+import SwiftUI
 
 class ProjectsTableViewController: UITableViewController {
 
@@ -26,7 +27,9 @@ class ProjectsTableViewController: UITableViewController {
     }
 
     func loadProjectsData() {
-        self.projects = projectLoader.getProjects()
+        projectLoader.getProjects { [weak self] result in
+            self?.projects = result
+        }
         print("🎃", self.projects)
     }
 }

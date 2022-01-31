@@ -11,21 +11,21 @@ import TimeTrackerCore
 class FirebaseProjectsLoader {
 
     let clientsLoader = FirebaseClientsLoader(store: FirebaseClientsStore())
-    var projects = [ProjectCell]()
     var clients = [Client]()
     typealias GetProjectsResult = (Result<[ProjectCell], Error>) -> Void
 
-    func getProjects() -> [ProjectCell] {
+    func getProjects(completion: @escaping ([ProjectCell]) -> Void) {
         clientsLoader.getClients { result in
+            var projects = [ProjectCell]()
             if let clients = try? result.get() {
                 clients.forEach { client in
                     client.projects.forEach { project in
                         let project = ProjectCell(name: project.name, client: client.name)
-                        self.projects.append(project)
+                        projects.append(project)
                     }
                 }
             }
+            completion(projects)
         }
-        return projects
     }
 }
