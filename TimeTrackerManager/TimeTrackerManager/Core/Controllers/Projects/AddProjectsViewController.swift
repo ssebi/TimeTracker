@@ -26,6 +26,11 @@ class AddProjectsViewController: UIViewController, UIPickerViewDelegate, UIPicke
         clientPickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
     }
     @IBAction func createProjectButtonPressed(_ sender: Any) {
+
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -45,5 +50,18 @@ extension AddProjectsViewController {
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return clientPickerData[row]
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+                                    as? NSValue)?.cgRectValue else {
+            return
+        }
+        self.view.frame.origin.y = 0 - keyboardSize.height
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
     }
 }
