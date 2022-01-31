@@ -11,7 +11,7 @@ struct ProjectCell {
     let name: String
     let client: String
 
-    public init(name: String, client: String){
+    public init(name: String, client: String) {
         self.name = name
         self.client = client
     }

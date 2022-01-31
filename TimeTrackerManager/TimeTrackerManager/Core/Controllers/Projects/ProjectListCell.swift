@@ -10,7 +10,7 @@ import UIKit
 class ProjectListCell: UITableViewCell {
 
     @IBOutlet var projectName: UILabel!
-    @IBOutlet var projectClient: UIView!
+    @IBOutlet var projectClient: UILabel!
     @IBOutlet var projectUsers: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

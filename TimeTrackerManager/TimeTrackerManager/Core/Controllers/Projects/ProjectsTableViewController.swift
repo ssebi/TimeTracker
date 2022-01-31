@@ -30,7 +30,6 @@ class ProjectsTableViewController: UITableViewController {
         projectLoader.getProjects { [weak self] result in
             self?.projects = result
         }
-        print("🎃", self.projects)
     }
 }
 
@@ -51,7 +50,8 @@ extension ProjectsTableViewController {
 
         let projectCell = projects[indexPath.row]
         cell.projectName.text = projectCell.name
-
+        cell.projectClient.text = projectCell.client
+        cell.projectUsers.text = "0"
         return cell
     }
 
