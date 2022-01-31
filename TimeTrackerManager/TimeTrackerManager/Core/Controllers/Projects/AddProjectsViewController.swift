@@ -16,6 +16,12 @@ class AddProjectsViewController: UIViewController, UIPickerViewDelegate, UIPicke
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(AddProjectsViewController.keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(AddProjectsViewController.keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
         loadClientPicker()
         clientPickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
     }
