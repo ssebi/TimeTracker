@@ -9,8 +9,7 @@ import UIKit
 
 class ClientsDetailViewController: UIViewController {
 
-
-    @IBOutlet var clientNAme: UILabel!
+    @IBOutlet var clientNAme: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

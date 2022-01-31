@@ -71,7 +71,7 @@
                                     <outlet property="clientName" destination="KaV-vR-UgZ" id="1QE-e4-DZ2"/>
                                     <outlet property="clientsAvatar" destination="f7p-1P-2NU" id="eQS-wS-kil"/>
                                     <outlet property="clientsProject" destination="ery-mE-UyH" id="rzc-tm-fIf"/>
-                                    <segue destination="dr3-kh-hIu" kind="showDetail" id="dG2-Pd-hV3"/>
+                                    <segue destination="dr3-kh-hIu" kind="show" identifier="clientDetailView" id="gaJ-e9-6BK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -88,12 +88,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUU-3b-9UG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3888" y="430"/>
+            <point key="canvasLocation" x="3928" y="492"/>
         </scene>
         <!--Clients Detail View Controller-->
         <scene sceneID="zNp-IH-J94">
             <objects>
-                <viewController id="dr3-kh-hIu" customClass="ClientsDetailViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="dr3-kh-hIu" customClass="ClientsDetailViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mjC-tV-0cD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,6 +126,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="lmT-HP-Kim"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="clientNAme" destination="Vcf-Rb-Vdr" id="j37-9O-7ee"/>
@@ -144,14 +145,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qY-Vh-9P1" customClass="PDFView">
-                                <rect key="frame" x="3" y="148" width="408" height="652"/>
+                                <rect key="frame" x="3" y="0.0" width="408" height="800"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zxr-L6-c1L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2qY-Vh-9P1" firstAttribute="top" secondItem="zxr-L6-c1L" secondAttribute="top" constant="148" id="InH-m4-Sby"/>
+                            <constraint firstItem="2qY-Vh-9P1" firstAttribute="top" secondItem="zxr-L6-c1L" secondAttribute="top" id="InH-m4-Sby"/>
                             <constraint firstItem="zxr-L6-c1L" firstAttribute="bottom" secondItem="2qY-Vh-9P1" secondAttribute="bottom" constant="8" id="ZZP-il-zDj"/>
                             <constraint firstItem="2qY-Vh-9P1" firstAttribute="leading" secondItem="zxr-L6-c1L" secondAttribute="leading" constant="3" id="cOn-gh-hFT"/>
                             <constraint firstItem="zxr-L6-c1L" firstAttribute="trailing" secondItem="2qY-Vh-9P1" secondAttribute="trailing" constant="3" id="miA-3m-Z2r"/>
