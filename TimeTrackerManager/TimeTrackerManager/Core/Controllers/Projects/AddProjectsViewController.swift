@@ -14,9 +14,10 @@ class AddProjectsViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet var clientPicker: UIPickerView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-    var clientPickerData: [String] = [String]()
+    var clientPickerData = [String]()
     let projectsPublisher = FirebaseProjectPublisher()
     let clientsLoader = FirebaseClientsLoader(store: FirebaseClientsStore())
+    var selectedClient = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +34,10 @@ class AddProjectsViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBAction func createProjectButtonPressed(_ sender: Any) {
         toggleSpiner(isHidden: false)
         guard projectName.text != nil else {
+            self.validationError(title: "Error", message: "Something went wrong", hasError: true)
             return
         }
+
         projectsPublisher.createProject(projectName.text!, client: "2231pmDGUdiG2fRvCNnm") { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -69,6 +72,10 @@ extension AddProjectsViewController {
         return clientPickerData[row]
     }
 
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+       return self.selectedClient = clientPickerData[row]
+    }
+
     @objc func keyboardWillShow(notification: NSNotification) {
 
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
@@ -86,6 +93,7 @@ extension AddProjectsViewController {
         clientsLoader.getClients { result in
             if let clients = try? result.get() {
                 clients.forEach { [weak self] client in
+                    print("client >>>>>>> ", client)
                     self?.clientPickerData.append(client.name)
                     self?.loadClientPicker()
                 }
