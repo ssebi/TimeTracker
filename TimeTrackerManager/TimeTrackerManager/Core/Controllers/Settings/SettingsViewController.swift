@@ -22,4 +22,5 @@ class SettingsViewController: UIViewController {
     @IBAction func signOutButtonPressed(_ sender: Any) {
         SceneDelegate.session.signOut()
     }
+
 }
