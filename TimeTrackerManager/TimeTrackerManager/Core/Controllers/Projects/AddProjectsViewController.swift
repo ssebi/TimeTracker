@@ -71,6 +71,7 @@ extension AddProjectsViewController {
             if let clients = try? result.get() {
                 clients.forEach { client in
                     self.clientPickerData.append(client.name)
+                    self.loadClientPicker()
                 }
             }
         }
