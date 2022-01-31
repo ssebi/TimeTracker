@@ -27,6 +27,7 @@
 		54280D9E27A7F616000E4EEB /* ProjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54280D9D27A7F616000E4EEB /* ProjectListCell.swift */; };
 		54280DA027A7F758000E4EEB /* FirebaseProjectsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54280D9F27A7F758000E4EEB /* FirebaseProjectsLoader.swift */; };
 		54280DA327A81682000E4EEB /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54280DA227A81682000E4EEB /* ProjectCell.swift */; };
+		54280DA527A82465000E4EEB /* AddProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54280DA427A82465000E4EEB /* AddProjectsViewController.swift */; };
 		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
 		547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */; };
 		547B01ED278DDAB700636A90 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EC278DDAB700636A90 /* Utils.swift */; };
@@ -90,6 +91,7 @@
 		54280D9D27A7F616000E4EEB /* ProjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListCell.swift; sourceTree = "<group>"; };
 		54280D9F27A7F758000E4EEB /* FirebaseProjectsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProjectsLoader.swift; sourceTree = "<group>"; };
 		54280DA227A81682000E4EEB /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
+		54280DA427A82465000E4EEB /* AddProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectsViewController.swift; sourceTree = "<group>"; };
 		5468DDF62763C16D00E39DD9 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUsersLoader.swift; sourceTree = "<group>"; };
 		547B01EC278DDAB700636A90 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -199,18 +201,10 @@
 		54075A3627A2E2DA003B1A79 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				54280DA127A81651000E4EEB /* Projects */,
-				54075A3727A2E2E3003B1A79 /* Users */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		54075A3727A2E2E3003B1A79 /* Users */ = {
-			isa = PBXGroup;
-			children = (
+				54280DA227A81682000E4EEB /* ProjectCell.swift */,
 				C68C87C72771FF83002B6746 /* UserModel.swift */,
 			);
-			path = Users;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		54075A4027A44E99003B1A79 /* Invoice */ = {
@@ -234,14 +228,7 @@
 			children = (
 				54280D9927A7F4DC000E4EEB /* ProjectsTableViewController.swift */,
 				54280D9D27A7F616000E4EEB /* ProjectListCell.swift */,
-			);
-			path = Projects;
-			sourceTree = "<group>";
-		};
-		54280DA127A81651000E4EEB /* Projects */ = {
-			isa = PBXGroup;
-			children = (
-				54280DA227A81682000E4EEB /* ProjectCell.swift */,
+				54280DA427A82465000E4EEB /* AddProjectsViewController.swift */,
 			);
 			path = Projects;
 			sourceTree = "<group>";
@@ -510,6 +497,7 @@
 				C68C87C82771FF83002B6746 /* UserModel.swift in Sources */,
 				5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */,
 				C6B2B251276256D400705659 /* LoginViewController.swift in Sources */,
+				54280DA527A82465000E4EEB /* AddProjectsViewController.swift in Sources */,
 				54075A2E27A2E202003B1A79 /* AddClientsViewController.swift in Sources */,
 				54280DA327A81682000E4EEB /* ProjectCell.swift in Sources */,
 				C6B2B24D276256D400705659 /* AppDelegate.swift in Sources */,

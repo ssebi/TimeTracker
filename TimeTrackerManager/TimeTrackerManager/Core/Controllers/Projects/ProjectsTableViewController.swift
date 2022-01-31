@@ -50,8 +50,8 @@ extension ProjectsTableViewController {
 
         let projectCell = projects[indexPath.row]
         cell.projectName.text = projectCell.name
-        cell.projectClient.text = projectCell.client
-        cell.projectUsers.text = "0"
+        cell.projectClient.text = "owned by \(projectCell.client)"
+        cell.projectUsers.text = "1"
         return cell
     }
 
