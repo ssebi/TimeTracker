@@ -11,7 +11,6 @@ import TimeTrackerCore
 
 class SettingsViewController: UIViewController {
     var isLoading = true
-    var sceneDelegate = SceneDelegate()
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -21,7 +20,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet var userName: UILabel!
 
     @IBAction func signOutButtonPressed(_ sender: Any) {
-        sceneDelegate.session.signOut()
-        print("power pressed")
+        SceneDelegate.session.signOut()
     }
 }

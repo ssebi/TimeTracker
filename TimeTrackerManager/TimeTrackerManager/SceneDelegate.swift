@@ -11,15 +11,15 @@ import Combine
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    let session = SessionStore(authProvider: FirebaseAuthProvider())
+    static let session = SessionStore(authProvider: FirebaseAuthProvider())
     var subscriptions = [AnyCancellable]()
-    
+
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions) {
             guard (scene as? UIWindowScene) != nil else { return }
-            let sub = self.session.$user.sink {[weak self] user in
+			let sub = Self.session.$user.receive(on: RunLoop.main).sink { [weak self] user in
                 if user == nil {
                     self?.window?.rootViewController = UIStoryboard(
                         name: "Main",
