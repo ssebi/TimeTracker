@@ -12,22 +12,38 @@ class AddProjectsViewController: UIViewController, UIPickerViewDelegate, UIPicke
 
     @IBOutlet var projectName: UITextField!
     @IBOutlet var clientPicker: UIPickerView!
-    var clientPickerData: [String] = [String]()
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    var clientPickerData: [String] = [String]()
+    let projectsPublisher = FirebaseProjectPublisher()
     let clientsLoader = FirebaseClientsLoader(store: FirebaseClientsStore())
 
     override func viewDidLoad() {
         super.viewDidLoad()
         loadClientsData()
         loadClientPicker()
+        activityIndicator.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(AddProjectsViewController.keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(AddProjectsViewController.keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    @IBAction func createProjectButtonPressed(_ sender: Any) {
 
+    @IBAction func createProjectButtonPressed(_ sender: Any) {
+        toggleSpiner(isHidden: false)
+        guard projectName.text != nil else {
+            return
+        }
+        projectsPublisher.createProject(projectName.text!, client: "2231pmDGUdiG2fRvCNnm") { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success:
+                self.validationError(title: "Success", message: "Project Created", hasError: false)
+            case .failure(let error):
+                self.validationError(title: "Error", message: "Something went wrong: \(error)", hasError: true)
+            }
+        }
     }
 
     deinit {
@@ -75,5 +91,27 @@ extension AddProjectsViewController {
                 }
             }
         }
+    }
+
+    func toggleSpiner(isHidden: Bool) {
+        activityIndicator.isHidden = isHidden
+        if isHidden == true {
+            activityIndicator.stopAnimating()
+        } else {
+            activityIndicator.startAnimating()
+        }
+    }
+
+    func validationError(title: String, message: String, hasError: Bool) {
+        self.toggleSpiner(isHidden: true)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+            if !hasError { self.dismisView() }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func dismisView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

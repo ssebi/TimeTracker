@@ -154,17 +154,27 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFR-g3-VAn">
                                 <rect key="frame" x="0.0" y="354" width="414" height="216"/>
                             </pickerView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ukg-xb-Ifu">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="dKA-ds-p8K"/>
+                                    <constraint firstAttribute="height" constant="50" id="ehT-6z-yMb"/>
+                                </constraints>
+                                <color key="color" red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nrT-fL-1Sf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gR1-66-Rpw" firstAttribute="centerX" secondItem="xK9-6I-cMX" secondAttribute="centerX" id="7Ow-Uh-5w5"/>
+                            <constraint firstItem="ukg-xb-Ifu" firstAttribute="centerY" secondItem="xK9-6I-cMX" secondAttribute="centerY" id="9Uu-au-9BD"/>
                             <constraint firstItem="V31-R2-wHa" firstAttribute="centerX" secondItem="xK9-6I-cMX" secondAttribute="centerX" id="9bJ-Bw-PFh"/>
                             <constraint firstItem="N0x-qL-JIJ" firstAttribute="centerX" secondItem="xK9-6I-cMX" secondAttribute="centerX" id="A2X-g7-SMc"/>
                             <constraint firstItem="N0x-qL-JIJ" firstAttribute="top" secondItem="gR1-66-Rpw" secondAttribute="bottom" constant="50" id="Bf4-Be-6CA"/>
                             <constraint firstItem="CFR-g3-VAn" firstAttribute="leading" secondItem="nrT-fL-1Sf" secondAttribute="leading" id="Dy1-vI-JQZ"/>
                             <constraint firstItem="nrT-fL-1Sf" firstAttribute="trailing" secondItem="V31-R2-wHa" secondAttribute="trailing" constant="50" id="Gi3-9u-djn"/>
                             <constraint firstItem="N0x-qL-JIJ" firstAttribute="leading" secondItem="nrT-fL-1Sf" secondAttribute="leading" id="VzL-Ew-RmZ"/>
+                            <constraint firstItem="ukg-xb-Ifu" firstAttribute="centerX" secondItem="xK9-6I-cMX" secondAttribute="centerX" id="WdQ-Na-Krj"/>
                             <constraint firstItem="nrT-fL-1Sf" firstAttribute="trailing" secondItem="N0x-qL-JIJ" secondAttribute="trailing" id="aBK-U7-3KB"/>
                             <constraint firstItem="gR1-66-Rpw" firstAttribute="top" secondItem="nrT-fL-1Sf" secondAttribute="top" constant="50" id="ake-bp-rGZ"/>
                             <constraint firstItem="CFR-g3-VAn" firstAttribute="top" secondItem="N0x-qL-JIJ" secondAttribute="bottom" constant="8" symbolic="YES" id="hQg-eQ-moW"/>
@@ -175,6 +185,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Dgj-sA-Pnr"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="ukg-xb-Ifu" id="NbC-2E-sfB"/>
                         <outlet property="clientPicker" destination="CFR-g3-VAn" id="vEf-sH-1Cx"/>
                         <outlet property="projectName" destination="0rE-PI-Dq7" id="H3S-Cc-4ht"/>
                     </connections>
