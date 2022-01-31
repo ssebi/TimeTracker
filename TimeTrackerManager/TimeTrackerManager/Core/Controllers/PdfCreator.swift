@@ -27,7 +27,7 @@ class PDFCreator {
             let attributes = [
                 NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 72)
             ]
-            let text = "I'm a pdf"
+            let text = "Invoice PDF"
             text.draw(at: CGPoint(x: 0, y: 0), withAttributes: attributes)
         }
         return data
