@@ -10,8 +10,8 @@ import TimeTrackerAuth
 import TimeTrackerCore
 
 class SettingsViewController: UIViewController {
-    private lazy var session = SessionStore(authProvider: FirebaseAuthProvider())
     var isLoading = true
+    var sceneDelegate = SceneDelegate()
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet var userName: UILabel!
 
     @IBAction func signOutButtonPressed(_ sender: Any) {
-        session.signOut()
+        sceneDelegate.session.signOut()
         print("power pressed")
     }
 }
