@@ -63,7 +63,7 @@ extension ClientsTableViewController {
         }
 
         cell.clientName.text = clientCell.name
-        cell.clientsProject.text = "\(projects)"
+        cell.clientsProject.text = projects.joined(separator: ", ")
 
         return cell
     }
