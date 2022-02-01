@@ -9,26 +9,24 @@ import UIKit
 import TimeTrackerCore
 import SwiftUI
 
-class ProjectsTableViewController: UITableViewController {
+final class ProjectsTableViewController: UITableViewController {
 
-    var projectLoader = FirebaseProjectsLoader()
-    var projects: [ProjectCell] = [] {
+    private var projectLoader = FirebaseProjectsLoader()
+    typealias CompletionHandler = (_ success: Bool) -> Void
+    private var projects: [ProjectCell] = [] {
         didSet { tableView.reloadData() }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadProjectsData()
+        loadProjectsData {_ in}
         configRefreshControl()
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
-    func loadProjectsData() {
+    private func loadProjectsData(completion: @escaping CompletionHandler) {
         projectLoader.getProjects { [weak self] result in
             self?.projects = result
+            completion(true)
         }
     }
 }
@@ -51,19 +49,23 @@ extension ProjectsTableViewController {
         let projectCell = projects[indexPath.row]
         cell.projectName.text = projectCell.name
         cell.projectClient.text = "owned by \(projectCell.client)"
-        cell.projectUsers.text = "1"
+        cell.projectUsers.text = "1 dev(s)"
         return cell
     }
 
-    func configRefreshControl() {
+    private func configRefreshControl() {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
 
-    @objc func handleRefreshControl() {
-        loadProjectsData()
-        DispatchQueue.main.async {
-            self.tableView.refreshControl?.endRefreshing()
+    @objc private func handleRefreshControl() {
+        loadProjectsData { success in
+            if success {
+                DispatchQueue.main.async {
+                    self.tableView.refreshControl?.endRefreshing()
+                }
+            }
         }
+
     }
 }
