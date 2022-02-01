@@ -8,31 +8,32 @@
 import UIKit
 import TimeTrackerCore
 
-class ClientsTableViewController: UITableViewController {
+final class ClientsTableViewController: UITableViewController {
 
-    var clients: [Client] = [] {
+   private var clients: [Client] = [] {
         didSet { tableView.reloadData() }
     }
-
-    let clientsLoader = FirebaseClientsLoader(store: FirebaseClientsStore())
+    typealias CompletionHandler = (_ success: Bool) -> Void
+    private let clientsLoader = FirebaseClientsLoader(store: FirebaseClientsStore())
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configRefreshControl()
-        loadClientsData()
+        loadClientsData {_ in}
     }
 
-    func loadClientsData() {
-        clientsLoader.getClients { result in
+    private func loadClientsData(completion: @escaping CompletionHandler) {
+        clientsLoader.getClients { [weak self] result in
             if let clients = try? result.get() {
-                self.clients = clients
+                self?.clients = clients
+                completion(true)
             }
         }
     }
 }
 
 extension ClientsTableViewController {
-    static let clientCellIdentifier = "ClientListCell"
+    private static let clientCellIdentifier = "ClientListCell"
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         clients.count
     }
@@ -68,15 +69,18 @@ extension ClientsTableViewController {
         return cell
     }
 
-    func configRefreshControl() {
+    private func configRefreshControl() {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
 
     @objc func handleRefreshControl() {
-        loadClientsData()
-        DispatchQueue.main.async {
-            self.tableView.refreshControl?.endRefreshing()
+        loadClientsData { success in
+            if success {
+                DispatchQueue.main.async {
+                    self.tableView.refreshControl?.endRefreshing()
+                }
+            }
         }
     }
 }

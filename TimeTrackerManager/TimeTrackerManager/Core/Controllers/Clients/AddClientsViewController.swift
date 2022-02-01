@@ -7,19 +7,19 @@
 
 import UIKit
 
-class AddClientsViewController: UIViewController {
+final class AddClientsViewController: UIViewController {
 
-    @IBOutlet var clientName: UITextField!
-    @IBOutlet var clientProject: UITextField!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    let clientPublisher = FirebaseClientPublisher()
+    @IBOutlet private var clientName: UITextField!
+    @IBOutlet private var clientProject: UITextField!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    private let clientPublisher = FirebaseClientPublisher()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.isHidden = true
 
     }
-    @IBAction func addClientButtonPressed(_ sender: Any) {
+    @IBAction private func addClientButtonPressed(_ sender: Any) {
         toggleSpiner(isHidden: false)
         guard clientName.text?.isEmpty == false,
               clientProject.text?.isEmpty == false else {
@@ -38,7 +38,7 @@ class AddClientsViewController: UIViewController {
         }
     }
 
-    func toggleSpiner(isHidden: Bool) {
+   private func toggleSpiner(isHidden: Bool) {
         activityIndicator.isHidden = isHidden
         if isHidden == true {
             activityIndicator.stopAnimating()
@@ -49,16 +49,16 @@ class AddClientsViewController: UIViewController {
 }
 
 extension AddClientsViewController {
-    func validationError(title: String, message: String, hasError: Bool) {
+   private func validationError(title: String, message: String, hasError: Bool) {
         self.toggleSpiner(isHidden: true)
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
-            if !hasError { self.dismisView() }
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {[weak self] _ in
+            if !hasError { self?.dismisView() }
         }))
         self.present(alert, animated: true, completion: nil)
     }
 
-    func dismisView() {
+   private func dismisView() {
         self.navigationController?.popViewController(animated: true)
     }
 }

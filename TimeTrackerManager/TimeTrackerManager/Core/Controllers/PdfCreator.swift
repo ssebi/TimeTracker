@@ -7,7 +7,7 @@
 
 import PDFKit
 
-class PDFCreator {
+final class PDFCreator {
     func createInvoice() -> Data {
         let pdfMetaData = [
             kCGPDFContextCreator: "Invoice",

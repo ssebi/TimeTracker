@@ -9,10 +9,9 @@ import Foundation
 import TimeTrackerCore
 import Firebase
 
-class FirebaseClientsLoader {
+final class FirebaseClientsLoader {
 
-    var store: ClientsStore
-    var client = [Client]()
+    private let store: ClientsStore
     typealias GetClientsResult = (Result<[Client], Error>) -> Void
 
     func getClients(completion: @escaping GetClientsResult) {

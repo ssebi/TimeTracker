@@ -8,7 +8,7 @@
 import Foundation
 import TimeTrackerCore
 
-class FirebaseProjectsLoader {
+final class FirebaseProjectsLoader {
 
     let clientsLoader = FirebaseClientsLoader(store: FirebaseClientsStore())
     var clients = [Client]()

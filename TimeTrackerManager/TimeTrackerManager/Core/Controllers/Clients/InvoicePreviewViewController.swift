@@ -8,13 +8,11 @@
 import UIKit
 import PDFKit
 
-class InvoicePreviewViewController: UIViewController {
-
+final class InvoicePreviewViewController: UIViewController {
     @IBOutlet weak var pdfView: PDFView!
     public var documentData: Data?
 
     override func viewDidLoad() {
-
         super.viewDidLoad()
 
         if let data = documentData {

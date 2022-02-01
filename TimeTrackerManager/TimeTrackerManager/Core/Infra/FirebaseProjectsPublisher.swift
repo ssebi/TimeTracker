@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-class FirebaseProjectPublisher {
+final class FirebaseProjectPublisher {
     typealias ProjectPublisherCompletion = (Result<Void, Error>) -> Void
 
     public func createProject(_ name: String, client: String, completion: @escaping ProjectPublisherCompletion) {

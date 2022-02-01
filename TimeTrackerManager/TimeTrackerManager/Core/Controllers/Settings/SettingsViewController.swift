@@ -9,16 +9,10 @@ import UIKit
 import TimeTrackerAuth
 import TimeTrackerCore
 
-class SettingsViewController: UIViewController {
-    var isLoading = true
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
-    @IBOutlet var profilePicture: UIImageView!
-    @IBOutlet var userName: UILabel!
-
+final class SettingsViewController: UIViewController {
+    private var isLoading = true
+    @IBOutlet private var profilePicture: UIImageView!
+    @IBOutlet private var userName: UILabel!
     @IBAction func signOutButtonPressed(_ sender: Any) {
         SceneDelegate.session.signOut()
     }
