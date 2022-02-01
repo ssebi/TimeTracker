@@ -8,12 +8,11 @@
 import UIKit
 import TimeTrackerAuth
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var errorLabel: UILabel!
-
+    @IBOutlet private var emailTextField: UITextField!
+    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var errorLabel: UILabel!
 
     private lazy var session = SessionStore(authProvider: FirebaseAuthProvider())
     var isLoading = true
@@ -29,16 +28,16 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
 	}
 
-    @IBAction func tapOutside(_ sender: Any) {
+    @IBAction private func tapOutside(_ sender: Any) {
         view.endEditing(true)
     }
 
-    @IBAction func logInButtonPressed(_ sender: Any) {
+    @IBAction private func logInButtonPressed(_ sender: Any) {
         session.signIn(email: emailTextField.text!, password: passwordTextField.text!) { [weak self] result in
             if case let .failure(result) =  result {
                 self?.errorLabel.text = result.localizedDescription
 			}
-            if case .success(_) = result {
+            if case .success = result {
                 self?.performSegue(withIdentifier: "showMainTabBar", sender: self)
             }
         }
@@ -55,4 +54,3 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
 }
-

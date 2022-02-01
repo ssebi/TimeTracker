@@ -10,9 +10,9 @@ import Firebase
 import TimeTrackerCore
 import UIKit
 
-class FirebaseUsersLoader  {
+final class FirebaseUsersLoader {
 
-    init(store: TimeslotsStore){
+    init(store: TimeslotsStore) {
         self.store = store
     }
 
@@ -22,9 +22,8 @@ class FirebaseUsersLoader  {
     typealias GetTimeslotsResult = (Result<[TimeSlot], Error>) -> Void
     var store: TimeslotsStore
 
-
     func getUsers(completion: @escaping GetUsersResult) {
-        Firestore.firestore().collection(Path.users).getDocuments() { (snapshot, error) in
+        Firestore.firestore().collection(Path.users).getDocuments { (snapshot, error) in
 			guard error == nil else {
 				completion(.failure(error!))
 				return
@@ -55,17 +54,17 @@ class FirebaseUsersLoader  {
     private func getUserTimeslots(_ userId: String, completion: @escaping TimeslotsStore.GetTimeslotsResult) {
         store.getTimeslots(userID: userId) { result in
             switch result {
-                case let .success(timeslots):
-                    completion(.success(timeslots))
+            case let .success(timeslots):
+                completion(.success(timeslots))
 
-                case let .failure(error):
-                    completion(.failure(error))
+            case let .failure(error):
+                completion(.failure(error))
             }
         }
     }
 
     func deleteUser(_ docId: String) {
-        Firestore.firestore().collection("users").document(docId).delete() { err in
+        Firestore.firestore().collection("users").document(docId).delete { err in
             if let err = err {
                 print("Error removing document: \(err)")
             } else {
@@ -73,6 +72,4 @@ class FirebaseUsersLoader  {
             }
         }
     }
-
-
 }

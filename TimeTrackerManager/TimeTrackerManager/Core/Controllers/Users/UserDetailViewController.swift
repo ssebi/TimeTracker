@@ -27,6 +27,7 @@ final class UserDetailViewController: UIViewController {
 
 		setupViewHierarchy()
 		loadImage()
+
     }
 
     private func setupViewHierarchy() {
@@ -38,8 +39,10 @@ final class UserDetailViewController: UIViewController {
 		NSLayoutConstraint.activate([
 			profilePictureImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			profilePictureImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-			profilePictureImageView.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor, constant: horizontalSpacing),
-			profilePictureImageView.trailingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -horizontalSpacing),
+			profilePictureImageView.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor,
+                                                             constant: horizontalSpacing),
+			profilePictureImageView.trailingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.trailingAnchor,
+                                                              constant: -horizontalSpacing)
 		])
     }
 
