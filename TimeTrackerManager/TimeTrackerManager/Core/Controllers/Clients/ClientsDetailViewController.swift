@@ -7,21 +7,18 @@
 
 import UIKit
 
-class ClientsDetailViewController: UIViewController {
-
-    @IBOutlet var clientNAme: UITextView!
+final class ClientsDetailViewController: UIViewController {
+    @IBOutlet private var clientNAme: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if segue.identifier == "previewInvoice" {
-        guard let vc = segue.destination as? InvoicePreviewViewController else { return }
+        guard let invoiceVC = segue.destination as? InvoicePreviewViewController else { return }
         let pdfCreator = PDFCreator()
-        vc.documentData = pdfCreator.createInvoice()
+          invoiceVC.documentData = pdfCreator.createInvoice()
       }
     }
 }
