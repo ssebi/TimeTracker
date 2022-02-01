@@ -21,8 +21,9 @@ class AddClientsViewController: UIViewController {
     }
     @IBAction func addClientButtonPressed(_ sender: Any) {
         toggleSpiner(isHidden: false)
-        guard clientName.text != nil,
-              clientProject.text != nil else {
+        guard clientName.text?.isEmpty == false,
+              clientProject.text?.isEmpty == false else {
+            self.validationError(title: "Error", message: "Please fill in all fields", hasError: true)
             return
         }
         clientPublisher.createClient(clientName.text!, project: clientProject.text! ) { [weak self] result in
