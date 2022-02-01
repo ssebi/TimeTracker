@@ -8,19 +8,20 @@
 import UIKit
 import TimeTrackerCore
 
-class UserTableViewController: UITableViewController {
+final class UserTableViewController: UITableViewController {
 
-    var userLoader = FirebaseUsersLoader(store: FirebaseTimeslotsStore())
-    var users: [UserCell] = [] {
+    private var userLoader = FirebaseUsersLoader(store: FirebaseTimeslotsStore())
+    typealias CompletionHandler = (_ success: Bool) -> Void
+    private var users: [UserCell] = [] {
         didSet { tableView.reloadData() }
     }
     // Data
-    @IBOutlet var userTableView: UITableView!
+    @IBOutlet private var userTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		navigationController?.navigationBar.tintColor = .white
-        loadUserData()
+        loadUserData {_ in}
         configRefreshControl()
     }
 
@@ -28,10 +29,11 @@ class UserTableViewController: UITableViewController {
         super.init(coder: coder)
     }
     // MARK: - Table view data source
-    func loadUserData() {
+    private func loadUserData(completion: @escaping CompletionHandler) {
         userLoader.getUsers { result in
             if let users = try? result.get() {
                 self.users = users
+                completion(true)
             }
         }
     }
@@ -78,8 +80,8 @@ extension UserTableViewController {
 						allProjects.insert(timeSlot.projectName)
 					}
 					DispatchQueue.main.async {
-						cell.totalHours.text = "\(totalHours)"
-						cell.userProjects.text = "\(allProjects)"
+						cell.totalHours.text = "Total h:\(totalHours)"
+                        cell.userProjects.text = allProjects.joined(separator: ", ")
 					}
 				}
 			}
@@ -104,15 +106,18 @@ extension UserTableViewController {
         present(UserDetailViewController(userDetail: users[indexPath.row]), animated: true)
     }
 
-    func configRefreshControl() {
+    private func configRefreshControl() {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
 
-    @objc func handleRefreshControl() {
-        loadUserData()
-        DispatchQueue.main.async {
-            self.tableView.refreshControl?.endRefreshing()
+    @objc private func handleRefreshControl() {
+        loadUserData { success in
+            if success {
+                DispatchQueue.main.async {
+                    self.tableView.refreshControl?.endRefreshing()
+                }
+            }
         }
     }
 }

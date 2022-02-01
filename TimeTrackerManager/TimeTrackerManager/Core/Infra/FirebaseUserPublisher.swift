@@ -2,7 +2,7 @@ import Foundation
 import Firebase
 import TimeTrackerCore
 
-class FirebaseUserPublisher {
+final class FirebaseUserPublisher {
     typealias UserPublisherCompletion = (Result<Void, UserPublisherError>) -> Void
 
     enum UserPublisherError: Error {

@@ -10,7 +10,7 @@ import Firebase
 import TimeTrackerCore
 import UIKit
 
-class FirebaseUsersLoader {
+final class FirebaseUsersLoader {
 
     init(store: TimeslotsStore) {
         self.store = store

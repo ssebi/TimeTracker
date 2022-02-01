@@ -8,14 +8,14 @@
 import UIKit
 import Firebase
 
-class AddUserViewController: UIViewController {
+final class AddUserViewController: UIViewController {
 
-    @IBOutlet var firsNameTextField: UITextField!
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var lastNameTextField: UITextField!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var firsNameTextField: UITextField!
+    @IBOutlet private var emailTextField: UITextField!
+    @IBOutlet private var lastNameTextField: UITextField!
+    @IBOutlet weak private var activityIndicator: UIActivityIndicatorView!
 
-    var user = FirebaseUserPublisher()
+    private var user = FirebaseUserPublisher()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class AddUserViewController: UIViewController {
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    func toggleSpiner(isHidden: Bool) {
+    private func toggleSpiner(isHidden: Bool) {
         activityIndicator.isHidden = isHidden
         if isHidden == true {
             activityIndicator.stopAnimating()
@@ -36,7 +36,7 @@ class AddUserViewController: UIViewController {
         }
     }
 
-    @IBAction func createUserButtonPressed(_ sender: Any) {
+    @IBAction private func createUserButtonPressed(_ sender: Any) {
         self.toggleSpiner(isHidden: false)
         user.addUser(
                 email: self.emailTextField?.text ?? "",
@@ -75,20 +75,10 @@ class AddUserViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
     }
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-
 }
 
 extension AddUserViewController {
-    func validationError(title: String, message: String, hasError: Bool) {
+    private func validationError(title: String, message: String, hasError: Bool) {
         self.toggleSpiner(isHidden: true)
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in

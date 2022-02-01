@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ClientListCell: UITableViewCell {
+final class ClientListCell: UITableViewCell {
     @IBOutlet var clientsAvatar: UIImageView!
     @IBOutlet var clientName: UILabel!
     @IBOutlet var clientsProject: UILabel!

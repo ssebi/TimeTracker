@@ -33,7 +33,7 @@
                                                 <constraint firstAttribute="width" constant="100" id="ryz-rQ-pFe"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaV-vR-UgZ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaV-vR-UgZ">
                                             <rect key="frame" x="108" y="11" width="56" height="27.5"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,13 +71,10 @@
                                     <outlet property="clientName" destination="KaV-vR-UgZ" id="1QE-e4-DZ2"/>
                                     <outlet property="clientsAvatar" destination="f7p-1P-2NU" id="eQS-wS-kil"/>
                                     <outlet property="clientsProject" destination="ery-mE-UyH" id="rzc-tm-fIf"/>
+                                    <segue destination="dr3-kh-hIu" kind="show" identifier="clientDetailView" id="gaJ-e9-6BK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="gMe-av-VWM" id="4dh-ha-wL0"/>
-                            <outlet property="delegate" destination="gMe-av-VWM" id="4FV-YU-8fc"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Clients" id="AZk-Jk-tvj">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="QSt-Ak-CRW">
@@ -91,7 +88,83 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUU-3b-9UG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3888" y="430"/>
+            <point key="canvasLocation" x="3928" y="492"/>
+        </scene>
+        <!--Clients Detail View Controller-->
+        <scene sceneID="zNp-IH-J94">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="dr3-kh-hIu" customClass="ClientsDetailViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mjC-tV-0cD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBs-rN-tvO">
+                                <rect key="frame" x="146" y="815" width="124" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Preview invoice"/>
+                                <connections>
+                                    <segue destination="Ihq-TB-nPl" kind="showDetail" identifier="previewInvoice" id="aML-4x-TF8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vcf-Rb-Vdr">
+                                <rect key="frame" x="160" y="113" width="94" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xIL-Dc-pxI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BBs-rN-tvO" firstAttribute="leading" relation="lessThanOrEqual" secondItem="xIL-Dc-pxI" secondAttribute="leading" constant="146" id="IuM-Oe-Zi7"/>
+                            <constraint firstItem="Vcf-Rb-Vdr" firstAttribute="top" secondItem="xIL-Dc-pxI" secondAttribute="top" constant="25" id="N1B-rE-3gI"/>
+                            <constraint firstItem="xIL-Dc-pxI" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="BBs-rN-tvO" secondAttribute="trailing" constant="144" id="SUk-nd-86d"/>
+                            <constraint firstAttribute="bottom" secondItem="BBs-rN-tvO" secondAttribute="bottom" constant="50" id="g6R-ge-Udd"/>
+                            <constraint firstItem="Vcf-Rb-Vdr" firstAttribute="leading" relation="lessThanOrEqual" secondItem="xIL-Dc-pxI" secondAttribute="leading" constant="160" id="gXr-ge-gMA"/>
+                            <constraint firstItem="xIL-Dc-pxI" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Vcf-Rb-Vdr" secondAttribute="trailing" constant="160" id="nU3-Vg-Adc"/>
+                            <constraint firstItem="Vcf-Rb-Vdr" firstAttribute="centerX" secondItem="mjC-tV-0cD" secondAttribute="centerX" id="xCC-TF-Cbw"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="lmT-HP-Kim"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="clientNAme" destination="Vcf-Rb-Vdr" id="j37-9O-7ee"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7mv-G1-yfo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4983" y="714"/>
+        </scene>
+        <!--Invoice Preview View Controller-->
+        <scene sceneID="9fn-Qa-XSO">
+            <objects>
+                <viewController id="Ihq-TB-nPl" customClass="InvoicePreviewViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wrg-2W-7Cp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qY-Vh-9P1" customClass="PDFView">
+                                <rect key="frame" x="3" y="0.0" width="408" height="800"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zxr-L6-c1L"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2qY-Vh-9P1" firstAttribute="top" secondItem="zxr-L6-c1L" secondAttribute="top" id="InH-m4-Sby"/>
+                            <constraint firstItem="zxr-L6-c1L" firstAttribute="bottom" secondItem="2qY-Vh-9P1" secondAttribute="bottom" constant="8" id="ZZP-il-zDj"/>
+                            <constraint firstItem="2qY-Vh-9P1" firstAttribute="leading" secondItem="zxr-L6-c1L" secondAttribute="leading" constant="3" id="cOn-gh-hFT"/>
+                            <constraint firstItem="zxr-L6-c1L" firstAttribute="trailing" secondItem="2qY-Vh-9P1" secondAttribute="trailing" constant="3" id="miA-3m-Z2r"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pdfView" destination="2qY-Vh-9P1" id="YVH-Jk-5fg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NK3-sU-5TE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5833" y="714"/>
         </scene>
         <!--Add Clients View Controller-->
         <scene sceneID="4dL-fK-a8i">
@@ -221,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R01-8c-iX5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4754" y="430"/>
+            <point key="canvasLocation" x="4983" y="21"/>
         </scene>
         <!--Clients-->
         <scene sceneID="fvS-iq-yzf">
