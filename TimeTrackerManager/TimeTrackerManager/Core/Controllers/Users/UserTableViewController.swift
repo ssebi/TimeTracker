@@ -18,10 +18,10 @@ final class UserTableViewController: UITableViewController {
     // Data
     @IBOutlet private var userTableView: UITableView!
 
-    override func viewDidLoad() {
+	override func viewDidLoad() {
         super.viewDidLoad()
 		navigationController?.navigationBar.tintColor = .white
-        loadUserData {_ in}
+        loadUserData()
         configRefreshControl()
     }
 
@@ -29,13 +29,10 @@ final class UserTableViewController: UITableViewController {
         super.init(coder: coder)
     }
     // MARK: - Table view data source
-    private func loadUserData(completion: @escaping CompletionHandler) {
-        userLoader.getUsers { result in
-            if let users = try? result.get() {
-                self.users = users
-                completion(true)
-            }
-        }
+    private func loadUserData() {
+		Task {
+			self.users = (try? await userLoader.getUsers()) ?? []
+		}
     }
 }
 
@@ -69,23 +66,15 @@ extension UserTableViewController {
         cell.userName.text = userCell.name
         cell.hourRate.text = userCell.hourRate
 
-		DispatchQueue.global().async {
-			userCell.timeSlots?(userCell.userId) { result in
-				var totalHours = 0
-				var allProjects = Set<String>()
+		var totalHours = 0
+		var allProjects = Set<String>()
 
-				if let success = try? result.get() {
-					success.forEach { timeSlot in
-						totalHours += timeSlot.total
-						allProjects.insert(timeSlot.projectName)
-					}
-					DispatchQueue.main.async {
-						cell.totalHours.text = "Total h:\(totalHours)"
-                        cell.userProjects.text = allProjects.joined(separator: ", ")
-					}
-				}
-			}
+		for timeslot in userCell.timeSlots {
+			totalHours += timeslot.total
+			allProjects.insert(timeslot.projectName)
 		}
+		cell.totalHours.text = "Total h:\(totalHours)"
+		cell.userProjects.text = allProjects.joined(separator: ", ")
 
         return cell
     }
@@ -112,12 +101,9 @@ extension UserTableViewController {
     }
 
     @objc private func handleRefreshControl() {
-        loadUserData { success in
-            if success {
-                DispatchQueue.main.async {
-                    self.tableView.refreshControl?.endRefreshing()
-                }
-            }
-        }
+		loadUserData()
+		DispatchQueue.main.async {
+			self.tableView.refreshControl?.endRefreshing()
+		}
     }
 }

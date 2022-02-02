@@ -48,9 +48,14 @@
                BlueprintName = "TimeTrackerManagerTests"
                ReferencedContainer = "container:TimeTrackerManager.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "TimeTrackerManagerTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C6B2B268276256D500705659"
