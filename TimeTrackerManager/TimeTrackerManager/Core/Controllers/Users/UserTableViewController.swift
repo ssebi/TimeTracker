@@ -13,7 +13,10 @@ final class UserTableViewController: UITableViewController {
     private var userLoader = FirebaseUsersLoader(store: FirebaseTimeslotsStore())
     typealias CompletionHandler = (_ success: Bool) -> Void
     private var users: [UserCell] = [] {
-        didSet { tableView.reloadData() }
+        didSet {
+			tableView.reloadData()
+			tableView.refreshControl?.endRefreshing()
+		}
     }
     // Data
     @IBOutlet private var userTableView: UITableView!
@@ -102,8 +105,5 @@ extension UserTableViewController {
 
     @objc private func handleRefreshControl() {
 		loadUserData()
-		DispatchQueue.main.async {
-			self.tableView.refreshControl?.endRefreshing()
-		}
     }
 }
