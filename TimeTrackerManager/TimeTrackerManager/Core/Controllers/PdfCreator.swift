@@ -8,7 +8,7 @@
 import PDFKit
 
 final class PDFCreator {
-    func createInvoice() -> Data {
+    func createInvoice(invoice: Invoice) -> Data {
         let pdfMetaData = [
             kCGPDFContextCreator: "Invoice",
             kCGPDFContextAuthor: "TimeTracker Manager"
@@ -25,10 +25,13 @@ final class PDFCreator {
         let data = renderer.pdfData { context in
             context.beginPage()
             let attributes = [
-                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 72)
+                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 41)
             ]
-            let text = "Invoice PDF"
-            text.draw(at: CGPoint(x: 0, y: 0), withAttributes: attributes)
+            let title = "Invoice"
+            title.draw(at: CGPoint(x: 10, y: 0), withAttributes: attributes)
+            invoice.client.draw(at: CGPoint(x: 10, y: 50), withAttributes: attributes)
+            invoice.invoiceNumber.draw(at: CGPoint(x: 10, y: 100), withAttributes: attributes)
+            invoice.product.draw(at: CGPoint(x: 10, y: 140), withAttributes: attributes)
         }
         return data
     }
