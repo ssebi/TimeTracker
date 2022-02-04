@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="3928" y="492"/>
         </scene>
-        <!--Clients Detail View Controller-->
+        <!--Client Detail View Controller-->
         <scene sceneID="zNp-IH-J94">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="dr3-kh-hIu" customClass="ClientsDetailViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="dr3-kh-hIu" customClass="ClientDetailViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mjC-tV-0cD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
