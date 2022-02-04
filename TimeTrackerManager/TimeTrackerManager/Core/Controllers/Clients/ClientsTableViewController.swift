@@ -22,6 +22,14 @@ final class ClientsTableViewController: UITableViewController {
         loadClientsData {_ in}
     }
 
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//      if segue.identifier == "clientDetailView" {
+//        guard let invoiceVC = segue.destination as? InvoicePreviewViewController else { return }
+//        let pdfCreator = PDFCreator()
+//          invoiceVC.documentData = pdfCreator.createInvoice(invoice: invoice)
+//      }
+//    }
+
     private func loadClientsData(completion: @escaping CompletionHandler) {
         clientsLoader.getClients { [weak self] result in
             if let clients = try? result.get() {
@@ -67,6 +75,11 @@ extension ClientsTableViewController {
         cell.clientsProject.text = projects.joined(separator: ", ")
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let clientName = "xxxxxx" // clients[indexPath.row].name
+        present(ClientDetailViewController(), animated: true)
     }
 
     private func configRefreshControl() {
