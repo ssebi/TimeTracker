@@ -29,6 +29,9 @@ final class ClientDetailViewController: UIViewController {
         // show bill only for the last month
     }
 
+    @IBAction func previewInvoiceButton(_ sender: Any) {
+
+    }
     func getClientDetail() {
         if let client = clientDetail {
             print("client name xxX >>>>>", client.name)
@@ -53,7 +56,6 @@ final class ClientDetailViewController: UIViewController {
      guard segue.identifier == "previewInvoice",
            let invoiceVC = segue.destination as? InvoicePreviewViewController,
             let image = UIImage(named: "parhelion_logo_light") else { return }
-       // let title = invoiceTitle else { return }
 
         let pdfCreator = InvoiceCreator(
             title: title,
@@ -61,42 +63,7 @@ final class ClientDetailViewController: UIViewController {
             image: image,
             contactInfo: "contact info info",
             clientDetail: clientInvoiceDetail
-
         )
         invoiceVC.documentData = pdfCreator.createInvoice(invoice: invoice)
-
     }
-
-//    func share() {
-//        // 1
-//        guard
-//          let title = flyerTextEntry.text,
-//          let body = bodyTextView.text,
-//          let image = imagePreview.image,
-//          let contact = contactTextView.text
-//          else {
-//            // 2
-//            let alert = UIAlertController(
-//              title: "All Information Not Provided",
-//              message: "You must supply all information to create a flyer.",
-//              preferredStyle: .alert
-//            )
-//              alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//              present(alert, animated: true, completion: nil)
-//              return
-//          }
-//        // 3
-//        let pdfCreator = PDFCreator(
-//          title: title,
-//          body: body,
-//          image: image,
-//          contact: contact
-//        )
-//        let pdfData = pdfCreator.createFlyer()
-//        let vc = UIActivityViewController(
-//          activityItems: [pdfData],
-//          applicationActivities: []
-//        )
-//        present(vc, animated: true, completion: nil)
-//    }
 }

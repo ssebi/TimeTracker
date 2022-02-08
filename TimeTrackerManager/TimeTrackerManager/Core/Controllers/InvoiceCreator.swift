@@ -28,21 +28,14 @@ final class InvoiceCreator {
             kCGPDFContextAuthor: "TimeTracker Manager",
             kCGPDFContextTitle: title
         ]
-
         let format = UIGraphicsPDFRendererFormat()
         format.documentInfo = pdfMetaData as [String: Any]
-
         let pageWidth = 8.5 * 72.0
         let pageHeight = 11 * 72.0
         let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
-
         let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
         let data = renderer.pdfData { context in
             context.beginPage()
-//            let attributes = [
-//                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 41)
-//            ]
-
             let logo = addLogo(pageRect: pageRect, imageTop: 40)
             let titleBottom = addTitle(pageRect: pageRect, titleTop: logo + 60.0)
             addCompanyInfo(
@@ -59,15 +52,11 @@ final class InvoiceCreator {
                 invoiceDate: "20-02-2022",
                 clientDetail: clientDetail
             )
+            let invoiceTableHeaderBottom = addInvoiceTableHeader(pageRect: pageRect, infoTop: invoiceHeaderBottom + 100)
             let context = context.cgContext
-
             drawTableLines(context, pageRect: pageRect, lineTop: titleBottom + 10.0)
             drawTableLines(context, pageRect: pageRect, lineTop: invoiceHeaderBottom + 10.0)
-          //  addBodyText(pageRect: pageRect, textTop: logo + 18.0)
-
-//            invoice.client.draw(at: CGPoint(x: 10, y: 50), withAttributes: attributes)
-//            invoice.invoiceNumber.draw(at: CGPoint(x: 10, y: 100), withAttributes: attributes)
-//            invoice.product.draw(at: CGPoint(x: 10, y: 140), withAttributes: attributes)
+            drawTableLines(context, pageRect: pageRect, lineTop: invoiceTableHeaderBottom + 10.0)
         }
         return data
     }
@@ -199,7 +188,7 @@ final class InvoiceCreator {
         attrClientAddress.draw(in: addressStringRect)
         attrClientCountry.draw(in: countryStringRect)
         attrVatNo.draw(in: vatNoStringRect)
-        return vatNoStringRect.origin.y + vatNoStringRect.size.height
+        return vatNoStringRect.origin.y + vatNoStringRect.size.height + 10
     }
 
     func addInvoiceTableHeader(pageRect: CGRect, infoTop: CGFloat) -> CGFloat {
@@ -237,19 +226,19 @@ final class InvoiceCreator {
             height: itemStringSize.height
         )
         let descriptionStringRect = CGRect(
-            x: itemStringRect.origin.y + 20,
+            x: itemStringRect.origin.x + itemStringRect.width + 20,
             y: infoTop,
             width: descriptionStringSize.width,
             height: descriptionStringSize.height
         )
         let unitStringRect = CGRect(
-            x: descriptionStringRect.origin.y + 20,
+            x: descriptionStringRect.origin.x + descriptionStringRect.width * 2.5,
             y: infoTop,
             width: unitStringSize.width,
             height: unitStringSize.height
         )
         let quantityStringRect = CGRect(
-            x: unitStringRect.origin.y + 20,
+            x: unitStringRect.origin.x + unitStringRect.width + 20,
             y: infoTop,
             width: quanityNoStringSize.width,
             height: quanityNoStringSize.height
@@ -366,7 +355,7 @@ final class InvoiceCreator {
       let aspectRatio = min(aspectWidth, aspectHeight)
       let scaledWidth = image.size.width * aspectRatio
       let scaledHeight = image.size.height * aspectRatio
-        let imageX = 10.0
+        let imageX = 40.0
       let imageRect = CGRect(x: imageX, y: imageTop,
                              width: scaledWidth, height: scaledHeight)
       image.draw(in: imageRect)
