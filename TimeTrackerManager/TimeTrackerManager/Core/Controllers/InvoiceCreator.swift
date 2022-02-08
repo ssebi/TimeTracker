@@ -8,7 +8,6 @@
 import PDFKit
 
 final class InvoiceCreator {
-
     let title: String
     let body: String
     let image: UIImage
@@ -45,7 +44,7 @@ final class InvoiceCreator {
 //            ]
 
             let logo = addLogo(pageRect: pageRect, imageTop: 40)
-            let titleBottom = addTitle(pageRect: pageRect, titleTop: logo + 100.0)
+            let titleBottom = addTitle(pageRect: pageRect, titleTop: logo + 60.0)
             addCompanyInfo(
                 pageRect: pageRect,
                 infoTop: 40.0,
@@ -92,13 +91,25 @@ final class InvoiceCreator {
         return titleStringRect.origin.y + titleStringRect.size.height
     }
 
-    func addInvoiceHeader(pageRect: CGRect, infoTop: CGFloat, invoiceNo: String, invoiceDate: String, clientDetail: ClientDetail) -> CGFloat {
-        let boldFont = UIFont.systemFont(ofSize: 17.0, weight: .medium)
-        let font = UIFont.systemFont(ofSize: 17.0, weight: .light)
-
+    func addInvoiceHeader(
+            pageRect: CGRect,
+            infoTop: CGFloat,
+            invoiceNo: String,
+            invoiceDate: String,
+            clientDetail: ClientDetail
+    ) -> CGFloat {
+        let boldFont = UIFont.systemFont(ofSize: 14.0, weight: .medium)
+        let font = UIFont.systemFont(ofSize: 14.0, weight: .light)
         let boldAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: boldFont]
         let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
-
+        let attrInvoiceNoTitle = NSAttributedString(
+            string: "Invoice Number:",
+            attributes: attributes
+          )
+        let attrInvoiceDateTitle = NSAttributedString(
+            string: "Invoice Date:",
+            attributes: attributes
+          )
         let attrInvoiceNo = NSAttributedString(
             string: invoiceNo,
             attributes: attributes
@@ -124,59 +135,138 @@ final class InvoiceCreator {
             string: clientDetail.vatNo,
             attributes: boldAttribute
           )
-
+        let invoiceDateTitleStringSize = attrInvoiceDateTitle.size()
+        let invoiceNoTitleStringSize = attrInvoiceNoTitle.size()
+        let invoiceDateStringSize = attrInvoiceDate.size()
+        let invoiceNoStringSize = attrInvoiceNo.size()
         let nameStringSize = attrClientName.size()
         let addressStringSize = attrClientAddress.size()
         let countryStringSize = attrClientCountry.size()
         let vatNoStringSize = attrVatNo.size()
-
+        let invoiceNoTitleStringRect = CGRect(
+            x: 40,
+            y: infoTop,
+            width: invoiceNoTitleStringSize.width,
+            height: invoiceNoTitleStringSize.height
+        )
         let invoiceNoStringRect = CGRect(
-            x: 40,
+            x: pageRect.width / 4 + 20,
             y: infoTop,
-            width: nameStringSize.width,
-            height: nameStringSize.height
+            width: invoiceNoStringSize.width,
+            height: invoiceNoStringSize.height
         )
-
+        let invoiceDateTitleStringRect = CGRect(
+            x: 40,
+            y: invoiceNoTitleStringRect.origin.y + invoiceNoTitleStringRect.size.height,
+            width: invoiceDateTitleStringSize.width,
+            height: invoiceDateTitleStringSize.height
+        )
         let invoiceDateStringRect = CGRect(
-            x: 40,
+            x: pageRect.width / 4 + 20,
             y: invoiceNoStringRect.origin.y + invoiceNoStringRect.size.height,
-            width: nameStringSize.width,
-            height: nameStringSize.height
+            width: invoiceDateStringSize.width,
+            height: invoiceDateStringSize.height
         )
-
         let nameStringRect = CGRect(
-            x: (pageRect.width - nameStringSize.width) / 2 - 30,
+            x: pageRect.width / 1.5,
             y: infoTop,
             width: nameStringSize.width,
             height: nameStringSize.height
         )
-
         let addressStringRect = CGRect(
-            x: (pageRect.width - addressStringSize.width) / 2 - 30,
+            x: pageRect.width / 1.5,
             y: nameStringRect.origin.y + nameStringRect.size.height,
             width: addressStringSize.width,
             height: addressStringSize.height
         )
         let countryStringRect = CGRect(
-            x: (pageRect.width - countryStringSize.width) / 2  - 30,
+            x: pageRect.width / 1.5,
             y: addressStringRect.origin.y + addressStringRect.size.height,
             width: addressStringSize.width,
             height: addressStringSize.height
         )
         let vatNoStringRect = CGRect(
-            x: (pageRect.width - vatNoStringSize.width) / 2 - 30,
+            x: pageRect.width / 1.5,
             y: countryStringRect.origin.y + countryStringRect.size.height,
             width: vatNoStringSize.width,
             height: vatNoStringSize.height
         )
+        attrInvoiceNoTitle.draw(in: invoiceNoTitleStringRect)
         attrInvoiceNo.draw(in: invoiceNoStringRect)
+        attrInvoiceDateTitle.draw(in: invoiceDateTitleStringRect)
         attrInvoiceDate.draw(in: invoiceDateStringRect)
         attrClientName.draw(in: nameStringRect)
         attrClientAddress.draw(in: addressStringRect)
         attrClientCountry.draw(in: countryStringRect)
         attrVatNo.draw(in: vatNoStringRect)
-
         return vatNoStringRect.origin.y + vatNoStringRect.size.height
+    }
+
+    func addInvoiceTableHeader(pageRect: CGRect, infoTop: CGFloat) -> CGFloat {
+        let font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
+        let attrItem = NSAttributedString(
+            string: "Item",
+            attributes: attributes
+          )
+        let attrDescription = NSAttributedString(
+            string: "Description",
+            attributes: attributes
+          )
+        let attrUnitCost = NSAttributedString(
+            string: "Unit cost",
+            attributes: attributes
+          )
+        let attrQuantity = NSAttributedString(
+            string: "Quantity",
+            attributes: attributes
+          )
+        let attrLineTotal = NSAttributedString(
+            string: "Line Total",
+            attributes: attributes
+          )
+        let itemStringSize = attrItem.size()
+        let descriptionStringSize = attrDescription.size()
+        let unitStringSize = attrUnitCost.size()
+        let quanityNoStringSize = attrQuantity.size()
+        let lineTotalStringSize = attrLineTotal.size()
+        let itemStringRect = CGRect(
+            x: 40,
+            y: infoTop,
+            width: itemStringSize.width,
+            height: itemStringSize.height
+        )
+        let descriptionStringRect = CGRect(
+            x: itemStringRect.origin.y + 20,
+            y: infoTop,
+            width: descriptionStringSize.width,
+            height: descriptionStringSize.height
+        )
+        let unitStringRect = CGRect(
+            x: descriptionStringRect.origin.y + 20,
+            y: infoTop,
+            width: unitStringSize.width,
+            height: unitStringSize.height
+        )
+        let quantityStringRect = CGRect(
+            x: unitStringRect.origin.y + 20,
+            y: infoTop,
+            width: quanityNoStringSize.width,
+            height: quanityNoStringSize.height
+        )
+        let lineTotalStringRect = CGRect(
+            x: pageRect.width - 40 - lineTotalStringSize.width,
+            y: infoTop,
+            width: lineTotalStringSize.width,
+            height: lineTotalStringSize.height
+        )
+        attrItem.draw(in: itemStringRect)
+        attrDescription.draw(in: descriptionStringRect)
+        attrUnitCost.draw(in: unitStringRect)
+        attrQuantity.draw(in: quantityStringRect)
+        attrLineTotal.draw(in: lineTotalStringRect)
+
+        return itemStringRect.origin.y + itemStringRect.size.height
     }
 
     func addCompanyInfo(pageRect: CGRect, infoTop: CGFloat, name: String, address: String, vatNo: String) -> CGFloat {
