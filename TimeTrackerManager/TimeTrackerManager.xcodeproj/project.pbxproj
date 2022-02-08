@@ -18,7 +18,7 @@
 		54075A3227A2E284003B1A79 /* FirebaseClientPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A3027A2E284003B1A79 /* FirebaseClientPublisher.swift */; };
 		54075A3327A2E284003B1A79 /* FirebaseClientsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A3127A2E284003B1A79 /* FirebaseClientsLoader.swift */; };
 		54075A3927A2E350003B1A79 /* ClientListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A3827A2E350003B1A79 /* ClientListCell.swift */; };
-		54075A4227A45599003B1A79 /* PdfCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A4127A45599003B1A79 /* PdfCreator.swift */; };
+		54075A4227A45599003B1A79 /* InvoiceCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A4127A45599003B1A79 /* InvoiceCreator.swift */; };
 		54075A4627A45BEA003B1A79 /* InvoicePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A4527A45BEA003B1A79 /* InvoicePreviewViewController.swift */; };
 		54075A4827A46038003B1A79 /* ClientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54075A4727A46038003B1A79 /* ClientDetailViewController.swift */; };
 		54280D9527A7D9DB000E4EEB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54280D9427A7D9DB000E4EEB /* SettingsViewController.swift */; };
@@ -40,6 +40,7 @@
 		54C34F8827736432004C11E1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 54C34F8727736432004C11E1 /* FirebaseAuth */; };
 		54C34F8A277364B9004C11E1 /* TimeTrackerAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 54C34F89277364B9004C11E1 /* TimeTrackerAuth */; };
 		54CEBAE927ADB57900BF0DDE /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CEBAE827ADB57900BF0DDE /* Invoice.swift */; };
+		54CEBAEB27B1BE4B00BF0DDE /* ClientDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CEBAEA27B1BE4B00BF0DDE /* ClientDetail.swift */; };
 		54E38BD62786EEE200625F92 /* FirebaseUserPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E38BD52786EEE200625F92 /* FirebaseUserPublisher.swift */; };
 		C68C87C82771FF83002B6746 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C87C72771FF83002B6746 /* UserModel.swift */; };
 		C6B2B24D276256D400705659 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2B24C276256D400705659 /* AppDelegate.swift */; };
@@ -84,7 +85,7 @@
 		54075A3027A2E284003B1A79 /* FirebaseClientPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClientPublisher.swift; sourceTree = "<group>"; };
 		54075A3127A2E284003B1A79 /* FirebaseClientsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClientsLoader.swift; sourceTree = "<group>"; };
 		54075A3827A2E350003B1A79 /* ClientListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientListCell.swift; sourceTree = "<group>"; };
-		54075A4127A45599003B1A79 /* PdfCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfCreator.swift; sourceTree = "<group>"; };
+		54075A4127A45599003B1A79 /* InvoiceCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceCreator.swift; sourceTree = "<group>"; };
 		54075A4527A45BEA003B1A79 /* InvoicePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicePreviewViewController.swift; sourceTree = "<group>"; };
 		54075A4727A46038003B1A79 /* ClientDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDetailViewController.swift; sourceTree = "<group>"; };
 		54280D9427A7D9DB000E4EEB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 		54AE368F2770C7CF00407F04 /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
 		54BAC8532796F80000684981 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		54CEBAE827ADB57900BF0DDE /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		54CEBAEA27B1BE4B00BF0DDE /* ClientDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDetail.swift; sourceTree = "<group>"; };
 		54E38BD52786EEE200625F92 /* FirebaseUserPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserPublisher.swift; sourceTree = "<group>"; };
 		C68C87C72771FF83002B6746 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C6B2B249276256D400705659 /* TimeTrackerManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTrackerManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,7 +175,6 @@
 				54075A2C27A2E202003B1A79 /* AddClientsViewController.swift */,
 				54075A2D27A2E202003B1A79 /* ClientsTableViewController.swift */,
 				54075A4727A46038003B1A79 /* ClientDetailViewController.swift */,
-				54075A4527A45BEA003B1A79 /* InvoicePreviewViewController.swift */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -208,6 +209,7 @@
 				54280DA227A81682000E4EEB /* ProjectCell.swift */,
 				C68C87C72771FF83002B6746 /* UserModel.swift */,
 				54CEBAE827ADB57900BF0DDE /* Invoice.swift */,
+				54CEBAEA27B1BE4B00BF0DDE /* ClientDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,7 +217,8 @@
 		54075A4027A44E99003B1A79 /* Invoice */ = {
 			isa = PBXGroup;
 			children = (
-				54075A4127A45599003B1A79 /* PdfCreator.swift */,
+				54075A4127A45599003B1A79 /* InvoiceCreator.swift */,
+				54075A4527A45BEA003B1A79 /* InvoicePreviewViewController.swift */,
 			);
 			name = Invoice;
 			sourceTree = "<group>";
@@ -513,10 +516,11 @@
 				54075A2F27A2E202003B1A79 /* ClientsTableViewController.swift in Sources */,
 				54AE368C2770BD8300407F04 /* UserTableViewController.swift in Sources */,
 				547B01ED278DDAB700636A90 /* Utils.swift in Sources */,
+				54CEBAEB27B1BE4B00BF0DDE /* ClientDetail.swift in Sources */,
 				C6B2B24F276256D400705659 /* SceneDelegate.swift in Sources */,
 				54075A4627A45BEA003B1A79 /* InvoicePreviewViewController.swift in Sources */,
 				54075A3927A2E350003B1A79 /* ClientListCell.swift in Sources */,
-				54075A4227A45599003B1A79 /* PdfCreator.swift in Sources */,
+				54075A4227A45599003B1A79 /* InvoiceCreator.swift in Sources */,
 				54E38BD62786EEE200625F92 /* FirebaseUserPublisher.swift in Sources */,
 				547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */,
 			);
