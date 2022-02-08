@@ -103,6 +103,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Preview invoice"/>
                                 <connections>
+                                    <action selector="previewInvoiceButton:" destination="dr3-kh-hIu" eventType="touchUpInside" id="glh-0d-ofk"/>
                                     <segue destination="Ihq-TB-nPl" kind="showDetail" identifier="previewInvoice" id="aML-4x-TF8"/>
                                 </connections>
                             </button>
