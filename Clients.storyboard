@@ -106,8 +106,8 @@
                                     <segue destination="Ihq-TB-nPl" kind="showDetail" identifier="previewInvoice" id="aML-4x-TF8"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vcf-Rb-Vdr">
-                                <rect key="frame" x="160" y="113" width="94" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdf-7S-0i9">
+                                <rect key="frame" x="0.0" y="88" width="414" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -116,20 +116,20 @@
                         <viewLayoutGuide key="safeArea" id="xIL-Dc-pxI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Xdf-7S-0i9" firstAttribute="top" secondItem="xIL-Dc-pxI" secondAttribute="top" id="EX0-9U-h2i"/>
                             <constraint firstItem="BBs-rN-tvO" firstAttribute="leading" relation="lessThanOrEqual" secondItem="xIL-Dc-pxI" secondAttribute="leading" constant="146" id="IuM-Oe-Zi7"/>
-                            <constraint firstItem="Vcf-Rb-Vdr" firstAttribute="top" secondItem="xIL-Dc-pxI" secondAttribute="top" constant="25" id="N1B-rE-3gI"/>
+                            <constraint firstItem="xIL-Dc-pxI" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Xdf-7S-0i9" secondAttribute="trailing" id="Kad-hn-YIB"/>
                             <constraint firstItem="xIL-Dc-pxI" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="BBs-rN-tvO" secondAttribute="trailing" constant="144" id="SUk-nd-86d"/>
+                            <constraint firstItem="Xdf-7S-0i9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xIL-Dc-pxI" secondAttribute="leading" id="Wxy-Hq-W4F"/>
+                            <constraint firstItem="Xdf-7S-0i9" firstAttribute="centerX" secondItem="mjC-tV-0cD" secondAttribute="centerX" id="eUg-ag-qzx"/>
                             <constraint firstAttribute="bottom" secondItem="BBs-rN-tvO" secondAttribute="bottom" constant="50" id="g6R-ge-Udd"/>
-                            <constraint firstItem="Vcf-Rb-Vdr" firstAttribute="leading" relation="lessThanOrEqual" secondItem="xIL-Dc-pxI" secondAttribute="leading" constant="160" id="gXr-ge-gMA"/>
-                            <constraint firstItem="xIL-Dc-pxI" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Vcf-Rb-Vdr" secondAttribute="trailing" constant="160" id="nU3-Vg-Adc"/>
-                            <constraint firstItem="Vcf-Rb-Vdr" firstAttribute="centerX" secondItem="mjC-tV-0cD" secondAttribute="centerX" id="xCC-TF-Cbw"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lmT-HP-Kim"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="clientNAme" destination="Vcf-Rb-Vdr" id="j37-9O-7ee"/>
+                        <outlet property="clientName" destination="Xdf-7S-0i9" id="Mii-LP-F2q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mv-G1-yfo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
