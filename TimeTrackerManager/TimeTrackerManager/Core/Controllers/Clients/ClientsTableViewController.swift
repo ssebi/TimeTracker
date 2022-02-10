@@ -67,11 +67,7 @@ extension ClientsTableViewController {
         cell.clientsProject.text = projects.joined(separator: ", ")
 
         return cell
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        present(ClientDetailViewController(clientDetail: clients[indexPath.row]), animated: true)
-    }
+	}
 
     private func configRefreshControl() {
         tableView.refreshControl = UIRefreshControl()
