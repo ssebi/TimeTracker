@@ -30,6 +30,14 @@ final class ClientsTableViewController: UITableViewController {
             }
         }
     }
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let destination = segue.destination as? ClientDetailViewController {
+			if let indexPath = tableView.indexPathForSelectedRow {
+				destination.clientDetail = clients[indexPath.row]
+			}
+		}
+	}
 }
 
 extension ClientsTableViewController {

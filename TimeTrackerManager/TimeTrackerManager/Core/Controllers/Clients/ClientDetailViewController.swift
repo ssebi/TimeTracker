@@ -38,32 +38,32 @@ final class ClientDetailViewController: UIViewController {
         }
     }
     // do this on button press
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let clientInvoiceDetail = ClientDetail(
-            name: (clientDetail?.name ?? "No name"),
-            vatNo: "xxx2234",
-            address: "xxcc adress",
-            country: "Romania"
-        )
-        let invoice = Invoice(
-                client: (clientDetail?.name ?? "XX"),
-                invoiceNumber: "TMTRK001",
-                product: "Programing hours"
-        )
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		let clientInvoiceDetail = ClientDetail(
+			name: (clientDetail?.name ?? "No name"),
+			vatNo: "xxx2234",
+			address: "xxcc adress",
+			country: "Romania"
+		)
+		let invoice = Invoice(
+			client: (clientDetail?.name ?? "XX"),
+			invoiceNumber: "TMTRK001",
+			product: "Programing hours"
+		)
 
-        let title = "Invoice"
-        let bodyText = "<<<<<<<< >>>>>  Body Text <<<<< this is a very long text , a text very long tesxt >>>>>"
-     guard segue.identifier == "previewInvoice",
-           let invoiceVC = segue.destination as? InvoicePreviewViewController,
-            let image = UIImage(named: "parhelion_logo_light") else { return }
+		let title = "Invoice"
+		let bodyText = "<<<<<<<< >>>>>  Body Text <<<<< this is a very long text , a text very long tesxt >>>>>"
+		guard segue.identifier == "previewInvoice",
+			  let invoiceVC = segue.destination as? InvoicePreviewViewController,
+			  let image = UIImage(named: "parhelion_logo_light") else { return }
 
-        let pdfCreator = InvoiceCreator(
-            title: title,
-            body: bodyText,
-            image: image,
-            contactInfo: "contact info info",
-            clientDetail: clientInvoiceDetail
-        )
-        invoiceVC.documentData = pdfCreator.createInvoice(invoice: invoice)
-    }
+		let pdfCreator = InvoiceCreator(
+			title: title,
+			body: bodyText,
+			image: image,
+			contactInfo: "contact info info",
+			clientDetail: clientInvoiceDetail
+		)
+		invoiceVC.documentData = pdfCreator.createInvoice(invoice: invoice)
+	}
 }
