@@ -8,6 +8,8 @@
 import PDFKit
 
 final class InvoiceCreator {
+	let leftPadding: CGFloat = 40
+
     let title: String
     let body: String
     let image: UIImage
@@ -47,14 +49,14 @@ final class InvoiceCreator {
             )
             let invoiceHeaderBottom = addInvoiceHeader(
                 pageRect: pageRect,
-                infoTop: titleBottom + 18.0,
+                infoTop: titleBottom + 8.0,
                 invoiceNo: invoice.invoiceNumber,
                 invoiceDate: "20-02-2022",
                 clientDetail: clientDetail
             )
             let invoiceTableHeaderBottom = addInvoiceTableHeader(pageRect: pageRect, infoTop: invoiceHeaderBottom + 100)
             let context = context.cgContext
-            drawTableLines(context, pageRect: pageRect, lineTop: titleBottom + 10.0)
+            drawTableLines(context, pageRect: pageRect, lineTop: titleBottom)
             drawTableLines(context, pageRect: pageRect, lineTop: invoiceHeaderBottom + 10.0)
             drawTableLines(context, pageRect: pageRect, lineTop: invoiceTableHeaderBottom + 10.0)
         }
@@ -62,22 +64,7 @@ final class InvoiceCreator {
     }
 
     func addTitle(pageRect: CGRect, titleTop: CGFloat) -> CGFloat {
-        let titleFont = UIFont.systemFont(ofSize: 27.0, weight: .medium)
-        let titleAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: titleFont]
-        let attributedTitle = NSAttributedString(
-            string: title,
-            attributes: titleAttributes
-          )
-        let titleStringSize = attributedTitle.size()
-        let titleStringRect = CGRect(
-            x: 40,
-            y: titleTop,
-            width: titleStringSize.width,
-            height: titleStringSize.height
-        )
-        attributedTitle.draw(in: titleStringRect)
-
-        return titleStringRect.origin.y + titleStringRect.size.height
+		PDFElement(text: title, style: .largeTitle, originX: leftPadding, originY: titleTop).drawText()
     }
 
     func addInvoiceHeader(
@@ -87,109 +74,48 @@ final class InvoiceCreator {
             invoiceDate: String,
             clientDetail: ClientDetail
     ) -> CGFloat {
-        let boldFont = UIFont.systemFont(ofSize: 14.0, weight: .medium)
-        let font = UIFont.systemFont(ofSize: 14.0, weight: .light)
-        let boldAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: boldFont]
-        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
-        let attrInvoiceNoTitle = NSAttributedString(
-            string: "Invoice Number:",
-            attributes: attributes
-          )
-        let attrInvoiceDateTitle = NSAttributedString(
-            string: "Invoice Date:",
-            attributes: attributes
-          )
-        let attrInvoiceNo = NSAttributedString(
-            string: invoiceNo,
-            attributes: attributes
-          )
-        let attrInvoiceDate = NSAttributedString(
-            string: invoiceDate,
-            attributes: attributes
-          )
-        let attrClientName = NSAttributedString(
-            string: clientDetail.name,
-            attributes: boldAttribute
-          )
+		let invoiceNoTitle = PDFElement(text: "Invoice Number:",
+									   originX: leftPadding,
+									   originY: infoTop)
+		let invoiceDateTitle = PDFElement(text: "Invoice Date:",
+										 originX: leftPadding,
+										 originY: invoiceNoTitle.rect.origin.y + invoiceNoTitle.rect.size.height)
+		let invoiceNoValue = PDFElement(text: invoiceNo,
+									   originX: pageRect.width / 4 + 20,
+									   originY: infoTop)
+		let invoiceDateValue = PDFElement(text: invoiceDate,
+										 originX: pageRect.width / 4 + 20,
+										 originY: invoiceNoValue.rect.origin.y + invoiceNoValue.rect.size.height)
+		let clientName = PDFElement(text: clientDetail.name,
+								   style: .headline,
+								   originX: pageRect.width / 1.5,
+								   originY: infoTop)
+		let clientAddress = PDFElement(text: clientDetail.address,
+									  originX: pageRect.width / 1.5,
+									  originY: clientName.rect.origin.y + clientName.rect.size.height)
+		let clientCountry = PDFElement(text: clientDetail.country,
+									  originX: pageRect.width / 1.5,
+									  originY: clientAddress.rect.origin.y + clientAddress.rect.size.height)
+		let vat = PDFElement(text: clientDetail.vatNo,
+							style: .headline,
+							originX: pageRect.width / 1.5,
+							originY: clientCountry.rect.origin.y + clientCountry.rect.size.height)
 
-        let attrClientAddress = NSAttributedString(
-            string: clientDetail.address,
-            attributes: attributes
-          )
-        let attrClientCountry = NSAttributedString(
-            string: clientDetail.country,
-            attributes: attributes
-          )
-        let attrVatNo = NSAttributedString(
-            string: clientDetail.vatNo,
-            attributes: boldAttribute
-          )
-        let invoiceDateTitleStringSize = attrInvoiceDateTitle.size()
-        let invoiceNoTitleStringSize = attrInvoiceNoTitle.size()
-        let invoiceDateStringSize = attrInvoiceDate.size()
-        let invoiceNoStringSize = attrInvoiceNo.size()
-        let nameStringSize = attrClientName.size()
-        let addressStringSize = attrClientAddress.size()
-        let countryStringSize = attrClientCountry.size()
-        let vatNoStringSize = attrVatNo.size()
-        let invoiceNoTitleStringRect = CGRect(
-            x: 40,
-            y: infoTop,
-            width: invoiceNoTitleStringSize.width,
-            height: invoiceNoTitleStringSize.height
-        )
-        let invoiceNoStringRect = CGRect(
-            x: pageRect.width / 4 + 20,
-            y: infoTop,
-            width: invoiceNoStringSize.width,
-            height: invoiceNoStringSize.height
-        )
-        let invoiceDateTitleStringRect = CGRect(
-            x: 40,
-            y: invoiceNoTitleStringRect.origin.y + invoiceNoTitleStringRect.size.height,
-            width: invoiceDateTitleStringSize.width,
-            height: invoiceDateTitleStringSize.height
-        )
-        let invoiceDateStringRect = CGRect(
-            x: pageRect.width / 4 + 20,
-            y: invoiceNoStringRect.origin.y + invoiceNoStringRect.size.height,
-            width: invoiceDateStringSize.width,
-            height: invoiceDateStringSize.height
-        )
-        let nameStringRect = CGRect(
-            x: pageRect.width / 1.5,
-            y: infoTop,
-            width: nameStringSize.width,
-            height: nameStringSize.height
-        )
-        let addressStringRect = CGRect(
-            x: pageRect.width / 1.5,
-            y: nameStringRect.origin.y + nameStringRect.size.height,
-            width: addressStringSize.width,
-            height: addressStringSize.height
-        )
-        let countryStringRect = CGRect(
-            x: pageRect.width / 1.5,
-            y: addressStringRect.origin.y + addressStringRect.size.height,
-            width: addressStringSize.width,
-            height: addressStringSize.height
-        )
-        let vatNoStringRect = CGRect(
-            x: pageRect.width / 1.5,
-            y: countryStringRect.origin.y + countryStringRect.size.height,
-            width: vatNoStringSize.width,
-            height: vatNoStringSize.height
-        )
-        attrInvoiceNoTitle.draw(in: invoiceNoTitleStringRect)
-        attrInvoiceNo.draw(in: invoiceNoStringRect)
-        attrInvoiceDateTitle.draw(in: invoiceDateTitleStringRect)
-        attrInvoiceDate.draw(in: invoiceDateStringRect)
-        attrClientName.draw(in: nameStringRect)
-        attrClientAddress.draw(in: addressStringRect)
-        attrClientCountry.draw(in: countryStringRect)
-        attrVatNo.draw(in: vatNoStringRect)
-        return vatNoStringRect.origin.y + vatNoStringRect.size.height + 10
-    }
+		let arr = [
+			invoiceNoTitle,
+			invoiceDateTitle,
+			invoiceNoValue,
+			invoiceDateValue,
+			clientName,
+			clientAddress,
+			clientCountry,
+			vat
+		].map { component in
+			component.drawText()
+		}
+
+		return arr[arr.count - 1]
+	}
 
     func addInvoiceTableHeader(pageRect: CGRect, infoTop: CGFloat) -> CGFloat {
         let font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
@@ -256,7 +182,7 @@ final class InvoiceCreator {
         attrLineTotal.draw(in: lineTotalStringRect)
 
         return itemStringRect.origin.y + itemStringRect.size.height
-    }
+	}
 
     func addCompanyInfo(pageRect: CGRect, infoTop: CGFloat, name: String, address: String, vatNo: String) -> CGFloat {
         let nameFont = UIFont.systemFont(ofSize: 20.0, weight: .bold)
@@ -361,4 +287,55 @@ final class InvoiceCreator {
       image.draw(in: imageRect)
       return imageRect.origin.y + imageRect.size.height
     }
+}
+
+private struct PDFElement {
+	enum PDFFontStyle {
+		case largeTitle
+		case headline
+		case body
+
+		func attributes() -> [NSAttributedString.Key: Any] {
+			switch self {
+				case .largeTitle:
+					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 27.0, weight: .medium)]
+
+				case .headline:
+					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .medium)]
+
+				case .body:
+					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)]
+			}
+		}
+	}
+
+	let bottomPadding: CGFloat = 10
+
+	var text: String
+	var rect: CGRect
+
+	private var style: PDFFontStyle
+	private var attributesText: NSAttributedString {
+		NSAttributedString(string: text, attributes: style.attributes())
+	}
+
+	init() {
+		text = ""
+		rect = CGRect()
+		style = .body
+	}
+
+	init(text: String, style: PDFFontStyle = .body, originX: CGFloat, originY: CGFloat) {
+		self.init()
+		self.text = text
+		self.style = style
+		let size = attributesText.size()
+		rect = CGRect(x: originX, y: originY, width: size.width, height: size.height)
+	}
+
+	@discardableResult
+	func drawText() -> CGFloat {
+		attributesText.draw(in: rect)
+		return rect.origin.y + rect.size.height + bottomPadding
+	}
 }
