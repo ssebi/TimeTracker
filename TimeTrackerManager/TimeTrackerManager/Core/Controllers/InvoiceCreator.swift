@@ -38,6 +38,7 @@ final class InvoiceCreator {
         let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
         let data = renderer.pdfData { context in
             context.beginPage()
+
             let logo = addLogo(pageRect: pageRect, imageTop: 40)
             let titleBottom = addTitle(pageRect: pageRect, titleTop: logo + 60.0)
             addCompanyInfo(
@@ -54,6 +55,7 @@ final class InvoiceCreator {
                 invoiceDate: "20-02-2022",
                 clientDetail: clientDetail
             )
+
             let invoiceTableHeaderBottom = addInvoiceTableHeader(pageRect: pageRect, infoTop: invoiceHeaderBottom + 100)
             let context = context.cgContext
             drawTableLines(context, pageRect: pageRect, lineTop: titleBottom)
@@ -118,70 +120,33 @@ final class InvoiceCreator {
 	}
 
     func addInvoiceTableHeader(pageRect: CGRect, infoTop: CGFloat) -> CGFloat {
-        let font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
-        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
-        let attrItem = NSAttributedString(
-            string: "Item",
-            attributes: attributes
-          )
-        let attrDescription = NSAttributedString(
-            string: "Description",
-            attributes: attributes
-          )
-        let attrUnitCost = NSAttributedString(
-            string: "Unit cost",
-            attributes: attributes
-          )
-        let attrQuantity = NSAttributedString(
-            string: "Quantity",
-            attributes: attributes
-          )
-        let attrLineTotal = NSAttributedString(
-            string: "Line Total",
-            attributes: attributes
-          )
-        let itemStringSize = attrItem.size()
-        let descriptionStringSize = attrDescription.size()
-        let unitStringSize = attrUnitCost.size()
-        let quanityNoStringSize = attrQuantity.size()
-        let lineTotalStringSize = attrLineTotal.size()
-        let itemStringRect = CGRect(
-            x: 40,
-            y: infoTop,
-            width: itemStringSize.width,
-            height: itemStringSize.height
-        )
-        let descriptionStringRect = CGRect(
-            x: itemStringRect.origin.x + itemStringRect.width + 20,
-            y: infoTop,
-            width: descriptionStringSize.width,
-            height: descriptionStringSize.height
-        )
-        let unitStringRect = CGRect(
-            x: descriptionStringRect.origin.x + descriptionStringRect.width * 2.5,
-            y: infoTop,
-            width: unitStringSize.width,
-            height: unitStringSize.height
-        )
-        let quantityStringRect = CGRect(
-            x: unitStringRect.origin.x + unitStringRect.width + 20,
-            y: infoTop,
-            width: quanityNoStringSize.width,
-            height: quanityNoStringSize.height
-        )
-        let lineTotalStringRect = CGRect(
-            x: pageRect.width - 40 - lineTotalStringSize.width,
-            y: infoTop,
-            width: lineTotalStringSize.width,
-            height: lineTotalStringSize.height
-        )
-        attrItem.draw(in: itemStringRect)
-        attrDescription.draw(in: descriptionStringRect)
-        attrUnitCost.draw(in: unitStringRect)
-        attrQuantity.draw(in: quantityStringRect)
-        attrLineTotal.draw(in: lineTotalStringRect)
+        let item = PDFElement(text: "Item",
+                                originX: leftPadding,
+                                originY: infoTop)
+        let description = PDFElement(text: "Description",
+                                     originX: item.rect.origin.x + item.rect.width + 20,
+                                     originY: infoTop)
+        let unitCost = PDFElement(text: "Unit cost",
+                                  originX: description.rect.origin.x + description.rect.width * 2.5,
+                                  originY: infoTop)
+        let quantity = PDFElement(text: "Quantity",
+                                  originX: unitCost.rect.origin.x + unitCost.rect.width + 20,
+                                  originY: infoTop)
+        let lineTotal = PDFElement(text: "Line Total",
+                                   originX: pageRect.width - 110,
+                                   originY: infoTop)
 
-        return itemStringRect.origin.y + itemStringRect.size.height
+        let arr = [
+            item,
+            description,
+            unitCost,
+            quantity,
+            lineTotal
+        ].map { component in
+            component.drawText()
+        }
+
+        return arr[arr.count - 1]
 	}
 
     func addCompanyInfo(pageRect: CGRect, infoTop: CGFloat, name: String, address: String, vatNo: String) -> CGFloat {
