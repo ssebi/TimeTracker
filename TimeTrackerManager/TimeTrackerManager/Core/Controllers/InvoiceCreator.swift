@@ -137,7 +137,7 @@ final class InvoiceCreator {
                                   originY: infoTop)
         let quantity = PDFElement(text: "Quantity",
                                   style: .title3,
-                                  originX: unitCost.rect.origin.x + unitCost.rect.width + 20,
+                                  originX: unitCost.rect.origin.x + unitCost.rect.width + 30,
                                   originY: infoTop)
         let lineTotal = PDFElement(text: "Line Total",
                                    style: .title3,

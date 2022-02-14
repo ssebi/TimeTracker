@@ -27,6 +27,7 @@ final class ClientDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // show bill only for the last month
+        clientName.text = clientDetail?.name
     }
 
     @IBAction func previewInvoiceButton(_ sender: Any) {
