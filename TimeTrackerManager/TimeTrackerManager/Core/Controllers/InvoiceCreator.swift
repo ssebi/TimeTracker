@@ -59,8 +59,8 @@ final class InvoiceCreator {
             let invoiceTableHeaderBottom = addInvoiceTableHeader(pageRect: pageRect, infoTop: invoiceHeaderBottom + 100)
             let context = context.cgContext
             drawTableLines(context, pageRect: pageRect, lineTop: titleBottom)
-            drawTableLines(context, pageRect: pageRect, lineTop: invoiceHeaderBottom + 10.0)
-            drawTableLines(context, pageRect: pageRect, lineTop: invoiceTableHeaderBottom + 10.0)
+            drawTableLines(context, pageRect: pageRect, lineTop: invoiceHeaderBottom)
+            drawTableLines(context, pageRect: pageRect, lineTop: invoiceTableHeaderBottom)
         }
         return data
     }
@@ -121,18 +121,23 @@ final class InvoiceCreator {
 
     func addInvoiceTableHeader(pageRect: CGRect, infoTop: CGFloat) -> CGFloat {
         let item = PDFElement(text: "Item",
-                                originX: leftPadding,
-                                originY: infoTop)
+                              style: .title3,
+                              originX: leftPadding,
+                              originY: infoTop)
         let description = PDFElement(text: "Description",
+                                     style: .title3,
                                      originX: item.rect.origin.x + item.rect.width + 20,
                                      originY: infoTop)
         let unitCost = PDFElement(text: "Unit cost",
+                                  style: .title3,
                                   originX: description.rect.origin.x + description.rect.width * 2.5,
                                   originY: infoTop)
         let quantity = PDFElement(text: "Quantity",
+                                  style: .title3,
                                   originX: unitCost.rect.origin.x + unitCost.rect.width + 20,
                                   originY: infoTop)
         let lineTotal = PDFElement(text: "Line Total",
+                                   style: .title3,
                                    originX: pageRect.width - 110,
                                    originY: infoTop)
 
@@ -259,6 +264,7 @@ private struct PDFElement {
 		case largeTitle
 		case headline
 		case body
+        case title3
 
 		func attributes() -> [NSAttributedString.Key: Any] {
 			switch self {
@@ -270,6 +276,8 @@ private struct PDFElement {
 
 				case .body:
 					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)]
+                case .title3:
+                    return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0, weight: .bold)]
 			}
 		}
 	}
