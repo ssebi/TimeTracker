@@ -154,7 +154,7 @@ final class InvoiceCreator {
         return arr[arr.count - 1]
 	}
 
-    func addCompanyInfo(pageRect: CGRect, infoTop: CGFloat, name: String, address: String, vatNo: String) -> CGFloat {
+    func addCompanyInfo(pageRect: CGRect, infoTop: CGFloat, name: String, address: String, vatNo: String) {
         let nameFont = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         let detailFont = UIFont.systemFont(ofSize: 17.0, weight: .medium)
         let nameAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: nameFont]
@@ -198,34 +198,6 @@ final class InvoiceCreator {
         attributedName.draw(in: nameStringRect)
         attributedAddress.draw(in: adressStringRect)
         attributedVatNo.draw(in: vatNoStringRect)
-
-        let height = nameStringRect.origin.y + nameStringRect.size.height +
-                    adressStringRect.origin.y + adressStringRect.size.height +
-                    vatNoStringRect.origin.y + vatNoStringRect.size.height
-
-        return height
-    }
-
-    func addBodyText(pageRect: CGRect, textTop: CGFloat) {
-      let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
-      let paragraphStyle = NSMutableParagraphStyle()
-      paragraphStyle.alignment = .natural
-      paragraphStyle.lineBreakMode = .byWordWrapping
-      let textAttributes = [
-        NSAttributedString.Key.paragraphStyle: paragraphStyle,
-        NSAttributedString.Key.font: textFont
-      ]
-      let attributedText = NSAttributedString(
-        string: body,
-        attributes: textAttributes
-      )
-      let textRect = CGRect(
-        x: 20,
-        y: textTop,
-        width: pageRect.width - 20,
-        height: pageRect.height - textTop - pageRect.height / 5.0
-      )
-      attributedText.draw(in: textRect)
     }
 
     func drawTableLines(_ drawContext: CGContext, pageRect: CGRect, lineTop: CGFloat) {
