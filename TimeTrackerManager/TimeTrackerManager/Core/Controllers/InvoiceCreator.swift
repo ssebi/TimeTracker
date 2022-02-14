@@ -57,10 +57,13 @@ final class InvoiceCreator {
             )
 
             let invoiceTableHeaderBottom = addInvoiceTableHeader(pageRect: pageRect, infoTop: invoiceHeaderBottom + 100)
+            let invoiceBodyBottom = addInvoiceBody(pageRect: pageRect, infoTop: invoiceTableHeaderBottom + 10.0)
             let context = context.cgContext
+
             drawTableLines(context, pageRect: pageRect, lineTop: titleBottom)
             drawTableLines(context, pageRect: pageRect, lineTop: invoiceHeaderBottom)
             drawTableLines(context, pageRect: pageRect, lineTop: invoiceTableHeaderBottom)
+            drawTableLines(context, pageRect: pageRect, lineTop: invoiceBodyBottom)
         }
         return data
     }
@@ -126,7 +129,7 @@ final class InvoiceCreator {
                               originY: infoTop)
         let description = PDFElement(text: "Description",
                                      style: .title3,
-                                     originX: item.rect.origin.x + item.rect.width + 20,
+                                     originX: pageRect.width / 7.5,
                                      originY: infoTop)
         let unitCost = PDFElement(text: "Unit cost",
                                   style: .title3,
@@ -153,6 +156,40 @@ final class InvoiceCreator {
 
         return arr[arr.count - 1]
 	}
+
+    func addInvoiceBody(pageRect: CGRect, infoTop: CGFloat) -> CGFloat {
+        let itemNo = PDFElement(text: "1",
+                              originX: 50,
+                              originY: infoTop)
+        let description = PDFElement(text: "Product conform contract din x",
+                                     originX: pageRect.width / 7.5,
+                                     originY: infoTop)
+        let unitCost = PDFElement(text: "150",
+                                  originX: pageRect.width / 2 + 10.0,
+                                  originY: infoTop)
+        let quantity = PDFElement(text: "350h",
+                                  originX: pageRect.width / 1.5,
+                                  originY: infoTop)
+        let lineTotal = PDFElement(text: "250*350",
+                                   originX: pageRect.width - 110,
+                                   originY: infoTop)
+        let invoiceTotal = PDFElement(text: "Total:   900",
+                                   originX: pageRect.width - 115,
+                                      originY: lineTotal.rect.origin.y + 50)
+
+        let arr = [
+            itemNo,
+            description,
+            unitCost,
+            quantity,
+            lineTotal,
+            invoiceTotal
+        ].map { component in
+            component.drawText()
+        }
+
+        return arr[arr.count - 2]
+    }
 
     func addCompanyInfo(pageRect: CGRect, infoTop: CGFloat, name: String, address: String, vatNo: String) {
         let nameFont = UIFont.systemFont(ofSize: 20.0, weight: .bold)
@@ -242,10 +279,8 @@ private struct PDFElement {
 			switch self {
 				case .largeTitle:
 					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 27.0, weight: .medium)]
-
 				case .headline:
 					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .medium)]
-
 				case .body:
 					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)]
                 case .title3:
