@@ -12,6 +12,7 @@ final class ClientDetailViewController: UIViewController {
     var clientDetail: Client?
 
     @IBOutlet weak var clientName: UILabel!
+    @IBOutlet var invoiceTotal: UILabel!
 
     init(clientDetail: Client?) {
         self.clientDetail = clientDetail
@@ -28,6 +29,7 @@ final class ClientDetailViewController: UIViewController {
 
         // show bill only for the last month
         clientName.text = clientDetail?.name
+        invoiceTotal.text = "350"
     }
 
     @IBAction func previewInvoiceButton(_ sender: Any) {
@@ -35,36 +37,36 @@ final class ClientDetailViewController: UIViewController {
     }
     func getClientDetail() {
         if let client = clientDetail {
-            print("client name xxX >>>>>", client.name)
+            //
         }
     }
     // do this on button press
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		let clientInvoiceDetail = ClientDetail(
-			name: (clientDetail?.name ?? "No name"),
-			vatNo: "xxx2234",
-			address: "xxcc adress",
-			country: "Romania"
+		let clientInvoiceDetail = ClientBillingInfo(
+            name: clientDetail?.name ?? "Unamed",
+            vat: clientDetail?.vat ?? "",
+            address: clientDetail?.address ?? "",
+            country: clientDetail?.country ?? ""
 		)
 		let invoice = Invoice(
-			client: (clientDetail?.name ?? "XX"),
+			client: (clientDetail?.name ?? "Unamed"),
 			invoiceNumber: "TMTRK001",
 			product: "Programing hours"
 		)
 
-		let title = "Invoice"
 		let bodyText = "<<<<<<<< >>>>>  Body Text <<<<< this is a very long text , a text very long tesxt >>>>>"
 		guard segue.identifier == "previewInvoice",
 			  let invoiceVC = segue.destination as? InvoicePreviewViewController,
 			  let image = UIImage(named: "parhelion_logo_light") else { return }
 
 		let pdfCreator = InvoiceCreator(
-			title: title,
+			title: "Invoice",
 			body: bodyText,
 			image: image,
 			contactInfo: "contact info info",
 			clientDetail: clientInvoiceDetail
 		)
+
 		invoiceVC.documentData = pdfCreator.createInvoice(invoice: invoice)
 	}
 }
