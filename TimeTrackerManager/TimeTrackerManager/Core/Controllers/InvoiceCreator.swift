@@ -14,9 +14,9 @@ final class InvoiceCreator {
     let body: String
     let image: UIImage
     let contactInfo: String
-    let clientDetail: ClientDetail
+    let clientDetail: ClientBillingInfo
 
-    init(title: String, body: String, image: UIImage, contactInfo: String, clientDetail: ClientDetail) {
+    init(title: String, body: String, image: UIImage, contactInfo: String, clientDetail: ClientBillingInfo) {
         self.title = title
         self.body = body
         self.image = image
@@ -77,7 +77,7 @@ final class InvoiceCreator {
             infoTop: CGFloat,
             invoiceNo: String,
             invoiceDate: String,
-            clientDetail: ClientDetail
+            clientDetail: ClientBillingInfo
     ) -> CGFloat {
 		let invoiceNoTitle = PDFElement(text: "Invoice Number:",
 									   originX: leftPadding,
@@ -98,10 +98,10 @@ final class InvoiceCreator {
 		let clientAddress = PDFElement(text: clientDetail.address,
 									  originX: pageRect.width / 1.5,
 									  originY: clientName.rect.origin.y + clientName.rect.size.height)
-		let clientCountry = PDFElement(text: clientDetail.country,
+        let clientCountry = PDFElement(text: clientDetail.country,
 									  originX: pageRect.width / 1.5,
 									  originY: clientAddress.rect.origin.y + clientAddress.rect.size.height)
-		let vat = PDFElement(text: clientDetail.vatNo,
+		let vat = PDFElement(text: clientDetail.vat,
 							style: .headline,
 							originX: pageRect.width / 1.5,
 							originY: clientCountry.rect.origin.y + clientCountry.rect.size.height)
