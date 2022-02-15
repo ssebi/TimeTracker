@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct ClientDetail {
+struct ClientBillingInfo {
     var name: String
-    var vatNo: String
+    var vat: String
     var address: String
     var country: String
 
-    init(name: String, vatNo: String, address: String, country: String) {
+    init(name: String, vat: String, address: String, country: String) {
         self.name = name
-        self.vatNo = vatNo
+        self.vat = vat
         self.address = address
         self.country = country
     }
