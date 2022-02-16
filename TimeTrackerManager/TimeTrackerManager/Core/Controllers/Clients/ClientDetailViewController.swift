@@ -19,6 +19,7 @@ final class ClientDetailViewController: UIViewController {
     @IBOutlet weak var clientName: UILabel!
     @IBOutlet var invoiceTotal: UILabel!
     @IBOutlet var invoiceNoTextField: UITextField!
+    @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var invoiceSeriesLabel: UITextView!
 
     init(clientDetail: Client?) {
@@ -47,7 +48,7 @@ final class ClientDetailViewController: UIViewController {
             let dbInvoiceNumber: Int = invoiceNo!.no
             let newInvoiceNo = invoiceNoTextField == dbInvoiceNumber ? dbInvoiceNumber + 1 : invoiceNoTextField
             invoice.updateInvoiceNo(newInvoiceNo: newInvoiceNo, docId: invoiceNo!.id) { error in
-                print(error)
+                //show alert if error
             }
         }
     }
@@ -64,6 +65,7 @@ final class ClientDetailViewController: UIViewController {
 
     // do this on button press
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
 		let clientInvoiceDetail = ClientBillingInfo(
             name: clientDetail?.name ?? "Unamed",
             vat: clientDetail?.vat ?? "",
@@ -73,20 +75,20 @@ final class ClientDetailViewController: UIViewController {
 
 		let invoice = Invoice(
 			client: (clientDetail?.name ?? "Unamed"),
-            invoiceNumber: "\(invoiceNo!.series)\(invoiceNoTextField.text!.description)" ,
-			product: "Programing hours"
+            invoiceNumber: "\(invoiceNo!.series)\(invoiceNoTextField.text!.description)",
+			product: "Software development services",
+            quantity: 100,
+            unitCost: 122,
+            invoiceDate: datePicker.date.description
 		)
 
-		let bodyText = "<<<<<<<< >>>>>  Body Text <<<<< this is a very long text , a text very long tesxt >>>>>"
 		guard segue.identifier == "previewInvoice",
 			  let invoiceVC = segue.destination as? InvoicePreviewViewController,
 			  let image = UIImage(named: "parhelion_logo_light") else { return }
 
 		let pdfCreator = InvoiceCreator(
 			title: "Invoice",
-			body: bodyText,
 			image: image,
-			contactInfo: "contact info info",
 			clientDetail: clientInvoiceDetail
 		)
 
