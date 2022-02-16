@@ -11,16 +11,12 @@ final class InvoiceCreator {
 	let leftPadding: CGFloat = 40
 
     let title: String
-    let body: String
     let image: UIImage
-    let contactInfo: String
     let clientDetail: ClientBillingInfo
 
-    init(title: String, body: String, image: UIImage, contactInfo: String, clientDetail: ClientBillingInfo) {
+    init(title: String, image: UIImage, clientDetail: ClientBillingInfo) {
         self.title = title
-        self.body = body
         self.image = image
-        self.contactInfo = contactInfo
         self.clientDetail = clientDetail
     }
 
@@ -41,6 +37,8 @@ final class InvoiceCreator {
 
             let logo = addLogo(pageRect: pageRect, imageTop: 40)
             let titleBottom = addTitle(pageRect: pageRect, titleTop: logo + 60.0)
+            let context = context.cgContext
+
             addCompanyInfo(
                 pageRect: pageRect,
                 infoTop: 40.0,
@@ -52,13 +50,19 @@ final class InvoiceCreator {
                 pageRect: pageRect,
                 infoTop: titleBottom + 8.0,
                 invoiceNo: invoice.invoiceNumber,
-                invoiceDate: "20-02-2022",
+                invoiceDate: invoice.invoiceDate,
                 clientDetail: clientDetail
             )
 
             let invoiceTableHeaderBottom = addInvoiceTableHeader(pageRect: pageRect, infoTop: invoiceHeaderBottom + 100)
-            let invoiceBodyBottom = addInvoiceBody(pageRect: pageRect, infoTop: invoiceTableHeaderBottom + 10.0)
-            let context = context.cgContext
+            let invoiceBodyBottom = addInvoiceBody(
+                pageRect: pageRect,
+                infoTop: invoiceTableHeaderBottom + 10.0,
+                unitCost: "\(invoice.unitCost)",
+                quantity: "\(invoice.quantity)",
+                lineTotal: "\(invoice.unitCost * invoice.quantity)",
+                product: invoice.product,
+                invoiceTotal: "\(invoice.unitCost * invoice.quantity)")
 
             drawTableLines(context, pageRect: pageRect, lineTop: titleBottom)
             drawTableLines(context, pageRect: pageRect, lineTop: invoiceHeaderBottom)
@@ -157,23 +161,30 @@ final class InvoiceCreator {
         return arr[arr.count - 1]
 	}
 
-    func addInvoiceBody(pageRect: CGRect, infoTop: CGFloat) -> CGFloat {
+    func addInvoiceBody(pageRect: CGRect,
+                        infoTop: CGFloat,
+                        unitCost: String,
+                        quantity: String,
+                        lineTotal: String,
+                        product: String,
+                        invoiceTotal: String
+                        ) -> CGFloat {
         let itemNo = PDFElement(text: "1",
                               originX: 50,
                               originY: infoTop)
-        let description = PDFElement(text: "Product conform contract din x",
+        let description = PDFElement(text: product,
                                      originX: pageRect.width / 7.5,
                                      originY: infoTop)
-        let unitCost = PDFElement(text: "150",
+        let unitCost = PDFElement(text: unitCost,
                                   originX: pageRect.width / 2 + 10.0,
                                   originY: infoTop)
-        let quantity = PDFElement(text: "350h",
+        let quantity = PDFElement(text: quantity,
                                   originX: pageRect.width / 1.5,
                                   originY: infoTop)
-        let lineTotal = PDFElement(text: "250*350",
+        let lineTotal = PDFElement(text: lineTotal,
                                    originX: pageRect.width - 110,
                                    originY: infoTop)
-        let invoiceTotal = PDFElement(text: "Total:   900",
+        let invoiceTotal = PDFElement(text: "Total:  \(invoiceTotal)",
                                    originX: pageRect.width - 115,
                                       originY: lineTotal.rect.origin.y + 50)
 

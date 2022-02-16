@@ -204,6 +204,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="clientName" destination="Xdf-7S-0i9" id="Mii-LP-F2q"/>
+                        <outlet property="datePicker" destination="dfH-s4-ORJ" id="GXl-MU-lsp"/>
                         <outlet property="invoiceNoTextField" destination="kTs-A1-aL8" id="Z4r-nJ-jrJ"/>
                         <outlet property="invoiceSeriesLabel" destination="FA0-Fh-DXR" id="CeG-bA-QIc"/>
                         <outlet property="invoiceTotal" destination="UBk-eL-4qH" id="WTg-XY-z8e"/>

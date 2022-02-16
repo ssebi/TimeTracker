@@ -12,6 +12,9 @@ struct Invoice {
     var client: String
     var invoiceNumber: String
     var product: String
+    var quantity: Int
+    var unitCost: Int
+    var invoiceDate: String
 }
 
 struct InvoiceNo {
