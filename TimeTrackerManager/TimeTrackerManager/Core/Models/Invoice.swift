@@ -13,3 +13,9 @@ struct Invoice {
     var invoiceNumber: String
     var product: String
 }
+
+struct InvoiceNo {
+    var id: String
+    var no: Int
+    var series: String
+}

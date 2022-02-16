@@ -7,17 +7,23 @@
 
 import UIKit
 import TimeTrackerCore
+import SwiftUI
 
 final class ClientDetailViewController: UIViewController {
     var clientDetail: Client?
+    var invoice = FirebaseInvoiceManager()
+
+    typealias CompletionHandler = (_ success: Bool) -> Void
+    var invoiceNo: InvoiceNo?
 
     @IBOutlet weak var clientName: UILabel!
     @IBOutlet var invoiceTotal: UILabel!
+    @IBOutlet var invoiceNoTextField: UITextField!
+    @IBOutlet var invoiceSeriesLabel: UITextView!
 
     init(clientDetail: Client?) {
         self.clientDetail = clientDetail
         super.init(nibName: nil, bundle: nil)
-        getClientDetail()
     }
 
     required init?(coder decoder: NSCoder) {
@@ -30,16 +36,32 @@ final class ClientDetailViewController: UIViewController {
         // show bill only for the last month
         clientName.text = clientDetail?.name
         invoiceTotal.text = "350"
+        loadInvoiceNo()
     }
 
     @IBAction func previewInvoiceButton(_ sender: Any) {
-
-    }
-    func getClientDetail() {
-        if let client = clientDetail {
-            //
+        if invoiceNoTextField.text != nil,
+           invoiceNo?.no != nil,
+           invoiceNo?.id != nil {
+            let invoiceNoTextField: Int = Int(invoiceNoTextField.text ?? "0") ?? 0
+            let dbInvoiceNumber: Int = invoiceNo!.no
+            let newInvoiceNo = invoiceNoTextField == dbInvoiceNumber ? dbInvoiceNumber + 1 : invoiceNoTextField
+            invoice.updateInvoiceNo(newInvoiceNo: newInvoiceNo, docId: invoiceNo!.id) { error in
+                print(error)
+            }
         }
     }
+
+    private func loadInvoiceNo() {
+        invoice.getInvoiceNo { [weak self] result in
+            if let invoiceNo = try? result.get() {
+                self?.invoiceNo = invoiceNo
+                self?.invoiceNoTextField.text = "\(invoiceNo.no)"
+                self?.invoiceSeriesLabel.text = "\(invoiceNo.series)"
+            }
+        }
+    }
+
     // do this on button press
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		let clientInvoiceDetail = ClientBillingInfo(
@@ -48,9 +70,10 @@ final class ClientDetailViewController: UIViewController {
             address: clientDetail?.address ?? "",
             country: clientDetail?.country ?? ""
 		)
+
 		let invoice = Invoice(
 			client: (clientDetail?.name ?? "Unamed"),
-			invoiceNumber: "TMTRK001",
+            invoiceNumber: "\(invoiceNo!.series)\(invoiceNoTextField.text!.description)" ,
 			product: "Programing hours"
 		)
 
