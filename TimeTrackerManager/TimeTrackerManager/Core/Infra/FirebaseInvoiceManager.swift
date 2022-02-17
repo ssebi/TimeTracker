@@ -11,6 +11,7 @@ import Firebase
 final class FirebaseInvoiceManager {
     typealias InvoicePublisherCompletion = (Result<Void, Error>) -> Void
     typealias GetInvoiceResult = (Result<InvoiceNo, Error>) -> Void
+    typealias GetInvoiceTotalResult = (Result<InvoiceTotal, Error>) -> Void
     public struct UndefinedError: Error { }
 
     public func updateInvoiceNo(newInvoiceNo: Int, docId: String, completion: @escaping InvoicePublisherCompletion) {
@@ -46,5 +47,22 @@ final class FirebaseInvoiceManager {
                 completion(.failure(UndefinedError()))
             }
         }
+    }
+
+    public func getInvoiceTotal(clientId: String, date: Date, completion: @escaping GetInvoiceTotalResult) {
+        Firestore.firestore().collection(Path.timeSlots)
+            .whereField("clientId", isEqualTo: clientId).whereField("date", isGreaterThan: date)
+            .getDocuments { (querySnapshot, error) in
+                if let querySnapshot = querySnapshot {
+                    let invoiceTotal = querySnapshot.documents.compactMap { document -> InvoiceTotal? in
+                        let data = document.data()
+                            print("===>>>>DATA", data)
+                        return InvoiceTotal(total: "", date: Date())
+                    }
+                    completion(.success(invoiceTotal[0]))
+                } else {
+                    completion(.failure(error!))
+                }
+            }
     }
 }
