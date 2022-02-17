@@ -14,6 +14,7 @@ final class ClientDetailViewController: UIViewController {
     var invoice = FirebaseInvoiceManager()
     typealias CompletionHandler = (_ success: Bool) -> Void
     var invoiceNo: InvoiceNo?
+    let dateFormatter = DateFormatter()
 
     @IBOutlet weak var clientName: UILabel!
     @IBOutlet var invoiceTotal: UILabel!
@@ -33,23 +34,21 @@ final class ClientDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // show bill only for the last month
+        datePicker.datePickerMode = UIDatePicker.Mode.date
         clientName.text = clientDetail?.name
-        invoiceTotal.text = "350"
         loadInvoiceNo()
         loadInvoiceTotal()
     }
 
     @IBAction func previewInvoiceButton(_ sender: Any) {
+        loadInvoiceTotal()
         if invoiceNoTextField.text != nil,
            invoiceNo?.no != nil,
            invoiceNo?.id != nil {
             let invoiceNoTextField: Int = Int(invoiceNoTextField.text ?? "0") ?? 0
             let dbInvoiceNumber: Int = invoiceNo!.no
             let newInvoiceNo = invoiceNoTextField == dbInvoiceNumber ? dbInvoiceNumber + 1 : invoiceNoTextField
-            invoice.updateInvoiceNo(newInvoiceNo: newInvoiceNo, docId: invoiceNo!.id) { error in
-                //show alert if error
-            }
+            invoice.updateInvoiceNo(newInvoiceNo: newInvoiceNo, docId: invoiceNo!.id) { _ in }
         }
     }
 
@@ -64,8 +63,12 @@ final class ClientDetailViewController: UIViewController {
     }
 
     private func loadInvoiceTotal() {
-        invoice.getInvoiceTotal(clientId: "", date: Date()) { result in
-            print(result)
+        if let clientName = clientDetail?.name {
+            invoice.getInvoiceTotal(clientName: clientName, date: datePicker.date) { [weak self] result in
+                if case let .success(total) = result {
+                    self?.invoiceTotal.text = "\(total)"
+                }
+            }
         }
     }
 
@@ -83,9 +86,9 @@ final class ClientDetailViewController: UIViewController {
 			client: (clientDetail?.name ?? "Unamed"),
             invoiceNumber: "\(invoiceNo!.series)\(invoiceNoTextField.text!.description)",
 			product: "Software development services",
-            quantity: 100,
+            quantity: Int(invoiceTotal.text ?? "") ?? 0,
             unitCost: clientDetail?.hourRate ?? 0,
-            invoiceDate: datePicker.date.description
+            invoiceDate: Date().stringToday()
 		)
 
 		guard segue.identifier == "previewInvoice",
