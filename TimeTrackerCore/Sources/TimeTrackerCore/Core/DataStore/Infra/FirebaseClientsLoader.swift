@@ -14,9 +14,9 @@ public class FirebaseClientsStore: ClientsStore {
                     var project = [Project]()
                     guard let name = data["name"] as? String,
                           let projects = data["projects"] as? [String],
-                            let vat = data["vat"] as? String,
-                            let country = data["country"] as? String,
-                            let address = data["address"] as? String,
+                          let vat = data["vat"] as? String,
+                          let country = data["country"] as? String,
+                          let address = data["address"] as? String,
                           let hourRate = data["hourRate"] as? Int else {
                               return nil
                           }
