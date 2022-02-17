@@ -16,7 +16,8 @@ public class FirebaseClientsStore: ClientsStore {
                           let projects = data["projects"] as? [String],
                             let vat = data["vat"] as? String,
                             let country = data["country"] as? String,
-                            let address = data["address"] as? String else {
+                            let address = data["address"] as? String,
+                          let hourRate = data["hourRate"] as? Int else {
                               return nil
                           }
                     projects.forEach { name in
@@ -27,7 +28,8 @@ public class FirebaseClientsStore: ClientsStore {
                                   projects: project,
                                   vat: vat,
                                   address: address,
-                                  country: country)
+                                  country: country,
+                                  hourRate: hourRate)
                 }
                 completion(.success(clients))
             } else if let error = error {

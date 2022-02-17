@@ -71,6 +71,7 @@
                                     <outlet property="clientName" destination="KaV-vR-UgZ" id="1QE-e4-DZ2"/>
                                     <outlet property="clientsAvatar" destination="f7p-1P-2NU" id="eQS-wS-kil"/>
                                     <outlet property="clientsProject" destination="ery-mE-UyH" id="rzc-tm-fIf"/>
+                                    <outlet property="totalHours" destination="pkw-Tn-eu7" id="mii-FE-57s"/>
                                     <segue destination="dr3-kh-hIu" kind="show" identifier="clientDetailView" id="gaJ-e9-6BK"/>
                                 </connections>
                             </tableViewCell>
@@ -144,7 +145,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="dfH-s4-ORJ">
-                                <rect key="frame" x="219" y="251" width="150" height="31"/>
+                                <rect key="frame" x="219" y="250.5" width="150" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="vHo-YC-a4g"/>
                                 </constraints>

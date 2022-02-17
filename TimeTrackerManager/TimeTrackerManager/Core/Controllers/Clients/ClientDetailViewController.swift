@@ -68,9 +68,9 @@ final class ClientDetailViewController: UIViewController {
 
 		let clientInvoiceDetail = ClientBillingInfo(
             name: clientDetail?.name ?? "Unamed",
-            vat: clientDetail?.vat ?? "",
-            address: clientDetail?.address ?? "",
-            country: clientDetail?.country ?? ""
+            vat: "VAT: \(clientDetail?.vat ?? "VAT:")",
+            address: "Address: \(clientDetail?.address ?? "")",
+            country: "Country: \(clientDetail?.country ?? "")"
 		)
 
 		let invoice = Invoice(
@@ -78,7 +78,7 @@ final class ClientDetailViewController: UIViewController {
             invoiceNumber: "\(invoiceNo!.series)\(invoiceNoTextField.text!.description)",
 			product: "Software development services",
             quantity: 100,
-            unitCost: 122,
+            unitCost: clientDetail?.hourRate ?? 0,
             invoiceDate: datePicker.date.description
 		)
 
