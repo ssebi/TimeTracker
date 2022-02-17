@@ -24,6 +24,7 @@ final class FirebaseClientPublisher {
             "address": address,
             "vat": vat,
             "country": country,
+            "hourRate": 200
         ] as [String: Any]
 
         Firestore.firestore().collection(Path.clients).document().setData(data) { error in
