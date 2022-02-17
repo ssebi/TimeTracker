@@ -58,11 +58,11 @@ final class InvoiceCreator {
             let invoiceBodyBottom = addInvoiceBody(
                 pageRect: pageRect,
                 infoTop: invoiceTableHeaderBottom + 10.0,
-                unitCost: "$ \(invoice.unitCost)",
-                quantity: "\(invoice.quantity)",
-                lineTotal: "$ \(invoice.unitCost * invoice.quantity)",
+                unitCost: "$\(invoice.unitCost)",
+                quantity: "\(invoice.quantity)h",
+                lineTotal: "$\(invoice.unitCost * invoice.quantity)",
                 product: invoice.product,
-                invoiceTotal: "$ \(invoice.unitCost * invoice.quantity)")
+                invoiceTotal: "$\(invoice.unitCost * invoice.quantity)")
 
             drawTableLines(context, pageRect: pageRect, lineTop: titleBottom)
             drawTableLines(context, pageRect: pageRect, lineTop: invoiceHeaderBottom)
