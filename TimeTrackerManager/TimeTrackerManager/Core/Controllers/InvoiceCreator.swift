@@ -185,7 +185,7 @@ final class InvoiceCreator {
                                    originX: pageRect.width - 110,
                                    originY: infoTop)
         let invoiceTotal = PDFElement(text: "Total:  \(invoiceTotal)",
-                                   originX: pageRect.width - 115,
+                                   originX: pageRect.width - 150,
                                       originY: lineTotal.rect.origin.y + 50)
 
         let arr = [
