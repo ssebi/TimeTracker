@@ -24,6 +24,6 @@ struct InvoiceNo {
 }
 
 struct InvoiceTotal {
-    var total: String
+    var total: Int
     var date: Date
 }
