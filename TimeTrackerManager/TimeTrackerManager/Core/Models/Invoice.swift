@@ -22,3 +22,8 @@ struct InvoiceNo {
     var no: Int
     var series: String
 }
+
+struct InvoiceTotal {
+    var total: String
+    var date: Date
+}

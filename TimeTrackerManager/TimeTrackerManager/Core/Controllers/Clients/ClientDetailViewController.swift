@@ -12,7 +12,6 @@ import SwiftUI
 final class ClientDetailViewController: UIViewController {
     var clientDetail: Client?
     var invoice = FirebaseInvoiceManager()
-
     typealias CompletionHandler = (_ success: Bool) -> Void
     var invoiceNo: InvoiceNo?
 
@@ -38,6 +37,7 @@ final class ClientDetailViewController: UIViewController {
         clientName.text = clientDetail?.name
         invoiceTotal.text = "350"
         loadInvoiceNo()
+        loadInvoiceTotal()
     }
 
     @IBAction func previewInvoiceButton(_ sender: Any) {
@@ -60,6 +60,12 @@ final class ClientDetailViewController: UIViewController {
                 self?.invoiceNoTextField.text = "\(invoiceNo.no)"
                 self?.invoiceSeriesLabel.text = "\(invoiceNo.series)"
             }
+        }
+    }
+
+    private func loadInvoiceTotal() {
+        invoice.getInvoiceTotal(clientId: "", date: Date()) { result in
+            print(result)
         }
     }
 

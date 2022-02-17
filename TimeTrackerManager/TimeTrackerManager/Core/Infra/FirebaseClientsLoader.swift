@@ -13,6 +13,7 @@ final class FirebaseClientsLoader {
 
     private let store: ClientsStore
     typealias GetClientsResult = (Result<[Client], Error>) -> Void
+    typealias GetInvoiceTotalResult = (Result<[InvoiceTotal], Error>) -> Void
 
     func getClients(completion: @escaping GetClientsResult) {
         store.getClients { result in
