@@ -17,6 +17,7 @@ final class FirebaseClientPublisher {
                              _ address: String ,
                              _ vat: String,
                              _ country: String,
+                             _ hourRate: Int,
                              completion: @escaping ClientPublisherCompletion) {
         let data = [
             "name": name,
@@ -24,7 +25,7 @@ final class FirebaseClientPublisher {
             "address": address,
             "vat": vat,
             "country": country,
-            "hourRate": 200
+            "hourRate": hourRate
         ] as [String: Any]
 
         Firestore.firestore().collection(Path.clients).document().setData(data) { error in

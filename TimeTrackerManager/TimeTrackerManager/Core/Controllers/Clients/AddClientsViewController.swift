@@ -16,6 +16,7 @@ final class AddClientsViewController: UIViewController {
     @IBOutlet var vatNo: UITextField!
     @IBOutlet var address: UITextField!
     @IBOutlet var country: UITextField!
+    @IBOutlet var hourRate: UITextField!
     private let clientPublisher = FirebaseClientPublisher()
 
     override func viewDidLoad() {
@@ -29,7 +30,8 @@ final class AddClientsViewController: UIViewController {
               clientProject.text?.isEmpty == false,
               vatNo.text?.isEmpty == false,
         address.text?.isEmpty == false,
-        country.text?.isEmpty == false else {
+        country.text?.isEmpty == false,
+        let hourRate = Int(hourRate.text ?? "0") else {
             self.validationError(title: "Error", message: "Please fill in all fields", hasError: true)
             return
         }
@@ -38,7 +40,8 @@ final class AddClientsViewController: UIViewController {
                                      clientProject.text!,
                                      vatNo.text!,
                                      address.text!,
-                                     country.text!) { [weak self] result in
+                                     country.text!,
+                                     hourRate) { [weak self] result in
             guard let self = self else { return }
             switch result {
                 case .success:
