@@ -34,13 +34,17 @@ final class ClientDetailViewController: UIViewController {
         super.viewDidLoad()
 
         datePicker.datePickerMode = UIDatePicker.Mode.date
+		datePicker.addTarget(self, action: #selector(onDateChanged), for: .valueChanged)
         clientName.text = client?.name
         loadInvoiceNo()
         loadInvoiceTotal()
     }
 
+	@objc private func onDateChanged() {
+		loadInvoiceTotal()
+	}
+
     @IBAction private func previewInvoiceButton(_ sender: Any) {
-        loadInvoiceTotal()
         if invoiceNoTextField.text != nil,
            invoiceNo?.no != nil,
            invoiceNo?.id != nil {
