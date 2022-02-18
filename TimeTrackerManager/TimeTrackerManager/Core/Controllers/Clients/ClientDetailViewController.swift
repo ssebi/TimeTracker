@@ -10,20 +10,19 @@ import TimeTrackerCore
 import SwiftUI
 
 final class ClientDetailViewController: UIViewController {
-    var clientDetail: Client?
-    var invoice = FirebaseInvoiceManager()
-    typealias CompletionHandler = (_ success: Bool) -> Void
-    var invoiceNo: InvoiceNo?
-    let dateFormatter = DateFormatter()
+    var client: Client?
+    private var invoiceManager = FirebaseInvoiceManager()
+    private var invoiceNo: InvoiceNo?
+    private let dateFormatter = DateFormatter()
 
     @IBOutlet weak var clientName: UILabel!
-    @IBOutlet var invoiceTotal: UILabel!
-    @IBOutlet var invoiceNoTextField: UITextField!
-    @IBOutlet var datePicker: UIDatePicker!
-    @IBOutlet var invoiceSeriesLabel: UITextView!
+    @IBOutlet private var invoiceTotal: UILabel!
+    @IBOutlet private var invoiceNoTextField: UITextField!
+    @IBOutlet private var datePicker: UIDatePicker!
+    @IBOutlet private var invoiceSeriesLabel: UITextView!
 
-    init(clientDetail: Client?) {
-        self.clientDetail = clientDetail
+    init(client: Client?) {
+        self.client = client
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -35,12 +34,12 @@ final class ClientDetailViewController: UIViewController {
         super.viewDidLoad()
 
         datePicker.datePickerMode = UIDatePicker.Mode.date
-        clientName.text = clientDetail?.name
+        clientName.text = client?.name
         loadInvoiceNo()
         loadInvoiceTotal()
     }
 
-    @IBAction func previewInvoiceButton(_ sender: Any) {
+    @IBAction private func previewInvoiceButton(_ sender: Any) {
         loadInvoiceTotal()
         if invoiceNoTextField.text != nil,
            invoiceNo?.no != nil,
@@ -48,12 +47,12 @@ final class ClientDetailViewController: UIViewController {
             let invoiceNoTextField: Int = Int(invoiceNoTextField.text ?? "0") ?? 0
             let dbInvoiceNumber: Int = invoiceNo!.no
             let newInvoiceNo = invoiceNoTextField == dbInvoiceNumber ? dbInvoiceNumber + 1 : invoiceNoTextField
-            invoice.updateInvoiceNo(newInvoiceNo: newInvoiceNo, docId: invoiceNo!.id) { _ in }
+            invoiceManager.updateInvoiceNo(newInvoiceNo: newInvoiceNo, docId: invoiceNo!.id) { _ in }
         }
     }
 
     private func loadInvoiceNo() {
-        invoice.getInvoiceNo { [weak self] result in
+        invoiceManager.getInvoiceNo { [weak self] result in
             if let invoiceNo = try? result.get() {
                 self?.invoiceNo = invoiceNo
                 self?.invoiceNoTextField.text = "\(invoiceNo.no)"
@@ -63,8 +62,8 @@ final class ClientDetailViewController: UIViewController {
     }
 
     private func loadInvoiceTotal() {
-        if let clientName = clientDetail?.name {
-            invoice.getInvoiceTotal(clientName: clientName, date: datePicker.date) { [weak self] result in
+        if let clientName = client?.name {
+            invoiceManager.getInvoiceTotal(clientName: clientName, date: datePicker.date) { [weak self] result in
                 if case let .success(total) = result {
                     self?.invoiceTotal.text = "\(total)"
                 }
@@ -76,18 +75,18 @@ final class ClientDetailViewController: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
 		let clientInvoiceDetail = ClientBillingInfo(
-            name: clientDetail?.name ?? "Unamed",
-            vat: "VAT: \(clientDetail?.vat ?? "VAT:")",
-            address: "Address: \(clientDetail?.address ?? "")",
-            country: "Country: \(clientDetail?.country ?? "")"
+            name: client?.name ?? "Unamed",
+            vat: "VAT: \(client?.vat ?? "VAT:")",
+            address: "Address: \(client?.address ?? "")",
+            country: "Country: \(client?.country ?? "")"
 		)
 
 		let invoice = Invoice(
-			client: (clientDetail?.name ?? "Unamed"),
+			client: (client?.name ?? "Unamed"),
             invoiceNumber: "\(invoiceNo!.series)\(invoiceNoTextField.text!.description)",
 			product: "Software development services",
             quantity: Int(invoiceTotal.text ?? "") ?? 0,
-            unitCost: clientDetail?.hourRate ?? 0,
+            unitCost: client?.hourRate ?? 0,
             invoiceDate: Date().stringToday()
 		)
 
