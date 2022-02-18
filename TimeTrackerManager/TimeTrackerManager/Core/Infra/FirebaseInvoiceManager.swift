@@ -17,14 +17,14 @@ final class FirebaseInvoiceManager {
         return decoder
     }()
 
-    public init() {}
+    init() {}
 
     typealias InvoicePublisherCompletion = (Result<Void, Error>) -> Void
     typealias GetInvoiceResult = (Result<InvoiceNo, Error>) -> Void
     typealias GetInvoiceTotalResult = (Result<Int, Error>) -> Void
-    public struct UndefinedError: Error { }
+    struct UndefinedError: Error { }
 
-    public func updateInvoiceNo(newInvoiceNo: Int, docId: String, completion: @escaping InvoicePublisherCompletion) {
+    func updateInvoiceNo(newInvoiceNo: Int, docId: String, completion: @escaping InvoicePublisherCompletion) {
         Firestore.firestore().collection(Path.invoieNo)
             .document(docId).updateData(["no": newInvoiceNo]) { err in
             if let err = err {
@@ -35,7 +35,7 @@ final class FirebaseInvoiceManager {
         }
     }
 
-    public func getInvoiceNo(completion: @escaping GetInvoiceResult) {
+    func getInvoiceNo(completion: @escaping GetInvoiceResult) {
         Firestore.firestore().collection(Path.invoieNo).getDocuments { (snapshot, error) in
             guard error == nil else {
                 return completion(.failure(error!))
@@ -59,7 +59,7 @@ final class FirebaseInvoiceManager {
         }
     }
 
-    public func getInvoiceTotal(clientName: String, date: Date, completion: @escaping GetInvoiceTotalResult) {
+    func getInvoiceTotal(clientName: String, date: Date, completion: @escaping GetInvoiceTotalResult) {
         Firestore.firestore().collection(Path.timeSlots)
             .getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
