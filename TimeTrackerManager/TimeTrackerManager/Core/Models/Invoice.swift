@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import TimeTrackerCore
 
 struct Invoice {
     var client: String
