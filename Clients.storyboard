@@ -145,7 +145,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="dfH-s4-ORJ">
-                                <rect key="frame" x="219" y="251" width="150" height="31"/>
+                                <rect key="frame" x="219" y="250.5" width="150" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="vHo-YC-a4g"/>
                                 </constraints>
@@ -201,7 +201,13 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="lmT-HP-Kim"/>
+                    <navigationItem key="navigationItem" id="lmT-HP-Kim">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="XUt-0N-cNu">
+                            <connections>
+                                <action selector="shareAction:" destination="dr3-kh-hIu" id="riK-0v-Lou"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="clientName" destination="Xdf-7S-0i9" id="Mii-LP-F2q"/>
