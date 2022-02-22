@@ -1,50 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fO9-Rp-Dyv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="u7Q-cp-lcL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Invoice-->
-        <scene sceneID="lHd-JM-ESP">
+        <scene sceneID="ufn-og-b4w">
             <objects>
-                <viewController id="fO9-Rp-Dyv" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cMn-fQ-Axm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdX-Hr-uWr">
-                                <rect key="frame" x="136" y="437.5" width="142" height="21"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="No invoice's saved">
-                                        <attributes>
-                                            <color key="NSColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="9Ut-YT-R68"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="gdX-Hr-uWr" firstAttribute="centerX" secondItem="cMn-fQ-Axm" secondAttribute="centerX" id="a2E-hp-LhK"/>
-                            <constraint firstItem="gdX-Hr-uWr" firstAttribute="centerY" secondItem="cMn-fQ-Axm" secondAttribute="centerY" id="mFx-rs-cyD"/>
-                        </constraints>
-                    </view>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u7Q-cp-lcL" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Invoice" image="doc.text" catalog="system" selectedImage="doc.text.fill" id="YaB-ZH-Ih4">
                         <color key="badgeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R6r-1r-RdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wn1-Hr-0s8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="w3S-wI-F7d" kind="show" id="1Ve-YJ-dM8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XlB-wo-zbL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4038" y="875"/>
+            <point key="canvasLocation" x="4037.68115942029" y="874.55357142857144"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="QB0-lo-7LF">
+            <objects>
+                <tableViewController id="w3S-wI-F7d" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="NX5-HH-Rn8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Hbk-hD-kiM" customClass="InvoiceListCell" customModule="TimeTrackerManager" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="100.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hbk-hD-kiM" id="6bW-d7-ltH">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fi2-B4-OuM">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="fMe-zI-cZu"/>
+                                                <constraint firstAttribute="height" constant="100" id="sXl-Aw-J0Q"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title.pdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWi-Ll-9kW">
+                                            <rect key="frame" x="108" y="40" width="59" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="fi2-B4-OuM" secondAttribute="bottom" id="NsB-xa-BpM"/>
+                                        <constraint firstItem="KWi-Ll-9kW" firstAttribute="centerY" secondItem="6bW-d7-ltH" secondAttribute="centerY" id="UVP-xC-D7u"/>
+                                        <constraint firstItem="fi2-B4-OuM" firstAttribute="top" secondItem="6bW-d7-ltH" secondAttribute="top" id="ZRU-Hf-Rh7"/>
+                                        <constraint firstItem="KWi-Ll-9kW" firstAttribute="leading" secondItem="fi2-B4-OuM" secondAttribute="trailing" constant="8" symbolic="YES" id="jKy-G2-POA"/>
+                                        <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="KWi-Ll-9kW" secondAttribute="trailing" constant="244" id="rQs-iw-KQe"/>
+                                        <constraint firstItem="fi2-B4-OuM" firstAttribute="leading" secondItem="6bW-d7-ltH" secondAttribute="leading" id="wxP-cb-Onf"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="pdfIcon" destination="fi2-B4-OuM" id="RFZ-HV-gw8"/>
+                                    <outlet property="pdfTitle" destination="KWi-Ll-9kW" id="GMx-p1-TGy"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="w3S-wI-F7d" id="qAL-qb-zPx"/>
+                            <outlet property="delegate" destination="w3S-wI-F7d" id="pqS-lj-UJ6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ahh-63-q2o"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b4b-1Z-aYs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5075" y="923"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="labelColor"/>
