@@ -78,25 +78,48 @@ final class ClientDetailViewController: UIViewController {
             image: image,
             clientDetail: clientInvoice
         )
-        
-        invoiceRef.createInvoice(invoice: invoice)
+
+       let invoiceData = invoiceRef.createInvoice(invoice: invoice)
+
+        print("==xxxx>>> ", invoiceData.base64EncodedString())
 
         let vc = UIActivityViewController(
-            activityItems: [invoiceRef],
+            activityItems: [invoiceData],
             applicationActivities: []
         )
         present(vc, animated: true, completion: nil)
     }
+
     @IBAction private func previewInvoiceButton(_ sender: Any) {
+        // preview button pressed
+
+    }
+
+    @IBAction func saveInvoiceButton(_ sender: Any) {
         if invoiceNoTextField.text != nil,
            invoiceNo?.no != nil,
            invoiceNo?.id != nil {
             let invoiceNoTextField: Int = Int(invoiceNoTextField.text ?? "0") ?? 0
             let dbInvoiceNumber: Int = invoiceNo!.no
             let newInvoiceNo = invoiceNoTextField == dbInvoiceNumber ? dbInvoiceNumber + 1 : invoiceNoTextField
+
+            guard let image = logo,
+                  let clientInvoice = clientInvoiceDetail,
+                  let invoice = invoice else { return }
+
+            let invoiceRef = InvoiceCreator(
+                title: "Invoice",
+                image: image,
+                clientDetail: clientInvoice
+            )
+
+           let invoiceData = invoiceRef.createInvoice(invoice: invoice)
+
             invoiceManager.updateInvoiceNo(newInvoiceNo: newInvoiceNo, docId: invoiceNo!.id) { _ in }
+            invoiceManager.saveInvoice(title: "\(clientName) - \(datePicker.date)", data: invoiceData.base64EncodedString()) { _ in }
         }
     }
+
 
     private func loadInvoiceNo(completion: @escaping InvoiceResult) {
         invoiceManager.getInvoiceNo { [weak self] result in
@@ -133,5 +156,11 @@ final class ClientDetailViewController: UIViewController {
         )
 
         invoiceVC.documentData = pdfCreator.createInvoice(invoice: invoice)
+    }
+
+    func convertToBase64(pdf: Data) -> String {
+        var invoiceData: Data?
+        invoiceData = pdf.base64EncodedData()
+        return invoiceData?.base64EncodedString() ?? ""
     }
 }

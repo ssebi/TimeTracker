@@ -25,7 +25,7 @@ final class FirebaseInvoiceManager {
     struct UndefinedError: Error { }
 
     func updateInvoiceNo(newInvoiceNo: Int, docId: String, completion: @escaping InvoicePublisherCompletion) {
-        Firestore.firestore().collection(Path.invoieNo)
+        Firestore.firestore().collection(Path.invoiceNo)
             .document(docId).updateData(["no": newInvoiceNo]) { err in
             if let err = err {
                 completion(.failure(err))
@@ -36,7 +36,7 @@ final class FirebaseInvoiceManager {
     }
 
     func getInvoiceNo(completion: @escaping GetInvoiceResult) {
-        Firestore.firestore().collection(Path.invoieNo).getDocuments { (snapshot, error) in
+        Firestore.firestore().collection(Path.invoiceNo).getDocuments { (snapshot, error) in
             guard error == nil else {
                 return completion(.failure(error!))
             }
@@ -90,5 +90,21 @@ final class FirebaseInvoiceManager {
             arrTotalHours.append(timeslot.total)
         }
         return arrTotalHours.reduce(0, +)
+    }
+
+    func saveInvoice(title: String, data: String, completion: @escaping InvoicePublisherCompletion) {
+        Firestore.firestore().collection(Path.invoice)
+            .document().setData(
+                [
+                    "title": title,
+                    "data": data,
+                    "date": Date()
+                ]) { err in
+            if let err = err {
+                completion(.failure(err))
+            } else {
+                completion(.success(()))
+            }
+        }
     }
 }

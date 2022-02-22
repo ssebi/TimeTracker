@@ -11,7 +11,8 @@ struct Path {
     static let users = "users"
     static let timeSlots = "timeSlots"
     static let clients = "Clients"
-    static let invoieNo = "invoiceNo"
+    static let invoiceNo = "invoiceNo"
+    static let invoice = "invoice"
 }
 
 struct Constants {
