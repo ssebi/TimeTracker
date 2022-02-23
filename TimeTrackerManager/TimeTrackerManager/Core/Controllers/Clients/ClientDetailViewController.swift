@@ -79,10 +79,7 @@ final class ClientDetailViewController: UIViewController {
             clientDetail: clientInvoice
         )
 
-       let invoiceData = invoiceRef.createInvoice(invoice: invoice)
-
-        print("==xxxx>>> ", invoiceData.base64EncodedString())
-
+        let invoiceData = invoiceRef.createInvoice(invoice: invoice)
         let vc = UIActivityViewController(
             activityItems: [invoiceData],
             applicationActivities: []
@@ -114,12 +111,13 @@ final class ClientDetailViewController: UIViewController {
             )
 
            let invoiceData = invoiceRef.createInvoice(invoice: invoice)
+            let name = client?.name ?? "Invoice "
+            let date = datePicker.date.stringToday()
 
             invoiceManager.updateInvoiceNo(newInvoiceNo: newInvoiceNo, docId: invoiceNo!.id) { _ in }
-            invoiceManager.saveInvoice(title: "\(clientName) - \(datePicker.date)", data: invoiceData.base64EncodedString()) { _ in }
+            invoiceManager.saveInvoice(title: "\(name)-\(newInvoiceNo)-\(date)", data: invoiceData.base64EncodedString()) { _ in }
         }
     }
-
 
     private func loadInvoiceNo(completion: @escaping InvoiceResult) {
         invoiceManager.getInvoiceNo { [weak self] result in
