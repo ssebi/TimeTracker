@@ -28,6 +28,16 @@ class InvoiceTableViewController: UITableViewController {
             }
         }
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? InvoicePreviewViewController {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let data = invoices[indexPath.row].data
+                var decodedData = Data(base64Encoded: data, options: .ignoreUnknownCharacters)
+                destination.documentData = decodedData
+            }
+        }
+    }
 }
 
 extension InvoiceTableViewController {

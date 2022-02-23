@@ -14,7 +14,6 @@ final class InvoicePreviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         if let data = documentData {
             pdfView.document = PDFDocument(data: data)
             pdfView.autoScales = true
