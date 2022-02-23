@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InvoiceViewController: UIViewController {
+class InvoiceDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
