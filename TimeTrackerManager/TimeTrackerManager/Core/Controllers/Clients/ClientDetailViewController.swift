@@ -24,6 +24,7 @@ final class ClientDetailViewController: UIViewController {
     @IBOutlet private var invoiceNoTextField: UITextField!
     @IBOutlet private var datePicker: UIDatePicker!
     @IBOutlet private var invoiceSeriesLabel: UITextView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     init(client: Client?) {
         self.client = client
@@ -93,6 +94,7 @@ final class ClientDetailViewController: UIViewController {
     }
 
     @IBAction func saveInvoiceButton(_ sender: Any) {
+        toggleSpiner(isHidden: false)
         if invoiceNoTextField.text != nil,
            invoiceNo?.no != nil,
            invoiceNo?.id != nil {
@@ -115,7 +117,14 @@ final class ClientDetailViewController: UIViewController {
             let date = datePicker.date.stringToday()
 
             invoiceManager.updateInvoiceNo(newInvoiceNo: newInvoiceNo, docId: invoiceNo!.id) { _ in }
-            invoiceManager.saveInvoice(title: "\(name)-\(newInvoiceNo)-\(date)", data: invoiceData.base64EncodedString()) { _ in }
+            invoiceManager.saveInvoice(title: "\(name)-\(newInvoiceNo)-\(date)", data: invoiceData.base64EncodedString()) { [weak self] result in
+                switch result {
+                case .success:
+                    self?.validationError(title: "Success", message: "Invoice saved", hasError: false)
+                case .failure(let error):
+                    self?.validationError(title: "Error", message: "Invoice save failed: \(error)", hasError: true)
+                }
+            }
         }
     }
 
@@ -160,5 +169,27 @@ final class ClientDetailViewController: UIViewController {
         var invoiceData: Data?
         invoiceData = pdf.base64EncodedData()
         return invoiceData?.base64EncodedString() ?? ""
+    }
+
+    private func toggleSpiner(isHidden: Bool) {
+        activityIndicator.isHidden = isHidden
+        if isHidden == true {
+            activityIndicator.stopAnimating()
+        } else {
+            activityIndicator.startAnimating()
+        }
+    }
+
+    private func validationError(title: String, message: String, hasError: Bool) {
+        self.toggleSpiner(isHidden: true)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+            if !hasError { self.dismisView() }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    private func dismisView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

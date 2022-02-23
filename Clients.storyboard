@@ -172,6 +172,14 @@
                                     <action selector="saveInvoiceButton:" destination="dr3-kh-hIu" eventType="touchUpInside" id="b3k-qc-ZDz"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="wTa-k6-JGa">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="AZ9-Gt-glC"/>
+                                    <constraint firstAttribute="width" constant="50" id="atc-ON-mkL"/>
+                                </constraints>
+                                <color key="color" red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBs-rN-tvO">
                                 <rect key="frame" x="82" y="692" width="250" height="50"/>
                                 <color key="backgroundColor" red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -197,12 +205,14 @@
                         <viewLayoutGuide key="safeArea" id="xIL-Dc-pxI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wTa-k6-JGa" firstAttribute="centerX" secondItem="mjC-tV-0cD" secondAttribute="centerX" id="5hI-wE-Cum"/>
                             <constraint firstItem="GCV-He-cO4" firstAttribute="top" secondItem="jpE-3U-SDw" secondAttribute="bottom" constant="100" id="65m-Be-ma4"/>
                             <constraint firstItem="kTs-A1-aL8" firstAttribute="trailing" secondItem="dfH-s4-ORJ" secondAttribute="trailing" id="CxD-NX-ya2"/>
                             <constraint firstItem="Xdf-7S-0i9" firstAttribute="top" secondItem="xIL-Dc-pxI" secondAttribute="top" constant="50" id="EX0-9U-h2i"/>
                             <constraint firstItem="xIL-Dc-pxI" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Xdf-7S-0i9" secondAttribute="trailing" id="Kad-hn-YIB"/>
                             <constraint firstItem="EcG-hd-bDN" firstAttribute="leading" secondItem="jpE-3U-SDw" secondAttribute="leading" id="Qa8-eW-hk8"/>
                             <constraint firstItem="xIL-Dc-pxI" firstAttribute="trailing" secondItem="UBk-eL-4qH" secondAttribute="trailing" constant="55" id="QkT-Mf-jcQ"/>
+                            <constraint firstItem="wTa-k6-JGa" firstAttribute="centerY" secondItem="mjC-tV-0cD" secondAttribute="centerY" id="RNo-xg-ex8"/>
                             <constraint firstItem="kTs-A1-aL8" firstAttribute="leading" secondItem="FA0-Fh-DXR" secondAttribute="trailing" constant="5" id="VCh-kZ-zeo"/>
                             <constraint firstItem="FA0-Fh-DXR" firstAttribute="centerY" secondItem="kTs-A1-aL8" secondAttribute="centerY" id="Vkt-eD-GeH"/>
                             <constraint firstItem="Xdf-7S-0i9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xIL-Dc-pxI" secondAttribute="leading" id="Wxy-Hq-W4F"/>
@@ -232,6 +242,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="wTa-k6-JGa" id="0sF-fi-TM1"/>
                         <outlet property="clientName" destination="Xdf-7S-0i9" id="Mii-LP-F2q"/>
                         <outlet property="datePicker" destination="dfH-s4-ORJ" id="GXl-MU-lsp"/>
                         <outlet property="invoiceNoTextField" destination="kTs-A1-aL8" id="Z4r-nJ-jrJ"/>
