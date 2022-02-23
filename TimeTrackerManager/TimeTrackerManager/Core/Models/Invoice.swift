@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Invoice {
+struct InvoiceDetails {
     var client: String
     var invoiceNumber: String
     var product: String
@@ -25,4 +25,10 @@ struct InvoiceNo {
 struct InvoiceTotal {
     var total: Int
     var date: Date
+}
+
+struct Invoice: Decodable {
+    var title: String
+    var date: String
+    var data: String
 }

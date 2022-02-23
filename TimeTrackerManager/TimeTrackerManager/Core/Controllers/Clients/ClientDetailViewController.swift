@@ -16,7 +16,7 @@ final class ClientDetailViewController: UIViewController {
     private let dateFormatter = DateFormatter()
     let logo = UIImage(named: "parhelion_logo_light")
     var clientInvoiceDetail: ClientBillingInfo?
-    var invoice: Invoice?
+    var invoice: InvoiceDetails?
     typealias InvoiceResult = (Result<InvoiceNo, Error>) -> Void
 
     @IBOutlet weak var clientName: UILabel!
@@ -43,7 +43,7 @@ final class ClientDetailViewController: UIViewController {
 
         loadInvoiceNo { [weak self] result in
             if case let .success(_) = result {
-                self?.invoice = Invoice(
+                self?.invoice = InvoiceDetails(
                     client: (self?.client?.name ?? "Unamed"),
                     invoiceNumber: "\(self?.invoiceNo!.series)\(self?.invoiceNoTextField.text!.description)",
                     product: "Software development services",

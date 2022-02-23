@@ -20,7 +20,8 @@ final class FirebaseInvoiceManager {
     init() {}
 
     typealias InvoicePublisherCompletion = (Result<Void, Error>) -> Void
-    typealias GetInvoiceResult = (Result<InvoiceNo, Error>) -> Void
+    typealias GetInvoiceNoResult = (Result<InvoiceNo, Error>) -> Void
+    typealias GetInvoiceResult = (Result<[Invoice], Error>) -> Void
     typealias GetInvoiceTotalResult = (Result<Int, Error>) -> Void
     struct UndefinedError: Error { }
 
@@ -35,7 +36,7 @@ final class FirebaseInvoiceManager {
         }
     }
 
-    func getInvoiceNo(completion: @escaping GetInvoiceResult) {
+    func getInvoiceNo(completion: @escaping GetInvoiceNoResult) {
         Firestore.firestore().collection(Path.invoiceNo).getDocuments { (snapshot, error) in
             guard error == nil else {
                 return completion(.failure(error!))
@@ -98,7 +99,7 @@ final class FirebaseInvoiceManager {
                 [
                     "title": title,
                     "data": data,
-                    "date": Date()
+                    "date": "\(Date())"
                 ]) { err in
             if let err = err {
                 completion(.failure(err))
@@ -107,4 +108,23 @@ final class FirebaseInvoiceManager {
             }
         }
     }
+
+    public func getInvoices(completion: @escaping GetInvoiceResult) {
+        Firestore.firestore().collection(Path.invoice)
+            .getDocuments { (querySnapshot, error) in
+                if let querySnapshot = querySnapshot {
+                    let invoices = querySnapshot.documents.compactMap { [weak self] document -> Invoice? in
+                        if let data = try? JSONSerialization.data(withJSONObject: document.data()) {
+                            return try? self?.jsonDecoder.decode(Invoice.self, from: data)
+                        } else {
+                            return nil
+                        }
+                    }
+                    completion(.success(invoices))
+                } else {
+                    completion(.failure(error!))
+                }
+            }
+    }
+
 }

@@ -32,7 +32,7 @@
 		5437C73527BD459400E348BD /* FirebaseInvoiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5437C73427BD459400E348BD /* FirebaseInvoiceManager.swift */; };
 		5437C73927C5777E00E348BD /* InvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5437C73827C5777E00E348BD /* InvoiceViewController.swift */; };
 		5437C73B27C5796500E348BD /* InvoiceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5437C73A27C5796500E348BD /* InvoiceListCell.swift */; };
-		5437C73D27C57ADD00E348BD /* InvoiceTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5437C73C27C57ADD00E348BD /* InvoiceTableTableViewController.swift */; };
+		5437C73D27C57ADD00E348BD /* InvoiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5437C73C27C57ADD00E348BD /* InvoiceTableViewController.swift */; };
 		5468DDF72763C16D00E39DD9 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468DDF62763C16D00E39DD9 /* DesignableView.swift */; };
 		547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */; };
 		547B01ED278DDAB700636A90 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B01EC278DDAB700636A90 /* Utils.swift */; };
@@ -103,7 +103,7 @@
 		5437C73427BD459400E348BD /* FirebaseInvoiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInvoiceManager.swift; sourceTree = "<group>"; };
 		5437C73827C5777E00E348BD /* InvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewController.swift; sourceTree = "<group>"; };
 		5437C73A27C5796500E348BD /* InvoiceListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListCell.swift; sourceTree = "<group>"; };
-		5437C73C27C57ADD00E348BD /* InvoiceTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTableTableViewController.swift; sourceTree = "<group>"; };
+		5437C73C27C57ADD00E348BD /* InvoiceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTableViewController.swift; sourceTree = "<group>"; };
 		5468DDF62763C16D00E39DD9 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		547B01EA278DD8C800636A90 /* FirebaseUsersLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUsersLoader.swift; sourceTree = "<group>"; };
 		547B01EC278DDAB700636A90 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 				54075A4527A45BEA003B1A79 /* InvoicePreviewViewController.swift */,
 				5437C73827C5777E00E348BD /* InvoiceViewController.swift */,
 				5437C73A27C5796500E348BD /* InvoiceListCell.swift */,
-				5437C73C27C57ADD00E348BD /* InvoiceTableTableViewController.swift */,
+				5437C73C27C57ADD00E348BD /* InvoiceTableViewController.swift */,
 			);
 			name = Invoice;
 			sourceTree = "<group>";
@@ -537,7 +537,7 @@
 				54075A3927A2E350003B1A79 /* ClientListCell.swift in Sources */,
 				54075A4227A45599003B1A79 /* InvoiceCreator.swift in Sources */,
 				54E38BD62786EEE200625F92 /* FirebaseUserPublisher.swift in Sources */,
-				5437C73D27C57ADD00E348BD /* InvoiceTableTableViewController.swift in Sources */,
+				5437C73D27C57ADD00E348BD /* InvoiceTableViewController.swift in Sources */,
 				547B01EB278DD8C800636A90 /* FirebaseUsersLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

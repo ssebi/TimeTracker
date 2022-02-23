@@ -20,7 +20,7 @@ final class InvoiceCreator {
         self.clientDetail = clientDetail
     }
 
-    func createInvoice(invoice: Invoice) -> Data {
+    func createInvoice(invoice: InvoiceDetails) -> Data {
         let pdfMetaData = [
             kCGPDFContextCreator: "Invoice",
             kCGPDFContextAuthor: "TimeTracker Manager",
