@@ -24,8 +24,6 @@ class InvoiceTableViewController: UITableViewController {
         invoiceManager.getInvoices { [weak self] result in
             if let invoices = try? result.get() {
                 self?.invoices = invoices
-
-                print("ssssssssss=== <<< ><><><><><", invoices.count)
                 completion(true)
             }
         }

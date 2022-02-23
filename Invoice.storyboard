@@ -14,7 +14,7 @@
         <scene sceneID="YuR-yE-3F7">
             <objects>
                 <navigationController id="bGT-WA-x9U" userLabel="Invoice" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Clients" id="qFj-vc-y92" userLabel="Invoice">
+                    <tabBarItem key="tabBarItem" title="Invoice" id="qFj-vc-y92" userLabel="Invoice">
                         <imageReference key="image" image="doc.text" catalog="system" renderingMode="hierarchical">
                             <hierarchicalColors>
                                 <color red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
