@@ -20,4 +20,12 @@ class InvoicePreviewWebVC: UIViewController {
         }
     }
 
+    @IBAction func shareButton(_ sender: Any) {
+        guard let data = documentData else { return }
+        let avc = UIActivityViewController(
+            activityItems: [data],
+            applicationActivities: []
+        )
+        present(avc, animated: true, completion: nil)
+    }
 }

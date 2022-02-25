@@ -81,11 +81,11 @@ final class ClientDetailViewController: UIViewController {
         )
 
         let invoiceData = invoiceRef.createInvoice(invoice: invoice)
-        let vc = UIActivityViewController(
+        let avc = UIActivityViewController(
             activityItems: [invoiceData],
             applicationActivities: []
         )
-        present(vc, animated: true, completion: nil)
+        present(avc, animated: true, completion: nil)
     }
 
     @IBAction private func previewInvoiceButton(_ sender: Any) {
