@@ -151,7 +151,7 @@ final class ClientDetailViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "previewInvoice",
-              let invoiceVC = segue.destination as? InvoicePreviewViewController,
+              let invoiceVC = segue.destination as? InvoicePreviewPDFViewVC,
               let image = logo,
               let clientDetail = clientInvoiceDetail,
               let invoice = invoice else { return }
