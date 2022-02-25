@@ -254,10 +254,10 @@
             </objects>
             <point key="canvasLocation" x="4982.608695652174" y="713.83928571428567"/>
         </scene>
-        <!--Invoice Preview View Controller-->
+        <!--Invoice PreviewPDF ViewVC-->
         <scene sceneID="9fn-Qa-XSO">
             <objects>
-                <viewController id="Ihq-TB-nPl" customClass="InvoicePreviewViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ihq-TB-nPl" customClass="InvoicePreviewPDFViewVC" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wrg-2W-7Cp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

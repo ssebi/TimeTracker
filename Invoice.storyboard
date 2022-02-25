@@ -100,30 +100,34 @@
             </objects>
             <point key="canvasLocation" x="4528" y="1133"/>
         </scene>
-        <!--Invoice Preview View Controller-->
+        <!--Invoice Preview WebVC-->
         <scene sceneID="tEK-cb-PLK">
             <objects>
-                <viewController id="Auy-52-jYi" customClass="InvoicePreviewViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Auy-52-jYi" customClass="InvoicePreviewWebVC" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p62-as-7xz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="48F-PN-VCF">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMh-qk-fZ3">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jos-dl-ZN2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Jos-dl-ZN2" firstAttribute="trailing" secondItem="48F-PN-VCF" secondAttribute="trailing" id="LD7-Uu-Rk1"/>
-                            <constraint firstItem="48F-PN-VCF" firstAttribute="top" secondItem="Jos-dl-ZN2" secondAttribute="top" id="TfK-aO-fh0"/>
-                            <constraint firstItem="Jos-dl-ZN2" firstAttribute="bottom" secondItem="48F-PN-VCF" secondAttribute="bottom" id="Vag-TP-kfZ"/>
-                            <constraint firstItem="48F-PN-VCF" firstAttribute="leading" secondItem="Jos-dl-ZN2" secondAttribute="leading" id="qwp-Ym-UyX"/>
+                            <constraint firstItem="Jos-dl-ZN2" firstAttribute="bottom" secondItem="xMh-qk-fZ3" secondAttribute="bottom" id="Bck-g0-zlX"/>
+                            <constraint firstItem="Jos-dl-ZN2" firstAttribute="trailing" secondItem="xMh-qk-fZ3" secondAttribute="trailing" id="TsL-nV-qIz"/>
+                            <constraint firstItem="xMh-qk-fZ3" firstAttribute="leading" secondItem="Jos-dl-ZN2" secondAttribute="leading" id="qrg-SD-tlT"/>
+                            <constraint firstItem="xMh-qk-fZ3" firstAttribute="top" secondItem="Jos-dl-ZN2" secondAttribute="top" id="ryg-pg-2qX"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="pdfView" destination="48F-PN-VCF" id="YxE-Si-JrN"/>
+                        <outlet property="webKitView" destination="xMh-qk-fZ3" id="mrN-T4-Xqw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLY-xI-m5N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -8,7 +8,7 @@
 import UIKit
 import PDFKit
 
-final class InvoicePreviewViewController: UIViewController {
+final class InvoicePreviewPDFViewVC: UIViewController {
     @IBOutlet weak var pdfView: PDFView!
     public var documentData: Data?
 
