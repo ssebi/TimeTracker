@@ -85,6 +85,7 @@ final class ClientDetailViewController: UIViewController {
             activityItems: [invoiceData],
             applicationActivities: []
         )
+		avc.popoverPresentationController?.sourceView = view
         present(avc, animated: true, completion: nil)
     }
 
