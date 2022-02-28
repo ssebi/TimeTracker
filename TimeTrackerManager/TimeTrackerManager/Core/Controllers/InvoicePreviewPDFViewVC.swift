@@ -19,4 +19,16 @@ final class InvoicePreviewPDFViewVC: UIViewController {
             pdfView.autoScales = true
         }
     }
+
+	@IBAction func shareAction(_ sender: Any) {
+		guard let invoiceData = documentData else {
+			return
+		}
+		let avc = UIActivityViewController(
+			activityItems: [invoiceData],
+			applicationActivities: []
+		)
+		avc.popoverPresentationController?.sourceView = view
+		present(avc, animated: true, completion: nil)
+	}
 }

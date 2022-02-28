@@ -69,26 +69,6 @@ final class ClientDetailViewController: UIViewController {
         loadInvoiceTotal()
     }
 
-    @IBAction func shareAction(_ sender: Any) {
-        guard let image = logo,
-              let clientInvoice = clientInvoiceDetail,
-              let invoice = invoice else { return }
-
-        let invoiceRef = InvoiceCreator(
-            title: "Invoice",
-            image: image,
-            clientDetail: clientInvoice
-        )
-
-        let invoiceData = invoiceRef.createInvoice(invoice: invoice)
-        let avc = UIActivityViewController(
-            activityItems: [invoiceData],
-            applicationActivities: []
-        )
-		avc.popoverPresentationController?.sourceView = view
-        present(avc, animated: true, completion: nil)
-    }
-
     @IBAction private func previewInvoiceButton(_ sender: Any) {
         // preview button pressed
 
