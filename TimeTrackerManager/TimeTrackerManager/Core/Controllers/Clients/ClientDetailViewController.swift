@@ -79,10 +79,10 @@ final class ClientDetailViewController: UIViewController {
     @IBAction func saveInvoiceButton(_ sender: Any) {
         toggleSpiner(isHidden: false)
         if invoiceNoTextField.text != nil,
-           invoiceNo?.no != nil,
+           invoiceNo?.number != nil,
            invoiceNo?.id != nil {
             let invoiceNoTextField: Int = Int(invoiceNoTextField.text ?? "0") ?? 0
-            let dbInvoiceNumber: Int = invoiceNo!.no
+            let dbInvoiceNumber: Int = invoiceNo!.number
             let newInvoiceNo = invoiceNoTextField == dbInvoiceNumber ? dbInvoiceNumber + 1 : invoiceNoTextField
 
             guard let image = logo,
@@ -115,7 +115,7 @@ final class ClientDetailViewController: UIViewController {
         invoiceManager.getInvoiceNo { [weak self] result in
             if let invoiceNo = try? result.get() {
                 self?.invoiceNo = invoiceNo
-                self?.invoiceNoTextField.text = "\(invoiceNo.no)"
+                self?.invoiceNoTextField.text = "\(invoiceNo.number)"
                 self?.invoiceSeriesLabel.text = "\(invoiceNo.series)"
                 completion(result)
             }

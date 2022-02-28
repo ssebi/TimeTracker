@@ -33,7 +33,8 @@ extension TimeslotsStore {
 
 extension Date {
     func startOfMonth() -> Date {
-        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month],
+                                                                           from: Calendar.current.startOfDay(for: self)))!
     }
 
     func endOfMonth() -> Date {
