@@ -1,61 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fO9-Rp-Dyv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bGT-WA-x9U">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Invoice-->
-        <scene sceneID="lHd-JM-ESP">
+        <scene sceneID="YuR-yE-3F7">
             <objects>
-                <viewController id="fO9-Rp-Dyv" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cMn-fQ-Axm">
+                <navigationController id="bGT-WA-x9U" userLabel="Invoice" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Invoice" id="qFj-vc-y92" userLabel="Invoice">
+                        <imageReference key="image" image="doc.text" catalog="system" renderingMode="hierarchical">
+                            <hierarchicalColors>
+                                <color red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color red="0.66115826369999997" green="0.8620097041" blue="0.92671054600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                        <imageReference key="selectedImage" image="doc.text.fill" catalog="system" renderingMode="hierarchical">
+                            <hierarchicalColors>
+                                <color red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mIC-X1-4gG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="w3S-wI-F7d" kind="relationship" relationship="rootViewController" id="Sad-h9-gIq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CqJ-J7-ln3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3700" y="1122"/>
+        </scene>
+        <!--Invoice Table View Controller-->
+        <scene sceneID="QB0-lo-7LF">
+            <objects>
+                <tableViewController id="w3S-wI-F7d" customClass="InvoiceTableViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="NX5-HH-Rn8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InvoiceListCell" id="Hbk-hD-kiM" customClass="InvoiceListCell" customModule="TimeTrackerManager" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="100.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hbk-hD-kiM" id="6bW-d7-ltH">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fi2-B4-OuM">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="fMe-zI-cZu"/>
+                                                <constraint firstAttribute="height" constant="100" id="sXl-Aw-J0Q"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title.pdf" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWi-Ll-9kW">
+                                            <rect key="frame" x="108" y="40" width="59" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="fi2-B4-OuM" secondAttribute="bottom" id="NsB-xa-BpM"/>
+                                        <constraint firstItem="KWi-Ll-9kW" firstAttribute="centerY" secondItem="6bW-d7-ltH" secondAttribute="centerY" id="UVP-xC-D7u"/>
+                                        <constraint firstItem="fi2-B4-OuM" firstAttribute="top" secondItem="6bW-d7-ltH" secondAttribute="top" id="ZRU-Hf-Rh7"/>
+                                        <constraint firstItem="KWi-Ll-9kW" firstAttribute="leading" secondItem="fi2-B4-OuM" secondAttribute="trailing" constant="8" symbolic="YES" id="jKy-G2-POA"/>
+                                        <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="KWi-Ll-9kW" secondAttribute="trailing" constant="244" id="rQs-iw-KQe"/>
+                                        <constraint firstItem="fi2-B4-OuM" firstAttribute="leading" secondItem="6bW-d7-ltH" secondAttribute="leading" id="wxP-cb-Onf"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="pdfIcon" destination="fi2-B4-OuM" id="RFZ-HV-gw8"/>
+                                    <outlet property="pdfTitle" destination="KWi-Ll-9kW" id="GMx-p1-TGy"/>
+                                    <segue destination="Auy-52-jYi" kind="showDetail" id="RJe-Xy-ybl"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="w3S-wI-F7d" id="qAL-qb-zPx"/>
+                            <outlet property="delegate" destination="w3S-wI-F7d" id="pqS-lj-UJ6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ahh-63-q2o"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b4b-1Z-aYs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4528" y="1133"/>
+        </scene>
+        <!--Invoice Preview WebVC-->
+        <scene sceneID="tEK-cb-PLK">
+            <objects>
+                <viewController id="Auy-52-jYi" customClass="InvoicePreviewWebVC" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p62-as-7xz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdX-Hr-uWr">
-                                <rect key="frame" x="136" y="437.5" width="142" height="21"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="No invoice's saved">
-                                        <attributes>
-                                            <color key="NSColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iT-Ta-JY3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="A0p-aD-32q"/>
+                                    <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="gKF-l5-J3O">
+                                        <connections>
+                                            <action selector="shareButton:" destination="Auy-52-jYi" id="nzN-PI-ONL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMh-qk-fZ3">
+                                <rect key="frame" x="0.0" y="44" width="414" height="764"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="9Ut-YT-R68"/>
+                        <viewLayoutGuide key="safeArea" id="Jos-dl-ZN2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gdX-Hr-uWr" firstAttribute="centerX" secondItem="cMn-fQ-Axm" secondAttribute="centerX" id="a2E-hp-LhK"/>
-                            <constraint firstItem="gdX-Hr-uWr" firstAttribute="centerY" secondItem="cMn-fQ-Axm" secondAttribute="centerY" id="mFx-rs-cyD"/>
+                            <constraint firstItem="Jos-dl-ZN2" firstAttribute="bottom" secondItem="xMh-qk-fZ3" secondAttribute="bottom" id="JcX-B4-sIq"/>
+                            <constraint firstItem="7iT-Ta-JY3" firstAttribute="trailing" secondItem="Jos-dl-ZN2" secondAttribute="trailing" id="Loe-Nt-GQE"/>
+                            <constraint firstItem="Jos-dl-ZN2" firstAttribute="trailing" secondItem="xMh-qk-fZ3" secondAttribute="trailing" id="TsL-nV-qIz"/>
+                            <constraint firstItem="7iT-Ta-JY3" firstAttribute="leading" secondItem="Jos-dl-ZN2" secondAttribute="leading" id="TuX-pC-TO9"/>
+                            <constraint firstItem="7iT-Ta-JY3" firstAttribute="top" secondItem="Jos-dl-ZN2" secondAttribute="top" id="USu-nu-tjO"/>
+                            <constraint firstItem="xMh-qk-fZ3" firstAttribute="leading" secondItem="Jos-dl-ZN2" secondAttribute="leading" id="qrg-SD-tlT"/>
+                            <constraint firstItem="xMh-qk-fZ3" firstAttribute="top" secondItem="7iT-Ta-JY3" secondAttribute="bottom" id="vuZ-Ji-rNl"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Invoice" image="doc.text" catalog="system" selectedImage="doc.text.fill" id="YaB-ZH-Ih4">
-                        <color key="badgeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
+                    <connections>
+                        <outlet property="webKitView" destination="xMh-qk-fZ3" id="mrN-T4-Xqw"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R6r-1r-RdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wLY-xI-m5N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4038" y="875"/>
+            <point key="canvasLocation" x="5502.898550724638" y="1138.3928571428571"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="labelColor"/>
     <resources>
         <image name="doc.text" catalog="system" width="115" height="128"/>
         <image name="doc.text.fill" catalog="system" width="115" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

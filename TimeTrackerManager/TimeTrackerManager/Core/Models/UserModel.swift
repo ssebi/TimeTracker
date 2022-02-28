@@ -15,8 +15,32 @@ struct UserCell {
     let profilePicture: String
 	let documentId: String
     let hourRate: String?
+	let timeSlots: [TimeSlot]
 
-	let timeSlots: ((String, @escaping TimeslotsStore.GetTimeslotsResult) -> Void)?
+	init(
+		name: String,
+		userId: String,
+		profilePicture: String,
+		documentId: String,
+		hourRate: String?,
+		timeSlots: [TimeSlot] = []
+	) {
+		self.name = name
+		self.userId = userId
+		self.profilePicture = profilePicture
+		self.documentId = documentId
+		self.hourRate = hourRate
+		self.timeSlots = timeSlots
+	}
+
+	func addTimeslots(_ timeslots: [TimeSlot]) -> UserCell {
+		UserCell(name: name,
+				 userId: userId,
+				 profilePicture: profilePicture,
+				 documentId: documentId,
+				 hourRate: hourRate,
+				 timeSlots: timeslots)
+	}
 }
 
 extension UserCell {

@@ -30,6 +30,14 @@ final class ClientsTableViewController: UITableViewController {
             }
         }
     }
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let destination = segue.destination as? ClientDetailViewController {
+			if let indexPath = tableView.indexPathForSelectedRow {
+				destination.client = clients[indexPath.row]
+			}
+		}
+	}
 }
 
 extension ClientsTableViewController {
@@ -67,7 +75,7 @@ extension ClientsTableViewController {
         cell.clientsProject.text = projects.joined(separator: ", ")
 
         return cell
-    }
+	}
 
     private func configRefreshControl() {
         tableView.refreshControl = UIRefreshControl()

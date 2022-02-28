@@ -22,46 +22,50 @@ final class FirebaseUsersLoader {
     typealias GetTimeslotsResult = (Result<[TimeSlot], Error>) -> Void
     var store: TimeslotsStore
 
-    func getUsers(completion: @escaping GetUsersResult) {
-        Firestore.firestore().collection(Path.users).getDocuments { (snapshot, error) in
-			guard error == nil else {
-				completion(.failure(error!))
-				return
+    func getUsers() async throws -> [UserCell] {
+		guard let partialUsers = try? await getPartialUsers() else {
+			throw UndefinedError()
+		}
+		var usersWithTimeslots: [UserCell] = []
+		for user in partialUsers {
+			if let timeslots = await store.getTimeslots(userID: user.userId) {
+				usersWithTimeslots.append(user.addTimeslots(timeslots))
 			}
-			guard let snapshot = snapshot else {
-				completion(.failure(UndefinedError()))
-				return
+		}
+		return usersWithTimeslots
+	}
+
+	private func getPartialUsers() async throws -> [UserCell] {
+		try await withCheckedThrowingContinuation { continuation in
+			Firestore.firestore().collection("users").getDocuments { snapshot, error in
+				guard error == nil else {
+					continuation.resume(throwing: error!)
+					return
+				}
+				guard let snapshot = snapshot else {
+					continuation.resume(throwing: UndefinedError())
+					return
+				}
+
+				let users = snapshot.documents.compactMap { document -> UserCell? in
+					let data = document.data()
+					let documentId = document.documentID
+					let userId = data["userId"] as? String ?? ""
+					let name = "\(data["firstName"] ?? "") \(data["lastName"] ?? "")"
+					let profilePicture = data["profilePicture"] as? String ?? ""
+					let hourRate = data["hourRate"] as? String ?? ""
+
+					return UserCell(name: name,
+									userId: userId,
+									profilePicture: profilePicture,
+									documentId: documentId,
+									hourRate: hourRate)
+				}
+
+				continuation.resume(returning: users)
 			}
-			let users = snapshot.documents.compactMap { [weak self] document -> UserCell? in
-				let data = document.data()
-				let documentId = document.documentID
-				let userId = data["userId"] as? String ?? ""
-				let name = "\(data["firstName"] ?? "") \(data["lastName"] ?? "")"
-				let profilePicture = data["profilePicture"] as? String ?? ""
-				let hourRate = data["hourRate"] as? String ?? "$100"
-
-				return UserCell(name: name,
-								userId: userId,
-								profilePicture: profilePicture,
-								documentId: documentId,
-								hourRate: hourRate,
-								timeSlots: self?.getUserTimeslots)
-			}
-			completion(.success((users)))
-        }
-    }
-
-    private func getUserTimeslots(_ userId: String, completion: @escaping TimeslotsStore.GetTimeslotsResult) {
-        store.getTimeslots(userID: userId) { result in
-            switch result {
-            case let .success(timeslots):
-                completion(.success(timeslots))
-
-            case let .failure(error):
-                completion(.failure(error))
-            }
-        }
-    }
+		}
+	}
 
     func deleteUser(_ docId: String) {
         Firestore.firestore().collection("users").document(docId).delete { err in
