@@ -233,13 +233,6 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="lmT-HP-Kim">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="XUt-0N-cNu">
-                            <connections>
-                                <action selector="shareAction:" destination="dr3-kh-hIu" id="riK-0v-Lou"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="wTa-k6-JGa" id="0sF-fi-TM1"/>
@@ -263,14 +256,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qY-Vh-9P1" customClass="PDFView">
-                                <rect key="frame" x="3" y="0.0" width="408" height="800"/>
+                                <rect key="frame" x="3" y="44" width="408" height="756"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haC-Px-2AB">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kaR-Br-WpE"/>
+                                    <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="9S9-4G-Zbf">
+                                        <connections>
+                                            <action selector="shareAction:" destination="Ihq-TB-nPl" id="9Na-Af-Nai"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zxr-L6-c1L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2qY-Vh-9P1" firstAttribute="top" secondItem="zxr-L6-c1L" secondAttribute="top" id="InH-m4-Sby"/>
+                            <constraint firstItem="2qY-Vh-9P1" firstAttribute="top" secondItem="haC-Px-2AB" secondAttribute="bottom" id="7uG-z4-6Uu"/>
+                            <constraint firstItem="haC-Px-2AB" firstAttribute="top" secondItem="zxr-L6-c1L" secondAttribute="top" id="9u4-nd-pqb"/>
+                            <constraint firstItem="haC-Px-2AB" firstAttribute="leading" secondItem="zxr-L6-c1L" secondAttribute="leading" id="Rs2-6e-pqc"/>
+                            <constraint firstItem="haC-Px-2AB" firstAttribute="trailing" secondItem="zxr-L6-c1L" secondAttribute="trailing" id="V1u-x5-eXZ"/>
                             <constraint firstItem="zxr-L6-c1L" firstAttribute="bottom" secondItem="2qY-Vh-9P1" secondAttribute="bottom" constant="8" id="ZZP-il-zDj"/>
                             <constraint firstItem="2qY-Vh-9P1" firstAttribute="leading" secondItem="zxr-L6-c1L" secondAttribute="leading" constant="3" id="cOn-gh-hFT"/>
                             <constraint firstItem="zxr-L6-c1L" firstAttribute="trailing" secondItem="2qY-Vh-9P1" secondAttribute="trailing" constant="3" id="miA-3m-Z2r"/>
@@ -282,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NK3-sU-5TE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5833" y="714"/>
+            <point key="canvasLocation" x="5831.884057971015" y="713.83928571428567"/>
         </scene>
         <!--Add Clients View Controller-->
         <scene sceneID="4dL-fK-a8i">
@@ -523,6 +530,7 @@
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="scale.3d" catalog="system" width="128" height="112"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
