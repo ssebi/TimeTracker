@@ -43,10 +43,12 @@ final class ClientDetailViewController: UIViewController {
         clientName.text = client?.name
 
         loadInvoiceNo { [weak self] result in
-            if case let .success(_) = result {
+            if case .success(_) = result,
+            let invSeries = self?.invoiceNo!.series,
+            let invoiceNo = self?.invoiceNoTextField.text!.description {
                 self?.invoice = InvoiceDetails(
                     client: (self?.client?.name ?? "Unamed"),
-                    invoiceNumber: "\(self?.invoiceNo!.series)\(self?.invoiceNoTextField.text!.description)",
+                    invoiceNumber: "\(invSeries)\(invoiceNo)",
                     product: "Software development services",
                     quantity: Int(self?.invoiceTotal.text ?? "") ?? 0,
                     unitCost: self?.client?.hourRate ?? 0,
