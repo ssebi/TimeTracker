@@ -11,7 +11,8 @@ struct Path {
     static let users = "users"
     static let timeSlots = "timeSlots"
     static let clients = "Clients"
-    static let invoieNo = "invoiceNo"
+    static let invoiceNo = "invoiceNo"
+    static let invoice = "invoice"
 }
 
 struct Constants {
@@ -32,7 +33,8 @@ extension TimeslotsStore {
 
 extension Date {
     func startOfMonth() -> Date {
-        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month],
+                                                                           from: Calendar.current.startOfDay(for: self)))!
     }
 
     func endOfMonth() -> Date {

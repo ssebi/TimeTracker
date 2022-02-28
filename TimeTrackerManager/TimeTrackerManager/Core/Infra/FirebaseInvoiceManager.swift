@@ -20,12 +20,13 @@ final class FirebaseInvoiceManager {
     init() {}
 
     typealias InvoicePublisherCompletion = (Result<Void, Error>) -> Void
-    typealias GetInvoiceResult = (Result<InvoiceNo, Error>) -> Void
+    typealias GetInvoiceNoResult = (Result<InvoiceNo, Error>) -> Void
+    typealias GetInvoiceResult = (Result<[Invoice], Error>) -> Void
     typealias GetInvoiceTotalResult = (Result<Int, Error>) -> Void
     struct UndefinedError: Error { }
 
     func updateInvoiceNo(newInvoiceNo: Int, docId: String, completion: @escaping InvoicePublisherCompletion) {
-        Firestore.firestore().collection(Path.invoieNo)
+        Firestore.firestore().collection(Path.invoiceNo)
             .document(docId).updateData(["no": newInvoiceNo]) { err in
             if let err = err {
                 completion(.failure(err))
@@ -35,8 +36,8 @@ final class FirebaseInvoiceManager {
         }
     }
 
-    func getInvoiceNo(completion: @escaping GetInvoiceResult) {
-        Firestore.firestore().collection(Path.invoieNo).getDocuments { (snapshot, error) in
+    func getInvoiceNo(completion: @escaping GetInvoiceNoResult) {
+        Firestore.firestore().collection(Path.invoiceNo).getDocuments { (snapshot, error) in
             guard error == nil else {
                 return completion(.failure(error!))
             }
@@ -44,11 +45,11 @@ final class FirebaseInvoiceManager {
                 let invoiceNo = snapshot.documents.compactMap { document -> InvoiceNo? in
                     let data = document.data()
                    guard let series = data["series"] as? String,
-                         let no = data["no"] as? Int,
+                         let number = data["no"] as? Int,
                          let documentId = document.documentID as? String else {
                              return nil
                          }
-                    return InvoiceNo(id: documentId, no: no, series: series)
+                    return InvoiceNo(id: documentId, number: number, series: series)
                 }
                 completion(.success(invoiceNo[invoiceNo.count - 1]))
             } else if let error = error {
@@ -91,4 +92,39 @@ final class FirebaseInvoiceManager {
         }
         return arrTotalHours.reduce(0, +)
     }
+
+    func saveInvoice(title: String, data: String, completion: @escaping InvoicePublisherCompletion) {
+        Firestore.firestore().collection(Path.invoice)
+            .document().setData(
+                [
+                    "title": title,
+                    "data": data,
+                    "date": "\(Date())"
+                ]) { err in
+            if let err = err {
+                completion(.failure(err))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+
+    public func getInvoices(completion: @escaping GetInvoiceResult) {
+        Firestore.firestore().collection(Path.invoice)
+            .getDocuments { (querySnapshot, error) in
+                if let querySnapshot = querySnapshot {
+                    let invoices = querySnapshot.documents.compactMap { [weak self] document -> Invoice? in
+                        if let data = try? JSONSerialization.data(withJSONObject: document.data()) {
+                            return try? self?.jsonDecoder.decode(Invoice.self, from: data)
+                        } else {
+                            return nil
+                        }
+                    }
+                    completion(.success(invoices))
+                } else {
+                    completion(.failure(error!))
+                }
+            }
+    }
+
 }

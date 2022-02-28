@@ -99,27 +99,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBs-rN-tvO">
-                                <rect key="frame" x="107" y="766" width="200" height="50"/>
-                                <color key="backgroundColor" red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Y4u-Vr-Jms"/>
-                                    <constraint firstAttribute="width" constant="200" id="g6q-Hn-RTv"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Preview invoice">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="previewInvoiceButton:" destination="dr3-kh-hIu" eventType="touchUpInside" id="glh-0d-ofk"/>
-                                    <segue destination="Ihq-TB-nPl" kind="showDetail" identifier="previewInvoice" id="aML-4x-TF8"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdf-7S-0i9">
                                 <rect key="frame" x="0.0" y="138" width="414" height="34.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
@@ -145,7 +124,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="dfH-s4-ORJ">
-                                <rect key="frame" x="219" y="251" width="150" height="31"/>
+                                <rect key="frame" x="219" y="250.5" width="150" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="vHo-YC-a4g"/>
                                 </constraints>
@@ -173,37 +152,90 @@
                                 <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibJ-i5-Q2B">
+                                <rect key="frame" x="82" y="762" width="250" height="50"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="3Cy-ZW-rai"/>
+                                    <constraint firstAttribute="height" constant="50" id="jOM-JI-ZZz"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Save invoice">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveInvoiceButton:" destination="dr3-kh-hIu" eventType="touchUpInside" id="b3k-qc-ZDz"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="wTa-k6-JGa">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="AZ9-Gt-glC"/>
+                                    <constraint firstAttribute="width" constant="50" id="atc-ON-mkL"/>
+                                </constraints>
+                                <color key="color" red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBs-rN-tvO">
+                                <rect key="frame" x="82" y="692" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="X47-sF-bee"/>
+                                    <constraint firstAttribute="width" constant="250" id="maS-zs-Lvc"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Preview invoice">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="previewInvoiceButton:" destination="dr3-kh-hIu" eventType="touchUpInside" id="glh-0d-ofk"/>
+                                    <segue destination="Ihq-TB-nPl" kind="showDetail" identifier="previewInvoice" id="aML-4x-TF8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xIL-Dc-pxI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wTa-k6-JGa" firstAttribute="centerX" secondItem="mjC-tV-0cD" secondAttribute="centerX" id="5hI-wE-Cum"/>
                             <constraint firstItem="GCV-He-cO4" firstAttribute="top" secondItem="jpE-3U-SDw" secondAttribute="bottom" constant="100" id="65m-Be-ma4"/>
                             <constraint firstItem="kTs-A1-aL8" firstAttribute="trailing" secondItem="dfH-s4-ORJ" secondAttribute="trailing" id="CxD-NX-ya2"/>
                             <constraint firstItem="Xdf-7S-0i9" firstAttribute="top" secondItem="xIL-Dc-pxI" secondAttribute="top" constant="50" id="EX0-9U-h2i"/>
                             <constraint firstItem="xIL-Dc-pxI" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Xdf-7S-0i9" secondAttribute="trailing" id="Kad-hn-YIB"/>
                             <constraint firstItem="EcG-hd-bDN" firstAttribute="leading" secondItem="jpE-3U-SDw" secondAttribute="leading" id="Qa8-eW-hk8"/>
                             <constraint firstItem="xIL-Dc-pxI" firstAttribute="trailing" secondItem="UBk-eL-4qH" secondAttribute="trailing" constant="55" id="QkT-Mf-jcQ"/>
+                            <constraint firstItem="wTa-k6-JGa" firstAttribute="centerY" secondItem="mjC-tV-0cD" secondAttribute="centerY" id="RNo-xg-ex8"/>
                             <constraint firstItem="kTs-A1-aL8" firstAttribute="leading" secondItem="FA0-Fh-DXR" secondAttribute="trailing" constant="5" id="VCh-kZ-zeo"/>
                             <constraint firstItem="FA0-Fh-DXR" firstAttribute="centerY" secondItem="kTs-A1-aL8" secondAttribute="centerY" id="Vkt-eD-GeH"/>
                             <constraint firstItem="Xdf-7S-0i9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xIL-Dc-pxI" secondAttribute="leading" id="Wxy-Hq-W4F"/>
+                            <constraint firstItem="BBs-rN-tvO" firstAttribute="centerX" secondItem="mjC-tV-0cD" secondAttribute="centerX" id="Y9y-UM-aW0"/>
                             <constraint firstItem="kTs-A1-aL8" firstAttribute="centerY" secondItem="EcG-hd-bDN" secondAttribute="centerY" id="YV4-5y-f0T"/>
                             <constraint firstItem="EcG-hd-bDN" firstAttribute="top" secondItem="jpE-3U-SDw" secondAttribute="bottom" constant="45" id="ZK7-fJ-BhV"/>
-                            <constraint firstItem="BBs-rN-tvO" firstAttribute="centerX" secondItem="mjC-tV-0cD" secondAttribute="centerX" id="acf-fE-fAv"/>
                             <constraint firstItem="jpE-3U-SDw" firstAttribute="leading" secondItem="xIL-Dc-pxI" secondAttribute="leading" constant="65" id="bEr-oS-x53"/>
                             <constraint firstItem="UBk-eL-4qH" firstAttribute="centerY" secondItem="GCV-He-cO4" secondAttribute="centerY" id="bmK-TF-b9w"/>
                             <constraint firstItem="Xdf-7S-0i9" firstAttribute="centerX" secondItem="mjC-tV-0cD" secondAttribute="centerX" id="eUg-ag-qzx"/>
-                            <constraint firstAttribute="bottom" secondItem="BBs-rN-tvO" secondAttribute="bottom" constant="80" id="g6R-ge-Udd"/>
+                            <constraint firstItem="xIL-Dc-pxI" firstAttribute="bottom" secondItem="ibJ-i5-Q2B" secondAttribute="bottom" constant="50" id="fD9-DN-Y1O"/>
                             <constraint firstItem="xIL-Dc-pxI" firstAttribute="trailing" secondItem="dfH-s4-ORJ" secondAttribute="trailing" constant="45" id="iG1-6C-Q8a"/>
                             <constraint firstItem="jpE-3U-SDw" firstAttribute="top" secondItem="Xdf-7S-0i9" secondAttribute="bottom" constant="80" id="k3Q-Bh-9jn"/>
                             <constraint firstItem="GCV-He-cO4" firstAttribute="leading" secondItem="xIL-Dc-pxI" secondAttribute="leading" constant="65" id="pE4-wH-6lN"/>
+                            <constraint firstItem="ibJ-i5-Q2B" firstAttribute="centerX" secondItem="mjC-tV-0cD" secondAttribute="centerX" id="pXy-ii-41S"/>
                             <constraint firstItem="FA0-Fh-DXR" firstAttribute="leading" secondItem="EcG-hd-bDN" secondAttribute="trailing" constant="50" id="tnL-us-pbt"/>
                             <constraint firstItem="dfH-s4-ORJ" firstAttribute="centerY" secondItem="jpE-3U-SDw" secondAttribute="centerY" id="vWX-TS-Qch"/>
+                            <constraint firstItem="ibJ-i5-Q2B" firstAttribute="top" secondItem="BBs-rN-tvO" secondAttribute="bottom" constant="20" id="yRn-iz-L7c"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="lmT-HP-Kim"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="wTa-k6-JGa" id="0sF-fi-TM1"/>
                         <outlet property="clientName" destination="Xdf-7S-0i9" id="Mii-LP-F2q"/>
                         <outlet property="datePicker" destination="dfH-s4-ORJ" id="GXl-MU-lsp"/>
                         <outlet property="invoiceNoTextField" destination="kTs-A1-aL8" id="Z4r-nJ-jrJ"/>
@@ -215,23 +247,37 @@
             </objects>
             <point key="canvasLocation" x="4982.608695652174" y="713.83928571428567"/>
         </scene>
-        <!--Invoice Preview View Controller-->
+        <!--Invoice PreviewPDF ViewVC-->
         <scene sceneID="9fn-Qa-XSO">
             <objects>
-                <viewController id="Ihq-TB-nPl" customClass="InvoicePreviewViewController" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ihq-TB-nPl" customClass="InvoicePreviewPDFViewVC" customModule="TimeTrackerManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wrg-2W-7Cp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qY-Vh-9P1" customClass="PDFView">
-                                <rect key="frame" x="3" y="0.0" width="408" height="800"/>
+                                <rect key="frame" x="3" y="44" width="408" height="756"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haC-Px-2AB">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kaR-Br-WpE"/>
+                                    <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="9S9-4G-Zbf">
+                                        <connections>
+                                            <action selector="shareAction:" destination="Ihq-TB-nPl" id="9Na-Af-Nai"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zxr-L6-c1L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2qY-Vh-9P1" firstAttribute="top" secondItem="zxr-L6-c1L" secondAttribute="top" id="InH-m4-Sby"/>
+                            <constraint firstItem="2qY-Vh-9P1" firstAttribute="top" secondItem="haC-Px-2AB" secondAttribute="bottom" id="7uG-z4-6Uu"/>
+                            <constraint firstItem="haC-Px-2AB" firstAttribute="top" secondItem="zxr-L6-c1L" secondAttribute="top" id="9u4-nd-pqb"/>
+                            <constraint firstItem="haC-Px-2AB" firstAttribute="leading" secondItem="zxr-L6-c1L" secondAttribute="leading" id="Rs2-6e-pqc"/>
+                            <constraint firstItem="haC-Px-2AB" firstAttribute="trailing" secondItem="zxr-L6-c1L" secondAttribute="trailing" id="V1u-x5-eXZ"/>
                             <constraint firstItem="zxr-L6-c1L" firstAttribute="bottom" secondItem="2qY-Vh-9P1" secondAttribute="bottom" constant="8" id="ZZP-il-zDj"/>
                             <constraint firstItem="2qY-Vh-9P1" firstAttribute="leading" secondItem="zxr-L6-c1L" secondAttribute="leading" constant="3" id="cOn-gh-hFT"/>
                             <constraint firstItem="zxr-L6-c1L" firstAttribute="trailing" secondItem="2qY-Vh-9P1" secondAttribute="trailing" constant="3" id="miA-3m-Z2r"/>
@@ -243,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NK3-sU-5TE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5833" y="714"/>
+            <point key="canvasLocation" x="5831.884057971015" y="713.83928571428567"/>
         </scene>
         <!--Add Clients View Controller-->
         <scene sceneID="4dL-fK-a8i">
@@ -484,11 +530,15 @@
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="scale.3d" catalog="system" width="128" height="112"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>

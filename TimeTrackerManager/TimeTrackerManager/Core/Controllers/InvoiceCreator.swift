@@ -20,7 +20,7 @@ final class InvoiceCreator {
         self.clientDetail = clientDetail
     }
 
-    func createInvoice(invoice: Invoice) -> Data {
+    func createInvoice(invoice: InvoiceDetails) -> Data {
         let pdfMetaData = [
             kCGPDFContextCreator: "Invoice",
             kCGPDFContextAuthor: "TimeTracker Manager",
@@ -69,6 +69,7 @@ final class InvoiceCreator {
             drawTableLines(context, pageRect: pageRect, lineTop: invoiceTableHeaderBottom)
             drawTableLines(context, pageRect: pageRect, lineTop: invoiceBodyBottom)
         }
+
         return data
     }
 
@@ -288,12 +289,12 @@ private struct PDFElement {
 
 		func attributes() -> [NSAttributedString.Key: Any] {
 			switch self {
-				case .largeTitle:
-					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 27.0, weight: .medium)]
-				case .headline:
-					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .medium)]
-				case .body:
-					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)]
+                case .largeTitle:
+                    return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 27.0, weight: .medium)]
+                case .headline:
+                    return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .medium)]
+                case .body:
+                    return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)]
                 case .title3:
                     return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0, weight: .bold)]
 			}
