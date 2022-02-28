@@ -108,39 +108,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iT-Ta-JY3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="A0p-aD-32q"/>
+                                    <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="gKF-l5-J3O">
+                                        <connections>
+                                            <action selector="shareButton:" destination="Auy-52-jYi" id="nzN-PI-ONL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMh-qk-fZ3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="708"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="764"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knz-fw-3Gp">
-                                <rect key="frame" x="314" y="708" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Uh0-66-xoN"/>
-                                    <constraint firstAttribute="width" constant="50" id="VER-Cw-tZX"/>
-                                </constraints>
-                                <color key="tintColor" red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="large"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="shareButton:" destination="Auy-52-jYi" eventType="touchUpInside" id="7MT-7X-zIK"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jos-dl-ZN2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Jos-dl-ZN2" firstAttribute="bottom" secondItem="Knz-fw-3Gp" secondAttribute="bottom" constant="50" id="40E-yf-Wot"/>
-                            <constraint firstItem="Jos-dl-ZN2" firstAttribute="trailing" secondItem="Knz-fw-3Gp" secondAttribute="trailing" constant="50" id="Jt0-cB-Q2F"/>
+                            <constraint firstItem="Jos-dl-ZN2" firstAttribute="bottom" secondItem="xMh-qk-fZ3" secondAttribute="bottom" id="JcX-B4-sIq"/>
+                            <constraint firstItem="7iT-Ta-JY3" firstAttribute="trailing" secondItem="Jos-dl-ZN2" secondAttribute="trailing" id="Loe-Nt-GQE"/>
                             <constraint firstItem="Jos-dl-ZN2" firstAttribute="trailing" secondItem="xMh-qk-fZ3" secondAttribute="trailing" id="TsL-nV-qIz"/>
-                            <constraint firstItem="Knz-fw-3Gp" firstAttribute="top" secondItem="xMh-qk-fZ3" secondAttribute="bottom" id="gd7-5B-SXc"/>
+                            <constraint firstItem="7iT-Ta-JY3" firstAttribute="leading" secondItem="Jos-dl-ZN2" secondAttribute="leading" id="TuX-pC-TO9"/>
+                            <constraint firstItem="7iT-Ta-JY3" firstAttribute="top" secondItem="Jos-dl-ZN2" secondAttribute="top" id="USu-nu-tjO"/>
                             <constraint firstItem="xMh-qk-fZ3" firstAttribute="leading" secondItem="Jos-dl-ZN2" secondAttribute="leading" id="qrg-SD-tlT"/>
-                            <constraint firstItem="xMh-qk-fZ3" firstAttribute="top" secondItem="Jos-dl-ZN2" secondAttribute="top" id="ryg-pg-2qX"/>
+                            <constraint firstItem="xMh-qk-fZ3" firstAttribute="top" secondItem="7iT-Ta-JY3" secondAttribute="bottom" id="vuZ-Ji-rNl"/>
                         </constraints>
                     </view>
                     <connections>
