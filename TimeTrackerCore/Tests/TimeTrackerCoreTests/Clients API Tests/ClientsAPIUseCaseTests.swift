@@ -36,8 +36,8 @@ class ClientsAPIUseCaseTests: XCTestCase {
 
 	func test_getClients_returnsClientsOnStoreSuccess() throws {
 		let (sut, store) = makeSUT()
-		let someClients = [Client(id: UUID().uuidString, name: "Client1", projects: []),
-						   Client(id: UUID().uuidString, name: "Client2", projects: [])]
+		let someClients = [Client(id: UUID().uuidString, name: "Client1", projects: [], vat: "RO1234", address: "Sesame street 1", country: "Romania", hourRate: 100),
+						   Client(id: UUID().uuidString, name: "Client2", projects: [], vat: "RO1234", address: "Sesame street 2", country: "Romania", hourRate: 150)]
 		var receivedClients: [Client]? = nil
 
 		let result = resultFor(sut: sut) {
