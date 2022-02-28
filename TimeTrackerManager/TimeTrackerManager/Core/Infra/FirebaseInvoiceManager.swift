@@ -45,11 +45,11 @@ final class FirebaseInvoiceManager {
                 let invoiceNo = snapshot.documents.compactMap { document -> InvoiceNo? in
                     let data = document.data()
                    guard let series = data["series"] as? String,
-                         let no = data["no"] as? Int,
+                         let number = data["no"] as? Int,
                          let documentId = document.documentID as? String else {
                              return nil
                          }
-                    return InvoiceNo(id: documentId, no: no, series: series)
+                    return InvoiceNo(id: documentId, number: number, series: series)
                 }
                 completion(.success(invoiceNo[invoiceNo.count - 1]))
             } else if let error = error {

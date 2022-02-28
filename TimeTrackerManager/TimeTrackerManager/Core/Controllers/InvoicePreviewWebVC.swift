@@ -16,7 +16,9 @@ class InvoicePreviewWebVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let data = documentData {
-            webKitView.load(data, mimeType: "application/pdf", characterEncodingName: "utf-8", baseURL: URL(fileURLWithPath: ""))
+            webKitView.load(data, mimeType: "application/pdf",
+                            characterEncodingName: "utf-8",
+                            baseURL: URL(fileURLWithPath: ""))
         }
     }
 

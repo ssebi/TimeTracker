@@ -48,7 +48,8 @@ extension InvoiceTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.invoiceCellIdentifier, for: indexPath) as? InvoiceListCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.invoiceCellIdentifier,
+                                                       for: indexPath) as? InvoiceListCell else {
             fatalError("Unable to deque cell")
         }
 

@@ -18,7 +18,7 @@ struct InvoiceDetails {
 
 struct InvoiceNo {
     var id: String
-    var no: Int
+    var number: Int
     var series: String
 }
 

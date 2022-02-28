@@ -289,12 +289,12 @@ private struct PDFElement {
 
 		func attributes() -> [NSAttributedString.Key: Any] {
 			switch self {
-				case .largeTitle:
-					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 27.0, weight: .medium)]
-				case .headline:
-					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .medium)]
-				case .body:
-					return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)]
+                case .largeTitle:
+                    return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 27.0, weight: .medium)]
+                case .headline:
+                    return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .medium)]
+                case .body:
+                    return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)]
                 case .title3:
                     return [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0, weight: .bold)]
 			}
