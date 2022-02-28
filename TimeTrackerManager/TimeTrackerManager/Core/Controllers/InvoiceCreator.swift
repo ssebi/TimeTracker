@@ -70,8 +70,6 @@ final class InvoiceCreator {
             drawTableLines(context, pageRect: pageRect, lineTop: invoiceBodyBottom)
         }
 
-        //let encodedInvoice = data.base64EncodedString()
-
         return data
     }
 
