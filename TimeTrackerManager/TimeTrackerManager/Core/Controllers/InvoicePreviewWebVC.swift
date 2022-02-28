@@ -26,6 +26,7 @@ class InvoicePreviewWebVC: UIViewController {
             activityItems: [data],
             applicationActivities: []
         )
+		avc.popoverPresentationController?.sourceView = view
         present(avc, animated: true, completion: nil)
     }
 }
