@@ -31,52 +31,29 @@ struct LoginFormView: View {
             Group {
                 HStack {
                     Image(systemName: "person.fill")
-                    CustomTextField(
-                        "E-mail",
-                        text: self.$viewModel.username,
-                        keyboardType: .emailAddress,
-                        tag: 1,
-                        isSecure: false,
-                        returnKeyType: .next,
-                        onCommit: {}
-                    )
+                    TextField("Username", text: $viewModel.username)
                         .foregroundColor(.cBlack)
                         .textContentType(.emailAddress)
+                        .autocapitalization(.none)
                         .onTapGesture {
                             viewModel.errrorMessage = ""
                         }
                 }.underlineTextField()
                 HStack {
                     Image(systemName: "lock.fill")
-
                     ZStack(alignment: .trailing) {
                         if isSecured {
-                            CustomTextField(
-                                "Password",
-                                text: self.$viewModel.password,
-                                keyboardType: .default, tag: 2,
-                                isSecure: true,
-                                returnKeyType: .send,
-                                onCommit: {
-                                    viewModel.signIn()
-                                })
+                            SecureField("Password", text: $viewModel.password)
                                 .foregroundColor(.cBlack)
-                                .textContentType(.password)
+                                .autocapitalization(.none)
                                 .onTapGesture {
                                     viewModel.errrorMessage = ""
                                 }
                         } else {
-                            CustomTextField(
-                                "Password",
-                                text: self.$viewModel.password,
-                                keyboardType: .default,
-                                tag: 2, isSecure: false,
-                                returnKeyType: .send,
-                                onCommit: {
-                                    viewModel.signIn()
-                                })
+                            TextField("Password", text: $viewModel.password)
                                 .foregroundColor(.cBlack)
                                 .textContentType(.password)
+                                .autocapitalization(.none)
                                 .onTapGesture {
                                     viewModel.errrorMessage = ""
                                 }
