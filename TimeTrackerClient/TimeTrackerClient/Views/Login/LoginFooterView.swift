@@ -6,20 +6,35 @@
 //
 
 import SwiftUI
+import TimeTrackerAuth
 
 struct LoginFooterView: View {
+    @ObservedObject private(set) var viewModel: LoginViewModel
     @State var showAlert = false
 
     var body: some View {
         VStack {
             Spacer()
-            Button("Forgot password?") {
-                showAlert = true
-                    }
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Coming soon"), message: Text("This functionality is under development"), dismissButton: .default(Text("Got it!")))
-                    }
+            if viewModel.isForgotten == false {
+            Button(
+                action: {
+                    viewModel.isForgotten = true
+                },
+                label: {
+                    NavigationLink("Forgot password", destination: ForgotPassword(viewModel: viewModel))
+                })
                     .padding()
+            } else {
+
+            Button(
+                action: {
+                    viewModel.isForgotten = false
+                },
+                label: {
+                    NavigationLink("Log In", destination: LoginView(viewModel: viewModel))
+                })
+                    .padding()
+            }
             Button("Create a new account") {
                 showAlert = true
                     }
@@ -34,6 +49,6 @@ struct LoginFooterView: View {
 
 struct LoginFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginFooterView()
+        LoginFooterView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
     }
 }

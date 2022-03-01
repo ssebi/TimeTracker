@@ -85,8 +85,6 @@ struct LoginFormView: View {
                 .padding(EdgeInsets(top: 50, leading: 45, bottom: 1, trailing: 45))
             }
         }
-        .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
-        .frame(width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height / 2) - 10, alignment: .center)
     }
 }
 

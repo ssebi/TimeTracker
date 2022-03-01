@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		540168E527CE4C9A00E6AFA6 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540168E427CE4C9A00E6AFA6 /* ForgotPassword.swift */; };
 		545CCEAB27200FE500811CE3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEAA27200FE500811CE3 /* Utils.swift */; };
 		545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDB2726EB0600811CE3 /* AddView.swift */; };
 		545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDE2727274D00811CE3 /* DatePickerView.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		540168E427CE4C9A00E6AFA6 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		545CCEAA27200FE500811CE3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		545CCEDB2726EB0600811CE3 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		545CCEDE2727274D00811CE3 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		540168E327CE4C3800E6AFA6 /* ForgotPass */ = {
+			isa = PBXGroup;
+			children = (
+				540168E427CE4C9A00E6AFA6 /* ForgotPassword.swift */,
+			);
+			path = ForgotPass;
+			sourceTree = "<group>";
+		};
 		543DD550272AB3D700D426FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +276,7 @@
 		C6DA42E62732DB9E00D44D80 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				540168E327CE4C3800E6AFA6 /* ForgotPass */,
 				C6DA42E72732DBC800D44D80 /* LoginView.swift */,
 				54CC810D2758FD76004E1062 /* LogoView.swift */,
 				54CC810F2758FDF1004E1062 /* LoginFormView.swift */,
@@ -417,6 +428,7 @@
 				C6DA42EA2735477E00D44D80 /* DateLabel.swift in Sources */,
 				C6DA42E82732DBC800D44D80 /* LoginView.swift in Sources */,
 				54D2FDBC2717354800C66998 /* Extensions.swift in Sources */,
+				540168E527CE4C9A00E6AFA6 /* ForgotPassword.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

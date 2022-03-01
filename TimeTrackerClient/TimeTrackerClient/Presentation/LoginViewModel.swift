@@ -13,6 +13,7 @@ public class LoginViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var showError = true
     @Published var toggle = true
+    @Published var isForgotten = false
 
     @Published var errrorMessage = ""
 
@@ -32,5 +33,13 @@ public class LoginViewModel: ObservableObject {
                 self?.errrorMessage = result.localizedDescription
             }
         }
+    }
+
+    func forgotPassword() {
+        isLoading = true
+        print("You have pressed forggot password")
+//        Auth.auth().sendPasswordReset(withEmail: email) { error in
+//          // ...
+//        }
     }
 }
