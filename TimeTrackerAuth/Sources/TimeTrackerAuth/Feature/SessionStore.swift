@@ -26,6 +26,15 @@ public class SessionStore: ObservableObject {
 		}
 	}
 
+    public func forgotPassword(email: String, completion: @escaping AuthProvider.ForgotPasswordResult) {
+        authProvider.forgotPassword(email: email) { [weak self] result in
+            if case let .failure(error) = result {
+                print(error)
+            }
+            completion(result)
+        }
+    }
+
 	@discardableResult
 	public func signOut() -> Bool {
 		do {

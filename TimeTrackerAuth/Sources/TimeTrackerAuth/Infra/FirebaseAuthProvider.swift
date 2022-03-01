@@ -48,4 +48,14 @@ public class FirebaseAuthProvider: AuthProvider {
 					username: user.displayName,
 					client: "")
 	}
+
+    public func forgotPassword(email: String, completion: @escaping ForgotPasswordResult) {
+        auth.sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            completion(.success(()))
+        }
+    }
 }

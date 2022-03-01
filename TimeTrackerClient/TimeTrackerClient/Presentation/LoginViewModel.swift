@@ -38,8 +38,11 @@ public class LoginViewModel: ObservableObject {
     func forgotPassword() {
         isLoading = true
         print("You have pressed forggot password")
-//        Auth.auth().sendPasswordReset(withEmail: email) { error in
-//          // ...
-//        }
+        session.forgotPassword(email: username) { [weak self] result in
+            self?.isLoading = false
+            if case let .failure(result) = result {
+                self?.errrorMessage = result.localizedDescription
+            }
+        }
     }
 }
