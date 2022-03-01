@@ -13,8 +13,6 @@ struct ForgotPassword: View {
 
     var body: some View {
         VStack{
-//            Text("You will receive a link to reset your password at the provided email address.")
-//                .frame(width: UIScreen.main.bounds.width - 95, height: 50, alignment: .center)
             Group{
                 Text("Please enter your email address")
                     .foregroundColor(.cBlack)
