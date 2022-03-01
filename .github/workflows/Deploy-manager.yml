@@ -22,6 +22,8 @@ jobs:
 
         cp .github/secrets/TimeTrackerManagerProfile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
+        ls ~/Library/MobileDevice/Provisioning\ Profiles/
+
     - name: Install keychain certificate
       run: |
         gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.IOS_KEYS }}" --output .github/secrets/Certificates.p12 .github/secrets/Certificates.p12.gpg
@@ -42,9 +44,3 @@ jobs:
 
     - name: Build
       run: xcodebuild clean archive -sdk iphoneos -workspace TimeTracker.xcworkspace -configuration "Release" -scheme "TimeTrackerManager" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/TimeTrackerManager.xcarchive" | xcpretty
-
-    - name: Export
-      run: xcodebuild -exportArchive -archivePath DerivedData/Archive/TimeTrackerManager.xcarchive -exportOptionsPlist .github/secrets/ExportOptionsManager.plist -exportPath DerivedData/ipa | xcpretty
-
-    - name: Deploy
-      run: xcrun altool --upload-app --type ios --file "DerivedData/ipa/TimeTrackerManager.ipa" --username "${{ secrets.APPLEID_USERNAME }}" --password "${{ secrets.APPLEID_PASSWORD }}" --verbose
