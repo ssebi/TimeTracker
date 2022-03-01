@@ -2,7 +2,8 @@ name: Deploy
 
 on:
   push:
-    branches: [ main ]
+    tags:
+      - 'client/*'
 
 jobs:
   build-and-deploy:
@@ -36,9 +37,6 @@ jobs:
 
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
-
-    - name: Set build number
-      run: /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $GITHUB_RUN_NUMBER" "TimeTrackerClient/TimeTrackerClient/Info.plist"
 
     - name: Build
       run: xcodebuild clean archive -sdk iphoneos -workspace TimeTracker.xcworkspace -configuration "Release" -scheme "TimeTrackerClient" -derivedDataPath "DerivedData" -archivePath "DerivedData/Archive/TimeTrackerClient.xcarchive" | xcpretty
