@@ -19,6 +19,7 @@ public class LoginViewModel: ObservableObject {
 
     @Published var isLoading = true
     var session: SessionStore
+    typealias ForgotPasswordResult = (Result<Void, Error>) -> Void
 
     init(session: SessionStore){
         self.session = session
@@ -35,13 +36,15 @@ public class LoginViewModel: ObservableObject {
         }
     }
 
-    func forgotPassword() {
+    func forgotPassword(completion: @escaping ForgotPasswordResult) {
         isLoading = true
-        print("You have pressed forggot password")
         session.forgotPassword(email: username) { [weak self] result in
             self?.isLoading = false
             if case let .failure(result) = result {
                 self?.errrorMessage = result.localizedDescription
+            }
+            if case .success(_) = result {
+                completion(.success(()))
             }
         }
     }

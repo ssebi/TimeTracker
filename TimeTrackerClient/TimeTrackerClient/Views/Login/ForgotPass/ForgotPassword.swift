@@ -10,6 +10,7 @@ import TimeTrackerAuth
 
 struct ForgotPassword: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
+    @State var shouldNavigate = false
 
     var body: some View {
         VStack{
@@ -31,8 +32,21 @@ struct ForgotPassword: View {
             .frame(height: 50, alignment: .center)
             Spacer()
             Section {
+                NavigationLink(
+                    destination: LoginView(viewModel: viewModel)
+                           .navigationBarTitle("")
+                           .navigationBarHidden(true),
+                    isActive: $shouldNavigate
+                   ) {
+                       EmptyView()
+                   }
                 Button(action: {
-                    viewModel.forgotPassword()
+                    viewModel.forgotPassword() { result in
+                        guard case .success(_) = result else {
+                            return
+                        }
+                        shouldNavigate = true
+                    }
                 }) {
                     Text("Forgot password")
                         .font(Font.custom("Avenir-Light", size: 25))
