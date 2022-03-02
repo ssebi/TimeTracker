@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import TimeTrackerAuth
 
 struct SignUp: View {
+    @ObservedObject private(set) var viewModel: LoginViewModel
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
@@ -15,6 +18,6 @@ struct SignUp: View {
 
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
-        SignUp()
+        SignUp(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
     }
 }
