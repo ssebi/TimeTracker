@@ -14,6 +14,7 @@ public class LoginViewModel: ObservableObject {
     @Published var showError = true
     @Published var toggle = true
     @Published var isForgotten = false
+    @Published var signUp = false
 
     @Published var errrorMessage = ""
 
