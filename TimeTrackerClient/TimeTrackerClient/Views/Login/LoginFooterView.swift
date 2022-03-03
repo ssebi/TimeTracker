@@ -16,58 +16,56 @@ struct LoginFooterView: View {
         VStack {
             Spacer()
             if viewModel.isForgotten == false {
-            Button(
-                action: {
-                    viewModel.isForgotten = true
-                    viewModel.isSignUp = false
-                    viewModel.cardViewHeight = 4
-                },
-                label: {
+                Button {
+                    withAnimation(.easeInOut(duration: 0.4)) {
+                        viewModel.isForgotten = true
+                        viewModel.isSignUp = false
+                        viewModel.cardViewHeight = 3
+                    }
+                } label: {
                     NavigationLink("Forgot password", destination: ForgotPassword(viewModel: viewModel))
-                })
-                    .padding()
+                }
+                .padding()
             } else {
 
-            Button(
-                action: {
-                    viewModel.isForgotten = false
-                    viewModel.isSignUp = false
-                    viewModel.cardViewHeight = 2
-                },
-                label: {
+                Button {
+                    withAnimation(.easeInOut(duration: 0.4)) {
+                        viewModel.isForgotten = false
+                        viewModel.isSignUp = false
+                        viewModel.cardViewHeight = 2
+                    }
+                } label: {
                     NavigationLink("Log In", destination: LoginView(viewModel: viewModel))
-                })
+                }
+                .padding()
             }
             if viewModel.isSignUp == false {
-                Button(
-                    action: {
+                Button {
+                    withAnimation(.easeInOut(duration: 0.4)) {
                         viewModel.isSignUp = true
                         viewModel.isForgotten = false
-                        viewModel.cardViewHeight = 4
-                    },
-                    label: {
-                        NavigationLink("Create a new account", destination: SignUpView(viewModel: viewModel))
-                    })
-                    .padding()
+                        viewModel.cardViewHeight = 3
+                    }
+                } label: {
+                    NavigationLink("Create a new account", destination: SignUpView(viewModel: viewModel))
+                }
             } else {
-
-                Button(
-                    action: {
-                        viewModel.isSignUp = true
+                Button {
+                    withAnimation(.easeInOut(duration: 0.4)) {
+                        viewModel.isSignUp = false
                         viewModel.isForgotten = false
                         viewModel.cardViewHeight = 2
-                    },
-                    label: {
-                        NavigationLink("Log In", destination: LoginFormView(viewModel: viewModel))
-                    })
-                    .padding()
+                    }
+                } label: {
+                    NavigationLink("Log In", destination: LoginView(viewModel: viewModel))
+                }
             }
-//            Button("Create a new account") {
-//                showAlert = true
-//                    }
-//                    .alert(isPresented: $showAlert) {
-//                        Alert(title: Text("Coming soon"), message: Text("This functionality is under development"), dismissButton: .default(Text("Got it!")))
-//                    }
+            //            Button("Create a new account") {
+            //                showAlert = true
+            //                    }
+            //                    .alert(isPresented: $showAlert) {
+            //                        Alert(title: Text("Coming soon"), message: Text("This functionality is under development"), dismissButton: .default(Text("Got it!")))
+            //                    }
         }
         .padding()
         .foregroundColor(.cGray)

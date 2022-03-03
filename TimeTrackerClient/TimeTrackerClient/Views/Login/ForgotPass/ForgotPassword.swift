@@ -15,8 +15,19 @@ struct ForgotPassword: View {
     var body: some View {
         VStack{
             Group{
-                Text("Please enter your email address")
-                    .foregroundColor(.cBlack)
+                VStack{
+                    Text("Forgot your password? ")
+                    Text("Enter your email to reset it.")
+                }
+                .foregroundColor(Color.cBlack)
+                .font(Font.custom("Avenir-Light", size: 20.0))
+                .padding(.top, 50).padding(.bottom, 20)
+
+                Text("\(viewModel.errrorMessage)")
+                    .foregroundColor(.red)
+                    .font(Font.custom("Avenir-Light", size: 20))
+                    .padding()
+                    .frame(width: UIScreen.main.bounds.width - 60, alignment: .center)
                 HStack {
                     Image(systemName: "person.fill")
                     TextField("E-mail", text: $viewModel.username)
@@ -27,6 +38,7 @@ struct ForgotPassword: View {
                             viewModel.errrorMessage = ""
                         }
                 }.underlineTextField()
+                    .padding()
             }
             .padding(EdgeInsets(top: 20, leading: 45, bottom: 10, trailing: 45))
             .frame(height: 50, alignment: .center)
@@ -51,12 +63,7 @@ struct ForgotPassword: View {
                     Text("Forgot password")
                         .font(Font.custom("Avenir-Light", size: 25))
                         .frame(maxWidth: .infinity, alignment: .center)
-                }
-                .frame(width: UIScreen.main.bounds.width - 95, height: 50, alignment: .center)
-                .foregroundColor(.white)
-                .background(LinearGradient.gradientBackground)
-                .cornerRadius(30)
-                .padding(EdgeInsets(top: 50, leading: 45, bottom: 30, trailing: 45))
+                }.buttonStyle(SubmitButton())
             }
         }
     }

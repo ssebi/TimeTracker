@@ -19,6 +19,18 @@ struct AddButton: ButtonStyle {
     }
 }
 
+struct SubmitButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: UIScreen.main.bounds.width - 95, height: 50, alignment: .center)
+            .foregroundColor(.white)
+            .background(LinearGradient.gradientBackground)
+            .cornerRadius(30)
+            .padding(EdgeInsets(top: 50, leading: 45, bottom: 30, trailing: 45))
+
+    }
+}
+
 struct CustomTextField: UIViewRepresentable {
     @Binding var text: String
     let placeholder: String

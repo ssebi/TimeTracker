@@ -11,7 +11,7 @@ import TimeTrackerAuth
 struct LoginView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
     @ObservedObject var keyboardResponder = KeyboardResponder()
-
+    
     var body: some View {
         ZStack {
             VStack {
@@ -41,27 +41,27 @@ struct LoginView: View {
                             } else {
                                 LoginFormView(viewModel: viewModel)
                             }
+                        }
+                        .offset(y: -keyboardResponder.currentHeight*0.5)
+                        Spacer()
+                        
                     }
-                    .offset(y: -keyboardResponder.currentHeight*0.5)
-                    Spacer()
+                    .offset(y: UIScreen.main.bounds.height / 10)
                     
+                    LoginFooterView(viewModel: viewModel)
+                        .offset(y: 60)
                 }
-                .offset(y: UIScreen.main.bounds.height / 10)
                 
-                LoginFooterView(viewModel: viewModel)
-                    .offset(y: 60)
-            }
-            
-            if viewModel.isLoading {
-                ProgressIndicator()
+                if viewModel.isLoading {
+                    ProgressIndicator()
+                }
             }
         }
     }
-}
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
+    
+    struct LoginView_Previews: PreviewProvider {
+        static var previews: some View {
+            LoginView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
+        }
     }
-}
 }
