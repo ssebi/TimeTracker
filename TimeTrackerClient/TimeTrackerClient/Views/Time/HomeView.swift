@@ -104,6 +104,7 @@ struct HomeView_Previews: PreviewProvider {
     class FakeAuthProvider: AuthProvider {
         func forgotPassword(email: String, completion: @escaping ForgotPasswordResult) { }
         func checkAuthState() -> User? { nil }
+        func createAccount(email: String, password: String, completion: @escaping SesionStoreResult) { }
         func signIn(email: String, password: String, completion: @escaping SesionStoreResult) { }
         func signOut() throws { }
     }

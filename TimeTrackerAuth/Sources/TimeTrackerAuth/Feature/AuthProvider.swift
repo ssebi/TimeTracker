@@ -14,4 +14,5 @@ public protocol AuthProvider {
 	func signIn(email: String, password: String, completion: @escaping SesionStoreResult)
 	func signOut() throws
     func forgotPassword(email: String, completion: @escaping ForgotPasswordResult)
+    func createAccount(email: String, password: String, completion: @escaping SesionStoreResult)
 }

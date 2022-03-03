@@ -58,4 +58,20 @@ public class FirebaseAuthProvider: AuthProvider {
             completion(.success(()))
         }
     }
+
+    public func createAccount(email: String, password: String, completion: @escaping SesionStoreResult) {
+        auth.createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard result != nil else {
+                completion(.failure(NoUser()))
+                return
+            }
+
+            completion(.success(Self.mapUser(result?.user)))
+        }
+    }
 }

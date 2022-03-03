@@ -60,4 +60,14 @@ public class LoginViewModel: ObservableObject {
             }
         }
     }
+
+    func createAccount() {
+        isLoading = true
+        session.createAccount(email: username, password: password) { [weak self] result in
+            self?.isLoading = false
+            if case let .failure(result) =  result {
+                self?.errrorMessage = result.localizedDescription
+            }
+        }
+    }
 }
