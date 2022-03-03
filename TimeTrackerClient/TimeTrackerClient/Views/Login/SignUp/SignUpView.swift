@@ -8,16 +8,18 @@
 import SwiftUI
 import TimeTrackerAuth
 
-struct SignUp: View {
+struct SignUpView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            TextField("email", text: $viewModel.username)
+        }
     }
 }
 
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
-        SignUp(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
+        SignUpView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
     }
 }

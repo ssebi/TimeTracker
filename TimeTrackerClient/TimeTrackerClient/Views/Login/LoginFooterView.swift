@@ -19,6 +19,8 @@ struct LoginFooterView: View {
             Button(
                 action: {
                     viewModel.isForgotten = true
+                    viewModel.isSignUp = false
+                    viewModel.cardViewHeight = 4
                 },
                 label: {
                     NavigationLink("Forgot password", destination: ForgotPassword(viewModel: viewModel))
@@ -29,30 +31,35 @@ struct LoginFooterView: View {
             Button(
                 action: {
                     viewModel.isForgotten = false
+                    viewModel.isSignUp = false
+                    viewModel.cardViewHeight = 2
                 },
                 label: {
                     NavigationLink("Log In", destination: LoginView(viewModel: viewModel))
                 })
-                    .padding()
             }
-            if viewModel.signUp == false {
-            Button(
-                action: {
-                    viewModel.isForgotten = true
-                },
-                label: {
-                    NavigationLink("Create a new account", destination: SignUp(viewModel: viewModel))
-                })
+            if viewModel.isSignUp == false {
+                Button(
+                    action: {
+                        viewModel.isSignUp = true
+                        viewModel.isForgotten = false
+                        viewModel.cardViewHeight = 4
+                    },
+                    label: {
+                        NavigationLink("Create a new account", destination: SignUpView(viewModel: viewModel))
+                    })
                     .padding()
             } else {
 
-            Button(
-                action: {
-                    viewModel.isForgotten = false
-                },
-                label: {
-                    NavigationLink("Log In", destination: LoginView(viewModel: viewModel))
-                })
+                Button(
+                    action: {
+                        viewModel.isSignUp = true
+                        viewModel.isForgotten = false
+                        viewModel.cardViewHeight = 2
+                    },
+                    label: {
+                        NavigationLink("Log In", destination: LoginFormView(viewModel: viewModel))
+                    })
                     .padding()
             }
 //            Button("Create a new account") {

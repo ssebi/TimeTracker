@@ -14,7 +14,8 @@ public class LoginViewModel: ObservableObject {
     @Published var showError = true
     @Published var toggle = true
     @Published var isForgotten = false
-    @Published var signUp = false
+    @Published var isSignUp = false
+    @Published var cardViewHeight = 2.0
 
     @Published var errrorMessage = ""
 
@@ -28,6 +29,16 @@ public class LoginViewModel: ObservableObject {
     }
 
     func signIn() {
+        isLoading = true
+        session.signIn(email: username, password: password) { [weak self] result in
+            self?.isLoading = false
+            if case let .failure(result) =  result {
+                self?.errrorMessage = result.localizedDescription
+            }
+        }
+    }
+
+    func signUp() {
         isLoading = true
         session.signIn(email: username, password: password) { [weak self] result in
             self?.isLoading = false

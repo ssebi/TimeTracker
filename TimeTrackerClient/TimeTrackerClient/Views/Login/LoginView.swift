@@ -31,13 +31,15 @@ struct LoginView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
                                 .fill(Color.loginCard)
-                                .frame(width: UIScreen.main.bounds.width - 65, height: (UIScreen.main.bounds.height / (self.viewModel.isForgotten ? 4 : 2)) + 70)
+                                .frame(width: UIScreen.main.bounds.width - 65, height: (UIScreen.main.bounds.height / CGFloat(self.viewModel.cardViewHeight) ) + 70)
                                 .animation(.default)
                                 .shadow(color: Color.black.opacity(0.2), radius: 15, x: 5, y:5)
-                            if (viewModel.isForgotten == false) {
-                                LoginFormView(viewModel: viewModel)
-                            } else {
+                            if (viewModel.isForgotten) {
                                 ForgotPassword(viewModel: viewModel)
+                            } else if (viewModel.isSignUp) {
+                                SignUpView(viewModel: viewModel)
+                            } else {
+                                LoginFormView(viewModel: viewModel)
                             }
                     }
                     .offset(y: -keyboardResponder.currentHeight*0.5)
