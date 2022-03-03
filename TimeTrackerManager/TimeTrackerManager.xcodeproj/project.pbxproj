@@ -712,6 +712,7 @@
 				DEVELOPMENT_TEAM = LC7N3KMTDD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimeTrackerManager/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tempus Magister";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -742,6 +743,7 @@
 				DEVELOPMENT_TEAM = LC7N3KMTDD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimeTrackerManager/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tempus Magister";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
