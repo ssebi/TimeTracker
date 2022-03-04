@@ -41,7 +41,7 @@ struct LoginFormView: View {
                 }.underlineTextField()
                 HStack {
                     Image(systemName: "lock.fill")
-                    ZStack(alignment: .trailing) {
+                    HStack {
                         if isSecured {
                             SecureField("Password", text: $viewModel.password)
                                 .foregroundColor(.cBlack)
