@@ -40,7 +40,8 @@ struct ProjectView: View {
             HStack{
                 Text("Time period")
                 Spacer()
-                Text("\(timeslot.total)")
+                Text("\(timeslot.total / 60) h: \(timeslot.total % 60) m")
+
             }
             .padding([.trailing, .leading])
             .font(Font.custom("Avenir-Light", size: 15))
