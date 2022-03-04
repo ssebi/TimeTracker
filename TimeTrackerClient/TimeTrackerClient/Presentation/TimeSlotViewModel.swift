@@ -93,8 +93,6 @@ class TimeSlotViewModel: ObservableObject {
             return showMessage = "The user is not logged!"
         }
 
-
-
         let total = ((timeInterval.hour ?? 0)*60) + (timeInterval.minute ?? 0)
 
         let timeSlotDetail = TimeSlotDetails(
