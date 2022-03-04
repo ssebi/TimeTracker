@@ -113,8 +113,8 @@ class TimeSlotViewModel: ObservableObject {
             details: timeSlotDetail,
             total: total)
 
-        if (total == 0) {
-            self.showMessage = "You must select a time interval!"
+        if (total <= 0) {
+            self.showMessage = "You must select a \(total < 0 ? "positive" : "") time interval!"
             isValid = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.showValidationAlert = false
@@ -131,7 +131,7 @@ class TimeSlotViewModel: ObservableObject {
             }
         }
 
-		if !timeSlotDetail.description.isEmpty && total != 0 {
+		if !timeSlotDetail.description.isEmpty && total > 0 {
 			isValid = true
 		}
 
