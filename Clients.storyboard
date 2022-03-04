@@ -264,6 +264,7 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kaR-Br-WpE"/>
                                     <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="9S9-4G-Zbf">
+                                        <color key="tintColor" red="0.23227575419999999" green="0.68448132279999996" blue="0.89826256039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="shareAction:" destination="Ihq-TB-nPl" id="9Na-Af-Nai"/>
                                         </connections>
