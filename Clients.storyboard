@@ -142,12 +142,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kTs-A1-aL8">
-                                <rect key="frame" x="263.5" y="320.5" width="105.5" height="34"/>
+                                <rect key="frame" x="255.5" y="320.5" width="113.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FA0-Fh-DXR">
-                                <rect key="frame" x="220.5" y="324.5" width="38" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FA0-Fh-DXR">
+                                <rect key="frame" x="210.5" y="324.5" width="35" height="26"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="19"/>
                                 <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -213,7 +213,7 @@
                             <constraint firstItem="EcG-hd-bDN" firstAttribute="leading" secondItem="jpE-3U-SDw" secondAttribute="leading" id="Qa8-eW-hk8"/>
                             <constraint firstItem="xIL-Dc-pxI" firstAttribute="trailing" secondItem="UBk-eL-4qH" secondAttribute="trailing" constant="55" id="QkT-Mf-jcQ"/>
                             <constraint firstItem="wTa-k6-JGa" firstAttribute="centerY" secondItem="mjC-tV-0cD" secondAttribute="centerY" id="RNo-xg-ex8"/>
-                            <constraint firstItem="kTs-A1-aL8" firstAttribute="leading" secondItem="FA0-Fh-DXR" secondAttribute="trailing" constant="5" id="VCh-kZ-zeo"/>
+                            <constraint firstItem="kTs-A1-aL8" firstAttribute="leading" secondItem="FA0-Fh-DXR" secondAttribute="trailing" constant="10" id="VCh-kZ-zeo"/>
                             <constraint firstItem="FA0-Fh-DXR" firstAttribute="centerY" secondItem="kTs-A1-aL8" secondAttribute="centerY" id="Vkt-eD-GeH"/>
                             <constraint firstItem="Xdf-7S-0i9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xIL-Dc-pxI" secondAttribute="leading" id="Wxy-Hq-W4F"/>
                             <constraint firstItem="BBs-rN-tvO" firstAttribute="centerX" secondItem="mjC-tV-0cD" secondAttribute="centerX" id="Y9y-UM-aW0"/>
@@ -227,7 +227,7 @@
                             <constraint firstItem="jpE-3U-SDw" firstAttribute="top" secondItem="Xdf-7S-0i9" secondAttribute="bottom" constant="80" id="k3Q-Bh-9jn"/>
                             <constraint firstItem="GCV-He-cO4" firstAttribute="leading" secondItem="xIL-Dc-pxI" secondAttribute="leading" constant="65" id="pE4-wH-6lN"/>
                             <constraint firstItem="ibJ-i5-Q2B" firstAttribute="centerX" secondItem="mjC-tV-0cD" secondAttribute="centerX" id="pXy-ii-41S"/>
-                            <constraint firstItem="FA0-Fh-DXR" firstAttribute="leading" secondItem="EcG-hd-bDN" secondAttribute="trailing" constant="50" id="tnL-us-pbt"/>
+                            <constraint firstItem="FA0-Fh-DXR" firstAttribute="leading" secondItem="EcG-hd-bDN" secondAttribute="trailing" constant="40" id="tnL-us-pbt"/>
                             <constraint firstItem="dfH-s4-ORJ" firstAttribute="centerY" secondItem="jpE-3U-SDw" secondAttribute="centerY" id="vWX-TS-Qch"/>
                             <constraint firstItem="ibJ-i5-Q2B" firstAttribute="top" secondItem="BBs-rN-tvO" secondAttribute="bottom" constant="20" id="yRn-iz-L7c"/>
                         </constraints>
