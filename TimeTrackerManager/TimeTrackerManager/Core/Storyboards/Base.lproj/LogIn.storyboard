@@ -62,7 +62,7 @@
                                                                                         <subviews>
                                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail address" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-tM-3fJ">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="50"/>
-                                                                                                <color key="backgroundColor" name="Background"/>
+                                                                                                <color key="backgroundColor" name="background"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="50" id="Dl7-nZ-Hpo"/>
                                                                                                 </constraints>
@@ -76,7 +76,7 @@
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </textField>
                                                                                         </subviews>
-                                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <color key="backgroundColor" name="background"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="trailing" secondItem="NUp-tM-3fJ" secondAttribute="trailing" id="ATz-Sf-R1q"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="NUp-tM-3fJ" secondAttribute="bottom" id="Ehw-ZV-Ztx"/>
@@ -106,7 +106,7 @@
                                                                                         <subviews>
                                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYG-59-C6k">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="50"/>
-                                                                                                <color key="backgroundColor" name="Background"/>
+                                                                                                <color key="backgroundColor" name="background"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="50" id="eh0-iM-iTe"/>
                                                                                                 </constraints>
@@ -192,13 +192,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" name="Background"/>
+                                                <color key="backgroundColor" name="background"/>
                                                 <constraints>
                                                     <constraint firstItem="9EA-ec-gXJ" firstAttribute="width" secondItem="ibm-3f-mWg" secondAttribute="width" id="xlg-Tb-CU4"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" name="Background"/>
+                                        <color key="backgroundColor" name="background"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="4LS-OE-Q1m" firstAttribute="centerX" secondItem="Vsa-Cw-aT1" secondAttribute="centerX" id="dFW-mt-Oub"/>
@@ -210,7 +210,7 @@
                                         </connections>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="Background"/>
+                                <color key="backgroundColor" name="background"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Vsa-Cw-aT1" secondAttribute="bottom" id="2MQ-dl-cDQ"/>
                                     <constraint firstItem="Vsa-Cw-aT1" firstAttribute="leading" secondItem="yus-Qp-ldw" secondAttribute="leading" id="C2W-ci-4Nr"/>
@@ -221,7 +221,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="Background"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="yus-Qp-ldw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="VKz-1o-n9P"/>
                             <constraint firstAttribute="bottom" secondItem="yus-Qp-ldw" secondAttribute="bottom" id="XpQ-iB-mNQ"/>
@@ -259,17 +259,17 @@
     <color key="tintColor" systemColor="labelColor"/>
     <resources>
         <image name="logo" width="485" height="485"/>
-        <namedColor name="Background">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="Button">
-            <color red="0.2117646933" green="0.231372565" blue="0.27843138579999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.21199999749660492" green="0.23100000619888306" blue="0.27799999713897705" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Card">
-            <color red="0.24128735069999999" green="0.74394458529999996" blue="0.82280904050000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.24099999666213989" green="0.74400001764297485" blue="0.82300001382827759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextField">
-            <color red="0.086274504660000001" green="0.086274504660000001" blue="0.1686274707" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.086000002920627594" green="0.086000002920627594" blue="0.16899999976158142" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
