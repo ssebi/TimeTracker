@@ -60,12 +60,6 @@ struct LoginFooterView: View {
                     NavigationLink("Log In", destination: LoginView(viewModel: viewModel))
                 }
             }
-            //            Button("Create a new account") {
-            //                showAlert = true
-            //                    }
-            //                    .alert(isPresented: $showAlert) {
-            //                        Alert(title: Text("Coming soon"), message: Text("This functionality is under development"), dismissButton: .default(Text("Got it!")))
-            //                    }
         }
         .padding()
         .foregroundColor(.cGray)
