@@ -11,7 +11,8 @@ import TimeTrackerAuth
 struct ForgotPassword: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
     @State var shouldNavigate = false
-
+    @State var showAlert = false
+    
     var body: some View {
         VStack{
             Group{
@@ -22,7 +23,7 @@ struct ForgotPassword: View {
                 .foregroundColor(Color.cBlack)
                 .font(Font.custom("Avenir-Light", size: 20.0))
                 .padding(.top, 50).padding(.bottom, 20)
-
+                
                 Text("\(viewModel.errrorMessage)")
                     .foregroundColor(.red)
                     .font(Font.custom("Avenir-Light", size: 20))
@@ -43,27 +44,32 @@ struct ForgotPassword: View {
             .padding(EdgeInsets(top: 20, leading: 45, bottom: 10, trailing: 45))
             .frame(height: 50, alignment: .center)
             Spacer()
-            Section {
-                NavigationLink(
-                    destination: LoginView(viewModel: viewModel)
-                           .navigationBarTitle("")
-                           .navigationBarHidden(true),
-                    isActive: $shouldNavigate
-                   ) {
-                       EmptyView()
-                   }
-                Button(action: {
-                    viewModel.forgotPassword() { result in
-                        guard case .success(_) = result else {
-                            return
+            NavigationView {
+                VStack {
+                    NavigationLink(destination:  LoginView(viewModel: viewModel), isActive: $shouldNavigate, label: { EmptyView() })
+                    Button(action: {
+                        viewModel.forgotPassword() { result in
+                            guard case .success(_) = result else {
+                                return
+                            }
+                            showAlert = true
                         }
-                        shouldNavigate = true
-                    }
-                }) {
-                    Text("Forgot password")
-                        .font(Font.custom("Avenir-Light", size: 25))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }.buttonStyle(SubmitButton())
+                    }) {
+                        Text("Forgot password")
+                            .font(Font.custom("Avenir-Light", size: 25))
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }.buttonStyle(SubmitButton())
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text("Email sent"),
+                                  message: Text("You can change your password from the link in the email received."),
+                                  dismissButton: .default(
+                                    Text("Ok, got it"),
+                                    action: {
+                                        shouldNavigate = true
+                                    }
+                                  ))
+                        }
+                }
             }
         }
     }
