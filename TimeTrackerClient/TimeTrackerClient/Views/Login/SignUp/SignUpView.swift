@@ -10,7 +10,6 @@ import TimeTrackerAuth
 
 struct SignUpView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
-    @State private var shouldNavigate = false
     @State private var isSecured: Bool = true
     
     var body: some View {
