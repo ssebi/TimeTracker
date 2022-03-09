@@ -29,7 +29,7 @@ public class SessionStore: ObservableObject {
     public func forgotPassword(email: String, completion: @escaping AuthProvider.ForgotPasswordResult) {
         authProvider.forgotPassword(email: email) { result in
             if case let .failure(error) = result {
-                print(error)
+                completion(.failure(error))
             }
             completion(result)
         }
