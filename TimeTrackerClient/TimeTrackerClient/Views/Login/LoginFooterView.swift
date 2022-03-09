@@ -15,50 +15,22 @@ struct LoginFooterView: View {
     var body: some View {
         VStack {
             Spacer()
-            if viewModel.isForgotten == false {
-                Button {
-                    withAnimation(.easeInOut(duration: 0.4)) {
-                        viewModel.isForgotten = true
-                        viewModel.isSignUp = false
-                        viewModel.cardViewHeight = 3
-                    }
-                } label: {
-                    NavigationLink("Forgot password", destination: ForgotPassword(viewModel: viewModel))
+            Button {
+                withAnimation(.easeInOut(duration: 0.4)) {
+                    viewModel.isForgotten = true
+                    viewModel.isSignUp = false
                 }
-                .padding()
-            } else {
-
-                Button {
-                    withAnimation(.easeInOut(duration: 0.4)) {
-                        viewModel.isForgotten = false
-                        viewModel.isSignUp = false
-                        viewModel.cardViewHeight = 2
-                    }
-                } label: {
-                    NavigationLink("Log In", destination: LoginView(viewModel: viewModel))
-                }
-                .padding()
+            } label: {
+                NavigationLink("Forgot password", destination: ForgotPassword(viewModel: viewModel))
             }
-            if viewModel.isSignUp == false {
-                Button {
-                    withAnimation(.easeInOut(duration: 0.4)) {
-                        viewModel.isSignUp = true
-                        viewModel.isForgotten = false
-                        viewModel.cardViewHeight = 3
-                    }
-                } label: {
-                    NavigationLink("Create a new account", destination: SignUpView(viewModel: viewModel))
+            .padding()
+            Button {
+                withAnimation(.easeInOut(duration: 0.4)) {
+                    viewModel.isSignUp = true
+                    viewModel.isForgotten = false
                 }
-            } else {
-                Button {
-                    withAnimation(.easeInOut(duration: 0.4)) {
-                        viewModel.isSignUp = false
-                        viewModel.isForgotten = false
-                        viewModel.cardViewHeight = 2
-                    }
-                } label: {
-                    NavigationLink("Log In", destination: LoginView(viewModel: viewModel))
-                }
+            } label: {
+                NavigationLink("Create a new account", destination: SignUpView(viewModel: viewModel))
             }
         }
         .padding()

@@ -15,7 +15,6 @@ public class LoginViewModel: ObservableObject {
     @Published var toggle = true
     @Published var isForgotten = false
     @Published var isSignUp = false
-    @Published var cardViewHeight = 2.0
 
     @Published var errrorMessage = ""
 

@@ -23,12 +23,13 @@ struct ForgotPassword: View {
                 .foregroundColor(Color.cBlack)
                 .font(Font.custom("Avenir-Light", size: 20.0))
                 .padding(.top, 50).padding(.bottom, 20)
-                
+                Spacer()
                 Text("\(viewModel.errrorMessage)")
+                    .multilineTextAlignment(.center)
                     .foregroundColor(.red)
                     .font(Font.custom("Avenir-Light", size: 20))
                     .padding()
-                    .frame(width: UIScreen.main.bounds.width - 60, alignment: .center)
+                    .frame(width: UIScreen.main.bounds.width - 60, height: 100, alignment: .center)
                 HStack {
                     Image(systemName: "person.fill")
                     TextField("E-mail", text: $viewModel.username)
@@ -44,7 +45,6 @@ struct ForgotPassword: View {
             .padding(EdgeInsets(top: 20, leading: 45, bottom: 10, trailing: 45))
             .frame(height: 50, alignment: .center)
             Spacer()
-            NavigationView {
                 VStack {
                     NavigationLink(destination:  LoginView(viewModel: viewModel), isActive: $shouldNavigate, label: { EmptyView() })
                     Button(action: {
@@ -68,7 +68,6 @@ struct ForgotPassword: View {
                                         shouldNavigate = true
                                     }
                                   ))
-                        }
                 }
             }
         }
