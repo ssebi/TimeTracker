@@ -27,20 +27,23 @@ struct HomeView: View {
 
                     ScrollView {
                         PullToRefresh(coordinateSpaceName: "pullToRefresh", onRefresh: viewModel.refresh)
-                            ForEach(viewModel.categories.keys.sorted(by: >), id: \.self) { key in
-                                ZStack{
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .fill(Color.gray)
-                                        .opacity(0.1)
-                                    VStack{
-										Text(key, formatter: viewModel.dateFormatter)
-                                        ForEach(viewModel.categories[key] ?? []) { timeslot in
-                                            ProjectView(timeslot: timeslot)
-                                                .padding([.trailing, .leading])
-                                        }
-                                    }.padding([.top, .bottom])
-                                }
+                        if (viewModel.categories.isEmpty) {
+                            Text("No time logged")
+                        }
+                        ForEach(viewModel.categories.keys.sorted(by: >), id: \.self) { key in
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(Color.gray)
+                                    .opacity(0.1)
+                                VStack{
+                                    Text(key, formatter: viewModel.dateFormatter)
+                                    ForEach(viewModel.categories[key] ?? []) { timeslot in
+                                        ProjectView(timeslot: timeslot)
+                                            .padding([.trailing, .leading])
+                                    }
+                                }.padding([.top, .bottom])
                             }
+                        }
                     }.coordinateSpace(name: "pullToRefresh")
 
                     VStack {
