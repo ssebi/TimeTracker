@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		540168E527CE4C9A00E6AFA6 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540168E427CE4C9A00E6AFA6 /* ForgotPassword.swift */; };
 		540168E727CFB4CD00E6AFA6 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540168E627CFB4CD00E6AFA6 /* SignUpView.swift */; };
+		5404E85527D8BACE00260639 /* AssociateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404E85427D8BACE00260639 /* AssociateView.swift */; };
 		545CCEAB27200FE500811CE3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEAA27200FE500811CE3 /* Utils.swift */; };
 		545CCEDC2726EB0600811CE3 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDB2726EB0600811CE3 /* AddView.swift */; };
 		545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545CCEDE2727274D00811CE3 /* DatePickerView.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		540168E427CE4C9A00E6AFA6 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		540168E627CFB4CD00E6AFA6 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		5404E85427D8BACE00260639 /* AssociateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociateView.swift; sourceTree = "<group>"; };
 		545CCEAA27200FE500811CE3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		545CCEDB2726EB0600811CE3 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		545CCEDE2727274D00811CE3 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				540168E627CFB4CD00E6AFA6 /* SignUpView.swift */,
+				5404E85427D8BACE00260639 /* AssociateView.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				C61F54CE2748139A0083E1A4 /* HomeScreenUIComposer.swift in Sources */,
 				54A3FC21274E399200E36C92 /* ProgressIndicator.swift in Sources */,
 				545CCEDF2727274D00811CE3 /* DatePickerView.swift in Sources */,
+				5404E85527D8BACE00260639 /* AssociateView.swift in Sources */,
 				54F983662746887400577AD6 /* TimeSlotViewModel.swift in Sources */,
 				54DB509D2715A2FA00A9700A /* (null) in Sources */,
 				C6ACF57E27317986006D2C43 /* ProjectView.swift in Sources */,

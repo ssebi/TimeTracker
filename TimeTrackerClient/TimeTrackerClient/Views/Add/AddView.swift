@@ -149,7 +149,11 @@ struct AddView_Previews: PreviewProvider {
 		}
 	}
 
-	private class UserLoaderMock: UserLoader {
+    private class UserLoaderMock: UserLoader {
+        func getManager(companyEmail: String, completion: @escaping GetManagerResult) {
+            Manager(id: "xxx", email: "email@test.com", name: "Test name")
+        }
+
 		func getUser() -> User {
 			User(uid: UUID().uuidString, email: "somteEmail@test.com", username: "Test", client: "Client")
 		}

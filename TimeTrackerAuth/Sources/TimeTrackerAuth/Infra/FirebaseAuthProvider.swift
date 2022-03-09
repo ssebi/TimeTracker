@@ -65,12 +65,10 @@ public class FirebaseAuthProvider: AuthProvider {
                 completion(.failure(error))
                 return
             }
-
             guard result != nil else {
                 completion(.failure(NoUser()))
                 return
             }
-
             completion(.success(Self.mapUser(result?.user)))
         }
     }

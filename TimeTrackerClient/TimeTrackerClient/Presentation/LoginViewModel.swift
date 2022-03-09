@@ -7,23 +7,28 @@
 
 import Combine
 import TimeTrackerAuth
+import TimeTrackerCore
 
 public class LoginViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
+    @Published var companyEmail: String = ""
     @Published var showError = true
     @Published var toggle = true
     @Published var isForgotten = false
     @Published var isSignUp = false
-
     @Published var errrorMessage = ""
-
     @Published var isLoading = true
-    var session: SessionStore
-    typealias ForgotPasswordResult = (Result<Void, Error>) -> Void
 
-    init(session: SessionStore){
+    var session: SessionStore
+    var userLoader: UserLoader
+
+    typealias ForgotPasswordResult = (Result<Void, Error>) -> Void
+    typealias CheckCompanyResult = (Result<Manager, Error>) -> Void
+
+    init(session: SessionStore, userLoader: UserLoader){
         self.session = session
+        self.userLoader = userLoader
         isLoading = false
     }
 
@@ -66,6 +71,19 @@ public class LoginViewModel: ObservableObject {
             self?.isLoading = false
             if case let .failure(result) =  result {
                 self?.errrorMessage = result.localizedDescription
+            }
+        }
+    }
+
+    func checkCompany(completion: @escaping CheckCompanyResult) {
+        isLoading = true
+        userLoader.getManager(companyEmail: companyEmail) { [weak self] result in
+            self?.isLoading = false
+            if case let .failure(error) =  result {
+                self?.errrorMessage = error.localizedDescription
+            }
+            if case let .success(companyId) = result {
+                completion(.success(companyId))
             }
         }
     }

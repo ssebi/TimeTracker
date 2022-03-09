@@ -7,6 +7,7 @@
 
 import SwiftUI
 import TimeTrackerAuth
+import TimeTrackerCore
 
 struct ForgotPassword: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
@@ -76,6 +77,6 @@ struct ForgotPassword: View {
 
 struct ForgotPassword_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPassword(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
+        ForgotPassword(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider()), userLoader: FirebaseUserLoader()))
     }
 }

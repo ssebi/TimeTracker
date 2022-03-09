@@ -146,9 +146,15 @@ struct HomeView_Previews: PreviewProvider {
     }
 
     private class UserLoaderMock: UserLoader {
+        func getManager(companyEmail: String, completion: @escaping GetManagerResult) {
+            Manager(id: "zxczxc", email: "some@email.com", name: "TestName")
+        }
+
         func getUser() -> User {
             User(uid: UUID().uuidString, email: "somteEmail@test.com", username: "Test", client: "Client")
         }
+
+
     }
 
     private class RemoteTimeslotsLoaderMock: TimeslotsLoader {
