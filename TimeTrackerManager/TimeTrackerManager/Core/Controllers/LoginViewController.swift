@@ -26,6 +26,12 @@ final class LoginViewController: UIViewController {
 
         emailTextField.delegate = self
         passwordTextField.delegate = self
+
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
 
     @IBAction private func tapOutside(_ sender: Any) {
@@ -52,5 +58,16 @@ extension LoginViewController: UITextFieldDelegate {
             logInButtonPressed(textField)
         }
         return true
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+                                    as? NSValue)?.cgRectValue else { return }
+        self.view.frame.origin.y = 0 - keyboardSize.height / 2
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
     }
 }

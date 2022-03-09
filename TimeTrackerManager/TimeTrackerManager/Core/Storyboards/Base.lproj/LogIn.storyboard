@@ -25,26 +25,32 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="913.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4LS-OE-Q1m">
-                                                <rect key="frame" x="46" y="256.5" width="322" height="401"/>
+                                                <rect key="frame" x="46" y="156.5" width="322" height="431"/>
                                                 <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9EA-ec-gXJ">
+                                                        <rect key="frame" x="10" y="0.0" width="302" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXT-zP-aeD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="322" height="381"/>
+                                                        <rect key="frame" x="0.0" y="20" width="322" height="411"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ibm-3f-mWg">
-                                                                <rect key="frame" x="10" y="10" width="302" height="361"/>
+                                                                <rect key="frame" x="10" y="10" width="302" height="391"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sO9-5E-TuW" userLabel="logo">
-                                                                        <rect key="frame" x="11.5" y="0.0" width="279.5" height="100"/>
+                                                                        <rect key="frame" x="11.5" y="0.0" width="279.5" height="130"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Vw6-O2-blB">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                                <rect key="frame" x="0.0" y="15" width="100" height="100"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="Vw6-O2-blB" secondAttribute="height" multiplier="1:1" id="Ge5-q5-OcA"/>
                                                                                     <constraint firstAttribute="height" constant="100" id="UYA-Tl-0er"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timeTRAKER Manager" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Itr-Hh-r95">
-                                                                                <rect key="frame" x="108" y="38" width="171.5" height="23.5"/>
+                                                                                <rect key="frame" x="108" y="53" width="171.5" height="23.5"/>
                                                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
@@ -52,7 +58,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="jNE-pw-uaq" userLabel="text-input-container">
-                                                                        <rect key="frame" x="0.0" y="130" width="302" height="231"/>
+                                                                        <rect key="frame" x="0.0" y="160" width="302" height="231"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="W4e-46-2zL" userLabel="text-input">
                                                                                 <rect key="frame" x="16" y="8" width="270" height="125"/>
@@ -62,7 +68,11 @@
                                                                                         <subviews>
                                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail address" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-tM-3fJ">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="50"/>
-                                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                                <color key="backgroundColor" name="background"/>
+                                                                                                <constraints>
+                                                                                                    <constraint firstAttribute="height" constant="50" id="Dl7-nZ-Hpo"/>
+                                                                                                </constraints>
+                                                                                                <color key="textColor" name="TextField"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                                                                                 <userDefinedRuntimeAttributes>
@@ -72,7 +82,7 @@
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </textField>
                                                                                         </subviews>
-                                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <color key="backgroundColor" name="background"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="trailing" secondItem="NUp-tM-3fJ" secondAttribute="trailing" id="ATz-Sf-R1q"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="NUp-tM-3fJ" secondAttribute="bottom" id="Ehw-ZV-Ztx"/>
@@ -102,7 +112,11 @@
                                                                                         <subviews>
                                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYG-59-C6k">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="50"/>
-                                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                                <color key="backgroundColor" name="background"/>
+                                                                                                <constraints>
+                                                                                                    <constraint firstAttribute="height" constant="50" id="eh0-iM-iTe"/>
+                                                                                                </constraints>
+                                                                                                <color key="textColor" name="TextField"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" smartDashesType="no" textContentType="password"/>
                                                                                             </textField>
@@ -136,7 +150,7 @@
                                                                             </stackView>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vfd-Th-2rA">
                                                                                 <rect key="frame" x="16" y="173" width="270" height="50"/>
-                                                                                <color key="backgroundColor" red="0.20392156859999999" green="0.67450980390000004" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                <color key="backgroundColor" name="Button"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="50" id="pcu-Of-9hs"/>
                                                                                 </constraints>
@@ -164,7 +178,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="customGreen"/>
+                                                        <color key="backgroundColor" name="Card"/>
                                                         <constraints>
                                                             <constraint firstItem="ibm-3f-mWg" firstAttribute="top" secondItem="lXT-zP-aeD" secondAttribute="top" constant="10" id="2Wb-In-EX0"/>
                                                             <constraint firstAttribute="trailing" secondItem="ibm-3f-mWg" secondAttribute="trailing" constant="10" id="Ms5-PU-WgV"/>
@@ -177,30 +191,26 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9EA-ec-gXJ">
-                                                        <rect key="frame" x="10" y="401" width="302" height="0.0"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <color key="textColor" systemColor="systemRedColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                 </subviews>
+                                                <color key="backgroundColor" name="background"/>
                                                 <constraints>
-                                                    <constraint firstItem="9EA-ec-gXJ" firstAttribute="width" secondItem="ibm-3f-mWg" secondAttribute="width" id="xlg-Tb-CU4"/>
+                                                    <constraint firstItem="9EA-ec-gXJ" firstAttribute="width" secondItem="ibm-3f-mWg" secondAttribute="width" id="YbT-dY-Wjj"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="background"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="4LS-OE-Q1m" firstAttribute="centerX" secondItem="Vsa-Cw-aT1" secondAttribute="centerX" id="dFW-mt-Oub"/>
                                             <constraint firstItem="ibm-3f-mWg" firstAttribute="width" secondItem="Vsa-Cw-aT1" secondAttribute="width" multiplier="0.730469" id="gaW-Bo-iSh"/>
-                                            <constraint firstItem="4LS-OE-Q1m" firstAttribute="centerY" secondItem="Vsa-Cw-aT1" secondAttribute="centerY" id="kCc-71-RDc"/>
+                                            <constraint firstItem="4LS-OE-Q1m" firstAttribute="centerY" secondItem="Vsa-Cw-aT1" secondAttribute="centerY" constant="-85" id="kCc-71-RDc"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="LEJ-Wb-lua" appends="YES" id="tMz-Y7-30h"/>
                                         </connections>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" name="background"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Vsa-Cw-aT1" secondAttribute="bottom" id="2MQ-dl-cDQ"/>
                                     <constraint firstItem="Vsa-Cw-aT1" firstAttribute="leading" secondItem="yus-Qp-ldw" secondAttribute="leading" id="C2W-ci-4Nr"/>
@@ -211,7 +221,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="yus-Qp-ldw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="VKz-1o-n9P"/>
                             <constraint firstAttribute="bottom" secondItem="yus-Qp-ldw" secondAttribute="bottom" id="XpQ-iB-mNQ"/>
@@ -249,14 +259,20 @@
     <color key="tintColor" systemColor="labelColor"/>
     <resources>
         <image name="logo" width="485" height="485"/>
-        <namedColor name="customGreen">
-            <color red="0.0" green="0.80784313725490198" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Button">
+            <color red="0.21199999749660492" green="0.23100000619888306" blue="0.27799999713897705" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Card">
+            <color red="0.24099999666213989" green="0.74400001764297485" blue="0.82300001382827759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextField">
+            <color red="0.086000002920627594" green="0.086000002920627594" blue="0.16899999976158142" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

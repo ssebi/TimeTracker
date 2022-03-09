@@ -48,4 +48,30 @@ public class FirebaseAuthProvider: AuthProvider {
 					username: user.displayName,
 					client: "")
 	}
+
+    public func forgotPassword(email: String, completion: @escaping ForgotPasswordResult) {
+        auth.sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            completion(.success(()))
+        }
+    }
+
+    public func createAccount(email: String, password: String, completion: @escaping SesionStoreResult) {
+        auth.createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard result != nil else {
+                completion(.failure(NoUser()))
+                return
+            }
+
+            completion(.success(Self.mapUser(result?.user)))
+        }
+    }
 }

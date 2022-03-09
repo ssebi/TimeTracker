@@ -59,10 +59,10 @@ final class InvoiceCreator {
                 pageRect: pageRect,
                 infoTop: invoiceTableHeaderBottom + 10.0,
                 unitCost: "$\(invoice.unitCost)",
-                quantity: "\(invoice.quantity)h",
+                quantity: "\(invoice.quantity / 60) h",
                 lineTotal: "$\(invoice.unitCost * invoice.quantity)",
                 product: invoice.product,
-                invoiceTotal: "$\(invoice.unitCost * invoice.quantity)")
+                invoiceTotal: "$\(invoice.unitCost * (invoice.quantity / 60))")
 
             drawTableLines(context, pageRect: pageRect, lineTop: titleBottom)
             drawTableLines(context, pageRect: pageRect, lineTop: invoiceHeaderBottom)

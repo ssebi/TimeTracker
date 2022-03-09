@@ -27,20 +27,23 @@ struct HomeView: View {
 
                     ScrollView {
                         PullToRefresh(coordinateSpaceName: "pullToRefresh", onRefresh: viewModel.refresh)
-                            ForEach(viewModel.categories.keys.sorted(by: >), id: \.self) { key in
-                                ZStack{
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .fill(Color.gray)
-                                        .opacity(0.1)
-                                    VStack{
-										Text(key, formatter: viewModel.dateFormatter)
-                                        ForEach(viewModel.categories[key] ?? []) { timeslot in
-                                            ProjectView(timeslot: timeslot)
-                                                .padding([.trailing, .leading])
-                                        }
-                                    }.padding([.top, .bottom])
-                                }
+                        if (viewModel.categories.isEmpty) {
+                            Text("No time logged")
+                        }
+                        ForEach(viewModel.categories.keys.sorted(by: >), id: \.self) { key in
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(Color.gray)
+                                    .opacity(0.1)
+                                VStack{
+                                    Text(key, formatter: viewModel.dateFormatter)
+                                    ForEach(viewModel.categories[key] ?? []) { timeslot in
+                                        ProjectView(timeslot: timeslot)
+                                            .padding([.trailing, .leading])
+                                    }
+                                }.padding([.top, .bottom])
                             }
+                        }
                     }.coordinateSpace(name: "pullToRefresh")
 
                     VStack {
@@ -102,7 +105,9 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     class FakeAuthProvider: AuthProvider {
+        func forgotPassword(email: String, completion: @escaping ForgotPasswordResult) { }
         func checkAuthState() -> User? { nil }
+        func createAccount(email: String, password: String, completion: @escaping SesionStoreResult) { }
         func signIn(email: String, password: String, completion: @escaping SesionStoreResult) { }
         func signOut() throws { }
     }

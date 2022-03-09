@@ -13,11 +13,14 @@ public class LoginViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var showError = true
     @Published var toggle = true
+    @Published var isForgotten = false
+    @Published var isSignUp = false
 
     @Published var errrorMessage = ""
 
     @Published var isLoading = true
     var session: SessionStore
+    typealias ForgotPasswordResult = (Result<Void, Error>) -> Void
 
     init(session: SessionStore){
         self.session = session
@@ -27,6 +30,39 @@ public class LoginViewModel: ObservableObject {
     func signIn() {
         isLoading = true
         session.signIn(email: username, password: password) { [weak self] result in
+            self?.isLoading = false
+            if case let .failure(result) =  result {
+                self?.errrorMessage = result.localizedDescription
+            }
+        }
+    }
+
+    func signUp() {
+        isLoading = true
+        session.signIn(email: username, password: password) { [weak self] result in
+            self?.isLoading = false
+            if case let .failure(result) =  result {
+                self?.errrorMessage = result.localizedDescription
+            }
+        }
+    }
+
+    func forgotPassword(completion: @escaping ForgotPasswordResult) {
+        isLoading = true
+        session.forgotPassword(email: username) { [weak self] result in
+            self?.isLoading = false
+            if case let .failure(result) = result {
+                self?.errrorMessage = result.localizedDescription
+            }
+            if case .success(_) = result {
+                completion(.success(()))
+            }
+        }
+    }
+
+    func createAccount() {
+        isLoading = true
+        session.createAccount(email: username, password: password) { [weak self] result in
             self?.isLoading = false
             if case let .failure(result) =  result {
                 self?.errrorMessage = result.localizedDescription
