@@ -20,20 +20,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserListCell" id="bQN-tS-2pw" customClass="UserListCell" customModule="TimeTrackerManager" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="111"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="100.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bQN-tS-2pw" id="TSk-FG-DfE">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="111"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BgJ-f4-o87">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="111"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="7oT-z8-IX3"/>
+                                                <constraint firstAttribute="height" constant="100" id="diE-6J-dZc"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="dob-lo-Oqb"/>
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SV1-i1-FJg">
-                                            <rect key="frame" x="110" y="10.5" width="147" height="90.5"/>
+                                            <rect key="frame" x="110" y="10" width="147" height="80.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OI1-hs-GFn">
                                                     <rect key="frame" x="0.0" y="0.0" width="147" height="29"/>
@@ -48,7 +50,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1250 h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTD-12-OQk">
-                                                    <rect key="frame" x="0.0" y="70" width="147" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="70" width="147" height="10.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -56,7 +58,7 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 lei" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXW-ol-84F">
-                                            <rect key="frame" x="352.5" y="80.5" width="51.5" height="20.5"/>
+                                            <rect key="frame" x="352.5" y="70" width="51.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -351,8 +353,8 @@
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
-                                                <include reference="tfX-3j-YYZ"/>
                                                 <include reference="0lp-Cq-00p"/>
+                                                <include reference="tfX-3j-YYZ"/>
                                                 <include reference="e81-ux-Vlf"/>
                                                 <include reference="P5X-qA-R70"/>
                                                 <include reference="PbL-ZM-oKA"/>
