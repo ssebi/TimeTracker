@@ -20,6 +20,10 @@ struct SignUpView: View {
                     .foregroundColor(.cBlack)
                     .font(Font.custom("Avenir-Light", size: 20.0))
 
+                Text("under \(viewModel.manager[0].name) company")
+                    .foregroundColor(.cBlack)
+                    .font(Font.custom("Avenir-Light", size: 20.0))
+
                 Text("\(viewModel.errrorMessage)")
                     .foregroundColor(.red)
                     .font(Font.custom("Avenir-Light", size: 20))

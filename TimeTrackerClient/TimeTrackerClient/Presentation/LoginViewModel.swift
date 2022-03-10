@@ -19,6 +19,7 @@ public class LoginViewModel: ObservableObject {
     @Published var isSignUp = false
     @Published var errrorMessage = ""
     @Published var isLoading = true
+    @Published var manager = [Manager]()
 
     var session: SessionStore
     var userLoader: UserLoader
@@ -82,8 +83,12 @@ public class LoginViewModel: ObservableObject {
             if case let .failure(error) =  result {
                 self?.errrorMessage = error.localizedDescription
             }
-            if case let .success(companyId) = result {
-                completion(.success(companyId))
+            if case let .success(manager) = result {
+                guard manager.isEmpty else {
+                    self?.manager = manager
+                    return completion(.success(manager[0]))
+                }
+                self?.errrorMessage = "No match found"
             }
         }
     }

@@ -28,7 +28,7 @@ public class FirebaseUserLoader: UserLoader {
                               }
                         return Manager(id: id, email: email, name: name)
                     }
-                    completion(.success(manager[0]))
+                    completion(.success(manager))
                 } else {
                     completion(.failure(error!))
                 }

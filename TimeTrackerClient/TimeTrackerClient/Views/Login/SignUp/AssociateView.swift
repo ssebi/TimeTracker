@@ -11,6 +11,7 @@ import TimeTrackerCore
 
 struct AssociateView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
+    @State private var shouldNavigate = false
 
     var body: some View {
         VStack{
@@ -38,12 +39,15 @@ struct AssociateView: View {
             }.underlineTextField()
                 .padding()
             Spacer()
+            NavigationLink(destination: SignUpView(viewModel: viewModel), isActive: $shouldNavigate, label: { EmptyView() })
             Button(action: {
                 viewModel.checkCompany() { result in
-                    print("result = >> company ", result)
+                    viewModel.errrorMessage = ""
+                    shouldNavigate = true
                 }
             }) {
-                NavigationLink("Next step", destination: SignUpView(viewModel: viewModel))                    .font(Font.custom("Avenir-Light", size: 25))
+                Text("Next step")
+                    .font(Font.custom("Avenir-Light", size: 25))
                     .frame(maxWidth: .infinity, alignment: .center)
             }.buttonStyle(SubmitButton())
         }
