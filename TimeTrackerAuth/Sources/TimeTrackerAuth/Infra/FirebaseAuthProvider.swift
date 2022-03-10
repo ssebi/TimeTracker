@@ -7,9 +7,17 @@
 
 import FirebaseAuth
 import TimeTrackerCore
+import Firebase
 
 public class FirebaseAuthProvider: AuthProvider {
 	struct NoUser: Error {}
+    typealias UserPublisherCompletion = (Result<Void, UserPublisherError>) -> Void
+    
+    enum UserPublisherError: Error {
+        case passwordResetFailed
+        case userCreationFailed
+        case addUserFailed
+    }
 
 	private var auth = Auth.auth()
 
@@ -59,8 +67,15 @@ public class FirebaseAuthProvider: AuthProvider {
         }
     }
 
-    public func createAccount(email: String, password: String, completion: @escaping SesionStoreResult) {
-        auth.createUser(withEmail: email, password: password) { (result, error) in
+    public func createAccount(
+        email: String,
+        password: String,
+        firstName: String,
+        lastName: String,
+        hourRate: String,
+        manager: Manager,
+        completion: @escaping SesionStoreResult) {
+        auth.createUser(withEmail: email, password: password) { [weak self] (result, error) in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -69,7 +84,38 @@ public class FirebaseAuthProvider: AuthProvider {
                 completion(.failure(NoUser()))
                 return
             }
-            completion(.success(Self.mapUser(result?.user)))
+            guard let user = result?.user else { return }
+            self?.createLocalUser(user, firstName: firstName, lastName: lastName, hourRate: hourRate, manager: manager) {_ in}
+            completion(.success(Self.mapUser(user)))
+        }
+    }
+
+    private func createLocalUser(
+        _ user: Firebase.User,
+        firstName: String,
+        lastName: String,
+        hourRate: String,
+        manager: Manager,
+        completion: @escaping UserPublisherCompletion) {
+        let data = [
+            "userId": user.uid,
+            "firstName": firstName,
+            "lastName": lastName,
+            "hourRate": "$ \(hourRate)",
+            "manager" : [
+                "email": manager.email,
+                "id": manager.id,
+                "name": manager.name
+            ],
+            "profilePicture": "https://avatars.dicebear.com/api/bottts/:\(firstName).png"
+        ] as [String: Any]
+
+        Firestore.firestore().collection("users").document().setData(data) { error in
+            if error != nil {
+                completion(.failure(.userCreationFailed))
+            } else {
+                completion(.success(()))
+            }
         }
     }
 }

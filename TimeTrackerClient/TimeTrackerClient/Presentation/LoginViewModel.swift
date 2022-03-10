@@ -12,6 +12,9 @@ import TimeTrackerCore
 public class LoginViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
+    @Published var firstName: String = ""
+    @Published var lastName: String = ""
+    @Published var hourRate: String = ""
     @Published var companyEmail: String = ""
     @Published var showError = true
     @Published var toggle = true
@@ -43,16 +46,6 @@ public class LoginViewModel: ObservableObject {
         }
     }
 
-    func signUp() {
-        isLoading = true
-        session.signIn(email: username, password: password) { [weak self] result in
-            self?.isLoading = false
-            if case let .failure(result) =  result {
-                self?.errrorMessage = result.localizedDescription
-            }
-        }
-    }
-
     func forgotPassword(completion: @escaping ForgotPasswordResult) {
         isLoading = true
         session.forgotPassword(email: username) { [weak self] result in
@@ -68,7 +61,12 @@ public class LoginViewModel: ObservableObject {
 
     func createAccount() {
         isLoading = true
-        session.createAccount(email: username, password: password) { [weak self] result in
+        session.createAccount(email: username,
+                              password: password,
+                              firstName: firstName,
+                              lastName: lastName,
+                              hourRate: hourRate,
+                              manager: manager[0]) { [weak self] result in
             self?.isLoading = false
             if case let .failure(result) =  result {
                 self?.errrorMessage = result.localizedDescription
