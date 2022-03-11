@@ -36,7 +36,10 @@ final class FirebaseUsersLoader {
             guard case let .success(manager) = result else {
                 return
             }
-           managerId = manager[0].id
+
+            if !manager[0].id.isEmpty {
+                managerId = manager[0].id
+            }
         }
 
         guard let partialUsers = try? await getPartialUsers(for: managerId) else {
@@ -56,7 +59,7 @@ final class FirebaseUsersLoader {
 			Firestore.firestore().collection("users")
                 .whereField("manager.id", isEqualTo: managerId)
                 .getDocuments { snapshot, error in
-				guard error == nil else { 
+				guard error == nil else {
 					continuation.resume(throwing: error!)
 					return
 				}
