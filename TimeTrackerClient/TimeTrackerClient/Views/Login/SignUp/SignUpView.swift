@@ -21,7 +21,7 @@ struct SignUpView: View {
                     .foregroundColor(.cBlack)
                     .font(Font.custom("Avenir-Light", size: 20.0))
 
-                Text("under \(viewModel.manager[0].name) company")
+                Text("under \(viewModel.manager.name) company")
                     .foregroundColor(.cBlack)
                     .font(Font.custom("Avenir-Light", size: 20.0))
 
@@ -108,7 +108,6 @@ struct SignUpView: View {
                     .padding()
             }
             .padding(EdgeInsets(top: 20, leading: 45, bottom: 10, trailing: 45))
-            //.frame(height: 50, alignment: .center)
             }
             Section {
                 Button(action: {

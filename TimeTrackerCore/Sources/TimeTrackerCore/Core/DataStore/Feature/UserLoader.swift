@@ -1,7 +1,9 @@
 
 public protocol UserLoader {
-    typealias GetManagerResult = (Result<[Manager], Error>) -> Void
-
 	func getUser() -> User
-    func getManager(companyEmail: String, completion: @escaping GetManagerResult)
+}
+
+public protocol ManagerLoader {
+    typealias GetManagerResult = (Result<Manager, Error>) -> Void
+    func getManager(companyEmail: String) async throws -> Manager?
 }

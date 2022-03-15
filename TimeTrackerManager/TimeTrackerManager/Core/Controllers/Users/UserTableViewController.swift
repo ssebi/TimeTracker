@@ -10,8 +10,7 @@ import TimeTrackerCore
 
 final class UserTableViewController: UITableViewController {
 
-    private var userLoader = FirebaseUsersLoader(store: FirebaseTimeslotsStore(),
-                                                 firebaseUserLoader: FirebaseUserLoader())
+    private var userLoader = FirebaseUsersLoader(store: FirebaseTimeslotsStore(), firebaseUserLoader: FirebaseUserLoader())
     typealias CompletionHandler = (_ success: Bool) -> Void
     private var users: [UserCell] = [] {
         didSet {

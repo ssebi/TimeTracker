@@ -26,31 +26,23 @@ final class FirebaseUsersLoader {
 
     func getUsers() async throws -> [UserCell] {
         var usersWithTimeslots: [UserCell] = []
-        var managerId = ""
 
         guard let loggedUserEmail = firebaseUserLoader.getUser().email else {
             return usersWithTimeslots
         }
 
-        firebaseUserLoader.getManager(companyEmail: loggedUserEmail) { result in
-            guard case let .success(manager) = result else {
-                return
-            }
+        let managerId = try await firebaseUserLoader.getManager(companyEmail: loggedUserEmail)
 
-            if !manager[0].id.isEmpty {
-                managerId = manager[0].id
-            }
+        guard let managerId = managerId,
+              let partialUsers = try? await getPartialUsers(for: managerId.id) else {
+            return usersWithTimeslots
         }
 
-        guard let partialUsers = try? await getPartialUsers(for: managerId) else {
-			throw UndefinedError()
-		}
-
-		for user in partialUsers {
-			if let timeslots = await store.getTimeslots(userID: user.userId) {
-				usersWithTimeslots.append(user.addTimeslots(timeslots))
-			}
-		}
+        for user in partialUsers {
+            if let timeslots = await store.getTimeslots(userID: user.userId) {
+                usersWithTimeslots.append(user.addTimeslots(timeslots))
+            }
+        }
 		return usersWithTimeslots
 	}
 

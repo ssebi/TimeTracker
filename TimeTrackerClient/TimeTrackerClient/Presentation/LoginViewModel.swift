@@ -22,17 +22,17 @@ public class LoginViewModel: ObservableObject {
     @Published var isSignUp = false
     @Published var errrorMessage = ""
     @Published var isLoading = true
-    @Published var manager = [Manager]()
+    @Published var manager: Manager?
 
     var session: SessionStore
-    var userLoader: UserLoader
+    var managerLoader: ManagerLoader
 
     typealias ForgotPasswordResult = (Result<Void, Error>) -> Void
     typealias CheckCompanyResult = (Result<Manager, Error>) -> Void
 
-    init(session: SessionStore, userLoader: UserLoader){
+    init(session: SessionStore, managerLoader: ManagerLoader){
         self.session = session
-        self.userLoader = userLoader
+        self.managerLoader = managerLoader
         isLoading = false
     }
 
@@ -66,7 +66,7 @@ public class LoginViewModel: ObservableObject {
                               firstName: firstName,
                               lastName: lastName,
                               hourRate: hourRate,
-                              manager: manager[0]) { [weak self] result in
+                              manager: manager) { [weak self] result in
             self?.isLoading = false
             if case let .failure(result) =  result {
                 self?.errrorMessage = result.localizedDescription
@@ -76,7 +76,7 @@ public class LoginViewModel: ObservableObject {
 
     func checkCompany(completion: @escaping CheckCompanyResult) {
         isLoading = true
-        userLoader.getManager(companyEmail: companyEmail) { [weak self] result in
+        managerLoader.getManager(companyEmail: companyEmail) { [weak self] result in
             self?.isLoading = false
             if case let .failure(error) =  result {
                 self?.errrorMessage = error.localizedDescription
