@@ -26,7 +26,7 @@ struct TimeTrackerClientApp: App {
 						dependencies.addScreen
 					})
 				} else {
-                    LoginView(viewModel: LoginViewModel(session: sessionStore, userLoader: FirebaseUserLoader()))
+                    LoginView(viewModel: LoginViewModel(session: sessionStore, managerLoader: FirebaseUserLoader()))
 				}
 			}
 			.environmentObject(sessionStore)

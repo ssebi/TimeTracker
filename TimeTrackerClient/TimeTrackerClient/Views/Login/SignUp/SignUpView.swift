@@ -21,7 +21,7 @@ struct SignUpView: View {
                     .foregroundColor(.cBlack)
                     .font(Font.custom("Avenir-Light", size: 20.0))
 
-                Text("under \(viewModel.manager.name) company")
+                Text("under \(viewModel.manager!.name) company")
                     .foregroundColor(.cBlack)
                     .font(Font.custom("Avenir-Light", size: 20.0))
 
@@ -124,6 +124,6 @@ struct SignUpView: View {
 
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider()), userLoader: FirebaseUserLoader()))
+        SignUpView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider()), managerLoader: FirebaseUserLoader()))
     }
 }

@@ -42,6 +42,6 @@ struct LoginFooterView: View {
 
 struct LoginFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginFooterView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider()), userLoader: FirebaseUserLoader()))
+        LoginFooterView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider()), managerLoader: FirebaseUserLoader()))
     }
 }

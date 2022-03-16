@@ -91,6 +91,6 @@ struct LoginFormView: View {
 
 struct LoginFormView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginFormView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider()), userLoader: FirebaseUserLoader()))
+        LoginFormView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider()), managerLoader: FirebaseUserLoader()))
     }
 }

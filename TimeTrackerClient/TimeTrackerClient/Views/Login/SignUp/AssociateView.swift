@@ -41,10 +41,9 @@ struct AssociateView: View {
             Spacer()
             NavigationLink(destination: SignUpView(viewModel: viewModel), isActive: $shouldNavigate, label: { EmptyView() })
             Button(action: {
-                viewModel.checkCompany() { result in
+                // let company = try viewModel.checkCompany()
                     viewModel.errrorMessage = ""
                     shouldNavigate = true
-                }
             }) {
                 Text("Next step")
                     .font(Font.custom("Avenir-Light", size: 25))
@@ -59,6 +58,6 @@ struct AssociateView: View {
 
 struct AssociateView_Previews: PreviewProvider {
     static var previews: some View {
-        AssociateView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider()), userLoader: FirebaseUserLoader()))
+        AssociateView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider()), managerLoader: FirebaseUserLoader()))
     }
 }
