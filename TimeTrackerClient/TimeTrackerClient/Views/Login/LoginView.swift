@@ -7,6 +7,7 @@
 
 import SwiftUI
 import TimeTrackerAuth
+import TimeTrackerCore
 
 struct LoginView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
@@ -15,14 +16,14 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                
+
                 VStack {
                     Rectangle()
                         .fill(LinearGradient.gradientBackground)
                     Rectangle()
                         .fill(Color.cWhite)
                 }.ignoresSafeArea()
-                
+
                 ScrollView(showsIndicators: false) {
                     VStack {
                         VStack {
@@ -37,7 +38,7 @@ struct LoginView: View {
                                 if (viewModel.isForgotten) {
                                     ForgotPassword(viewModel: viewModel)
                                 } else if (viewModel.isSignUp) {
-                                    SignUpView(viewModel: viewModel)
+                                    AssociateView(viewModel: viewModel)
                                 } else {
                                     LoginFormView(viewModel: viewModel)
                                 }
@@ -46,7 +47,7 @@ struct LoginView: View {
                             Spacer()
                         }
                         .offset(y: UIScreen.main.bounds.height / 10)
-                        
+
                         LoginFooterView(viewModel: viewModel)
                             .offset(y: 60)
                     }
@@ -59,10 +60,10 @@ struct LoginView: View {
             .navigationBarHidden(true)
         }
     }
-    
+
     struct LoginView_Previews: PreviewProvider {
         static var previews: some View {
-            LoginView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
+            LoginView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider()), managerLoader:  FirebaseUserLoader()))
         }
     }
 }

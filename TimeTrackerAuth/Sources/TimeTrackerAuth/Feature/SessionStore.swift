@@ -35,8 +35,20 @@ public class SessionStore: ObservableObject {
         }
     }
 
-    public func createAccount(email: String, password: String, completion: @escaping AuthProvider.SesionStoreResult) {
-        authProvider.createAccount(email: email, password: password) { [weak self] result in
+    public func createAccount(
+        email: String,
+        password: String,
+        firstName: String,
+        lastName: String,
+        hourRate: String,
+        manager: Manager,
+        completion: @escaping AuthProvider.SesionStoreResult) {
+            authProvider.createAccount(email: email,
+                                       password: password,
+                                       firstName: firstName,
+                                       lastName: lastName,
+                                       hourRate: hourRate,
+                                       manager: manager) { [weak self] result in
             if case let .success(user) = result {
                 self?.user = user
             }

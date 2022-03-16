@@ -7,37 +7,36 @@
 
 import Combine
 import TimeTrackerAuth
+import TimeTrackerCore
 
 public class LoginViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
+    @Published var firstName: String = ""
+    @Published var lastName: String = ""
+    @Published var hourRate: String = ""
+    @Published var companyEmail: String = ""
     @Published var showError = true
     @Published var toggle = true
     @Published var isForgotten = false
     @Published var isSignUp = false
-
     @Published var errrorMessage = ""
-
     @Published var isLoading = true
-    var session: SessionStore
-    typealias ForgotPasswordResult = (Result<Void, Error>) -> Void
+    @Published var manager: Manager?
 
-    init(session: SessionStore){
+    var session: SessionStore
+    var managerLoader: ManagerLoader
+
+    typealias ForgotPasswordResult = (Result<Void, Error>) -> Void
+    typealias CheckCompanyResult = (Result<Manager, Error>) -> Void
+
+    init(session: SessionStore, managerLoader: ManagerLoader){
         self.session = session
+        self.managerLoader = managerLoader
         isLoading = false
     }
 
     func signIn() {
-        isLoading = true
-        session.signIn(email: username, password: password) { [weak self] result in
-            self?.isLoading = false
-            if case let .failure(result) =  result {
-                self?.errrorMessage = result.localizedDescription
-            }
-        }
-    }
-
-    func signUp() {
         isLoading = true
         session.signIn(email: username, password: password) { [weak self] result in
             self?.isLoading = false
@@ -62,11 +61,31 @@ public class LoginViewModel: ObservableObject {
 
     func createAccount() {
         isLoading = true
-        session.createAccount(email: username, password: password) { [weak self] result in
+        guard let manager = manager else {
+            return
+        }
+
+        session.createAccount(email: username,
+                              password: password,
+                              firstName: firstName,
+                              lastName: lastName,
+                              hourRate: hourRate,
+                              manager: manager) { [weak self] result in
             self?.isLoading = false
             if case let .failure(result) =  result {
                 self?.errrorMessage = result.localizedDescription
             }
         }
+    }
+
+    func checkCompany() async throws -> Manager? {
+        isLoading = true
+        let manager = try await managerLoader.getManager(companyEmail: companyEmail)
+        guard let manager = manager else {
+            self.isLoading = false
+            self.errrorMessage = "Manager could not be loaded"
+            return nil
+        }
+        return manager
     }
 }

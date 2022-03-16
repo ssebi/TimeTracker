@@ -12,8 +12,9 @@ import UIKit
 
 final class FirebaseUsersLoader {
 
-    init(store: TimeslotsStore) {
+    init(store: TimeslotsStore, firebaseUserLoader: FirebaseUserLoader) {
         self.store = store
+        self.firebaseUserLoader = firebaseUserLoader
     }
 
     struct UndefinedError: Error { }
@@ -21,23 +22,35 @@ final class FirebaseUsersLoader {
     typealias GetUserInfoResult = (Result<Void, Error>) -> Void
     typealias GetTimeslotsResult = (Result<[TimeSlot], Error>) -> Void
     var store: TimeslotsStore
+    var firebaseUserLoader: FirebaseUserLoader
 
     func getUsers() async throws -> [UserCell] {
-		guard let partialUsers = try? await getPartialUsers() else {
-			throw UndefinedError()
-		}
-		var usersWithTimeslots: [UserCell] = []
-		for user in partialUsers {
-			if let timeslots = await store.getTimeslots(userID: user.userId) {
-				usersWithTimeslots.append(user.addTimeslots(timeslots))
-			}
-		}
+        var usersWithTimeslots: [UserCell] = []
+
+        guard let loggedUserEmail = firebaseUserLoader.getUser().email else {
+            return usersWithTimeslots
+        }
+
+        let managerId = try await firebaseUserLoader.getManager(companyEmail: loggedUserEmail)
+
+        guard let managerId = managerId,
+              let partialUsers = try? await getPartialUsers(for: managerId.id) else {
+            return usersWithTimeslots
+        }
+
+        for user in partialUsers {
+            if let timeslots = await store.getTimeslots(userID: user.userId) {
+                usersWithTimeslots.append(user.addTimeslots(timeslots))
+            }
+        }
 		return usersWithTimeslots
 	}
 
-	private func getPartialUsers() async throws -> [UserCell] {
+    private func getPartialUsers(for managerId: String) async throws -> [UserCell] {
 		try await withCheckedThrowingContinuation { continuation in
-			Firestore.firestore().collection("users").getDocuments { snapshot, error in
+			Firestore.firestore().collection("users")
+                .whereField("manager.id", isEqualTo: managerId)
+                .getDocuments { snapshot, error in
 				guard error == nil else {
 					continuation.resume(throwing: error!)
 					return

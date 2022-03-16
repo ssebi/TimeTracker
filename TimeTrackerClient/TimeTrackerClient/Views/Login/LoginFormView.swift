@@ -7,6 +7,7 @@
 
 import SwiftUI
 import TimeTrackerAuth
+import TimeTrackerCore
 
 struct LoginFormView: View {
     @ObservedObject private(set) var viewModel: LoginViewModel
@@ -90,6 +91,6 @@ struct LoginFormView: View {
 
 struct LoginFormView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginFormView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider())))
+        LoginFormView(viewModel: LoginViewModel(session: SessionStore(authProvider: FirebaseAuthProvider()), managerLoader: FirebaseUserLoader()))
     }
 }

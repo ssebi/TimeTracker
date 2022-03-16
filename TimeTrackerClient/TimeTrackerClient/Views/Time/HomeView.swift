@@ -107,7 +107,7 @@ struct HomeView_Previews: PreviewProvider {
     class FakeAuthProvider: AuthProvider {
         func forgotPassword(email: String, completion: @escaping ForgotPasswordResult) { }
         func checkAuthState() -> User? { nil }
-        func createAccount(email: String, password: String, completion: @escaping SesionStoreResult) { }
+        func createAccount(email: String, password: String, firstName: String, lastName: String, hourRate: String, manager: Manager, completion: @escaping SesionStoreResult) { }
         func signIn(email: String, password: String, completion: @escaping SesionStoreResult) { }
         func signOut() throws { }
     }
@@ -146,9 +146,15 @@ struct HomeView_Previews: PreviewProvider {
     }
 
     private class UserLoaderMock: UserLoader {
+        func getManager(companyEmail: String) async throws -> Manager? {
+           return Manager(id: "zxczxc", email: "some@email.com", name: "TestName")
+        }
+
         func getUser() -> User {
             User(uid: UUID().uuidString, email: "somteEmail@test.com", username: "Test", client: "Client")
         }
+
+
     }
 
     private class RemoteTimeslotsLoaderMock: TimeslotsLoader {
