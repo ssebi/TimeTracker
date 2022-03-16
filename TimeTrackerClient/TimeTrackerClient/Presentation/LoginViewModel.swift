@@ -61,6 +61,10 @@ public class LoginViewModel: ObservableObject {
 
     func createAccount() {
         isLoading = true
+        guard let manager = manager else {
+            return
+        }
+
         session.createAccount(email: username,
                               password: password,
                               firstName: firstName,
@@ -74,20 +78,14 @@ public class LoginViewModel: ObservableObject {
         }
     }
 
-    func checkCompany(completion: @escaping CheckCompanyResult) {
+    func checkCompany() async throws -> Manager? {
         isLoading = true
-        managerLoader.getManager(companyEmail: companyEmail) { [weak self] result in
-            self?.isLoading = false
-            if case let .failure(error) =  result {
-                self?.errrorMessage = error.localizedDescription
-            }
-            if case let .success(manager) = result {
-                guard manager.isEmpty else {
-                    self?.manager = manager
-                    return completion(.success(manager[0]))
-                }
-                self?.errrorMessage = "No match found"
-            }
+        let manager = try await managerLoader.getManager(companyEmail: companyEmail)
+        guard let manager = manager else {
+            self.isLoading = false
+            self.errrorMessage = "Manager could not be loaded"
+            return nil
         }
+        return manager
     }
 }
